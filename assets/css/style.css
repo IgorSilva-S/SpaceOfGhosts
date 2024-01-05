@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #2E1A47, #111133, #04051a);
+    overflow: hidden;
+}
+
+.player {
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/sprites/Flying.gif);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    left: 10%;
+    top: 45%;
+}
+
+.upping {
+    background-image: url(../img/sprites/NTSGhostJump/Upping.png);
+}
+
+.dowing {
+    background-image: url(../img/sprites/NTSGhostJump/Falling.png);
+}
+
+.meteor {
+    width: 50px;
+    height: 50px;
+    background-color: maroon;
+    border-radius: 6px;
+    position: absolute;
+    left: 50%;
+    TOP: 50%;
+    animation-name: kill;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes kill {
+    from {
+        left: 120%;
+    } to {
+        left: -20%;
+    }
+}
