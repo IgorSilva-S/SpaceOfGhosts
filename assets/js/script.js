@@ -5,8 +5,8 @@ let meteor2 = document.getElementById('m2')
 let meteor3 = document.getElementById('m3')
 let meteor4 = document.getElementById('m4')
 let meteor5 = document.getElementById('m5')
-let meteor6 = document.getElementById('m5')
-let meteor7 = document.getElementById('m5')
+let meteor6 = document.getElementById('m6')
+let meteor7 = document.getElementById('m7')
 
 
 document.addEventListener("keydown", function (e) {
@@ -35,6 +35,11 @@ document.addEventListener("keyup", function () {
 meteor1.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
+    let typeOf = Math.random() * 3 + 1
+    typeOf = parseInt (typeOf)
+    meteor1.removeAttribute('class')
+    meteor1.className = 'meteor'
+    meteor1.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor1.style.top = `${randomNum}%`
     meteor1.style.animationDelay = `${delayNum}%`
@@ -43,6 +48,11 @@ meteor1.addEventListener('animationiteration', () => {
 meteor2.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
+    let typeOf = Math.random() * 3 + 1
+    typeOf = parseInt(typeOf)
+    meteor2.removeAttribute('class')
+    meteor2.className = 'meteor'
+    meteor2.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor2.style.top = `${randomNum}%`
     meteor2.style.animationDelay = `${delayNum}%`
@@ -51,6 +61,11 @@ meteor2.addEventListener('animationiteration', () => {
 meteor3.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
+    let typeOf = Math.random() * 3 + 1
+    typeOf = parseInt(typeOf)
+    meteor3.removeAttribute('class')
+    meteor3.className = 'meteor'
+    meteor3.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor3.style.top = `${randomNum}%`
     meteor3.style.animationDelay = `${delayNum}%`
@@ -59,6 +74,11 @@ meteor3.addEventListener('animationiteration', () => {
 meteor4.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
+    let typeOf = Math.random() * 3 + 1
+    typeOf = parseInt(typeOf)
+    meteor4.removeAttribute('class')
+    meteor4.className = 'meteor'
+    meteor4.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor4.style.top = `${randomNum}%`
     meteor4.style.animationDelay = `${delayNum}%`
@@ -67,6 +87,11 @@ meteor4.addEventListener('animationiteration', () => {
 meteor5.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
+    let typeOf = Math.random() * 3 + 1
+    typeOf = parseInt(typeOf)
+    meteor5.removeAttribute('class')
+    meteor5.className = 'meteor'
+    meteor5.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor5.style.top = `${randomNum}%`
     meteor5.style.animationDelay = `${delayNum}%`
@@ -75,6 +100,11 @@ meteor5.addEventListener('animationiteration', () => {
 meteor6.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
+    let typeOf = Math.random() * 3 + 1
+    typeOf = parseInt(typeOf)
+    meteor6.removeAttribute('class')
+    meteor6.className = 'meteor'
+    meteor6.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor6.style.top = `${randomNum}%`
     meteor6.style.animationDelay = `${delayNum}%`
@@ -83,6 +113,11 @@ meteor6.addEventListener('animationiteration', () => {
 meteor7.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
+    let typeOf = Math.random() * 3 + 1
+    typeOf = parseInt(typeOf)
+    meteor7.removeAttribute('class')
+    meteor7.className = 'meteor'
+    meteor7.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor7.style.top = `${randomNum}%`
     meteor7.style.animationDelay = `${delayNum}%`
