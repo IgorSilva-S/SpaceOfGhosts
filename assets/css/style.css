@@ -31,7 +31,9 @@ body {
 @keyframes moveBckg {
     from {
         left: 0
-    } to {
+    }
+
+    to {
         left: -100%
     }
 }
@@ -45,6 +47,10 @@ body {
     position: absolute;
     left: 150px;
     top: 45%;
+}
+
+.playerPaused {
+    background-image: url(../img/sprites/NTSGhostJump/Flying1.png);
 }
 
 .upping {
@@ -79,10 +85,52 @@ body {
     }
 }
 
+.hShield {
+    animation-name: hShield;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinte;
+}
+
+@keyFrames hShield {
+    0% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: .5
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+.hurted {
+    animation-name: hurting;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+}
+
+@keyframes hurting {
+    0% {
+        rotate: 0deg
+    } 
+
+    50% {
+        opacity: .5
+    }
+
+    100% {
+        rotate: 720deg;
+        opacity: 1
+    }
+}
+
 .meteor {
     border-radius: 6px;
     position: absolute;
-    left: 50%;
+    left: 120%;
     TOP: 50%;
     animation-name: kill;
     animation-duration: 5s;

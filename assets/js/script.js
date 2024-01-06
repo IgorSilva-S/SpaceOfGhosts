@@ -7,6 +7,7 @@ let meteor4 = document.getElementById('m4')
 let meteor5 = document.getElementById('m5')
 let meteor6 = document.getElementById('m6')
 let meteor7 = document.getElementById('m7')
+let hurtShield = false
 
 
 document.addEventListener("keydown", function (e) {
@@ -24,32 +25,45 @@ document.addEventListener("keydown", function (e) {
         }
         player.style.top = `${playerPosi}%`
         player.classList.add('falling')
+    } if (e.key == "Enter") {
+        document.body.style.filter = 'grayscale()'
+        document.body.style.backgroundImage = 'linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #888, #fff)'
+        meteor1.style.animationPlayState = 'paused'
+        meteor2.style.animationPlayState = 'paused'
+        meteor3.style.animationPlayState = 'paused'
+        meteor4.style.animationPlayState = 'paused'
+        meteor5.style.animationPlayState = 'paused'
+        meteor6.style.animationPlayState = 'paused'
+        meteor7.style.animationPlayState = 'paused'
+        player.classList.add('playerPaused')
+        document.querySelector('.background').style.animationPlayState = 'paused'
     }
 })
 
-document.addEventListener("keyup", function () {
-    player.removeAttribute('class')
-    player.className = 'player'
+document.addEventListener("keyup", function (e) {
+    if (e.key != "Enter") {
+        player.removeAttribute('class')
+        player.className = 'player'
+    }
 })
 
 meteor1.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
-    let typeOf = Math.random() * 3 + 1
-    typeOf = parseInt (typeOf)
+    let typeOf = Math.floor((Math.random() * 3) + 1)
     meteor1.removeAttribute('class')
     meteor1.className = 'meteor'
     meteor1.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor1.style.top = `${randomNum}%`
     meteor1.style.animationDelay = `${delayNum}%`
-} )
+})
 
 meteor2.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
-    let typeOf = Math.random() * 3 + 1
-    typeOf = parseInt(typeOf)
+    let typeOf = Math.floor((Math.random() * 3) + 1)
+
     meteor2.removeAttribute('class')
     meteor2.className = 'meteor'
     meteor2.classList.add(`mt${typeOf}`)
@@ -61,8 +75,8 @@ meteor2.addEventListener('animationiteration', () => {
 meteor3.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
-    let typeOf = Math.random() * 3 + 1
-    typeOf = parseInt(typeOf)
+    let typeOf = Math.floor((Math.random() * 3) + 1)
+
     meteor3.removeAttribute('class')
     meteor3.className = 'meteor'
     meteor3.classList.add(`mt${typeOf}`)
@@ -74,8 +88,8 @@ meteor3.addEventListener('animationiteration', () => {
 meteor4.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
-    let typeOf = Math.random() * 3 + 1
-    typeOf = parseInt(typeOf)
+    let typeOf = Math.floor((Math.random() * 3) + 1)
+
     meteor4.removeAttribute('class')
     meteor4.className = 'meteor'
     meteor4.classList.add(`mt${typeOf}`)
@@ -87,8 +101,8 @@ meteor4.addEventListener('animationiteration', () => {
 meteor5.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
-    let typeOf = Math.random() * 3 + 1
-    typeOf = parseInt(typeOf)
+    let typeOf = Math.floor((Math.random() * 3) + 1)
+
     meteor5.removeAttribute('class')
     meteor5.className = 'meteor'
     meteor5.classList.add(`mt${typeOf}`)
@@ -100,8 +114,8 @@ meteor5.addEventListener('animationiteration', () => {
 meteor6.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
-    let typeOf = Math.random() * 3 + 1
-    typeOf = parseInt(typeOf)
+    let typeOf = Math.floor((Math.random() * 3) + 1)
+
     meteor6.removeAttribute('class')
     meteor6.className = 'meteor'
     meteor6.classList.add(`mt${typeOf}`)
@@ -113,8 +127,8 @@ meteor6.addEventListener('animationiteration', () => {
 meteor7.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let delayNum = Math.random() * 10
-    let typeOf = Math.random() * 3 + 1
-    typeOf = parseInt(typeOf)
+    let typeOf = Math.floor((Math.random() * 3) + 1)
+
     meteor7.removeAttribute('class')
     meteor7.className = 'meteor'
     meteor7.classList.add(`mt${typeOf}`)
@@ -131,9 +145,18 @@ setInterval(() => {
         window.getComputedStyle(meteor1).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield) {
         } else {
-            console.log('mORREU')
+            player.removeAttribute('class')
+            player.className = 'player'
+            player.classList.add('hurted')
+            hurtShield = true
+            setTimeout(() => {
+                player.classList.remove('hurted')
+            }, 500);
+            setTimeout(() => {
+                hurtShield = false
+            }, 5000);
         }
     }
 }, 1);
@@ -145,9 +168,18 @@ setInterval(() => {
         window.getComputedStyle(meteor2).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield) {
         } else {
-            console.log('mORREU')
+            player.removeAttribute('class')
+            player.className = 'player'
+            player.classList.add('hurted')
+            hurtShield = true
+            setTimeout(() => {
+                player.classList.remove('hurted')
+            }, 500);
+            setTimeout(() => {
+                hurtShield = false
+            }, 5000);
         }
     }
 }, 1);
@@ -159,9 +191,18 @@ setInterval(() => {
         window.getComputedStyle(meteor3).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield) {
         } else {
-            console.log('mORREU')
+            player.removeAttribute('class')
+            player.className = 'player'
+            player.classList.add('hurted')
+            hurtShield = true
+            setTimeout(() => {
+                player.classList.remove('hurted')
+            }, 500);
+            setTimeout(() => {
+                hurtShield = false
+            }, 5000);
         }
     }
 }, 1);
@@ -173,9 +214,18 @@ setInterval(() => {
         window.getComputedStyle(meteor4).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield) {
         } else {
-            console.log('mORREU')
+            player.removeAttribute('class')
+            player.className = 'player'
+            player.classList.add('hurted')
+            hurtShield = true
+            setTimeout(() => {
+                player.classList.remove('hurted')
+            }, 500);
+            setTimeout(() => {
+                hurtShield = false
+            }, 5000);
         }
     }
 }, 1);
@@ -187,9 +237,18 @@ setInterval(() => {
         window.getComputedStyle(meteor5).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield) {
         } else {
-            console.log('mORREU')
+            player.removeAttribute('class')
+            player.className = 'player'
+            player.classList.add('hurted')
+            hurtShield = true
+            setTimeout(() => {
+                player.classList.remove('hurted')
+            }, 500);
+            setTimeout(() => {
+                hurtShield = false
+            }, 5000);
         }
     }
 }, 1);
@@ -201,9 +260,18 @@ setInterval(() => {
         window.getComputedStyle(meteor6).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield) {
         } else {
-            console.log('mORREU')
+            player.removeAttribute('class')
+            player.className = 'player'
+            player.classList.add('hurted')
+            hurtShield = true
+            setTimeout(() => {
+                player.classList.remove('hurted')
+            }, 500);
+            setTimeout(() => {
+                hurtShield = false
+            }, 5000);
         }
     }
 }, 1);
@@ -215,9 +283,18 @@ setInterval(() => {
         window.getComputedStyle(meteor7).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield) {
         } else {
-            console.log('mORREU')
+            player.removeAttribute('class')
+            player.className = 'player'
+            player.classList.add('hurted')
+            hurtShield = true
+            setTimeout(() => {
+                player.classList.remove('hurted')
+            }, 500);
+            setTimeout(() => {
+                hurtShield = false
+            }, 5000);
         }
     }
 }, 1);
