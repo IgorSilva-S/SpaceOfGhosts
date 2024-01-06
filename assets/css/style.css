@@ -6,8 +6,34 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(to bottom, #2E1A47, #111133, #04051a);
+    /*background-image: linear-gradient(to bottom, #2E1A47, #111133, #04051a);*/
+    background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);
+    /*background-image: linear-gradient(to bottom, #000, #04051a);*/
+    background-color: #000;
     overflow: hidden;
+}
+
+.background {
+    width: 200vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url(../img/sprites/BackgroundPureStarII.png);
+    animation-name: moveBckg;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    background-size: cover;
+    background-position: center;
+}
+
+@keyframes moveBckg {
+    from {
+        left: 0
+    } to {
+        left: -100%
+    }
 }
 
 .player {
@@ -17,16 +43,40 @@ body {
     background-position: center;
     background-size: cover;
     position: absolute;
-    left: 10%;
+    left: 150px;
     top: 45%;
 }
 
 .upping {
     background-image: url(../img/sprites/NTSGhostJump/Upping.png);
+    animation-name: uppingGhost;
+    animation-duration: .58s;
 }
 
-.dowing {
+@keyframes uppingGhost {
+    0% {
+        background-image: url(../img/sprites/Upping.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/Upping.gif);
+    }
+}
+
+.falling {
     background-image: url(../img/sprites/NTSGhostJump/Falling.png);
+    animation-name: fallingGhost;
+    animation-duration: .8s;
+}
+
+@keyframes fallingGhost {
+    0% {
+        background-image: url(../img/sprites/Falling.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/Falling.gif);
+    }
 }
 
 .meteor {
@@ -46,7 +96,33 @@ body {
 @keyframes kill {
     from {
         left: 120%;
-    } to {
+    }
+
+    to {
         left: -20%;
     }
+}
+
+#m2 {
+    animation-delay: .4s;
+}
+
+#m3 {
+    animation-delay: 1s;
+}
+
+#m4 {
+    animation-delay: 1.2s;
+}
+
+#m5 {
+    animation-delay: .6s;
+}
+
+#m6 {
+    animation-delay: .9s;
+}
+
+#m7 {
+    animation-delay: 1.3s;
 }
