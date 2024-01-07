@@ -86,29 +86,12 @@ body {
 }
 
 .hShield {
-    animation-name: hShield;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinte;
-}
-
-@keyFrames hShield {
-    0% {
-        opacity: 1
-    }
-
-    50% {
-        opacity: .5
-    }
-
-    100% {
-        opacity: 1
-    }
+    opacity: .5
 }
 
 .hurted {
     animation-name: hurting;
-    animation-duration: .5s;
+    animation-duration: 1s;
     animation-timing-function: linear;
 }
 
@@ -133,7 +116,7 @@ body {
     left: 120%;
     TOP: 50%;
     animation-name: kill;
-    animation-duration: 5s;
+    animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     background-size: cover;
