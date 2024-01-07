@@ -97,16 +97,23 @@ body {
 
 @keyframes hurting {
     0% {
-        rotate: 0deg
+        rotate: 0deg;
+        opacity: .5
     } 
 
     50% {
-        opacity: .5
+        opacity: 1
+    }
+
+    80% {
+        rotate: 720deg;
+        opacity: .5;
+        left: 0
     }
 
     100% {
         rotate: 720deg;
-        opacity: 1
+        left: 150PX;
     }
 }
 

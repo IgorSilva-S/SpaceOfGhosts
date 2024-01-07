@@ -63,7 +63,7 @@ document.addEventListener("keydown", function (e) {
 })
 
 song.addEventListener('ended', function() {
-    song.currentTime = 0
+    song.currentTime = 2
     song.play()
 })
 
