@@ -7,7 +7,7 @@ body {
     width: 100vw;
     height: 100vh;
     /*background-image: linear-gradient(to bottom, #2E1A47, #111133, #04051a);*/
-    background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);
+    /*background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);*/
     /*background-image: linear-gradient(to bottom, #000, #04051a);*/
     background-color: #000;
     overflow: hidden;
@@ -43,10 +43,12 @@ body {
     height: 100px;
     background-image: url(../img/sprites/Flying.gif);
     background-position: center;
-    background-size: cover;
+    background-size: 90%;
+    background-repeat: no-repeat;
     position: absolute;
     left: 150px;
     top: 45%;
+    border-radius: 100%;
 }
 
 .playerPaused {
@@ -85,6 +87,13 @@ body {
     }
 }
 
+.shield {
+    border: 2px solid #0632ff;
+    outline: 2px solid #0af;
+    box-shadow: 0px 0px 10px 4px #0ef;
+    background-color: #0632ff33;
+}
+
 .hShield {
     opacity: .5
 }
@@ -99,7 +108,7 @@ body {
     0% {
         rotate: 0deg;
         opacity: .5
-    } 
+    }
 
     50% {
         opacity: 1
@@ -188,4 +197,169 @@ body {
 
 #m7 {
     animation-delay: 1.3s;
+}
+
+.pauseContainer {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -130%;
+    backdrop-filter: grayscale();
+}
+
+.pauseAlert {
+    width: 25vw;
+    height: 100vh;
+    position: absolute;
+    right: -25%;
+    top: 0;
+    background-color: #008;
+    color: white;
+    transition-duration: .4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.pauseAlert div {
+    position: absolute;
+    top: 20px;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.pauseAlert button {
+    width: 90%;
+    height: 40px;
+    margin: 10px 0;
+    background-color: #191919;
+    border: 1px solid #090909;
+    border-radius: 4px;
+    color: white;
+}
+
+.pauseAnimTop {
+    width: 20%;
+    height: 80px;
+    background-color: #00a;
+    position: fixed;
+    top: 1%;
+    left: 120%;
+    border-radius: 10px;
+    animation: animPause 3s linear infinite;
+}
+
+.pauseAnimBottom {
+    width: 20%;
+    height: 80px;
+    background-color: #00e;
+    position: fixed;
+    bottom: 1%;
+    left: 120%;
+    border-radius: 10px;
+    animation: animPause 3s linear 1s infinite;
+}
+
+@keyframes animPause {
+    from {
+        left: 120%
+    }
+
+    to {
+        left: -20%
+    }
+}
+
+.boost {
+    width: 48px;
+    height: 48px;
+    position: fixed;
+    animation: boost 10s linear infinite;
+    background-image: url(../img/sprites/Items/shieldBoost.png);
+    background-size: cover;
+    background-position: center;
+}
+
+@keyframes boost {
+    0% {
+        left: 120%
+    }
+    
+    40% {
+        left: -50px;
+    }
+
+    100% {
+        left: -60px;
+    }
+}
+
+#disclaimer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    background-color: #000;
+}
+
+#disclaimer span {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#disclaimer button {
+    padding: 2px 20px;
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 120px;
+    background-color: #025;
+    border: 2px solid #0632ff;
+    color: white;
+    transition-duration: .4s;
+}
+
+#disclaimer button:hover {
+    background-color: #0632ff;
+}
+
+#homeScreen {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+    color: white;
+}
+
+#homeScreen button {
+    padding: 5px 20px;
+    font-size: 20px;
+    border-radius: 120px;
+    background-color: #025;
+    border: 2px solid #0632ff;
+    color: white;
+    transition-duration: .4s;
+    z-index: 1;
+}
+
+#homeScreen button:hover {
+    background-color: #0632ff;
+}
+
+#homeScreen .background {
+    z-index: 0;
+    animation-duration: 20s;
+}
+
+#infiniteMode {
+    display: none;
 }
