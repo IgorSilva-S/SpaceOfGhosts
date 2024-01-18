@@ -49,19 +49,36 @@ disButton.addEventListener("click", function () {
     song.currentTime = 0
 })
 
+document.getElementById('hgh1').addEventListener("click", () => {
+    document.getElementById('hgh1').classList.add('roundHome')
+    setTimeout(() => {
+        document.getElementById('hgh1').classList.remove('roundHome')
+    }, 5000);
+})
+
 homeSong.addEventListener("ended", () => {
     homeSong.currentTime = 0
     homeSong.play()
 })
 
 infiniteButton.addEventListener("click", function () {
+    let vol = 1
     pageType = 2
     disPage.style.display = 'none'
-    homePage.style.display = 'none'
-    infintePage.style.display = 'block'
-    homeSong.pause()
-    homeSong.currentTime = 0
-    song.play()
+    homePage.style.opacity = '0'
+    waiter = setInterval(() => {
+        homeSong.volume = vol - .2
+    }, 100);
+    setTimeout(() => {
+        homePage.removeAttribute('style')
+        homePage.style.display = 'none'
+        infintePage.style.display = 'block'
+        homeSong.pause()
+        clearInterval(waiter)
+        song.play()
+        homeSong.volume = 1
+        homeSong.currentTime = 0
+    }, 500);
 })
 
 function sortMeteorStart() {
@@ -250,32 +267,39 @@ document.addEventListener("keyup", function (e) {
 
 meteor1.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
-    let delayNum = Math.random() * 10
+    let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
     meteor1.removeAttribute('class')
     meteor1.className = 'meteor'
     meteor1.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor1.style.top = `${randomNum}%`
-    meteor1.style.animationDelay = `${delayNum}%`
+    meteor1.style.display = 'none'
+    setTimeout(() => {
+        meteor1.style.display = 'block'
+        meteor1.style.animationDuration = `${speedNum}s`
+    }, 1);
 })
 
 meteor2.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
-    let delayNum = Math.random() * 10
+    let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-
     meteor2.removeAttribute('class')
     meteor2.className = 'meteor'
     meteor2.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor2.style.top = `${randomNum}%`
-    meteor2.style.animationDelay = `${delayNum}%`
+    meteor2.style.display = 'none'
+    setTimeout(() => {
+        meteor2.style.display = 'block'
+        meteor2.style.animationDuration = `${speedNum}s`
+    }, 1);
 })
 
 meteor3.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
-    let delayNum = Math.random() * 10
+    let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
 
     meteor3.removeAttribute('class')
@@ -283,12 +307,16 @@ meteor3.addEventListener('animationiteration', () => {
     meteor3.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor3.style.top = `${randomNum}%`
-    meteor3.style.animationDelay = `${delayNum}%`
+    meteor3.style.display = 'none'
+    setTimeout(() => {
+        meteor3.style.display = 'block'
+        meteor3.style.animationDuration = `${speedNum}s`
+    }, 1);
 })
 
 meteor4.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
-    let delayNum = Math.random() * 10
+    let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
 
     meteor4.removeAttribute('class')
@@ -296,12 +324,16 @@ meteor4.addEventListener('animationiteration', () => {
     meteor4.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor4.style.top = `${randomNum}%`
-    meteor4.style.animationDelay = `${delayNum}%`
+    meteor4.style.display = 'none'
+    setTimeout(() => {
+        meteor4.style.display = 'block'
+        meteor4.style.animationDuration = `${speedNum}s`
+    }, 1);
 })
 
 meteor5.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
-    let delayNum = Math.random() * 10
+    let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
 
     meteor5.removeAttribute('class')
@@ -309,12 +341,16 @@ meteor5.addEventListener('animationiteration', () => {
     meteor5.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor5.style.top = `${randomNum}%`
-    meteor5.style.animationDelay = `${delayNum}%`
+    meteor5.style.display = 'none'
+    setTimeout(() => {
+        meteor5.style.display = 'block'
+        meteor5.style.animationDuration = `${speedNum}s`
+    }, 1);
 })
 
 meteor6.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
-    let delayNum = Math.random() * 10
+    let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
 
     meteor6.removeAttribute('class')
@@ -322,12 +358,16 @@ meteor6.addEventListener('animationiteration', () => {
     meteor6.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor6.style.top = `${randomNum}%`
-    meteor6.style.animationDelay = `${delayNum}%`
+    meteor6.style.display = 'none'
+    setTimeout(() => {
+        meteor6.style.display = 'block'
+        meteor6.style.animationDuration = `${speedNum}s`
+    }, 1);
 })
 
 meteor7.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
-    let delayNum = Math.random() * 10
+    let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
 
     meteor7.removeAttribute('class')
@@ -335,7 +375,11 @@ meteor7.addEventListener('animationiteration', () => {
     meteor7.classList.add(`mt${typeOf}`)
     randomNum = parseInt(randomNum)
     meteor7.style.top = `${randomNum}%`
-    meteor7.style.animationDelay = `${delayNum}%`
+    meteor7.style.display = 'none'
+    setTimeout(() => {
+        meteor7.style.display = 'block'
+        meteor7.style.animationDuration = `${speedNum}s`
+    }, 1);
 })
 
 boostItem.addEventListener("animationiteration", () => {

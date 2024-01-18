@@ -338,6 +338,17 @@ body {
     flex-direction: column;
     display: none;
     color: white;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
+}
+
+@keyframes appearPages {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
 }
 
 #homeScreen button {
@@ -358,6 +369,72 @@ body {
 #homeScreen .background {
     z-index: 0;
     animation-duration: 20s;
+}
+
+.homeGhost1 {
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/sprites/Flying.gif);
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10%;
+    border-radius: 100%;
+    animation: floatHome 10s linear infinite;
+    transition-duration: .2s ;
+}
+
+@keyframes floatHome {
+    0% {
+        top: 10%;
+        left: -130px;
+    }
+
+    10% {
+        top: 20%
+    }
+
+    20% {
+        top: 10%;
+    }
+
+    30% {
+        top: 30%;
+    }
+
+    40% {
+        top: 10%;
+    }
+
+    50% {
+        top: 5%;
+    }
+
+    60% {
+        top: 10%;
+    }
+
+    70% {
+        top: 30%;
+    }
+
+    80% {
+        top: 50%;
+    }
+
+    90% {
+        top: 40%;
+    }
+
+    100% {
+        top: 10%;
+        left: 120%
+    }
+}
+
+.roundHome {
+    rotate: 180deg
 }
 
 #infiniteMode {
