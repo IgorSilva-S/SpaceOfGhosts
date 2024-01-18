@@ -23,6 +23,7 @@ let pageType = 0
 0 - Avisos
 1 - Início
 2 - Jogo : 1p
+2.1 - Pontuação 1p
 3 - Jogo : 2p VS
 4 - Loja
 5 - Config
@@ -37,6 +38,9 @@ const infiniteButton = document.getElementById('infinitePlay')
 const homeSong = document.getElementById('homeSong')
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
+let lives1p = 0
+const lives1pAlert = document.getElementById('live1p')
+let boostStyle
 
 
 disButton.addEventListener("click", function () {
@@ -64,6 +68,8 @@ homeSong.addEventListener("ended", () => {
 infiniteButton.addEventListener("click", function () {
     let vol = 1
     pageType = 2
+    lives1p = 10
+    checkLive1p()
     disPage.style.display = 'none'
     homePage.style.opacity = '0'
     waiter = setInterval(() => {
@@ -386,15 +392,109 @@ boostItem.addEventListener("animationiteration", () => {
     let appearBoost = Math.floor((Math.random() * 2))
     if (appearBoost != 0) {
         let boostTop = Math.random() * 84
+        boostStyle = Math.floor(Math.random() * 3)
         boostTop = parseInt(boostTop)
         boostItem.style.opacity = '1'
         boostItem.style.top = `${boostTop}%`
         boostOn = true
+        boostItem.removeAttribute('class')
+        boostItem.className = 'boost'
+        if (boostStyle == 0) {
+            boostItem.classList.add('shieldBoost')
+        }
+        if (boostStyle == 1) {
+            boostItem.classList.add('lifeBoost')
+        }
+        if (boostStyle == 2) {
+            boostItem.classList.add('SlifeBoost')
+        }
     } else {
         boostItem.style.opacity = '0'
         boostOn = false
     }
 })
+
+function checkLive1p() {
+    if (lives1p == 100) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h100')
+    }
+
+    if (lives1p == 90) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h90')
+    }
+
+    if (lives1p == 80) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h80')
+    }
+
+    if (lives1p == 70) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h70')
+    }
+
+    if (lives1p == 60) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h60')
+    }
+
+    if (lives1p == 50) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h50')
+    }
+
+    if (lives1p == 40) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h40')
+    }
+
+    if (lives1p == 30) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h30')
+    }
+
+    if (lives1p == 20) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h20')
+    }
+
+    if (lives1p == 10) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h10')
+    }
+
+    if (lives1p == 5) {
+        lives1pAlert.removeAttribute('class')
+        lives1pAlert.className = 'hearts'
+        lives1pAlert.classList.add('h0')        
+    }
+
+
+    if (lives1p <= 0) {
+        alert('Game Over')
+        pageType = 1
+        disPage.style.display = 'none'
+        homePage.style.display = 'flex'
+        infintePage.style.display = 'none'
+        hSong.pause()
+        hSong.currentTime = 0
+        homeSong.play()
+        song.pause()
+        song.currentTime = 0
+    }
+}
 
 //Check if meteor hit player
 setInterval(() => {
@@ -423,6 +523,9 @@ setInterval(() => {
                     hurtShield = false
                     player.classList.remove('hShield')
                 }, 5000);
+                lives1p = lives1p - 5
+            
+                checkLive1p()
             } else {
                 shieldActive = false
                 setTimeout(() => {
@@ -458,6 +561,8 @@ setInterval(() => {
                     hurtShield = false
                     player.classList.remove('hShield')
                 }, 5000);
+                lives1p = lives1p - 5
+                checkLive1p()
             } else {
                 shieldActive = false
                 setTimeout(() => {
@@ -493,6 +598,8 @@ setInterval(() => {
                     hurtShield = false
                     player.classList.remove('hShield')
                 }, 5000);
+                lives1p = lives1p - 5
+                checkLive1p()
             } else {
                 shieldActive = false
                 setTimeout(() => {
@@ -528,6 +635,8 @@ setInterval(() => {
                     hurtShield = false
                     player.classList.remove('hShield')
                 }, 5000);
+                lives1p = lives1p - 5
+                checkLive1p()
             } else {
                 shieldActive = false
                 setTimeout(() => {
@@ -563,6 +672,8 @@ setInterval(() => {
                     hurtShield = false
                     player.classList.remove('hShield')
                 }, 5000);
+                lives1p = lives1p - 5
+                checkLive1p()
             } else {
                 shieldActive = false
                 setTimeout(() => {
@@ -598,6 +709,8 @@ setInterval(() => {
                     hurtShield = false
                     player.classList.remove('hShield')
                 }, 5000);
+                lives1p = lives1p - 5
+                checkLive1p()
             } else {
                 shieldActive = false
                 setTimeout(() => {
@@ -633,6 +746,8 @@ setInterval(() => {
                     hurtShield = false
                     player.classList.remove('hShield')
                 }, 5000);
+                lives1p = lives1p - 5
+                checkLive1p()
             } else {
                 shieldActive = false
                 setTimeout(() => {
@@ -652,14 +767,32 @@ setInterval(() => {
     if ((boostTop <= playerPosi || boostTop >= playerPosi) && (boostLeft <= 250 && boostLeft >= 150)) {
         if (boostTop >= playerPosi + 15 || boostTop <= playerPosi - 8 || gamePaused || !boostOn) {
         } else {
-            if (!shieldActive) {
-                player.classList.add('shield')
-                shield = true
-                shieldActive = true
-                boostItem.style.display = 'none'
-            } else {
-                shieldSlot++
-                boostItem.style.display = 'none'
+            
+            if (boostStyle == 0) {
+                if (!shieldActive) {
+                    player.classList.add('shield')
+                    shield = true
+                    shieldActive = true
+                    boostItem.style.opacity = '0'
+                    boostOn = false
+                } else {
+                    shieldSlot++
+                    boostItem.style.opacity = '0'
+                    boostOn = false
+                }
+            } else if (boostStyle == 1) {
+                boostItem.style.opacity = '0'
+                boostOn = false
+                lives1p = lives1p + 20
+                if (lives1p > 100) {
+                    lives1p = 100
+                }
+                checkLive1p()
+            } else if (boostStyle == 2) {
+                boostItem.style.opacity = '0'
+                boostOn = false
+                lives1p = 100
+                checkLive1p()
             }
         }
     }

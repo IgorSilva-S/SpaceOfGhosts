@@ -277,16 +277,27 @@ body {
     height: 48px;
     position: fixed;
     animation: boost 10s linear infinite;
-    background-image: url(../img/sprites/Items/shieldBoost.png);
     background-size: cover;
     background-position: center;
+}
+
+.shieldBoost {
+    background-image: url(../img/sprites/Items/shieldBoost.png);
+}
+
+.lifeBoost {
+    background-image: url(../img/sprites/Items/lifeBoost.png);
+}
+
+.SlifeBoost {
+    background-image: url(../img/sprites/Items/SlifeBoost.png);
 }
 
 @keyframes boost {
     0% {
         left: 120%
     }
-    
+
     40% {
         left: -50px;
     }
@@ -346,7 +357,9 @@ body {
 @keyframes appearPages {
     from {
         opacity: 0;
-    } to {
+    }
+
+    to {
         opacity: 1;
     }
 }
@@ -382,7 +395,7 @@ body {
     top: 10%;
     border-radius: 100%;
     animation: floatHome 10s linear infinite;
-    transition-duration: .2s ;
+    transition-duration: .2s;
 }
 
 @keyframes floatHome {
@@ -439,4 +452,83 @@ body {
 
 #infiniteMode {
     display: none;
+}
+
+.hearts {
+    width: 200px;
+    height: 40px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1
+}
+
+/*Hearts*/
+.h100 {
+    background-image: url(../img/sprites/hearts/100pc.png);
+}
+
+.h90 {
+    background-image: url(../img/sprites/hearts/90pc.png);
+}
+
+.h80 {
+    background-image: url(../img/sprites/hearts/80pc.png);
+}
+
+.h70 {
+    background-image: url(../img/sprites/hearts/70pc.png);
+}
+
+.h60 {
+    background-image: url(../img/sprites/hearts/60pc.png);
+}
+
+.h50 {
+    background-image: url(../img/sprites/hearts/50pc.png);
+}
+
+.h40 {
+    background-image: url(../img/sprites/hearts/40pc.png);
+}
+
+.h30 {
+    background-image: url(../img/sprites/hearts/30pc.png);
+}
+
+.h20 {
+    background-image: url(../img/sprites/hearts/20pc.png);
+}
+
+.h10 {
+    background-image: url(../img/sprites/hearts/10pc.png);
+}
+
+.h0 {
+    background-image: url(../img/sprites/hearts/0pc.png);
+    animation-name: alertLife;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes alertLife {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
 }
