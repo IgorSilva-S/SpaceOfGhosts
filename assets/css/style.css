@@ -293,6 +293,10 @@ body {
     background-image: url(../img/sprites/Items/SlifeBoost.png);
 }
 
+.superBoost {
+    background-image: url(../img/sprites/Items/superBoost.png);
+}
+
 @keyframes boost {
     0% {
         left: 120%
@@ -462,7 +466,7 @@ body {
     top: 0;
     background-size: cover;
     background-position: center;
-    z-index: 1
+    z-index: 1;
 }
 
 /*Hearts*/

@@ -10,6 +10,7 @@ let meteor5 = document.getElementById('m5')
 let meteor6 = document.getElementById('m6')
 let meteor7 = document.getElementById('m7')
 let hurtShield = false
+let hurtShieldTimer = 0
 let shield = false
 let shieldActive = false
 let hurtAnim = false
@@ -36,11 +37,14 @@ const infintePage = document.getElementById('infiniteMode')
 const homePage = document.getElementById('homeScreen')
 const infiniteButton = document.getElementById('infinitePlay')
 const homeSong = document.getElementById('homeSong')
+const superSong = document.getElementById('superSong')
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
 let lives1p = 0
 const lives1pAlert = document.getElementById('live1p')
 let boostStyle
+let superP1 = false
+let superTimer = 0
 
 
 disButton.addEventListener("click", function () {
@@ -68,7 +72,7 @@ homeSong.addEventListener("ended", () => {
 infiniteButton.addEventListener("click", function () {
     let vol = 1
     pageType = 2
-    lives1p = 10
+    lives1p = 100
     checkLive1p()
     disPage.style.display = 'none'
     homePage.style.opacity = '0'
@@ -84,6 +88,11 @@ infiniteButton.addEventListener("click", function () {
         song.play()
         homeSong.volume = 1
         homeSong.currentTime = 0
+        superP1 = false
+        superSong.pause()
+        superSong.currentTime = 0
+        superTimer = 0
+        hurtShieldTimer = 0
     }, 500);
 })
 
@@ -184,6 +193,12 @@ function pauseGame() {
         song.pause()
         gamePaused = true
         playerBeforePause = playerPosi
+        if (superP1) {
+            superSong.pause()
+            clearInterval(superWaiter)
+        } if (hurtShield) {
+            clearInterval(hurtSWaiter)
+        }
     } else {
         pauseGui.style.right = '-25%'
         pauseBack.style.right = '-130%'
@@ -201,6 +216,32 @@ function pauseGame() {
         song.play()
         player.style.top = `${playerBeforePause}%`
         playerPosi = playerBeforePause
+        if (superP1) {
+            song.pause()
+            superSong.play()
+            superWaiter = setInterval(() => {
+                superTimer++
+                if (superTimer == 10000) {
+                    clearInterval(superWaiter)
+                    superP1 = false
+                    superSong.pause()
+                    superSong.currentTime = 0
+                    song.play()
+                    superTimer = 0
+                }
+            }, 1);
+        }
+        if (hurtShield) {
+            hurtSWaiter = setInterval(() => {
+                hurtShieldTimer++
+                if (hurtShieldTimer == 1000) {
+                    hurtShield = false
+                    player.classList.remove('hShield')
+                    hurtShieldTimer = 0
+                    clearInterval(hurtSWaiter)
+                }
+            }, 1);
+        }
     }
 }
 
@@ -218,6 +259,11 @@ document.getElementById('restartInf').addEventListener("click", function () {
     player.style.top = `45%`
     playerPosi = 45
     shieldSlot = 0
+    superP1 = false
+    superSong.pause()
+    superSong.currentTime = 0
+    lives1p = 100
+    checkLive1p()
     setTimeout(() => {
         infintePage.style.display = 'block'
     }, 1);
@@ -248,11 +294,19 @@ document.getElementById('backInf').addEventListener("click", function () {
     disPage.style.display = 'none'
     homePage.style.display = 'flex'
     infintePage.style.display = 'none'
+    superP1 = false
+    superSong.pause()
+    superSong.currentTime = 0
 })
 
 song.addEventListener('ended', function () {
     song.currentTime = 0
     song.play()
+})
+
+superSong.addEventListener('ended', () => {
+    superSong.currentTime = 0
+    superSong.play()
 })
 
 document.addEventListener("keyup", function (e) {
@@ -390,15 +444,17 @@ meteor7.addEventListener('animationiteration', () => {
 
 boostItem.addEventListener("animationiteration", () => {
     let appearBoost = Math.floor((Math.random() * 2))
+    appearBoost = 1
     if (appearBoost != 0) {
         let boostTop = Math.random() * 84
-        boostStyle = Math.floor(Math.random() * 3)
+        boostStyle = Math.floor(Math.random() * 4)
         boostTop = parseInt(boostTop)
         boostItem.style.opacity = '1'
         boostItem.style.top = `${boostTop}%`
         boostOn = true
         boostItem.removeAttribute('class')
         boostItem.className = 'boost'
+        boostStyle = 3
         if (boostStyle == 0) {
             boostItem.classList.add('shieldBoost')
         }
@@ -407,6 +463,10 @@ boostItem.addEventListener("animationiteration", () => {
         }
         if (boostStyle == 2) {
             boostItem.classList.add('SlifeBoost')
+        }
+
+        if (boostStyle == 3) {
+            boostItem.classList.add('superBoost')
         }
     } else {
         boostItem.style.opacity = '0'
@@ -504,7 +564,7 @@ setInterval(() => {
         window.getComputedStyle(meteor1).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
 
         } else {
             player.removeAttribute('class')
@@ -519,10 +579,15 @@ setInterval(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
                 }, 1000);
-                setTimeout(() => {
-                    hurtShield = false
-                    player.classList.remove('hShield')
-                }, 5000);
+                hurtSWaiter = setInterval(() => {
+                    hurtShieldTimer++
+                    if (hurtShieldTimer == 1000) {
+                        hurtShield = false
+                        player.classList.remove('hShield')
+                        hurtShieldTimer = 0
+                        clearInterval(hurtSWaiter)
+                    }
+                }, 1);
                 lives1p = lives1p - 5
             
                 checkLive1p()
@@ -543,7 +608,7 @@ setInterval(() => {
         window.getComputedStyle(meteor2).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -557,10 +622,15 @@ setInterval(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
                 }, 1000);
-                setTimeout(() => {
-                    hurtShield = false
-                    player.classList.remove('hShield')
-                }, 5000);
+                hurtSWaiter = setInterval(() => {
+                    hurtShieldTimer++
+                    if (hurtShieldTimer == 1000) {
+                        hurtShield = false
+                        player.classList.remove('hShield')
+                        hurtShieldTimer = 0
+                        clearInterval(hurtSWaiter)
+                    }
+                }, 1);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -580,7 +650,7 @@ setInterval(() => {
         window.getComputedStyle(meteor3).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -594,10 +664,15 @@ setInterval(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
                 }, 1000);
-                setTimeout(() => {
-                    hurtShield = false
-                    player.classList.remove('hShield')
-                }, 5000);
+                hurtSWaiter = setInterval(() => {
+                    hurtShieldTimer++
+                    if (hurtShieldTimer == 1000) {
+                        hurtShield = false
+                        player.classList.remove('hShield')
+                        hurtShieldTimer = 0
+                        clearInterval(hurtSWaiter)
+                    }
+                }, 1);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -617,7 +692,7 @@ setInterval(() => {
         window.getComputedStyle(meteor4).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -631,10 +706,15 @@ setInterval(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
                 }, 1000);
-                setTimeout(() => {
-                    hurtShield = false
-                    player.classList.remove('hShield')
-                }, 5000);
+                hurtSWaiter = setInterval(() => {
+                    hurtShieldTimer++
+                    if (hurtShieldTimer == 1000) {
+                        hurtShield = false
+                        player.classList.remove('hShield')
+                        hurtShieldTimer = 0
+                        clearInterval(hurtSWaiter)
+                    }
+                }, 1);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -654,7 +734,7 @@ setInterval(() => {
         window.getComputedStyle(meteor5).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -668,10 +748,15 @@ setInterval(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
                 }, 1000);
-                setTimeout(() => {
-                    hurtShield = false
-                    player.classList.remove('hShield')
-                }, 5000);
+                hurtSWaiter = setInterval(() => {
+                    hurtShieldTimer++
+                    if (hurtShieldTimer == 1000) {
+                        hurtShield = false
+                        player.classList.remove('hShield')
+                        hurtShieldTimer = 0
+                        clearInterval(hurtSWaiter)
+                    }
+                }, 1);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -691,7 +776,7 @@ setInterval(() => {
         window.getComputedStyle(meteor6).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -705,10 +790,15 @@ setInterval(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
                 }, 1000);
-                setTimeout(() => {
-                    hurtShield = false
-                    player.classList.remove('hShield')
-                }, 5000);
+                hurtSWaiter = setInterval(() => {
+                    hurtShieldTimer++
+                    if (hurtShieldTimer == 1000) {
+                        hurtShield = false
+                        player.classList.remove('hShield')
+                        hurtShieldTimer = 0
+                        clearInterval(hurtSWaiter)
+                    }
+                }, 1);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -728,7 +818,7 @@ setInterval(() => {
         window.getComputedStyle(meteor7).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -742,10 +832,15 @@ setInterval(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
                 }, 1000);
-                setTimeout(() => {
-                    hurtShield = false
-                    player.classList.remove('hShield')
-                }, 5000);
+                hurtSWaiter = setInterval(() => {
+                    hurtShieldTimer++
+                    if (hurtShieldTimer == 1000) {
+                        hurtShield = false
+                        player.classList.remove('hShield')
+                        hurtShieldTimer = 0
+                        clearInterval(hurtSWaiter)
+                    }
+                }, 1);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -793,6 +888,29 @@ setInterval(() => {
                 boostOn = false
                 lives1p = 100
                 checkLive1p()
+            } else if (boostStyle == 3) {
+                boostItem.style.opacity = '0'
+                boostOn = false
+                song.pause()
+                superSong.play()
+                superP1 = true
+                superWaiter = setInterval(() => {
+                    superTimer++
+                    if (superTimer == 10000) {
+                        clearInterval(superWaiter)
+                        superP1 = false
+                        superSong.pause()
+                        superSong.currentTime = 0
+                        song.play()
+                        superTimer = 0
+                    }
+                }, 1);
+                /*setTimeout(() => {
+                    superSong.pause()
+                    superSong.currentTime = 0
+                    song.play()
+                    superP1 = false
+                }, 150000);*/
             }
         }
     }
