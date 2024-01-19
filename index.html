@@ -11,7 +11,8 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Este jogo está na versão DEV, ele contem bugs e muitas funcionalidades não estão inclusas.<br>Sons, gráficos e outros usados aqui podem não ser a versão final.
+        Este jogo está na versão DEV, ele contem bugs e muitas funcionalidades não estão inclusas.<br>Sons, gráficos e
+        outros usados aqui podem não ser a versão final.
         <button id="exitDisclaimer">Okay</button>
     </section>
 
@@ -28,56 +29,60 @@
     </section>
 
     <section id="infiniteMode">
-            <div class="background" id="gameBckg">
-            
-            </div>
-            <div class="hearts" id="live1p">
+        <div class="background" id="gameBckg">
 
-            </div>
-            <div class="player" id="ghost">
-            
-            </div>
-            <div class="meteor" id="m1" style="top: 48%">
-            
-            </div>
-            
-            <div class="meteor" id="m2" style="top: 81%">
-            
-            </div>
-            
-            <div class="meteor" id="m3" style="top: 52%">
-            
-            </div>
-            
-            <div class="meteor" id="m4" style="top: 76%">
-            
-            </div>
-            
-            <div class="meteor" id="m5" style="top: 24%">
-            
-            </div>
-            <div class="meteor" id="m6" style="top: 64%">
-            
-            </div>
-            <div class="meteor" id="m7" style="top: 57%">
-            
-            </div>
-            <div class="boost" id="bst">
+        </div>
+        <div class="hearts" id="live1p">
 
+        </div>
+        <div class="player" id="ghost">
+            <div class="trail" id="trail"></div>
+            <div class="inv" id="Inv"></div>
+        </div>
+        <div class="meteor" id="m1" style="top: 48%">
+
+        </div>
+
+        <div class="meteor" id="m2" style="top: 81%">
+
+        </div>
+
+        <div class="meteor" id="m3" style="top: 52%">
+
+        </div>
+
+        <div class="meteor" id="m4" style="top: 76%">
+
+        </div>
+
+        <div class="meteor" id="m5" style="top: 24%">
+
+        </div>
+        <div class="meteor" id="m6" style="top: 64%">
+
+        </div>
+        <div class="meteor" id="m7" style="top: 57%">
+
+        </div>
+        <div class="boost" id="bst">
+
+        </div>
+        <audio src="assets/songs/music/StarLightSR.mp3" id="music"></audio>
+        <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
+        <audio src="assets/songs/music/Super3U.ogg" id="superSong"></audio>
+
+        <div class="moveBlock" id="upBlock"></div>
+        <div class="moveBlock" id="downBlock"></div>
+
+        <div class="pauseContainer">
+            <div class="pauseAlert">
+                <div class="pauseAnim"></div>
+                <div>Pause</div>
+                <button id="continueInf" style="display: none;">Continuar</button>
+                <button id="backInf">Voltar para o Início</button>
+                <button id="restartInf">Reiniciar Partida</button>
             </div>
-            <audio src="assets/songs/music/StarLightSR.mp3" id="music"></audio>
-            <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
-            <audio src="assets/songs/music/Super3U.ogg" id="superSong"></audio>
-            <div class="pauseContainer">
-                <div class="pauseAnimTop"></div>
-                <div class="pauseAnimBottom"></div>
-                <div class="pauseAlert">
-                    <div>Pause</div>
-                    <button id="continueInf" style="display: none;">Continuar</button>
-                    <button id="backInf">Voltar para o Início</button>
-                    <button id="restartInf">Reiniciar Partida</button>
-                </div>
-            </div>
+        </div>
     </section>
     <script src="assets/js/script.js"></script>
 </body>

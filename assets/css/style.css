@@ -51,6 +51,31 @@ body {
     border-radius: 100%;
 }
 
+.inv {
+    width: 120px;
+    height: 120px;
+    background-image: url(../img/sprites/SInv.gif);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: none;
+}
+
+.pinv {
+    background-image: url(../img/sprites/StopInv.png);
+}
+
+.player .trail {
+    width: 150px;
+    height: 80px;
+    position: absolute;
+    left: -110px;
+    top: 10px;
+    background-image: linear-gradient(to right, #0000, #f0f0f033, #f0f0f0);
+    z-index: -1;
+    display: none;
+}
+
 .playerPaused {
     background-image: url(../img/sprites/NTSGhostJump/Flying1.png);
 }
@@ -206,6 +231,7 @@ body {
     top: 0;
     right: -130%;
     backdrop-filter: grayscale();
+    background-color: #f0f0f022;
 }
 
 .pauseAlert {
@@ -238,6 +264,31 @@ body {
     border: 1px solid #090909;
     border-radius: 4px;
     color: white;
+}
+
+.pauseAlert .pauseAnim {
+    position: absolute;
+    right: 25vw;
+    top: 0;
+    width: 50px;
+    height: 2150px;
+    animation-name: animPauseLine;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../img/sprites/Pause2.png);
+}
+
+@keyframes animPauseLine {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: -1080px;
+    }
 }
 
 .pauseAnimTop {
@@ -456,14 +507,32 @@ body {
 
 #infiniteMode {
     display: none;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
+}
+
+#infiniteMode .moveBlock {
+    width: 100vw;
+    height: 50vh;
+    position: absolute;
+    left: 0;
+}
+
+#upBlock {
+    top: 0;
+}
+
+#downBlock {
+    bottom: 0;
 }
 
 .hearts {
-    width: 200px;
-    height: 40px;
+    width: 120px;
+    height: 24px;
     position: fixed;
     left: 0;
-    top: 0;
+    bottom: 0;
     background-size: cover;
     background-position: center;
     z-index: 1;

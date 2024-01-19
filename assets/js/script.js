@@ -1,14 +1,16 @@
-let player = document.getElementById('ghost')
+const player = document.getElementById('ghost')
+const invencible = document.getElementById('Inv')
+const trail = document.getElementById('trail')
 const song = document.getElementById('music')
 const hSong = document.getElementById('hSong')
 let playerPosi = 45
-let meteor1 = document.getElementById('m1')
-let meteor2 = document.getElementById('m2')
-let meteor3 = document.getElementById('m3')
-let meteor4 = document.getElementById('m4')
-let meteor5 = document.getElementById('m5')
-let meteor6 = document.getElementById('m6')
-let meteor7 = document.getElementById('m7')
+const meteor1 = document.getElementById('m1')
+const meteor2 = document.getElementById('m2')
+const meteor3 = document.getElementById('m3')
+const meteor4 = document.getElementById('m4')
+const meteor5 = document.getElementById('m5')
+const meteor7 = document.getElementById('m7')
+const meteor6 = document.getElementById('m6')
 let hurtShield = false
 let hurtShieldTimer = 0
 let shield = false
@@ -16,8 +18,8 @@ let shieldActive = false
 let hurtAnim = false
 var gamePaused = false
 let boostOn = false
-let pauseBack = document.querySelector('.pauseContainer')
-let pauseGui = document.querySelector('.pauseAlert')
+const pauseBack = document.querySelector('.pauseContainer')
+const pauseGui = document.querySelector('.pauseAlert')
 let playerBeforePause
 let pageType = 0
 /*Tipos de página
@@ -40,11 +42,15 @@ const homeSong = document.getElementById('homeSong')
 const superSong = document.getElementById('superSong')
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
+let superSlot = 0
 let lives1p = 0
 const lives1pAlert = document.getElementById('live1p')
 let boostStyle
 let superP1 = false
 let superTimer = 0
+const mControlUp = document.getElementById('upBlock')
+const mControlDown = document.getElementById('downBlock')
+let superWaiter, hurtSWaiter
 
 
 disButton.addEventListener("click", function () {
@@ -158,15 +164,57 @@ document.addEventListener("keydown", function (e) {
                 player.style.top = `${playerPosi}%`
                 player.classList.add('falling')
             }
-            if (e.key == "s" || e.key == "S") {
+            if (e.key == "1") {
                 if (shieldSlot > 0) {
-                player.classList.add('shield')
-                shield = true
-                shieldActive = true
-                shieldSlot--
+                    player.classList.add('shield')
+                    shield = true
+                    shieldActive = true
+                    shieldSlot--
+                    if (superP1) {
+                        player.classList.remove('shield')
+                    }
                 }
             }
-        } 
+
+            if (e.key == "2") {
+                if (superSlot > 0) {
+                    superSlot--
+                    invencible.style.display = 'block'
+                    trail.style.display = 'block'
+                    song.pause()
+                    superSong.play()
+                    superP1 = true
+                    document.getElementById('gameBckg').style.display = 'none'
+                    document.getElementById('gameBckg').style.animationDuration = '7.5s'
+                    setTimeout(() => {
+                        document.getElementById('gameBckg').style.display = 'block'
+                    }, 1);
+                    if (shieldActive) {
+                        player.classList.remove('shield')
+                    }
+                    superWaiter = setInterval(() => {
+                        superTimer++
+                        if (superTimer == 50) {
+                            clearInterval(superWaiter)
+                            superP1 = false
+                            superSong.pause()
+                            superSong.currentTime = 0
+                            song.play()
+                            superTimer = 0
+                            document.getElementById('gameBckg').style.display = 'none'
+                            invencible.removeAttribute('style')
+                            trail.removeAttribute('style')
+                            if (shieldActive) {
+                                player.classList.add('shield')
+                            }
+                            setTimeout(() => {
+                                document.getElementById('gameBckg').removeAttribute('style')
+                            }, 1);
+                        }
+                    }, 1000);
+                }
+            }
+        }
     }
 
     if (pageType == 2) {
@@ -189,16 +237,14 @@ function pauseGame() {
         meteor7.style.animationPlayState = 'paused'
         boostItem.style.animationPlayState = 'paused'
         player.classList.add('playerPaused')
+        invencible.classList.add('pinv')
         document.getElementById('gameBckg').style.animationPlayState = 'paused'
         song.pause()
         gamePaused = true
         playerBeforePause = playerPosi
-        if (superP1) {
-            superSong.pause()
-            clearInterval(superWaiter)
-        } if (hurtShield) {
-            clearInterval(hurtSWaiter)
-        }
+        superSong.pause()
+        clearInterval(superWaiter)
+        clearInterval(hurtSWaiter)
     } else {
         pauseGui.style.right = '-25%'
         pauseBack.style.right = '-130%'
@@ -211,6 +257,7 @@ function pauseGame() {
         meteor7.style.animationPlayState = 'running'
         boostItem.style.animationPlayState = 'running'
         player.classList.remove('playerPaused')
+        invencible.classList.remove('pinv')
         document.getElementById('gameBckg').removeAttribute('style')
         gamePaused = false
         song.play()
@@ -219,28 +266,42 @@ function pauseGame() {
         if (superP1) {
             song.pause()
             superSong.play()
+            if (shieldActive) {
+                player.classList.remove('shield')
+            }
+            document.getElementById('gameBckg').style.display = 'none'
+            document.getElementById('gameBckg').style.animationDuration = '7.5s'
+            setTimeout(() => {
+                document.getElementById('gameBckg').style.display = 'block'
+            }, 1);
             superWaiter = setInterval(() => {
                 superTimer++
-                if (superTimer == 10000) {
+                if (superTimer == 50) {
                     clearInterval(superWaiter)
                     superP1 = false
                     superSong.pause()
                     superSong.currentTime = 0
                     song.play()
                     superTimer = 0
+                    document.getElementById('gameBckg').removeAttribute('style')
+                    invencible.removeAttribute('style')
+                    trail.removeAttribute('style')
+                    if (shieldActive) {
+                        player.classList.add('shield')
+                    }
                 }
-            }, 1);
+            }, 1000);
         }
         if (hurtShield) {
             hurtSWaiter = setInterval(() => {
                 hurtShieldTimer++
-                if (hurtShieldTimer == 1000) {
+                if (hurtShieldTimer == 5) {
                     hurtShield = false
                     player.classList.remove('hShield')
                     hurtShieldTimer = 0
                     clearInterval(hurtSWaiter)
                 }
-            }, 1);
+            }, 1000);
         }
     }
 }
@@ -270,33 +331,51 @@ document.getElementById('restartInf').addEventListener("click", function () {
 })
 
 document.getElementById('backInf').addEventListener("click", function () {
-    pauseGui.style.right = '-25%'
-    pauseBack.style.right = '-130%'
-    meteor1.style.animationPlayState = 'running'
-    meteor2.style.animationPlayState = 'running'
-    meteor3.style.animationPlayState = 'running'
-    meteor4.style.animationPlayState = 'running'
-    meteor5.style.animationPlayState = 'running'
-    meteor6.style.animationPlayState = 'running'
-    meteor7.style.animationPlayState = 'running'
-    player.classList.remove('playerPaused')
-    document.getElementById('gameBckg').removeAttribute('style')
-    gamePaused = false
-    player.classList.remove('shield')
-    shield = false
-    shieldActive = false
-    player.style.top = `45%`
-    playerPosi = 45
-    homeSong.play()
-    song.currentTime = 0
-    pageType = 1
-    shieldSlot = 0
-    disPage.style.display = 'none'
-    homePage.style.display = 'flex'
-    infintePage.style.display = 'none'
-    superP1 = false
-    superSong.pause()
-    superSong.currentTime = 0
+    infintePage.style.opacity = '0'
+    let vol = 1
+    waiter = setInterval(() => {
+        if (superP1) {
+            superSong.volume = vol - .2
+        } else {
+            homeSong.volume = vol - .2
+        }
+    }, 100);
+    setTimeout(() => {
+        infintePage.removeAttribute('style')
+        infintePage.style.display = 'none'
+        homePage.style.display = 'flex'
+        if (superP1) {
+            superSong.pause()
+            superSong.volume = 1
+        } else {
+            song.pause()
+            song.volume = 1
+        }
+        clearInterval(waiter)
+        homeSong.play()
+        homeSong.currentTime = 0
+        superP1 = false
+        superSong.currentTime = 0
+        song.currentTime = 0
+        superTimer = 0
+        hurtShieldTimer = 0
+        playerPosi = 45
+        player.removeAttribute('style')
+        //Pause
+        pauseGui.style.right = '-25%'
+        pauseBack.style.right = '-130%'
+        meteor1.style.animationPlayState = 'running'
+        meteor2.style.animationPlayState = 'running'
+        meteor3.style.animationPlayState = 'running'
+        meteor4.style.animationPlayState = 'running'
+        meteor5.style.animationPlayState = 'running'
+        meteor6.style.animationPlayState = 'running'
+        meteor7.style.animationPlayState = 'running'
+        player.classList.remove('playerPaused')
+        document.getElementById('gameBckg').removeAttribute('style')
+        gamePaused = false
+        pageType = 1
+    }, 500);
 })
 
 song.addEventListener('ended', function () {
@@ -316,7 +395,7 @@ document.addEventListener("keyup", function (e) {
         if (hurtShield) {
             player.classList.add('hShield')
         }
-        if (shieldActive) {
+        if (shieldActive && superP1 == false) {
             player.classList.add('shield')
         }
         if (gamePaused) {
@@ -329,6 +408,9 @@ meteor1.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
+    if (superP1) {
+        speedNum--
+    }
     meteor1.removeAttribute('class')
     meteor1.className = 'meteor'
     meteor1.classList.add(`mt${typeOf}`)
@@ -345,6 +427,9 @@ meteor2.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
+    if (superP1) {
+        speedNum--
+    }
     meteor2.removeAttribute('class')
     meteor2.className = 'meteor'
     meteor2.classList.add(`mt${typeOf}`)
@@ -361,7 +446,9 @@ meteor3.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-
+    if (superP1) {
+        speedNum--
+    }
     meteor3.removeAttribute('class')
     meteor3.className = 'meteor'
     meteor3.classList.add(`mt${typeOf}`)
@@ -378,7 +465,9 @@ meteor4.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-
+    if (superP1) {
+        speedNum--
+    }
     meteor4.removeAttribute('class')
     meteor4.className = 'meteor'
     meteor4.classList.add(`mt${typeOf}`)
@@ -395,7 +484,9 @@ meteor5.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-
+    if (superP1) {
+        speedNum--
+    }
     meteor5.removeAttribute('class')
     meteor5.className = 'meteor'
     meteor5.classList.add(`mt${typeOf}`)
@@ -412,7 +503,9 @@ meteor6.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-
+    if (superP1) {
+        speedNum--
+    }
     meteor6.removeAttribute('class')
     meteor6.className = 'meteor'
     meteor6.classList.add(`mt${typeOf}`)
@@ -429,7 +522,9 @@ meteor7.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-
+    if (superP1) {
+        speedNum--
+    }
     meteor7.removeAttribute('class')
     meteor7.className = 'meteor'
     meteor7.classList.add(`mt${typeOf}`)
@@ -454,7 +549,6 @@ boostItem.addEventListener("animationiteration", () => {
         boostOn = true
         boostItem.removeAttribute('class')
         boostItem.className = 'boost'
-        boostStyle = 3
         if (boostStyle == 0) {
             boostItem.classList.add('shieldBoost')
         }
@@ -538,7 +632,7 @@ function checkLive1p() {
     if (lives1p == 5) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
-        lives1pAlert.classList.add('h0')        
+        lives1pAlert.classList.add('h0')
     }
 
 
@@ -581,15 +675,15 @@ setInterval(() => {
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
-                    if (hurtShieldTimer == 1000) {
+                    if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
-                }, 1);
+                }, 1000);
                 lives1p = lives1p - 5
-            
+
                 checkLive1p()
             } else {
                 shieldActive = false
@@ -624,13 +718,13 @@ setInterval(() => {
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
-                    if (hurtShieldTimer == 1000) {
+                    if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
-                }, 1);
+                }, 1000);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -666,13 +760,13 @@ setInterval(() => {
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
-                    if (hurtShieldTimer == 1000) {
+                    if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
-                }, 1);
+                }, 1000);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -683,7 +777,7 @@ setInterval(() => {
             }
         }
     }
-    }, 1);
+}, 1);
 
 setInterval(() => {
     let meteorTop = meteor4.style.top
@@ -708,13 +802,13 @@ setInterval(() => {
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
-                    if (hurtShieldTimer == 1000) {
+                    if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
-                }, 1);
+                }, 1000);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -725,7 +819,7 @@ setInterval(() => {
             }
         }
     }
-    }, 1);
+}, 1);
 
 setInterval(() => {
     let meteorTop = meteor5.style.top
@@ -750,13 +844,13 @@ setInterval(() => {
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
-                    if (hurtShieldTimer == 1000) {
+                    if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
-                }, 1);
+                }, 1000);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -767,7 +861,7 @@ setInterval(() => {
             }
         }
     }
-    }, 1);
+}, 1);
 
 setInterval(() => {
     let meteorTop = meteor6.style.top
@@ -792,13 +886,13 @@ setInterval(() => {
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
-                    if (hurtShieldTimer == 1000) {
+                    if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
-                }, 1);
+                }, 1000);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -809,7 +903,7 @@ setInterval(() => {
             }
         }
     }
-    }, 1);
+}, 1);
 
 setInterval(() => {
     let meteorTop = meteor7.style.top
@@ -834,13 +928,13 @@ setInterval(() => {
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
-                    if (hurtShieldTimer == 1000) {
+                    if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
-                }, 1);
+                }, 1000);
                 lives1p = lives1p - 5
                 checkLive1p()
             } else {
@@ -851,7 +945,7 @@ setInterval(() => {
             }
         }
     }
-    }, 1);
+}, 1);
 
 setInterval(() => {
     let boostTop = boostItem.style.top
@@ -862,7 +956,7 @@ setInterval(() => {
     if ((boostTop <= playerPosi || boostTop >= playerPosi) && (boostLeft <= 250 && boostLeft >= 150)) {
         if (boostTop >= playerPosi + 15 || boostTop <= playerPosi - 8 || gamePaused || !boostOn) {
         } else {
-            
+
             if (boostStyle == 0) {
                 if (!shieldActive) {
                     player.classList.add('shield')
@@ -872,6 +966,13 @@ setInterval(() => {
                     boostOn = false
                 } else {
                     shieldSlot++
+                    boostItem.style.opacity = '0'
+                    boostOn = false
+                }
+                if (superP1) {
+                    player.classList.remove('shield')
+                    shield = true
+                    shieldActive = true
                     boostItem.style.opacity = '0'
                     boostOn = false
                 }
@@ -891,20 +992,43 @@ setInterval(() => {
             } else if (boostStyle == 3) {
                 boostItem.style.opacity = '0'
                 boostOn = false
-                song.pause()
-                superSong.play()
-                superP1 = true
-                superWaiter = setInterval(() => {
-                    superTimer++
-                    if (superTimer == 10000) {
-                        clearInterval(superWaiter)
-                        superP1 = false
-                        superSong.pause()
-                        superSong.currentTime = 0
-                        song.play()
-                        superTimer = 0
+                if (!superP1) {
+                    song.pause()
+                    superSong.play()
+                    if (shieldActive) {
+                        player.classList.remove('shield')
                     }
-                }, 1);
+                    superP1 = true
+                    document.getElementById('gameBckg').style.display = 'none'
+                    invencible.style.display = 'block'
+                    trail.style.display = 'block'
+                    document.getElementById('gameBckg').style.animationDuration = '7.5s'
+                    setTimeout(() => {
+                        document.getElementById('gameBckg').style.display = 'block'
+                    }, 1);
+                    superWaiter = setInterval(() => {
+                        superTimer++
+                        if (superTimer == 50) {
+                            clearInterval(superWaiter)
+                            superP1 = false
+                            superSong.pause()
+                            superSong.currentTime = 0
+                            song.play()
+                            superTimer = 0
+                            invencible.removeAttribute('style')
+                            trail.removeAttribute('style')
+                            if (shieldActive) {
+                                player.classList.add('shield')
+                            }
+                            document.getElementById('gameBckg').style.display = 'none'
+                            setTimeout(() => {
+                                document.getElementById('gameBckg').removeAttribute('style')
+                            }, 1);
+                        }
+                    }, 1000);
+                } else {
+                    superSlot++
+                }
                 /*setTimeout(() => {
                     superSong.pause()
                     superSong.currentTime = 0
@@ -915,3 +1039,73 @@ setInterval(() => {
         }
     }
 }, 1);
+
+mControlUp.addEventListener('touchstart', () => {
+    playerPosi--
+    if (playerPosi < 0) {
+        playerPosi = 0
+    }
+    player.style.top = `${playerPosi}%`
+        player.classList.add('upping')
+    upHold = setInterval(() => {
+        playerPosi--
+        if (playerPosi < 0) {
+            playerPosi = 0
+        }
+        player.style.top = `${playerPosi}%`
+            }, 100)
+})
+
+mControlUp.addEventListener('touchend', () => {
+    clearInterval(upHold)
+    if (!gamePaused) {
+        if (!hurtAnim) {
+            player.removeAttribute('class')
+            player.className = 'player'
+            if (hurtShield) {
+                player.classList.add('hShield')
+            }
+            if (shieldActive && superP1 == false) {
+                player.classList.add('shield')
+            }
+            if (gamePaused) {
+                player.classList.add('playerPaused')
+            }
+        }
+    }
+})
+
+mControlDown.addEventListener('touchstart', () => {
+    playerPosi++
+    if (playerPosi >= 84) {
+        playerPosi = 84
+    }
+    player.style.top = `${ playerPosi }%`
+        player.classList.add('falling')
+    downHold = setInterval(() => {
+        playerPosi++
+        if (playerPosi >= 84) {
+            playerPosi = 84
+        }
+        player.style.top = `${ playerPosi }%`
+            }, 100)
+})
+
+mControlDown.addEventListener('touchend', () => {
+    clearInterval(downHold)
+    if (!gamePaused) {
+        if (!hurtAnim) {
+            player.removeAttribute('class')
+            player.className = 'player'
+            if (hurtShield) {
+                player.classList.add('hShield')
+            }
+            if (shieldActive && superP1 == false) {
+                player.classList.add('shield')
+            }
+            if (gamePaused) {
+                player.classList.add('playerPaused')
+            }
+        }
+    }
+})
