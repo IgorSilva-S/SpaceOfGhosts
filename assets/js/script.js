@@ -1,6 +1,7 @@
 const player = document.getElementById('ghost')
 const invencible = document.getElementById('Inv')
-const trail = document.getElementById('trail')
+let trail
+const trailsElms = document.querySelectorAll('.trail')
 const song = document.getElementById('music')
 const hSong = document.getElementById('hSong')
 let playerPosi = 45
@@ -22,16 +23,17 @@ const pauseBack = document.querySelector('.pauseContainer')
 const pauseGui = document.querySelector('.pauseAlert')
 let playerBeforePause
 let pageType = 0
-/*Tipos de página
-0 - Avisos
-1 - Início
-2 - Jogo : 1p
-2.1 - Pontuação 1p
-3 - Jogo : 2p VS
-4 - Loja
-5 - Config
-6 - Personalização
-7 - Créditos
+/*Pages Types
+0 - Disclaimer
+1 - Home
+2 - Game : 1p Style
+2.1 - 1p style points
+3 - Game : 2p VS (Infinite Mode)
+3.1 - Game : 2p VS (Battle! Mode)
+4 - Store
+5 - Settings
+6 - Skins
+7 - Credits
 */
 const disButton = document.getElementById('exitDisclaimer')
 const disPage = document.getElementById('disclaimer')
@@ -40,17 +42,28 @@ const homePage = document.getElementById('homeScreen')
 const infiniteButton = document.getElementById('infinitePlay')
 const homeSong = document.getElementById('homeSong')
 const superSong = document.getElementById('superSong')
+const invSong = document.getElementById('invSong')
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
 let superSlot = 0
+let invSlot = 0
+let fullHealSlot = 0
+let healSlot = 0
+const shieldSW = document.getElementById('shieldS')
+const superSW = document.getElementById('superS')
+const invSW = document.getElementById('invS')
+const ShealSW = document.getElementById('SlifeS')
+const healSW = document.getElementById('lifeS')
 let lives1p = 0
 const lives1pAlert = document.getElementById('live1p')
 let boostStyle
 let superP1 = false
 let superTimer = 0
+let invTimer = 0
+let invStts = false
 const mControlUp = document.getElementById('upBlock')
 const mControlDown = document.getElementById('downBlock')
-let superWaiter, hurtSWaiter
+let superWaiter, hurtSWaiter, invWaiter
 
 
 disButton.addEventListener("click", function () {
@@ -99,6 +112,7 @@ infiniteButton.addEventListener("click", function () {
         superSong.currentTime = 0
         superTimer = 0
         hurtShieldTimer = 0
+        displaySlots()
     }, 500);
 })
 
@@ -135,6 +149,14 @@ function sortMeteorStart() {
 
 sortMeteorStart()
 
+function displaySlots() {
+    shieldSW.innerText = shieldSlot
+    superSW.innerText = superSlot
+    invSW.innerText = invSlot
+    ShealSW.innerText = fullHealSlot
+    healSW.innerText = healSlot
+}
+
 document.addEventListener("keydown", function (e) {
     if (pageType == 0) {
         if (e.key == "Enter") {
@@ -165,22 +187,36 @@ document.addEventListener("keydown", function (e) {
                 player.classList.add('falling')
             }
             if (e.key == "1") {
-                if (shieldSlot > 0) {
+                if (shieldSlot > 0 && !shieldActive) {
                     player.classList.add('shield')
                     shield = true
                     shieldActive = true
                     shieldSlot--
-                    if (superP1) {
+                    if (superP1 || invStts) {
                         player.classList.remove('shield')
                     }
+                } else if(shieldSlot == 0) {
+                    document.getElementById('shieldAlert').classList.add('emptySlot')
+                    setTimeout(() => {
+                        document.getElementById('shieldAlert').classList.remove('emptySlot')
+                    }, 1500);
                 }
             }
 
             if (e.key == "2") {
-                if (superSlot > 0) {
+                if (superSlot > 0 && !superP1) {
                     superSlot--
                     invencible.style.display = 'block'
-                    trail.style.display = 'block'
+                    //trail.style.display = 'block'
+                    trail = setInterval(() => {
+                        let trailElm = document.createElement('div')
+                        trailElm.setAttribute('class', 'trail')
+                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                        trailElm.addEventListener("animationend", () => {
+                            trailElm.remove()
+                        })
+                        infintePage.insertAdjacentElement('beforeend', trailElm)
+                    }, 100);
                     song.pause()
                     superSong.play()
                     superP1 = true
@@ -191,6 +227,12 @@ document.addEventListener("keydown", function (e) {
                     }, 1);
                     if (shieldActive) {
                         player.classList.remove('shield')
+                    }
+                    if (invStts) {
+                        clearInterval(invWaiter)
+                        invStts = false
+                        invSong.pause()
+                        invSong.currentTime = 0
                     }
                     superWaiter = setInterval(() => {
                         superTimer++
@@ -203,7 +245,8 @@ document.addEventListener("keydown", function (e) {
                             superTimer = 0
                             document.getElementById('gameBckg').style.display = 'none'
                             invencible.removeAttribute('style')
-                            trail.removeAttribute('style')
+                            //trail.removeAttribute('style')
+                            clearInterval(trail)
                             if (shieldActive) {
                                 player.classList.add('shield')
                             }
@@ -212,8 +255,73 @@ document.addEventListener("keydown", function (e) {
                             }, 1);
                         }
                     }, 1000);
+                } else if (superSlot == 0) {
+                    document.getElementById('superAlert').classList.add('emptySlot')
+                    setTimeout(() => {
+                        document.getElementById('superAlert').classList.remove('emptySlot')
+                    }, 1500);
                 }
             }
+
+            if (e.key == "3") {
+                if (!superP1 && !invStts && invSlot > 0) {
+                    if (invTimer > 0) {
+                        invTimer = 0
+                    }
+                    invSlot--
+                    invencible.style.display = 'block'
+                    song.pause()
+                    invSong.play()
+                    invStts = true
+                    if (shieldActive) {
+                        player.classList.remove('shield')
+                    }
+                    invWaiter = setInterval(() => {
+                        invTimer++
+                        if (invTimer == 30) {
+                            clearInterval(invWaiter)
+                            invencible.removeAttribute('style')
+                            invSong.pause()
+                            song.play()
+                            invSong.currentTime = 0
+                            invStts = false
+                            invTimer = 0
+                        }
+                    }, 1000);
+                    invTimer = 0
+                } else if (invSlot == 0 ){
+                    document.getElementById('invAlert').classList.add('emptySlot')
+                    setTimeout(() => {
+                        document.getElementById('invAlert').classList.remove('emptySlot')
+                    }, 1500);
+                }
+            } if (e.key == "4") {
+                if (fullHealSlot > 0 && lives1p != 100) {
+                    fullHealSlot--
+                    lives1p = 100
+                    checkLive1p()
+                } else if (fullHealSlot == 0) {
+                    document.getElementById('FhealAlert').classList.add('emptySlot')
+                    setTimeout(() => {
+                        document.getElementById('FhealAlert').classList.remove('emptySlot')
+                    }, 1500);
+                }
+            } if (e.key == "5") {
+                if (healSlot > 0 && lives1p < 100) {
+                    healSlot--
+                    lives1p = lives1p + 20
+                    if (lives1p > 100) {
+                        lives1p = 100
+                    }
+                    checkLive1p()
+                } else if (healSlot == 0) {
+                    document.getElementById('healAlert').classList.add('emptySlot')
+                    setTimeout(() => {
+                        document.getElementById('healAlert').classList.remove('emptySlot')
+                    }, 1500);
+                }
+            }
+            displaySlots()
         }
     }
 
@@ -243,8 +351,17 @@ function pauseGame() {
         gamePaused = true
         playerBeforePause = playerPosi
         superSong.pause()
+        invSong.pause()
         clearInterval(superWaiter)
         clearInterval(hurtSWaiter)
+        clearInterval(invWaiter)
+        if (!invStts) {
+            invTimer = 0
+        } if (!superP1) {
+            superTimer = 0
+        } if (!hurtShield) {
+            hurtShieldTimer = 0
+        }
     } else {
         pauseGui.style.right = '-25%'
         pauseBack.style.right = '-130%'
@@ -285,7 +402,8 @@ function pauseGame() {
                     superTimer = 0
                     document.getElementById('gameBckg').removeAttribute('style')
                     invencible.removeAttribute('style')
-                    trail.removeAttribute('style')
+                    //trail.removeAttribute('style')
+                    clearInterval(trail)
                     if (shieldActive) {
                         player.classList.add('shield')
                     }
@@ -300,6 +418,22 @@ function pauseGame() {
                     player.classList.remove('hShield')
                     hurtShieldTimer = 0
                     clearInterval(hurtSWaiter)
+                }
+            }, 1000);
+        }
+
+        if (invStts) {
+            song.pause()
+            invSong.play()
+            invWaiter = setInterval(() => {
+                invTimer++
+                if (invTimer == 30) {
+                    invencible.removeAttribute('style')
+                    invSong.pause()
+                    song.play()
+                    invSong.currentTime = 0
+                    invStts = false
+                    invTimer = 0
                 }
             }, 1000);
         }
@@ -321,6 +455,7 @@ document.getElementById('restartInf').addEventListener("click", function () {
     playerPosi = 45
     shieldSlot = 0
     superP1 = false
+    invStts = false
     superSong.pause()
     superSong.currentTime = 0
     lives1p = 100
@@ -355,6 +490,7 @@ document.getElementById('backInf').addEventListener("click", function () {
         homeSong.play()
         homeSong.currentTime = 0
         superP1 = false
+        invStts = false
         superSong.currentTime = 0
         song.currentTime = 0
         superTimer = 0
@@ -378,10 +514,10 @@ document.getElementById('backInf').addEventListener("click", function () {
     }, 500);
 })
 
-song.addEventListener('ended', function () {
+/*song.addEventListener('ended', function () {
     song.currentTime = 0
     song.play()
-})
+})*/
 
 superSong.addEventListener('ended', () => {
     superSong.currentTime = 0
@@ -395,7 +531,7 @@ document.addEventListener("keyup", function (e) {
         if (hurtShield) {
             player.classList.add('hShield')
         }
-        if (shieldActive && superP1 == false) {
+        if (shieldActive && superP1 == false && invStts == false) {
             player.classList.add('shield')
         }
         if (gamePaused) {
@@ -538,11 +674,12 @@ meteor7.addEventListener('animationiteration', () => {
 })
 
 boostItem.addEventListener("animationiteration", () => {
+    boostOn = false
+    boostItem.style.opacity = '0'
     let appearBoost = Math.floor((Math.random() * 2))
-    appearBoost = 1
     if (appearBoost != 0) {
         let boostTop = Math.random() * 84
-        boostStyle = Math.floor(Math.random() * 4)
+        boostStyle = Math.floor(Math.random() * 5)
         boostTop = parseInt(boostTop)
         boostItem.style.opacity = '1'
         boostItem.style.top = `${boostTop}%`
@@ -561,6 +698,10 @@ boostItem.addEventListener("animationiteration", () => {
 
         if (boostStyle == 3) {
             boostItem.classList.add('superBoost')
+        }
+
+        if (boostStyle == 4) {
+            boostItem.classList.add('invBoost')
         }
     } else {
         boostItem.style.opacity = '0'
@@ -658,7 +799,7 @@ setInterval(() => {
         window.getComputedStyle(meteor1).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
 
         } else {
             player.removeAttribute('class')
@@ -682,7 +823,11 @@ setInterval(() => {
                         clearInterval(hurtSWaiter)
                     }
                 }, 1000);
-                lives1p = lives1p - 5
+                if (lives1p > 10) {
+                    lives1p = lives1p - 10
+                } else {
+                    lives1p = lives1p - 5
+                }
 
                 checkLive1p()
             } else {
@@ -702,7 +847,7 @@ setInterval(() => {
         window.getComputedStyle(meteor2).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -725,7 +870,11 @@ setInterval(() => {
                         clearInterval(hurtSWaiter)
                     }
                 }, 1000);
-                lives1p = lives1p - 5
+                if (lives1p > 10) {
+                    lives1p = lives1p - 10
+                } else {
+                    lives1p = lives1p - 5
+                }
                 checkLive1p()
             } else {
                 shieldActive = false
@@ -744,7 +893,7 @@ setInterval(() => {
         window.getComputedStyle(meteor3).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -767,7 +916,11 @@ setInterval(() => {
                         clearInterval(hurtSWaiter)
                     }
                 }, 1000);
-                lives1p = lives1p - 5
+                if (lives1p > 10) {
+                    lives1p = lives1p - 10
+                } else {
+                    lives1p = lives1p - 5
+                }
                 checkLive1p()
             } else {
                 shieldActive = false
@@ -786,7 +939,7 @@ setInterval(() => {
         window.getComputedStyle(meteor4).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -809,7 +962,11 @@ setInterval(() => {
                         clearInterval(hurtSWaiter)
                     }
                 }, 1000);
-                lives1p = lives1p - 5
+                if (lives1p > 10) {
+                    lives1p = lives1p - 10
+                } else {
+                    lives1p = lives1p - 5
+                }
                 checkLive1p()
             } else {
                 shieldActive = false
@@ -828,7 +985,7 @@ setInterval(() => {
         window.getComputedStyle(meteor5).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -851,7 +1008,11 @@ setInterval(() => {
                         clearInterval(hurtSWaiter)
                     }
                 }, 1000);
-                lives1p = lives1p - 5
+                if (lives1p > 10) {
+                    lives1p = lives1p - 10
+                } else {
+                    lives1p = lives1p - 5
+                }
                 checkLive1p()
             } else {
                 shieldActive = false
@@ -870,7 +1031,7 @@ setInterval(() => {
         window.getComputedStyle(meteor6).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -893,7 +1054,11 @@ setInterval(() => {
                         clearInterval(hurtSWaiter)
                     }
                 }, 1000);
-                lives1p = lives1p - 5
+                if (lives1p > 10) {
+                    lives1p = lives1p - 10
+                } else {
+                    lives1p = lives1p - 5
+                }
                 checkLive1p()
             } else {
                 shieldActive = false
@@ -912,7 +1077,7 @@ setInterval(() => {
         window.getComputedStyle(meteor7).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -935,7 +1100,11 @@ setInterval(() => {
                         clearInterval(hurtSWaiter)
                     }
                 }, 1000);
-                lives1p = lives1p - 5
+                if (lives1p > 10) {
+                    lives1p = lives1p - 10
+                } else {
+                    lives1p = lives1p - 5
+                }
                 checkLive1p()
             } else {
                 shieldActive = false
@@ -968,8 +1137,8 @@ setInterval(() => {
                     shieldSlot++
                     boostItem.style.opacity = '0'
                     boostOn = false
-                }
-                if (superP1) {
+                }trail
+                if (superP1 || invStts) {
                     player.classList.remove('shield')
                     shield = true
                     shieldActive = true
@@ -979,16 +1148,30 @@ setInterval(() => {
             } else if (boostStyle == 1) {
                 boostItem.style.opacity = '0'
                 boostOn = false
-                lives1p = lives1p + 20
-                if (lives1p > 100) {
-                    lives1p = 100
+                
+                if (lives1p < 90) {
+                    lives1p = lives1p + 20
+                    if (lives1p > 100) {
+                        lives1p = 100
+                    }
+                } else {
+                    lives1p = lives1p + 20
+                    healSlot++
+                    if (lives1p > 100) {
+                        lives1p = 100
+                    }
                 }
+
                 checkLive1p()
             } else if (boostStyle == 2) {
                 boostItem.style.opacity = '0'
                 boostOn = false
-                lives1p = 100
-                checkLive1p()
+                if (lives1p < 100) {
+                    lives1p = 100
+                    checkLive1p()
+                } else {
+                    fullHealSlot++
+                }
             } else if (boostStyle == 3) {
                 boostItem.style.opacity = '0'
                 boostOn = false
@@ -998,10 +1181,25 @@ setInterval(() => {
                     if (shieldActive) {
                         player.classList.remove('shield')
                     }
+                    if (invStts) {
+                        clearInterval(invWaiter)
+                        invStts = false
+                        invSong.pause()
+                        invSong.currentTime = 0
+                    }
                     superP1 = true
                     document.getElementById('gameBckg').style.display = 'none'
                     invencible.style.display = 'block'
-                    trail.style.display = 'block'
+                    //.style.display = 'block'
+                    trail = setInterval(() => {
+                        let trailElm = document.createElement('div')
+                        trailElm.setAttribute('class', 'trail')
+                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                        trailElm.addEventListener("animationend", () => {
+                            trailElm.remove()
+                        })
+                        infintePage.insertAdjacentElement('beforeend', trailElm)
+                    }, 100);
                     document.getElementById('gameBckg').style.animationDuration = '7.5s'
                     setTimeout(() => {
                         document.getElementById('gameBckg').style.display = 'block'
@@ -1016,7 +1214,8 @@ setInterval(() => {
                             song.play()
                             superTimer = 0
                             invencible.removeAttribute('style')
-                            trail.removeAttribute('style')
+                            //trail.removeAttribute('style')
+                            clearInterval(trail)
                             if (shieldActive) {
                                 player.classList.add('shield')
                             }
@@ -1035,7 +1234,38 @@ setInterval(() => {
                     song.play()
                     superP1 = false
                 }, 150000);*/
+            } else if (boostStyle == 4) {
+                boostItem.style.opacity = '0'
+                boostOn = false
+                if (!superP1 && !invStts) {
+                    if (invTimer > 0) {
+                        invTimer = 0
+                    }
+                    invencible.style.display = 'block'
+                    song.pause()
+                    invSong.play()
+                    invStts = true
+                    if (shieldActive) {
+                        player.classList.remove('shield')
+                    }
+                    invWaiter = setInterval(() => {
+                        invTimer++
+                        if (invTimer == 30) {
+                            clearInterval(invWaiter)
+                            invencible.removeAttribute('style')
+                            invSong.pause()
+                            song.play()
+                            invSong.currentTime = 0
+                            invStts = false
+                            invTimer = 0
+                        }
+                    }, 1000);
+                    invTimer = 0
+                } else {
+                    invSlot++
+                }
             }
+            displaySlots()
         }
     }
 }, 1);
@@ -1046,14 +1276,14 @@ mControlUp.addEventListener('touchstart', () => {
         playerPosi = 0
     }
     player.style.top = `${playerPosi}%`
-        player.classList.add('upping')
+    player.classList.add('upping')
     upHold = setInterval(() => {
         playerPosi--
         if (playerPosi < 0) {
             playerPosi = 0
         }
         player.style.top = `${playerPosi}%`
-            }, 100)
+    }, 100)
 })
 
 mControlUp.addEventListener('touchend', () => {
@@ -1080,15 +1310,15 @@ mControlDown.addEventListener('touchstart', () => {
     if (playerPosi >= 84) {
         playerPosi = 84
     }
-    player.style.top = `${ playerPosi }%`
-        player.classList.add('falling')
+    player.style.top = `${playerPosi}%`
+    player.classList.add('falling')
     downHold = setInterval(() => {
         playerPosi++
         if (playerPosi >= 84) {
             playerPosi = 84
         }
-        player.style.top = `${ playerPosi }%`
-            }, 100)
+        player.style.top = `${playerPosi}%`
+    }, 100)
 })
 
 mControlDown.addEventListener('touchend', () => {

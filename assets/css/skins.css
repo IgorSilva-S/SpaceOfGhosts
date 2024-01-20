@@ -1,0 +1,47 @@
+/*Skin 1 - Female Ghost*/
+
+.s1 .player {
+    background-image: url(../img/sprites/skins/female/Flying.gif);
+}
+
+.s1 .playerPaused {
+    background-image: url(../img/sprites/skins/female/Stopped.png);
+}
+
+.s1 .upping {
+    background-image: url(../img/sprites/skins/female/Upping.png);
+    animation-name: uppingGhosts1;
+    animation-duration: .58s;
+}
+
+@keyframes uppingGhosts1 {
+    0% {
+        background-image: url(../img/sprites/skins/female/Upping.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/female/Upping.gif);
+    }
+}
+
+.s1 .falling {
+    background-image: url(../img/sprites/skins/female/Falling.png);
+    animation-name: fallingGhosts2;
+    animation-duration: .8s;
+}
+
+@keyframes fallingGhosts1 {
+    0% {
+        background-image: url(../img/sprites/skins/female/Falling.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/female/Falling.gif);
+    }
+}
+
+.s1 .homeGhost1 {
+    background-image: url(../img/sprites/skins/female/Flying.gif);
+}
+
+/*Skin 2 - Pyjama Ghost*/
