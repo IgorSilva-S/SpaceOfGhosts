@@ -111,6 +111,25 @@ body {
     background-image: url(../img/sprites/skins/normal/Stopped.png);
 }
 
+.deathAnim {
+    animation-name: toEarth;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+}
+
+@keyframes toEarth {
+        from {
+                left: 150px;
+                rotate: 0deg
+            }
+        
+            to {
+                left: 750px;
+                rotate: 1800deg;
+                top: calc(100% + 200px);
+            }
+}
+
 .upping {
     background-image: url(../img/sprites/skins/normal/Upping.png);
     animation-name: uppingGhost;

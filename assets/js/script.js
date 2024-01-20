@@ -1,6 +1,6 @@
 const player = document.getElementById('ghost')
 const invencible = document.getElementById('Inv')
-let trail
+let trail, kill
 const trailsElms = document.querySelectorAll('.trail')
 const song = document.getElementById('music')
 const hSong = document.getElementById('hSong')
@@ -169,7 +169,7 @@ document.addEventListener("keydown", function (e) {
             song.currentTime = 0
         }
     }
-    if (pageType == 2 && !gamePaused && !hurtAnim) {
+    if (pageType == 2 && !gamePaused && !hurtAnim && !kill) {
         if (!gamePaused || !hurtAnim) {
             if (e.key == "ArrowUp") {
                 playerPosi--
@@ -320,12 +320,15 @@ document.addEventListener("keydown", function (e) {
                         document.getElementById('healAlert').classList.remove('emptySlot')
                     }, 1500);
                 }
+            } if (e.key == 'k') {
+                lives1p = 5
+                checkLive1p()
             }
             displaySlots()
         }
     }
 
-    if (pageType == 2) {
+    if (pageType == 2 && !kill) {
         if (e.key == "Enter") {
             pauseGame()
         }
@@ -525,7 +528,7 @@ superSong.addEventListener('ended', () => {
 })
 
 document.addEventListener("keyup", function (e) {
-    if (!hurtAnim) {
+    if (!hurtAnim && !kill) {
         player.removeAttribute('class')
         player.className = 'player'
         if (hurtShield) {
@@ -778,7 +781,31 @@ function checkLive1p() {
 
 
     if (lives1p <= 0) {
-        alert('Game Over')
+        player.classList.remove('hurted')
+        player.classList.remove('hShield')
+        player.classList.add('deathAnim')
+        kill = true
+        setTimeout(() => {
+            infintePage.style.opacity = '0'
+            player.style.top = '120%'
+            setTimeout(() => {
+                pageType = 1
+                disPage.style.display = 'none'
+                homePage.style.display = 'flex'
+                infintePage.style.display = 'none'
+                infintePage.style.opacity = '1'
+                hSong.pause()
+                hSong.currentTime = 0
+                homeSong.play()
+                song.pause()
+                song.currentTime = 0
+                player.classList.remove('deathAnim')
+                player.removeAttribute('style')
+                playerPosi = 45
+                kill = false
+            }, 500);
+        }, 3000);
+        /*alert('Game Over')
         pageType = 1
         disPage.style.display = 'none'
         homePage.style.display = 'flex'
@@ -787,7 +814,7 @@ function checkLive1p() {
         hSong.currentTime = 0
         homeSong.play()
         song.pause()
-        song.currentTime = 0
+        song.currentTime = 0*/
     }
 }
 
