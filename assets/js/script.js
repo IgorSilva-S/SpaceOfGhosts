@@ -37,7 +37,8 @@ let pageType = 0
 */
 const disButton = document.getElementById('exitDisclaimer')
 const disPage = document.getElementById('disclaimer')
-const infintePage = document.getElementById('infiniteMode')
+const infinitePage = document.getElementById('infiniteMode')
+const soloScorePage = document.getElementById('soloScoreMark')
 const homePage = document.getElementById('homeScreen')
 const infiniteButton = document.getElementById('infinitePlay')
 const homeSong = document.getElementById('homeSong')
@@ -70,7 +71,7 @@ disButton.addEventListener("click", function () {
     pageType = 1
     disPage.style.display = 'none'
     homePage.style.display = 'flex'
-    infintePage.style.display = 'none'
+    infinitePage.style.display = 'none'
     homeSong.play()
     song.pause()
     song.currentTime = 0
@@ -101,7 +102,7 @@ infiniteButton.addEventListener("click", function () {
     setTimeout(() => {
         homePage.removeAttribute('style')
         homePage.style.display = 'none'
-        infintePage.style.display = 'block'
+        infinitePage.style.display = 'block'
         homeSong.pause()
         clearInterval(waiter)
         song.play()
@@ -163,7 +164,7 @@ document.addEventListener("keydown", function (e) {
             pageType = 1
             disPage.style.display = 'none'
             homePage.style.display = 'flex'
-            infintePage.style.display = 'none'
+            infinitePage.style.display = 'none'
             homeSong.play()
             song.pause()
             song.currentTime = 0
@@ -215,7 +216,7 @@ document.addEventListener("keydown", function (e) {
                         trailElm.addEventListener("animationend", () => {
                             trailElm.remove()
                         })
-                        infintePage.insertAdjacentElement('beforeend', trailElm)
+                        infinitePage.insertAdjacentElement('beforeend', trailElm)
                     }, 100);
                     song.pause()
                     superSong.play()
@@ -443,6 +444,15 @@ function pauseGame() {
     }
 }
 
+function clearSlotSolo() {
+    shieldSlot = 0
+    superSlot = 0
+    invSlot = 0
+    fullHealSlot = 0
+    healSlot = 0
+    displaySlots()
+}
+
 document.getElementById('continueInf').addEventListener("click", function () {
     pauseGame()
 })
@@ -450,56 +460,105 @@ document.getElementById('continueInf').addEventListener("click", function () {
 document.getElementById('restartInf').addEventListener("click", function () {
     pauseGame()
     song.currentTime = 0
-    infintePage.style.display = 'none'
-    player.classList.remove('shield')
-    shield = false
-    shieldActive = false
+    infinitePage.style.display = 'none'
+    if (superP1) {
+        superP1 = false
+        clearInterval(trail)
+        invencible.style.display = 'none'
+    } else {
+        superP1 = false
+    } if (invStts) {
+        invStts = false
+        invencible.style.display = 'none'
+    } else {
+        invStts = false
+    }
+    if (hurtShield) {
+        hurtShield = false
+        player.classList.remove('hShield')
+    } else {
+        hurtShield = false
+    } if (shieldActive) {
+        shieldActive = false
+        shield = false
+        player.classList.remove('shield')
+    } else {
+        shieldActive = false
+        shield = false
+    }
     player.style.top = `45%`
     playerPosi = 45
     shieldSlot = 0
-    superP1 = false
-    invStts = false
     superSong.pause()
     superSong.currentTime = 0
     lives1p = 100
     checkLive1p()
     setTimeout(() => {
-        infintePage.style.display = 'block'
+        infinitePage.style.display = 'block'
     }, 1);
+    clearSlotSolo()
+    invSong.pause()
+    superSong.pause()
+    invSong.currentTime = 0
+    superSong.currentTime = 0
+    clearInterval(superWaiter)
+    clearInterval(invWaiter)
+    clearInterval(hurtSWaiter)
+    superTimer = 0
+    invTimer = 0
+    hurtSWaiter = 0
+    song.play()
 })
 
 document.getElementById('backInf').addEventListener("click", function () {
-    infintePage.style.opacity = '0'
-    let vol = 1
-    waiter = setInterval(() => {
-        if (superP1) {
-            superSong.volume = vol - .2
-        } else {
-            homeSong.volume = vol - .2
-        }
-    }, 100);
+    infinitePage.style.opacity = '0'
     setTimeout(() => {
-        infintePage.removeAttribute('style')
-        infintePage.style.display = 'none'
+        infinitePage.removeAttribute('style')
+        infinitePage.style.display = 'none'
         homePage.style.display = 'flex'
-        if (superP1) {
-            superSong.pause()
-            superSong.volume = 1
-        } else {
-            song.pause()
-            song.volume = 1
-        }
         clearInterval(waiter)
         homeSong.play()
         homeSong.currentTime = 0
-        superP1 = false
-        invStts = false
+        if (superP1) {
+            superP1 = false
+            clearInterval(trail)
+            invencible.style.display = 'none'
+        } else {
+            superP1 = false
+        } if (invStts) {
+            invStts = false
+            invencible.style.display = 'none'
+        } else {
+            invStts = false
+        }
+        if (hurtShield) {
+            hurtShield = false
+            player.classList.remove('hShield')
+        } else {
+            hurtShield = false
+        } if (shieldActive) {
+            shieldActive = false
+            shield = false
+            player.classList.remove('shield')
+        } else {
+            shieldActive = false
+            shield = false
+        }
         superSong.currentTime = 0
+        invSong.pause()
+        superSong.pause()
+        invSong.currentTime = 0
         song.currentTime = 0
         superTimer = 0
         hurtShieldTimer = 0
         playerPosi = 45
         player.removeAttribute('style')
+        clearInterval(superWaiter)
+        clearInterval(invWaiter)
+        clearInterval(hurtSWaiter)
+        superTimer = 0
+        invTimer = 0
+        hurtSWaiter = 0
         //Pause
         pauseGui.style.right = '-25%'
         pauseBack.style.right = '-130%'
@@ -514,6 +573,7 @@ document.getElementById('backInf').addEventListener("click", function () {
         document.getElementById('gameBckg').removeAttribute('style')
         gamePaused = false
         pageType = 1
+        clearSlotSolo()
     }, 500);
 })
 
@@ -786,14 +846,15 @@ function checkLive1p() {
         player.classList.add('deathAnim')
         kill = true
         setTimeout(() => {
-            infintePage.style.opacity = '0'
+            infinitePage.style.opacity = '0'
             player.style.top = '120%'
             setTimeout(() => {
-                pageType = 1
+                pageType = 2.1
                 disPage.style.display = 'none'
-                homePage.style.display = 'flex'
-                infintePage.style.display = 'none'
-                infintePage.style.opacity = '1'
+                homePage.style.display = 'none'
+                infinitePage.style.display = 'none'
+                soloScorePage.style.display = 'block'
+                infinitePage.style.opacity = '1'
                 hSong.pause()
                 hSong.currentTime = 0
                 homeSong.play()
@@ -803,13 +864,19 @@ function checkLive1p() {
                 player.removeAttribute('style')
                 playerPosi = 45
                 kill = false
+                clearInterval(superWaiter)
+                clearInterval(invWaiter)
+                clearInterval(hurtSWaiter)
+                superTimer = 0
+                invTimer = 0
+                hurtSWaiter = 0
             }, 500);
         }, 3000);
         /*alert('Game Over')
         pageType = 1
         disPage.style.display = 'none'
         homePage.style.display = 'flex'
-        infintePage.style.display = 'none'
+        infinitePage.style.display = 'none'
         hSong.pause()
         hSong.currentTime = 0
         homeSong.play()
@@ -817,6 +884,94 @@ function checkLive1p() {
         song.currentTime = 0*/
     }
 }
+
+document.getElementById('soloSHome').addEventListener("click", () => {
+    soloScorePage.style.opacity = '0'
+    setTimeout(() => {
+        lives1p = 100
+        soloScorePage.removeAttribute('style')
+        soloScorePage.style.display = 'none'
+        homePage.style.display = 'flex'
+        superSong.currentTime = 0
+        song.currentTime = 0
+        superTimer = 0
+        hurtShieldTimer = 0
+        playerPosi = 45
+        player.removeAttribute('style')
+        pageType = 1
+        if (superP1) {
+            superP1 = false
+            clearInterval(trail)
+            invencible.style.display = 'none'
+        } else {
+            superP1 = false
+        } if (invStts) {
+            invStts = false
+            invencible.style.display = 'none'
+        } else {
+            invStts = false
+        }
+        if (hurtShield) {
+            hurtShield = false
+            player.classList.remove('hShield')
+        } else {
+            hurtShield = false
+        } if (shieldActive) {
+            shieldActive = false
+            shield = false
+            player.classList.remove('shield')
+        } else {
+            shieldActive = false
+            shield = false
+        } clearSlotSolo()
+    }, 500)
+})
+
+document.getElementById('soloSGame').addEventListener("click", () => {
+    soloScorePage.style.opacity = '0'
+    setTimeout(() => {
+        lives1p = 100
+        soloScorePage.removeAttribute('style')
+        soloScorePage.style.display = 'none'
+        infinitePage.style.display = 'block'
+        superSong.currentTime = 0
+        song.currentTime = 0
+        homeSong.currentTime = 0
+        homeSong.pause()
+        song.play()
+        superTimer = 0
+        hurtShieldTimer = 0
+        playerPosi = 45
+        player.removeAttribute('style')
+        pageType = 2
+        if (superP1) {
+            superP1 = false
+            clearInterval(trail)
+            invencible.style.display = 'none'
+        } else {
+            superP1 = false
+        } if (invStts) {
+            invStts = false
+            invencible.style.display = 'none'
+        } else {
+            invStts = false
+        }
+        if (hurtShield) {
+            hurtShield = false
+            player.classList.remove('hShield')
+        } else {
+            hurtShield = false
+        } if (shieldActive) {
+            shieldActive = false
+            shield = false
+            player.classList.remove('shield')
+        } else {
+            shieldActive = false
+            shield = false
+        } clearSlotSolo()
+        checkLive1p()
+    }, 500)
+})
 
 //Check if meteor hit player
 setInterval(() => {
@@ -1225,7 +1380,7 @@ setInterval(() => {
                         trailElm.addEventListener("animationend", () => {
                             trailElm.remove()
                         })
-                        infintePage.insertAdjacentElement('beforeend', trailElm)
+                        infinitePage.insertAdjacentElement('beforeend', trailElm)
                     }, 100);
                     document.getElementById('gameBckg').style.animationDuration = '7.5s'
                     setTimeout(() => {

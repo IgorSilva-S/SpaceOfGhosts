@@ -118,16 +118,16 @@ body {
 }
 
 @keyframes toEarth {
-        from {
-                left: 150px;
-                rotate: 0deg
-            }
-        
-            to {
-                left: 750px;
-                rotate: 1800deg;
-                top: calc(100% + 200px);
-            }
+    from {
+        left: 150px;
+        rotate: 0deg
+    }
+
+    to {
+        left: 750px;
+        rotate: 1800deg;
+        top: calc(100% + 200px);
+    }
 }
 
 .upping {
@@ -573,6 +573,117 @@ body {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
+}
+
+#soloScoreMark {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #008, #00f, #00f, #00f, #40f, #70f);
+    display: none;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
+}
+
+.ghostScore {
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 83%;
+    border-radius: 100%;
+    animation: floatScore 10s linear infinite;
+    transition-duration: .2s;
+    z-index: 1;
+}
+
+@keyframes floatScore {
+    0% {
+        left: 10%;
+    }
+
+    40% {
+        left: 90%;
+        transform: scaleX(1)
+    }
+
+    41% {
+        left: 90%;
+        transform: scaleX(-1)
+    }
+
+    99% {
+        left: 10%;
+        transform: scaleX(-1)
+    }
+
+    100% {
+        left: 10%;
+        transform: scaleX(1)
+    }
+}
+
+.soilContainer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+}
+
+.soil {
+    width: 20%;
+    height: 50px;
+    background-image: url(../img/sprites/background/Soil.png);
+    background-size: cover;
+    background-position: top;
+}
+
+#soloScoreMark .background {
+    animation-duration: 60s;
+}
+
+.soloScore {
+    width: 50%;
+    margin: 0 25%;
+    height: 50%;
+    position: absolute;
+    top: 5%;
+    background-color: #444a;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    color: white;
+}
+
+.soloScore h1 {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.soloScore .goButtons {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.goButtons button {
+    padding: 2px 20px;
+    font-size: 20px;
+    border-radius: 120px;
+    background-color: #025;
+    border: 2px solid #0632ff;
+    color: white;
+    transition-duration: .4s;
+}
+
+.goButtons button:hover {
+    background-color: #0632ff;
 }
 
 #infiniteMode .moveBlock {
