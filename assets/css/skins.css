@@ -26,7 +26,7 @@
 
 .s1 .falling {
     background-image: url(../img/sprites/skins/female/Falling.png);
-    animation-name: fallingGhosts2;
+    animation-name: fallingGhosts1;
     animation-duration: .8s;
 }
 
@@ -41,6 +41,14 @@
 }
 
 .s1 .homeGhost1 {
+    background-image: url(../img/sprites/skins/female/Flying.gif);
+}
+
+.s1 .ghostScore {
+    background-image: url(../img/sprites/skins/female/Flying.gif);
+}
+
+.s1 .trail {
     background-image: url(../img/sprites/skins/female/Flying.gif);
 }
 
