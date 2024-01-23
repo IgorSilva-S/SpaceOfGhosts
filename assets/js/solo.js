@@ -1085,6 +1085,48 @@ setInterval(() => {
 }, 1);
 //End check boost
 
+//New Controls : Solo
+function soloKeyDown(e) {
+    let keyType = e.key
+    keysSolo[keyType] = true
+}
+
+function soloKeyUp(e) {
+    let keyType = e.key
+    keysSolo[keyType] = false
+}
+
+let soloControls = setInterval(() => {
+    moveChar()
+}, 60);
+function moveChar() {
+    if (keysSolo['ArrowUp'] == true) {
+        if(!hurtAnim) {
+            playerPosi--
+            if (playerPosi < 0) {
+                playerPosi = 0
+            }
+            player.style.top = `${playerPosi}%`
+            player.classList.add('upping')
+        } else {
+            keysSolo['ArrowUp'] = false
+        }
+    }
+    if (keysSolo['ArrowDown'] == true) {
+        if (!hurtAnim) {
+            playerPosi++
+            if (playerPosi >= 84) {
+                playerPosi = 84
+            }
+            player.style.top = `${playerPosi}%`
+            player.classList.add('falling')
+        } else {
+            keysSolo['ArrowDown'] = false
+        }
+    }
+}
+//End New Controls : Solo
+
 //Mobile Controls : Solo
 mControlUp.addEventListener('touchstart', () => {
     playerPosi--

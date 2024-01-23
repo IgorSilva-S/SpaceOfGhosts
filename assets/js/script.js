@@ -1,6 +1,7 @@
 //Variables
 
 const player = document.getElementById('ghost')
+let keysSolo = []
 const p1Run = document.getElementById('player1Run')
 const p2Run = document.getElementById('player2Run')
 const invencible = document.getElementById('Inv')
@@ -84,6 +85,8 @@ const sScore = document.getElementById('soloDistance')
 let finalScore
 let p1RHS = false, p2RHS = false
 let p1HurtAnim = false, p2HurtAnim = false
+let keysDuoRun = []
+let duoRunPaused = false
 
 //Duo : Run! Meteors
 const p1Rm1 = document.getElementById('p1Rm1')
@@ -174,7 +177,8 @@ document.addEventListener("keydown", function (e) {
     //Solo Game Controls
     if (pageType == 2 && !gamePaused && !hurtAnim && !kill) {
         if (!gamePaused || !hurtAnim) {
-            if (e.key == "ArrowUp") {
+            soloKeyDown(e)
+            /*if (e.key == "ArrowUp") {
                 playerPosi--
                 if (playerPosi < 0) {
                     playerPosi = 0
@@ -188,7 +192,7 @@ document.addEventListener("keydown", function (e) {
                 }
                 player.style.top = `${playerPosi}%`
                 player.classList.add('falling')
-            }
+            }*/
             if (e.key == "1") {
                 if (shieldSlot > 0 && !shieldActive) {
                     player.classList.add('shield')
@@ -352,20 +356,23 @@ document.addEventListener("keydown", function (e) {
 
     //Duo Game : Run! Controls
     if (pageType == 3) {
-        if (e.key == "ArrowUp") {
-            p2Posi--
-            if (p2Posi < 0) {
-                p2Posi = 0
+        duoRunKeyDown(e)
+        /*if (!p2HurtAnim) {
+            if (e.key == "ArrowUp") {
+                p2Posi--
+                if (p2Posi < 0) {
+                    p2Posi = 0
+                }
+                p2Run.style.top = `${p2Posi}%`
+                p2Run.classList.add('upping')
+            } if (e.key == "ArrowDown") {
+                p2Posi++
+                if (p2Posi >= 84) {
+                    p2Posi = 84
+                }
+                p2Run.style.top = `${p2Posi}%`
+                p2Run.classList.add('falling')
             }
-            p2Run.style.top = `${p2Posi}%`
-            p2Run.classList.add('upping')
-        } if (e.key == "ArrowDown") {
-            p2Posi++
-            if (p2Posi >= 84) {
-                p2Posi = 84
-            }
-            p2Run.style.top = `${p2Posi}%`
-            p2Run.classList.add('falling')
         }
         if (!p1HurtAnim) {
             if (e.key == "w" || e.key == "W") {
@@ -383,6 +390,9 @@ document.addEventListener("keydown", function (e) {
                 p1Run.style.top = `${p1Posi}%`
                 p1Run.classList.add('falling')
             }
+        }*/
+        if(e.key == 'Enter') {
+            pauseDuoRun()
         }
     }
 })
@@ -401,20 +411,29 @@ document.addEventListener("keyup", function (e) {
         if (gamePaused) {
             player.classList.add('playerPaused')
         }
+        soloKeyUp(e)
     }
     //End Solo Game Restore
     
     //Duo : Run! Restore
     if (pageType == 3) {
-        if (!p1HurtAnim) {
-            p1Run.removeAttribute('class')
-            p1Run.className = 'player'
+        if (!duoRunPaused) {
+            if (!p1HurtAnim) {
+                p1Run.removeAttribute('class')
+                p1Run.className = 'player'
+            }
+            if (!p2HurtAnim) {
+                p2Run.removeAttribute('class')
+                p2Run.className = 'player'
+            }
+            if (p1RHS) {
+                p1Run.classList.add('hShield')
+            }
+            if (p2RHS) {
+                p2Run.classList.add('hShield')
+            }
         }
-        p2Run.removeAttribute('class')
-        p2Run.className = 'player'
-        if (p1RHS) {
-            p1Run.classList.add('hShield')
-        }
+        duoRunKeyUp(e)
     }
     //End Duo : Run! Restore
 })
