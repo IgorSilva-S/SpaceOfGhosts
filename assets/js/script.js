@@ -1,12 +1,17 @@
 //Variables
 
 const player = document.getElementById('ghost')
+const p1Run = document.getElementById('player1Run')
+const p2Run = document.getElementById('player2Run')
 const invencible = document.getElementById('Inv')
 let trail, kill
 const trailsElms = document.querySelectorAll('.trail')
 const song = document.getElementById('music')
 const hSong = document.getElementById('hSong')
+const duoRSong = document.getElementById('duoRunSong')
 let playerPosi = 45
+let p1Posi = 45
+let p2Posi = 45
 const meteor1 = document.getElementById('m1')
 const meteor2 = document.getElementById('m2')
 const meteor3 = document.getElementById('m3')
@@ -28,6 +33,7 @@ let pageType = 0
 /*Pages Types
 0 - Disclaimer
 1 - Home
+1.1 - Game Mode
 2 - Game : 1p Style
 2.1 - 1p style points
 3 - Game : 2p VS (Infinite Mode)
@@ -39,10 +45,14 @@ let pageType = 0
 */
 const disButton = document.getElementById('exitDisclaimer')
 const disPage = document.getElementById('disclaimer')
-const infinitePage = document.getElementById('infiniteMode')
+const soloPage = document.getElementById('soloMode')
 const soloScorePage = document.getElementById('soloScoreMark')
 const homePage = document.getElementById('homeScreen')
-const infiniteButton = document.getElementById('infinitePlay')
+const gameMPage = document.getElementById('gameModeScreen')
+const duoRunPage = document.getElementById('duoRun')
+const playButton = document.getElementById('playGame')
+const soloButton = document.getElementById('soloPlay')
+const duoButton = document.getElementById('duoPlay')
 const homeSong = document.getElementById('homeSong')
 const superSong = document.getElementById('superSong')
 const invSong = document.getElementById('invSong')
@@ -67,6 +77,26 @@ let invStts = false
 const mControlUp = document.getElementById('upBlock')
 const mControlDown = document.getElementById('downBlock')
 let superWaiter, hurtSWaiter, invWaiter
+let scoreCounter
+let scoreNum = 0
+let scoreSpeed = 500
+const sScore = document.getElementById('soloDistance')
+let finalScore
+let p1RHS = false, p2RHS = false
+let p1HurtAnim = false, p2HurtAnim = false
+
+//Duo : Run! Meteors
+const p1Rm1 = document.getElementById('p1Rm1')
+const p1Rm2 = document.getElementById('p1Rm2')
+const p1Rm3 = document.getElementById('p1Rm3')
+const p1Rm4 = document.getElementById('p1Rm4')
+const p1Rm5 = document.getElementById('p1Rm5')
+const p2Rm1 = document.getElementById('p2Rm1')
+const p2Rm2 = document.getElementById('p2Rm2')
+const p2Rm3 = document.getElementById('p2Rm3')
+const p2Rm4 = document.getElementById('p2Rm4')
+const p2Rm5 = document.getElementById('p2Rm5')
+
 //End Variables
 
 //Navigations Functions
@@ -74,28 +104,30 @@ disButton.addEventListener("click", function () {
     pageType = 1
     disPage.style.display = 'none'
     homePage.style.display = 'flex'
-    infinitePage.style.display = 'none'
+    soloPage.style.display = 'none'
     homeSong.play()
     song.pause()
     song.currentTime = 0
 })
 
-infiniteButton.addEventListener("click", function () {
-    let vol = 1
+playButton.addEventListener("click", function () {
+    pageType = 1.1
+    homePage.style.opacity = '0'
+    setTimeout(() => {
+        homePage.removeAttribute('style')
+        gameMPage.style.display = 'flex'
+    }, 500);
+})
+
+soloButton.addEventListener("click", function () {
     pageType = 2
     lives1p = 100
     checkLive1p()
-    disPage.style.display = 'none'
-    homePage.style.opacity = '0'
-    waiter = setInterval(() => {
-        homeSong.volume = vol - .2
-    }, 100);
+    gameMPage.style.opacity = '0'
     setTimeout(() => {
-        homePage.removeAttribute('style')
-        homePage.style.display = 'none'
-        infinitePage.style.display = 'block'
+        gameMPage.removeAttribute('style')
+        soloPage.style.display = 'block'
         homeSong.pause()
-        clearInterval(waiter)
         song.play()
         homeSong.volume = 1
         homeSong.currentTime = 0
@@ -105,8 +137,26 @@ infiniteButton.addEventListener("click", function () {
         superTimer = 0
         hurtShieldTimer = 0
         displaySlotsSolo()
+        scoreCounter = setInterval(() => {
+            scoreNum++
+            sScore.innerText = scoreNum
+        }, scoreSpeed);
     }, 500);
 })
+
+duoButton.addEventListener("click", function () {
+    pageType = 3
+    gameMPage.style.opacity = '0'
+    setTimeout(() => {
+        gameMPage.removeAttribute('style')
+        duoRunPage.style.display = 'flex'
+        homeSong.pause()
+        duoRSong.play()
+    }, 500);
+})
+
+
+
 
 document.addEventListener("keydown", function (e) {
     if (pageType == 0) {
@@ -114,7 +164,7 @@ document.addEventListener("keydown", function (e) {
             pageType = 1
             disPage.style.display = 'none'
             homePage.style.display = 'flex'
-            infinitePage.style.display = 'none'
+            soloPage.style.display = 'none'
             homeSong.play()
             song.pause()
             song.currentTime = 0
@@ -168,7 +218,7 @@ document.addEventListener("keydown", function (e) {
                         trailElm.addEventListener("animationend", () => {
                             trailElm.remove()
                         })
-                        infinitePage.insertAdjacentElement('beforeend', trailElm)
+                        soloPage.insertAdjacentElement('beforeend', trailElm)
                     }, 100);
                     song.pause()
                     superSong.play()
@@ -187,6 +237,12 @@ document.addEventListener("keydown", function (e) {
                         invSong.pause()
                         invSong.currentTime = 0
                     }
+                    scoreSpeed = 250
+                    clearInterval(scoreCounter)
+                    scoreCounter = setInterval(() => {
+                        scoreNum++
+                        sScore.innerText = scoreNum
+                    }, scoreSpeed);
                     superWaiter = setInterval(() => {
                         superTimer++
                         if (superTimer == 50) {
@@ -206,6 +262,12 @@ document.addEventListener("keydown", function (e) {
                             setTimeout(() => {
                                 document.getElementById('gameBckg').removeAttribute('style')
                             }, 1);
+                            scoreSpeed = 500
+                            clearInterval(scoreCounter)
+                            scoreCounter = setInterval(() => {
+                                scoreNum++
+                                sScore.innerText = scoreNum
+                            }, scoreSpeed)
                         }
                     }, 1000);
                 } else if (superSlot == 0) {
@@ -287,11 +349,47 @@ document.addEventListener("keydown", function (e) {
         }
     }
     //End Solo Game Controls
+
+    //Duo Game : Run! Controls
+    if (pageType == 3) {
+        if (e.key == "ArrowUp") {
+            p2Posi--
+            if (p2Posi < 0) {
+                p2Posi = 0
+            }
+            p2Run.style.top = `${p2Posi}%`
+            p2Run.classList.add('upping')
+        } if (e.key == "ArrowDown") {
+            p2Posi++
+            if (p2Posi >= 84) {
+                p2Posi = 84
+            }
+            p2Run.style.top = `${p2Posi}%`
+            p2Run.classList.add('falling')
+        }
+        if (!p1HurtAnim) {
+            if (e.key == "w" || e.key == "W") {
+                p1Posi--
+                if (p1Posi < 0) {
+                    p1Posi = 0
+                }
+                p1Run.style.top = `${p1Posi}%`
+                p1Run.classList.add('upping')
+            } if (e.key == "s" || e.key == "S") {
+                p1Posi++
+                if (p1Posi >= 84) {
+                    p1Posi = 84
+                }
+                p1Run.style.top = `${p1Posi}%`
+                p1Run.classList.add('falling')
+            }
+        }
+    }
 })
 
 document.addEventListener("keyup", function (e) {
     //Solo Game Restore
-    if (!hurtAnim && !kill  && pageType == 2) {
+    if (!hurtAnim && !kill && pageType == 2) {
         player.removeAttribute('class')
         player.className = 'player'
         if (hurtShield) {
@@ -305,11 +403,26 @@ document.addEventListener("keyup", function (e) {
         }
     }
     //End Solo Game Restore
+    
+    //Duo : Run! Restore
+    if (pageType == 3) {
+        if (!p1HurtAnim) {
+            p1Run.removeAttribute('class')
+            p1Run.className = 'player'
+        }
+        p2Run.removeAttribute('class')
+        p2Run.className = 'player'
+        if (p1RHS) {
+            p1Run.classList.add('hShield')
+        }
+    }
+    //End Duo : Run! Restore
 })
 
 //Solo Score Nav Buttons
 document.getElementById('soloSHome').addEventListener("click", () => {
     soloScorePage.style.opacity = '0'
+    scoreNum = 0
     setTimeout(() => {
         lives1p = 100
         soloScorePage.removeAttribute('style')
@@ -347,16 +460,19 @@ document.getElementById('soloSHome').addEventListener("click", () => {
             shieldActive = false
             shield = false
         } clearSlotSolo()
+        clearInterval(scoreCounter)
+        document.getElementById('soloHighAlert').removeAttribute('style')
     }, 500)
 })
 
 document.getElementById('soloSGame').addEventListener("click", () => {
     soloScorePage.style.opacity = '0'
+    scoreNum = 0
     setTimeout(() => {
         lives1p = 100
         soloScorePage.removeAttribute('style')
         soloScorePage.style.display = 'none'
-        infinitePage.style.display = 'block'
+        soloPage.style.display = 'block'
         superSong.currentTime = 0
         song.currentTime = 0
         homeSong.currentTime = 0
@@ -393,6 +509,12 @@ document.getElementById('soloSGame').addEventListener("click", () => {
             shield = false
         } clearSlotSolo()
         checkLive1p()
+        clearInterval(scoreCounter)
+        scoreCounter = setInterval(() => {
+            scoreNum++
+            sScore.innerText = scoreNum
+        }, scoreSpeed)
+        document.getElementById('soloHighAlert').removeAttribute('style')
     }, 500)
 })
 //End Navigations Functions

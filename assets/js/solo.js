@@ -1,3 +1,4 @@
+
 function sortMeteorStartSolo() {
     let typeOf1 = Math.floor((Math.random() * 3) + 1)
     meteor1.removeAttribute('class')
@@ -64,6 +65,8 @@ function pauseGameSolo() {
         clearInterval(superWaiter)
         clearInterval(hurtSWaiter)
         clearInterval(invWaiter)
+        clearInterval(trail)
+        clearInterval(scoreCounter)
         if (!invStts) {
             invTimer = 0
         } if (!superP1) {
@@ -71,6 +74,7 @@ function pauseGameSolo() {
         } if (!hurtShield) {
             hurtShieldTimer = 0
         }
+        soloPage.classList.add('paused')
     } else {
         pauseGui.style.right = '-25%'
         pauseBack.style.right = '-130%'
@@ -118,6 +122,15 @@ function pauseGameSolo() {
                     }
                 }
             }, 1000);
+            trail = setInterval(() => {
+                let trailElm = document.createElement('div')
+                trailElm.setAttribute('class', 'trail')
+                trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                trailElm.addEventListener("animationend", () => {
+                    trailElm.remove()
+                })
+                soloPage.insertAdjacentElement('beforeend', trailElm)
+            }, 100);
         }
         if (hurtShield) {
             hurtSWaiter = setInterval(() => {
@@ -146,6 +159,11 @@ function pauseGameSolo() {
                 }
             }, 1000);
         }
+        soloPage.classList.remove('paused')
+        scoreCounter = setInterval(() => {
+            scoreNum++
+            sScore.innerText = scoreNum
+        }, 500);
     }
 }
 //Pause Controls
@@ -156,7 +174,7 @@ document.getElementById('continueInf').addEventListener("click", function () {
 document.getElementById('restartInf').addEventListener("click", function () {
     pauseGameSolo()
     song.currentTime = 0
-    infinitePage.style.display = 'none'
+    soloPage.style.display = 'none'
     if (superP1) {
         superP1 = false
         clearInterval(trail)
@@ -190,7 +208,7 @@ document.getElementById('restartInf').addEventListener("click", function () {
     lives1p = 100
     checkLive1p()
     setTimeout(() => {
-        infinitePage.style.display = 'block'
+        soloPage.style.display = 'block'
     }, 1);
     clearSlotSolo()
     invSong.pause()
@@ -204,15 +222,24 @@ document.getElementById('restartInf').addEventListener("click", function () {
     invTimer = 0
     hurtSWaiter = 0
     song.play()
+    scoreNum = 0
+    sScore.innerText = '0'
+    clearInterval(scoreCounter)
+    setTimeout(() => {
+        scoreCounter = setInterval(() => {
+            scoreNum++
+            sScore.innerText = scoreNum
+        }, 500);
+    }, 1);
+
 })
 
 document.getElementById('backInf').addEventListener("click", function () {
-    infinitePage.style.opacity = '0'
+    soloPage.style.opacity = '0'
     setTimeout(() => {
-        infinitePage.removeAttribute('style')
-        infinitePage.style.display = 'none'
+        soloPage.removeAttribute('style')
+        soloPage.style.display = 'none'
         homePage.style.display = 'flex'
-        clearInterval(waiter)
         homeSong.play()
         homeSong.currentTime = 0
         if (superP1) {
@@ -255,6 +282,7 @@ document.getElementById('backInf').addEventListener("click", function () {
         superTimer = 0
         invTimer = 0
         hurtSWaiter = 0
+        scoreNum = 0
         //Pause
         pauseGui.style.right = '-25%'
         pauseBack.style.right = '-130%'
@@ -270,6 +298,7 @@ document.getElementById('backInf').addEventListener("click", function () {
         gamePaused = false
         pageType = 1
         clearSlotSolo()
+        sScore.innerText = '0'
     }, 500);
 })
 //End Pause Controls
@@ -469,55 +498,55 @@ function checkLive1p() {
         lives1pAlert.classList.add('h100')
     }
 
-    if (lives1p == 90) {
+    if (lives1p == 90 || lives1p == 95) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
         lives1pAlert.classList.add('h90')
     }
 
-    if (lives1p == 80) {
+    if (lives1p == 80 || lives1p == 85) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
         lives1pAlert.classList.add('h80')
     }
 
-    if (lives1p == 70) {
+    if (lives1p == 70 || lives1p == 75) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
         lives1pAlert.classList.add('h70')
     }
 
-    if (lives1p == 60) {
+    if (lives1p == 60 || lives1p == 65) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
         lives1pAlert.classList.add('h60')
     }
 
-    if (lives1p == 50) {
+    if (lives1p == 50 || lives1p == 55) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
         lives1pAlert.classList.add('h50')
     }
 
-    if (lives1p == 40) {
+    if (lives1p == 40 || lives1p == 45) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
         lives1pAlert.classList.add('h40')
     }
 
-    if (lives1p == 30) {
+    if (lives1p == 30 || lives1p == 35) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
         lives1pAlert.classList.add('h30')
     }
 
-    if (lives1p == 20) {
+    if (lives1p == 20 || lives1p == 25) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
         lives1pAlert.classList.add('h20')
     }
 
-    if (lives1p == 10) {
+    if (lives1p == 10 || lives1p == 15) {
         lives1pAlert.removeAttribute('class')
         lives1pAlert.className = 'hearts'
         lives1pAlert.classList.add('h10')
@@ -535,16 +564,20 @@ function checkLive1p() {
         player.classList.remove('hShield')
         player.classList.add('deathAnim')
         kill = true
+        clearInterval(superWaiter)
+        clearInterval(invWaiter)
+        clearInterval(hurtSWaiter)
+        clearInterval(scoreCounter)
         setTimeout(() => {
-            infinitePage.style.opacity = '0'
+            soloPage.style.opacity = '0'
             player.style.top = '120%'
             setTimeout(() => {
                 pageType = 2.1
                 disPage.style.display = 'none'
                 homePage.style.display = 'none'
-                infinitePage.style.display = 'none'
+                soloPage.style.display = 'none'
                 soloScorePage.style.display = 'block'
-                infinitePage.style.opacity = '1'
+                soloPage.style.opacity = '1'
                 hSong.pause()
                 hSong.currentTime = 0
                 homeSong.play()
@@ -554,12 +587,22 @@ function checkLive1p() {
                 player.removeAttribute('style')
                 playerPosi = 45
                 kill = false
-                clearInterval(superWaiter)
-                clearInterval(invWaiter)
-                clearInterval(hurtSWaiter)
+                sScore.innerText = '0'
                 superTimer = 0
                 invTimer = 0
                 hurtSWaiter = 0
+                finalScore = scoreNum + ((shieldSlot + superSlot + invSlot + fullHealSlot + healSlot) * 10)
+                document.getElementById('distance').innerText = scoreNum
+                document.getElementById('slots').innerText = (shieldSlot + superSlot + invSlot + fullHealSlot + healSlot)
+                document.getElementById('finalScore').innerText = finalScore
+                let highScore = localStorage.getItem('highScore')
+                if (finalScore > highScore) {
+                    document.getElementById('soloHighAlert').style.display = 'block'
+                    localStorage.setItem('highScore', finalScore)
+                    document.getElementById('highScore').innerText = finalScore
+                } else {
+                    document.getElementById('highScore').innerText = highScore
+                }
             }, 500);
         }, 3000);
     }
@@ -975,7 +1018,7 @@ setInterval(() => {
                         trailElm.addEventListener("animationend", () => {
                             trailElm.remove()
                         })
-                        infinitePage.insertAdjacentElement('beforeend', trailElm)
+                        soloPage.insertAdjacentElement('beforeend', trailElm)
                     }, 100);
                     document.getElementById('gameBckg').style.animationDuration = '7.5s'
                     setTimeout(() => {

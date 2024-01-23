@@ -7,6 +7,7 @@
     <title>Space Of Ghosts</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/skins.css">
+    <link rel="shortcut icon" href="assets/img/sprites/skins/normal/Flying.gif" type="image/gif">
 </head>
 
 <body>
@@ -25,16 +26,35 @@
 
         </div>
         <h1>Space of Ghosts</h1>
-        <button id="infinitePlay">Jogar</button>
+        <button id="playGame">Jogar</button>
+        <!--InfintePlay-->
         <audio src="assets/songs/music/S1NXTLGustPlanet3.mp3" id="homeSong" loop></audio>
         <div class="version">
-            D 3.2.O
+            D 4.0
+        </div>
+    </section>
+    <section id="gameModeScreen">
+        <div class="background">
+
+        </div>
+        <button id="soloPlay">
+            <div></div> Um jogador
+        </button>
+        <button id="duoPlay">
+            <div></div> Dois Jogadores
+        </button>
+        <div class="version">
+            D 4.0
         </div>
     </section>
 
-    <section id="infiniteMode">
+    <section id="soloMode">
         <div class="background" id="gameBckg">
 
+        </div>
+        <div class="score">
+            <span id="soloDistance">0
+            </span>m
         </div>
         <div class="itemsAlertCont">
             <div class="itemCont" id="shieldAlert">
@@ -98,7 +118,7 @@
         <div class="boost" id="bst">
 
         </div>
-        <audio src="assets/songs/music/TLZTrim.mp3" id="music" loop></audio>
+        <audio src="assets/songs/music/StarLightSR.mp3" id="music" loop></audio>
         <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
         <audio src="assets/songs/music/Super3U.mp3" id="superSong" loop></audio>
         <audio src="assets/songs/music/Invencible.mp3" id="invSong" loop></audio>
@@ -122,6 +142,13 @@
         </div>
         <div class="soloScore">
             <h1>Pontuação</h1>
+            <div class="soloScoreAlign">
+                <div class="distance">Distância do início: <span id="distance">0</span>m</div>
+                <div class="slots">Soma de boosts guardados: <span id="slots">0</span></div>
+                <div class="finalScore">Pontuação final (distância + (boosts * 10)): <span id="finalScore"></span></div>
+                <div class="newHigh" id="soloHighAlert">Nova Melhor pontuação</div>
+                <div class="lastHigh">Melhor pontuação: <span id="highScore"></span></div>
+            </div>
             <div class="goButtons">
                 <button id="soloSHome">Ir para o início</button>
                 <button id="soloSGame">Começar outra partida</button>
@@ -136,8 +163,30 @@
             <div class="soil"></div>
         </div>
     </section>
+    <section id="duoRun">
+        <div class="returnHome" id="retHome"></div>
+        <div class="background"></div>
+        <div class="playerScreen">
+            <div class="player" id="player1Run"></div>
+            <div class="meteor" id="p1Rm1"></div>
+            <div class="meteor" id="p1Rm2"></div>
+            <div class="meteor" id="p1Rm3"></div>
+            <div class="meteor" id="p1Rm4"></div>
+            <div class="meteor" id="p1Rm5"></div>
+        </div>
+        <div class="playerScreen s2" style="border-left: 2px solid #0632ff;">
+            <div class="player" id="player2Run"></div>
+            <div class="meteor" id="p2Rm1"></div>
+            <div class="meteor" id="p2Rm2"></div>
+            <div class="meteor" id="p2Rm3"></div>
+            <div class="meteor" id="p2Rm4"></div>
+            <div class="meteor" id="p2Rm5"></div>
+        </div>
+        <audio src="assets/songs/music/VelaNovaSlow.mp3" loop id="duoRunSong"></audio>
+    </section>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/solo.js"></script>
+    <script src="assets/js/duoRun.js"></script>
 </body>
 
 </html>
