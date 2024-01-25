@@ -373,6 +373,9 @@ document.addEventListener("keydown", function (e) {
                     boostItem.style.animationPlayState = 'running'
                     document.getElementById('gameBckg').style.animationPlayState = 'running'
                     relaxStts = false
+                    if (plusSpeed < 1) {
+                        clearInterval(trail)
+                    }
                 }, 2000);
             } else if (relaxSlot == 0) {
                 document.getElementById('relaxAlert').classList.add('emptySlot')
@@ -889,3 +892,9 @@ document.getElementById('hgh1').addEventListener("click", () => {
     }, 5000);
 })
 //End Easter Egg Home
+
+//Prevent Right Click with name
+document.getElementById('gameName').addEventListener("contextmenu", (e) => {
+    e.preventDefault()
+})
+//End prevent Right Click with name

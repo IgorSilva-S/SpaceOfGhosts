@@ -1253,6 +1253,9 @@ setInterval(() => {
                             boostItem.style.animationPlayState = 'running'
                             document.getElementById('gameBckg').style.animationPlayState = 'running'
                             relaxStts = false
+                            if (plusSpeed < 1) {
+                                clearInterval(trail)
+                            }
                         }, 2000);
                 }
             }
