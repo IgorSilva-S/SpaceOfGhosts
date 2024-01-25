@@ -3,13 +3,89 @@ document.getElementById('retHome').addEventListener('click', () => {
     setTimeout(() => {
         duoRunPage.removeAttribute('style')
         homePage.style.display = 'flex'
-        duoRSong.pause()
         duoRSong.currentTime = 0
         homeSong.currentTime = 0
+        P1DRShieldSlot = 0
+        P1DRGunSlot = 0
+        P1DRInvSlot = 0
+        P1DRHealSlot = 0
+        P2DRShieldSlot = 0
+        P2DRGunSlot = 0
+        P2DRInvSlot = 0
+        P2DRHealSlot = 0
+        displaySlotsAllDuoR()
+        p1Run.classList.remove('shield')
+        p2Run.classList.remove('shield')
+        p1RInv.style.display = 'none'
+        p2RInv.style.display = 'none'
+        p1RSA = false
+        p2RSA = false
+        p1RInvNum = 0
+        p2RInvNum = 0
+        p1RHSTimer = 0
+        p2RHSTimer = 0
+        p1RHS = false
+        p2RHS = false
+        p1Posi = 45
+        p2Posi = 45
+        p1Run.style.top = `${p1Posi}%`
+        p2Run.style.top = `${p2Posi}%`
         homeSong.play()
         p1RHS = false
         p2RHS = false
+        if (duoRunPaused) {
+            pauseDuoRun()
+        }
+        setTimeout(() => {
+            duoRSong.pause()
+        }, 1);
     }, 500);
+})
+
+document.getElementById('duoRestart').addEventListener('click', () => {
+    duoRunPage.style.display = 'none'
+    setTimeout(() => {
+        duoRunPage.style.display = 'flex'
+    }, 1);
+    duoRSong.pause()
+    duoRSong.currentTime = 0
+    p1Posi = 45
+    p2Posi = 45
+    P1DRShieldSlot = 0
+    P1DRGunSlot = 0
+    P1DRInvSlot = 0
+    P1DRHealSlot = 0
+    P2DRShieldSlot = 0
+    P2DRGunSlot = 0
+    P2DRInvSlot = 0
+    P2DRHealSlot = 0
+    displaySlotsAllDuoR()
+    p1Run.classList.remove('shield')
+    p2Run.classList.remove('shield')
+    p1RInv.style.display = 'none'
+    p2RInv.style.display = 'none'
+    p1RSA = false
+    p2RSA = false
+    p1RInvNum = 0
+    p2RInvNum = 0
+    p1RHSTimer = 0
+    p2RHSTimer = 0
+    p1RHS = false
+    p2RHS = false
+    p1Run.style.top = `${p1Posi}%`
+    p2Run.style.top = `${p2Posi}%`
+    duoRSong.play()
+    duoLiveP1 = 100
+    duoLiveP2 = 100
+    checkLiveDRun1()
+    checkLiveDRun2()
+    p1Run.removeAttribute('class')
+    p1Run.className = 'player'
+    p2Run.removeAttribute('class')
+    p2Run.className = 'player'
+    if (duoRunPaused) {
+        pauseDuoRun()
+    }
 })
 
 function duoRunKeyDown(e) {
@@ -23,8 +99,8 @@ function duoRunKeyUp(e) {
 }
 
 function moveChars() {
-    if (!duoRunPaused) {
-        if (keysDuoRun['ArrowUp'] == true) {
+    if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+        if (keysDuoRun['ArrowUp'] == true && !p2RFire) {
             p2Posi--
             if (p2Posi < 0) {
                 p2Posi = 0
@@ -32,7 +108,7 @@ function moveChars() {
             p2Run.style.top = `${p2Posi}%`
             p2Run.classList.add('upping')
         }
-        if (keysDuoRun['ArrowDown'] == true) {
+        if (keysDuoRun['ArrowDown'] == true && !p2RFire) {
             p2Posi++
             if (p2Posi >= 84) {
                 p2Posi = 84
@@ -40,7 +116,7 @@ function moveChars() {
             p2Run.style.top = `${p2Posi}%`
             p2Run.classList.add('falling')
         }
-        if (keysDuoRun['w'] == true || keysDuoRun['W'] == true) {
+        if (keysDuoRun['w'] == true || keysDuoRun['W'] == true && !p1RFire) {
             p1Posi--
             if (p1Posi < 0) {
                 p1Posi = 0
@@ -48,7 +124,7 @@ function moveChars() {
             p1Run.style.top = `${p1Posi}%`
             p1Run.classList.add('upping')
         }
-        if (keysDuoRun['s'] == true || keysDuoRun['S'] == true) {
+        if (keysDuoRun['s'] == true || keysDuoRun['S'] == true && !p1RFire) {
             p1Posi++
             if (p1Posi >= 84) {
                 p1Posi = 84
@@ -61,7 +137,7 @@ function moveChars() {
 
 let duoRunControls = setInterval(() => {
     moveChars()
-}, 60);
+}, 40);
 
 function pauseDuoRun() {
     if (!duoRunPaused) {
@@ -77,7 +153,18 @@ function pauseDuoRun() {
         p2Rm3.style.animationPlayState = 'paused'
         p2Rm4.style.animationPlayState = 'paused'
         p2Rm5.style.animationPlayState = 'paused'
+        p1RBoost.style.animationPlayState = 'paused'
+        p2RBoost.style.animationPlayState = 'paused'
+        document.getElementById('dRunBckg').style.animationPlayState = 'paused'
+        document.getElementById('pauseDuoControls').style.top = '20px'
         duoRunPaused = true
+        duoRSong.pause()
+        p1RInv.classList.add('pinv')
+        p2RInv.classList.add('pinv')
+        clearInterval(p1RInvWaiter)
+        clearInterval(p2RInvWaiter)
+        clearInterval(p1RHSWaiter)
+        clearInterval(p2RHSWaiter)
     } else {
         p1Rm1.style.animationPlayState = 'running'
         p1Rm2.style.animationPlayState = 'running'
@@ -89,8 +176,275 @@ function pauseDuoRun() {
         p2Rm3.style.animationPlayState = 'running'
         p2Rm4.style.animationPlayState = 'running'
         p2Rm5.style.animationPlayState = 'running'
+        p1RBoost.style.animationPlayState = 'running'
+        p2RBoost.style.animationPlayState = 'running'
+        document.getElementById('dRunBckg').removeAttribute('style')
+        document.getElementById('pauseDuoControls').removeAttribute('style')
         duoRunPaused = false
+        duoRSong.play()
+        p1RInv.classList.remove('pinv')
+        p2RInv.classList.remove('pinv')
+        if (duoRunP1Inv) {
+            p1RInvWaiter = setInterval(() => {
+                p1RInvNum++
+                if (p1RInvNum == 30) {
+                    p1RInv.removeAttribute('style')
+                    duoRunP1Inv = false
+                    clearInterval(p1RInvWaiter)
+                    p1RInvNum = 0
+                    if (p1RunShield) {
+                        p1Run.classList.add('shield')
+                    }
+                }
+            }, 1000);
+        }
+        if (duoRunP2Inv) {
+            p2RInvWaiter = setInterval(() => {
+                p2RInvNum++
+                if (p2RInvNum == 30) {
+                    p2RInv.removeAttribute('style')
+                    duoRunP2Inv = false
+                    clearInterval(p1RInvWaiter)
+                    p2RInvNum = 0
+                    if (p2RunShield) {
+                        p2Run.classList.add('shield')
+                    }
+                }
+            }, 1000);
+        }
+        if (p1RHS) {
+            p1RHSWaiter = setInterval(() => {
+                p1RHSTimer++
+                if (p1RHSTimer == 5) {
+                    p1RHS = false
+                    p1Run.removeAttribute('class')
+                    p1Run.className = 'player'
+                    p1RHSTimer = 0
+                    clearInterval(p1RHSWaiter)
+                }
+            }, 1000);
+        }
+        if (p2RHS) {
+            p2RHSWaiter = setInterval(() => {
+                p2RHSTimer++
+                if (p2RHSTimer == 5) {
+                    p2RHS = false
+                    p2Run.removeAttribute('class')
+                    p2Run.className = 'player'
+                    p2RHSTimer = 0
+                    clearInterval(p2RHSWaiter)
+                }
+            }, 1000);
+        }
     }
+}
+
+function checkLiveDRun1() {
+    if (duoLiveP1 == 100) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h100')
+    }
+
+    if (duoLiveP1 == 90 || duoLiveP1 == 95) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h90')
+    }
+
+    if (duoLiveP1 == 80 || duoLiveP1 == 85) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h80')
+    }
+
+    if (duoLiveP1 == 70 || duoLiveP1 == 75) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h70')
+    }
+
+    if (duoLiveP1 == 60 || duoLiveP1 == 65) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h60')
+    }
+
+    if (duoLiveP1 == 50 || duoLiveP1 == 55) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h50')
+    }
+
+    if (duoLiveP1 == 40 || duoLiveP1 == 45) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h40')
+    }
+
+    if (duoLiveP1 == 30 || duoLiveP1 == 35) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h30')
+    }
+
+    if (duoLiveP1 == 20 || duoLiveP1 == 25) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h20')
+    }
+
+    if (duoLiveP1 == 10 || duoLiveP1 == 15) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h10')
+    }
+
+    if (duoLiveP1 == 5) {
+        duoRunLiveP1Alert.removeAttribute('class')
+        duoRunLiveP1Alert.className = 'hearts'
+        duoRunLiveP1Alert.classList.add('h0')
+    }
+    if (duoLiveP1 <= 0) {
+        p1Run.classList.remove('hurted')
+        p1Run.classList.remove('hShield')
+        p1Run.classList.add('deathAnim')
+        duoRunK1 = true
+        setTimeout(() => {
+            duoRunPage.style.opacity = '0'
+            p1Run.style.top = '120%'
+            setTimeout(() => {
+                duoRunK2 = false
+                duoRunK1 = false
+                duoRunPage.removeAttribute('style')
+                duoRunScorePage.style.display = 'block'
+                duoRSong.pause()
+                duoRSong.currentTime = 0
+                homeSong.currentTime = 0
+                p1Posi = 45
+                p2Posi = 45
+                p1Run.style.top = `${p1Posi}%`
+                p2Run.style.top = `${p2Posi}%`
+                homeSong.play()
+                p1RHS = false
+                p2RHS = false
+                if (duoRunPaused) {
+                    pauseDuoRun()
+                }
+            }, 500);
+        }, 3000);
+    }
+
+}
+
+function displaySlotsAllDuoR() {
+    document.getElementById('p1RSS').innerText = P1DRShieldSlot
+    document.getElementById('p1RGS').innerText = P1DRGunSlot
+    document.getElementById('p1RIS').innerText = P1DRInvSlot
+    document.getElementById('p1RLS').innerText = P1DRHealSlot
+    document.getElementById('p2RSS').innerText = P2DRShieldSlot
+    document.getElementById('p2RGS').innerText = P2DRGunSlot
+    document.getElementById('p2RIS').innerText = P2DRInvSlot
+    document.getElementById('p2RLS').innerText = P2DRHealSlot
+}
+
+function checkLiveDRun2() {
+    if (duoLiveP2 == 100) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h100')
+    }
+
+    if (duoLiveP2 == 90 || duoLiveP2 == 95) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h90')
+    }
+
+    if (duoLiveP2 == 80 || duoLiveP2 == 85) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h80')
+    }
+
+    if (duoLiveP2 == 70 || duoLiveP2 == 75) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h70')
+    }
+
+    if (duoLiveP2 == 60 || duoLiveP2 == 65) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h60')
+    }
+
+    if (duoLiveP2 == 50 || duoLiveP2 == 55) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h50')
+    }
+
+    if (duoLiveP2 == 40 || duoLiveP2 == 45) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h40')
+    }
+
+    if (duoLiveP2 == 30 || duoLiveP2 == 35) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h30')
+    }
+
+    if (duoLiveP2 == 20 || duoLiveP2 == 25) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h20')
+    }
+
+    if (duoLiveP2 == 10 || duoLiveP2 == 15) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h10')
+    }
+
+    if (duoLiveP2 == 5) {
+        duoRunLiveP2Alert.removeAttribute('class')
+        duoRunLiveP2Alert.className = 'hearts'
+        duoRunLiveP2Alert.classList.add('h0')
+    }
+
+    if (duoLiveP2 <= 0) {
+        p2Run.classList.remove('hurted')
+        p2Run.classList.remove('hShield')
+        p2Run.classList.add('deathAnim')
+        duoRunK2 = true
+        setTimeout(() => {
+            duoRunPage.style.opacity = '0'
+            p2Run.style.top = '120%'
+            setTimeout(() => {
+                duoRunPage.removeAttribute('style')
+                duoRunK2 = false
+                duoRunK1 = false
+                duoRunScorePage.style.display = 'block'
+                duoRSong.pause()
+                duoRSong.currentTime = 0
+                homeSong.currentTime = 0
+                p1Posi = 45
+                p2Posi = 45
+                p1Run.style.top = `${p1Posi}%`
+                p2Run.style.top = `${p2Posi}%`
+                homeSong.play()
+                p1RHS = false
+                p2RHS = false
+                if (duoRunPaused) {
+                    pauseDuoRun()
+                }
+            }, 500);
+        }, 3000);
+    }
+
 }
 
 //Player 1 Meteor
@@ -170,6 +524,38 @@ p1Rm5.addEventListener('animationiteration', () => {
     }, 1);
 })
 
+//Player 1 Boost
+p1RBoost.addEventListener('animationiteration', () => {
+    p1RBoost.removeAttribute('class')
+    p1RBoost.className = 'boost'
+    let isAppear = Math.floor(Math.random() * 2)
+    p1RBoost.style.opacity = '0'
+    p1RBoostOn = false
+    isAppear = 1
+    if (isAppear == 1) {
+        p1RBoost.style.opacity = '1'
+        p1RBoostOn = true
+        let BRandTop = Math.random() * 84
+        BRandTop = parseInt(BRandTop)
+        p1RBoost.style.top = `${BRandTop}%`
+        p1RBStyle = Math.floor(Math.random() * 4)
+        if (p1RBStyle == 0) {
+            p1RBoost.classList.add('shieldBoost')
+        }
+        if (p1RBStyle == 1) {
+            p1RBoost.classList.add('gunBoost')
+        }
+        if (p1RBStyle == 2) {
+            p1RBoost.classList.add('invBoost')
+        }
+        if (p1RBStyle == 3) {
+            p1RBoost.classList.add('lifeBoost')
+        }
+
+    }
+})
+
+
 //Player 2 Meteor
 
 p2Rm1.addEventListener('animationiteration', () => {
@@ -247,6 +633,37 @@ p2Rm5.addEventListener('animationiteration', () => {
     }, 1);
 })
 
+//Player 2 Boost
+p2RBoost.addEventListener('animationiteration', () => {
+    p2RBoost.removeAttribute('class')
+    p2RBoost.className = 'boost'
+    let isAppear = Math.floor(Math.random() * 2)
+    p2RBoost.style.opacity = '0'
+    p2RBoostOn = false
+    isAppear = 1
+    if (isAppear == 1) {
+        p2RBoost.style.opacity = '1'
+        p2RBoostOn = true
+        let BRandTop = Math.random() * 84
+        BRandTop = parseInt(BRandTop)
+        p2RBoost.style.top = `${BRandTop}%`
+        p2RBStyle = Math.floor(Math.random() * 4)
+        if (p2RBStyle == 0) {
+            p2RBoost.classList.add('shieldBoost')
+        }
+        if (p2RBStyle == 1) {
+            p2RBoost.classList.add('gunBoost')
+        }
+        if (p2RBStyle == 2) {
+            p2RBoost.classList.add('invBoost')
+        }
+        if (p2RBStyle == 3) {
+            p2RBoost.classList.add('lifeBoost')
+        }
+
+    }
+})
+
 //Check hit Player 1
 
 setInterval(() => {
@@ -256,27 +673,46 @@ setInterval(() => {
         window.getComputedStyle(p1Rm1).getPropertyValue("left")
     );
     if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused) {
+        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
 
         } else {
-            hSong.play()
             p1Run.removeAttribute('class')
             p1Run.className = 'player'
-            p1Run.classList.add('hurted')
-            p1Run.classList.add('hShield')
-            p1RHS = true
-            p1HurtAnim = true
-            setTimeout(() => {
-                p1HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p1RHS = false
-                p1Run.removeAttribute('class')
-                p1Run.className = 'player'
+            if (p1RSA) {
+                p1Run.classList.remove('shield')
+                p1RunShield = false
+                setTimeout(() => {
+                    p1RSA = false
+                }, 1000);
+            } else {
                 if (duoRunPaused) {
                     p1Run.classList.add('playerPaused')
                 }
-            }, 5000);
+                hSong.play()
+                p1Run.classList.add('hurted')
+                p1Run.classList.add('hShield')
+                p1RHS = true
+                p1HurtAnim = true
+                if (duoLiveP1 > 10) {
+                    duoLiveP1 = duoLiveP1 - 10
+                } else {
+                    duoLiveP1 = duoLiveP1 - 5
+                }
+                checkLiveDRun1()
+                setTimeout(() => {
+                    p1HurtAnim = false
+                }, 1000);
+                p1RHSWaiter = setInterval(() => {
+                    p1RHSTimer++
+                    if (p1RHSTimer == 5) {
+                        p1RHS = false
+                        p1Run.removeAttribute('class')
+                        p1Run.className = 'player'
+                        p1RHSTimer = 0
+                        clearInterval(p1RHSWaiter)
+                    }
+                }, 1000);
+            }
         }
     }
 }, 1);
@@ -288,27 +724,46 @@ setInterval(() => {
         window.getComputedStyle(p1Rm2).getPropertyValue("left")
     );
     if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused) {
+        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
 
         } else {
-            hSong.play()
             p1Run.removeAttribute('class')
             p1Run.className = 'player'
-            p1Run.classList.add('hurted')
-            p1Run.classList.add('hShield')
-            p1RHS = true
-            p1HurtAnim = true
-            setTimeout(() => {
-                p1HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p1RHS = false
-                p1Run.removeAttribute('class')
-                p1Run.className = 'player'
+            if (p1RSA) {
+                p1Run.classList.remove('shield')
+                p1RunShield = false
+                setTimeout(() => {
+                    p1RSA = false
+                }, 1000);
+            } else {
                 if (duoRunPaused) {
                     p1Run.classList.add('playerPaused')
                 }
-            }, 5000);
+                hSong.play()
+                p1Run.classList.add('hurted')
+                p1Run.classList.add('hShield')
+                p1RHS = true
+                p1HurtAnim = true
+                if (duoLiveP1 > 10) {
+                    duoLiveP1 = duoLiveP1 - 10
+                } else {
+                    duoLiveP1 = duoLiveP1 - 5
+                }
+                checkLiveDRun1()
+                setTimeout(() => {
+                    p1HurtAnim = false
+                }, 1000);
+                p1RHSWaiter = setInterval(() => {
+                    p1RHSTimer++
+                    if (p1RHSTimer == 5) {
+                        p1RHS = false
+                        p1Run.removeAttribute('class')
+                        p1Run.className = 'player'
+                        p1RHSTimer = 0
+                        clearInterval(p1RHSWaiter)
+                    }
+                }, 1000);
+            }
         }
     }
 }, 1);
@@ -320,27 +775,46 @@ setInterval(() => {
         window.getComputedStyle(p1Rm3).getPropertyValue("left")
     );
     if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused) {
+        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
 
         } else {
-            hSong.play()
             p1Run.removeAttribute('class')
             p1Run.className = 'player'
-            p1Run.classList.add('hurted')
-            p1Run.classList.add('hShield')
-            p1RHS = true
-            p1HurtAnim = true
-            setTimeout(() => {
-                p1HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p1RHS = false
-                p1Run.removeAttribute('class')
-                p1Run.className = 'player'
+            if (p1RSA) {
+                p1Run.classList.remove('shield')
+                p1RunShield = false
+                setTimeout(() => {
+                    p1RSA = false
+                }, 1000);
+            } else {
                 if (duoRunPaused) {
                     p1Run.classList.add('playerPaused')
                 }
-            }, 5000);
+                hSong.play()
+                p1Run.classList.add('hurted')
+                p1Run.classList.add('hShield')
+                p1RHS = true
+                p1HurtAnim = true
+                if (duoLiveP1 > 10) {
+                    duoLiveP1 = duoLiveP1 - 10
+                } else {
+                    duoLiveP1 = duoLiveP1 - 5
+                }
+                checkLiveDRun1()
+                setTimeout(() => {
+                    p1HurtAnim = false
+                }, 1000);
+                p1RHSWaiter = setInterval(() => {
+                    p1RHSTimer++
+                    if (p1RHSTimer == 5) {
+                        p1RHS = false
+                        p1Run.removeAttribute('class')
+                        p1Run.className = 'player'
+                        p1RHSTimer = 0
+                        clearInterval(p1RHSWaiter)
+                    }
+                }, 1000);
+            }
         }
     }
 }, 1);
@@ -352,27 +826,46 @@ setInterval(() => {
         window.getComputedStyle(p1Rm4).getPropertyValue("left")
     );
     if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused) {
+        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
 
         } else {
-            hSong.play()
             p1Run.removeAttribute('class')
             p1Run.className = 'player'
-            p1Run.classList.add('hurted')
-            p1Run.classList.add('hShield')
-            p1RHS = true
-            p1HurtAnim = true
-            setTimeout(() => {
-                p1HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p1RHS = false
-                p1Run.removeAttribute('class')
-                p1Run.className = 'player'
+            if (p1RSA) {
+                p1Run.classList.remove('shield')
+                p1RunShield = false
+                setTimeout(() => {
+                    p1RSA = false
+                }, 1000);
+            } else {
                 if (duoRunPaused) {
                     p1Run.classList.add('playerPaused')
                 }
-            }, 5000);
+                hSong.play()
+                p1Run.classList.add('hurted')
+                p1Run.classList.add('hShield')
+                p1RHS = true
+                p1HurtAnim = true
+                if (duoLiveP1 > 10) {
+                    duoLiveP1 = duoLiveP1 - 10
+                } else {
+                    duoLiveP1 = duoLiveP1 - 5
+                }
+                checkLiveDRun1()
+                setTimeout(() => {
+                    p1HurtAnim = false
+                }, 1000);
+                p1RHSWaiter = setInterval(() => {
+                    p1RHSTimer++
+                    if (p1RHSTimer == 5) {
+                        p1RHS = false
+                        p1Run.removeAttribute('class')
+                        p1Run.className = 'player'
+                        p1RHSTimer = 0
+                        clearInterval(p1RHSWaiter)
+                    }
+                }, 1000);
+            }
         }
     }
 }, 1);
@@ -384,32 +877,81 @@ setInterval(() => {
         window.getComputedStyle(p1Rm5).getPropertyValue("left")
     );
     if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused) {
+        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
 
         } else {
-            hSong.play()
             p1Run.removeAttribute('class')
             p1Run.className = 'player'
-            p1Run.classList.add('hurted')
-            p1Run.classList.add('hShield')
-            p1RHS = true
-            p1HurtAnim = true
-            setTimeout(() => {
-                p1HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p1RHS = false
-                p1Run.removeAttribute('class')
-                p1Run.className = 'player'
+            if (p1RSA) {
+                p1Run.classList.remove('shield')
+                p1RunShield = false
+                setTimeout(() => {
+                    p1RSA = false
+                }, 1000);
+            } else {
                 if (duoRunPaused) {
                     p1Run.classList.add('playerPaused')
                 }
-            }, 5000);
+                hSong.play()
+                p1Run.classList.add('hurted')
+                p1Run.classList.add('hShield')
+                p1RHS = true
+                p1HurtAnim = true
+                if (duoLiveP1 > 10) {
+                    duoLiveP1 = duoLiveP1 - 10
+                } else {
+                    duoLiveP1 = duoLiveP1 - 5
+                }
+                checkLiveDRun1()
+                setTimeout(() => {
+                    p1HurtAnim = false
+                }, 1000);
+                p1RHSWaiter = setInterval(() => {
+                    p1RHSTimer++
+                    if (p1RHSTimer == 5) {
+                        p1RHS = false
+                        p1Run.removeAttribute('class')
+                        p1Run.className = 'player'
+                        p1RHSTimer = 0
+                        clearInterval(p1RHSWaiter)
+                    }
+                }, 1000);
+            }
         }
     }
 }, 1);
 
-//Check Meteor PLayer 2
+//Check Boost Player 1
+setInterval(() => {
+    let boostTop = p1RBoost.style.top
+    boostTop = parseInt(boostTop)
+    let boostLeft = parseInt(
+        window.getComputedStyle(p1RBoost).getPropertyValue("left")
+    );
+    if ((boostTop <= p1Posi || boostTop >= p1Posi) && (boostLeft <= 250 && boostLeft >= 150)) {
+        if (boostTop >= p1Posi + 15 || boostTop <= p1Posi - 8 || p1HurtAnim || duoRunPaused || duoRunK1 || duoRunK2 || !p1RBoostOn) {
+
+        } else {
+            p1RBoost.style.opacity = '0'
+            p1RBoostOn = false
+            if (p1RBStyle == 0) {
+                P1DRShieldSlot++
+            }
+            if (p1RBStyle == 1) {
+                P1DRGunSlot++
+            }
+            if (p1RBStyle == 2) {
+                P1DRInvSlot++
+            }
+            if (p1RBStyle == 3) {
+                P1DRHealSlot++
+            }
+            displaySlotsAllDuoR()
+        }
+    }
+}, 1);
+
+//Check Meteor Player 2
 
 setInterval(() => {
     let meteorTop = p2Rm1.style.top
@@ -418,27 +960,47 @@ setInterval(() => {
         window.getComputedStyle(p2Rm1).getPropertyValue("left")
     );
     if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused) {
+        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
 
         } else {
-            hSong.play()
-            p2Run.removeAttribute('class')
-            p2Run.className = 'player'
-            p2Run.classList.add('hurted')
-            p2Run.classList.add('hShield')
-            p2RHS = true
-            p2HurtAnim = true
-            setTimeout(() => {
-                p2HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p2RHS = false
-                p2Run.removeAttribute('class')
-                p2Run.className = 'player'
-                if (duoRunPaused) {
-                    p2Run.classList.add('playerPaused')
-                }
-            }, 5000);
+           p2Run.removeAttribute('class')
+           p2Run.className = 'player'
+           if (p2RSA) {
+                p2RunShield = false
+                setTimeout(() => {
+                    p2RSA = false
+                }, 1000);
+           } else {
+               hSong.play()
+               if (duoRunPaused) {
+                   p2Run.classList.add('playerPaused')
+               }
+               p2Run.removeAttribute('class')
+               p2Run.className = 'player'
+               p2Run.classList.add('hurted')
+               p2Run.classList.add('hShield')
+               p2RHS = true
+               p2HurtAnim = true
+               if (duoLiveP2 > 10) {
+                   duoLiveP2 = duoLiveP2 - 10
+               } else {
+                   duoLiveP2 = duoLiveP2 - 5
+               }
+               checkLiveDRun2()
+               setTimeout(() => {
+                   p2HurtAnim = false
+               }, 1000);
+               p2RHSWaiter = setInterval(() => {
+                   p2RHSTimer++
+                   if (p2RHSTimer == 5) {
+                       p2RHS = false
+                       p2Run.removeAttribute('class')
+                       p2Run.className = 'player'
+                       p2RHSTimer = 0
+                       clearInterval(p2RHSWaiter)
+                   }
+               }, 1000);
+           }
         }
     }
 }, 1);
@@ -450,27 +1012,47 @@ setInterval(() => {
         window.getComputedStyle(p2Rm2).getPropertyValue("left")
     );
     if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused) {
+        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
 
         } else {
-            hSong.play()
             p2Run.removeAttribute('class')
             p2Run.className = 'player'
-            p2Run.classList.add('hurted')
-            p2Run.classList.add('hShield')
-            p2RHS = true
-            p2HurtAnim = true
-            setTimeout(() => {
-                p2HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p2RHS = false
-                p2Run.removeAttribute('class')
-                p2Run.className = 'player'
+            if (p2RSA) {
+                p2RunShield = false
+                setTimeout(() => {
+                    p2RSA = false
+                }, 1000);
+            } else {
+                hSong.play()
                 if (duoRunPaused) {
                     p2Run.classList.add('playerPaused')
                 }
-            }, 5000);
+                p2Run.removeAttribute('class')
+                p2Run.className = 'player'
+                p2Run.classList.add('hurted')
+                p2Run.classList.add('hShield')
+                p2RHS = true
+                p2HurtAnim = true
+                if (duoLiveP2 > 10) {
+                    duoLiveP2 = duoLiveP2 - 10
+                } else {
+                    duoLiveP2 = duoLiveP2 - 5
+                }
+                checkLiveDRun2()
+                setTimeout(() => {
+                    p2HurtAnim = false
+                }, 1000);
+                p2RHSWaiter = setInterval(() => {
+                    p2RHSTimer++
+                    if (p2RHSTimer == 5) {
+                        p2RHS = false
+                        p2Run.removeAttribute('class')
+                        p2Run.className = 'player'
+                        p2RHSTimer = 0
+                        clearInterval(p2RHSWaiter)
+                    }
+                }, 1000);
+            }
         }
     }
 }, 1);
@@ -482,27 +1064,47 @@ setInterval(() => {
         window.getComputedStyle(p2Rm3).getPropertyValue("left")
     );
     if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused) {
+        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
 
         } else {
-            hSong.play()
             p2Run.removeAttribute('class')
             p2Run.className = 'player'
-            p2Run.classList.add('hurted')
-            p2Run.classList.add('hShield')
-            p2RHS = true
-            p2HurtAnim = true
-            setTimeout(() => {
-                p2HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p2RHS = false
-                p2Run.removeAttribute('class')
-                p2Run.className = 'player'
+            if (p2RSA) {
+                p2RunShield = false
+                setTimeout(() => {
+                    p2RSA = false
+                }, 1000);
+            } else {
+                hSong.play()
                 if (duoRunPaused) {
                     p2Run.classList.add('playerPaused')
                 }
-            }, 5000);
+                p2Run.removeAttribute('class')
+                p2Run.className = 'player'
+                p2Run.classList.add('hurted')
+                p2Run.classList.add('hShield')
+                p2RHS = true
+                p2HurtAnim = true
+                if (duoLiveP2 > 10) {
+                    duoLiveP2 = duoLiveP2 - 10
+                } else {
+                    duoLiveP2 = duoLiveP2 - 5
+                }
+                checkLiveDRun2()
+                setTimeout(() => {
+                    p2HurtAnim = false
+                }, 1000);
+                p2RHSWaiter = setInterval(() => {
+                    p2RHSTimer++
+                    if (p2RHSTimer == 5) {
+                        p2RHS = false
+                        p2Run.removeAttribute('class')
+                        p2Run.className = 'player'
+                        p2RHSTimer = 0
+                        clearInterval(p2RHSWaiter)
+                    }
+                }, 1000);
+            }
         }
     }
 }, 1);
@@ -514,27 +1116,47 @@ setInterval(() => {
         window.getComputedStyle(p2Rm4).getPropertyValue("left")
     );
     if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused) {
+        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
 
         } else {
-            hSong.play()
             p2Run.removeAttribute('class')
             p2Run.className = 'player'
-            p2Run.classList.add('hurted')
-            p2Run.classList.add('hShield')
-            p2RHS = true
-            p2HurtAnim = true
-            setTimeout(() => {
-                p2HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p2RHS = false
-                p2Run.removeAttribute('class')
-                p2Run.className = 'player'
+            if (p2RSA) {
+                p2RunShield = false
+                setTimeout(() => {
+                    p2RSA = false
+                }, 1000);
+            } else {
+                hSong.play()
                 if (duoRunPaused) {
                     p2Run.classList.add('playerPaused')
                 }
-            }, 5000);
+                p2Run.removeAttribute('class')
+                p2Run.className = 'player'
+                p2Run.classList.add('hurted')
+                p2Run.classList.add('hShield')
+                p2RHS = true
+                p2HurtAnim = true
+                if (duoLiveP2 > 10) {
+                    duoLiveP2 = duoLiveP2 - 10
+                } else {
+                    duoLiveP2 = duoLiveP2 - 5
+                }
+                checkLiveDRun2()
+                setTimeout(() => {
+                    p2HurtAnim = false
+                }, 1000);
+                p2RHSWaiter = setInterval(() => {
+                    p2RHSTimer++
+                    if (p2RHSTimer == 5) {
+                        p2RHS = false
+                        p2Run.removeAttribute('class')
+                        p2Run.className = 'player'
+                        p2RHSTimer = 0
+                        clearInterval(p2RHSWaiter)
+                    }
+                }, 1000);
+            }
         }
     }
 }, 1);
@@ -546,27 +1168,77 @@ setInterval(() => {
         window.getComputedStyle(p2Rm5).getPropertyValue("left")
     );
     if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused) {
+        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
 
         } else {
-            hSong.play()
             p2Run.removeAttribute('class')
             p2Run.className = 'player'
-            p2Run.classList.add('hurted')
-            p2Run.classList.add('hShield')
-            p2RHS = true
-            p2HurtAnim = true
-            setTimeout(() => {
-                p2HurtAnim = false
-            }, 1000);
-            setTimeout(() => {
-                p2RHS = false
-                p2Run.removeAttribute('class')
-                p2Run.className = 'player'
+            if (p2RSA) {
+                p2RunShield = false
+                setTimeout(() => {
+                    p2RSA = false
+                }, 1000);
+            } else {
+                hSong.play()
                 if (duoRunPaused) {
                     p2Run.classList.add('playerPaused')
                 }
-            }, 5000);
+                p2Run.removeAttribute('class')
+                p2Run.className = 'player'
+                p2Run.classList.add('hurted')
+                p2Run.classList.add('hShield')
+                p2RHS = true
+                p2HurtAnim = true
+                if (duoLiveP2 > 10) {
+                    duoLiveP2 = duoLiveP2 - 10
+                } else {
+                    duoLiveP2 = duoLiveP2 - 5
+                }
+                checkLiveDRun2()
+                setTimeout(() => {
+                    p2HurtAnim = false
+                }, 1000);
+                p2RHSWaiter = setInterval(() => {
+                    p2RHSTimer++
+                    if (p2RHSTimer == 5) {
+                        p2RHS = false
+                        p2Run.removeAttribute('class')
+                        p2Run.className = 'player'
+                        p2RHSTimer = 0
+                        clearInterval(p2RHSWaiter)
+                    }
+                }, 1000);
+            }
+        }
+    }
+}, 1);
+
+//Check Boost Player 2
+setInterval(() => {
+    let boostTop = p2RBoost.style.top
+    boostTop = parseInt(boostTop)
+    let boostLeft = parseInt(
+        window.getComputedStyle(p2RBoost).getPropertyValue("left")
+    );
+    if ((boostTop <= p2Posi || boostTop >= p2Posi) && (boostLeft <= 250 && boostLeft >= 150)) {
+        if (boostTop >= p2Posi + 15 || boostTop <= p2Posi - 8 || p2HurtAnim || duoRunPaused || duoRunK1 || duoRunK2 || !p2RBoostOn) {
+
+        } else {
+            p2RBoost.style.opacity  = '0'
+            p2RBoostOn = false
+            if (p2RBStyle == 0) {
+                P2DRShieldSlot++
+            }
+            if (p2RBStyle == 1) {
+                P2DRGunSlot++
+            }
+            if (p2RBStyle == 2) {
+                P2DRInvSlot++
+            }
+            if (p2RBStyle == 3) {
+                P2DRHealSlot++
+            }
+            displaySlotsAllDuoR()
         }
     }
 }, 1);

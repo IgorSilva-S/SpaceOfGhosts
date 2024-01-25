@@ -1,14 +1,14 @@
-/*Skin 1 - Female Ghost*/
+/*Skin A - Female Ghost*/
 
-.s1 .player {
+.sA .player {
     background-image: url(../img/sprites/skins/female/Flying.gif);
 }
 
-.s1 .playerPaused {
+.sA .playerPaused {
     background-image: url(../img/sprites/skins/female/Stopped.png);
 }
 
-.s1 .upping {
+.sA .upping {
     background-image: url(../img/sprites/skins/female/Upping.png);
     animation-name: uppingGhosts1;
     animation-duration: .58s;
@@ -24,7 +24,7 @@
     }
 }
 
-.s1 .falling {
+.sA .falling {
     background-image: url(../img/sprites/skins/female/Falling.png);
     animation-name: fallingGhosts1;
     animation-duration: .8s;
@@ -40,33 +40,45 @@
     }
 }
 
-.s1 .homeGhost1 {
+.sA .fire {
+    background-image: url(../img/sprites/skins/female/Fire.gif);
+}
+
+.sA .homeGhost1 {
     background-image: url(../img/sprites/skins/female/Flying.gif);
 }
 
-.s1 .ghostScore {
+.sA .ghostScore {
     background-image: url(../img/sprites/skins/female/Flying.gif);
 }
 
-.s1 .trail {
+.sA .ghostWon {
     background-image: url(../img/sprites/skins/female/Flying.gif);
 }
 
-.s1 .paused .trail {
+.sA .ghostLose {
+    background-image: url(../img/sprites/skins/female/Flying.gif);
+}
+
+.sA .trail {
+    background-image: url(../img/sprites/skins/female/Flying.gif);
+}
+
+.sA .paused .trail {
     background-image: url(../img/sprites/skins/female/Stopped.png);
 }
 
-/*Skin 2 - TranspGhost*/
+/*Skin 1 - TranspGhost*/
 
-.s2 .player {
+.s1 .player {
     background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
 }
 
-.s2 .playerPaused {
+.s1 .playerPaused {
     background-image: url(../img/sprites/skins/transpGhost/Stopped.png);
 }
 
-.s2 .upping {
+.s1 .upping {
     background-image: url(../img/sprites/skins/transpGhost/Upping.png);
     animation-name: uppingGhosts2;
     animation-duration: .58s;
@@ -82,7 +94,7 @@
     }
 }
 
-.s2 .falling {
+.s1 .falling {
     background-image: url(../img/sprites/skins/transpGhost/Falling.png);
     animation-name: fallingGhosts2;
     animation-duration: .8s;
@@ -98,18 +110,38 @@
     }
 }
 
-.s2 .homeGhost1 {
+.s1 .fire {
+    background-image: url(../img/sprites/skins/transpGhost/Fire.gif);
+}
+
+.s1 .homeGhost1 {
     background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
 }
 
-.s2 .ghostScore {
+.s1 .ghostScore {
     background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
 }
 
-.s2 .trail {
+.s1 .ghostWon {
     background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
 }
 
-.s2 .paused .trail {
+.s1 .ghostLose {
+    background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
+}
+
+.s1 .trail {
+    background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
+}
+
+.s1 .paused .trail {
     background-image: url(../img/sprites/skins/transpGhost/Stopped.png);
 }
+
+/*Skin 2 - Dog Ghost*/
+
+/*Skin 3 - Cat Ghost*/
+
+/*Skin 4 - Pyjamas Ghost*/
+
+/*Skin 4A - Female Pyjamas Ghost*/

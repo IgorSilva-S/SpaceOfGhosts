@@ -13,13 +13,6 @@ const duoRSong = document.getElementById('duoRunSong')
 let playerPosi = 45
 let p1Posi = 45
 let p2Posi = 45
-const meteor1 = document.getElementById('m1')
-const meteor2 = document.getElementById('m2')
-const meteor3 = document.getElementById('m3')
-const meteor4 = document.getElementById('m4')
-const meteor5 = document.getElementById('m5')
-const meteor7 = document.getElementById('m7')
-const meteor6 = document.getElementById('m6')
 let hurtShield = false
 let hurtShieldTimer = 0
 let shield = false
@@ -51,6 +44,7 @@ const soloScorePage = document.getElementById('soloScoreMark')
 const homePage = document.getElementById('homeScreen')
 const gameMPage = document.getElementById('gameModeScreen')
 const duoRunPage = document.getElementById('duoRun')
+const duoRunScorePage = document.getElementById('duoRunScore')
 const playButton = document.getElementById('playGame')
 const soloButton = document.getElementById('soloPlay')
 const duoButton = document.getElementById('duoPlay')
@@ -87,6 +81,39 @@ let p1RHS = false, p2RHS = false
 let p1HurtAnim = false, p2HurtAnim = false
 let keysDuoRun = []
 let duoRunPaused = false
+const duoRunLiveP1Alert = document.getElementById('dRunP1Live')
+const duoRunLiveP2Alert = document.getElementById('dRunP2Live')
+let duoLiveP1 = 0, duoLiveP2 = 0
+let duoRunK1 = false, duoRunK2 = false
+let p1RunShield = false, p2RunShield = false
+let p1RSA = false, p2RSA = false
+let p1RFire = false, p2RFire = false
+let P1DRShieldSlot = 0, P2DRShieldSlot = 0
+let P1DRGunSlot = 0, P2DRGunSlot = 0
+let P1DRInvSlot = 0, P2DRInvSlot = 0
+let P1DRHealSlot = 0, P2DRHealSlot = 0
+let plusSpeed = 0
+let addSpeed
+const p1RInv = document.getElementById('InvP1R')
+const p2RInv = document.getElementById('InvP2R')
+let duoRunP1Inv = false, duoRunP2Inv = false
+let p1RInvWaiter, p2RInvWaiter
+let p1RInvNum = 0, p2RInvNum = 0
+let p1RHSWaiter, p2RHSWaiter
+let p1RHSTimer = 0, p2RHSTimer = 0
+const p1RBoost = document.getElementById('p1RBst')
+const p2RBoost = document.getElementById('p2RBst')
+let p1RBoostOn = false, p2RBoostOn = false
+let p1RBStyle, p2RBstyle
+
+//Solo Meteors
+const meteor1 = document.getElementById('m1')
+const meteor2 = document.getElementById('m2')
+const meteor3 = document.getElementById('m3')
+const meteor4 = document.getElementById('m4')
+const meteor5 = document.getElementById('m5')
+const meteor7 = document.getElementById('m7')
+const meteor6 = document.getElementById('m6')
 
 //Duo : Run! Meteors
 const p1Rm1 = document.getElementById('p1Rm1')
@@ -144,17 +171,37 @@ soloButton.addEventListener("click", function () {
             scoreNum++
             sScore.innerText = scoreNum
         }, scoreSpeed);
+        addSpeed = setInterval(() => {
+            if (scoreNum % 250 == 0 && scoreNum != 0) {
+                plusSpeed = plusSpeed + 0.25
+                if (plusSpeed >= 1) {
+                    trail = setInterval(() => {
+                        let trailElm = document.createElement('div')
+                        trailElm.setAttribute('class', 'trail')
+                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                        trailElm.addEventListener("animationend", () => {
+                            trailElm.remove()
+                        })
+                        soloPage.insertAdjacentElement('beforeend', trailElm)
+                    }, 100);
+                }
+            }
+        }, 600);
     }, 500);
 })
 
 duoButton.addEventListener("click", function () {
     pageType = 3
     gameMPage.style.opacity = '0'
+    duoLiveP1 = 100
+    duoLiveP2 = 100
     setTimeout(() => {
         gameMPage.removeAttribute('style')
         duoRunPage.style.display = 'flex'
         homeSong.pause()
         duoRSong.play()
+        checkLiveDRun1()
+        checkLiveDRun2()
     }, 500);
 })
 
@@ -215,15 +262,17 @@ document.addEventListener("keydown", function (e) {
                     superSlot--
                     invencible.style.display = 'block'
                     //trail.style.display = 'block'
-                    trail = setInterval(() => {
-                        let trailElm = document.createElement('div')
-                        trailElm.setAttribute('class', 'trail')
-                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                        trailElm.addEventListener("animationend", () => {
-                            trailElm.remove()
-                        })
-                        soloPage.insertAdjacentElement('beforeend', trailElm)
-                    }, 100);
+                    if (plusSpeed < 1) {
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+                    }
                     song.pause()
                     superSong.play()
                     superP1 = true
@@ -259,7 +308,9 @@ document.addEventListener("keydown", function (e) {
                             document.getElementById('gameBckg').style.display = 'none'
                             invencible.removeAttribute('style')
                             //trail.removeAttribute('style')
-                            clearInterval(trail)
+                            if (plusSpeed < 1) {
+                                clearInterval(trail)
+                            }
                             if (shieldActive) {
                                 player.classList.add('shield')
                             }
@@ -394,6 +445,222 @@ document.addEventListener("keydown", function (e) {
         if(e.key == 'Enter') {
             pauseDuoRun()
         }
+        if (e.key == 'k') {
+            duoLiveP1 = 5
+            checkLiveDRun1()
+        }
+        if (e.key == 'K') {
+            duoLiveP2 = 5
+            checkLiveDRun2()
+        }
+        if (e.key == '1') {
+            if (!p1RSA && P1DRShieldSlot > 0) {
+                P1DRShieldSlot--
+                p1Run.classList.add('shield')
+                p1RunShield = true
+                p1RSA = true
+            }
+            displaySlotsAllDuoR()
+        } 
+        if (e.key == '6') {
+            if (!p2RSA && P2DRShieldSlot > 0) {
+                P2DRShieldSlot--
+                p2Run.classList.add('shield')
+                p2RunShield = true
+                p2RSA = true  
+            }
+            displaySlotsAllDuoR()
+        }
+
+        if (e.key == '2') {
+            if (!p2RHS && !p1RFire && P1DRGunSlot > 0) {
+                P1DRGunSlot--
+                p1Run.classList.add('fire')
+                p1RFire = true
+                p1Run.classList.remove('shield')
+                p1Rm1.style.animationPlayState = 'paused'
+                p1Rm2.style.animationPlayState = 'paused'
+                p1Rm3.style.animationPlayState = 'paused'
+                p1Rm4.style.animationPlayState = 'paused'
+                p1Rm5.style.animationPlayState = 'paused'
+                setTimeout(() => {
+                    p1Run.style.display = 'none'
+                    setTimeout(() => {
+                        p1Run.classList.remove('fire')
+                        p1Run.style.display = 'block'
+                        p1RFire = false
+                    }, 1);
+                    if (p1RunShield) {
+                        p1Run.classList.add('shield')
+                    }
+                    p2Run.removeAttribute('class')
+                    p2Run.className = 'player'
+                    if (p2RSA) {
+                        p2Run.classList.remove('shield')
+                        p2RunShield = false
+                        setTimeout(() => {
+                            p2RSA = false
+                        }, 1000);
+                    } else {
+                        hSong.play()
+                        p2Run.classList.add('hurted')
+                        p2Run.classList.add('hShield')
+                        p2RHS = true
+                        p2HurtAnim = true
+                        if (duoLiveP2 > 10) {
+                            duoLiveP2 = duoLiveP2 - 10
+                        } else {
+                            duoLiveP2 = duoLiveP2 - 5
+                        }
+                        setTimeout(() => {
+                            p2HurtAnim = false
+                        }, 1000);
+                        setTimeout(() => {
+                            p2RHS = false
+                            p2Run.removeAttribute('class')
+                            p2Run.className = 'player'
+                            if (duoRunPaused) {
+                                p2Run.classList.add('playerPaused')
+                            }
+                        }, 5000);
+                    }
+                    checkLiveDRun2()
+                    p1Rm1.style.animationPlayState = 'running'
+                    p1Rm2.style.animationPlayState = 'running'
+                    p1Rm3.style.animationPlayState = 'running'
+                    p1Rm4.style.animationPlayState = 'running'
+                    p1Rm5.style.animationPlayState = 'running'
+                }, 1400);
+            }
+            displaySlotsAllDuoR()
+        }
+
+        if (e.key == '7') {
+            if (!p1RHS && !p2RFire && P2DRGunSlot > 0) {
+                P2DRGunSlot--
+                p2Run.classList.add('fire')
+                p2RFire = true
+                p2Run.classList.remove('shield')
+                p2Rm1.style.animationPlayState = 'paused'
+                p2Rm2.style.animationPlayState = 'paused'
+                p2Rm3.style.animationPlayState = 'paused'
+                p2Rm4.style.animationPlayState = 'paused'
+                p2Rm5.style.animationPlayState = 'paused'
+                setTimeout(() => {
+                    p2Run.style.display = 'none'
+                    setTimeout(() => {
+                        p2Run.classList.remove('fire')
+                        p2Run.style.display = 'block'
+                        p2RFire = false
+                    }, 1);
+                    if (p2RunShield) {
+                        p2Run.classList.add('shield')
+                    }
+                    p1Run.removeAttribute('class')
+                    p1Run.className = 'player'
+                    if (p1RSA) {
+                        p1Run.classList.remove('shield')
+                        p1RunShield = false
+                        setTimeout(() => {
+                            p1RSA = false
+                        }, 1000);
+                    } else {
+                        hSong.play()
+                        p1Run.classList.add('hurted')
+                        p1Run.classList.add('hShield')
+                        p1RHS = true
+                        p1HurtAnim = true
+                        if (duoLiveP1 > 10) {
+                            duoLiveP1 = duoLiveP1 - 10
+                        } else {
+                            duoLiveP1 = duoLiveP1 - 5
+                        }
+                        setTimeout(() => {
+                            p1HurtAnim = false
+                        }, 1000);
+                        setTimeout(() => {
+                            p1RHS = false
+                            p1Run.removeAttribute('class')
+                            p1Run.className = 'player'
+                            if (duoRunPaused) {
+                                p1Run.classList.add('playerPaused')
+                            }
+                        }, 5000);
+                    }
+                    checkLiveDRun1()
+                    p2Rm1.style.animationPlayState = 'running'
+                    p2Rm2.style.animationPlayState = 'running'
+                    p2Rm3.style.animationPlayState = 'running'
+                    p2Rm4.style.animationPlayState = 'running'
+                    p2Rm5.style.animationPlayState = 'running'
+                }, 1400);
+            }
+            displaySlotsAllDuoR()
+        }
+        if (e.key == '3') {
+            if (!duoRunP1Inv && P1DRInvSlot > 0) {
+                P1DRInvSlot--
+                p1RInv.style.display = 'block'
+                duoRunP1Inv = true
+                p1Run.classList.remove('shield')
+                p1RInvWaiter = setInterval(() => {
+                    p1RInvNum++
+                    if (p1RInvNum == 30) {
+                        p1RInv.removeAttribute('style')
+                        duoRunP1Inv = false
+                        clearInterval(p1RInvWaiter)
+                        p1RInvNum = 0
+                        if (p1RunShield) {
+                            p1Run.classList.add('shield')
+                        }
+                    }
+                }, 1000);
+            }
+            displaySlotsAllDuoR()
+        }
+        if (e.key == '8') {
+            if (!duoRunP2Inv && P2DRInvSlot > 0){
+                P2DRInvSlot--
+                p2RInv.style.display = 'block'
+                duoRunP2Inv = true
+                p2Run.classList.remove('shield')
+                p2RInvWaiter = setInterval(() => {
+                    p2RInvNum++
+                    if (p2RInvNum == 30) {
+                        p2RInv.removeAttribute('style')
+                        duoRunP2Inv = false
+                        clearInterval(p2RInvWaiter)
+                        p2RInvNum = 0
+                        if (p2RunShield) {
+                            p2Run.classList.add('shield')
+                        }
+                    }
+                }, 1000);
+            }
+            displaySlotsAllDuoR()
+        }
+        if (e.key == '4') {
+            if (duoLiveP1 < 100 && P1DRHealSlot > 0) {
+                P1DRHealSlot--
+                duoLiveP1 = duoLiveP1 + 10
+                if (duoLiveP1 > 100) {
+                    duoLiveP1 = 100
+                }
+                checkLiveDRun1()
+            }
+            displaySlotsAllDuoR()
+        }
+        if (e.key == '9') {
+            if (duoLiveP2 < 100 && P2DRHealSlot > 0) {
+                P2DRHealSlot--
+                duoLiveP2 = duoLiveP2 + 10
+                if (duoLiveP2 > 100) {
+                    duoLiveP2 = 100
+                }
+                checkLiveDRun2()
+            }
+            displaySlotsAllDuoR()
+        }
     }
 })
 
@@ -417,12 +684,12 @@ document.addEventListener("keyup", function (e) {
     
     //Duo : Run! Restore
     if (pageType == 3) {
-        if (!duoRunPaused) {
-            if (!p1HurtAnim) {
+        if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+            if (!p1HurtAnim && !p1RFire) {
                 p1Run.removeAttribute('class')
                 p1Run.className = 'player'
             }
-            if (!p2HurtAnim) {
+            if (!p2HurtAnim && !p2RFire) {
                 p2Run.removeAttribute('class')
                 p2Run.className = 'player'
             }
@@ -431,6 +698,12 @@ document.addEventListener("keyup", function (e) {
             }
             if (p2RHS) {
                 p2Run.classList.add('hShield')
+            }
+            if (p1RunShield) {
+                p1Run.classList.add('shield')
+            }
+            if (p2RunShield) {
+                p2Run.classList.add('shield')
             }
         }
         duoRunKeyUp(e)

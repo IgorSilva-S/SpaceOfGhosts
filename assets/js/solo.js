@@ -67,6 +67,7 @@ function pauseGameSolo() {
         clearInterval(invWaiter)
         clearInterval(trail)
         clearInterval(scoreCounter)
+        clearInterval(addSpeed)
         if (!invStts) {
             invTimer = 0
         } if (!superP1) {
@@ -116,7 +117,9 @@ function pauseGameSolo() {
                     document.getElementById('gameBckg').removeAttribute('style')
                     invencible.removeAttribute('style')
                     //trail.removeAttribute('style')
-                    clearInterval(trail)
+                    if (plusSpeed < 1) {
+                        clearInterval(trail)
+                    }
                     if (shieldActive) {
                         player.classList.add('shield')
                     }
@@ -164,6 +167,33 @@ function pauseGameSolo() {
             scoreNum++
             sScore.innerText = scoreNum
         }, 500);
+        if (plusSpeed >= 1) {
+            trail = setInterval(() => {
+                let trailElm = document.createElement('div')
+                trailElm.setAttribute('class', 'trail')
+                trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                trailElm.addEventListener("animationend", () => {
+                    trailElm.remove()
+                })
+                soloPage.insertAdjacentElement('beforeend', trailElm)
+            }, 100);
+        }
+        addSpeed = setInterval(() => {
+            if (scoreNum % 250 == 0 && scoreNum != 0) {
+                plusSpeed = plusSpeed + 0.25
+                if (plusSpeed >= 1) {
+                    trail = setInterval(() => {
+                        let trailElm = document.createElement('div')
+                        trailElm.setAttribute('class', 'trail')
+                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                        trailElm.addEventListener("animationend", () => {
+                            trailElm.remove()
+                        })
+                        soloPage.insertAdjacentElement('beforeend', trailElm)
+                    }, 100);
+                }
+            }
+        }, 600);
     }
 }
 //Pause Controls
@@ -230,7 +260,8 @@ document.getElementById('restartInf').addEventListener("click", function () {
             scoreNum++
             sScore.innerText = scoreNum
         }, 500);
-    }, 1);
+    }, 1)
+    plusSpeed = 0
 
 })
 
@@ -279,6 +310,8 @@ document.getElementById('backInf').addEventListener("click", function () {
         clearInterval(superWaiter)
         clearInterval(invWaiter)
         clearInterval(hurtSWaiter)
+        clearInterval(addSpeed)
+        plusSpeed = 0
         superTimer = 0
         invTimer = 0
         hurtSWaiter = 0
@@ -324,6 +357,12 @@ meteor1.addEventListener('animationiteration', () => {
     if (superP1) {
         speedNum--
     }
+    if (plusSpeed > 0) {
+        speedNum = speedNum - plusSpeed
+    }
+    if (speedNum <= 0) {
+        speedNum = 0.5
+    }
     meteor1.removeAttribute('class')
     meteor1.className = 'meteor'
     meteor1.classList.add(`mt${typeOf}`)
@@ -342,6 +381,12 @@ meteor2.addEventListener('animationiteration', () => {
     let typeOf = Math.floor((Math.random() * 3) + 1)
     if (superP1) {
         speedNum--
+    }
+    if (plusSpeed > 0) {
+        speedNum = speedNum - plusSpeed
+    }
+    if (speedNum <= 0) {
+        speedNum = 0.5
     }
     meteor2.removeAttribute('class')
     meteor2.className = 'meteor'
@@ -362,6 +407,12 @@ meteor3.addEventListener('animationiteration', () => {
     if (superP1) {
         speedNum--
     }
+    if (plusSpeed > 0) {
+        speedNum = speedNum - plusSpeed
+    }
+    if (speedNum <= 0) {
+        speedNum = 0.5
+    }
     meteor3.removeAttribute('class')
     meteor3.className = 'meteor'
     meteor3.classList.add(`mt${typeOf}`)
@@ -380,6 +431,12 @@ meteor4.addEventListener('animationiteration', () => {
     let typeOf = Math.floor((Math.random() * 3) + 1)
     if (superP1) {
         speedNum--
+    }
+    if (plusSpeed > 0) {
+        speedNum = speedNum - plusSpeed
+    }
+    if (speedNum <= 0) {
+        speedNum = 0.5
     }
     meteor4.removeAttribute('class')
     meteor4.className = 'meteor'
@@ -400,6 +457,12 @@ meteor5.addEventListener('animationiteration', () => {
     if (superP1) {
         speedNum--
     }
+    if (plusSpeed > 0) {
+        speedNum = speedNum - plusSpeed
+    }
+    if (speedNum <= 0) {
+        speedNum = 0.5
+    }
     meteor5.removeAttribute('class')
     meteor5.className = 'meteor'
     meteor5.classList.add(`mt${typeOf}`)
@@ -418,6 +481,12 @@ meteor6.addEventListener('animationiteration', () => {
     let typeOf = Math.floor((Math.random() * 3) + 1)
     if (superP1) {
         speedNum--
+    }
+    if (plusSpeed > 0) {
+        speedNum = speedNum - plusSpeed
+    }
+    if (speedNum <= 0) {
+        speedNum = 0.5
     }
     meteor6.removeAttribute('class')
     meteor6.className = 'meteor'
@@ -438,6 +507,12 @@ meteor7.addEventListener('animationiteration', () => {
     if (superP1) {
         speedNum--
     }
+    if (plusSpeed > 0) {
+        speedNum = speedNum - plusSpeed
+    }
+    if (speedNum <= 0) {
+        speedNum = 0.5
+    }
     meteor7.removeAttribute('class')
     meteor7.className = 'meteor'
     meteor7.classList.add(`mt${typeOf}`)
@@ -454,14 +529,23 @@ meteor7.addEventListener('animationiteration', () => {
 //Sort Boost 
 boostItem.addEventListener("animationiteration", () => {
     boostOn = false
+    let baseSpeed = 10
     boostItem.style.opacity = '0'
     let appearBoost = Math.floor((Math.random() * 2))
     if (appearBoost != 0) {
+        if (plusSpeed > 0) {
+            baseSpeed = baseSpeed - plusSpeed
+        }
+        boostItem.style.display = 'none'
+        setTimeout(() => {
+            boostItem.style.display = 'block'
+        }, 1);
         let boostTop = Math.random() * 84
         boostStyle = Math.floor(Math.random() * 5)
         boostTop = parseInt(boostTop)
         boostItem.style.opacity = '1'
         boostItem.style.top = `${boostTop}%`
+        boostItem.style.animationDuration = `${baseSpeed}s`
         boostOn = true
         boostItem.removeAttribute('class')
         boostItem.className = 'boost'
@@ -568,6 +652,8 @@ function checkLive1p() {
         clearInterval(invWaiter)
         clearInterval(hurtSWaiter)
         clearInterval(scoreCounter)
+        clearInterval(addSpeed)
+        plusSpeed = 0
         setTimeout(() => {
             soloPage.style.opacity = '0'
             player.style.top = '120%'
@@ -628,9 +714,23 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
+                if (plusSpeed >= 1) {
+                    clearInterval(trail)
+                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
+                    if (plusSpeed >= 1) {
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -675,9 +775,23 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
+                if (plusSpeed >= 1) {
+                    clearInterval(trail)
+                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
+                    if (plusSpeed >= 1) {
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -721,9 +835,23 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
+                if (plusSpeed >= 1) {
+                    clearInterval(trail)
+                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
+                    if (plusSpeed >= 1) {
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -767,9 +895,23 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
+                if (plusSpeed >= 1) {
+                    clearInterval(trail)
+                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
+                    if (plusSpeed >= 1) {
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -813,9 +955,23 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
+                if (plusSpeed >= 1) {
+                    clearInterval(trail)
+                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
+                    if (plusSpeed >= 1) {
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -859,9 +1015,23 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
+                if (plusSpeed >= 1) {
+                    clearInterval(trail)
+                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
+                    if (plusSpeed >= 1) {
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -905,9 +1075,23 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
+                if (plusSpeed >= 1) {
+                    clearInterval(trail)
+                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
+                    if (plusSpeed >= 1) {
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -1011,15 +1195,17 @@ setInterval(() => {
                     document.getElementById('gameBckg').style.display = 'none'
                     invencible.style.display = 'block'
                     //.style.display = 'block'
-                    trail = setInterval(() => {
-                        let trailElm = document.createElement('div')
-                        trailElm.setAttribute('class', 'trail')
-                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                        trailElm.addEventListener("animationend", () => {
-                            trailElm.remove()
-                        })
-                        soloPage.insertAdjacentElement('beforeend', trailElm)
-                    }, 100);
+                    if (plusSpeed < 1) {
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+                    }
                     document.getElementById('gameBckg').style.animationDuration = '7.5s'
                     setTimeout(() => {
                         document.getElementById('gameBckg').style.display = 'block'
@@ -1035,7 +1221,9 @@ setInterval(() => {
                             superTimer = 0
                             invencible.removeAttribute('style')
                             //trail.removeAttribute('style')
-                            clearInterval(trail)
+                            if (plusSpeed < 1) {
+                                clearInterval(trail)
+                            }
                             if (shieldActive) {
                                 player.classList.add('shield')
                             }
@@ -1098,7 +1286,7 @@ function soloKeyUp(e) {
 
 let soloControls = setInterval(() => {
     moveChar()
-}, 60);
+}, 40);
 function moveChar() {
     if (keysSolo['ArrowUp'] == true) {
         if(!hurtAnim) {
