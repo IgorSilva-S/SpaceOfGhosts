@@ -83,6 +83,7 @@ document.getElementById('duoRestart').addEventListener('click', () => {
     p1Run.className = 'player'
     p2Run.removeAttribute('class')
     p2Run.className = 'player'
+    duoRSortMeteors()
     if (duoRunPaused) {
         pauseDuoRun()
     }
@@ -138,6 +139,132 @@ function moveChars() {
 let duoRunControls = setInterval(() => {
     moveChars()
 }, 40);
+
+function duoRSortMeteors() {
+    //Player 1
+    let randMetP11 = Math.floor((Math.random() * 3) + 1)
+    let randTopP11 = Math.random() * 84
+    let randSpeedP11 = Math.floor((Math.random() * 3) + 2)
+    p1Rm1.removeAttribute('class')
+    p1Rm1.className = 'meteor'
+    p1Rm1.classList.add(`mt${randMetP11}`)
+    p1Rm1.style.display = 'none'
+    p1Rm1.style.animationDuration = `${randSpeedP11}s`
+    p1Rm1.style.top = `${randTopP11}%`
+    setTimeout(() => {
+        p1Rm1.style.display = 'block'
+    }, 1);
+    let randMetP12 = Math.floor((Math.random() * 3) + 1)
+    let randTopP12 = Math.random() * 84
+    let randSpeedP12 = Math.floor((Math.random() * 3) + 2)
+    p1Rm2.removeAttribute('class')
+    p1Rm2.className = 'meteor'
+    p1Rm2.classList.add(`mt${randMetP12}`)
+    p1Rm2.style.display = 'none'
+    p1Rm2.style.animationDuration = `${randSpeedP12}s`
+    p1Rm2.style.top = `${randTopP12}%`
+    setTimeout(() => {
+        p1Rm2.style.display = 'block'
+    }, 1);
+    let randMetP13 = Math.floor((Math.random() * 3) + 1)
+    let randTopP13 = Math.random() * 84
+    let randSpeedP13 = Math.floor((Math.random() * 3) + 2)
+    p1Rm3.removeAttribute('class')
+    p1Rm3.className = 'meteor'
+    p1Rm3.classList.add(`mt${randMetP13}`)
+    p1Rm3.style.display = 'none'
+    p1Rm3.style.animationDuration = `${randSpeedP13}s`
+    p1Rm3.style.top = `${randTopP13}%`
+    setTimeout(() => {
+        p1Rm3.style.display = 'block'
+    }, 1);
+    let randMetP14 = Math.floor((Math.random() * 3) + 1)
+    let randTopP14 = Math.random() * 84
+    let randSpeedP14 = Math.floor((Math.random() * 3) + 2)
+    p1Rm4.removeAttribute('class')
+    p1Rm4.className = 'meteor'
+    p1Rm4.classList.add(`mt${randMetP14}`)
+    p1Rm4.style.display = 'none'
+    p1Rm4.style.animationDuration = `${randSpeedP14}s`
+    p1Rm4.style.top = `${randTopP14}%`
+    setTimeout(() => {
+        p1Rm4.style.display = 'block'
+    }, 1);
+    let randMetP15 = Math.floor((Math.random() * 3) + 1)
+    let randTopP15 = Math.random() * 84
+    let randSpeedP15 = Math.floor((Math.random() * 3) + 2)
+    p1Rm5.removeAttribute('class')
+    p1Rm5.className = 'meteor'
+    p1Rm5.classList.add(`mt${randMetP15}`)
+    p1Rm5.style.display = 'none'
+    p1Rm5.style.animationDuration = `${randSpeedP15}s`
+    p1Rm5.style.top = `${randTopP15}%`
+    setTimeout(() => {
+        p1Rm5.style.display = 'block'
+    }, 1);
+
+    //Player 2
+    let randMetP21 = Math.floor((Math.random() * 3) + 1)
+    let randTopP21 = Math.random() * 84
+    let randSpeedP21 = Math.floor((Math.random() * 3) + 2)
+    p2Rm1.removeAttribute('class')
+    p2Rm1.className = 'meteor'
+    p2Rm1.classList.add(`mt${randMetP21}`)
+    p2Rm1.style.display = 'none'
+    p2Rm1.style.animationDuration = `${randSpeedP21}s`
+    p2Rm1.style.top = `${randTopP21}%`
+    setTimeout(() => {
+        p2Rm1.style.display = 'block'
+    }, 1);
+    let randMetP22 = Math.floor((Math.random() * 3) + 1)
+    let randTopP22 = Math.random() * 84
+    let randSpeedP22 = Math.floor((Math.random() * 3) + 2)
+    p2Rm2.removeAttribute('class')
+    p2Rm2.className = 'meteor'
+    p2Rm2.classList.add(`mt${randMetP22}`)
+    p2Rm2.style.display = 'none'
+    p2Rm2.style.animationDuration = `${randSpeedP22}s`
+    p2Rm2.style.top = `${randTopP22}%`
+    setTimeout(() => {
+        p2Rm2.style.display = 'block'
+    }, 1);
+    let randMetP23 = Math.floor((Math.random() * 3) + 1)
+    let randTopP23 = Math.random() * 84
+    let randSpeedP23 = Math.floor((Math.random() * 3) + 2)
+    p2Rm3.removeAttribute('class')
+    p2Rm3.className = 'meteor'
+    p2Rm3.classList.add(`mt${randMetP23}`)
+    p2Rm3.style.display = 'none'
+    p2Rm3.style.animationDuration = `${randSpeedP23}s`
+    p2Rm3.style.top = `${randTopP23}%`
+    setTimeout(() => {
+        p2Rm3.style.display = 'block'
+    }, 1);
+    let randMetP24 = Math.floor((Math.random() * 3) + 1)
+    let randTopP24 = Math.random() * 84
+    let randSpeedP24 = Math.floor((Math.random() * 3) + 2)
+    p2Rm4.removeAttribute('class')
+    p2Rm4.className = 'meteor'
+    p2Rm4.classList.add(`mt${randMetP24}`)
+    p2Rm4.style.display = 'none'
+    p2Rm4.style.animationDuration = `${randSpeedP24}s`
+    p2Rm4.style.top = `${randTopP24}%`
+    setTimeout(() => {
+        p2Rm4.style.display = 'block'
+    }, 1);
+    let randMetP25 = Math.floor((Math.random() * 3) + 1)
+    let randTopP25 = Math.random() * 84
+    let randSpeedP25 = Math.floor((Math.random() * 3) + 2)
+    p2Rm5.removeAttribute('class')
+    p2Rm5.className = 'meteor'
+    p2Rm5.classList.add(`mt${randMetP25}`)
+    p2Rm5.style.display = 'none'
+    p2Rm5.style.animationDuration = `${randSpeedP25}s`
+    p2Rm5.style.top = `${randTopP25}%`
+    setTimeout(() => {
+        p2Rm5.style.display = 'block'
+    }, 1);
+}
 
 function pauseDuoRun() {
     if (!duoRunPaused) {
@@ -310,6 +437,13 @@ function checkLiveDRun1() {
         p1Run.classList.remove('hShield')
         p1Run.classList.add('deathAnim')
         duoRunK1 = true
+        document.getElementById('playerNum').innerText = '2'
+        let p1BoostSum = P1DRShieldSlot + P1DRGunSlot + P1DRInvSlot + P1DRHealSlot
+        let p2BoostSum = P2DRShieldSlot + P2DRGunSlot + P2DRInvSlot + P2DRHealSlot
+        let allSum = p1BoostSum + p2BoostSum
+        document.getElementById('p1BstS').innerText = p1BoostSum
+        document.getElementById('p2BstS').innerText = p2BoostSum
+        document.getElementById('BstSumDuoRun').innerText = allSum
         setTimeout(() => {
             duoRunPage.style.opacity = '0'
             p1Run.style.top = '120%'
@@ -420,6 +554,7 @@ function checkLiveDRun2() {
         p2Run.classList.remove('hShield')
         p2Run.classList.add('deathAnim')
         duoRunK2 = true
+        document.getElementById('playerNum').innerText = '1'
         setTimeout(() => {
             duoRunPage.style.opacity = '0'
             p2Run.style.top = '120%'
@@ -531,7 +666,6 @@ p1RBoost.addEventListener('animationiteration', () => {
     let isAppear = Math.floor(Math.random() * 2)
     p1RBoost.style.opacity = '0'
     p1RBoostOn = false
-    isAppear = 1
     if (isAppear == 1) {
         p1RBoost.style.opacity = '1'
         p1RBoostOn = true
@@ -640,7 +774,6 @@ p2RBoost.addEventListener('animationiteration', () => {
     let isAppear = Math.floor(Math.random() * 2)
     p2RBoost.style.opacity = '0'
     p2RBoostOn = false
-    isAppear = 1
     if (isAppear == 1) {
         p2RBoost.style.opacity = '1'
         p2RBoostOn = true

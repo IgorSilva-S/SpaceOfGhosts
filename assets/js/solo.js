@@ -34,8 +34,8 @@ sortMeteorStartSolo()
 
 function displaySlotsSolo() {
     shieldSW.innerText = shieldSlot
-    superSW.innerText = superSlot
-    invSW.innerText = invSlot
+    acceleratorSW.innerText = acceleratorSlot
+    relaxSW.innerText = relaxSlot
     ShealSW.innerText = fullHealSlot
     healSW.innerText = healSlot
 }
@@ -43,7 +43,7 @@ function displaySlotsSolo() {
 //Pause Game
 
 function pauseGameSolo() {
-    if (!gamePaused) {
+    if (!gamePaused && !relaxStts) {
         pauseGui.style.right = '0'
         pauseBack.style.right = '0'
         meteor1.style.animationPlayState = 'paused'
@@ -60,18 +60,13 @@ function pauseGameSolo() {
         song.pause()
         gamePaused = true
         playerBeforePause = playerPosi
-        superSong.pause()
-        invSong.pause()
-        clearInterval(superWaiter)
+        clearInterval(acceleratorWaiter)
         clearInterval(hurtSWaiter)
-        clearInterval(invWaiter)
         clearInterval(trail)
         clearInterval(scoreCounter)
         clearInterval(addSpeed)
-        if (!invStts) {
-            invTimer = 0
-        } if (!superP1) {
-            superTimer = 0
+        if (!acceleratorP1) {
+            acceleratorTimer = 0
         } if (!hurtShield) {
             hurtShieldTimer = 0
         }
@@ -94,9 +89,7 @@ function pauseGameSolo() {
         song.play()
         player.style.top = `${playerBeforePause}%`
         playerPosi = playerBeforePause
-        if (superP1) {
-            song.pause()
-            superSong.play()
+        if (acceleratorP1) {
             if (shieldActive) {
                 player.classList.remove('shield')
             }
@@ -105,20 +98,30 @@ function pauseGameSolo() {
             setTimeout(() => {
                 document.getElementById('gameBckg').style.display = 'block'
             }, 1);
-            superWaiter = setInterval(() => {
-                superTimer++
-                if (superTimer == 50) {
-                    clearInterval(superWaiter)
-                    superP1 = false
-                    superSong.pause()
-                    superSong.currentTime = 0
-                    song.play()
-                    superTimer = 0
+            acceleratorWaiter = setInterval(() => {
+                acceleratorTimer++
+                if (acceleratorTimer == 50) {
+                    clearInterval(acceleratorWaiter)
+                    acceleratorP1 = false
+                    acceleratorTimer = 0
                     document.getElementById('gameBckg').removeAttribute('style')
                     invencible.removeAttribute('style')
                     //trail.removeAttribute('style')
                     if (plusSpeed < 1) {
                         clearInterval(trail)
+                    } else {
+                        clearInterval(trail)
+                        setTimeout(() => {
+                            trail = setInterval(() => {
+                                let trailElm = document.createElement('div')
+                                trailElm.setAttribute('class', 'trail')
+                                trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                                trailElm.addEventListener("animationend", () => {
+                                    trailElm.remove()
+                                })
+                                soloPage.insertAdjacentElement('beforeend', trailElm)
+                            }, 100);
+                        }, 10);
                     }
                     if (shieldActive) {
                         player.classList.add('shield')
@@ -146,22 +149,6 @@ function pauseGameSolo() {
                 }
             }, 1000);
         }
-
-        if (invStts) {
-            song.pause()
-            invSong.play()
-            invWaiter = setInterval(() => {
-                invTimer++
-                if (invTimer == 30) {
-                    invencible.removeAttribute('style')
-                    invSong.pause()
-                    song.play()
-                    invSong.currentTime = 0
-                    invStts = false
-                    invTimer = 0
-                }
-            }, 1000);
-        }
         soloPage.classList.remove('paused')
         scoreCounter = setInterval(() => {
             scoreNum++
@@ -181,7 +168,8 @@ function pauseGameSolo() {
         addSpeed = setInterval(() => {
             if (scoreNum % 250 == 0 && scoreNum != 0) {
                 plusSpeed = plusSpeed + 0.25
-                if (plusSpeed >= 1) {
+                document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                if (plusSpeed == 1) {
                     trail = setInterval(() => {
                         let trailElm = document.createElement('div')
                         trailElm.setAttribute('class', 'trail')
@@ -205,17 +193,12 @@ document.getElementById('restartInf').addEventListener("click", function () {
     pauseGameSolo()
     song.currentTime = 0
     soloPage.style.display = 'none'
-    if (superP1) {
-        superP1 = false
+    if (acceleratorP1) {
+        acceleratorP1 = false
         clearInterval(trail)
         invencible.style.display = 'none'
     } else {
-        superP1 = false
-    } if (invStts) {
-        invStts = false
-        invencible.style.display = 'none'
-    } else {
-        invStts = false
+        acceleratorP1 = false
     }
     if (hurtShield) {
         hurtShield = false
@@ -233,23 +216,15 @@ document.getElementById('restartInf').addEventListener("click", function () {
     player.style.top = `45%`
     playerPosi = 45
     shieldSlot = 0
-    superSong.pause()
-    superSong.currentTime = 0
     lives1p = 100
     checkLive1p()
     setTimeout(() => {
         soloPage.style.display = 'block'
     }, 1);
     clearSlotSolo()
-    invSong.pause()
-    superSong.pause()
-    invSong.currentTime = 0
-    superSong.currentTime = 0
-    clearInterval(superWaiter)
-    clearInterval(invWaiter)
+    clearInterval(acceleratorWaiter)
     clearInterval(hurtSWaiter)
-    superTimer = 0
-    invTimer = 0
+    acceleratorTimer = 0
     hurtSWaiter = 0
     song.play()
     scoreNum = 0
@@ -273,17 +248,12 @@ document.getElementById('backInf').addEventListener("click", function () {
         homePage.style.display = 'flex'
         homeSong.play()
         homeSong.currentTime = 0
-        if (superP1) {
-            superP1 = false
+        if (acceleratorP1) {
+            acceleratorP1 = false
             clearInterval(trail)
             invencible.style.display = 'none'
         } else {
-            superP1 = false
-        } if (invStts) {
-            invStts = false
-            invencible.style.display = 'none'
-        } else {
-            invStts = false
+            acceleratorP1 = false
         }
         if (hurtShield) {
             hurtShield = false
@@ -298,22 +268,16 @@ document.getElementById('backInf').addEventListener("click", function () {
             shieldActive = false
             shield = false
         }
-        superSong.currentTime = 0
-        invSong.pause()
-        superSong.pause()
-        invSong.currentTime = 0
         song.currentTime = 0
-        superTimer = 0
+        acceleratorTimer = 0
         hurtShieldTimer = 0
         playerPosi = 45
         player.removeAttribute('style')
-        clearInterval(superWaiter)
-        clearInterval(invWaiter)
+        clearInterval(acceleratorWaiter)
         clearInterval(hurtSWaiter)
         clearInterval(addSpeed)
         plusSpeed = 0
-        superTimer = 0
-        invTimer = 0
+        acceleratorTimer = 0
         hurtSWaiter = 0
         scoreNum = 0
         //Pause
@@ -340,13 +304,32 @@ document.getElementById('backInf').addEventListener("click", function () {
 //Clear Slot
 function clearSlotSolo() {
     shieldSlot = 0
-    superSlot = 0
-    invSlot = 0
+    acceleratorSlot = 0
+    relaxSlot = 0
     fullHealSlot = 0
     healSlot = 0
     displaySlotsSolo()
 }
 //End Clear Slot
+
+//Relax Function
+function relaxWithSuccess() {
+    plusSpeed = plusSpeed - 0.25
+    document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+    player.classList.remove('relaxing')
+    meteor1.style.animationPlayState = 'running'
+    meteor2.style.animationPlayState = 'running'
+    meteor3.style.animationPlayState = 'running'
+    meteor4.style.animationPlayState = 'running'
+    meteor5.style.animationPlayState = 'running'
+    meteor6.style.animationPlayState = 'running'
+    meteor7.style.animationPlayState = 'running'
+    boostItem.style.animationPlayState = 'running'
+    document.getElementById('gameBckg').style.animationPlayState = 'running'
+    relaxStts = false
+}
+
+//End Relax Function
 
 //Sort Meteors
 
@@ -354,7 +337,7 @@ meteor1.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-    if (superP1) {
+    if (acceleratorP1) {
         speedNum--
     }
     if (plusSpeed > 0) {
@@ -379,7 +362,7 @@ meteor2.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-    if (superP1) {
+    if (acceleratorP1) {
         speedNum--
     }
     if (plusSpeed > 0) {
@@ -404,7 +387,7 @@ meteor3.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-    if (superP1) {
+    if (acceleratorP1) {
         speedNum--
     }
     if (plusSpeed > 0) {
@@ -429,7 +412,7 @@ meteor4.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-    if (superP1) {
+    if (acceleratorP1) {
         speedNum--
     }
     if (plusSpeed > 0) {
@@ -454,7 +437,7 @@ meteor5.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-    if (superP1) {
+    if (acceleratorP1) {
         speedNum--
     }
     if (plusSpeed > 0) {
@@ -479,7 +462,7 @@ meteor6.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-    if (superP1) {
+    if (acceleratorP1) {
         speedNum--
     }
     if (plusSpeed > 0) {
@@ -504,7 +487,7 @@ meteor7.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
     let typeOf = Math.floor((Math.random() * 3) + 1)
-    if (superP1) {
+    if (acceleratorP1) {
         speedNum--
     }
     if (plusSpeed > 0) {
@@ -560,11 +543,11 @@ boostItem.addEventListener("animationiteration", () => {
         }
 
         if (boostStyle == 3) {
-            boostItem.classList.add('superBoost')
+            boostItem.classList.add('acceleratorBoost')
         }
 
         if (boostStyle == 4) {
-            boostItem.classList.add('invBoost')
+            boostItem.classList.add('relaxBoost')
         }
     } else {
         boostItem.style.opacity = '0'
@@ -648,8 +631,7 @@ function checkLive1p() {
         player.classList.remove('hShield')
         player.classList.add('deathAnim')
         kill = true
-        clearInterval(superWaiter)
-        clearInterval(invWaiter)
+        clearInterval(acceleratorWaiter)
         clearInterval(hurtSWaiter)
         clearInterval(scoreCounter)
         clearInterval(addSpeed)
@@ -674,12 +656,11 @@ function checkLive1p() {
                 playerPosi = 45
                 kill = false
                 sScore.innerText = '0'
-                superTimer = 0
-                invTimer = 0
+                acceleratorTimer = 0
                 hurtSWaiter = 0
-                finalScore = scoreNum + ((shieldSlot + superSlot + invSlot + fullHealSlot + healSlot) * 10)
+                finalScore = scoreNum + ((shieldSlot + acceleratorSlot + relaxSlot + fullHealSlot + healSlot) * 10)
                 document.getElementById('distance').innerText = scoreNum
-                document.getElementById('slots').innerText = (shieldSlot + superSlot + invSlot + fullHealSlot + healSlot)
+                document.getElementById('slots').innerText = (shieldSlot + acceleratorSlot + relaxSlot + fullHealSlot + healSlot)
                 document.getElementById('finalScore').innerText = finalScore
                 let highScore = localStorage.getItem('highScore')
                 if (finalScore > highScore) {
@@ -703,7 +684,7 @@ setInterval(() => {
         window.getComputedStyle(meteor1).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || acceleratorP1) {
 
         } else {
             player.removeAttribute('class')
@@ -765,7 +746,7 @@ setInterval(() => {
         window.getComputedStyle(meteor2).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || acceleratorP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -825,7 +806,7 @@ setInterval(() => {
         window.getComputedStyle(meteor3).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || acceleratorP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -885,7 +866,7 @@ setInterval(() => {
         window.getComputedStyle(meteor4).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || acceleratorP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -945,7 +926,7 @@ setInterval(() => {
         window.getComputedStyle(meteor5).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || acceleratorP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -1005,7 +986,7 @@ setInterval(() => {
         window.getComputedStyle(meteor6).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || acceleratorP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -1065,7 +1046,7 @@ setInterval(() => {
         window.getComputedStyle(meteor7).getPropertyValue("left")
     );
     if ((meteorTop <= playerPosi || meteorTop >= playerPosi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || superP1 || invStts) {
+        if (meteorTop >= playerPosi + 15 || meteorTop <= playerPosi - 8 || hurtShield || gamePaused || acceleratorP1) {
         } else {
             player.removeAttribute('class')
             player.className = 'player'
@@ -1142,7 +1123,7 @@ setInterval(() => {
                     boostItem.style.opacity = '0'
                     boostOn = false
                 } trail
-                if (superP1 || invStts) {
+                if (acceleratorP1 || relaxStts) {
                     player.classList.remove('shield')
                     shield = true
                     shieldActive = true
@@ -1179,19 +1160,11 @@ setInterval(() => {
             } else if (boostStyle == 3) {
                 boostItem.style.opacity = '0'
                 boostOn = false
-                if (!superP1) {
-                    song.pause()
-                    superSong.play()
+                if (!acceleratorP1) {
                     if (shieldActive) {
                         player.classList.remove('shield')
                     }
-                    if (invStts) {
-                        clearInterval(invWaiter)
-                        invStts = false
-                        invSong.pause()
-                        invSong.currentTime = 0
-                    }
-                    superP1 = true
+                    acceleratorP1 = true
                     document.getElementById('gameBckg').style.display = 'none'
                     invencible.style.display = 'block'
                     //.style.display = 'block'
@@ -1210,19 +1183,31 @@ setInterval(() => {
                     setTimeout(() => {
                         document.getElementById('gameBckg').style.display = 'block'
                     }, 1);
-                    superWaiter = setInterval(() => {
-                        superTimer++
-                        if (superTimer == 50) {
-                            clearInterval(superWaiter)
-                            superP1 = false
-                            superSong.pause()
-                            superSong.currentTime = 0
-                            song.play()
-                            superTimer = 0
+                    plusSpeed = plusSpeed + 0.25
+                    document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                    acceleratorWaiter = setInterval(() => {
+                        acceleratorTimer++
+                        if (acceleratorTimer == 50) {
+                            clearInterval(acceleratorWaiter)
+                            acceleratorP1 = false
+                            acceleratorTimer = 0
                             invencible.removeAttribute('style')
                             //trail.removeAttribute('style')
                             if (plusSpeed < 1) {
                                 clearInterval(trail)
+                            } else {
+                                clearInterval(trail)
+                                setTimeout(() => {
+                                    trail = setInterval(() => {
+                                        let trailElm = document.createElement('div')
+                                        trailElm.setAttribute('class', 'trail')
+                                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                                        trailElm.addEventListener("animationend", () => {
+                                            trailElm.remove()
+                                        })
+                                        soloPage.insertAdjacentElement('beforeend', trailElm)
+                                    }, 100);
+                                }, 10);
                             }
                             if (shieldActive) {
                                 player.classList.add('shield')
@@ -1234,41 +1219,46 @@ setInterval(() => {
                         }
                     }, 1000);
                 } else {
-                    superSlot++
+                    acceleratorSlot++
                 }
             } else if (boostStyle == 4) {
                 boostItem.style.opacity = '0'
                 boostOn = false
-                if (!superP1 && !invStts) {
-                    if (invTimer > 0) {
-                        invTimer = 0
-                    }
-                    invencible.style.display = 'block'
-                    song.pause()
-                    invSong.play()
-                    invStts = true
-                    if (shieldActive) {
-                        player.classList.remove('shield')
-                    }
-                    invWaiter = setInterval(() => {
-                        invTimer++
-                        if (invTimer == 30) {
-                            clearInterval(invWaiter)
-                            invencible.removeAttribute('style')
-                            invSong.pause()
-                            song.play()
-                            invSong.currentTime = 0
-                            invStts = false
-                            invTimer = 0
-                        }
-                    }, 1000);
-                    invTimer = 0
+                if (plusSpeed < 1) {
+                    relaxSlot++
                 } else {
-                    invSlot++
+                    if (!acceleratorP1 && !relaxStts) {
+                        player.classList.add('relaxing')
+                        relaxStts = true
+                        meteor1.style.animationPlayState = 'paused'
+                        meteor2.style.animationPlayState = 'paused'
+                        meteor3.style.animationPlayState = 'paused'
+                        meteor4.style.animationPlayState = 'paused'
+                        meteor5.style.animationPlayState = 'paused'
+                        meteor6.style.animationPlayState = 'paused'
+                        meteor7.style.animationPlayState = 'paused'
+                        boostItem.style.animationPlayState = 'paused'
+                        document.getElementById('gameBckg').style.animationPlayState = 'paused'
+                        setTimeout(() => {
+                            plusSpeed = plusSpeed - 0.25
+                            document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                            player.classList.remove('relaxing')
+                            meteor1.style.animationPlayState = 'running'
+                            meteor2.style.animationPlayState = 'running'
+                            meteor3.style.animationPlayState = 'running'
+                            meteor4.style.animationPlayState = 'running'
+                            meteor5.style.animationPlayState = 'running'
+                            meteor6.style.animationPlayState = 'running'
+                            meteor7.style.animationPlayState = 'running'
+                            boostItem.style.animationPlayState = 'running'
+                            document.getElementById('gameBckg').style.animationPlayState = 'running'
+                            relaxStts = false
+                        }, 2000);
                 }
             }
             displaySlotsSolo()
         }
+    }
     }
 }, 1);
 //End check boost
@@ -1289,7 +1279,7 @@ let soloControls = setInterval(() => {
 }, 40);
 function moveChar() {
     if (keysSolo['ArrowUp'] == true) {
-        if(!hurtAnim) {
+        if (!hurtAnim) {
             playerPosi--
             if (playerPosi < 0) {
                 playerPosi = 0
@@ -1341,7 +1331,7 @@ mControlUp.addEventListener('touchend', () => {
             if (hurtShield) {
                 player.classList.add('hShield')
             }
-            if (shieldActive && superP1 == false) {
+            if (shieldActive && acceleratorP1 == false) {
                 player.classList.add('shield')
             }
             if (gamePaused) {
@@ -1376,7 +1366,7 @@ mControlDown.addEventListener('touchend', () => {
             if (hurtShield) {
                 player.classList.add('hShield')
             }
-            if (shieldActive && superP1 == false) {
+            if (shieldActive && acceleratorP1 == false) {
                 player.classList.add('shield')
             }
             if (gamePaused) {

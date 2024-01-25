@@ -44,6 +44,10 @@
     background-image: url(../img/sprites/skins/female/Fire.gif);
 }
 
+.sA .relaxing {
+    background-image: url(../img/sprites/skins/female/Relaxing.gif);
+}
+
 .sA .homeGhost1 {
     background-image: url(../img/sprites/skins/female/Flying.gif);
 }
@@ -112,6 +116,10 @@
 
 .s1 .fire {
     background-image: url(../img/sprites/skins/transpGhost/Fire.gif);
+}
+
+.s1 .relaxing {
+    background-image: url(../img/sprites/skins/transpGhost/Relaxing.gif);
 }
 
 .s1 .homeGhost1 {

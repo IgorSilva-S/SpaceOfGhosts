@@ -13,7 +13,7 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Este jogo está na versão DEV, ele contem bugs e muitas funcionalidades não estão inclusas.<br>Sons, gráficos e
+        Este jogo está na versão BETA, ele contem bugs e muitas funcionalidades não estão inclusas.<br>Sons, gráficos e
         outros usados aqui podem não ser a versão final.
         <button id="exitDisclaimer">Okay</button>
     </section>
@@ -30,13 +30,17 @@
         <!--InfintePlay-->
         <audio src="assets/songs/music/S1NXTLGustPlanet3.mp3" id="homeSong" loop></audio>
         <div class="version">
-            D 5.0
+            B 1.0
         </div>
     </section>
     <section id="gameModeScreen">
         <div class="background">
 
         </div>
+        <button class="returnHome" id="GMRHome">
+
+        </button>
+        <h1>Escolha o seu modo</h1>
         <button id="soloPlay">
             <div></div> Um jogador
         </button>
@@ -44,7 +48,7 @@
             <div></div> Dois Jogadores
         </button>
         <div class="version">
-            D 5.0
+            B 1.0
         </div>
     </section>
 
@@ -62,14 +66,14 @@
                 <div class="slots">x <span id="shieldS"></span></div>
                 (1)
             </div>
-            <div class="itemCont" id="superAlert">
-                <div class="item superBoost"></div>
-                <div class="slots">x <span id="superS"></span></div>
+            <div class="itemCont" id="acceleratorAlert">
+                <div class="item acceleratorBoost"></div>
+                <div class="slots">x <span id="acceleratorS"></span></div>
                 (2)
             </div>
-            <div class="itemCont" id="invAlert">
-                <div class="item invBoost"></div>
-                <div class="slots">x <span id="invS"></span></div>
+            <div class="itemCont" id="relaxAlert">
+                <div class="item relaxBoost"></div>
+                <div class="slots">x <span id="relaxS"></span></div>
                 (3)
             </div>
             <div class="itemCont" id="FhealAlert">
@@ -120,8 +124,6 @@
         </div>
         <audio src="assets/songs/music/StarLightSR.mp3" id="music" loop></audio>
         <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
-        <audio src="assets/songs/music/Super3U.mp3" id="superSong" loop></audio>
-        <audio src="assets/songs/music/Invencible.mp3" id="invSong" loop></audio>
 
         <div class="moveBlock" id="upBlock"></div>
         <div class="moveBlock" id="downBlock"></div>
@@ -129,7 +131,10 @@
         <div class="pauseContainer">
             <div class="pauseAlert">
                 <div class="pauseAnim"></div>
-                <div>Pause</div>
+                <div class="pauseText">Pause</div>
+                <div class="speed">
+                    Velocidade a mais: <span id="plusSpeedAlert">0%</span>
+                </div>
                 <button id="continueInf" style="display: none;">Continuar</button>
                 <button id="backInf">Voltar para o Início</button>
                 <button id="restartInf">Reiniciar Partida</button>
@@ -157,18 +162,28 @@
         </div>
         <div class="ghostScore"></div>
         <div class="soilContainer">
-            <div class="soil"></div>
-            <div class="soil"></div>
-            <div class="soil"></div>
-            <div class="soil"></div>
-            <div class="soil"></div>
+            <div class="soil">
+                <div class="purpleCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="blueCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="purpleCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="blueCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="purpleCrystal"></div>
+            </div>
         </div>
     </section>
     <section id="duoRun">
         <div class="duoControls" id="pauseDuoControls">
-            <div class="returnHome" id="retHome">
-            </div>
-            <div class="restartDuo" id="duoRestart"></div>
+            <button class="returnHome" id="retHome">
+            </button>
+            <button class="restartDuo" id="duoRestart"></button>
         </div>
         <div class="background" id="dRunBckg"></div>
         <div class="playerScreen">
@@ -264,11 +279,21 @@
             <div class="ghostWon"></div>
         </div>
         <div class="soilContainer">
-            <div class="soil"></div>
-            <div class="soil"></div>
-            <div class="soil"></div>
-            <div class="soil"></div>
-            <div class="soil"></div>
+            <div class="soil">
+                <div class="blueCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="purpleCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="blueCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="purpleCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="blueCrystal"></div>
+            </div>
         </div>
     </section>
     <script src="assets/js/script.js"></script>
