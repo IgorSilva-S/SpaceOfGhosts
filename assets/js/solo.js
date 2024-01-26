@@ -1197,6 +1197,7 @@ setInterval(() => {
                                 clearInterval(trail)
                             } else {
                                 clearInterval(trail)
+                                trail = NaN
                                 setTimeout(() => {
                                     trail = setInterval(() => {
                                         let trailElm = document.createElement('div')
@@ -1224,10 +1225,9 @@ setInterval(() => {
             } else if (boostStyle == 4) {
                 boostItem.style.opacity = '0'
                 boostOn = false
-                if (plusSpeed < 1) {
+                if (plusSpeed < 1 || !acceleratorP1 || !relaxStts) {
                     relaxSlot++
                 } else {
-                    if (!acceleratorP1 && !relaxStts) {
                         player.classList.add('relaxing')
                         relaxStts = true
                         meteor1.style.animationPlayState = 'paused'
@@ -1255,13 +1255,13 @@ setInterval(() => {
                             relaxStts = false
                             if (plusSpeed < 1) {
                                 clearInterval(trail)
+                                trail = NaN
                             }
                         }, 2000);
                 }
             }
             displaySlotsSolo()
         }
-    }
     }
 }, 1);
 //End check boost

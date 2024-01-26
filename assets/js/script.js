@@ -32,10 +32,9 @@ let pageType = 0
 2.1 - 1p style points
 3 - Game : 2p VS (Infinite Mode)
 3.1 - Game : 2p VS (Battle! Mode)
-4 - Store
+4 - Shop
 5 - Settings
-6 - Skins
-7 - Credits
+6 - Credits
 */
 const disButton = document.getElementById('exitDisclaimer')
 const disPage = document.getElementById('disclaimer')
@@ -45,10 +44,12 @@ const homePage = document.getElementById('homeScreen')
 const gameMPage = document.getElementById('gameModeScreen')
 const duoRunPage = document.getElementById('duoRun')
 const duoRunScorePage = document.getElementById('duoRunScore')
+const shopPage = document.getElementById('shop')
 const playButton = document.getElementById('playGame')
 const soloButton = document.getElementById('soloPlay')
 const duoButton = document.getElementById('duoPlay')
 const homeSong = document.getElementById('homeSong')
+const shopSong = document.getElementById('shopSong')
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
 let acceleratorSlot = 0
@@ -138,11 +139,20 @@ disButton.addEventListener("click", function () {
 })
 
 playButton.addEventListener("click", function () {
-    pageType = 1.1
+    /*pageType = 1.1
     homePage.style.opacity = '0'
     setTimeout(() => {
         homePage.removeAttribute('style')
         gameMPage.style.display = 'flex'
+    }, 500);*/
+    pageType = 4
+    homePage.style.opacity = '0'
+    setTimeout(() => {
+        homePage.removeAttribute('style')
+        shopPage.style.display = 'block'
+        homeSong.pause()
+        homeSong.currentTime = 0
+        shopSong.play()
     }, 500);
 })
 
@@ -311,6 +321,7 @@ document.addEventListener("keydown", function (e) {
                             clearInterval(trail)
                         } else {
                             clearInterval(trail)
+                            trail = NaN
                             setTimeout(() => {
                                 trail = setInterval(() => {
                                     let trailElm = document.createElement('div')
@@ -650,6 +661,45 @@ document.addEventListener("keydown", function (e) {
     if (pageType == 3) {
         if (e.key == 'Enter') {
             pauseDuoRun()
+        }
+    }
+    if (pageType == 4) {
+        if (e.key == "a") {
+            document.body.className = 'sA'
+        }
+        if (e.key == "1") {
+            document.body.className = 's1'
+        }
+        if (e.key == "2") {
+            document.body.className = 's2'
+        }
+
+        if (e.key == "0") {
+            document.body.removeAttribute('class')
+        }
+        if (e.key == "Enter") {
+            pageType = 1.1
+            shopPage.style.opacity = '0'
+            setTimeout(() => {
+                shopPage.removeAttribute('style')
+                shopSong.pause()
+                shopSong.currentTime = 0
+                homeSong.currentTime = 0
+                homeSong.play()
+                gameMPage.style.display = 'flex'
+            }, 500);
+        }
+        if (e.key == "r") {
+            document.getElementById('example').classList.add('relaxing')
+            setTimeout(() => {
+                document.getElementById('example').classList.remove('relaxing')
+            }, 2000);
+        }
+        if (e.key == "f") {
+            document.getElementById('example').classList.add('fire')
+            setTimeout(() => {
+                document.getElementById('example').classList.remove('fire')
+            }, 1400);
         }
     }
 })

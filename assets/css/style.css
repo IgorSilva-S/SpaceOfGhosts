@@ -1285,3 +1285,25 @@ body {
 .purpleCrystal {
     background-image: url(../img/sprites/background/pCrystal.png);
 }
+
+#shop {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #2E1A47,
+            #111133,
+            #04051a);
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    display: none;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
+}
+
+#shop .clouds {
+    background-image: url(../img/sprites/background/cloudsBckgII.png);
+    animation-duration: 60s;
+    top: -20%
+}

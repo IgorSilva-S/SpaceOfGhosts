@@ -148,6 +148,78 @@
 
 /*Skin 2 - Dog Ghost*/
 
+.s2 .player {
+    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
+}
+
+.s2 .playerPaused {
+    background-image: url(../img/sprites/skins/dogGhost/Stopped.png);
+}
+
+.s2 .upping {
+    background-image: url(../img/sprites/skins/dogGhost/Upping.png);
+    animation-name: uppingGhosts3;
+    animation-duration: .58s;
+}
+
+@keyframes uppingGhosts3 {
+    0% {
+        background-image: url(../img/sprites/skins/dogGhost/Upping.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/dogGhost/Upping.gif);
+    }
+}
+
+.s2 .falling {
+    background-image: url(../img/sprites/skins/dogGhost/Falling.png);
+    animation-name: fallingGhosts3;
+    animation-duration: .8s;
+}
+
+@keyframes fallingGhosts3 {
+    0% {
+        background-image: url(../img/sprites/skins/dogGhost/Falling.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/dogGhost/Falling.gif);
+    }
+}
+
+.s2 .fire {
+    background-image: url(../img/sprites/skins/dogGhost/Fire.gif);
+}
+
+.s2 .relaxing {
+    background-image: url(../img/sprites/skins/dogGhost/Relaxing.gif);
+}
+
+.s2 .homeGhost1 {
+    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
+}
+
+.s2 .ghostScore {
+    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
+}
+
+.s2 .ghostWon {
+    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
+}
+
+.s2 .ghostLose {
+    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
+}
+
+.s2 .trail {
+    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
+}
+
+.s2 .paused .trail {
+    background-image: url(../img/sprites/skins/dogGhost/Stopped.png);
+}
+
 /*Skin 3 - Cat Ghost*/
 
 /*Skin 4 - Pyjamas Ghost*/
