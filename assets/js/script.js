@@ -144,13 +144,13 @@ disButton.addEventListener("click", function () {
 })
 
 playButton.addEventListener("click", function () {
-    /*pageType = 1.1
+    pageType = 1.1
     homePage.style.opacity = '0'
     setTimeout(() => {
         homePage.removeAttribute('style')
         gameMPage.style.display = 'flex'
-    }, 500);*/
-    pageType = 4
+    }, 500);
+    /*pageType = 4
     homePage.style.opacity = '0'
     setTimeout(() => {
         homePage.removeAttribute('style')
@@ -158,7 +158,7 @@ playButton.addEventListener("click", function () {
         homeSong.pause()
         homeSong.currentTime = 0
         shopSong.play()
-    }, 500);
+    }, 500);*/
 })
 
 document.getElementById('GMRHome').addEventListener("click", () => {
