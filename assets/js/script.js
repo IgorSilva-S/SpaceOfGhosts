@@ -7,9 +7,6 @@ const p2Run = document.getElementById('player2Run')
 const invencible = document.getElementById('Inv')
 let trail, kill
 const trailsElms = document.querySelectorAll('.trail')
-const song = document.getElementById('music')
-const hSong = document.getElementById('hSong')
-const duoRSong = document.getElementById('duoRunSong')
 let playerPosi = 45
 let p1Posi = 45
 let p2Posi = 45
@@ -45,11 +42,19 @@ const gameMPage = document.getElementById('gameModeScreen')
 const duoRunPage = document.getElementById('duoRun')
 const duoRunScorePage = document.getElementById('duoRunScore')
 const shopPage = document.getElementById('shop')
+//Songs
+const homeSong = document.getElementById('homeSong') // by Artificial Music
+const song = document.getElementById('soloSong') // by Prod. Riddiman
+const duoRSong = document.getElementById('duoRunSong') // by Pieces
+const hSong = document.getElementById('hSong') // by SEGA and Sonic Team (1992)
+const shopSong = document.getElementById('shopSong') // by dyu / Official by Nintendo
+const settingsSong = document.getElementById('settingsSong') // by dyu / Official by Nintendo
+const creditsSong = document.getElementById('creditsSong') // by After The Fall 
+
+//End Songs
 const playButton = document.getElementById('playGame')
 const soloButton = document.getElementById('soloPlay')
 const duoButton = document.getElementById('duoPlay')
-const homeSong = document.getElementById('homeSong')
-const shopSong = document.getElementById('shopSong')
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
 let acceleratorSlot = 0
