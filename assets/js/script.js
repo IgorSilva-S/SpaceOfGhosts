@@ -42,6 +42,7 @@ const gameMPage = document.getElementById('gameModeScreen')
 const duoRunPage = document.getElementById('duoRun')
 const duoRunScorePage = document.getElementById('duoRunScore')
 const shopPage = document.getElementById('shop')
+const settingsPage = document.getElementById('settings')
 //Songs
 const homeSong = document.getElementById('homeSong') // by Artificial Music
 const song = document.getElementById('soloSong') // by Prod. Riddiman
@@ -53,6 +54,8 @@ const creditsSong = document.getElementById('creditsSong') // by After The Fall
 
 //End Songs
 const playButton = document.getElementById('playGame')
+const shopButton = document.getElementById('goShop')
+const settingsButton = document.getElementById('editSettings')
 const soloButton = document.getElementById('soloPlay')
 const duoButton = document.getElementById('duoPlay')
 const boostItem = document.getElementById('bst')
@@ -150,7 +153,10 @@ playButton.addEventListener("click", function () {
         homePage.removeAttribute('style')
         gameMPage.style.display = 'flex'
     }, 500);
-    /*pageType = 4
+})
+
+shopButton.addEventListener("click", function() {
+    pageType = 4
     homePage.style.opacity = '0'
     setTimeout(() => {
         homePage.removeAttribute('style')
@@ -158,8 +164,20 @@ playButton.addEventListener("click", function () {
         homeSong.pause()
         homeSong.currentTime = 0
         shopSong.play()
-    }, 500);*/
-})
+    }, 500);
+}) 
+
+settingsButton.addEventListener("click", function () {
+    pageType = 5
+    homePage.style.opacity = '0'
+    setTimeout(() => {
+        homePage.removeAttribute('style')
+        settingsPage.style.display = 'block'
+        homeSong.pause()
+        homeSong.currentTime = 0
+        settingsSong.play()
+    }, 500);
+}) 
 
 document.getElementById('GMRHome').addEventListener("click", () => {
     gameMPage.style.opacity = '0'
@@ -168,6 +186,18 @@ document.getElementById('GMRHome').addEventListener("click", () => {
         homePage.style.display = 'flex'
         gameMPage.removeAttribute('style')
     }, 500);
+})
+
+document.getElementById('settingsHome').addEventListener("click", () => {
+    pageType = 1
+    settingsPage.style.opacity = '0'
+    setTimeout(() => {
+    settingsPage.removeAttribute('style')
+        homePage.style.display = 'flex'
+        settingsSong.pause()
+        settingsSong.currentTime = 0
+        homeSong.play()
+}, 500);
 })
 
 soloButton.addEventListener("click", function () {
@@ -682,8 +712,12 @@ document.addEventListener("keydown", function (e) {
         if (e.key == "0") {
             document.body.removeAttribute('class')
         }
+
+        if (e.key == '3') {
+            document.body.className = 's3'
+        }
         if (e.key == "Enter") {
-            pageType = 1.1
+            pageType = 1
             shopPage.style.opacity = '0'
             setTimeout(() => {
                 shopPage.removeAttribute('style')
@@ -691,7 +725,7 @@ document.addEventListener("keydown", function (e) {
                 shopSong.currentTime = 0
                 homeSong.currentTime = 0
                 homeSong.play()
-                gameMPage.style.display = 'flex'
+                homePage.style.display = 'flex'
             }, 500);
         }
         if (e.key == "r") {

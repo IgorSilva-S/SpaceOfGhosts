@@ -662,6 +662,8 @@ function checkLive1p() {
                 document.getElementById('distance').innerText = scoreNum
                 document.getElementById('slots').innerText = (shieldSlot + acceleratorSlot + relaxSlot + fullHealSlot + healSlot)
                 document.getElementById('finalScore').innerText = finalScore
+                let actualMoney = localStorage.getItem('money') + finalScore
+                localStorage.setItem('money', actualMoney)
                 let highScore = localStorage.getItem('highScore')
                 if (finalScore > highScore) {
                     document.getElementById('soloHighAlert').style.display = 'block'
