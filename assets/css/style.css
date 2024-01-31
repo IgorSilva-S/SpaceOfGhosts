@@ -18,7 +18,7 @@ body {
     overflow: hidden;
     font-family: 'Josefin Sans',
         sans-serif;
-    
+
 }
 
 .background {
@@ -689,7 +689,7 @@ body {
 }
 
 .clouds {
-    width: 200vw;
+    width: 3160px;
     height: 100vh;
     position: absolute;
     left: 0;
@@ -699,7 +699,6 @@ body {
     animation-duration: 30s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    background-size: cover;
     background-position: center;
 }
 
@@ -1296,7 +1295,101 @@ body {
 #shop .clouds {
     background-image: url(../img/sprites/background/cloudsBckgII.png);
     animation-duration: 60s;
-    top: -20%
+    z-index: 0;
+    height: 300px;
+    background-size: cover;
+}
+
+#shop .moneyAlert {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+}
+
+#shop .pageName {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px 0;
+    text-shadow: 0px 0px 10px #000;
+    z-index: 5;
+    position: fixed;
+    width: 100%;
+}
+
+.moneyAlert img {
+    width: 45px;
+    height: 45px;
+}
+
+#shop .items {
+    width: 100%;
+    height: 60vh;
+    position: fixed;
+    left: 0;
+    top: calc(50% - 30%);
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#shop .returnHome {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    backdrop-filter: none;
+    border: none;
+    z-index: 1000;
+    filter: drop-shadow(0px 0px 10px #000)
+}
+
+#shop .returnHome:hover {
+    background-color: transparent;
+}
+
+.items::-webkit-scrollbar {
+    appearance: none;
+}
+
+.items::-webkit-scrollbar-thumb {
+    height: 10px;
+    background-color: #0632ff;
+    border-radius: 20px;
+}
+
+.items .Sitem {
+    min-width: 15%;
+    height: 90%;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 20px;
+    background-color: #025;
+    border: 2px solid #0632ff;
+    color: white;
+    font-size: 15px;
+    transition-duration: .5s;
+    border-radius: 8px;
+}
+
+.items .Sitem:hover {
+    background-color: #0632ff;
+}
+
+.Sitem img {
+    width: 100px;
+    height: 100px;
 }
 
 #settings {

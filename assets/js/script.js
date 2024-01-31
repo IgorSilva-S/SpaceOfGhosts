@@ -164,6 +164,7 @@ shopButton.addEventListener("click", function() {
         homeSong.pause()
         homeSong.currentTime = 0
         shopSong.play()
+        document.getElementById('moneyShopView').innerText = localStorage.getItem('money')
     }, 500);
 }) 
 
@@ -185,6 +186,18 @@ document.getElementById('GMRHome').addEventListener("click", () => {
         pageType = 1
         homePage.style.display = 'flex'
         gameMPage.removeAttribute('style')
+    }, 500);
+})
+
+document.getElementById('shopHome').addEventListener("click", () => {
+    pageType = 1
+    shopPage.style.opacity = '0'
+    setTimeout(() => {
+        shopPage.removeAttribute('style')
+        homePage.style.display = 'flex'
+        shopSong.pause()
+        shopSong.currentTime = 0
+        homeSong.play()
     }, 500);
 })
 
@@ -699,24 +712,7 @@ document.addEventListener("keydown", function (e) {
         }
     }
     if (pageType == 4) {
-        if (e.key == "a") {
-            document.body.className = 'sA'
-        }
-        if (e.key == "1") {
-            document.body.className = 's1'
-        }
-        if (e.key == "2") {
-            document.body.className = 's2'
-        }
-
-        if (e.key == "0") {
-            document.body.removeAttribute('class')
-        }
-
-        if (e.key == '3') {
-            document.body.className = 's3'
-        }
-        if (e.key == "Enter") {
+        /*if (e.key == "Enter") {
             pageType = 1
             shopPage.style.opacity = '0'
             setTimeout(() => {
@@ -727,19 +723,7 @@ document.addEventListener("keydown", function (e) {
                 homeSong.play()
                 homePage.style.display = 'flex'
             }, 500);
-        }
-        if (e.key == "r") {
-            document.getElementById('example').classList.add('relaxing')
-            setTimeout(() => {
-                document.getElementById('example').classList.remove('relaxing')
-            }, 2000);
-        }
-        if (e.key == "f") {
-            document.getElementById('example').classList.add('fire')
-            setTimeout(() => {
-                document.getElementById('example').classList.remove('fire')
-            }, 1400);
-        }
+        }*/
     }
 })
 

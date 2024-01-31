@@ -32,10 +32,10 @@
             <button id="goShop">Loja e Skins</button>
             <button id="editSettings">Configurações</button>
             <button id="viewCredits">Créditos</button>
-        </div>       
+        </div>
         <!--InfintePlay-->
         <div class="version">
-            B 2.0
+            B 2.1
         </div>
     </section>
     <section id="gameModeScreen">
@@ -53,7 +53,7 @@
             <div></div> Dois Jogadores
         </button>
         <div class="version">
-            B 2.0
+            B 2.1
         </div>
     </section>
 
@@ -156,7 +156,8 @@
                 <div class="slots">Soma de boosts guardados: <span id="slots">0</span></div>
                 <div class="finalScore">Pontuação final (distância + (boosts * 10)): <span id="finalScore"></span></div>
                 <div class="newHigh" id="soloHighAlert">Nova Melhor pontuação</div>
-                <div class="lastHigh">Melhor pontuação: <span id="highScore"></span></div>
+                <div class="lastHigh">Melhor pontuação: <span id="highScore">0</span></div>
+                <div class="money">Moedas: <span id="moneyAlert">0</span></div>
             </div>
             <div class="goButtons">
                 <button id="soloSHome">Ir para o início</button>
@@ -301,8 +302,44 @@
     </section>
     <section id="shop">
         <div class="clouds"></div>
-        <div class="player" id="example"></div>
-
+        <div class="moneyAlert">
+            <img src="assets/img/sprites/Items/money.png" alt="moneyImage">
+            <span id="moneyShopView"></span>
+        </div>
+        <div class="pageName">Loja</div>
+        <button id="shopHome" class="returnHome"></button>
+        <div class="items">
+            <button class="Sitem">
+                <img src="assets/img/sprites/skins/normal/Flying.gif" alt="femaleSkin">
+                Skin: Normal <br>
+                Retornar
+            </button>
+            <button class="Sitem">
+                <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
+                Skin: Feminina <br>
+                Valor: 300 Moedas
+            </button>
+            <button class="Sitem">
+                <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
+                Skin: TranspGhost <br>
+                Valor: 300 Moedas
+            </button>
+            <button class="Sitem">
+                <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
+                Skin: Fantasma cachorro <br>
+                Valor: 400 Moedas
+            </button>
+            <button class="Sitem">
+                <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
+                Skin: Fantasma gato <br>
+                Valor: 350 Moedas
+            </button>
+            <button class="Sitem" style="display: none;">
+                <img src="assets/img/sprites/shopItems/classicMode.gif" alt="classicMode">
+                Modo de jogo: Clássico <br>
+                Valor: 2000 Moedas
+            </button>
+        </div>
     </section>
 
     <section id="settings">

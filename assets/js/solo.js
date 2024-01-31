@@ -665,6 +665,7 @@ function checkLive1p() {
                 let actualMoney = localStorage.getItem('money') + finalScore
                 localStorage.setItem('money', actualMoney)
                 let highScore = localStorage.getItem('highScore')
+                document.getElementById('moneyAlert').innerText = actualMoney
                 if (finalScore > highScore) {
                     document.getElementById('soloHighAlert').style.display = 'block'
                     localStorage.setItem('highScore', finalScore)
