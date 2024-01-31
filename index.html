@@ -35,7 +35,7 @@
         </div>
         <!--InfintePlay-->
         <div class="version">
-            B 2.1
+            B 3.0
         </div>
     </section>
     <section id="gameModeScreen">
@@ -53,7 +53,7 @@
             <div></div> Dois Jogadores
         </button>
         <div class="version">
-            B 2.1
+            B 3.0
         </div>
     </section>
 
@@ -308,28 +308,24 @@
         </div>
         <div class="pageName">Loja</div>
         <button id="shopHome" class="returnHome"></button>
+        <button class="goSkin" id="skins">Trocar a Skin</button>
         <div class="items">
-            <button class="Sitem">
-                <img src="assets/img/sprites/skins/normal/Flying.gif" alt="femaleSkin">
-                Skin: Normal <br>
-                Retornar
-            </button>
-            <button class="Sitem">
+            <button class="Sitem" id="femaleSkinPurchase">
                 <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
                 Skin: Feminina <br>
                 Valor: 300 Moedas
             </button>
-            <button class="Sitem">
+            <button class="Sitem" id="transpSkinPurchase">
                 <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
                 Skin: TranspGhost <br>
                 Valor: 300 Moedas
             </button>
-            <button class="Sitem">
+            <button class="Sitem" id="dogSkinPurchase">
                 <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
                 Skin: Fantasma cachorro <br>
                 Valor: 400 Moedas
             </button>
-            <button class="Sitem">
+            <button class="Sitem" id="catSkinPurchase">
                 <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
                 Skin: Fantasma gato <br>
                 Valor: 350 Moedas
@@ -341,6 +337,21 @@
             </button>
         </div>
     </section>
+    <section id="skinChanger">
+        <div class="clouds"></div>
+        </div>
+        <div class="player"></div>
+        <button class="backPage" id="returnShop"></button>
+        <h1>Troca de Skin</h1>
+        <div class="sideBar">
+            <h2>Skins</h2>
+            <button class="skin" id="cs0"></button>
+            <button class="skin" id="csA"></button>
+            <button class="skin" id="cs1"></button>
+            <button class="skin" id="cs2"></button>
+            <button class="skin" id="cs3"></button>
+        </div>
+    </section>
 
     <section id="settings">
         <div class="earthCloud"></div>
@@ -350,6 +361,14 @@
             <div class="alignSetting">
                 <label for="oldControls">Controles precisos</label>
                 <input type="checkbox" name="" id="oldControls">
+            </div>
+            <div class="alignSetting">
+                <span>Reportar bugs</span>
+                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues"><img src="assets/img/sprites/navButtons/black/externalWebsite.png" alt="Ir para GitHub"></a>
+            </div>
+            <div class="alignSetting">
+                <span>Apagar save</span>
+                <button id="deleteSave">Apagar</button>
             </div>
             <p>Futuramente, novas configurações estarão disponíveis</p>
         </div>
@@ -367,6 +386,7 @@
     <script src="assets/js/script.js"></script>
     <script src="assets/js/solo.js"></script>
     <script src="assets/js/duoRun.js"></script>
+    <script src="assets/js/shop&skins.js"></script>
 </body>
 
 </html>

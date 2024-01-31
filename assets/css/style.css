@@ -1067,7 +1067,7 @@ body {
     background-color: #0632ff77;
     backdrop-filter: blur(10px);
     border-radius: 8px;
-    background-image: url(../img/sprites/duoRun!/house2.png);
+    background-image: url(../img/sprites/navButtons/white/backHome.png);
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
@@ -1276,7 +1276,8 @@ body {
     background-image: url(../img/sprites/background/pCrystal.png);
 }
 
-#shop {
+#shop,
+#skinChanger {
     width: 100vw;
     height: 100vh;
     background-image: linear-gradient(to bottom, #2E1A47,
@@ -1292,7 +1293,8 @@ body {
     transition-duration: .5s;
 }
 
-#shop .clouds {
+#shop .clouds,
+#skinChanger .clouds {
     background-image: url(../img/sprites/background/cloudsBckgII.png);
     animation-duration: 60s;
     z-index: 0;
@@ -1310,9 +1312,11 @@ body {
     top: 10px;
     right: 10px;
     font-size: 20px;
+    text-shadow: 0px 0px 10px #000;
 }
 
-#shop .pageName {
+#shop .pageName,
+#skinChanger h1 {
     text-align: center;
     font-size: 30px;
     padding: 20px 0;
@@ -1320,6 +1324,11 @@ body {
     z-index: 5;
     position: fixed;
     width: 100%;
+}
+
+#skinChanger h1 {
+    padding: 0;
+    top: 20px;
 }
 
 .moneyAlert img {
@@ -1356,6 +1365,24 @@ body {
     background-color: transparent;
 }
 
+#shop .goSkin {
+    padding: 5px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    margin: 0 20px;
+    background-color: #025;
+    border: 2px solid #0632ff;
+    color: white;
+    font-size: 15px;
+    transition-duration: .5s;
+    border-radius: 20px;
+}
+
+#shop .goSkin:hover {
+    background-color: #0632ff;
+}
+
 .items::-webkit-scrollbar {
     appearance: none;
 }
@@ -1390,6 +1417,76 @@ body {
 .Sitem img {
     width: 100px;
     height: 100px;
+}
+
+#skinChanger .backPage {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    background-image: url(../img/sprites/navButtons/white/backArrow.png);
+    border: none;
+    filter: drop-shadow(0px 0px 10px #000);
+    z-index: 1000;
+    position: fixed;
+}
+
+
+
+.sideBar {
+    width: 15%;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: #f0f0f033;
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sideBar h2 {
+    margin: 20px 0;
+}
+
+.sideBar .skin {
+    min-width: 80px;
+    min-height: 80px;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    transition-duration: .5s;
+}
+
+.sideBar .skin:hover {
+    background-color: #f0f0f022;
+}
+
+#cs0 {
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+}
+
+#csA {
+    background-image: url(../img/sprites/skins/female/Flying.gif);
+}
+
+#cs1 {
+    background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
+}
+
+#cs2 {
+    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
+}
+
+#cs3 {
+    background-image: url(../img/sprites/skins/catGhost/Flying.gif);
 }
 
 #settings {
@@ -1442,10 +1539,10 @@ body {
     position: absolute;
     width: 50px;
     height: 50px;
-    filter: invert();
-    background-color: #0f0f0f;
+    background-image: url(../img/sprites/navButtons/black/backHome.png);
     border-radius: 0;
-    left: 2px;
+    left: 2%;
+    background-color: transparent;
     top: 2px;
 }
 
@@ -1460,6 +1557,24 @@ body {
     box-sizing: border-box;
     padding: 0 20px;
     align-items: center;
+}
+
+.alignSetting img {
+    width: 40px;
+    height: 40px;
+}
+
+.alignSetting button {
+    background-color: #025;
+    border: 2px solid #0632ff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: white;
+    transition-duration: .2s;
+}
+
+.alignSetting button:hover {
+    background-color: #0632ff;
 }
 
 .settingsPanel p {

@@ -25,15 +25,20 @@ let pageType = 0
 0 - Disclaimer
 1 - Home
 1.1 - Game Mode
+1.1.2 - Solo Game Mode : After 1.0
+1.1.3 - Duo Game Mode : After 1.0
 2 - Game : 1p Style
 2.1 - 1p style points
 3 - Game : 2p VS (Infinite Mode)
-3.1 - Game : 2p VS (Battle! Mode)
+3.1 - Game : 2p VS (Battle! Mode) : After 1.0
 4 - Shop
+4.1 - Skin Changer
 5 - Settings
 6 - Credits
 */
 const disButton = document.getElementById('exitDisclaimer')
+
+//Pages
 const disPage = document.getElementById('disclaimer')
 const soloPage = document.getElementById('soloMode')
 const soloScorePage = document.getElementById('soloScoreMark')
@@ -42,7 +47,10 @@ const gameMPage = document.getElementById('gameModeScreen')
 const duoRunPage = document.getElementById('duoRun')
 const duoRunScorePage = document.getElementById('duoRunScore')
 const shopPage = document.getElementById('shop')
+const skinChangerPage = document.getElementById('skinChanger')
 const settingsPage = document.getElementById('settings')
+//End Pages
+
 //Songs
 const homeSong = document.getElementById('homeSong') // by Artificial Music
 const song = document.getElementById('soloSong') // by Prod. Riddiman
@@ -133,7 +141,25 @@ const p2Rm3 = document.getElementById('p2Rm3')
 const p2Rm4 = document.getElementById('p2Rm4')
 const p2Rm5 = document.getElementById('p2Rm5')
 
+//Skin changer button
+const s0b = document.getElementById('cs0')
+const sAb = document.getElementById('csA')
+const s1b = document.getElementById('cs1')
+const s2b = document.getElementById('cs2')
+const s3b = document.getElementById('cs3')
+
+//Skin purchased checker
+let skinABuy = localStorage.getItem('purchasedA')
+let skin1Buy = localStorage.getItem('purchased1')
+let skin2Buy = localStorage.getItem('purchased2')
+let skin3Buy = localStorage.getItem('purchased3')
+
 //End Variables
+
+//Organize LocalStorage items
+if (localStorage.getItem('money') == undefined) {
+    localStorage.setItem('money', 0)
+}
 
 //Navigations Functions
 disButton.addEventListener("click", function () {
@@ -167,6 +193,15 @@ shopButton.addEventListener("click", function() {
         document.getElementById('moneyShopView').innerText = localStorage.getItem('money')
     }, 500);
 }) 
+
+document.getElementById('skins').addEventListener("click", () => {
+    pageType = 4.1
+    shopPage.style.opacity = '0'
+    setTimeout(() => {
+        shopPage.removeAttribute('style')
+        skinChangerPage.style.display = 'block'
+    }, 500);
+})
 
 settingsButton.addEventListener("click", function () {
     pageType = 5
@@ -711,20 +746,7 @@ document.addEventListener("keydown", function (e) {
             pauseDuoRun()
         }
     }
-    if (pageType == 4) {
-        /*if (e.key == "Enter") {
-            pageType = 1
-            shopPage.style.opacity = '0'
-            setTimeout(() => {
-                shopPage.removeAttribute('style')
-                shopSong.pause()
-                shopSong.currentTime = 0
-                homeSong.currentTime = 0
-                homeSong.play()
-                homePage.style.display = 'flex'
-            }, 500);
-        }*/
-    }
+
 })
 
 document.addEventListener("keyup", function (e) {
@@ -971,3 +993,13 @@ document.getElementById('gameName').addEventListener("contextmenu", (e) => {
     e.preventDefault()
 })
 //End prevent Right Click with name
+
+//Delete all button
+document.getElementById('deleteSave').addEventListener("click", () => {
+    let confirmDel = confirm('Deseja mesmo apagar tudo que há salvo? \n Não há volta!')
+    if (confirmDel) {
+        alert('Dados apagados! Iremos reiniciar')
+        window.location = 'index.html'
+        localStorage.clear()
+    }
+})
