@@ -169,7 +169,7 @@ function pauseGameSolo() {
             if (scoreNum % 250 == 0 && scoreNum != 0) {
                 plusSpeed = plusSpeed + 0.25
                 document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
-                if (plusSpeed == 1) {
+                if (plusSpeed == 1 && trail == NaN) {
                     trail = setInterval(() => {
                         let trailElm = document.createElement('div')
                         trailElm.setAttribute('class', 'trail')
@@ -662,7 +662,10 @@ function checkLive1p() {
                 document.getElementById('distance').innerText = scoreNum
                 document.getElementById('slots').innerText = (shieldSlot + acceleratorSlot + relaxSlot + fullHealSlot + healSlot)
                 document.getElementById('finalScore').innerText = finalScore
-                let actualMoney = localStorage.getItem('money') + finalScore
+                finalScore = parseInt(finalScore)
+                let localMoney = localStorage.getItem('money')
+                localMoney = parseInt(localMoney)
+                let actualMoney = localMoney + finalScore
                 localStorage.setItem('money', actualMoney)
                 let highScore = localStorage.getItem('highScore')
                 document.getElementById('moneyAlert').innerText = actualMoney

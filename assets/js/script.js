@@ -5,7 +5,8 @@ let keysSolo = []
 const p1Run = document.getElementById('player1Run')
 const p2Run = document.getElementById('player2Run')
 const invencible = document.getElementById('Inv')
-let trail, kill
+let trail = NaN, kill
+let trailHome
 const trailsElms = document.querySelectorAll('.trail')
 let playerPosi = 45
 let p1Posi = 45
@@ -49,6 +50,7 @@ const duoRunScorePage = document.getElementById('duoRunScore')
 const shopPage = document.getElementById('shop')
 const skinChangerPage = document.getElementById('skinChanger')
 const settingsPage = document.getElementById('settings')
+const creditsPage = document.getElementById('credits')
 //End Pages
 
 //Songs
@@ -64,6 +66,7 @@ const creditsSong = document.getElementById('creditsSong') // by After The Fall
 const playButton = document.getElementById('playGame')
 const shopButton = document.getElementById('goShop')
 const settingsButton = document.getElementById('editSettings')
+const creditsButton = document.getElementById('viewCredits')
 const soloButton = document.getElementById('soloPlay')
 const duoButton = document.getElementById('duoPlay')
 const boostItem = document.getElementById('bst')
@@ -119,6 +122,7 @@ const p2RBoost = document.getElementById('p2RBst')
 let p1RBoostOn = false, p2RBoostOn = false
 let p1RBStyle, p2RBstyle
 let type2Controls = false
+let muted = false
 
 //Solo Meteors
 const meteor1 = document.getElementById('m1')
@@ -160,6 +164,39 @@ let skin3Buy = localStorage.getItem('purchased3')
 if (localStorage.getItem('money') == undefined) {
     localStorage.setItem('money', 0)
 }
+
+function organizeSound() {
+    let gameVolume = localStorage.getItem('volume')
+    if (gameVolume != undefined) {
+        homeSong.volume = gameVolume
+        song.volume = gameVolume
+        duoRSong.volume = gameVolume
+        hSong.volume = gameVolume
+        shopSong.volume = gameVolume
+        settingsSong.volume = gameVolume
+        creditsSong.volume = gameVolume
+        document.getElementById('volumeNum').innerText = `${gameVolume * 100}%`
+        document.getElementById('vol').value = gameVolume * 100
+    } if (gameVolume == 0) {
+        muted = true
+    }
+}
+
+function enableOldControls() {
+    let oldEnabled = localStorage.getItem('oldControls')
+    if (oldEnabled != undefined) {
+        type2Controls = oldEnabled
+        if (oldEnabled) {
+            document.getElementById('oldControls').checked = true
+        } else {
+            document.getElementById('oldControls').checked = false
+        }
+    }
+}
+
+organizeSound()
+enableOldControls()
+//End Organize localStorage Items
 
 //Navigations Functions
 disButton.addEventListener("click", function () {
@@ -215,6 +252,29 @@ settingsButton.addEventListener("click", function () {
     }, 500);
 }) 
 
+creditsButton.addEventListener("click", () => {
+    pageType = 6
+    homePage.style.opacity = '0'
+    setTimeout(() => {
+        homePage.removeAttribute('style')
+        creditsPage.style.display = 'block'
+        homeSong.pause()
+        homeSong.currentTime = 0
+        creditsSong.play()
+        setTimeout(() => {
+            creditsPage.style.opacity = '0'
+            pageType = 1
+            setTimeout(() => {
+                creditsPage.removeAttribute('style')
+                homePage.style.display = 'flex'
+                creditsSong.pause()
+                creditsSong.currentTime = 0
+                homeSong.play()
+            }, 500);
+        }, 20000);
+    }, 500);
+})
+
 document.getElementById('GMRHome').addEventListener("click", () => {
     gameMPage.style.opacity = '0'
     setTimeout(() => {
@@ -258,7 +318,7 @@ soloButton.addEventListener("click", function () {
         soloPage.style.display = 'block'
         homeSong.pause()
         song.play()
-        homeSong.volume = 1
+        
         homeSong.currentTime = 0
         acceleratorP1 = false
         acceleratorTimer = 0
@@ -272,7 +332,7 @@ soloButton.addEventListener("click", function () {
             if (scoreNum % 250 == 0 && scoreNum != 0) {
                 plusSpeed = plusSpeed + 0.25
                 document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
-                if (plusSpeed == 1) {
+                if (plusSpeed == 1 && trail == NaN) {
                     trail = setInterval(() => {
                         let trailElm = document.createElement('div')
                         trailElm.setAttribute('class', 'trail')
@@ -308,6 +368,17 @@ duoButton.addEventListener("click", function () {
 
 
 document.addEventListener("keydown", function (e) {
+    if (e.key == "m" || e.key == "M") {
+        if (muted) {
+            muted = false
+            localStorage.setItem('volume', 1)
+            organizeSound()
+        } else {
+            muted = true
+            localStorage.setItem('volume', 0)
+            organizeSound()
+        }
+    }
     if (pageType == 0) {
         if (e.key == "Enter") {
             pageType = 1
@@ -469,6 +540,7 @@ document.addEventListener("keydown", function (e) {
                     relaxStts = false
                     if (plusSpeed < 1) {
                         clearInterval(trail)
+                        trail = NaN
                     }
                 }, 2000);
             } else if (relaxSlot == 0) {
@@ -978,6 +1050,38 @@ document.getElementById('duoRSGame').addEventListener("click", () => {
     }, 500);
 })
 //End Navigations Functions
+
+//Settings: Enable old Controls 
+document.getElementById('oldControls').addEventListener('change', () => {
+    if (document.getElementById('oldControls').checked) {
+        type2Controls = true
+        localStorage.setItem('oldControls', type2Controls)
+    } else {
+        type2Controls = false
+        localStorage.setItem('oldControls', type2Controls)
+    }
+})
+//End Settings: Enable old Controls
+
+//Settings volume Slider
+
+document.getElementById('vol').addEventListener('change', () => {
+    let gameVolume = document.getElementById('vol').value / 100
+    homeSong.volume = gameVolume
+    song.volume = gameVolume
+    duoRSong.volume = gameVolume
+    hSong.volume = gameVolume
+    shopSong.volume = gameVolume
+    settingsSong.volume = gameVolume
+    creditsSong.volume = gameVolume
+    localStorage.setItem('volume', gameVolume)
+    document.getElementById('volumeNum').innerText = `${document.getElementById('vol').value}%`
+    if (gameVolume == 0) {
+        muted = true
+    } else {
+        muted = false
+    }
+})
 
 //Easter Egg Home
 document.getElementById('hgh1').addEventListener("click", () => {

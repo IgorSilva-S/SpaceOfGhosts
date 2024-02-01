@@ -13,9 +13,12 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Este jogo está na versão BETA, ele contem bugs e muitas funcionalidades não estão inclusas.<br>Sons, gráficos e
-        outros usados aqui podem não ser a versão final.
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.0, caso encontre bugs, por favor, abra uma Issue no GitHub.<br>
+        Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser utilizadas com a devida autorização do<br>
+        criador do jogo.<br><br>
+        Divirta-se!
         <button id="exitDisclaimer">Okay</button>
+        <div class="waveGhost"></div>
     </section>
 
     <section id="homeScreen">
@@ -35,7 +38,7 @@
         </div>
         <!--InfintePlay-->
         <div class="version">
-            B 3.0
+            R 1.0
         </div>
     </section>
     <section id="gameModeScreen">
@@ -53,7 +56,7 @@
             <div></div> Dois Jogadores
         </button>
         <div class="version">
-            B 3.0
+            R 1.0
         </div>
     </section>
 
@@ -363,14 +366,47 @@
                 <input type="checkbox" name="" id="oldControls">
             </div>
             <div class="alignSetting">
+                <label for="vol">Volume</label>
+                <div class="alignItems">
+                    <span id="volumeNum">100%</span>
+                    <input type="range" name="" id="vol" max="100" value="100">
+                </div>
+            </div>
+            <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M</span>
+            <div class="alignSetting">
                 <span>Reportar bugs</span>
-                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues"><img src="assets/img/sprites/navButtons/black/externalWebsite.png" alt="Ir para GitHub"></a>
+                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues" target="_blank"><img src="assets/img/sprites/navButtons/black/externalWebsite.png" alt="Ir para GitHub"></a>
             </div>
             <div class="alignSetting">
                 <span>Apagar save</span>
                 <button id="deleteSave">Apagar</button>
             </div>
             <p>Futuramente, novas configurações estarão disponíveis</p>
+        </div>
+    </section>
+    <section id="credits">
+        <div class="rollCredits">
+            <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts - Créditos">
+            <div class="creditsSection">
+                <span class="sectionTitle">Música</span><br><br>
+                Início: Artificial Music <br>
+                Modo Solo: Prod. Riddiman <br>
+                Modo Duo: Pieces <br>
+                Loja e Configurações: dyu / Mix oficial: Nintendo <br>
+                Créditos: After The Fall <br>
+            </div>
+            <div class="creditsSection">
+                <span class="sectionTitle">Beta Testers</span><br><br>
+                Caio Plácido <br>
+                Yuri Matsumoto <br>
+                Lucas Santarello <br>
+                Nicolas Faria <br>
+                Roberto Endo <br>
+                Enzo Souza <br>
+            </div>
+            <div class="creditsSection">
+                <span class="thanks">Obrigado por jogar!</span>
+            </div>
         </div>
     </section>
 
