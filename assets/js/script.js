@@ -194,8 +194,16 @@ function enableOldControls() {
     }
 }
 
+function skinChanger() {
+    let skinTypo = localStorage.getItem('actualSkin')
+    if (skinTypo != undefined) {
+        document.body.className = skinTypo
+    }
+}
+
 organizeSound()
 enableOldControls()
+skinChanger()
 //End Organize localStorage Items
 
 //Navigations Functions

@@ -73,7 +73,7 @@ document.getElementById('catSkinPurchase').addEventListener("click", () => {
                 money = money - itemValue
                 localStorage.setItem('money', money)
                 document.getElementById('moneyShopView').innerText = money
-                localStorage.setItem('purchased2', confirmPurchase)
+                localStorage.setItem('purchased3', confirmPurchase)
             } else {
                 alert('Você não tem moedas suficientes para adquirir esse produto!')
             }
@@ -95,11 +95,13 @@ document.getElementById('returnShop').addEventListener("click", () => {
 
 s0b.addEventListener("click", () => {
     document.body.removeAttribute('class')
+    localStorage.removeItem('actualSkin')
 })
 
 sAb.addEventListener("click", () => {
     if (skinABuy) {
         document.body.className = 'sA'
+        localStorage.setItem('actualSkin', 'sA')
     } else {
         alert('É necessário comprar a skin antes de utilizar')
     }
@@ -108,6 +110,7 @@ sAb.addEventListener("click", () => {
 s1b.addEventListener("click", () => {
     if (skin1Buy) {
         document.body.className = 's1'
+        localStorage.setItem('actualSkin', 's1')
     } else {
         alert('É necessário comprar a skin antes de utilizar')
     }
@@ -116,6 +119,7 @@ s1b.addEventListener("click", () => {
 s2b.addEventListener("click", () => {
     if (skin2Buy) {
         document.body.className = 's2'
+        localStorage.setItem('actualSkin', 's2')
     } else {
         alert('É necessário comprar a skin antes de utilizar')
     }
@@ -124,6 +128,7 @@ s2b.addEventListener("click", () => {
 s3b.addEventListener("click", () => {
     if (skin3Buy) {
         document.body.className = 's3'
+        localStorage.setItem('actualSkin', 's3')
     } else {
         alert('É necessário comprar a skin antes de utilizar')
     }
