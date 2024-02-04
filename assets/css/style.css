@@ -1711,6 +1711,124 @@ body {
     font-size: 30px;
 }
 
+/*R 1.0*/
+#soloClassic {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
+    background-image: linear-gradient(to bottom, #0632ff, #8706d4);
+}
+
+#soloClassic .classicSoil {
+    width: 3840px;
+    height: 125px;
+    background-image: url(../img/sprites/background/Soil.png);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    animation: moveBckg 10s linear infinite;
+}
+
+#soloClassic .clouds {
+    top: -150px;
+    background-image: url(../img/sprites/background/cloudsBckg.png);
+}
+
+#soloClassic .player {
+    top: calc(100% - 150px);
+    left: 100px;
+}
+
+#soloClassic .crystal {
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    animation: moveCrystal 8.2s linear infinite;
+    bottom: 50px;
+}
+
+.jump {
+    animation: jumpPlayer 1s linear;
+}
+
+@keyframes jumpPlayer {
+    0% {
+            top: calc(100% - 150px);
+    }
+
+    40% {
+            top: calc(100% - 250px);
+    }
+
+    50% {
+        top: calc(100% - 275px);
+    }
+
+
+    60% {
+            top: calc(100% - 250px);
+    }
+
+    100% {
+            top: calc(100% - 150px);
+    }
+}
+
+@keyframes moveCrystal {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: -200px;
+    }
+}
+
+.cType1,
+.cType4 {
+    width: 50px;
+    height: 50px;
+}
+
+.cType1 {
+    background-image: url(../img/sprites/classic/Crystal1.png);
+}
+
+.cType2 {
+    background-image: url(../img/sprites/classic/Crystal2.png);
+}
+
+.cType3 {
+    background-image: url(../img/sprites/classic/Crystal3.png);
+}
+
+.cType4 {
+    background-image: url(../img/sprites/classic/Crystal4.png);
+}
+
+.cType5 {
+    background-image: url(../img/sprites/classic/Crystal5.png);
+}
+
+.cType6 {
+    background-image: url(../img/sprites/classic/Crystal6.png);
+}
+
+.cType2,
+.cType5 {
+    width: 75px;
+    height: 50px;
+}
+
+.cType3,
+.cType6 {
+    width: 100px;
+    height: 50px;
+}
+
 @media (max-width: 1366px) {
     .mt1 {
         width: 32px;

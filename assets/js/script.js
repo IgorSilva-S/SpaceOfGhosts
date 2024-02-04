@@ -4,6 +4,7 @@ const player = document.getElementById('ghost')
 let keysSolo = []
 const p1Run = document.getElementById('player1Run')
 const p2Run = document.getElementById('player2Run')
+const playerClassic = document.getElementById('classicPlayer')
 const invencible = document.getElementById('Inv')
 let trail = NaN, kill
 let trailHome
@@ -29,9 +30,10 @@ let pageType = 0
 1.1.2 - Solo Game Mode : After 1.0
 1.1.3 - Duo Game Mode : After 1.0
 2 - Game : 1p Style
-2.1 - 1p style points
+2.1- Game : Classic 1p Mode : After 1.0
 3 - Game : 2p VS (Infinite Mode)
 3.1 - Game : 2p VS (Battle! Mode) : After 1.0
+3.2 - 
 4 - Shop
 4.1 - Skin Changer
 5 - Settings
@@ -51,6 +53,7 @@ const shopPage = document.getElementById('shop')
 const skinChangerPage = document.getElementById('skinChanger')
 const settingsPage = document.getElementById('settings')
 const creditsPage = document.getElementById('credits')
+const classicSoloPage = document.getElementById('soloClassic')
 //End Pages
 
 //Songs
@@ -145,6 +148,10 @@ const p2Rm3 = document.getElementById('p2Rm3')
 const p2Rm4 = document.getElementById('p2Rm4')
 const p2Rm5 = document.getElementById('p2Rm5')
 
+//Classic Solo Crystals
+const crystal1 = document.getElementById('cr1')
+const crystal2 = document.getElementById('cr2')
+
 //Skin changer button
 const s0b = document.getElementById('cs0')
 const sAb = document.getElementById('csA')
@@ -218,15 +225,15 @@ disButton.addEventListener("click", function () {
 })
 
 playButton.addEventListener("click", function () {
-    pageType = 1.1
+    pageType = 2.1
     homePage.style.opacity = '0'
     setTimeout(() => {
         homePage.removeAttribute('style')
-        gameMPage.style.display = 'flex'
+        classicSoloPage.style.display = 'block'
     }, 500);
 })
 
-shopButton.addEventListener("click", function() {
+shopButton.addEventListener("click", function () {
     pageType = 4
     homePage.style.opacity = '0'
     setTimeout(() => {
@@ -237,7 +244,7 @@ shopButton.addEventListener("click", function() {
         shopSong.play()
         document.getElementById('moneyShopView').innerText = localStorage.getItem('money')
     }, 500);
-}) 
+})
 
 document.getElementById('skins').addEventListener("click", () => {
     pageType = 4.1
@@ -258,7 +265,7 @@ settingsButton.addEventListener("click", function () {
         homeSong.currentTime = 0
         settingsSong.play()
     }, 500);
-}) 
+})
 
 creditsButton.addEventListener("click", () => {
     pageType = 6
@@ -308,12 +315,12 @@ document.getElementById('settingsHome').addEventListener("click", () => {
     pageType = 1
     settingsPage.style.opacity = '0'
     setTimeout(() => {
-    settingsPage.removeAttribute('style')
+        settingsPage.removeAttribute('style')
         homePage.style.display = 'flex'
         settingsSong.pause()
         settingsSong.currentTime = 0
         homeSong.play()
-}, 500);
+    }, 500);
 })
 
 soloButton.addEventListener("click", function () {
@@ -326,7 +333,7 @@ soloButton.addEventListener("click", function () {
         soloPage.style.display = 'block'
         homeSong.pause()
         song.play()
-        
+
         homeSong.currentTime = 0
         acceleratorP1 = false
         acceleratorTimer = 0
@@ -592,6 +599,15 @@ document.addEventListener("keydown", function (e) {
     if (pageType == 2 && !kill) {
         if (e.key == "Enter") {
             pauseGameSolo()
+        }
+    }
+
+    if (pageType == 2.1) {
+        if (e.key == " ") {
+            playerClassic.classList.add('jump')
+            playerClassic.addEventListener('animationend', () => {
+                playerClassic.className = 'player'
+            })
         }
     }
     //End Solo Game Controls
