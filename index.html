@@ -13,7 +13,7 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.0, caso encontre bugs, por favor, abra uma Issue no GitHub.<br>
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.2, caso encontre bugs, por favor, abra uma Issue no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser utilizadas com a devida autorização do<br>
         criador do jogo.<br><br>
         Divirta-se!
@@ -38,7 +38,7 @@
         </div>
         <!--InfintePlay-->
         <div class="version">
-            R 1.1
+            R 1.2
         </div>
     </section>
     <section id="gameModeScreen">
@@ -56,7 +56,7 @@
             <div></div> Dois Jogadores
         </button>
         <div class="version">
-            R 1.1
+            R 1.2
         </div>
     </section>
 
@@ -134,8 +134,8 @@
         <div class="moveBlock" id="upBlock"></div>
         <div class="moveBlock" id="downBlock"></div>
 
-        <div class="pauseContainer">
-            <div class="pauseAlert">
+        <div class="pauseContainer" id="soloPauseBCKG">
+            <div class="pauseAlert" id="soloPauseGui">
                 <div class="pauseAnim"></div>
                 <div class="pauseText">Pause</div>
                 <div class="speed">
@@ -192,6 +192,21 @@
         <div class="player" id="classicPlayer"></div>
         <div class="crystal cType2" id="cr1"></div>
         <div class="crystal cType6" id="cr2"></div>
+        <div class="crystal cType1" id="cr3"></div>
+        <div class="crystal cType5" id="cr4"></div>
+        <div class="pauseContainer" id="soloCPauseBCKG">
+            <div class="pauseAlert" id="soloCPauseGui">
+                <div class="pauseAnim"></div>
+                <div class="pauseText">Pause</div>
+                <div class="classicInfos">
+                    Pontuação atual: <span id="actualScore">0</span><br>
+                    Maior pontuação: <span id="bestScore">0</span><br>
+                    Pronto para voo: <span id="canFly">Não</span>
+                </div>
+                <button>Voltar para seleção de modo</button>
+                <button>Reiniciar Jogo</button>
+            </div>
+        </div>
     </section>
     <section id="duoRun">
         <div class="duoControls" id="pauseDuoControls">
@@ -416,7 +431,11 @@
             </div>
         </div>
     </section>
-
+    <div class="muteAlert" id="volAlertCont">
+        <span class="material-symbols-rounded" id="volAlert">
+            volume_off
+        </span>
+    </div>
     <!--Audios-->
     <audio src="assets/songs/music/homeMusic.mp3" id="homeSong" loop></audio>
     <audio src="assets/songs/music/soloMusic.mp3" id="soloSong" loop></audio>

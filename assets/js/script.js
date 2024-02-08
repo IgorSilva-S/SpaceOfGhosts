@@ -19,8 +19,10 @@ let shieldActive = false
 let hurtAnim = false
 var gamePaused = false
 let boostOn = false
-const pauseBack = document.querySelector('.pauseContainer')
-const pauseGui = document.querySelector('.pauseAlert')
+const pauseBack = document.getElementById('soloPauseBCKG')
+const pauseGui = document.getElementById('soloPauseGui')
+const soloCPGUI = document.getElementById('soloCPauseGui')
+const soloCPBack = document.getElementById('soloCPauseBCKG')
 let playerBeforePause
 let pageType = 0
 /*Pages Types
@@ -126,6 +128,7 @@ let p1RBoostOn = false, p2RBoostOn = false
 let p1RBStyle, p2RBstyle
 let type2Controls = false
 let muted = false
+let scHurted = false
 
 //Solo Meteors
 const meteor1 = document.getElementById('m1')
@@ -151,6 +154,8 @@ const p2Rm5 = document.getElementById('p2Rm5')
 //Classic Solo Crystals
 const crystal1 = document.getElementById('cr1')
 const crystal2 = document.getElementById('cr2')
+const crystal3 = document.getElementById('cr3')
+const crystal4 = document.getElementById('cr4')
 
 //Skin changer button
 const s0b = document.getElementById('cs0')
@@ -384,14 +389,26 @@ duoButton.addEventListener("click", function () {
 
 document.addEventListener("keydown", function (e) {
     if (e.key == "m" || e.key == "M") {
+        let volAlert = document.getElementById('volAlert')
+        let volAlertCont = document.getElementById('volAlertCont')
         if (muted) {
             muted = false
             localStorage.setItem('volume', 1)
             organizeSound()
+            volAlert.innerText = 'volume_up'
+            volAlertCont.style.bottom = '20px'
+            setTimeout(() => {
+                volAlertCont.removeAttribute('style')
+            }, 2000);
         } else {
             muted = true
             localStorage.setItem('volume', 0)
             organizeSound()
+            volAlert.innerText = 'volume_off'
+            volAlertCont.style.bottom = '20px'
+            setTimeout(() => {
+                volAlertCont.removeAttribute('style')
+            }, 2000);
         }
     }
     if (pageType == 0) {
@@ -607,7 +624,14 @@ document.addEventListener("keydown", function (e) {
             playerClassic.classList.add('jump')
             playerClassic.addEventListener('animationend', () => {
                 playerClassic.className = 'player'
+                if (scHurted) {
+                    playerClassic.classList.add('hShield')
+                }
             })
+        }
+        if (e.key == "Enter") {
+            soloCPBack.style.right = '0'
+            soloCPGUI.style.right = '0'
         }
     }
     //End Solo Game Controls
@@ -892,6 +916,7 @@ document.addEventListener("keyup", function (e) {
         }
         duoRunKeyUp(e)
     }
+    
     //End Duo : Run! Restore
 })
 

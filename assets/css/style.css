@@ -701,7 +701,7 @@ body {
 }
 
 .clouds {
-    width: 3160px;
+    width: 3840px;
     height: 100vh;
     position: absolute;
     left: 0;
@@ -1719,7 +1719,7 @@ body {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
-    background-image: linear-gradient(to bottom, #0632ff, #8706d4);
+    background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
 }
 
 #soloClassic .classicSoil {
@@ -1729,7 +1729,7 @@ body {
     position: fixed;
     bottom: 0;
     left: 0;
-    animation: moveBckg 10s linear infinite;
+    animation: moveBckg 5s linear infinite;
 }
 
 #soloClassic .clouds {
@@ -1738,7 +1738,8 @@ body {
 }
 
 #soloClassic .player {
-    top: calc(100% - 150px);
+    top: auto;
+    bottom: 50px;
     left: 100px;
 }
 
@@ -1746,34 +1747,35 @@ body {
     background-position: center;
     background-size: cover;
     position: absolute;
-    animation: moveCrystal 8.2s linear infinite;
+    animation: moveCrystal 5.2s linear infinite;
     bottom: 50px;
+    left: -500px;
 }
 
 .jump {
-    animation: jumpPlayer 1s linear;
+    animation: jumpPlayer .7s linear;
 }
 
 @keyframes jumpPlayer {
     0% {
-            top: calc(100% - 150px);
+        bottom: 50px;
     }
 
     40% {
-            top: calc(100% - 250px);
+        bottom: 150px;
     }
 
     50% {
-        top: calc(100% - 275px);
+        bottom: 175px;
     }
 
 
     60% {
-            top: calc(100% - 250px);
+        bottom: 150px;
     }
 
     100% {
-            top: calc(100% - 150px);
+        bottom: 50px;
     }
 }
 
@@ -1827,6 +1829,37 @@ body {
 .cType6 {
     width: 100px;
     height: 50px;
+}
+
+.muteAlert {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    bottom: -150px;
+    background-color: #0632ff66;
+    backdrop-filter: blur(10px);
+    left: calc(50% - 50px);
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition-duration: .3s;
+}
+
+/*Import Google Icons*/
+@font-face {
+    font-family: 'Material Symbols Rounded';
+    font-style: normal;
+    font-weight: 100 700;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v159/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2) format('woff2');
+}
+
+.material-symbols-rounded {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
 }
 
 @media (max-width: 1366px) {
