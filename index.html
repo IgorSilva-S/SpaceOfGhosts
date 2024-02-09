@@ -13,7 +13,7 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.4, caso encontre bugs, por favor, abra uma Issue
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.5, caso encontre bugs, por favor, abra uma Issue
         no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
         utilizadas com a devida autorização do<br>
@@ -40,7 +40,7 @@
         </div>
         <!--InfintePlay-->
         <div class="version">
-            R 1.4
+            R 1.5
         </div>
     </section>
     <section id="gameModeScreen">
@@ -67,7 +67,7 @@
             <div></div> Dois Jogadores: Clássico
         </button>
         <div class="version">
-            R 1.4
+            R 1.5
         </div>
     </section>
 
@@ -152,9 +152,8 @@
                 <div class="speed">
                     Velocidade a mais: <span id="plusSpeedAlert">0%</span>
                 </div>
-                <button id="continueInf" style="display: none;">Continuar</button>
-                <button id="backInf">Voltar para o Início</button>
-                <button id="restartInf">Reiniciar Partida</button>
+                <button id="backInf">Voltar para seleção de modo</button>
+                <button id="restartInf">Reiniciar Jogo</button>
             </div>
         </div>
     </section>
@@ -175,7 +174,7 @@
             </div>
             <div class="goButtons">
                 <button id="soloSHome">Ir para o início</button>
-                <button id="soloSGame">Começar outra partida</button>
+                <button id="soloSGame">Começar novamente</button>
             </div>
         </div>
         <div class="ghostScore"></div>
@@ -215,8 +214,8 @@
                     Maior pontuação: <span id="bestScore">0</span><br>
                     Pronto para voo: <span id="canFly">Sim</span>
                 </div>
-                <button>Voltar para seleção de modo</button>
-                <button>Reiniciar Jogo</button>
+                <button id="backSoloClassic">Voltar para seleção de modo</button>
+                <button id="resetSoloClassic">Reiniciar Jogo</button>
             </div>
         </div>
     </section>
@@ -310,7 +309,7 @@
             <div>Soma de todos os boosts: <span id="BstSumDuoRun">0</span></div>
             <div class="goButtons">
                 <button id="duoRSHome">Ir para o início</button>
-                <button id="duoRSGame">Começar outra partida</button>
+                <button id="duoRSGame">Começar novamente</button>
             </div>
         </div>
         <div class="ghostLoseAnim">
@@ -448,6 +447,7 @@
             </div>
         </div>
     </section>
+
     <div class="muteAlert" id="volAlertCont">
         <span class="material-symbols-rounded" id="volAlert">
             volume_off

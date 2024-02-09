@@ -52,6 +52,28 @@ function pauseSoloClassic() {
     }
 }
 
+function removeEnd() {
+    crystal1.style.animationPlayState = 'running'
+    crystal2.style.animationPlayState = 'running'
+    crystal3.style.animationPlayState = 'running'
+    crystal4.style.animationPlayState = 'running'
+    playerClassic.classList.remove('playerPaused')
+    playerClassic.removeAttribute('style')
+    canFly = true
+    document.querySelector('.classicSoil').removeAttribute('style')
+    document.getElementById('classicClouds').removeAttribute('style')
+    pausedClassicSolo = false
+    if (canFly) {
+        document.getElementById('canFly').innerText = 'Sim'
+        if (flyingNow) {
+            document.getElementById('canFly').innerText = 'No ar'
+        }
+    } else {
+        document.getElementById('canFly').innerText = 'Não'
+    }
+}
+
+
 function checkLivesSoloClassic() {
     if (soloClassicLive == 6) {
         soloClassicHearts.className = 'hearts'
@@ -94,6 +116,9 @@ function checkLivesSoloClassic() {
         document.querySelector('.classicSoil').style.animationPlayState = 'paused'
         document.getElementById('classicClouds').style.animationPlayState = 'paused'
         playerClassic.style.animationPlayState = 'paused'
+        clearInterval(scHurtWaiter)
+        scHurted = false
+        player.classList.remove('hShield')
         pausedClassicSolo = true
         clearInterval(scHurtWaiter)
         clearInterval(canFlyWaiter)
@@ -123,6 +148,7 @@ function makePlayerFlyAgain() {
         if (flyTimer == 30) {
             canFly = true
             flyTimer = 0
+            document.getElementById('canFly').innerText = 'Sim'
             clearInterval(canFlyWaiter)
         }
     }, 1000);

@@ -385,6 +385,7 @@ soloClassicButton.addEventListener("click", () => {
         makeSCScoreCounter()
         checkLivesSoloClassic()
         classicSoloPage.style.display = 'block'
+        removeEnd()
     }, 500);
 })
 

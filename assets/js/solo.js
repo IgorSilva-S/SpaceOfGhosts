@@ -185,9 +185,6 @@ function pauseGameSolo() {
     }
 }
 //Pause Controls
-document.getElementById('continueInf').addEventListener("click", function () {
-    pauseGameSolo()
-})
 
 document.getElementById('restartInf').addEventListener("click", function () {
     pauseGameSolo()
