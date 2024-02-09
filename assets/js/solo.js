@@ -640,7 +640,6 @@ function checkLive1p() {
             soloPage.style.opacity = '0'
             player.style.top = '120%'
             setTimeout(() => {
-                pageType = 2.1
                 disPage.style.display = 'none'
                 homePage.style.display = 'none'
                 soloPage.style.display = 'none'

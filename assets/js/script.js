@@ -29,13 +29,13 @@ let pageType = 0
 0 - Disclaimer
 1 - Home
 1.1 - Game Mode
-1.1.2 - Solo Game Mode : After 1.0
-1.1.3 - Duo Game Mode : After 1.0
+1.1.2 - Solo Game Mode
+1.1.3 - Duo Game Mode
 2 - Game : 1p Style
-2.1- Game : Classic 1p Mode : After 1.0
+2.1- Game : Classic 1p Mode
 3 - Game : 2p VS (Infinite Mode)
-3.1 - Game : 2p VS (Battle! Mode) : After 1.0
-3.2 - 
+3.1 - Game : 2p VS (Battle! Mode)
+3.2 - Game : 2p VS (Classic Mode)
 4 - Shop
 4.1 - Skin Changer
 5 - Settings
