@@ -793,10 +793,26 @@ body {
     background-size: cover;
 }
 
+#soloClassicPlay div {
+    width: 150px;
+    height: 150px;
+    background-image: url(../img/sprites/gameMode/soloClassic.png);
+    background-position: center;
+    background-size: cover;
+}
+
 #duoPlay div {
     width: 150px;
     height: 150px;
     background-image: url(../img/sprites/gameMode/duo.png);
+    background-position: center;
+    background-size: cover;
+}
+
+#duoClassicPlay div {
+    width: 150px;
+    height: 150px;
+    background-image: url(../img/sprites/gameMode/duoClassic.png);
     background-position: center;
     background-size: cover;
 }

@@ -29,8 +29,6 @@ let pageType = 0
 0 - Disclaimer
 1 - Home
 1.1 - Game Mode
-1.1.2 - Solo Game Mode
-1.1.3 - Duo Game Mode
 2 - Game : 1p Style
 2.1- Game : Classic 1p Mode
 3 - Game : 2p VS (Infinite Mode)
@@ -73,6 +71,7 @@ const shopButton = document.getElementById('goShop')
 const settingsButton = document.getElementById('editSettings')
 const creditsButton = document.getElementById('viewCredits')
 const soloButton = document.getElementById('soloPlay')
+const soloClassicButton = document.getElementById('soloClassicPlay')
 const duoButton = document.getElementById('duoPlay')
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
@@ -239,14 +238,11 @@ disButton.addEventListener("click", function () {
 })
 
 playButton.addEventListener("click", function () {
-    pageType = 2.1
+    pageType = 1.1
     homePage.style.opacity = '0'
     setTimeout(() => {
-        soloClassicLive = 6
-        checkLivesSoloClassic()
         homePage.removeAttribute('style')
-        classicSoloPage.style.display = 'block'
-        makeSCScoreCounter()
+        gameMPage.style.display = 'flex'
     }, 500);
 })
 
@@ -377,6 +373,18 @@ soloButton.addEventListener("click", function () {
                 }
             }
         }, 501);
+    }, 500);
+})
+
+soloClassicButton.addEventListener("click", () => {
+    pageType = 2.1
+    gameMPage.style.opacity = '0'
+    setTimeout(() => {
+        gameMPage.removeAttribute('style')
+        soloClassicLive = 6
+        makeSCScoreCounter()
+        checkLivesSoloClassic()
+        classicSoloPage.style.display = 'block'
     }, 500);
 })
 

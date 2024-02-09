@@ -13,7 +13,7 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.3, caso encontre bugs, por favor, abra uma Issue
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.4, caso encontre bugs, por favor, abra uma Issue
         no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
         utilizadas com a devida autorização do<br>
@@ -40,7 +40,7 @@
         </div>
         <!--InfintePlay-->
         <div class="version">
-            R 1.3
+            R 1.4
         </div>
     </section>
     <section id="gameModeScreen">
@@ -52,13 +52,22 @@
         </button>
         <h1>Escolha o seu modo</h1>
         <button id="soloPlay">
-            <div></div> Um jogador
+            <div></div> Um Jogador: Normal
+        </button>
+        <button id="soloClassicPlay">
+            <div></div> Um Jogador: Clássico
         </button>
         <button id="duoPlay">
-            <div></div> Dois Jogadores
+            <div></div> Dois Jogadores: Normal
+        </button>
+        <button id="duoBattle" style="display: none">
+            <div></div> Dois Jogadores: Batalha
+        </button>
+        <button id="duoClassicPlay" style="display: none">
+            <div></div> Dois Jogadores: Clássico
         </button>
         <div class="version">
-            R 1.3
+            R 1.4
         </div>
     </section>
 
@@ -406,6 +415,10 @@
             <div class="alignSetting">
                 <span>Apagar save</span>
                 <button id="deleteSave">Apagar</button>
+            </div>
+            <div class="alignSetting">
+                <label for="soloSlots">Solo: Gaurdar boosts ao invés de usar</label>
+                <input type="checkbox" name="" id="soloSlots">
             </div>
             <p>Futuramente, novas configurações estarão disponíveis</p>
         </div>

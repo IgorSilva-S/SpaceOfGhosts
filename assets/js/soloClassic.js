@@ -81,7 +81,39 @@ function checkLivesSoloClassic() {
     if (soloClassicLive == 1) {
         soloClassicHearts.className = 'hearts'
         soloClassicHearts.classList.add('h0')
-        soloClassicLive = 7
+    }
+    if (soloClassicLive == 0) {
+        crystal1.style.animationPlayState = 'paused'
+        crystal2.style.animationPlayState = 'paused'
+        crystal3.style.animationPlayState = 'paused'
+        crystal4.style.animationPlayState = 'paused'
+        playerClassic.classList.add('playerPaused')
+        playerClassic.style.transitionDuration = '.3s'
+        playerClassic.style.rotate = '90deg'
+
+        document.querySelector('.classicSoil').style.animationPlayState = 'paused'
+        document.getElementById('classicClouds').style.animationPlayState = 'paused'
+        playerClassic.style.animationPlayState = 'paused'
+        pausedClassicSolo = true
+        clearInterval(scHurtWaiter)
+        clearInterval(canFlyWaiter)
+        if (canFly) {
+            document.getElementById('canFly').innerText = 'Sim'
+            if (flyingNow) {
+                document.getElementById('canFly').innerText = 'No ar'
+            }
+        } else {
+            document.getElementById('canFly').innerText = 'Não'
+        }
+        clearInterval(scScoreCounter)
+        setTimeout(() => {
+            pageType = 1
+            classicSoloPage.style.opacity = '0'
+            setTimeout(() => {
+                classicSoloPage.removeAttribute('style')
+                homePage.style.display = 'flex'
+            }, 500);
+        }, 200);
     }
 }
 
