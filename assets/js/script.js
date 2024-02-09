@@ -129,6 +129,15 @@ let p1RBStyle, p2RBstyle
 let type2Controls = false
 let muted = false
 let scHurted = false
+let pausedClassicSolo = false
+let scHurtWaiter, scHurtTimer = 0
+let soloClassicLive = 0
+const soloClassicHearts = document.getElementById('classicLifes')
+let canFly = true
+let canFlyWaiter, flyTimer = 0
+let flyingNow = false
+let scScoreCounter
+let scScore = 0
 
 //Solo Meteors
 const meteor1 = document.getElementById('m1')
@@ -233,8 +242,11 @@ playButton.addEventListener("click", function () {
     pageType = 2.1
     homePage.style.opacity = '0'
     setTimeout(() => {
+        soloClassicLive = 6
+        checkLivesSoloClassic()
         homePage.removeAttribute('style')
         classicSoloPage.style.display = 'block'
+        makeSCScoreCounter()
     }, 500);
 })
 
@@ -620,18 +632,30 @@ document.addEventListener("keydown", function (e) {
     }
 
     if (pageType == 2.1) {
-        if (e.key == " ") {
+        if (e.key == " " && !pausedClassicSolo) {
             playerClassic.classList.add('jump')
             playerClassic.addEventListener('animationend', () => {
-                playerClassic.className = 'player'
-                if (scHurted) {
-                    playerClassic.classList.add('hShield')
-                }
+                setTimeout(() => {
+                    playerClassic.className = 'player'
+                    if (scHurted) {
+                        playerClassic.classList.add('hShield')
+                    }
+                }, 200);
             })
         }
+
+        if (e.key == "ArrowUp" && !pausedClassicSolo && canFly) {
+            playerClassic.classList.add('fly')
+            flyingNow = true
+            playerClassic.addEventListener('animationend', () => {
+                flyingNow = false
+                canFly = false
+                makePlayerFlyAgain()
+            })
+        }
+        
         if (e.key == "Enter") {
-            soloCPBack.style.right = '0'
-            soloCPGUI.style.right = '0'
+            pauseSoloClassic()
         }
     }
     //End Solo Game Controls
@@ -916,7 +940,7 @@ document.addEventListener("keyup", function (e) {
         }
         duoRunKeyUp(e)
     }
-    
+
     //End Duo : Run! Restore
 })
 

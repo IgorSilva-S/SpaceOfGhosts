@@ -13,8 +13,10 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.2, caso encontre bugs, por favor, abra uma Issue no GitHub.<br>
-        Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser utilizadas com a devida autorização do<br>
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.3, caso encontre bugs, por favor, abra uma Issue
+        no GitHub.<br>
+        Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
+        utilizadas com a devida autorização do<br>
         criador do jogo.<br><br>
         Divirta-se!
         <button id="exitDisclaimer">Okay</button>
@@ -38,7 +40,7 @@
         </div>
         <!--InfintePlay-->
         <div class="version">
-            R 1.2
+            R 1.3
         </div>
     </section>
     <section id="gameModeScreen">
@@ -56,7 +58,7 @@
             <div></div> Dois Jogadores
         </button>
         <div class="version">
-            R 1.2
+            R 1.3
         </div>
     </section>
 
@@ -187,9 +189,10 @@
         </div>
     </section>
     <section id="soloClassic">
-        <div class="clouds"></div>
+        <div class="clouds" id="classicClouds"></div>
         <div class="classicSoil"></div>
         <div class="player" id="classicPlayer"></div>
+        <div id="classicLifes" class="hearts"></div>
         <div class="crystal cType2" id="cr1"></div>
         <div class="crystal cType6" id="cr2"></div>
         <div class="crystal cType1" id="cr3"></div>
@@ -201,7 +204,7 @@
                 <div class="classicInfos">
                     Pontuação atual: <span id="actualScore">0</span><br>
                     Maior pontuação: <span id="bestScore">0</span><br>
-                    Pronto para voo: <span id="canFly">Não</span>
+                    Pronto para voo: <span id="canFly">Sim</span>
                 </div>
                 <button>Voltar para seleção de modo</button>
                 <button>Reiniciar Jogo</button>
@@ -397,7 +400,8 @@
             <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M</span>
             <div class="alignSetting">
                 <span>Reportar bugs</span>
-                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues" target="_blank"><img src="assets/img/sprites/navButtons/black/externalWebsite.png" alt="Ir para GitHub"></a>
+                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues" target="_blank"><img
+                        src="assets/img/sprites/navButtons/black/externalWebsite.png" alt="Ir para GitHub"></a>
             </div>
             <div class="alignSetting">
                 <span>Apagar save</span>

@@ -1,3 +1,108 @@
+function pauseSoloClassic() {
+    if (!pausedClassicSolo) {
+        soloCPBack.style.right = '0'
+        soloCPGUI.style.right = '0'
+        crystal1.style.animationPlayState = 'paused'
+        crystal2.style.animationPlayState = 'paused'
+        crystal3.style.animationPlayState = 'paused'
+        crystal4.style.animationPlayState = 'paused'
+        playerClassic.classList.add('playerPaused')
+        document.querySelector('.classicSoil').style.animationPlayState = 'paused'
+        document.getElementById('classicClouds').style.animationPlayState = 'paused'
+        playerClassic.style.animationPlayState = 'paused'
+        pausedClassicSolo = true
+        clearInterval(scHurtWaiter)
+        clearInterval(canFlyWaiter)
+        if (canFly) {
+            document.getElementById('canFly').innerText = 'Sim'
+            if (flyingNow) {
+                document.getElementById('canFly').innerText = 'No ar'
+            }
+        } else {
+            document.getElementById('canFly').innerText = 'Não'
+        }
+        clearInterval(scScoreCounter)
+    } else {
+        soloCPBack.removeAttribute('style')
+        soloCPGUI.removeAttribute('style')
+        crystal1.style.animationPlayState = 'running'
+        crystal2.style.animationPlayState = 'running'
+        crystal3.style.animationPlayState = 'running'
+        crystal4.style.animationPlayState = 'running'
+        playerClassic.classList.remove('playerPaused')
+        document.querySelector('.classicSoil').removeAttribute('style')
+        document.getElementById('classicClouds').removeAttribute('style')
+        playerClassic.style.animationPlayState = 'running'
+        pausedClassicSolo = false
+        if (scHurted) {
+            scHurtWaiter = setInterval(() => {
+                scHurtTimer++
+                if (scHurtTimer == 5) {
+                    scHurtTimer = 0
+                    scHurted = false
+                    clearInterval(scHurtWaiter)
+                    playerClassic.classList.remove('hShield')
+                }
+            }, 1000);
+        }
+        if (!canFly) {
+            makePlayerFlyAgain()
+        }
+        makeSCScoreCounter()
+    }
+}
+
+function checkLivesSoloClassic() {
+    if (soloClassicLive == 6) {
+        soloClassicHearts.className = 'hearts'
+        soloClassicHearts.classList.add('h100')
+    }
+
+    if (soloClassicLive == 5) {
+        soloClassicHearts.className = 'hearts'
+        soloClassicHearts.classList.add('h80')
+    }
+
+    if (soloClassicLive == 4) {
+        soloClassicHearts.className = 'hearts'
+        soloClassicHearts.classList.add('h60')
+    }
+
+    if (soloClassicLive == 3) {
+        soloClassicHearts.className = 'hearts'
+        soloClassicHearts.classList.add('h40')
+    }
+
+    if (soloClassicLive == 2) {
+        soloClassicHearts.className = 'hearts'
+        soloClassicHearts.classList.add('h20')
+    }
+
+    if (soloClassicLive == 1) {
+        soloClassicHearts.className = 'hearts'
+        soloClassicHearts.classList.add('h0')
+        soloClassicLive = 7
+    }
+}
+
+function makePlayerFlyAgain() {
+    canFlyWaiter = setInterval(() => {
+        flyTimer++
+        if (flyTimer == 30) {
+            canFly = true
+            flyTimer = 0
+            clearInterval(canFlyWaiter)
+        }
+    }, 1000);
+}
+
+function makeSCScoreCounter() {
+    scScoreCounter = setInterval(() => {
+        scScore++
+        document.getElementById('actualScore').innerText = scScore
+    }, 500);
+}
+
 crystal1.addEventListener("animationiteration", () => {
     let typeCrystal = Math.floor((Math.random() * 6) + 1)
     let delayCrystal = Math.floor(Math.random() * 5)
@@ -55,7 +160,18 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !scHurted) {
         scHurted = true
+        soloClassicLive--
+        checkLivesSoloClassic()
         playerClassic.classList.add('hShield')
+        scHurtWaiter = setInterval(() => {
+            scHurtTimer++
+            if (scHurtTimer == 5) {
+                scHurtTimer = 0
+                scHurted = false
+                clearInterval(scHurtWaiter)
+                playerClassic.classList.remove('hShield')
+            }
+        }, 1000);
     }
 }, 1);
 
@@ -68,7 +184,18 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !scHurted) {
         scHurted = true
+        soloClassicLive--
+        checkLivesSoloClassic()
         playerClassic.classList.add('hShield')
+        scHurtWaiter = setInterval(() => {
+            scHurtTimer++
+            if (scHurtTimer == 5) {
+                scHurtTimer = 0
+                scHurted = false
+                clearInterval(scHurtWaiter)
+                playerClassic.classList.remove('hShield')
+            }
+        }, 1000);
     }
 }, 1);
 
@@ -81,7 +208,18 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !scHurted) {
         scHurted = true
+        soloClassicLive--
+        checkLivesSoloClassic()
         playerClassic.classList.add('hShield')
+        scHurtWaiter = setInterval(() => {
+            scHurtTimer++
+            if (scHurtTimer == 5) {
+                scHurtTimer = 0
+                scHurted = false
+                clearInterval(scHurtWaiter)
+                playerClassic.classList.remove('hShield')
+            }
+        }, 1000);
     }
 }, 1);
 
@@ -94,6 +232,17 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !scHurted) {
         scHurted = true
+        soloClassicLive--
+        checkLivesSoloClassic()
         playerClassic.classList.add('hShield')
+        scHurtWaiter = setInterval(() => {
+            scHurtTimer++
+            if (scHurtTimer == 5) {
+                scHurtTimer = 0
+                scHurted = false
+                clearInterval(scHurtWaiter)
+                playerClassic.classList.remove('hShield')
+            }
+        }, 1000);
     }
 }, 1);

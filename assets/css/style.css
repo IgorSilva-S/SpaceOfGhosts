@@ -346,6 +346,7 @@ body {
     border-radius: 4px;
     color: white;
     transition-duration: .2s;
+    font-size: 20px;
 }
 
 .pauseAlert button:hover {
@@ -1778,6 +1779,27 @@ body {
         bottom: 50px;
     }
 }
+.fly {
+    animation: flyPlayer 10s linear;
+}
+
+@keyframes flyPlayer {
+    0% {
+        bottom: 50px;
+    }
+
+    5% {
+        bottom: 175px;
+    }
+
+    95% {
+        bottom: 175px;
+    }
+
+    100% {
+        bottom: 50px;
+    }
+}
 
 @keyframes moveCrystal {
     from {
@@ -1831,6 +1853,19 @@ body {
     height: 50px;
 }
 
+#soloClassic .hearts {
+    bottom: auto;
+    top: 0;
+}
+
+.classicInfos {
+    font-size: 30px;
+    text-align: left;
+    position: absolute;
+    bottom: 120px;
+    left: 20px;
+}
+
 .muteAlert {
     position: fixed;
     width: 100px;
@@ -1846,6 +1881,7 @@ body {
     align-items: center;
     color: white;
     transition-duration: .3s;
+    z-index: 10000;
 }
 
 /*Import Google Icons*/
