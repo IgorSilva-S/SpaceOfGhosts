@@ -64,6 +64,7 @@ const hSong = document.getElementById('hSong') // by SEGA and Sonic Team (1992)
 const shopSong = document.getElementById('shopSong') // by dyu / Official by Nintendo
 const settingsSong = document.getElementById('settingsSong') // by dyu / Official by Nintendo
 const creditsSong = document.getElementById('creditsSong') // by After The Fall 
+const soloClassicSong = document.getElementById('soloClassicSong') // by Chillpeach
 
 //End Songs
 const playButton = document.getElementById('playGame')
@@ -137,6 +138,8 @@ let canFlyWaiter, flyTimer = 0
 let flyingNow = false
 let scScoreCounter
 let scScore = 0
+let quickVolAppeared = false
+let soloSlots = false
 
 //Solo Meteors
 const meteor1 = document.getElementById('m1')
@@ -195,8 +198,11 @@ function organizeSound() {
         shopSong.volume = gameVolume
         settingsSong.volume = gameVolume
         creditsSong.volume = gameVolume
+        soloClassicSong.volume = gameVolume
         document.getElementById('volumeNum').innerText = `${gameVolume * 100}%`
+        document.getElementById('quickVolNum').innerText = `${gameVolume * 100}%`
         document.getElementById('vol').value = gameVolume * 100
+        document.getElementById('quickVol').value = gameVolume * 100
     } if (gameVolume == 0) {
         muted = true
     }
@@ -221,9 +227,22 @@ function skinChanger() {
     }
 }
 
+function enableSoloSlots() {
+    let soloSlotsEnabled = localStorage.getItem('soloSlots')
+    if (soloSlotsEnabled != undefined) {
+        soloSlots = soloSlotsEnabled
+        if (soloSlotsEnabled) {
+            document.getElementById('soloSlots').checked = true
+        } else {
+            document.getElementById('soloSlots').checked = false
+        }
+    }
+}
+
 organizeSound()
 enableOldControls()
 skinChanger()
+enableSoloSlots()
 //End Organize localStorage Items
 
 //Navigations Functions
@@ -381,10 +400,13 @@ soloClassicButton.addEventListener("click", () => {
     gameMPage.style.opacity = '0'
     setTimeout(() => {
         gameMPage.removeAttribute('style')
+        homeSong.pause()
+        homeSong.currentTime = 0
         soloClassicLive = 6
         makeSCScoreCounter()
         checkLivesSoloClassic()
         classicSoloPage.style.display = 'block'
+        soloClassicSong.play()
         removeEnd()
     }, 500);
 })
@@ -417,7 +439,11 @@ document.addEventListener("keydown", function (e) {
             localStorage.setItem('volume', 1)
             organizeSound()
             volAlert.innerText = 'volume_up'
-            volAlertCont.style.bottom = '20px'
+            if (quickVolAppeared) {
+                volAlertCont.style.bottom = '120px'
+            } else {
+                volAlertCont.style.bottom = '20px'
+            }
             setTimeout(() => {
                 volAlertCont.removeAttribute('style')
             }, 2000);
@@ -426,10 +452,30 @@ document.addEventListener("keydown", function (e) {
             localStorage.setItem('volume', 0)
             organizeSound()
             volAlert.innerText = 'volume_off'
-            volAlertCont.style.bottom = '20px'
+            if (quickVolAppeared) {
+                volAlertCont.style.bottom = '120px'
+            } else {
+                volAlertCont.style.bottom = '20px'
+            }
             setTimeout(() => {
                 volAlertCont.removeAttribute('style')
             }, 2000);
+        }
+    }
+    if (e.key == "v" || e.key == "V") {
+        let volAlertCont = document.getElementById('volAlertCont')
+        if (!quickVolAppeared) {
+            quickVolAppeared = true
+            document.getElementById('quickVolCont').style.bottom = '20px'
+            if (volAlertCont.style.bottom == '20px') {
+                volAlertCont.style.bottom = '120px'
+            }
+        } else {
+            quickVolAppeared = false
+            document.getElementById('quickVolCont').removeAttribute('style')
+            if (volAlertCont.style.bottom == '120px') {
+                volAlertCont.style.bottom = '20px'
+            }
         }
     }
     if (pageType == 0) {
@@ -1145,10 +1191,18 @@ document.getElementById('oldControls').addEventListener('change', () => {
 })
 //End Settings: Enable old Controls
 
+//Settings Mute Game
+document.getElementById("muteGameSetting").addEventListener('click', () => {
+    muted = true
+    localStorage.setItem('volume', 0)
+    organizeSound()
+})
+
 //Settings volume Slider
 
 document.getElementById('vol').addEventListener('change', () => {
     let gameVolume = document.getElementById('vol').value / 100
+    document.getElementById('quickVol').value = gameVolume * 100
     homeSong.volume = gameVolume
     song.volume = gameVolume
     duoRSong.volume = gameVolume
@@ -1156,8 +1210,45 @@ document.getElementById('vol').addEventListener('change', () => {
     shopSong.volume = gameVolume
     settingsSong.volume = gameVolume
     creditsSong.volume = gameVolume
+    soloClassicSong.volume = gameVolume
     localStorage.setItem('volume', gameVolume)
     document.getElementById('volumeNum').innerText = `${document.getElementById('vol').value}%`
+    document.getElementById('quickVolNum').innerText = `${document.getElementById('vol').value}%`
+    if (gameVolume == 0) {
+        muted = true
+    } else {
+        muted = false
+    }
+})
+
+//Settings Solo Slots 
+document.getElementById('soloSlots').addEventListener('change', () => {
+    let soloSlotChecker = document.getElementById('soloSlots')
+    if (soloSlotChecker.checked) {
+        soloSlots = true
+        localStorage.setItem('soloSlots', soloSlots)
+    } else {
+        soloSlots = false
+        localStorage.setItem('soloSlots', soloSlots)
+    }
+})
+
+//Quick Volume Slider
+
+document.getElementById('quickVol').addEventListener('change', () => {
+    let gameVolume = document.getElementById('quickVol').value / 100
+    document.getElementById('vol').value = gameVolume * 100
+    homeSong.volume = gameVolume
+    song.volume = gameVolume
+    duoRSong.volume = gameVolume
+    hSong.volume = gameVolume
+    shopSong.volume = gameVolume
+    settingsSong.volume = gameVolume
+    creditsSong.volume = gameVolume
+    soloClassicSong.volume = gameVolume
+    localStorage.setItem('volume', gameVolume)
+    document.getElementById('volumeNum').innerText = `${document.getElementById('vol').value}%`
+    document.getElementById('quickVolNum').innerText = `${document.getElementById('vol').value}%`
     if (gameVolume == 0) {
         muted = true
     } else {

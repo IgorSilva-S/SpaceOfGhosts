@@ -6,11 +6,17 @@ function pauseSoloClassic() {
         crystal2.style.animationPlayState = 'paused'
         crystal3.style.animationPlayState = 'paused'
         crystal4.style.animationPlayState = 'paused'
+        let bScore = localStorage.getItem('classicBestScore')
+        if (bScore == undefined) {
+            bScore = 0
+        }
+        document.getElementById('bestScoreClassic').innerText = bScore
         playerClassic.classList.add('playerPaused')
         document.querySelector('.classicSoil').style.animationPlayState = 'paused'
         document.getElementById('classicClouds').style.animationPlayState = 'paused'
         playerClassic.style.animationPlayState = 'paused'
         pausedClassicSolo = true
+        soloClassicSong.pause()
         clearInterval(scHurtWaiter)
         clearInterval(canFlyWaiter)
         if (canFly) {
@@ -34,6 +40,7 @@ function pauseSoloClassic() {
         document.getElementById('classicClouds').removeAttribute('style')
         playerClassic.style.animationPlayState = 'running'
         pausedClassicSolo = false
+        soloClassicSong.play()
         if (scHurted) {
             scHurtWaiter = setInterval(() => {
                 scHurtTimer++
@@ -47,6 +54,7 @@ function pauseSoloClassic() {
         }
         if (!canFly) {
             makePlayerFlyAgain()
+            player.classList.remove('fly')
         }
         makeSCScoreCounter()
     }
@@ -73,6 +81,55 @@ function removeEnd() {
     }
 }
 
+function backSelectSC() {
+    pageType = 1.1
+    classicSoloPage.style.opacity = '0'
+    document.getElementById('actualScore').innerText = '0'
+    setTimeout(() => {
+        classicSoloPage.removeAttribute('style')
+        gameMPage.style.display = 'flex'
+        scScore = 0
+        homeSong.play()
+        if (pausedClassicSolo) {
+            pauseSoloClassic()
+            setTimeout(() => {
+                clearInterval(scScoreCounter)
+                soloClassicSong.currentTime = 0
+                soloClassicSong.pause()
+            }, 1);
+        }
+    }, 500);
+}
+
+function restartSoloClassic() {
+    classicSoloPage.removeAttribute('style')
+    soloClassicSong.currentTime = 0
+    document.getElementById('actualScore').innerText = '0'
+    setTimeout(() => {
+        classicSoloPage.style.display = 'block'
+        if (pausedClassicSolo) {
+            pauseSoloClassic()
+        }
+        canFly = true
+        scScore = 0
+        if (canFly) {
+            document.getElementById('canFly').innerText = 'Sim'
+            if (flyingNow) {
+                document.getElementById('canFly').innerText = 'No ar'
+            }
+        } else {
+            document.getElementById('canFly').innerText = 'Não'
+        }
+    }, 1);
+}
+
+document.getElementById('backSoloClassic').addEventListener('click', () => {
+    backSelectSC()
+})
+
+document.getElementById('resetSoloClassic').addEventListener('click', () => {
+    restartSoloClassic()
+})
 
 function checkLivesSoloClassic() {
     if (soloClassicLive == 6) {
@@ -112,7 +169,9 @@ function checkLivesSoloClassic() {
         playerClassic.classList.add('playerPaused')
         playerClassic.style.transitionDuration = '.3s'
         playerClassic.style.rotate = '90deg'
-
+        if (scScore > localStorage.getItem('classicBestScore')) {
+            localStorage.setItem('classicBestScore', scScore)
+        }
         document.querySelector('.classicSoil').style.animationPlayState = 'paused'
         document.getElementById('classicClouds').style.animationPlayState = 'paused'
         playerClassic.style.animationPlayState = 'paused'
@@ -136,7 +195,11 @@ function checkLivesSoloClassic() {
             classicSoloPage.style.opacity = '0'
             setTimeout(() => {
                 classicSoloPage.removeAttribute('style')
+                soloClassicSong.currentTime = 0
+                soloClassicSong.pause()
+                homeSong.play()
                 homePage.style.display = 'flex'
+                scScore = 0
             }, 500);
         }, 200);
     }

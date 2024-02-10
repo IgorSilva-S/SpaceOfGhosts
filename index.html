@@ -13,7 +13,7 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 1.5, caso encontre bugs, por favor, abra uma Issue
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 2.0, caso encontre bugs, por favor, abra uma Issue
         no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
         utilizadas com a devida autorização do<br>
@@ -40,7 +40,7 @@
         </div>
         <!--InfintePlay-->
         <div class="version">
-            R 1.5
+            R 2.0
         </div>
     </section>
     <section id="gameModeScreen">
@@ -54,7 +54,7 @@
         <button id="soloPlay">
             <div></div> Um Jogador: Normal
         </button>
-        <button id="soloClassicPlay">
+        <button id="soloClassicPlay" style="display: none;">
             <div></div> Um Jogador: Clássico
         </button>
         <button id="duoPlay">
@@ -67,7 +67,7 @@
             <div></div> Dois Jogadores: Clássico
         </button>
         <div class="version">
-            R 1.5
+            R 2.0
         </div>
     </section>
 
@@ -211,7 +211,7 @@
                 <div class="pauseText">Pause</div>
                 <div class="classicInfos">
                     Pontuação atual: <span id="actualScore">0</span><br>
-                    Maior pontuação: <span id="bestScore">0</span><br>
+                    Maior pontuação: <span id="bestScoreClassic">0</span><br>
                     Pronto para voo: <span id="canFly">Sim</span>
                 </div>
                 <button id="backSoloClassic">Voltar para seleção de modo</button>
@@ -395,29 +395,34 @@
             <button id="settingsHome" class="returnHome"></button>
             <h1>Configurações</h1>
             <div class="alignSetting">
-                <label for="oldControls">Controles precisos</label>
-                <input type="checkbox" name="" id="oldControls">
+                <label for="oldControls">Controles precisos, Modo Solo apenas</label>
+                <input type="checkbox" name="" id="oldControls" title="Alterar config. Controles Precisos">
             </div>
             <div class="alignSetting">
                 <label for="vol">Volume</label>
                 <div class="alignItems">
                     <span id="volumeNum">100%</span>
                     <input type="range" name="" id="vol" max="100" value="100">
+                    <button class="muteButton" title="Mutar Jogo" id="muteGameSetting">
+                            <span class="material-symbols-rounded" >
+                                volume_off
+                            </span>
+                    </button>
                 </div>
             </div>
-            <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M</span>
+            <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, e alterar o volume com a tecla V</span>
             <div class="alignSetting">
                 <span>Reportar bugs</span>
-                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues" target="_blank"><img
+                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues" target="_blank" title="Ir para GitHub - Reportar Bugs"><img
                         src="assets/img/sprites/navButtons/black/externalWebsite.png" alt="Ir para GitHub"></a>
             </div>
             <div class="alignSetting">
-                <span>Apagar save</span>
-                <button id="deleteSave">Apagar</button>
+                <span>Apagar Save</span>
+                <button id="deleteSave" class="settingButton" title="Deletar Save">Apagar</button>
             </div>
             <div class="alignSetting">
-                <label for="soloSlots">Solo: Gaurdar boosts ao invés de usar</label>
-                <input type="checkbox" name="" id="soloSlots">
+                <label for="soloSlots">Solo: Guardar boosts ao invés de usar</label>
+                <input type="checkbox" name="" id="soloSlots" title="Alterar config. Guardar Boosts">
             </div>
             <p>Futuramente, novas configurações estarão disponíveis</p>
         </div>
@@ -453,6 +458,10 @@
             volume_off
         </span>
     </div>
+    <div class="volumeModifier" id="quickVolCont">
+        <span id="quickVolNum">100%</span>
+        <input type="range" name="" id="quickVol">
+    </div>
     <!--Audios-->
     <audio src="assets/songs/music/homeMusic.mp3" id="homeSong" loop></audio>
     <audio src="assets/songs/music/soloMusic.mp3" id="soloSong" loop></audio>
@@ -461,6 +470,7 @@
     <audio src="assets/songs/music/gameShop&Skin.mp3" loop id="shopSong"></audio>
     <audio src="assets/songs/music/gameSettings.mp3" loop id="settingsSong"></audio>
     <audio src="assets/songs/music/creditsMusic.mp3" loop id="creditsSong"></audio>
+    <audio src="assets/songs/music/soloClassicMusic.mp3" loop id="soloClassicSong"></audio>
     <!--End Audios-->
     <script src="assets/js/script.js"></script>
     <script src="assets/js/solo.js"></script>

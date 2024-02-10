@@ -1113,155 +1113,179 @@ setInterval(() => {
         if (boostTop >= playerPosi + 15 || boostTop <= playerPosi - 8 || gamePaused || !boostOn || kill) {
         } else {
 
+           if (!soloSlots) {
+               if (boostStyle == 0) {
+                   if (!shieldActive) {
+                       player.classList.add('shield')
+                       shield = true
+                       shieldActive = true
+                       boostItem.style.opacity = '0'
+                       boostOn = false
+                   } else {
+                       shieldSlot++
+                       boostItem.style.opacity = '0'
+                       boostOn = false
+                   } trail
+                   if (acceleratorP1 || relaxStts) {
+                       player.classList.remove('shield')
+                       shield = true
+                       shieldActive = true
+                       boostItem.style.opacity = '0'
+                       boostOn = false
+                   }
+               } else if (boostStyle == 1) {
+                   boostItem.style.opacity = '0'
+                   boostOn = false
+
+                   if (lives1p < 90) {
+                       lives1p = lives1p + 20
+                       if (lives1p > 100) {
+                           lives1p = 100
+                       }
+                   } else {
+                       lives1p = lives1p + 20
+                       healSlot++
+                       if (lives1p > 100) {
+                           lives1p = 100
+                       }
+                   }
+
+                   checkLive1p()
+               } else if (boostStyle == 2) {
+                   boostItem.style.opacity = '0'
+                   boostOn = false
+                   if (lives1p < 100) {
+                       lives1p = 100
+                       checkLive1p()
+                   } else {
+                       fullHealSlot++
+                   }
+               } else if (boostStyle == 3) {
+                   boostItem.style.opacity = '0'
+                   boostOn = false
+                   if (!acceleratorP1) {
+                       if (shieldActive) {
+                           player.classList.remove('shield')
+                       }
+                       acceleratorP1 = true
+                       document.getElementById('gameBckg').style.display = 'none'
+                       invencible.style.display = 'block'
+                       //.style.display = 'block'
+                       if (plusSpeed < 1) {
+                           trail = setInterval(() => {
+                               let trailElm = document.createElement('div')
+                               trailElm.setAttribute('class', 'trail')
+                               trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                               trailElm.addEventListener("animationend", () => {
+                                   trailElm.remove()
+                               })
+                               soloPage.insertAdjacentElement('beforeend', trailElm)
+                           }, 100);
+                       }
+                       document.getElementById('gameBckg').style.animationDuration = '7.5s'
+                       setTimeout(() => {
+                           document.getElementById('gameBckg').style.display = 'block'
+                       }, 1);
+                       plusSpeed = plusSpeed + 0.25
+                       document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                       acceleratorWaiter = setInterval(() => {
+                           acceleratorTimer++
+                           if (acceleratorTimer == 50) {
+                               clearInterval(acceleratorWaiter)
+                               acceleratorP1 = false
+                               acceleratorTimer = 0
+                               invencible.removeAttribute('style')
+                               //trail.removeAttribute('style')
+                               if (plusSpeed < 1) {
+                                   clearInterval(trail)
+                               } else {
+                                   clearInterval(trail)
+                                   trail = NaN
+                                   setTimeout(() => {
+                                       trail = setInterval(() => {
+                                           let trailElm = document.createElement('div')
+                                           trailElm.setAttribute('class', 'trail')
+                                           trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                                           trailElm.addEventListener("animationend", () => {
+                                               trailElm.remove()
+                                           })
+                                           soloPage.insertAdjacentElement('beforeend', trailElm)
+                                       }, 100);
+                                   }, 10);
+                               }
+                               if (shieldActive) {
+                                   player.classList.add('shield')
+                               }
+                               document.getElementById('gameBckg').style.display = 'none'
+                               setTimeout(() => {
+                                   document.getElementById('gameBckg').removeAttribute('style')
+                               }, 1);
+                           }
+                       }, 1000);
+                   } else {
+                       acceleratorSlot++
+                   }
+               } else if (boostStyle == 4) {
+                   boostItem.style.opacity = '0'
+                   boostOn = false
+                   if (plusSpeed < 1 || !acceleratorP1 || !relaxStts) {
+                       relaxSlot++
+                   } else {
+                       player.classList.add('relaxing')
+                       relaxStts = true
+                       meteor1.style.animationPlayState = 'paused'
+                       meteor2.style.animationPlayState = 'paused'
+                       meteor3.style.animationPlayState = 'paused'
+                       meteor4.style.animationPlayState = 'paused'
+                       meteor5.style.animationPlayState = 'paused'
+                       meteor6.style.animationPlayState = 'paused'
+                       meteor7.style.animationPlayState = 'paused'
+                       boostItem.style.animationPlayState = 'paused'
+                       document.getElementById('gameBckg').style.animationPlayState = 'paused'
+                       setTimeout(() => {
+                           plusSpeed = plusSpeed - 0.25
+                           document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                           player.classList.remove('relaxing')
+                           meteor1.style.animationPlayState = 'running'
+                           meteor2.style.animationPlayState = 'running'
+                           meteor3.style.animationPlayState = 'running'
+                           meteor4.style.animationPlayState = 'running'
+                           meteor5.style.animationPlayState = 'running'
+                           meteor6.style.animationPlayState = 'running'
+                           meteor7.style.animationPlayState = 'running'
+                           boostItem.style.animationPlayState = 'running'
+                           document.getElementById('gameBckg').style.animationPlayState = 'running'
+                           relaxStts = false
+                           if (plusSpeed < 1) {
+                               clearInterval(trail)
+                               trail = NaN
+                           }
+                       }, 2000);
+                   }
+               }
+           } else {
             if (boostStyle == 0) {
-                if (!shieldActive) {
-                    player.classList.add('shield')
-                    shield = true
-                    shieldActive = true
-                    boostItem.style.opacity = '0'
-                    boostOn = false
-                } else {
-                    shieldSlot++
-                    boostItem.style.opacity = '0'
-                    boostOn = false
-                } trail
-                if (acceleratorP1 || relaxStts) {
-                    player.classList.remove('shield')
-                    shield = true
-                    shieldActive = true
-                    boostItem.style.opacity = '0'
-                    boostOn = false
-                }
+                shieldSlot++
+                boostItem.style.opacity = '0'
+                boostOn = false
             } else if (boostStyle == 1) {
+                healSlot++
                 boostItem.style.opacity = '0'
                 boostOn = false
-
-                if (lives1p < 90) {
-                    lives1p = lives1p + 20
-                    if (lives1p > 100) {
-                        lives1p = 100
-                    }
-                } else {
-                    lives1p = lives1p + 20
-                    healSlot++
-                    if (lives1p > 100) {
-                        lives1p = 100
-                    }
-                }
-
-                checkLive1p()
             } else if (boostStyle == 2) {
+                fullHealSlot++
                 boostItem.style.opacity = '0'
                 boostOn = false
-                if (lives1p < 100) {
-                    lives1p = 100
-                    checkLive1p()
-                } else {
-                    fullHealSlot++
-                }
             } else if (boostStyle == 3) {
+                acceleratorSlot++
                 boostItem.style.opacity = '0'
                 boostOn = false
-                if (!acceleratorP1) {
-                    if (shieldActive) {
-                        player.classList.remove('shield')
-                    }
-                    acceleratorP1 = true
-                    document.getElementById('gameBckg').style.display = 'none'
-                    invencible.style.display = 'block'
-                    //.style.display = 'block'
-                    if (plusSpeed < 1) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
-                    document.getElementById('gameBckg').style.animationDuration = '7.5s'
-                    setTimeout(() => {
-                        document.getElementById('gameBckg').style.display = 'block'
-                    }, 1);
-                    plusSpeed = plusSpeed + 0.25
-                    document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
-                    acceleratorWaiter = setInterval(() => {
-                        acceleratorTimer++
-                        if (acceleratorTimer == 50) {
-                            clearInterval(acceleratorWaiter)
-                            acceleratorP1 = false
-                            acceleratorTimer = 0
-                            invencible.removeAttribute('style')
-                            //trail.removeAttribute('style')
-                            if (plusSpeed < 1) {
-                                clearInterval(trail)
-                            } else {
-                                clearInterval(trail)
-                                trail = NaN
-                                setTimeout(() => {
-                                    trail = setInterval(() => {
-                                        let trailElm = document.createElement('div')
-                                        trailElm.setAttribute('class', 'trail')
-                                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                                        trailElm.addEventListener("animationend", () => {
-                                            trailElm.remove()
-                                        })
-                                        soloPage.insertAdjacentElement('beforeend', trailElm)
-                                    }, 100);
-                                }, 10);
-                            }
-                            if (shieldActive) {
-                                player.classList.add('shield')
-                            }
-                            document.getElementById('gameBckg').style.display = 'none'
-                            setTimeout(() => {
-                                document.getElementById('gameBckg').removeAttribute('style')
-                            }, 1);
-                        }
-                    }, 1000);
-                } else {
-                    acceleratorSlot++
-                }
             } else if (boostStyle == 4) {
+                relaxSlot++
                 boostItem.style.opacity = '0'
                 boostOn = false
-                if (plusSpeed < 1 || !acceleratorP1 || !relaxStts) {
-                    relaxSlot++
-                } else {
-                        player.classList.add('relaxing')
-                        relaxStts = true
-                        meteor1.style.animationPlayState = 'paused'
-                        meteor2.style.animationPlayState = 'paused'
-                        meteor3.style.animationPlayState = 'paused'
-                        meteor4.style.animationPlayState = 'paused'
-                        meteor5.style.animationPlayState = 'paused'
-                        meteor6.style.animationPlayState = 'paused'
-                        meteor7.style.animationPlayState = 'paused'
-                        boostItem.style.animationPlayState = 'paused'
-                        document.getElementById('gameBckg').style.animationPlayState = 'paused'
-                        setTimeout(() => {
-                            plusSpeed = plusSpeed - 0.25
-                            document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
-                            player.classList.remove('relaxing')
-                            meteor1.style.animationPlayState = 'running'
-                            meteor2.style.animationPlayState = 'running'
-                            meteor3.style.animationPlayState = 'running'
-                            meteor4.style.animationPlayState = 'running'
-                            meteor5.style.animationPlayState = 'running'
-                            meteor6.style.animationPlayState = 'running'
-                            meteor7.style.animationPlayState = 'running'
-                            boostItem.style.animationPlayState = 'running'
-                            document.getElementById('gameBckg').style.animationPlayState = 'running'
-                            relaxStts = false
-                            if (plusSpeed < 1) {
-                                clearInterval(trail)
-                                trail = NaN
-                            }
-                        }, 2000);
-                }
             }
+           }
             displaySlotsSolo()
         }
     }
