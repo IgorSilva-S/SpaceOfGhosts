@@ -13,7 +13,7 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 2.0, caso encontre bugs, por favor, abra uma Issue
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 2.1, caso encontre bugs, por favor, abra uma Issue
         no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
         utilizadas com a devida autorização do<br>
@@ -40,7 +40,7 @@
         </div>
         <!--InfintePlay-->
         <div class="version">
-            R 2.0
+            R 2.1
         </div>
     </section>
     <section id="gameModeScreen">
@@ -67,7 +67,7 @@
             <div></div> Dois Jogadores: Clássico
         </button>
         <div class="version">
-            R 2.0
+            R 2.1
         </div>
     </section>
 
@@ -205,6 +205,17 @@
         <div class="crystal cType6" id="cr2"></div>
         <div class="crystal cType1" id="cr3"></div>
         <div class="crystal cType5" id="cr4"></div>
+        <div class="scoreSoloClassic" id="scoreSC">
+            <h1>Pontuação: Clássico</h1>
+            Pontuação: <span id="soloClassicScore">0</span> <br>
+            Melhor Pontuação: <span id="soloClassicBestScore">0</span> <br>
+            <div class="newHigh" id="soloClassicHighAlert">Nova Melhor pontuação</div>
+            Moedas: <span id="soloClassicPlusMoney">0</span> <br>
+            <div class="goButtons">
+                <button id="soloClassicHome">Ir para o início</button>
+                <button id="soloClassicGame">Começar novamente</button>
+            </div>
+        </div>
         <div class="pauseContainer" id="soloCPauseBCKG">
             <div class="pauseAlert" id="soloCPauseGui">
                 <div class="pauseAnim"></div>
@@ -366,7 +377,7 @@
                 Skin: Fantasma gato <br>
                 Valor: 350 Moedas
             </button>
-            <button class="Sitem" style="display: none;">
+            <button class="Sitem" id="classicModePurchase">
                 <img src="assets/img/sprites/shopItems/classicMode.gif" alt="classicMode">
                 Modo de jogo: Clássico <br>
                 Valor: 2000 Moedas
@@ -404,16 +415,18 @@
                     <span id="volumeNum">100%</span>
                     <input type="range" name="" id="vol" max="100" value="100">
                     <button class="muteButton" title="Mutar Jogo" id="muteGameSetting">
-                            <span class="material-symbols-rounded" >
-                                volume_off
-                            </span>
+                        <span class="material-symbols-rounded">
+                            volume_off
+                        </span>
                     </button>
                 </div>
             </div>
-            <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, e alterar o volume com a tecla V</span>
+            <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, e alterar o volume com a tecla
+                V</span>
             <div class="alignSetting">
                 <span>Reportar bugs</span>
-                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues" target="_blank" title="Ir para GitHub - Reportar Bugs"><img
+                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues" target="_blank"
+                    title="Ir para GitHub - Reportar Bugs"><img
                         src="assets/img/sprites/navButtons/black/externalWebsite.png" alt="Ir para GitHub"></a>
             </div>
             <div class="alignSetting">
@@ -434,6 +447,7 @@
                 <span class="sectionTitle">Música</span><br><br>
                 Início: Artificial Music <br>
                 Modo Solo: Prod. Riddiman <br>
+                Modo Solo: Clássico: Chillpeach <br>
                 Modo Duo: Pieces <br>
                 Loja e Configurações: dyu / Mix oficial: Nintendo <br>
                 Créditos: After The Fall <br>
@@ -460,7 +474,7 @@
     </div>
     <div class="volumeModifier" id="quickVolCont">
         <span id="quickVolNum">100%</span>
-        <input type="range" name="" id="quickVol">
+        <input type="range" name="" id="quickVol" value="100">
     </div>
     <!--Audios-->
     <audio src="assets/songs/music/homeMusic.mp3" id="homeSong" loop></audio>

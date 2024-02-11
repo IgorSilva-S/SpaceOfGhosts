@@ -84,8 +84,10 @@ function removeEnd() {
 function backSelectSC() {
     pageType = 1.1
     classicSoloPage.style.opacity = '0'
+    document.getElementById('scoreSC').removeAttribute('style')
     document.getElementById('actualScore').innerText = '0'
     setTimeout(() => {
+        document.getElementById('soloClassicHighAlert').removeAttribute('style')
         classicSoloPage.removeAttribute('style')
         gameMPage.style.display = 'flex'
         scScore = 0
@@ -104,8 +106,13 @@ function backSelectSC() {
 function restartSoloClassic() {
     classicSoloPage.removeAttribute('style')
     soloClassicSong.currentTime = 0
+    document.getElementById('scoreSC').removeAttribute('style')
     document.getElementById('actualScore').innerText = '0'
+    playerClassic.removeAttribute('style')
     setTimeout(() => {
+        document.getElementById('soloClassicHighAlert').removeAttribute('style')
+        soloClassicLive = 6
+        checkLivesSoloClassic()
         classicSoloPage.style.display = 'block'
         if (pausedClassicSolo) {
             pauseSoloClassic()
@@ -128,6 +135,14 @@ document.getElementById('backSoloClassic').addEventListener('click', () => {
 })
 
 document.getElementById('resetSoloClassic').addEventListener('click', () => {
+    restartSoloClassic()
+})
+
+document.getElementById('soloClassicHome').addEventListener('click', () => {
+    backSelectSC()
+})
+
+document.getElementById('soloClassicGame').addEventListener('click', () => {
     restartSoloClassic()
 })
 
@@ -190,18 +205,21 @@ function checkLivesSoloClassic() {
             document.getElementById('canFly').innerText = 'Não'
         }
         clearInterval(scScoreCounter)
-        setTimeout(() => {
-            pageType = 1
-            classicSoloPage.style.opacity = '0'
-            setTimeout(() => {
-                classicSoloPage.removeAttribute('style')
-                soloClassicSong.currentTime = 0
-                soloClassicSong.pause()
-                homeSong.play()
-                homePage.style.display = 'flex'
-                scScore = 0
-            }, 500);
-        }, 200);
+        document.getElementById('soloClassicScore').innerText = scScore
+        if (scScore > localStorage.getItem('classicBestScore')) {
+            document.getElementById('soloClassicBestScore').innerText = scScore
+        } else {
+            document.getElementById('soloClassicBestScore').innerText = localStorage.getItem('classicBestScore')
+        }
+        if (scScore == localStorage.getItem('classicBestScore')) {
+            document.getElementById('soloClassicHighAlert').style.display = 'block'
+        }
+        document.getElementById('scoreSC').style.top = '20px'
+        let money = localStorage.getItem('money')
+        money = parseInt(money)
+        document.getElementById('soloClassicPlusMoney').innerText = money + (scScore * 2)
+        let newMoney = money + (scScore * 2)
+        localStorage.setItem('money', newMoney)
     }
 }
 

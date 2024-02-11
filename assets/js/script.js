@@ -181,6 +181,9 @@ let skin1Buy = localStorage.getItem('purchased1')
 let skin2Buy = localStorage.getItem('purchased2')
 let skin3Buy = localStorage.getItem('purchased3')
 
+//Game Mode purchased checker
+let classicBuy = localStorage.getItem('classicPurchased')
+
 //End Variables
 
 //Organize LocalStorage items
@@ -262,6 +265,9 @@ playButton.addEventListener("click", function () {
     setTimeout(() => {
         homePage.removeAttribute('style')
         gameMPage.style.display = 'flex'
+        if (classicBuy) {
+            soloClassicButton.removeAttribute('style')
+        }
     }, 500);
 })
 
@@ -707,6 +713,11 @@ document.addEventListener("keydown", function (e) {
                 canFly = false
                 makePlayerFlyAgain()
             })
+        }
+
+        if (e.key == 'k') {
+            soloClassicLive = 1
+            checkLivesSoloClassic()
         }
         
         if (e.key == "Enter") {

@@ -83,6 +83,27 @@ document.getElementById('catSkinPurchase').addEventListener("click", () => {
     }
 })
 
+document.getElementById('classicModePurchase').addEventListener('click', () => {
+    if (!classicBuy) {
+        let confirmPurchase = confirm('Deseja comprar esse item? Esse modo de jogo está em teste, e pode estar instável.')
+        if (confirmPurchase) {
+            let money = localStorage.getItem('money')
+            let itemValue = 2000
+            if (money >= itemValue) {
+                classicBuy = confirmPurchase
+                money = money - itemValue
+                localStorage.setItem('money', money)
+                document.getElementById('moneyShopView').innerText = money
+                localStorage.setItem('classicPurchased', confirmPurchase)
+            } else {
+                alert('Você não tem moedas suficientes para adquirir esse produto!')
+            }
+        }
+    } else {
+        alert('Esse item já foi comprado')
+    }
+})
+
 //Skin Changer
 document.getElementById('returnShop').addEventListener("click", () => {
     skinChangerPage.style.opacity = '0'
