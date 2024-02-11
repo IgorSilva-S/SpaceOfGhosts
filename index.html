@@ -13,7 +13,7 @@
 <body>
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 2.1, caso encontre bugs, por favor, abra uma Issue
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 2.2, caso encontre bugs, por favor, abra uma Issue
         no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
         utilizadas com a devida autorização do<br>
@@ -40,7 +40,7 @@
         </div>
         <!--InfintePlay-->
         <div class="version">
-            R 2.1
+            R 2.2
         </div>
     </section>
     <section id="gameModeScreen">
@@ -51,23 +51,54 @@
 
         </button>
         <h1>Escolha o seu modo</h1>
-        <button id="soloPlay">
-            <div></div> Um Jogador: Normal
-        </button>
-        <button id="soloClassicPlay" style="display: none;">
-            <div></div> Um Jogador: Clássico
-        </button>
-        <button id="duoPlay">
-            <div></div> Dois Jogadores: Normal
-        </button>
-        <button id="duoBattle" style="display: none">
-            <div></div> Dois Jogadores: Batalha
-        </button>
-        <button id="duoClassicPlay" style="display: none">
-            <div></div> Dois Jogadores: Clássico
-        </button>
+        <div class="cusSelAlign">
+            <div class="custom-select">
+                <select name="" id="gameModeSelect">
+                    <option value="Text">Filtrar:</option>
+                    <option value="All">Todos</option>
+                    <option value="Solos">Um Jogador</option>
+                    <option value="Duos">Dois Jogadores</option>
+                </select>
+            </div>
+        </div>
+        <div class="alignButtonsGameMode" id="allBlocks">
+            <button id="soloPlay">
+                <div></div> Um Jogador: Normal
+            </button>
+            <button id="soloClassicPlay" style="display: none;">
+                <div></div> Um Jogador: Clássico
+            </button>
+            <button id="duoPlay">
+                <div></div> Dois Jogadores: Normal
+            </button>
+            <button id="duoBattlePlay" style="display: none">
+                <div></div> Dois Jogadores: Batalha
+            </button>
+            <button id="duoClassicPlay" style="display: none;">
+                <div></div> Dois Jogadores: Clássico
+            </button>
+        </div>
+        <div class="alignButtonsGameMode" id="soloBlocks" style="display: none">
+            <button id="SBsoloPlay">
+                <div></div> Um Jogador: Normal
+            </button>
+            <button id="SBsoloClassicPlay" style="display: none;">
+                <div></div> Um Jogador: Clássico
+            </button>
+        </div>
+        <div class="alignButtonsGameMode" id="duoBlocks" style="display: none">
+            <button id="DBduoPlay">
+                <div></div> Dois Jogadores: Normal
+            </button>
+            <button id="DBduoBattlePlay" style="display: none">
+                <div></div> Dois Jogadores: Batalha
+            </button>
+            <button id="DBduoClassicPlay" style="display: none;">
+                <div></div> Dois Jogadores: Clássico
+            </button>
+        </div>
         <div class="version">
-            R 2.1
+            R 2.2
         </div>
     </section>
 
@@ -491,6 +522,7 @@
     <script src="assets/js/duoRun.js"></script>
     <script src="assets/js/shop&skins.js"></script>
     <script src="assets/js/soloClassic.js"></script>
+    <script src="assets/js/selectScript.js"></script>
 </body>
 
 </html>

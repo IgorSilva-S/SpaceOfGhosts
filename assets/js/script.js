@@ -73,7 +73,10 @@ const settingsButton = document.getElementById('editSettings')
 const creditsButton = document.getElementById('viewCredits')
 const soloButton = document.getElementById('soloPlay')
 const soloClassicButton = document.getElementById('soloClassicPlay')
+const soloButton2 = document.getElementById('SBsoloPlay')
+const soloClassicButton2 = document.getElementById('SBsoloClassicPlay')
 const duoButton = document.getElementById('duoPlay')
+const duoButton2 = document.getElementById('DBduoPlay')
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
 let acceleratorSlot = 0
@@ -214,11 +217,12 @@ function organizeSound() {
 function enableOldControls() {
     let oldEnabled = localStorage.getItem('oldControls')
     if (oldEnabled != undefined) {
-        type2Controls = oldEnabled
-        if (oldEnabled) {
+        if (oldEnabled  == 'true') {
             document.getElementById('oldControls').checked = true
+            type2Controls = true
         } else {
             document.getElementById('oldControls').checked = false
+            type2Controls = false
         }
     }
 }
@@ -263,11 +267,12 @@ playButton.addEventListener("click", function () {
     pageType = 1.1
     homePage.style.opacity = '0'
     setTimeout(() => {
-        homePage.removeAttribute('style')
-        gameMPage.style.display = 'flex'
         if (classicBuy) {
             soloClassicButton.removeAttribute('style')
+            soloClassicButton2.removeAttribute('style')
         }
+        homePage.removeAttribute('style')
+        gameMPage.style.display = 'flex'
     }, 500);
 })
 
@@ -401,6 +406,46 @@ soloButton.addEventListener("click", function () {
     }, 500);
 })
 
+soloButton2.addEventListener("click", function () {
+    pageType = 2
+    lives1p = 100
+    checkLive1p()
+    gameMPage.style.opacity = '0'
+    setTimeout(() => {
+        gameMPage.removeAttribute('style')
+        soloPage.style.display = 'block'
+        homeSong.pause()
+        song.play()
+
+        homeSong.currentTime = 0
+        acceleratorP1 = false
+        acceleratorTimer = 0
+        hurtShieldTimer = 0
+        displaySlotsSolo()
+        scoreCounter = setInterval(() => {
+            scoreNum++
+            sScore.innerText = scoreNum
+        }, 500);
+        addSpeed = setInterval(() => {
+            if (scoreNum % 250 == 0 && scoreNum != 0) {
+                plusSpeed = plusSpeed + 0.25
+                document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                if (plusSpeed == 1 && trail == NaN) {
+                    trail = setInterval(() => {
+                        let trailElm = document.createElement('div')
+                        trailElm.setAttribute('class', 'trail')
+                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                        trailElm.addEventListener("animationend", () => {
+                            trailElm.remove()
+                        })
+                        soloPage.insertAdjacentElement('beforeend', trailElm)
+                    }, 100);
+                }
+            }
+        }, 501);
+    }, 500);
+})
+
 soloClassicButton.addEventListener("click", () => {
     pageType = 2.1
     gameMPage.style.opacity = '0'
@@ -417,7 +462,39 @@ soloClassicButton.addEventListener("click", () => {
     }, 500);
 })
 
+soloClassicButton2.addEventListener("click", () => {
+    pageType = 2.1
+    gameMPage.style.opacity = '0'
+    setTimeout(() => {
+        gameMPage.removeAttribute('style')
+        homeSong.pause()
+        homeSong.currentTime = 0
+        soloClassicLive = 6
+        makeSCScoreCounter()
+        checkLivesSoloClassic()
+        classicSoloPage.style.display = 'block'
+        soloClassicSong.play()
+        removeEnd()
+    }, 500);
+})
+
 duoButton.addEventListener("click", function () {
+    pageType = 3
+    gameMPage.style.opacity = '0'
+    duoLiveP1 = 100
+    duoLiveP2 = 100
+    setTimeout(() => {
+        gameMPage.removeAttribute('style')
+        duoRunPage.style.display = 'flex'
+        homeSong.pause()
+        duoRSong.play()
+        checkLiveDRun1()
+        checkLiveDRun2()
+        duoRSortMeteors()
+    }, 500);
+})
+
+duoButton2.addEventListener("click", function () {
     pageType = 3
     gameMPage.style.opacity = '0'
     duoLiveP1 = 100

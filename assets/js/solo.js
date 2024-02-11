@@ -242,7 +242,7 @@ document.getElementById('backInf').addEventListener("click", function () {
     setTimeout(() => {
         soloPage.removeAttribute('style')
         soloPage.style.display = 'none'
-        homePage.style.display = 'flex'
+        gameMPage.style.display = 'flex'
         homeSong.play()
         homeSong.currentTime = 0
         if (acceleratorP1) {
