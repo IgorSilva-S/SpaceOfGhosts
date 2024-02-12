@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space Of Ghosts</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" id="mainCSS">
     <link rel="stylesheet" href="assets/css/skins.css">
     <link rel="shortcut icon" href="assets/img/sprites/skins/normal/Flying.gif" type="image/gif">
 </head>
 
 <body>
+    <!--Disclaimer-->
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 2.4, caso encontre bugs, por favor, abra uma Issue
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 3.0, caso encontre bugs, por favor, abra uma Issue
         no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
         utilizadas com a devida autorização do<br>
@@ -23,6 +24,7 @@
         <div class="waveGhost"></div>
     </section>
 
+    <!--Home-->
     <section id="homeScreen">
         <div class="background">
 
@@ -38,11 +40,12 @@
             <button id="editSettings">Configurações</button>
             <button id="viewCredits">Créditos</button>
         </div>
-        <!--InfintePlay-->
         <div class="version">
-            R 2.4
+            R 3.0
         </div>
     </section>
+
+    <!--Game Mode-->
     <section id="gameModeScreen">
         <div class="background">
 
@@ -74,7 +77,7 @@
             <button id="duoBattlePlay" style="display: none">
                 <div></div> Dois Jogadores: Batalha
             </button>
-            <button id="duoClassicPlay" style="display: none;">
+            <button id="duoClassicPlay">
                 <div></div> Dois Jogadores: Clássico
             </button>
         </div>
@@ -82,7 +85,7 @@
             <button id="SBsoloPlay">
                 <div></div> Um Jogador: Normal
             </button>
-            <button id="SBsoloClassicPlay" style="display: none;">
+            <button id="SBsoloClassicPlay">
                 <div></div> Um Jogador: Clássico
             </button>
         </div>
@@ -93,15 +96,16 @@
             <button id="DBduoBattlePlay" style="display: none">
                 <div></div> Dois Jogadores: Batalha
             </button>
-            <button id="DBduoClassicPlay" style="display: none;">
+            <button id="DBduoClassicPlay">
                 <div></div> Dois Jogadores: Clássico
             </button>
         </div>
         <div class="version">
-            R 2.4
+            R 3.0
         </div>
     </section>
 
+    <!--Solo Mode: Normal-->
     <section id="soloMode">
         <div class="background" id="gameBckg">
 
@@ -188,6 +192,8 @@
             </div>
         </div>
     </section>
+
+    <!--Solo Mode: Normal - Score-->
     <section id="soloScoreMark">
         <div class="background">
 
@@ -227,6 +233,8 @@
             </div>
         </div>
     </section>
+
+    <!--Solo Mode: Classic-->
     <section id="soloClassic">
         <div class="clouds" id="classicClouds"></div>
         <div class="classicSoil"></div>
@@ -261,6 +269,8 @@
             </div>
         </div>
     </section>
+
+    <!--Duo Mode: Normal-->
     <section id="duoRun">
         <div class="duoControls" id="pauseDuoControls">
             <button class="returnHome" id="retHome">
@@ -302,7 +312,7 @@
             </div>
             <div class="hearts" id="dRunP1Live"></div>
         </div>
-        <div class="playerScreen" id="player2Screen">
+        <div class="playerScreen player2Screen">
             <div class="p2KM" id="p2KM"></div>
             <div class="player" id="player2Run">
                 <div class="inv" id="InvP2R"></div>
@@ -339,6 +349,8 @@
         </div>
 
     </section>
+
+    <!--Duo Mode: Normal - Score-->
     <section id="duoRunScore">
         <div class="background">
 
@@ -378,6 +390,21 @@
             </div>
         </div>
     </section>
+
+    <!--Duo Mode: Classic-->
+    <section id="duoClassic">
+        <div class="clouds" id="classicClouds"></div>
+        <div class="playerScreen">
+            <div class="classicSoil"></div>
+            <div class="player"></div>
+        </div>
+        <div class="playerScreen player2Screen">
+            <div class="classicSoil"></div>
+            <div class="player"></div>
+        </div>
+    </section>
+
+    <!--Shop-->
     <section id="shop">
         <div class="clouds"></div>
         <div class="moneyAlert">
@@ -430,6 +457,8 @@
             </div>
         </div>
     </section>
+
+    <!--Skin Changer-->
     <section id="skinChanger">
         <div class="clouds"></div>
         </div>
@@ -446,6 +475,7 @@
         </div>
     </section>
 
+    <!--Settings-->
     <section id="settings">
         <div class="earthCloud"></div>
         <div class="settingsPanel">
@@ -454,6 +484,10 @@
             <div class="alignSetting">
                 <label for="oldControls">Controles precisos, Modo Solo apenas</label>
                 <input type="checkbox" name="" id="oldControls" title="Alterar config. Controles Precisos">
+            </div>
+            <div class="alignSetting">
+                <label for="soloSlots">Solo: Guardar boosts ao invés de usar</label>
+                <input type="checkbox" name="" id="soloSlots" title="Alterar config. Guardar Boosts">
             </div>
             <div class="alignSetting">
                 <label for="vol">Volume</label>
@@ -467,8 +501,16 @@
                     </button>
                 </div>
             </div>
-            <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, e alterar o volume com a tecla
-                V</span>
+            <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, alterar o volume com a tecla
+                V e abrir o Controle de Som rápido ao clicar F1</span>
+            <div class="alignSetting">
+                <label for="invertCursor">Alterar cor do Cursor</label>
+                <input type="checkbox" name="" id="invertCursor">
+            </div>
+            <div class="alignSetting">
+                <label for="invertColor">Inverter Cores</label>
+                <input type="checkbox" name="" id="invertColor">
+            </div>
             <div class="alignSetting">
                 <span>Reportar bugs</span>
                 <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues" target="_blank"
@@ -479,13 +521,11 @@
                 <span>Apagar Save</span>
                 <button id="deleteSave" class="settingButton" title="Deletar Save">Apagar</button>
             </div>
-            <div class="alignSetting">
-                <label for="soloSlots">Solo: Guardar boosts ao invés de usar</label>
-                <input type="checkbox" name="" id="soloSlots" title="Alterar config. Guardar Boosts">
-            </div>
             <p>Futuramente, novas configurações estarão disponíveis</p>
         </div>
     </section>
+
+    <!--Credits-->
     <section id="credits">
         <div class="rollCredits">
             <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts - Créditos">
@@ -513,9 +553,10 @@
         </div>
     </section>
 
+    <!--Volume Controls-->
     <div class="muteAlert" id="volAlertCont">
         <span class="material-symbols-rounded" id="volAlert">
-            volume_off
+            volume_up
         </span>
     </div>
     <div class="volumeModifier" id="quickVolCont">
@@ -523,15 +564,24 @@
         <input type="range" name="" id="quickVol" value="100">
     </div>
     <!--Audios-->
+
+    <!--Music-->
     <audio src="assets/songs/music/homeMusic.mp3" id="homeSong" loop></audio>
     <audio src="assets/songs/music/soloMusic.mp3" id="soloSong" loop></audio>
     <audio src="assets/songs/music/duoRunMusic.mp3" loop id="duoRunSong"></audio>
-    <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
     <audio src="assets/songs/music/gameShop&Skin.mp3" loop id="shopSong"></audio>
     <audio src="assets/songs/music/gameSettings.mp3" loop id="settingsSong"></audio>
     <audio src="assets/songs/music/creditsMusic.mp3" loop id="creditsSong"></audio>
     <audio src="assets/songs/music/soloClassicMusic.mp3" loop id="soloClassicSong"></audio>
+    <audio src="assets/songs/music/duoClassicMusic.mp3" loop id="duoClassicSong"></audio>
+    <!--SFX-->
+    <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
+    <audio src="assets/songs/SFX/Alert.wav" id="alertSong"></audio>
+    <audio src="assets/songs/SFX/Excalamation.wav" id="exclamationSong"></audio>
+
     <!--End Audios-->
+
+    <!--Script Area-->
     <script src="assets/js/script.js"></script>
     <script src="assets/js/solo.js"></script>
     <script src="assets/js/duoRun.js"></script>

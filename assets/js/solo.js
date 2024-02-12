@@ -186,7 +186,7 @@ function pauseGameSolo() {
 }
 //Pause Controls
 
-document.getElementById('restartInf').addEventListener("click", function () {
+document.getElementById('restartInf').addEventListener("click", () => {
     pauseGameSolo()
     song.currentTime = 0
     soloPage.style.display = 'none'
@@ -237,7 +237,7 @@ document.getElementById('restartInf').addEventListener("click", function () {
 
 })
 
-document.getElementById('backInf').addEventListener("click", function () {
+document.getElementById('backInf').addEventListener("click", () => {
     soloPage.style.opacity = '0'
     setTimeout(() => {
         soloPage.removeAttribute('style')

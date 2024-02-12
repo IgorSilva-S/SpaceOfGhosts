@@ -54,6 +54,7 @@ const skinChangerPage = document.getElementById('skinChanger')
 const settingsPage = document.getElementById('settings')
 const creditsPage = document.getElementById('credits')
 const classicSoloPage = document.getElementById('soloClassic')
+const classicDuoPage = document.getElementById('duoClassic')
 //End Pages
 
 //Songs
@@ -61,10 +62,13 @@ const homeSong = document.getElementById('homeSong') // by Artificial Music
 const song = document.getElementById('soloSong') // by Prod. Riddiman
 const duoRSong = document.getElementById('duoRunSong') // by Pieces
 const hSong = document.getElementById('hSong') // by SEGA and Sonic Team (1992)
+const alertSong = document.getElementById('alertSong') // by Microsoft
+const exclamationSong = document.getElementById('exclamationSong') // by Microsoft
 const shopSong = document.getElementById('shopSong') // by dyu / Official by Nintendo
 const settingsSong = document.getElementById('settingsSong') // by dyu / Official by Nintendo
 const creditsSong = document.getElementById('creditsSong') // by After The Fall 
 const soloClassicSong = document.getElementById('soloClassicSong') // by Chillpeach
+const duoClassicSong = document.getElementById('duoClassicSong') // by Chillpeach
 
 //End Songs
 const playButton = document.getElementById('playGame')
@@ -77,6 +81,8 @@ const soloButton2 = document.getElementById('SBsoloPlay')
 const soloClassicButton2 = document.getElementById('SBsoloClassicPlay')
 const duoButton = document.getElementById('duoPlay')
 const duoButton2 = document.getElementById('DBduoPlay')
+const duoClassicButton = document.getElementById('duoClassicPlay')
+const duoClassicButton2 = document.getElementById('DBduoClassicPlay')
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
 let acceleratorSlot = 0
@@ -142,6 +148,8 @@ let flyingNow = false
 let scScoreCounter
 let scScore = 0
 let quickVolAppeared = false
+let allControlsAppeared = false
+let changedCursor = false
 let soloSlots = false
 
 //Solo Meteors
@@ -205,24 +213,24 @@ function organizeSound() {
         settingsSong.volume = gameVolume
         creditsSong.volume = gameVolume
         soloClassicSong.volume = gameVolume
+        alertSong.volume = gameVolume
+        duoClassicSong.volume = gameVolume
         document.getElementById('volumeNum').innerText = `${gameVolume * 100}%`
         document.getElementById('quickVolNum').innerText = `${gameVolume * 100}%`
         document.getElementById('vol').value = gameVolume * 100
         document.getElementById('quickVol').value = gameVolume * 100
     } if (gameVolume == 0) {
         muted = true
+        document.getElementById('volAlert').innerText = 'volume_off'
     }
 }
 
 function enableOldControls() {
     let oldEnabled = localStorage.getItem('oldControls')
     if (oldEnabled != undefined) {
-        if (oldEnabled  == 'true') {
+        if (oldEnabled == 'true') {
             document.getElementById('oldControls').checked = true
             type2Controls = true
-        } else {
-            document.getElementById('oldControls').checked = false
-            type2Controls = false
         }
     }
 }
@@ -240,8 +248,29 @@ function enableSoloSlots() {
         soloSlots = soloSlotsEnabled
         if (soloSlotsEnabled) {
             document.getElementById('soloSlots').checked = true
-        } else {
-            document.getElementById('soloSlots').checked = false
+        }
+    }
+}
+
+function organizeCursor() {
+    let changeCursor = localStorage.getItem('changedCursor')
+    if (changeCursor != undefined) {
+        if (changeCursor == 'true') {
+            document.getElementById("mainCSS").href = 'assets/css/styleLight.css'
+            changedCursor = true
+            document.getElementById('invertCursor').checked = true
+        }
+    }
+}
+
+function organizeColor() {
+    let checker = document.getElementById('invertColor')
+    let colorInverted = localStorage.getItem('invertedColor')
+    if (colorInverted != undefined) {
+        if (colorInverted == 'true') {
+            document.body.style.filter = 'invert()'
+            document.body.style.backgroundColor = 'white'
+            checker.checked = true
         }
     }
 }
@@ -250,10 +279,12 @@ organizeSound()
 enableOldControls()
 skinChanger()
 enableSoloSlots()
+organizeCursor()
+organizeColor()
 //End Organize localStorage Items
 
 //Navigations Functions
-disButton.addEventListener("click", function () {
+disButton.addEventListener("click", () => {
     pageType = 1
     disPage.style.display = 'none'
     homePage.style.display = 'flex'
@@ -263,7 +294,7 @@ disButton.addEventListener("click", function () {
     song.currentTime = 0
 })
 
-playButton.addEventListener("click", function () {
+playButton.addEventListener("click", () => {
     pageType = 1.1
     homePage.style.opacity = '0'
     setTimeout(() => {
@@ -276,7 +307,7 @@ playButton.addEventListener("click", function () {
     }, 500);
 })
 
-shopButton.addEventListener("click", function () {
+shopButton.addEventListener("click", () => {
     pageType = 4
     homePage.style.opacity = '0'
     setTimeout(() => {
@@ -298,7 +329,7 @@ document.getElementById('skins').addEventListener("click", () => {
     }, 500);
 })
 
-settingsButton.addEventListener("click", function () {
+settingsButton.addEventListener("click", () => {
     pageType = 5
     homePage.style.opacity = '0'
     setTimeout(() => {
@@ -366,7 +397,7 @@ document.getElementById('settingsHome').addEventListener("click", () => {
     }, 500);
 })
 
-soloButton.addEventListener("click", function () {
+soloButton.addEventListener("click", () => {
     pageType = 2
     lives1p = 100
     checkLive1p()
@@ -406,7 +437,7 @@ soloButton.addEventListener("click", function () {
     }, 500);
 })
 
-soloButton2.addEventListener("click", function () {
+soloButton2.addEventListener("click", () => {
     pageType = 2
     lives1p = 100
     checkLive1p()
@@ -478,7 +509,7 @@ soloClassicButton2.addEventListener("click", () => {
     }, 500);
 })
 
-duoButton.addEventListener("click", function () {
+duoButton.addEventListener("click", () => {
     pageType = 3
     gameMPage.style.opacity = '0'
     duoLiveP1 = 100
@@ -494,7 +525,7 @@ duoButton.addEventListener("click", function () {
     }, 500);
 })
 
-duoButton2.addEventListener("click", function () {
+duoButton2.addEventListener("click", () => {
     pageType = 3
     gameMPage.style.opacity = '0'
     duoLiveP1 = 100
@@ -507,6 +538,30 @@ duoButton2.addEventListener("click", function () {
         checkLiveDRun1()
         checkLiveDRun2()
         duoRSortMeteors()
+    }, 500);
+})
+
+duoClassicButton.addEventListener('click', () => {
+    pageType = 3.2
+    gameMPage.style.opacity = '0'
+    setTimeout(() => {
+        gameMPage.removeAttribute('style')
+        classicDuoPage.style.display = 'flex'
+        homeSong.pause()
+        homeSong.currentTime = 0
+        duoClassicSong.play()
+    }, 500);
+})
+
+duoClassicButton2.addEventListener('click', () => {
+    pageType = 3.2
+    gameMPage.style.opacity = '0'
+    setTimeout(() => {
+        gameMPage.removeAttribute('style')
+        classicDuoPage.style.display = 'flex'
+        homeSong.pause()
+        homeSong.currentTime = 0
+        duoClassicSong.play()
     }, 500);
 })
 
@@ -514,7 +569,20 @@ duoButton2.addEventListener("click", function () {
 
 
 document.addEventListener("keydown", function (e) {
-    if (e.key == "m" || e.key == "M") {
+    if (e.key == "F1") {
+        e.preventDefault()
+        let volAlertCont = document.getElementById('volAlertCont')
+        if (!allControlsAppeared) {
+            document.getElementById('quickVolCont').style.bottom = '20px'
+            volAlertCont.style.bottom = '120px'
+            allControlsAppeared = true
+        } else {
+            volAlertCont.removeAttribute('style')
+            document.getElementById('quickVolCont').removeAttribute('style')
+            allControlsAppeared = false
+        }
+    }
+    if ((e.key == "m" || e.key == "M") && !allControlsAppeared) {
         let volAlert = document.getElementById('volAlert')
         let volAlertCont = document.getElementById('volAlertCont')
         if (muted) {
@@ -545,7 +613,7 @@ document.addEventListener("keydown", function (e) {
             }, 2000);
         }
     }
-    if (e.key == "v" || e.key == "V") {
+    if ((e.key == "v" || e.key == "V") && !allControlsAppeared) {
         let volAlertCont = document.getElementById('volAlertCont')
         if (!quickVolAppeared) {
             quickVolAppeared = true
@@ -796,7 +864,7 @@ document.addEventListener("keydown", function (e) {
             soloClassicLive = 1
             checkLivesSoloClassic()
         }
-        
+
         if (e.key == "Enter") {
             pauseSoloClassic()
         }
@@ -1289,6 +1357,10 @@ document.getElementById("muteGameSetting").addEventListener('click', () => {
 //Settings volume Slider
 
 document.getElementById('vol').addEventListener('change', () => {
+    alertSong.pause()
+    alertSong.currentTime = 0
+    alertSong.play()
+
     let gameVolume = document.getElementById('vol').value / 100
     document.getElementById('quickVol').value = gameVolume * 100
     homeSong.volume = gameVolume
@@ -1299,13 +1371,17 @@ document.getElementById('vol').addEventListener('change', () => {
     settingsSong.volume = gameVolume
     creditsSong.volume = gameVolume
     soloClassicSong.volume = gameVolume
+    alertSong.volume = gameVolume
+    duoClassicSong.volume = gameVolume
     localStorage.setItem('volume', gameVolume)
     document.getElementById('volumeNum').innerText = `${document.getElementById('vol').value}%`
     document.getElementById('quickVolNum').innerText = `${document.getElementById('vol').value}%`
     if (gameVolume == 0) {
         muted = true
+        document.getElementById('volAlert').innerText = 'volume_off'
     } else {
         muted = false
+        document.getElementById('volAlert').innerText = 'volume_up'
     }
 })
 
@@ -1321,9 +1397,39 @@ document.getElementById('soloSlots').addEventListener('change', () => {
     }
 })
 
+//Settings Cursor Type 
+document.getElementById('invertCursor').addEventListener('change', () => {
+    if (!changedCursor) {
+        document.getElementById("mainCSS").href = 'assets/css/styleLight.css'
+        changedCursor = true
+        localStorage.setItem('changedCursor', true)
+    } else {
+        document.getElementById("mainCSS").href = 'assets/css/style.css'
+        changedCursor = false
+        localStorage.setItem('changedCursor', false)
+    }
+})
+
+//Settings Invert Colors 
+document.getElementById('invertColor').addEventListener('change', () => {
+    let checker = document.getElementById('invertColor')
+    if (checker.checked) {
+        document.body.style.filter = 'invert()'
+        document.body.style.backgroundColor = 'white'
+        localStorage.setItem('invertedColor', true)
+    } else {
+        document.body.removeAttribute('style')
+        localStorage.setItem('invertedColor', false)
+    }
+})
+
 //Quick Volume Slider
 
+
 document.getElementById('quickVol').addEventListener('change', () => {
+    alertSong.pause()
+    alertSong.currentTime = 0
+    alertSong.play()
     let gameVolume = document.getElementById('quickVol').value / 100
     document.getElementById('vol').value = gameVolume * 100
     homeSong.volume = gameVolume
@@ -1334,13 +1440,33 @@ document.getElementById('quickVol').addEventListener('change', () => {
     settingsSong.volume = gameVolume
     creditsSong.volume = gameVolume
     soloClassicSong.volume = gameVolume
+    alertSong.volume = gameVolume
+    duoClassicSong.volume = gameVolume
     localStorage.setItem('volume', gameVolume)
     document.getElementById('volumeNum').innerText = `${document.getElementById('vol').value}%`
     document.getElementById('quickVolNum').innerText = `${document.getElementById('vol').value}%`
     if (gameVolume == 0) {
         muted = true
+        document.getElementById('volAlert').innerText = 'volume_off'
     } else {
         muted = false
+        document.getElementById('volAlert').innerText = 'volume_up'
+    }
+})
+
+//Quick Mute Button 
+document.getElementById('volAlertCont').addEventListener('click', () => {
+    let volAlert = document.getElementById('volAlert')
+    if (muted) {
+        muted = false
+        localStorage.setItem('volume', 1)
+        organizeSound()
+        volAlert.innerText = 'volume_up'
+    } else {
+        muted = true
+        localStorage.setItem('volume', 0)
+        organizeSound()
+        volAlert.innerText = 'volume_off'
     }
 })
 
@@ -1361,10 +1487,19 @@ document.getElementById('gameName').addEventListener("contextmenu", (e) => {
 
 //Delete all button
 document.getElementById('deleteSave').addEventListener("click", () => {
-    let confirmDel = confirm('Deseja mesmo apagar tudo que há salvo? \n Não há volta!')
-    if (confirmDel) {
-        alert('Dados apagados! Iremos reiniciar')
-        window.location = 'index.html'
-        localStorage.clear()
+    if (!muted) {
+        settingsSong.volume = 0.1
     }
+        let confirmDel = confirm('Deseja mesmo apagar tudo que há salvo? \n Não há volta!')
+        if (confirmDel) {
+            alert('Dados apagados! Iremos reiniciar')
+            window.location = 'index.html'
+            localStorage.clear()
+        }
+        else {
+            if (!muted) {
+                let gameVolume = document.getElementById('vol').value / 100
+                settingsSong.volume = gameVolume
+            }
+        }
 })

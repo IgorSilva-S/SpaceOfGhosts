@@ -4,6 +4,14 @@
 * {
     margin: 0;
     padding: 0;
+    cursor: url(../img/non-sprites/cursors/darkCursor/pointer.cur),
+        auto;
+}
+
+button,
+a,
+input {
+    cursor: url(../img/non-sprites/cursors/darkCursor/link.cur), auto;
 }
 
 /*Base Screen Size : 1366x768px*/
@@ -18,8 +26,6 @@ body {
     overflow: hidden;
     font-family: 'Josefin Sans',
         sans-serif;
-        /*cursor: url('path-to-image.png'),
-            auto;*/
 
 }
 
@@ -790,7 +796,6 @@ body {
 
 .custom-select select {
     display: none;
-    /*hide original SELECT element: */
 }
 
 .select-selected {
@@ -807,7 +812,6 @@ body {
     background-color: #0632ff;
 }
 
-/* Style the arrow inside the select element: */
 .select-selected:after {
     position: absolute;
     content: "";
@@ -819,27 +823,25 @@ body {
     border-color: #fff transparent transparent transparent;
 }
 
-/* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
     border-color: transparent transparent #fff transparent;
     top: 7px;
 }
 
-/* style the items (options), including the selected item: */
+
 .select-items div,
 .select-selected {
     color: #ffffff;
     padding: 8px 16px;
     border: 1px solid transparent;
     border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-    cursor: pointer;
+    cursor: url(../img/non-sprites/cursors/darkCursor/link.cur), auto;
     border-radius: 8px;
     margin: 2px 0;
     transition-duration: .5s;
 
 }
 
-/* Style items (options): */
 .select-items {
     position: absolute;
     border-radius: 8px;
@@ -850,7 +852,6 @@ body {
     transition-duration: .5s;
 }
 
-/* Hide the items when the select box is closed: */
 .select-hide {
     display: none;
 }
@@ -1178,7 +1179,7 @@ body {
     flex-direction: row;
 }
 
-#duoRun .playerScreen {
+.playerScreen {
     width: 50%;
     height: 100vh;
     position: relative;
@@ -1242,7 +1243,7 @@ body {
 }
 
 
-#player2Screen {
+.player2Screen {
     border-left: 2px solid #0632ff;
 }
 
@@ -1410,6 +1411,8 @@ body {
 .purpleCrystal {
     background-image: url(../img/sprites/background/pCrystal.png);
 }
+
+
 
 #shop,
 #skinChanger {
@@ -1967,7 +1970,7 @@ body {
     background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
 }
 
-#soloClassic .classicSoil {
+.classicSoil {
     width: 3840px;
     height: 125px;
     background-image: url(../img/sprites/background/Soil.png);
@@ -1982,7 +1985,8 @@ body {
     background-image: url(../img/sprites/background/cloudsBckg.png);
 }
 
-#soloClassic .player {
+#soloClassic .player,
+#duoClassic .player {
     top: auto;
     bottom: 50px;
     left: 100px;
@@ -2137,6 +2141,27 @@ body {
     margin-top: 20px;
     margin-bottom: 5px;
 }
+
+#duoClassic {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+#duoClassic .playerScreen {
+    background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
+}
+
+.playerScreen .classicSoil {
+    position: absolute;
+}
+
 
 .muteAlert {
     position: fixed;
