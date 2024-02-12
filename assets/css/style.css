@@ -18,6 +18,8 @@ body {
     overflow: hidden;
     font-family: 'Josefin Sans',
         sans-serif;
+        /*cursor: url('path-to-image.png'),
+            auto;*/
 
 }
 
@@ -1564,6 +1566,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: scale(0);
 }
 
 .confirmPurchasePopUp {
@@ -1574,6 +1577,9 @@ body {
     position: relative;
     padding: 5px;
     font-size: 25px;
+    overflow: hidden;
+    transition-duration: .5s;
+    opacity: 0;
 }
 
 .confirmPurchasePopUp h2 {
@@ -1604,7 +1610,7 @@ body {
     width: 100%;
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -21px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -1612,20 +1618,67 @@ body {
 }
 
 .alignShopButtons button {
-    width: 40%;
-    height: 80px;
-    border-radius: 8px;
+    height: 100px;
     border: none;
     color: white;
     font-size: 25px;
+    transition-duration: .5s;
+}
+
+.normalButtonShop {
+    background-color: #404040;
+    width: 50%;
+}
+
+.normalButtonShop:hover {
+    background-color: #707070;
 }
 
 .rembShop {
     background-color: #e45258;
+    width: 50%;
+}
+
+.rembShop:hover {
+    background-color: #fc9fa2;
 }
 
 .okayShop {
     background-color: #0632ff;
+    width: 50%;
+}
+
+.okayShop:hover {
+    background-color: #798ee9;
+}
+
+.justOkayShop {
+    width: 100%;
+    background-color: #0632ff;
+}
+
+.justOkayShop:hover {
+    background-color: #798ee9;
+}
+
+.infosPopUp {
+    position: absolute;
+    top: 35%;
+    font-size: 30px;
+}
+
+.prodImage {
+    width: 120px;
+    height: 120px;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 30%;
+    right: 30px;
+}
+
+.prodGM1 {
+    background-image: url(../img/sprites/shopItems/classicMode.gif);
 }
 
 .sideBar {

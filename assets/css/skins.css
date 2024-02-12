@@ -72,6 +72,10 @@
     background-image: url(../img/sprites/skins/female/Stopped.png);
 }
 
+.prodSA {
+    background-image: url(../img/sprites/skins/female/Flying.gif);
+}
+
 /*Skin 1 - TranspGhost*/
 
 .s1 .player {
@@ -144,6 +148,10 @@
 
 .s1 .paused .trail {
     background-image: url(../img/sprites/skins/transpGhost/Stopped.png);
+}
+
+.prodS1 {
+    background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
 }
 
 /*Skin 2 - Dog Ghost*/
@@ -226,6 +234,10 @@
     background-image: url(../img/sprites/skins/dogGhost/Stopped.png);
 }
 
+.prodS2 {
+    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
+}
+
 /*Skin 3 - Cat Ghost*/
 .s3 .player {
     background-image: url(../img/sprites/skins/catGhost/Flying.gif);
@@ -303,6 +315,10 @@
 
 .s3 .paused .trail {
     background-image: url(../img/sprites/skins/catGhost/Stopped.png);
+}
+
+.prodS3 {
+    background-image: url(../img/sprites/skins/catGhost/Flying.gif);
 }
 
 /*Skin 4 - Pyjamas Ghost*/
