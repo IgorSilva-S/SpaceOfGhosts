@@ -787,6 +787,7 @@ body {
 .cusSelAlign {
     position: fixed;
     top: 50px;
+    z-index: 10000;
 }
 
 .custom-select {
@@ -805,7 +806,6 @@ body {
     backdrop-filter: blur(10px);
     margin: 5px 0;
     transition-duration: .5s;
-    z-index: 100;
 }
 
 .select-selected:hover {
@@ -839,6 +839,7 @@ body {
     border-radius: 8px;
     margin: 2px 0;
     transition-duration: .5s;
+    z-index: 10000;
 
 }
 
@@ -850,6 +851,7 @@ body {
     backdrop-filter: blur(10px);
     background-color: #0086;
     transition-duration: .5s;
+    z-index: 10000;
 }
 
 .select-hide {
