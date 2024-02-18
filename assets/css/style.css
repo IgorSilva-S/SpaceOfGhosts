@@ -1575,10 +1575,10 @@ body {
 }
 
 .confirmPurchasePopUp {
-    width: 929px;
-    height: 559px;
+    width: 75vw;
+    height: 75vh;
     border-radius: 16px;
-    background-color: #191919;
+    background-color: #090909;
     position: relative;
     padding: 5px;
     font-size: 25px;
@@ -1627,7 +1627,7 @@ body {
     border: none;
     color: white;
     font-size: 25px;
-    transition-duration: .5s;
+    transition-duration: .3s;
 }
 
 .normalButtonShop {
@@ -1746,11 +1746,11 @@ body {
 #settings {
     width: 100vw;
     height: 100vh;
-    background-color: #5b6ee1;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
+    background-color: #070b34;
 }
 
 .earthCloud {
@@ -1759,11 +1759,12 @@ body {
     position: absolute;
     right: 0;
     top: 0;
-    background-image: url(../img/sprites/background/settingsClouds.png);
+    background-image: url(../img/sprites/background/settingsCloudsDark.png);
     animation-name: moveBckgInv;
     animation-duration: 60s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    transition-duration: .5s;
 }
 
 @keyframes moveBckgInv {
@@ -1776,13 +1777,26 @@ body {
     width: 96%;
     height: calc(100vh - 150px);
     border-radius: 8px 8px 0px 0px;
-    background-color: #f0f0f0;
+    background-color: #191919;
+    color: white;
     position: fixed;
     left: calc(50% - 48%);
     bottom: 0;
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
+    padding-bottom: 10px;
+}
+
+.settingsPanel::-webkit-scrollbar {
+    appearance: none;
+    width: 5px;
+    padding: 0 10px;
+}
+
+.settingsPanel::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #0632ff;
 }
 
 .settingsPanel span {
@@ -1798,18 +1812,24 @@ body {
     position: absolute;
     width: 50px;
     height: 50px;
-    background-image: url(../img/sprites/navButtons/black/backHome.png);
+    background-image: url(../img/sprites/navButtons/white/backHome.png);
     border-radius: 0;
     left: 2%;
     background-color: transparent;
     top: 2px;
 }
 
+
+.settingsPanel ul {
+    margin-left: 50px;
+}
+
+
 .alignSetting {
     width: 96%;
     height: 50px;
     margin: 20px 2%;
-    background-color: #ffffff;
+    background-color: #000000;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;

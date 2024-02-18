@@ -14,7 +14,7 @@
     <!--Disclaimer-->
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 3.0, caso encontre bugs, por favor, abra uma Issue
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 3.1, caso encontre bugs, por favor, abra uma Issue
         no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
         utilizadas com a devida autorização do<br>
@@ -41,7 +41,7 @@
             <button id="viewCredits">Créditos</button>
         </div>
         <div class="version">
-            R 3.0
+            R 3.1
         </div>
     </section>
 
@@ -101,7 +101,7 @@
             </button>
         </div>
         <div class="version">
-            R 3.0
+            R 3.1
         </div>
     </section>
 
@@ -393,7 +393,7 @@
 
     <!--Duo Mode: Classic-->
     <section id="duoClassic">
-        <div class="clouds" id="classicClouds"></div>
+        <div class="clouds" id="duoClassicClouds"></div>
         <div class="playerScreen">
             <div class="classicSoil"></div>
             <div class="player"></div>
@@ -440,19 +440,24 @@
                 Modo de jogo: Clássico <br>
                 Valor: 2000 Moedas
             </button>
+            <button class="Sitem">
+                <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
+                Skin: Mecha Ghost <br>
+                Valor: 425 Moedas
+            </button>
         </div>
-        <div class="shopBlur">
-            <div class="confirmPurchasePopUp">
-                <h2>Item Name</h2>
-                <h3>Action Description</h3>
+        <div class="shopBlur" id="blurShop">
+            <div class="confirmPurchasePopUp" id="confPurch">
+                <h2 id="iName">Item Name</h2>
+                <h3 id="aDesc">Action Description</h3>
                 <div class="infosPopUp">
                     Valor: <span id="itemValue">000</span><br>
                     Moedas: <span id="actualMoney">000</span>
                 </div>
-                <div class="prodImage prodGM1"></div>
+                <div class="prodImage" id="pImg"></div>
                 <div class="alignShopButtons">
-                    <button class="okayShop">Text 1</button>
-                    <button class="normalButtonShop">Text 2</button>
+                    <button id="SPPB1">Text 1</button>
+                    <button id="SPPB2">Text 2</button>
                 </div>
             </div>
         </div>
@@ -507,18 +512,35 @@
                 <label for="invertCursor">Alterar cor do Cursor</label>
                 <input type="checkbox" name="" id="invertCursor">
             </div>
+            <div class="alignSetting" style="display: none">
+                <label for="simpleLightMode">Tema Claro</label>
+                <input type="checkbox" name="" id="simpleLightMode">
+            </div>
+            <span style="display: none">O Tema Claro Altera:</span>
+            <ul style="display: none">
+                <li>Confugurações;</li>
+                <li>PopUp da Loja;</li>
+                <li>Página de Início e;</li>
+                <li>Menu de Pausa no Modo Solo.</li>
+            </ul>
             <div class="alignSetting">
                 <label for="invertColor">Inverter Cores</label>
                 <input type="checkbox" name="" id="invertColor">
             </div>
             <div class="alignSetting">
-                <span>Reportar bugs</span>
+                Reportar bugs
                 <a href="https://github.com/IgorSilva-S/SpaceOfGhosts/issues" target="_blank"
                     title="Ir para GitHub - Reportar Bugs"><img
-                        src="assets/img/sprites/navButtons/black/externalWebsite.png" alt="Ir para GitHub"></a>
+                        src="assets/img/sprites/navButtons/white/externalWebsite.png" alt="Ir para GitHub"></a>
+            </div>
+            <div class="alignSetting" style="display: none">
+                Sound Test (Beta)
+                <a href="soundTest.html" target="_blank"
+                title="Sound Test (Beta)"><img
+                    src="assets/img/sprites/navButtons/white/externalWebsite.png" alt="Go To Sound Test"></a>
             </div>
             <div class="alignSetting">
-                <span>Apagar Save</span>
+                Apagar Save
                 <button id="deleteSave" class="settingButton" title="Deletar Save">Apagar</button>
             </div>
             <p>Futuramente, novas configurações estarão disponíveis</p>

@@ -152,6 +152,17 @@ let allControlsAppeared = false
 let changedCursor = false
 let soloSlots = false
 
+//Shop PopUp
+const bckgPop = document.getElementById('blurShop')
+const PUShop = document.getElementById('confPurch')
+const iName = document.getElementById('iName')
+const aDesc = document.getElementById('aDesc')
+const iValue = document.getElementById('itemValue')
+const aMoney = document.getElementById('actualMoney')
+let prodImg = document.getElementById('pImg')
+const CB1 = document.getElementById('SPPB1')
+const CB2 = document.getElementById('SPPB2')
+
 //Solo Meteors
 const meteor1 = document.getElementById('m1')
 const meteor2 = document.getElementById('m2')
