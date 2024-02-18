@@ -196,12 +196,14 @@ const sAb = document.getElementById('csA')
 const s1b = document.getElementById('cs1')
 const s2b = document.getElementById('cs2')
 const s3b = document.getElementById('cs3')
+const s4b = document.getElementById('cs4')
 
 //Skin purchased checker
 let skinABuy = localStorage.getItem('purchasedA')
 let skin1Buy = localStorage.getItem('purchased1')
 let skin2Buy = localStorage.getItem('purchased2')
 let skin3Buy = localStorage.getItem('purchased3')
+let skin4Buy = localStorage.getItem('purchased4')
 
 //Game Mode purchased checker
 let classicBuy = localStorage.getItem('classicPurchased')

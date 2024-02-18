@@ -322,3 +322,84 @@
 }
 
 /*Skin 4 - Mecha Ghost*/
+.s4 .player {
+    background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
+    border-radius: 0;
+}
+
+.s4 .playerPaused {
+    background-image: url(../img/sprites/skins/mechaGhost/Stopped.png);
+}
+
+.s4 .shield {
+    border-radius: 100%;
+}
+
+.s4 .upping {
+    background-image: url(../img/sprites/skins/mechaGhost/Upping.png);
+    animation-name: uppingGhosts5;
+    animation-duration: .58s;
+}
+
+@keyframes uppingGhosts5 {
+    0% {
+        background-image: url(../img/sprites/skins/mechaGhost/Upping.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/mechaGhost/Upping.gif);
+    }
+}
+
+.s4 .falling {
+    background-image: url(../img/sprites/skins/mechaGhost/Falling.png);
+    animation-name: fallingGhosts5;
+    animation-duration: .8s;
+}
+
+@keyframes fallingGhosts5 {
+    0% {
+        background-image: url(../img/sprites/skins/mechaGhost/Falling.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/mechaGhost/Falling.gif);
+    }
+}
+
+.s4 .fire {
+    background-image: url(../img/sprites/skins/mechaGhost/Fire.gif);
+}
+
+.s4 .relaxing {
+    background-image: url(../img/sprites/skins/mechaGhost/Relaxing.gif);
+    border-radius: 100%;
+}
+
+.s4 .homeGhost1 {
+    background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
+}
+
+.s4 .ghostScore {
+    background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
+}
+
+.s4 .ghostWon {
+    background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
+}
+
+.s4 .ghostLose {
+    background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
+}
+
+.s4 .trail {
+    background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
+}
+
+.s4 .paused .trail {
+    background-image: url(../img/sprites/skins/mechaGhost/Stopped.png);
+}
+
+.prodS4 {
+    background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
+}

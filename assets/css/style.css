@@ -1702,6 +1702,20 @@ body {
     flex-direction: column;
 }
 
+.sideBar::-webkit-scrollbar {
+    appearance: none;
+    width: 0px;
+    transition-duration: .5s;
+}
+
+.sideBar:hover::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sideBar::-webkit-scrollbar-thumb {
+    background-color: #008;
+}
+
 .sideBar h2 {
     margin: 20px 0;
 }
@@ -1741,6 +1755,10 @@ body {
 
 #cs3 {
     background-image: url(../img/sprites/skins/catGhost/Flying.gif);
+}
+
+#cs4 {
+    background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
 }
 
 #settings {
@@ -1836,6 +1854,11 @@ body {
     box-sizing: border-box;
     padding: 0 20px;
     align-items: center;
+    color: white;
+}
+
+.alignSetting span {
+    color: white;
 }
 
 .alignItems {
