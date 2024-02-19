@@ -14,7 +14,7 @@
     <!--Disclaimer-->
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 3.2, caso encontre bugs, por favor, abra uma Issue
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 3.3, caso encontre bugs, por favor, abra uma Issue
         no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
         utilizadas com a devida autorização do<br>
@@ -41,7 +41,7 @@
             <button id="viewCredits">Créditos</button>
         </div>
         <div class="version">
-            R 3.2
+            R 3.3
         </div>
     </section>
 
@@ -101,7 +101,7 @@
             </button>
         </div>
         <div class="version">
-            R 3.2
+            R 3.3
         </div>
     </section>
 
@@ -393,14 +393,19 @@
 
     <!--Duo Mode: Classic-->
     <section id="duoClassic">
-        <div class="clouds" id="duoClassicClouds"></div>
+        <div class="clouds" id="duoClassicClouds" id="DCClouds"></div>
         <div class="playerScreen">
-            <div class="classicSoil"></div>
-            <div class="player"></div>
+            <div class="classicSoil" id="p1Soil"></div>
+            <div class="player" id="p1Classic"></div>
         </div>
         <div class="playerScreen player2Screen">
-            <div class="classicSoil"></div>
-            <div class="player"></div>
+            <div class="classicSoil" id="p2Soil"></div>
+            <div class="player" id="p2Classic"></div>
+        </div>
+        <div class="duoControls">
+            <button class="returnHome" id="DCretHome">
+            </button>
+            <button class="restartDuo" id="DCRestart"></button>
         </div>
     </section>
 
@@ -610,6 +615,7 @@
     <script src="assets/js/duoRun.js"></script>
     <script src="assets/js/shop&skins.js"></script>
     <script src="assets/js/soloClassic.js"></script>
+    <script src="assets/js/duoClassic.js"></script>
     <script src="assets/js/selectScript.js"></script>
 </body>
 

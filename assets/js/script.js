@@ -5,6 +5,8 @@ let keysSolo = []
 const p1Run = document.getElementById('player1Run')
 const p2Run = document.getElementById('player2Run')
 const playerClassic = document.getElementById('classicPlayer')
+const p1Classic = document.getElementById('p1Classic')
+const p2Classic = document.getElementById('p2Classic')
 const invencible = document.getElementById('Inv')
 let trail = NaN, kill
 let trailHome
@@ -110,6 +112,7 @@ let finalScore
 let p1RHS = false, p2RHS = false
 let p1HurtAnim = false, p2HurtAnim = false
 let keysDuoRun = []
+let keysDuoClassic = []
 let duoRunPaused = false
 const duoRunLiveP1Alert = document.getElementById('dRunP1Live')
 const duoRunLiveP2Alert = document.getElementById('dRunP2Live')
@@ -1115,6 +1118,9 @@ document.addEventListener("keydown", function (e) {
         }
     }
 
+    if (pageType == 3.2) {
+        duoClassicKeyDown(e)
+    }
 })
 
 document.addEventListener("keyup", function (e) {
@@ -1166,6 +1172,11 @@ document.addEventListener("keyup", function (e) {
     }
 
     //End Duo : Run! Restore
+
+    //Duo : Classic Restore
+    if (pageType == 3.2) {
+        duoClassicKeyUp(e)
+    }
 })
 
 //Solo Score Nav Buttons
