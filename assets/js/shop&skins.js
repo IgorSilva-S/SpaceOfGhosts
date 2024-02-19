@@ -18,6 +18,8 @@ CB1.addEventListener("click", () => {
                 localStorage.setItem('purchasedA', true)
                 bckgPop.removeAttribute('style')
                 PUShop.removeAttribute('style')
+                CB1.removeAttribute('style')
+                CB2.removeAttribute('style')
             } else {
                 CB1.className = 'justOkayShop'
                 CB1.value = 'B2B'
@@ -35,6 +37,10 @@ CB1.addEventListener("click", () => {
             localStorage.setItem('money', money)
             document.getElementById('moneyShopView').innerText = money
             localStorage.setItem('purchased1', true)
+            bckgPop.removeAttribute('style')
+            PUShop.removeAttribute('style')
+            CB1.removeAttribute('style')
+            CB2.removeAttribute('style')
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
@@ -52,6 +58,10 @@ CB1.addEventListener("click", () => {
             localStorage.setItem('money', money)
             document.getElementById('moneyShopView').innerText = money
             localStorage.setItem('purchased2', true)
+            bckgPop.removeAttribute('style')
+            PUShop.removeAttribute('style')
+            CB1.removeAttribute('style')
+            CB2.removeAttribute('style')
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
@@ -69,6 +79,10 @@ CB1.addEventListener("click", () => {
             localStorage.setItem('money', money)
             document.getElementById('moneyShopView').innerText = money
             localStorage.setItem('purchased3', true)
+            bckgPop.removeAttribute('style')
+            PUShop.removeAttribute('style')
+            CB1.removeAttribute('style')
+            CB2.removeAttribute('style')
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
@@ -87,6 +101,10 @@ CB1.addEventListener("click", () => {
             localStorage.setItem('money', money)
             document.getElementById('moneyShopView').innerText = money
             localStorage.setItem('classicPurchased', true)
+            bckgPop.removeAttribute('style')
+            PUShop.removeAttribute('style')
+            CB1.removeAttribute('style')
+            CB2.removeAttribute('style')
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
@@ -104,6 +122,10 @@ CB1.addEventListener("click", () => {
             localStorage.setItem('money', money)
             document.getElementById('moneyShopView').innerText = money
             localStorage.setItem('purchased4', true)
+            bckgPop.removeAttribute('style')
+            PUShop.removeAttribute('style')
+            CB1.removeAttribute('style')
+            CB2.removeAttribute('style')
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
