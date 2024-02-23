@@ -7,26 +7,26 @@ CB1.addEventListener("click", () => {
         CB1.removeAttribute('style')
         CB2.removeAttribute('style')
     }
-     else if (buttonType == 'P:SA') {
+    else if (buttonType == 'P:SA') {
         let money = localStorage.getItem('money')
-            let itemValue = 300
-            if (money >= itemValue) {
-                skinABuy = true
-                money = money - itemValue
-                localStorage.setItem('money', money)
-                document.getElementById('moneyShopView').innerText = money
-                localStorage.setItem('purchasedA', true)
-                bckgPop.removeAttribute('style')
-                PUShop.removeAttribute('style')
-                CB1.removeAttribute('style')
-                CB2.removeAttribute('style')
-            } else {
-                CB1.className = 'justOkayShop'
-                CB1.value = 'B2B'
-                aDesc.innerText = 'Você não tem moedas suficientes para adquirir esse item!'
-                CB2.style.display = 'none'
-                CB1.innerText = 'Ok'
-            }
+        let itemValue = 300
+        if (money >= itemValue) {
+            skinABuy = true
+            money = money - itemValue
+            localStorage.setItem('money', money)
+            document.getElementById('moneyShopView').innerText = money
+            localStorage.setItem('purchasedA', true)
+            bckgPop.removeAttribute('style')
+            PUShop.removeAttribute('style')
+            CB1.removeAttribute('style')
+            CB2.removeAttribute('style')
+        } else {
+            CB1.className = 'justOkayShop'
+            CB1.value = 'B2B'
+            aDesc.innerText = 'Você não tem moedas suficientes para adquirir esse item!'
+            CB2.style.display = 'none'
+            CB1.innerText = 'Ok'
+        }
     }
     else if (buttonType == 'P:S1') {
         let money = localStorage.getItem('money')
@@ -117,7 +117,7 @@ CB1.addEventListener("click", () => {
         let money = localStorage.getItem('money')
         let itemValue = 425
         if (money >= itemValue) {
-            skin3Buy = true
+            skin4Buy = true
             money = money - itemValue
             localStorage.setItem('money', money)
             document.getElementById('moneyShopView').innerText = money
@@ -140,6 +140,7 @@ CB1.addEventListener("click", () => {
 CB2.addEventListener("click", () => {
     let buttonType = CB2.value
     let money = localStorage.getItem('money')
+    let skinActive = document.body.className
     money = parseInt(money)
     if (buttonType == "B2B") {
         bckgPop.removeAttribute('style')
@@ -157,7 +158,11 @@ CB2.addEventListener("click", () => {
         aMoney.innerText = localStorage.getItem('money')
         CB2.style.display = 'none'
         CB1.innerText = 'Ok'
-    }  else if (buttonType == "R:S1") {
+        if (skinActive == 'sA') {
+            document.body.removeAttribute('class')
+            localStorage.setItem('actualSkin', undefined)
+        }
+    } else if (buttonType == "R:S1") {
         CB1.className = 'justOkayShop'
         CB1.value = 'B2B'
         aDesc.innerText = 'Item Reembolsado'
@@ -168,7 +173,11 @@ CB2.addEventListener("click", () => {
         aMoney.innerText = localStorage.getItem('money')
         CB2.style.display = 'none'
         CB1.innerText = 'Ok'
-    }  else if (buttonType == "R:S2") {
+        if (skinActive == 's1') {
+            document.body.removeAttribute('class')
+            localStorage.setItem('actualSkin', undefined)
+        }
+    } else if (buttonType == "R:S2") {
         CB1.className = 'justOkayShop'
         CB1.value = 'B2B'
         aDesc.innerText = 'Item Reembolsado'
@@ -179,7 +188,11 @@ CB2.addEventListener("click", () => {
         aMoney.innerText = localStorage.getItem('money')
         CB2.style.display = 'none'
         CB1.innerText = 'Ok'
-    }  else if (buttonType == "R:S3") {
+        if (skinActive == 's2') {
+            document.body.removeAttribute('class')
+            localStorage.setItem('actualSkin', undefined)
+        }
+    } else if (buttonType == "R:S3") {
         CB1.className = 'justOkayShop'
         CB1.value = 'B2B'
         aDesc.innerText = 'Item Reembolsado'
@@ -190,7 +203,11 @@ CB2.addEventListener("click", () => {
         aMoney.innerText = localStorage.getItem('money')
         CB2.style.display = 'none'
         CB1.innerText = 'Ok'
-    }  else if (buttonType == "R:S4") {
+        if (skinActive == 's3') {
+            document.body.removeAttribute('class')
+            localStorage.setItem('actualSkin', undefined)
+        }
+    } else if (buttonType == "R:S4") {
         CB1.className = 'justOkayShop'
         CB1.value = 'B2B'
         aDesc.innerText = 'Item Reembolsado'
@@ -201,6 +218,10 @@ CB2.addEventListener("click", () => {
         aMoney.innerText = localStorage.getItem('money')
         CB2.style.display = 'none'
         CB1.innerText = 'Ok'
+        if (skinActive == 's4') {
+            document.body.removeAttribute('class')
+            localStorage.setItem('actualSkin', undefined)
+        }
     }
 })
 
@@ -462,7 +483,6 @@ document.getElementById('mechaSkinPurchase').addEventListener('click', () => {
         iName.innerText = 'Skin: Mecha'
         aDesc.innerText = 'Esse item já foi comprado.'
         iValue.innerText = '425'
-        iValue.innerText = '350'
         aMoney.innerText = localStorage.getItem('money')
         CB1.className = 'okayShop'
         CB2.className = 'rembShop'

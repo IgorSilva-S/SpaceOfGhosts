@@ -1806,6 +1806,11 @@ body {
     padding-bottom: 10px;
 }
 
+.simpleLight .settingsPanel {
+    background-color: #f0f0f0;
+    color: black;
+}
+
 .settingsPanel::-webkit-scrollbar {
     appearance: none;
     width: 5px;
@@ -1857,8 +1862,16 @@ body {
     color: white;
 }
 
+.simpleLight .alignSetting {
+    background-color: white;
+}
+
 .alignSetting span {
     color: white;
+}
+
+.simpleLight .alignSetting span {
+    color: black;
 }
 
 .alignItems {
