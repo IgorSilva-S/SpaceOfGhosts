@@ -2063,7 +2063,8 @@ body {
     left: 100px;
 }
 
-#soloClassic .crystal {
+#soloClassic .crystal,
+#duoClassic .crystal {
     background-position: center;
     background-size: cover;
     position: absolute;

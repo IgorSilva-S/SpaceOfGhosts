@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+body {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: 'Josefin Sans',
+        sans-serif;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.background {
+    width: 3840px;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url(../img/sprites/background/BackgroundPureStarII.png);
+    animation-name: moveBckg;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes moveBckg {
+    from {
+        left: 0
+    }
+
+    to {
+        left: -1920px
+    }
+}
+
+.earthBckg {
+    width: 3840px;
+    height: 150px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: url(../img/sprites/background/settingsCloudsDark.png);
+    animation-name: moveBckg;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transition-duration: .5s;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+    z-index: 100;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.back {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background-color: transparent;
+    border: none;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../img/sprites/navButtons/white/backHome.png);
+}
+
+.soundTestCont {
+    width: 50%;
+    height: 40%;
+    z-index: 10;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #0632ff77;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.soundPrev {
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: .2s;
+}
+
+.soundPrev:active {
+    background-color: #0632ff;
+}
+
+.soundPrev img {
+    width: 100px;
+    height: 100px;
+}
+
+.soundAfter {
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: .2s;
+}
+
+.soundAfter:active {
+    background-color: #0632ff;
+}
+
+.soundAfter img {
+    width: 100px;
+    height: 100px;
+}
+
+.soundControls {
+    width: 80%;
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    left: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.soundControls button {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    transition-duration: .2s;
+    border-radius: 8px;
+}
+
+.soundControls button:hover {
+    background-color: #0632ff;
+}
+
+#playControl {
+    background-image: url(../img/non-sprites/navButtons/play.png);
+}
+
+#pauseControl {
+    background-image: url(../img/non-sprites/navButtons/pause.png);
+}
+
+#resetControl {
+    background-image: url(../img/non-sprites/navButtons//reset.png);
+}

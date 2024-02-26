@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space of Ghosts: Sound Test</title>
+    <link rel="stylesheet" href="assets/css/soundTest.css">
 </head>
+
 <body>
-    <h1>Space of Ghosts: Sound Test</h1>
-    <audio src="assets/songs/music/homeMusic.mp3" controls id="homeSong" loop></audio>
-    Home Song <br>
-    <audio src="assets/songs/music/soloMusic.mp3" controls id="soloSong" loop></audio>
-    Solo Mode: Normal <br>
-    <audio src="assets/songs/music/duoRunMusic.mp3" loop controls id="duoRunSong"></audio>
-    Duo Mode: Normal <br>
-    <audio src="assets/songs/music/gameShop&Skin.mp3" loop controls id="shopSong"></audio>
-    Shop & Skin <br>
-    <audio src="assets/songs/music/gameSettings.mp3" loop controls id="settingsSong"></audio>
-    Settings <br>
-    <audio src="assets/songs/music/creditsMusic.mp3" loop controls id="creditsSong"></audio>
-    Credits <br>
-    <audio src="assets/songs/music/soloClassicMusic.mp3" loop controls id="soloClassicSong"></audio>
-    Solo Mode: Classic <br>
-    <audio src="assets/songs/music/duoClassicMusic.mp3" loop controls id="duoClassicSong"></audio>
-    Duo Mode: Classic <br>
-    <button onclick="alert('Reloaded Prevented, Do not close this popup')">Prevent Reload</button>
+    <div class="background">
+
+    </div>
+    <button class="back"></button>
+    <div class="earthBckg"></div>
+    <img src="assets/img/non-sprites/gameName/soundTest.png" alt="Space of Ghosts: Sound Test">
+    <div class="soundTestCont">
+        <div class="soundPrev">
+            <img src="assets/img/non-sprites/navButtons/prev.png" alt="PrevSong">
+        </div>
+        <div class="soundControls">
+            <button id="playControl"></button>
+            <button id="resetControl"></button>
+            <button id="pauseControl"></button>
+        </div>
+        <div class="soundInfos"></div>
+        <div class="soundAfter">
+            <img src="assets/img/non-sprites/navButtons/after.png" alt="PrevSong">
+        </div>
+    </div>
+    <audio src="assets/songs/music/homeMusic.mp3" id="homeSong" loop></audio>
+    <audio src="assets/songs/music/soloMusic.mp3" id="soloSong" loop></audio>
+    <audio src="assets/songs/music/duoRunMusic.mp3" loop id="duoRunSong"></audio>
+    <audio src="assets/songs/music/gameShop&Skin.mp3" loop id="shopSong"></audio>
+    <audio src="assets/songs/music/gameSettings.mp3" loop id="settingsSong"></audio>
+    <audio src="assets/songs/music/creditsMusic.mp3" loop id="creditsSong"></audio>
+    <audio src="assets/songs/music/soloClassicMusic.mp3" loop id="soloClassicSong"></audio>
+    <audio src="assets/songs/music/duoClassicMusic.mp3" loop id="duoClassicSong"></audio>
 </body>
+
 </html>

@@ -1113,14 +1113,16 @@ document.addEventListener("keydown", function (e) {
             displaySlotsAllDuoR()
         }
     }
-    if (pageType == 3) {
-        if (e.key == 'Enter') {
-            pauseDuoRun()
-        }
+
+    if (e.key == 'Enter') {
+        pauseDuoRun()
     }
 
     if (pageType == 3.2) {
         duoClassicKeyDown(e)
+        if (e.key == 'Enter') {
+            pauseClassicDuo()
+        }
     }
 })
 
