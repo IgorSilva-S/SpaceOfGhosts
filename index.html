@@ -14,7 +14,7 @@
     <!--Disclaimer-->
     <section id="disclaimer">
         <span>Aviso</span>
-        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 3.4, caso encontre bugs, por favor, abra uma Issue
+        Bem-vindo ao Space of Ghosts! O Jogo está na versão RELEASE 3.5, caso encontre bugs, por favor, abra uma Issue
         no GitHub.<br>
         Você pode fazer sugestões e trazer ideias para o jogo. As sprites e animações contidas no jogo podem ser
         utilizadas com a devida autorização do<br>
@@ -41,7 +41,7 @@
             <button id="viewCredits">Créditos</button>
         </div>
         <div class="version">
-            R 3.4
+            R 3.5
         </div>
     </section>
 
@@ -101,7 +101,7 @@
             </button>
         </div>
         <div class="version">
-            R 3.4
+            R 3.5
         </div>
     </section>
 
@@ -110,39 +110,41 @@
         <div class="background" id="gameBckg">
 
         </div>
-        <div class="score">
-            <span id="soloDistance">0
-            </span>m
-        </div>
-        <div class="itemsAlertCont">
-            <div class="itemCont" id="shieldAlert">
-                <div class="item shieldBoost"></div>
-                <div class="slots">x <span id="shieldS"></span></div>
-                (1)
+        <div class="normalGameHud">
+            <div class="score">
+                <span id="soloDistance">0
+                </span>m
             </div>
-            <div class="itemCont" id="acceleratorAlert">
-                <div class="item acceleratorBoost"></div>
-                <div class="slots">x <span id="acceleratorS"></span></div>
-                (2)
+            <div class="itemsAlertCont">
+                <div class="itemCont" id="shieldAlert">
+                    <div class="item shieldBoost"></div>
+                    <div class="slots">x <span id="shieldS"></span></div>
+                    (1)
+                </div>
+                <div class="itemCont" id="acceleratorAlert">
+                    <div class="item acceleratorBoost"></div>
+                    <div class="slots">x <span id="acceleratorS"></span></div>
+                    (2)
+                </div>
+                <div class="itemCont" id="relaxAlert">
+                    <div class="item relaxBoost"></div>
+                    <div class="slots">x <span id="relaxS"></span></div>
+                    (3)
+                </div>
+                <div class="itemCont" id="FhealAlert">
+                    <div class="item SlifeBoost"></div>
+                    <div class="slots">x <span id="SlifeS"></span></div>
+                    (4)
+                </div>
+                <div class="itemCont" id="healAlert">
+                    <div class="item lifeBoost"></div>
+                    <div class="slots">x <span id="lifeS"></span></div>
+                    (5)
+                </div>
             </div>
-            <div class="itemCont" id="relaxAlert">
-                <div class="item relaxBoost"></div>
-                <div class="slots">x <span id="relaxS"></span></div>
-                (3)
+            <div class="hearts" id="live1p">
+            
             </div>
-            <div class="itemCont" id="FhealAlert">
-                <div class="item SlifeBoost"></div>
-                <div class="slots">x <span id="SlifeS"></span></div>
-                (4)
-            </div>
-            <div class="itemCont" id="healAlert">
-                <div class="item lifeBoost"></div>
-                <div class="slots">x <span id="lifeS"></span></div>
-                (5)
-            </div>
-        </div>
-        <div class="hearts" id="live1p">
-
         </div>
         <div class="player" id="ghost">
             <!--<div class="trail" id="trail"></div>-->
@@ -288,29 +290,31 @@
             <div class="meteor" id="p1Rm4"></div>
             <div class="meteor" id="p1Rm5"></div>
             <div class="boost" id="p1RBst"></div>
-            <div class="itemsAlertCont">
-                <div class="itemCont">
-                    <div class="item shieldBoost"></div>
-                    <div class="slots">x <span id="p1RSS">0</span></div>
-                    (1)
-                </div>
-                <div class="itemCont">
-                    <div class="item gunBoost"></div>
-                    <div class="slots">x <span id="p1RGS">0</span></div>
-                    (2)
-                </div>
-                <div class="itemCont">
-                    <div class="item invBoost"></div>
-                    <div class="slots">x <span id="p1RIS">0</span></div>
-                    (3)
-                </div>
-                <div class="itemCont">
-                    <div class="item lifeBoost"></div>
-                    <div class="slots">x <span id="p1RLS">0</span></div>
-                    (4)
-                </div>
+            <div class="normalGameHud">
+                            <div class="itemsAlertCont">
+                                <div class="itemCont">
+                                    <div class="item shieldBoost"></div>
+                                    <div class="slots">x <span id="p1RSS">0</span></div>
+                                    (1)
+                                </div>
+                                <div class="itemCont">
+                                    <div class="item gunBoost"></div>
+                                    <div class="slots">x <span id="p1RGS">0</span></div>
+                                    (2)
+                                </div>
+                                <div class="itemCont">
+                                    <div class="item invBoost"></div>
+                                    <div class="slots">x <span id="p1RIS">0</span></div>
+                                    (3)
+                                </div>
+                                <div class="itemCont">
+                                    <div class="item lifeBoost"></div>
+                                    <div class="slots">x <span id="p1RLS">0</span></div>
+                                    (4)
+                                </div>
+                            </div>
+                            <div class="hearts" id="dRunP1Live"></div>
             </div>
-            <div class="hearts" id="dRunP1Live"></div>
         </div>
         <div class="playerScreen player2Screen">
             <div class="p2KM" id="p2KM"></div>
@@ -323,29 +327,31 @@
             <div class="meteor" id="p2Rm4"></div>
             <div class="meteor" id="p2Rm5"></div>
             <div class="boost" id="p2RBst"></div>
-            <div class="itemsAlertCont">
-                <div class="itemCont">
-                    <div class="item shieldBoost"></div>
-                    <div class="slots">x <span id="p2RSS">0</span></div>
-                    (6)
+            <div class="normalGameHud">
+                <div class="itemsAlertCont">
+                    <div class="itemCont">
+                        <div class="item shieldBoost"></div>
+                        <div class="slots">x <span id="p2RSS">0</span></div>
+                        (6)
+                    </div>
+                    <div class="itemCont">
+                        <div class="item gunBoost"></div>
+                        <div class="slots">x <span id="p2RGS">0</span></div>
+                        (7)
+                    </div>
+                    <div class="itemCont">
+                        <div class="item invBoost"></div>
+                        <div class="slots">x <span id="p2RIS">0</span></div>
+                        (8)
+                    </div>
+                    <div class="itemCont">
+                        <div class="item lifeBoost"></div>
+                        <div class="slots">x <span id="p2RLS">0</span></div>
+                        (9)
+                    </div>
                 </div>
-                <div class="itemCont">
-                    <div class="item gunBoost"></div>
-                    <div class="slots">x <span id="p2RGS">0</span></div>
-                    (7)
-                </div>
-                <div class="itemCont">
-                    <div class="item invBoost"></div>
-                    <div class="slots">x <span id="p2RIS">0</span></div>
-                    (8)
-                </div>
-                <div class="itemCont">
-                    <div class="item lifeBoost"></div>
-                    <div class="slots">x <span id="p2RLS">0</span></div>
-                    (9)
-                </div>
+                <div class="hearts" id="dRunP2Live"></div>
             </div>
-            <div class="hearts" id="dRunP2Live"></div>
         </div>
 
     </section>
