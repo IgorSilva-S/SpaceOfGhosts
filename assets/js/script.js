@@ -154,6 +154,7 @@ let quickVolAppeared = false
 let allControlsAppeared = false
 let changedCursor = false
 let soloSlots = false
+let soloClassicDied = false
 
 //Shop PopUp
 const bckgPop = document.getElementById('blurShop')
@@ -881,7 +882,7 @@ document.addEventListener("keydown", function (e) {
             checkLivesSoloClassic()
         }
 
-        if (e.key == "Enter") {
+        if (e.key == "Enter" && !soloClassicDied) {
             pauseSoloClassic()
         }
     }

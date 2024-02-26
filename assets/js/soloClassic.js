@@ -100,6 +100,9 @@ function backSelectSC() {
                 soloClassicSong.pause()
             }, 1);
         }
+        if (soloClassicDied == true) {
+            soloClassicDied = false
+        }
     }, 500);
 }
 
@@ -126,6 +129,9 @@ function restartSoloClassic() {
             }
         } else {
             document.getElementById('canFly').innerText = 'Não'
+        }
+        if (soloClassicDied == true) {
+            soloClassicDied = false
         }
     }, 1);
 }
@@ -181,6 +187,7 @@ function checkLivesSoloClassic() {
         crystal2.style.animationPlayState = 'paused'
         crystal3.style.animationPlayState = 'paused'
         crystal4.style.animationPlayState = 'paused'
+        soloClassicDied = true
         playerClassic.classList.add('playerPaused')
         playerClassic.style.transitionDuration = '.3s'
         playerClassic.style.rotate = '90deg'
