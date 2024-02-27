@@ -62,7 +62,7 @@ const classicDuoPage = document.getElementById('duoClassic')
 //Songs
 const homeSong = document.getElementById('homeSong') // by Artificial Music
 const song = document.getElementById('soloSong') // by Prod. Riddiman
-const duoRSong = document.getElementById('duoRunSong') // by Pieces
+const duoRSong = document.getElementById('duoRunSong') // by After the Fall
 const hSong = document.getElementById('hSong') // by SEGA and Sonic Team (1992)
 const alertSong = document.getElementById('alertSong') // by Microsoft
 const exclamationSong = document.getElementById('exclamationSong') // by Microsoft
