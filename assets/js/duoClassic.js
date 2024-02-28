@@ -1,7 +1,17 @@
 function pauseClassicDuo() {
-    p1Classic.classList.add('playerPaused')
-    p2Classic.classList.add('playerPaused')
-    
+    if (!pausedDClassic) {
+        p1Classic.classList.add('playerPaused')
+        p2Classic.classList.add('playerPaused')
+        document.getElementById('duoClassicControls').style.top = '20px'
+        duoClassicSong.pause()
+        pausedDClassic = true
+    } else {
+        p1Classic.classList.remove('playerPaused')
+        p2Classic.classList.remove('playerPaused')
+        document.getElementById('duoClassicControls').style.top = '20px'
+        duoClassicSong.pause()
+        pausedDClassic = true
+    }
 }
 
 function returnHomeDuoClassic() {

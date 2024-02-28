@@ -155,6 +155,7 @@ let allControlsAppeared = false
 let changedCursor = false
 let soloSlots = false
 let soloClassicDied = false
+let pausedDClassic = false
 
 //Shop PopUp
 const bckgPop = document.getElementById('blurShop')

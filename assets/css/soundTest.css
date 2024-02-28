@@ -12,8 +12,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    font-family: 'Josefin Sans',
-        sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     color: white;
     display: flex;
     justify-content: space-evenly;
@@ -80,6 +79,7 @@ img {
     background-position: center;
     background-size: cover;
     background-image: url(../img/sprites/navButtons/white/backHome.png);
+    z-index: 10;
 }
 
 .soundTestCont {
@@ -201,6 +201,7 @@ img {
     background-size: cover;
     position: absolute;
     left: 10px;
+    bottom: 0;
 }
 
 .stopped {
