@@ -8,9 +8,9 @@ function pauseClassicDuo() {
     } else {
         p1Classic.classList.remove('playerPaused')
         p2Classic.classList.remove('playerPaused')
-        document.getElementById('duoClassicControls').style.top = '20px'
-        duoClassicSong.pause()
-        pausedDClassic = true
+        document.getElementById('duoClassicControls').removeAttribute('style')
+        duoClassicSong.play()
+        pausedDClassic = false
     }
 }
 
