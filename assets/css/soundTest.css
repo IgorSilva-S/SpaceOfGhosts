@@ -184,6 +184,7 @@ img {
     justify-content: space-evenly;
     align-items: center;
     color: white;
+    text-align: center;
 }
 
 .soundName {
