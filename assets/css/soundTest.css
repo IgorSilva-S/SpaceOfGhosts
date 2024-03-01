@@ -1,9 +1,11 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 
 body {
     background-color: black;
@@ -12,7 +14,6 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    font-family: 'Josefin Sans', sans-serif;
     color: white;
     display: flex;
     justify-content: space-evenly;
