@@ -1988,6 +1988,14 @@ body {
     transition-duration: .5s;
 }
 
+#b2bCredits {
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    left: 10px;
+    
+}
+
 .rollCredits {
     width: 100%;
     padding: 20px 0;

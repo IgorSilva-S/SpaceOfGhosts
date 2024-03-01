@@ -368,17 +368,18 @@ creditsButton.addEventListener("click", () => {
         homeSong.pause()
         homeSong.currentTime = 0
         creditsSong.play()
-        setTimeout(() => {
-            creditsPage.style.opacity = '0'
-            pageType = 1
-            setTimeout(() => {
-                creditsPage.removeAttribute('style')
-                homePage.style.display = 'flex'
-                creditsSong.pause()
-                creditsSong.currentTime = 0
-                homeSong.play()
-            }, 500);
-        }, 20000);
+    }, 500);
+})
+
+document.getElementById('b2bCredits').addEventListener('click', () => {
+    creditsPage.style.opacity = '0'
+    pageType = 1
+    setTimeout(() => {
+        creditsPage.removeAttribute('style')
+        homePage.style.display = 'flex'
+        creditsSong.pause()
+        creditsSong.currentTime = 0
+        homeSong.play()
     }, 500);
 })
 

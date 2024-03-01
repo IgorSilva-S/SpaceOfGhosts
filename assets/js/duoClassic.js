@@ -206,7 +206,7 @@ document.getElementById('p2cr3').addEventListener("animationiteration", () => {
     }, 1)
 })
 
-/*setInterval(() => {
+setInterval(() => {
     let checkerCrystal = document.getElementById('p1cr1')
     let crystalLeft = parseInt(
         window.getComputedStyle(checkerCrystal).getPropertyValue("left")
@@ -214,19 +214,90 @@ document.getElementById('p2cr3').addEventListener("animationiteration", () => {
     let playerBottom = parseInt(
         window.getComputedStyle(p1Classic).getPropertyValue("bottom")
     );
-    if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !scHurted) {
-        scHurted = true
-        soloClassicLive--
-        checkLivesSoloClassic()
+    if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
         p1Classic.classList.add('hShield')
-        scHurtWaiter = setInterval(() => {
-            scHurtTimer++
-            if (scHurtTimer == 5) {
-                scHurtTimer = 0
-                scHurted = false
-                clearInterval(scHurtWaiter)
-                p1Classic.classList.remove('hShield')
-            }
-        }, 1000);
+        setTimeout(() => {
+            p1Classic.classList.remove('hShield')
+        }, 5000);
     }
-}, 1);*/
+}, 1);
+
+setInterval(() => {
+    let checkerCrystal = document.getElementById('p1cr2')
+    let crystalLeft = parseInt(
+        window.getComputedStyle(checkerCrystal).getPropertyValue("left")
+    );
+    let playerBottom = parseInt(
+        window.getComputedStyle(p1Classic).getPropertyValue("bottom")
+    );
+    if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
+        p1Classic.classList.add('hShield')
+        setTimeout(() => {
+            p1Classic.classList.remove('hShield')
+        }, 5000);
+    }
+}, 1);
+
+setInterval(() => {
+    let checkerCrystal = document.getElementById('p1cr3')
+    let crystalLeft = parseInt(
+        window.getComputedStyle(checkerCrystal).getPropertyValue("left")
+    );
+    let playerBottom = parseInt(
+        window.getComputedStyle(p1Classic).getPropertyValue("bottom")
+    );
+    if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
+        p1Classic.classList.add('hShield')
+        setTimeout(() => {
+            p1Classic.classList.remove('hShield')
+        }, 5000);
+    }
+}, 1);
+
+setInterval(() => {
+    let checkerCrystal = document.getElementById('p2cr1')
+    let crystalLeft = parseInt(
+        window.getComputedStyle(checkerCrystal).getPropertyValue("left")
+    );
+    let playerBottom = parseInt(
+        window.getComputedStyle(p2Classic).getPropertyValue("bottom")
+    );
+    if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
+        p2Classic.classList.add('hShield')
+        setTimeout(() => {
+            p2Classic.classList.remove('hShield')
+        }, 5000);
+    }
+}, 1);
+
+setInterval(() => {
+    let checkerCrystal = document.getElementById('p2cr2')
+    let crystalLeft = parseInt(
+        window.getComputedStyle(checkerCrystal).getPropertyValue("left")
+    );
+    let playerBottom = parseInt(
+        window.getComputedStyle(p1Classic).getPropertyValue("bottom")
+    );
+    if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
+        p2Classic.classList.add('hShield')
+        setTimeout(() => {
+            p2Classic.classList.remove('hShield')
+        }, 5000);
+    }
+}, 1);
+
+setInterval(() => {
+    let checkerCrystal = document.getElementById('p2cr3')
+    let crystalLeft = parseInt(
+        window.getComputedStyle(checkerCrystal).getPropertyValue("left")
+    );
+    let playerBottom = parseInt(
+        window.getComputedStyle(p2Classic).getPropertyValue("bottom")
+    );
+    if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
+        p2Classic.classList.add('hShield')
+        setTimeout(() => {
+            p2Classic.classList.remove('hShield')
+        }, 5000);
+    }
+}, 1);
