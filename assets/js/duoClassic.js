@@ -205,3 +205,28 @@ document.getElementById('p2cr3').addEventListener("animationiteration", () => {
     document.getElementById('p2cr3').style.animationDelay = `${cDelay}s`
     }, 1)
 })
+
+/*setInterval(() => {
+    let checkerCrystal = document.getElementById('p1cr1')
+    let crystalLeft = parseInt(
+        window.getComputedStyle(checkerCrystal).getPropertyValue("left")
+    );
+    let playerBottom = parseInt(
+        window.getComputedStyle(p1Classic).getPropertyValue("bottom")
+    );
+    if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !scHurted) {
+        scHurted = true
+        soloClassicLive--
+        checkLivesSoloClassic()
+        p1Classic.classList.add('hShield')
+        scHurtWaiter = setInterval(() => {
+            scHurtTimer++
+            if (scHurtTimer == 5) {
+                scHurtTimer = 0
+                scHurted = false
+                clearInterval(scHurtWaiter)
+                p1Classic.classList.remove('hShield')
+            }
+        }, 1000);
+    }
+}, 1);*/
