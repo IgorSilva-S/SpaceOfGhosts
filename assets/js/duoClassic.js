@@ -134,3 +134,74 @@ function randCrystals() {
 
 randCrystals()
 
+document.getElementById('p1cr1').addEventListener("animationiteration", () => {
+  document.getElementById('p1cr1').style.display = 'none'
+  setTimeout(() => {
+    document.getElementById('p1cr1').style.display = 'block'
+    let cRand = Math.floor(Math.random() * 6) + 1
+    let cDelay = Math.floor(Math.random() * 4)
+    document.getElementById('p1cr1').className = 'crystal'
+    document.getElementById('p1cr1').classList.add(`cType${cRand}`)
+    document.getElementById('p1cr1').style.animationDelay = `${cDelay}s`
+  }, 1);
+})
+
+document.getElementById('p1cr2').addEventListener("animationiteration", () => {
+    document.getElementById('p1cr2').style.display = 'none'
+    setTimeout(() => {
+      document.getElementById('p1cr2').style.display = 'block'
+    let cRand = Math.floor(Math.random() * 6) + 1
+    let cDelay = Math.floor(Math.random() * 4)
+    document.getElementById('p1cr2').className = 'crystal'
+    document.getElementById('p1cr2').classList.add(`cType${cRand}`)
+    document.getElementById('p1cr2').style.animationDelay = `${cDelay}s`
+    }, 1)
+})
+
+document.getElementById('p1cr3').addEventListener("animationiteration", () => {
+    document.getElementById('p1cr3').style.display = 'none'
+    setTimeout(() => {
+      document.getElementById('p1cr3').style.display = 'block'
+    let cRand = Math.floor(Math.random() * 6) + 1
+    let cDelay = Math.floor(Math.random() * 4)
+    document.getElementById('p1cr3').className = 'crystal'
+    document.getElementById('p1cr3').classList.add(`cType${cRand}`)
+    document.getElementById('p1cr3').style.animationDelay = `${cDelay}s`
+    }, 1)
+})
+
+document.getElementById('p2cr1').addEventListener("animationiteration", () => {
+    document.getElementById('p2cr1').style.display = 'none'
+    setTimeout(() => {
+      document.getElementById('p2cr1').style.display = 'block'
+    let cRand = Math.floor(Math.random() * 6) + 1
+    let cDelay = Math.floor(Math.random() * 4)
+    document.getElementById('p2cr1').className = 'crystal'
+    document.getElementById('p2cr1').classList.add(`cType${cRand}`)
+    document.getElementById('p2cr1').style.animationDelay = `${cDelay}s`
+    }, 1)
+})
+
+document.getElementById('p2cr2').addEventListener("animationiteration", () => {
+    document.getElementById('p2cr2').style.display = 'none'
+    setTimeout(() => {
+      document.getElementById('p2cr2').style.display = 'block'
+    let cRand = Math.floor(Math.random() * 6) + 1
+    let cDelay = Math.floor(Math.random() * 4)
+    document.getElementById('p2cr2').className = 'crystal'
+    document.getElementById('p2cr2').classList.add(`cType${cRand}`)
+    document.getElementById('p2cr2').style.animationDelay = `${cDelay}s`
+    }, 1)
+})
+
+document.getElementById('p2cr3').addEventListener("animationiteration", () => {
+    document.getElementById('p2cr3').style.display = 'none'
+    setTimeout(() => {
+      document.getElementById('p2cr3').style.display = 'block'
+    let cRand = Math.floor(Math.random() * 6) + 1
+    let cDelay = Math.floor(Math.random() * 4)
+    document.getElementById('p2cr3').className = 'crystal'
+    document.getElementById('p2cr3').classList.add(`cType${cRand}`)
+    document.getElementById('p2cr3').style.animationDelay = `${cDelay}s`
+    }, 1)
+})
