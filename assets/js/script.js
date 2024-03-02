@@ -319,6 +319,8 @@ playButton.addEventListener("click", () => {
         if (classicBuy) {
             soloClassicButton.removeAttribute('style')
             soloClassicButton2.removeAttribute('style')
+            duoClassicButton.removeAttribute('style')
+            duoClassicButton2.removeAttribute('style')
         }
         homePage.removeAttribute('style')
         gameMPage.style.display = 'flex'

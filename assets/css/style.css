@@ -2181,9 +2181,11 @@ body {
     height: 50px;
 }
 
-#soloClassic .hearts {
-    bottom: auto;
-    top: 0;
+#soloClassic .hearts,
+#duoClassic .hearts {
+    top: 5px;
+    left: 5px;
+    position: absolute;
 }
 
 .classicInfos {

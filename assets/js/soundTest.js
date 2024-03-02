@@ -109,24 +109,33 @@ function checkSong() {
 playButton.addEventListener("click", () => {
     if (soundId == 0) {
         homeSong.play()
+        soundIdCode.push(0)
     } else if (soundId == 1) {
         song.play()
+        soundIdCode.push(1)
     } else if (soundId == 2) {
         duoRSong.play()
+        soundIdCode.push(2)
     } else if (soundId == 3) {
         shopSong.play()
+        soundIdCode.push(3)
     } else if (soundId == 4) {
         settingsSong.play()
+        soundIdCode.push(4)
     } else if (soundId == 5) {
         creditsSong.play()
+        soundIdCode.push(5)
     } else if (soundId == 6) {
         soloClassicSong.play()
+        soundIdCode.push(6)
     } else if (soundId == 7) {
         duoClassicSong.play()
+        soundIdCode.push(7)
     }
 
     ghost.classList.remove('stopped')
     ghost.classList.add('playing')
+    checkSecretCode()
 })
 
 resetButton.addEventListener("click", () => {
@@ -141,23 +150,33 @@ resetButton.addEventListener("click", () => {
 
     if (soundId == 0) {
         homeSong.play()
+        soundIdCode.push(0)
     } else if (soundId == 1) {
         song.play()
+        soundIdCode.push(1)
     } else if (soundId == 2) {
         duoRSong.play()
+        soundIdCode.push(2)
     } else if (soundId == 3) {
         shopSong.play()
+        soundIdCode.push(3)
     } else if (soundId == 4) {
         settingsSong.play()
+        soundIdCode.push(4)
     } else if (soundId == 5) {
         creditsSong.play()
+        soundIdCode.push(5)
     } else if (soundId == 6) {
         soloClassicSong.play()
+        soundIdCode.push(6)
     } else if (soundId == 7) {
         duoClassicSong.play()
+        soundIdCode.push(7)
     }
+
     ghost.classList.remove('stopped')
     ghost.classList.add('playing')
+    checkSecretCode()
 })
 
 pauseButton.addEventListener("click", () => {
@@ -181,3 +200,22 @@ pauseButton.addEventListener("click", () => {
     ghost.classList.remove('playing')
     ghost.classList.add('stopped')
 })
+
+function checkSecretCode() {
+        if (soundIdCode == [0, 5, 0, 1, 2, 4]) {
+            alert('DevMode')
+            soundIdCode = []
+        } else if (soundIdCode == [0, 1, 1, 2, 2, 3]) {
+            alert('classicMode')
+            localStorage.setItem('classicPurchased', true)
+            soundIdCode = []
+        } else if (soundIdCode == [4, 1, 2, 7]) {
+            alert('allSkinsBuy')
+            soundIdCode = []
+            localStorage.setItem('purchasedA', 'true')
+            localStorage.setItem('purchased1', 'true')
+            localStorage.setItem('purchased2', 'true')
+            localStorage.setItem('purchased3', 'true')
+            localStorage.setItem('purchased4', 'true')
+        }
+}
