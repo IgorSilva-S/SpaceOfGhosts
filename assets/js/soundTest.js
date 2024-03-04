@@ -202,20 +202,20 @@ pauseButton.addEventListener("click", () => {
 })
 
 function checkSecretCode() {
-        if (soundIdCode == [0, 5, 0, 1, 2, 4]) {
-            alert('DevMode')
-            soundIdCode = []
-        } else if (soundIdCode == [0, 1, 1, 2, 2, 3]) {
-            alert('classicMode')
-            localStorage.setItem('classicPurchased', true)
-            soundIdCode = []
-        } else if (soundIdCode == [4, 1, 2, 7]) {
-            alert('allSkinsBuy')
-            soundIdCode = []
-            localStorage.setItem('purchasedA', 'true')
-            localStorage.setItem('purchased1', 'true')
-            localStorage.setItem('purchased2', 'true')
-            localStorage.setItem('purchased3', 'true')
-            localStorage.setItem('purchased4', 'true')
-        }
+    if (soundIdCode[0] == 0 && soundIdCode[1] == 5 && soundIdCode[2] == 0 && soundIdCode[3] == 1 && soundIdCode[4] == 2 && soundIdCode[5] == 4) {
+        alert('DevMode')
+        soundIdCode = []
+    } else if (soundIdCode[0] == 0 && soundIdCode[1] == 1 && soundIdCode[2] == 1 && soundIdCode[3] == 2 && soundIdCode[4] == 2 && soundIdCode[5] == 3) {
+        alert('classicMode')
+        localStorage.setItem('classicPurchased', true)
+        soundIdCode = []
+    } else if (soundIdCode[0] == 4 && soundIdCode[1] == 1 && soundIdCode[2] == 2 && soundIdCode[3] == 7) {
+        alert('allSkinsBuy')
+        soundIdCode = []
+        localStorage.setItem('purchasedA', 'true')
+        localStorage.setItem('purchased1', 'true')
+        localStorage.setItem('purchased2', 'true')
+        localStorage.setItem('purchased3', 'true')
+        localStorage.setItem('purchased4', 'true')
+    }
 }
