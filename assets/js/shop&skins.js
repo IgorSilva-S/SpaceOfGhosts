@@ -506,12 +506,24 @@ document.getElementById('returnShop').addEventListener("click", () => {
 s0b.addEventListener("click", () => {
     document.body.removeAttribute('class')
     localStorage.removeItem('actualSkin')
+    s0b.className = 'ChoosedSkin'
+    sAb.className = 'Sitem'
+    s1b.className = 'Sitem'
+    s2b.className = 'Sitem'
+    s3b.className = 'Sitem'
+    s4b.className = 'Sitem'
 })
 
 sAb.addEventListener("click", () => {
     if (skinABuy) {
         document.body.className = 'sA'
         localStorage.setItem('actualSkin', 'sA')
+        s0b.className = 'Sitem'
+        sAb.className = 'ChoosedSkin'
+        s1b.className = 'Sitem'
+        s2b.className = 'Sitem'
+        s3b.className = 'Sitem'
+        s4b.className = 'Sitem'
     } else {
         alert('É necessário comprar a skin antes de utilizar')
     }
@@ -521,6 +533,12 @@ s1b.addEventListener("click", () => {
     if (skin1Buy) {
         document.body.className = 's1'
         localStorage.setItem('actualSkin', 's1')
+        s0b.className = 'Sitem'
+        sAb.className = 'Sitem'
+        s1b.className = 'ChoosedSkin'
+        s2b.className = 'Sitem'
+        s3b.className = 'Sitem'
+        s4b.className = 'Sitem'
     } else {
         alert('É necessário comprar a skin antes de utilizar')
     }
@@ -530,6 +548,12 @@ s2b.addEventListener("click", () => {
     if (skin2Buy) {
         document.body.className = 's2'
         localStorage.setItem('actualSkin', 's2')
+        s0b.className = 'Sitem'
+        sAb.className = 'Sitem'
+        s1b.className = 'Sitem'
+        s2b.className = 'ChoosedSkin'
+        s3b.className = 'Sitem'
+        s4b.className = 'Sitem'
     } else {
         alert('É necessário comprar a skin antes de utilizar')
     }
@@ -539,6 +563,12 @@ s3b.addEventListener("click", () => {
     if (skin3Buy) {
         document.body.className = 's3'
         localStorage.setItem('actualSkin', 's3')
+        s0b.className = 'Sitem'
+        sAb.className = 'Sitem'
+        s1b.className = 'Sitem'
+        s2b.className = 'Sitem'
+        s3b.className = 'ChoosedSkin'
+        s4b.className = 'Sitem'
     } else {
         alert('É necessário comprar a skin antes de utilizar')
     }
@@ -548,6 +578,12 @@ s4b.addEventListener("click", () => {
     if (skin4Buy) {
         document.body.className = 's4'
         localStorage.setItem('actualSkin', 's4')
+        s0b.className = 'Sitem'
+        sAb.className = 'Sitem'
+        s1b.className = 'Sitem'
+        s2b.className = 'Sitem'
+        s3b.className = 'Sitem'
+        s4b.className = 'ChoosedSkin'
     } else {
         alert('É necessário comprar a skin antes de utilizar')
     }

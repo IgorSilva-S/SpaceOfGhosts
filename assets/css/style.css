@@ -57,12 +57,11 @@ body {
     height: 100px;
     background-image: url(../img/sprites/skins/normal/Flying.gif);
     background-position: center;
-    background-size: 90%;
+    background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
     left: 150px;
     top: 45%;
-    border-radius: 100%;
 }
 
 .inv {
@@ -1502,7 +1501,7 @@ body {
     height: 45px;
 }
 
-#shop .items {
+.items {
     width: 100%;
     height: 60vh;
     position: fixed;
@@ -1637,6 +1636,38 @@ body {
     position: fixed;
 }
 
+
+#skinChanger .Sitem {
+    min-width: 300px;
+    height: 300px;
+}
+
+.ChoosedSkin {
+    border: 2px solid orange;
+    background-color: orangered;
+    min-width: 300px;
+    min-height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 20px;
+    color: white;
+    font-size: 15px;
+    transition-duration: .5s;
+    border-radius: 8px;
+}
+
+.ChoosedSkin img {
+    width: 100px;
+    height: 100px;
+}
+
+.ChoosedSkin:hover {
+    background-color: orange;
+}
+
 .alignShopButtons {
     width: 100%;
     position: absolute;
@@ -1761,30 +1792,6 @@ body {
 
 .sideBar .skin:hover {
     background-color: #f0f0f022;
-}
-
-#cs0 {
-    background-image: url(../img/sprites/skins/normal/Flying.gif);
-}
-
-#csA {
-    background-image: url(../img/sprites/skins/female/Flying.gif);
-}
-
-#cs1 {
-    background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
-}
-
-#cs2 {
-    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
-}
-
-#cs3 {
-    background-image: url(../img/sprites/skins/catGhost/Flying.gif);
-}
-
-#cs4 {
-    background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
 }
 
 #settings {
@@ -1993,7 +2000,7 @@ body {
     height: 50px;
     top: 10px;
     left: 10px;
-    
+
 }
 
 .rollCredits {

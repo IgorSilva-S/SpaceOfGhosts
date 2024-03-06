@@ -257,6 +257,22 @@ function skinChanger() {
     let skinTypo = localStorage.getItem('actualSkin')
     if (skinTypo != undefined) {
         document.body.className = skinTypo
+        if (skinTypo == 'sA') {
+            s0b.className = 'Sitem'
+            sAb.className = 'ChoosedSkin'
+        } else if (skinTypo == 's1') {
+            s0b.className = 'Sitem'
+            s1b.className = 'ChoosedSkin'
+        } else if (skinTypo == 's2') {
+            s0b.className = 'Sitem'
+            s2b.className = 'ChoosedSkin'
+        } else if (skinTypo == 's3') {
+            s0b.className = 'Sitem'
+            s3b.className = 'ChoosedSkin'
+        } else if (skinTypo == 's4') {
+            s0b.className = 'Sitem'
+            s4b.className = 'ChoosedSkin'
+        }
     }
 }
 
