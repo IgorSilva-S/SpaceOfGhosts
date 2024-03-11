@@ -142,60 +142,60 @@ let duoRunControls = setInterval(() => {
 
 function duoRSortMeteors() {
     //Player 1
-    let randMetP11 = Math.floor((Math.random() * 3) + 1)
+    let P1TO1 = Math.floor((Math.random() * 3) + 1)
     let randTopP11 = Math.random() * 84
     let randSpeedP11 = Math.floor((Math.random() * 3) + 2)
     p1Rm1.removeAttribute('class')
     p1Rm1.className = 'meteor'
-    p1Rm1.classList.add(`mt${randMetP11}`)
+    p1Rm1.classList.add(`mt${P1TO1}`)
     p1Rm1.style.display = 'none'
     p1Rm1.style.animationDuration = `${randSpeedP11}s`
     p1Rm1.style.top = `${randTopP11}%`
     setTimeout(() => {
         p1Rm1.style.display = 'block'
     }, 1);
-    let randMetP12 = Math.floor((Math.random() * 3) + 1)
+    let P1TO2 = Math.floor((Math.random() * 3) + 1)
     let randTopP12 = Math.random() * 84
     let randSpeedP12 = Math.floor((Math.random() * 3) + 2)
     p1Rm2.removeAttribute('class')
     p1Rm2.className = 'meteor'
-    p1Rm2.classList.add(`mt${randMetP12}`)
+    p1Rm2.classList.add(`mt${P1TO2}`)
     p1Rm2.style.display = 'none'
     p1Rm2.style.animationDuration = `${randSpeedP12}s`
     p1Rm2.style.top = `${randTopP12}%`
     setTimeout(() => {
         p1Rm2.style.display = 'block'
     }, 1);
-    let randMetP13 = Math.floor((Math.random() * 3) + 1)
+    let P1TO3 = Math.floor((Math.random() * 3) + 1)
     let randTopP13 = Math.random() * 84
     let randSpeedP13 = Math.floor((Math.random() * 3) + 2)
     p1Rm3.removeAttribute('class')
     p1Rm3.className = 'meteor'
-    p1Rm3.classList.add(`mt${randMetP13}`)
+    p1Rm3.classList.add(`mt${P1TO3}`)
     p1Rm3.style.display = 'none'
     p1Rm3.style.animationDuration = `${randSpeedP13}s`
     p1Rm3.style.top = `${randTopP13}%`
     setTimeout(() => {
         p1Rm3.style.display = 'block'
     }, 1);
-    let randMetP14 = Math.floor((Math.random() * 3) + 1)
+    let P1TO4 = Math.floor((Math.random() * 3) + 1)
     let randTopP14 = Math.random() * 84
     let randSpeedP14 = Math.floor((Math.random() * 3) + 2)
     p1Rm4.removeAttribute('class')
     p1Rm4.className = 'meteor'
-    p1Rm4.classList.add(`mt${randMetP14}`)
+    p1Rm4.classList.add(`mt${P1TO4}`)
     p1Rm4.style.display = 'none'
     p1Rm4.style.animationDuration = `${randSpeedP14}s`
     p1Rm4.style.top = `${randTopP14}%`
     setTimeout(() => {
         p1Rm4.style.display = 'block'
     }, 1);
-    let randMetP15 = Math.floor((Math.random() * 3) + 1)
+    let P1TO5 = Math.floor((Math.random() * 3) + 1)
     let randTopP15 = Math.random() * 84
     let randSpeedP15 = Math.floor((Math.random() * 3) + 2)
     p1Rm5.removeAttribute('class')
     p1Rm5.className = 'meteor'
-    p1Rm5.classList.add(`mt${randMetP15}`)
+    p1Rm5.classList.add(`mt${P1TO5}`)
     p1Rm5.style.display = 'none'
     p1Rm5.style.animationDuration = `${randSpeedP15}s`
     p1Rm5.style.top = `${randTopP15}%`
@@ -204,60 +204,60 @@ function duoRSortMeteors() {
     }, 1);
 
     //Player 2
-    let randMetP21 = Math.floor((Math.random() * 3) + 1)
+    let P2TO1 = Math.floor((Math.random() * 3) + 1)
     let randTopP21 = Math.random() * 84
     let randSpeedP21 = Math.floor((Math.random() * 3) + 2)
     p2Rm1.removeAttribute('class')
     p2Rm1.className = 'meteor'
-    p2Rm1.classList.add(`mt${randMetP21}`)
+    p2Rm1.classList.add(`mt${P2TO1}`)
     p2Rm1.style.display = 'none'
     p2Rm1.style.animationDuration = `${randSpeedP21}s`
     p2Rm1.style.top = `${randTopP21}%`
     setTimeout(() => {
         p2Rm1.style.display = 'block'
     }, 1);
-    let randMetP22 = Math.floor((Math.random() * 3) + 1)
+    let P2TO2 = Math.floor((Math.random() * 3) + 1)
     let randTopP22 = Math.random() * 84
     let randSpeedP22 = Math.floor((Math.random() * 3) + 2)
     p2Rm2.removeAttribute('class')
     p2Rm2.className = 'meteor'
-    p2Rm2.classList.add(`mt${randMetP22}`)
+    p2Rm2.classList.add(`mt${P2TO2}`)
     p2Rm2.style.display = 'none'
     p2Rm2.style.animationDuration = `${randSpeedP22}s`
     p2Rm2.style.top = `${randTopP22}%`
     setTimeout(() => {
         p2Rm2.style.display = 'block'
     }, 1);
-    let randMetP23 = Math.floor((Math.random() * 3) + 1)
+    let P2TO3 = Math.floor((Math.random() * 3) + 1)
     let randTopP23 = Math.random() * 84
     let randSpeedP23 = Math.floor((Math.random() * 3) + 2)
     p2Rm3.removeAttribute('class')
     p2Rm3.className = 'meteor'
-    p2Rm3.classList.add(`mt${randMetP23}`)
+    p2Rm3.classList.add(`mt${P2TO3}`)
     p2Rm3.style.display = 'none'
     p2Rm3.style.animationDuration = `${randSpeedP23}s`
     p2Rm3.style.top = `${randTopP23}%`
     setTimeout(() => {
         p2Rm3.style.display = 'block'
     }, 1);
-    let randMetP24 = Math.floor((Math.random() * 3) + 1)
+    let P2TO4 = Math.floor((Math.random() * 3) + 1)
     let randTopP24 = Math.random() * 84
     let randSpeedP24 = Math.floor((Math.random() * 3) + 2)
     p2Rm4.removeAttribute('class')
     p2Rm4.className = 'meteor'
-    p2Rm4.classList.add(`mt${randMetP24}`)
+    p2Rm4.classList.add(`mt${P2TO4}`)
     p2Rm4.style.display = 'none'
     p2Rm4.style.animationDuration = `${randSpeedP24}s`
     p2Rm4.style.top = `${randTopP24}%`
     setTimeout(() => {
         p2Rm4.style.display = 'block'
     }, 1);
-    let randMetP25 = Math.floor((Math.random() * 3) + 1)
+    let P2TO5 = Math.floor((Math.random() * 3) + 1)
     let randTopP25 = Math.random() * 84
     let randSpeedP25 = Math.floor((Math.random() * 3) + 2)
     p2Rm5.removeAttribute('class')
     p2Rm5.className = 'meteor'
-    p2Rm5.classList.add(`mt${randMetP25}`)
+    p2Rm5.classList.add(`mt${P2TO5}`)
     p2Rm5.style.display = 'none'
     p2Rm5.style.animationDuration = `${randSpeedP25}s`
     p2Rm5.style.top = `${randTopP25}%`
@@ -585,12 +585,12 @@ function checkLiveDRun2() {
 //Player 1 Meteor
 
 p1Rm1.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P1TO1 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p1Rm1.removeAttribute('class')
     p1Rm1.className = 'meteor'
-    p1Rm1.classList.add(`mt${randMet}`)
+    p1Rm1.classList.add(`mt${P1TO1}`)
     p1Rm1.style.display = 'none'
     p1Rm1.style.animationDuration = `${randSpeed}s`
     p1Rm1.style.top = `${randTop}%`
@@ -600,12 +600,12 @@ p1Rm1.addEventListener('animationiteration', () => {
 })
 
 p1Rm2.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P1TO2 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p1Rm2.removeAttribute('class')
     p1Rm2.className = 'meteor'
-    p1Rm2.classList.add(`mt${randMet}`)
+    p1Rm2.classList.add(`mt${P1TO2}`)
     p1Rm2.style.display = 'none'
     p1Rm2.style.animationDuration = `${randSpeed}s`
     p1Rm2.style.top = `${randTop}%`
@@ -615,12 +615,12 @@ p1Rm2.addEventListener('animationiteration', () => {
 })
 
 p1Rm3.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P1TO3 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p1Rm3.removeAttribute('class')
     p1Rm3.className = 'meteor'
-    p1Rm3.classList.add(`mt${randMet}`)
+    p1Rm3.classList.add(`mt${P1TO3}`)
     p1Rm3.style.display = 'none'
     p1Rm3.style.animationDuration = `${randSpeed}s`
     p1Rm3.style.top = `${randTop}%`
@@ -630,12 +630,12 @@ p1Rm3.addEventListener('animationiteration', () => {
 })
 
 p1Rm4.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P1TO4 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p1Rm4.removeAttribute('class')
     p1Rm4.className = 'meteor'
-    p1Rm4.classList.add(`mt${randMet}`)
+    p1Rm4.classList.add(`mt${P1TO4}`)
     p1Rm4.style.display = 'none'
     p1Rm4.style.animationDuration = `${randSpeed}s`
     p1Rm4.style.top = `${randTop}%`
@@ -645,12 +645,12 @@ p1Rm4.addEventListener('animationiteration', () => {
 })
 
 p1Rm5.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P1TO5 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p1Rm5.removeAttribute('class')
     p1Rm5.className = 'meteor'
-    p1Rm5.classList.add(`mt${randMet}`)
+    p1Rm5.classList.add(`mt${P1TO5}`)
     p1Rm5.style.display = 'none'
     p1Rm5.style.animationDuration = `${randSpeed}s`
     p1Rm5.style.top = `${randTop}%`
@@ -693,12 +693,12 @@ p1RBoost.addEventListener('animationiteration', () => {
 //Player 2 Meteor
 
 p2Rm1.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P2TO1 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p2Rm1.removeAttribute('class')
     p2Rm1.className = 'meteor'
-    p2Rm1.classList.add(`mt${randMet}`)
+    p2Rm1.classList.add(`mt${P2TO1}`)
     p2Rm1.style.display = 'none'
     p2Rm1.style.animationDuration = `${randSpeed}s`
     p2Rm1.style.top = `${randTop}%`
@@ -708,12 +708,12 @@ p2Rm1.addEventListener('animationiteration', () => {
 })
 
 p2Rm2.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P2TO2 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p2Rm2.removeAttribute('class')
     p2Rm2.className = 'meteor'
-    p2Rm2.classList.add(`mt${randMet}`)
+    p2Rm2.classList.add(`mt${P2TO2}`)
     p2Rm2.style.display = 'none'
     p2Rm2.style.animationDuration = `${randSpeed}s`
     p2Rm2.style.top = `${randTop}%`
@@ -723,12 +723,12 @@ p2Rm2.addEventListener('animationiteration', () => {
 })
 
 p2Rm3.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P2TO3 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p2Rm3.removeAttribute('class')
     p2Rm3.className = 'meteor'
-    p2Rm3.classList.add(`mt${randMet}`)
+    p2Rm3.classList.add(`mt${P2TO3}`)
     p2Rm3.style.display = 'none'
     p2Rm3.style.animationDuration = `${randSpeed}s`
     p2Rm3.style.top = `${randTop}%`
@@ -738,12 +738,12 @@ p2Rm3.addEventListener('animationiteration', () => {
 })
 
 p2Rm4.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P2TO4 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p2Rm4.removeAttribute('class')
     p2Rm4.className = 'meteor'
-    p2Rm4.classList.add(`mt${randMet}`)
+    p2Rm4.classList.add(`mt${P2TO4}`)
     p2Rm4.style.display = 'none'
     p2Rm4.style.animationDuration = `${randSpeed}s`
     p2Rm4.style.top = `${randTop}%`
@@ -753,12 +753,12 @@ p2Rm4.addEventListener('animationiteration', () => {
 })
 
 p2Rm5.addEventListener('animationiteration', () => {
-    let randMet = Math.floor((Math.random() * 3) + 1)
+     P2TO5 = Math.floor((Math.random() * 3) + 1)
     let randTop = Math.random() * 84
     let randSpeed = Math.floor((Math.random() * 3) + 2)
     p2Rm5.removeAttribute('class')
     p2Rm5.className = 'meteor'
-    p2Rm5.classList.add(`mt${randMet}`)
+    p2Rm5.classList.add(`mt${P2TO5}`)
     p2Rm5.style.display = 'none'
     p2Rm5.style.animationDuration = `${randSpeed}s`
     p2Rm5.style.top = `${randTop}%`
@@ -797,16 +797,193 @@ p2RBoost.addEventListener('animationiteration', () => {
     }
 })
 
+//Check meteor type for all players
+setInterval(() => {
+    if (P1TO1 == 1) {
+        P1WTC1 = 40
+        if (screenWidth <= 1366) {
+            P1WTC1 = 32
+        }
+    } else if (P1TO1 == 2) {
+        P1WTC1 = 62
+        if (screenWidth <= 1366) {
+            P1WTC1 = 50
+        }
+    } else if (P1TO1 == 3) {
+        P1WTC1 = 125
+        if (screenWidth <= 1366) {
+            P1WTC1 = 100
+        }
+    }
+
+    if (P1TO2 == 1) {
+        P1WTC2 = 40
+        if (screenWidth <= 1366) {
+            P1WTC2 = 32
+        }
+    } else if (P1TO2 == 2) {
+        P1WTC2 = 62
+        if (screenWidth <= 1366) {
+            P1WTC2 = 50
+        }
+    } else if (P1TO2 == 3) {
+        P1WTC2 = 125
+        if (screenWidth <= 1366) {
+            P1WTC2 = 100
+        }
+    }
+
+    if (P1TO3 == 1) {
+        P1WTC3 = 40
+        if (screenWidth <= 1366) {
+            P1WTC3 = 32
+        }
+    } else if (P1TO3 == 2) {
+        P1WTC3 = 62
+        if (screenWidth <= 1366) {
+            P1WTC3 = 50
+        }
+    } else if (P1TO3 == 3) {
+        P1WTC3 = 125
+        if (screenWidth <= 1366) {
+            P1WTC3 = 100
+        }
+    }
+
+    if (P1TO4 == 1) {
+        P1WTC4 = 40
+        if (screenWidth <= 1366) {
+            P1WTC4 = 32
+        }
+    } else if (P1TO4 == 2) {
+        P1WTC4 = 62
+        if (screenWidth <= 1366) {
+            P1WTC4 = 50
+        }
+    } else if (P1TO4 == 3) {
+        P1WTC4 = 125
+        if (screenWidth <= 1366) {
+            P1WTC4 = 100
+        }
+    }
+
+    if (P1TO5 == 1) {
+        P1WTC5 = 40
+        if (screenWidth <= 1366) {
+            P1WTC5 = 32
+        }
+    } else if (P1TO5 == 2) {
+        P1WTC5 = 62
+        if (screenWidth <= 1366) {
+            P1WTC5 = 50
+        }
+    } else if (P1TO5 == 3) {
+        P1WTC5 = 125
+        if (screenWidth <= 1366) {
+            P1WTC5 = 100
+        }
+    }
+
+    if (P2TO1 == 1) {
+        P2WTC1 = 40
+        if (screenWidth <= 1366) {
+            P2WTC1 = 32
+        }
+    } else if (P2TO1 == 2) {
+        P2WTC1 = 62
+        if (screenWidth <= 1366) {
+            P2WTC1 = 50
+        }
+    } else if (P2TO1 == 3) {
+        P2WTC1 = 125
+        if (screenWidth <= 1366) {
+            P2WTC1 = 100
+        }
+    }
+
+    if (P2TO2 == 1) {
+        P2WTC2 = 40
+        if (screenWidth <= 1366) {
+            P2WTC2 = 32
+        }
+    } else if (P2TO2 == 2) {
+        P2WTC2 = 62
+        if (screenWidth <= 1366) {
+            P2WTC2 = 50
+        }
+    } else if (P2TO2 == 3) {
+        P2WTC2 = 125
+        if (screenWidth <= 1366) {
+            P2WTC2 = 100
+        }
+    }
+
+    if (P2TO3 == 1) {
+        P2WTC3 = 40
+        if (screenWidth <= 1366) {
+            P2WTC3 = 32
+        }
+    } else if (P2TO3 == 2) {
+        P2WTC3 = 62
+        if (screenWidth <= 1366) {
+            P2WTC3 = 50
+        }
+    } else if (P2TO3 == 3) {
+        P2WTC3 = 125
+        if (screenWidth <= 1366) {
+            P2WTC3 = 100
+        }
+    }
+
+    if (P2TO4 == 1) {
+        P2WTC4 = 40
+        if (screenWidth <= 1366) {
+            P2WTC4 = 32
+        }
+    } else if (P2TO4 == 2) {
+        P2WTC4 = 62
+        if (screenWidth <= 1366) {
+            P2WTC4 = 50
+        }
+    } else if (P2TO4 == 3) {
+        P2WTC4 = 125
+        if (screenWidth <= 1366) {
+            P2WTC4 = 100
+        }
+    }
+
+    if (P2TO5 == 1) {
+        P2WTC5 = 40
+        if (screenWidth <= 1366) {
+            P2WTC5 = 32
+        }
+    } else if (P2TO5 == 2) {
+        P2WTC5 = 62
+        if (screenWidth <= 1366) {
+            P2WTC5 = 50
+        }
+    } else if (P2TO5 == 3) {
+        P2WTC5 = 125
+        if (screenWidth <= 1366) {
+            P2WTC5 = 100
+        }
+    }
+}, 1);
+
 //Check hit Player 1
 
 setInterval(() => {
-    let meteorTop = p1Rm1.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p1Rm1).getPropertyValue("left")
     );
-    if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
+    let meteorTop = parseInt(
+        window.getComputedStyle(p1Rm1).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p1Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P1WTC1 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
 
         } else {
             p1Run.removeAttribute('class')
@@ -851,13 +1028,17 @@ setInterval(() => {
 }, 1);
 
 setInterval(() => {
-    let meteorTop = p1Rm2.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p1Rm2).getPropertyValue("left")
     );
-    if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
+    let meteorTop = parseInt(
+        window.getComputedStyle(p1Rm2).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p1Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P1WTC2 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
 
         } else {
             p1Run.removeAttribute('class')
@@ -902,13 +1083,17 @@ setInterval(() => {
 }, 1);
 
 setInterval(() => {
-    let meteorTop = p1Rm3.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p1Rm3).getPropertyValue("left")
     );
-    if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
+    let meteorTop = parseInt(
+        window.getComputedStyle(p1Rm3).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p1Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P1WTC3 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
 
         } else {
             p1Run.removeAttribute('class')
@@ -953,14 +1138,17 @@ setInterval(() => {
 }, 1);
 
 setInterval(() => {
-    let meteorTop = p1Rm4.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p1Rm4).getPropertyValue("left")
     );
-    if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
-
+    let meteorTop = parseInt(
+        window.getComputedStyle(p1Rm4).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p1Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P1WTC4 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
         } else {
             p1Run.removeAttribute('class')
             p1Run.className = 'player'
@@ -1004,13 +1192,17 @@ setInterval(() => {
 }, 1);
 
 setInterval(() => {
-    let meteorTop = p1Rm5.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p1Rm5).getPropertyValue("left")
     );
-    if ((meteorTop <= p1Posi || meteorTop >= p1Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p1Posi + 15 || meteorTop <= p1Posi - 8 || p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
+    let meteorTop = parseInt(
+        window.getComputedStyle(p1Rm5).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p1Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P1WTC5 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p1RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP1Inv) {
 
         } else {
             p1Run.removeAttribute('class')
@@ -1087,13 +1279,17 @@ setInterval(() => {
 //Check Meteor Player 2
 
 setInterval(() => {
-    let meteorTop = p2Rm1.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p2Rm1).getPropertyValue("left")
     );
-    if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
+    let meteorTop = parseInt(
+        window.getComputedStyle(p2Rm1).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p2Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P2WTC1 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p2RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP2Inv) {
 
         } else {
            p2Run.removeAttribute('class')
@@ -1139,13 +1335,17 @@ setInterval(() => {
 }, 1);
 
 setInterval(() => {
-    let meteorTop = p2Rm2.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p2Rm2).getPropertyValue("left")
     );
-    if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
+    let meteorTop = parseInt(
+        window.getComputedStyle(p2Rm2).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p2Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P2WTC2 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p2RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP2Inv) {
 
         } else {
             p2Run.removeAttribute('class')
@@ -1191,13 +1391,17 @@ setInterval(() => {
 }, 1);
 
 setInterval(() => {
-    let meteorTop = p2Rm3.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p2Rm3).getPropertyValue("left")
     );
-    if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
+    let meteorTop = parseInt(
+        window.getComputedStyle(p2Rm3).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p2Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P2WTC3 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p2RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP2Inv) {
 
         } else {
             p2Run.removeAttribute('class')
@@ -1243,13 +1447,17 @@ setInterval(() => {
 }, 1);
 
 setInterval(() => {
-    let meteorTop = p2Rm4.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p2Rm4).getPropertyValue("left")
     );
-    if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
+    let meteorTop = parseInt(
+        window.getComputedStyle(p2Rm4).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p2Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P2WTC4 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p2RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP2Inv) {
 
         } else {
             p2Run.removeAttribute('class')
@@ -1295,13 +1503,17 @@ setInterval(() => {
 }, 1);
 
 setInterval(() => {
-    let meteorTop = p2Rm5.style.top
-    meteorTop = parseInt(meteorTop)
     let meteorLeft = parseInt(
         window.getComputedStyle(p2Rm5).getPropertyValue("left")
     );
-    if ((meteorTop <= p2Posi || meteorTop >= p2Posi) && (meteorLeft <= 250 && meteorLeft >= 150)) {
-        if (meteorTop >= p2Posi + 15 || meteorTop <= p2Posi - 8 || p2RHS || duoRunPaused || duoRunK2 || duoRunK1 || duoRunP2Inv) {
+    let meteorTop = parseInt(
+        window.getComputedStyle(p2Rm5).getPropertyValue('top')
+    )
+    let playerPXPosi = parseInt(
+        window.getComputedStyle(p2Run).getPropertyValue('top')
+    )
+    if (meteorTop >= playerPXPosi - P2WTC5 && meteorTop < playerPXPosi + 100 && meteorLeft < 250 && meteorLeft > 150) {
+        if (p2RHS || duoRunPaused || duoRunK1 || duoRunK2 || duoRunP2Inv) {
 
         } else {
             p2Run.removeAttribute('class')

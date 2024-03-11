@@ -9,9 +9,9 @@ const p1Classic = document.getElementById('p1Classic')
 const p2Classic = document.getElementById('p2Classic')
 const invencible = document.getElementById('Inv')
 let trail = NaN, kill
-let trailHome
 const trailsElms = document.querySelectorAll('.trail')
 let playerPosi = 45
+let playerPXPosi = NaN
 let p1Posi = 45
 let p2Posi = 45
 let hurtShield = false
@@ -42,6 +42,7 @@ let pageType = 0
 6 - Credits
 */
 const disButton = document.getElementById('exitDisclaimer')
+let selectGM = document.getElementById('gameModeSelect')
 
 //Pages
 const disPage = document.getElementById('disclaimer')
@@ -176,6 +177,8 @@ const meteor4 = document.getElementById('m4')
 const meteor5 = document.getElementById('m5')
 const meteor7 = document.getElementById('m7')
 const meteor6 = document.getElementById('m6')
+let typeOf1, typeOf2, typeOf3, typeOf4, typeOf5, typeOf6, typeOf7
+let mt1Type, mt2Type, mt3Type, mt4Type, mt5Type, mt6Type, mt7Type
 
 //Duo : Run! Meteors
 const p1Rm1 = document.getElementById('p1Rm1')
@@ -188,6 +191,12 @@ const p2Rm2 = document.getElementById('p2Rm2')
 const p2Rm3 = document.getElementById('p2Rm3')
 const p2Rm4 = document.getElementById('p2Rm4')
 const p2Rm5 = document.getElementById('p2Rm5')
+let P1TO1, P1TO2, P1TO3, P1TO4, P1TO5, P2TO1, P2TO2, P2TO3, P2TO4, P2TO5
+let P1WTC1, P1WTC2, P1WTC3, P1WTC4, P1WTC5, P2WTC1, P2WTC2, P2WTC3, P2WTC4, P2WTC5
+
+//Responsivity Meteors
+const screenWidth = screen.width
+
 
 //Classic Solo Crystals
 const crystal1 = document.getElementById('cr1')
@@ -337,6 +346,7 @@ playButton.addEventListener("click", () => {
             soloClassicButton2.removeAttribute('style')
             duoClassicButton.removeAttribute('style')
             duoClassicButton2.removeAttribute('style')
+            document.getElementById('gameModeDiv').removeAttribute('style')
         }
         homePage.removeAttribute('style')
         gameMPage.style.display = 'flex'
@@ -864,7 +874,9 @@ document.addEventListener("keydown", function (e) {
         } if (e.key == 'k') {
             lives1p = 5
             checkLive1p()
-        }
+        } if (e.key == 'x') {
+            alert(playerPXPosi)
+        } 
         displaySlotsSolo()
     }
 
@@ -1134,8 +1146,10 @@ document.addEventListener("keydown", function (e) {
         }
     }
 
-    if (e.key == 'Enter') {
-        pauseDuoRun()
+    if (pageType == 3) {
+        if (e.key == 'Enter') {
+            pauseDuoRun()
+        }
     }
 
     if (pageType == 3.2) {
@@ -1537,16 +1551,16 @@ document.getElementById('deleteSave').addEventListener("click", () => {
     if (!muted) {
         settingsSong.volume = 0.1
     }
-        let confirmDel = confirm('Deseja mesmo apagar tudo que há salvo? \n Não há volta!')
-        if (confirmDel) {
-            alert('Dados apagados! Iremos reiniciar')
-            window.location = 'index.html'
-            localStorage.clear()
+    let confirmDel = confirm('Deseja mesmo apagar tudo que há salvo? \n Não há volta!')
+    if (confirmDel) {
+        alert('Dados apagados! Iremos reiniciar')
+        window.location = 'index.html'
+        localStorage.clear()
+    }
+    else {
+        if (!muted) {
+            let gameVolume = document.getElementById('vol').value / 100
+            settingsSong.volume = gameVolume
         }
-        else {
-            if (!muted) {
-                let gameVolume = document.getElementById('vol').value / 100
-                settingsSong.volume = gameVolume
-            }
-        }
+    }
 })

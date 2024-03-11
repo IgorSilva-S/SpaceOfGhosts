@@ -80,9 +80,7 @@ function closeAllSelect(elmnt) {
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
 
-let selectGM = document.getElementById('gameModeSelect')
 function changeGameMode() {
-    let selectGM = document.getElementById('gameModeSelect')
     if(selectGM.value == 'All') {
         document.getElementById('allBlocks').removeAttribute('style')
         document.getElementById('soloBlocks').style.display = 'none'
