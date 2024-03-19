@@ -111,6 +111,10 @@ function moveCharsClassic() {
     }
 }
 
+function checkLivesDuoClassic() {
+    
+}
+
 function randCrystals() {
     let c1rand = Math.floor(Math.random() * 6) + 1
     let c2rand = Math.floor(Math.random() * 6) + 1
