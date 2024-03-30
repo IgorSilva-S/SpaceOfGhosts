@@ -322,6 +322,13 @@ function organizeColor() {
     }
 }
 
+function enableDevMode() {
+    let isDev = localStorage.getItem('devMode')
+    if (isDev == '1') {
+        
+    }
+}
+
 organizeSound()
 enableOldControls()
 skinChanger()
@@ -601,6 +608,8 @@ duoClassicButton.addEventListener('click', () => {
         homeSong.pause()
         homeSong.currentTime = 0
         duoClassicSong.play()
+        p1DuoClassicLife = 100
+        p2DuoClassicLife = 100
     }, 500);
 })
 

@@ -32,6 +32,22 @@ function pauseClassicDuo() {
     }
 }
 
+function removePauseDuoClassic() {
+    p1Classic.classList.remove('playerPaused')
+    p2Classic.classList.remove('playerPaused')
+    document.getElementById('duoClassicControls').removeAttribute('style')
+    document.getElementById('p1cr1').style.animationPlayState = 'running'
+    document.getElementById('p1cr2').style.animationPlayState = 'running'
+    document.getElementById('p1cr3').style.animationPlayState = 'running'
+    document.getElementById('p2cr1').style.animationPlayState = 'running'
+    document.getElementById('p2cr2').style.animationPlayState = 'running'
+    document.getElementById('p2cr3').style.animationPlayState = 'running'
+    document.getElementById('p1Soil').style.animationPlayState = 'running'
+    document.getElementById('p2Soil').style.animationPlayState = 'running'
+    document.getElementById('duoClassicClouds').style.animationPlayState = 'running'
+    pausedDClassic = false
+}
+
 function returnHomeDuoClassic() {
     classicDuoPage.style.opacity = '0'
     duoClassicSong.pause()
@@ -41,6 +57,7 @@ function returnHomeDuoClassic() {
         duoClassicSong.currentTime = 0
         homeSong.play()
         gameMPage.style.display = 'flex'
+        removePauseDuoClassic()
     }, 500);
 }
 
@@ -57,6 +74,7 @@ function restartDuoClassic() {
     duoClassicSong.currentTime = 0
     setTimeout(() => {
         classicDuoPage.style.display = 'flex'
+        removePauseDuoClassic()
     }, 1);
 }
 
@@ -109,10 +127,6 @@ function moveCharsClassic() {
             }, 200);
         })
     }
-}
-
-function checkLivesDuoClassic() {
-    
 }
 
 function randCrystals() {
@@ -210,6 +224,80 @@ document.getElementById('p2cr3').addEventListener("animationiteration", () => {
     }, 1)
 })
 
+function checkLifeAllDClassic() {
+    // Player 1 Check
+    if (p1DuoClassicLife >= 91) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h100')
+    } else if (p1DuoClassicLife >= 81) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h90')
+    } else if (p1DuoClassicLife >= 71) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h80')
+    } else if (p1DuoClassicLife >= 61) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h70')
+    } else if (p1DuoClassicLife >= 51) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h60')
+    } else if (p1DuoClassicLife >= 41) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h50')
+    } else if (p1DuoClassicLife >= 31) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h40')
+    } else if (p1DuoClassicLife >= 21) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h30')
+    } else if (p1DuoClassicLife >= 11) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h20')
+    } else if (p1DuoClassicLife >= 6) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h10')
+    } else if (p1DuoClassicLife <= 5) {
+        p1DuoClassicLifeAlert.className = 'hearts'
+        p1DuoClassicLifeAlert.classList.add('h0')
+    }
+
+    // Player 2
+    if (p2DuoClassicLife >= 91) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h100')
+    } else if (p2DuoClassicLife >= 81) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h90')
+    } else if (p2DuoClassicLife >= 71) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h80')
+    } else if (p2DuoClassicLife >= 61) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h70')
+    } else if (p2DuoClassicLife >= 51) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h60')
+    } else if (p2DuoClassicLife >= 41) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h50')
+    } else if (p2DuoClassicLife >= 31) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h40')
+    } else if (p2DuoClassicLife >= 21) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h30')
+    } else if (p2DuoClassicLife >= 11) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h20')
+    } else if (p2DuoClassicLife >= 6) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h10')
+    } else if (p2DuoClassicLife <= 5) {
+        p2DuoClassicLifeAlert.className = 'hearts'
+        p2DuoClassicLifeAlert.classList.add('h0')
+    }
+}
+
 setInterval(() => {
     let checkerCrystal = document.getElementById('p1cr1')
     let crystalLeft = parseInt(
@@ -219,10 +307,8 @@ setInterval(() => {
         window.getComputedStyle(p1Classic).getPropertyValue("bottom")
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
-        p1Classic.classList.add('hShield')
-        setTimeout(() => {
-            p1Classic.classList.remove('hShield')
-        }, 5000);
+        p1DuoClassicLife = p1DuoClassicLife - 5
+        checkLifeAllDClassic()
     }
 }, 1);
 
@@ -235,10 +321,8 @@ setInterval(() => {
         window.getComputedStyle(p1Classic).getPropertyValue("bottom")
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
-        p1Classic.classList.add('hShield')
-        setTimeout(() => {
-            p1Classic.classList.remove('hShield')
-        }, 5000);
+        p1DuoClassicLife = p1DuoClassicLife - 5
+        checkLifeAllDClassic()
     }
 }, 1);
 
@@ -251,10 +335,8 @@ setInterval(() => {
         window.getComputedStyle(p1Classic).getPropertyValue("bottom")
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
-        p1Classic.classList.add('hShield')
-        setTimeout(() => {
-            p1Classic.classList.remove('hShield')
-        }, 5000);
+        p1DuoClassicLife = p1DuoClassicLife - 5
+        checkLifeAllDClassic()
     }
 }, 1);
 
@@ -267,10 +349,8 @@ setInterval(() => {
         window.getComputedStyle(p2Classic).getPropertyValue("bottom")
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
-        p2Classic.classList.add('hShield')
-        setTimeout(() => {
-            p2Classic.classList.remove('hShield')
-        }, 5000);
+        p2DuoClassicLife = p2DuoClassicLife - 5
+        checkLifeAllDClassic()
     }
 }, 1);
 
@@ -283,10 +363,8 @@ setInterval(() => {
         window.getComputedStyle(p1Classic).getPropertyValue("bottom")
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
-        p2Classic.classList.add('hShield')
-        setTimeout(() => {
-            p2Classic.classList.remove('hShield')
-        }, 5000);
+        p2DuoClassicLife = p2DuoClassicLife - 5
+        checkLifeAllDClassic()
     }
 }, 1);
 
@@ -299,9 +377,7 @@ setInterval(() => {
         window.getComputedStyle(p2Classic).getPropertyValue("bottom")
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50) {
-        p2Classic.classList.add('hShield')
-        setTimeout(() => {
-            p2Classic.classList.remove('hShield')
-        }, 5000);
+        p2DuoClassicLife = p2DuoClassicLife - 5
+        checkLifeAllDClassic()
     }
 }, 1);
