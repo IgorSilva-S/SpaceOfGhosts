@@ -459,14 +459,14 @@ body {
     height: 40px;
     font-size: 20px;
     border-radius: 120px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     color: white;
     transition-duration: .4s;
 }
 
 #disclaimer button:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 #disclaimer .waveGhost {
@@ -520,8 +520,8 @@ body {
     padding: 5px 20px;
     font-size: 20px;
     border-radius: 120px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     color: white;
     transition-duration: .4s;
     z-index: 1;
@@ -535,7 +535,7 @@ body {
 }
 
 #homeScreen button:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 #homeScreen .background {
@@ -749,14 +749,14 @@ body {
     padding: 5px 20px;
     font-size: 20px;
     border-radius: 120px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     color: white;
     transition-duration: .4s;
 }
 
 .goButtons button:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 #gameModeScreen {
@@ -865,8 +865,8 @@ body {
 #gameModeScreen button {
     width: 18vw;
     height: 50vh;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     border-radius: 8px;
     z-index: 1;
     display: flex;
@@ -924,7 +924,7 @@ body {
 }
 
 #gameModeScreen button:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 #gameModeScreen h1 {
@@ -1565,8 +1565,8 @@ body {
     align-items: center;
     flex-direction: column;
     margin: 0 20px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     color: white;
     font-size: 15px;
     transition-duration: .5s;
@@ -1574,7 +1574,7 @@ body {
 }
 
 .items .Sitem:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 .Sitem img {
@@ -1915,8 +1915,8 @@ body {
 }
 
 .settingButton {
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     padding: 3px 10px;
     border-radius: 20px;
     color: white;
@@ -1924,7 +1924,7 @@ body {
 }
 
 .settingButton:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 .settingsPanel p {
@@ -2248,6 +2248,60 @@ body {
     position: absolute;
 }
 
+.devKeysCentral {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    background-image: linear-gradient(to bottom, #000 60%, #949100);
+    transition-duration: .5s;
+}
+
+.devKeysCentral .background {
+    animation-duration: 90s;
+}
+
+.devKeysCentral .returnHome {
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border: none;
+    backdrop-filter: none;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+}
+
+.devKeysCentral button {
+    padding: 10px;
+    border: 2px solid #202020;
+    background-color: #252525;
+    border-radius: 8px;
+    transition-duration: .4s;
+}
+
+.devKeysCentral button:hover {
+    border-color: #0632ff
+}
+
+.shutDownDev {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+}
+
+.devKeysCentral h1,
+.devKeysCentral p {
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+    position: absolute;
+}
+
+.devKeysCentral p {
+    top: 40px;
+}
 
 .muteAlert {
     position: fixed;

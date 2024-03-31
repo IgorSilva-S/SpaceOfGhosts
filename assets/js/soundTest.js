@@ -20,11 +20,12 @@ const settingsSong = document.getElementById('settingsSong') // by dyu / Officia
 const creditsSong = document.getElementById('creditsSong') // by After The Fall - Winter Lights
 const soloClassicSong = document.getElementById('soloClassicSong') // by Chillpeach - 2:00 AM
 const duoClassicSong = document.getElementById('duoClassicSong') // by Chillpeach - On The Top
+const devKeysCentralSong = document.getElementById('devKeysCentralSong') // By Nintendo - Tomodachi Life Introduction / Local Share
 //End song vars
 
 prevID.addEventListener('click', () => {
     if (soundId == 0) {
-        soundId = 7
+        soundId = 8
     } else {
         soundId--
     }
@@ -36,6 +37,7 @@ prevID.addEventListener('click', () => {
     creditsSong.pause()
     soloClassicSong.pause()
     duoClassicSong.pause()
+    devKeysCentralSong.pause()
 
     homeSong.currentTime = 0
     song.currentTime = 0
@@ -45,13 +47,14 @@ prevID.addEventListener('click', () => {
     creditsSong.currentTime = 0
     soloClassicSong.currentTime = 0
     duoClassicSong.currentTime = 0
+    devKeysCentralSong.currentTime = 0
     ghost.classList.remove('playing')
     ghost.classList.add('stopped')
     checkSong()
 })
 
 afterID.addEventListener('click', () => {
-    if (soundId == 7) {
+    if (soundId == 8) {
         soundId = 0
     } else {
         soundId++
@@ -64,6 +67,7 @@ afterID.addEventListener('click', () => {
     creditsSong.pause()
     soloClassicSong.pause()
     duoClassicSong.pause()
+    devKeysCentralSong.pause()
 
     homeSong.currentTime = 0
     song.currentTime = 0
@@ -73,6 +77,7 @@ afterID.addEventListener('click', () => {
     creditsSong.currentTime = 0
     soloClassicSong.currentTime = 0
     duoClassicSong.currentTime = 0
+    devKeysCentralSong.currentTime = 0
     ghost.classList.remove('playing')
     ghost.classList.add('stopped')
     checkSong()
@@ -103,6 +108,14 @@ function checkSong() {
     } else if (soundId == 7) {
         songName.innerText = 'On The Top - Duo Clássico'
         songCredit.innerText = 'Chillpeach'
+    } else if (soundId == 8) {
+        let isDev = localStorage.getItem('devMode')
+        if (isDev == '1') {
+            songName.innerText = 'Introduction/Local Share - DevKeys Central'
+        } else {
+            songName.innerText = 'Introduction/Local Share'
+        }
+        songCredit.innerText = 'Nintendo - Tomodachi Life'
     }
 }
 
@@ -131,6 +144,9 @@ playButton.addEventListener("click", () => {
     } else if (soundId == 7) {
         duoClassicSong.play()
         soundIdCode.push(7)
+    }  else if (soundId == 8) {
+        devKeysCentralSong.play()
+        soundIdCode.push(8)
     }
 
     ghost.classList.remove('stopped')
@@ -147,6 +163,8 @@ resetButton.addEventListener("click", () => {
     creditsSong.currentTime = 0
     soloClassicSong.currentTime = 0
     duoClassicSong.currentTime = 0
+    devKeysCentralSong.currentTime = 0
+    soundIdCode = []
 
     if (soundId == 0) {
         homeSong.play()
@@ -172,6 +190,9 @@ resetButton.addEventListener("click", () => {
     } else if (soundId == 7) {
         duoClassicSong.play()
         soundIdCode.push(7)
+    }   else if (soundId == 8) {
+        devKeysCentralSong.play()
+        soundIdCode.push(8)
     }
 
     ghost.classList.remove('stopped')
@@ -196,6 +217,8 @@ pauseButton.addEventListener("click", () => {
         soloClassicSong.pause()
     } else if (soundId == 7) {
         duoClassicSong.pause()
+    } else if (soundId == 8) {
+        devKeysCentralSong.pause()
     }
     ghost.classList.remove('playing')
     ghost.classList.add('stopped')
@@ -204,6 +227,7 @@ pauseButton.addEventListener("click", () => {
 function checkSecretCode() {
     if (soundIdCode[0] == 0 && soundIdCode[1] == 5 && soundIdCode[2] == 0 && soundIdCode[3] == 1 && soundIdCode[4] == 2 && soundIdCode[5] == 4) {
         alert('DevMode')
+        localStorage.setItem('devMode', '1')
         soundIdCode = []
     } else if (soundIdCode[0] == 0 && soundIdCode[1] == 1 && soundIdCode[2] == 1 && soundIdCode[3] == 2 && soundIdCode[4] == 2 && soundIdCode[5] == 3) {
         alert('classicMode')

@@ -20,6 +20,7 @@
         utilizadas com a devida autorização do<br>
         criador do jogo.<br><br>
         Divirta-se!
+        <div id="devKeysDisclaimer" style="display: none">Obs.: A configuração DevKeys está ativa nessa seção, você pode desativar a qualquer momento no DevKeys Central.</div>
         <button id="exitDisclaimer">Okay</button>
         <div class="waveGhost"></div>
     </section>
@@ -34,10 +35,12 @@
 
         </div>
         <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts" id="gameName">
+        <p id="devAlert"></p>
         <div class="alignHomeButtons">
             <button id="playGame">Jogar</button>
             <button id="goShop">Loja e Skins</button>
             <button id="editSettings">Configurações</button>
+            <button id="devKeysEnter" style="display: none">DevKeys Central</button>
             <button id="viewCredits">Créditos</button>
         </div>
         <div class="version">
@@ -584,6 +587,14 @@
         </div>
     </section>
 
+    <!--DevKeys Central-->
+    <section id="devKeysCentral" class="devKeysCentral">
+        <div class="background"></div>
+        <button id="DKCHome" class="returnHome"></button>
+        <h1>DevKeys Central</h1>
+        <p>Alterações/Configurações disponíveis:</p>
+        <button id="disableDevKeys" class="shutDownDev">Desligar DevKeys</button>
+    </section>
     <!--Credits-->
     <section id="credits">
         <button class="returnHome" id="b2bCredits"></button>
@@ -633,6 +644,7 @@
     <audio src="assets/songs/music/creditsMusic.mp3" loop id="creditsSong"></audio>
     <audio src="assets/songs/music/soloClassicMusic.mp3" loop id="soloClassicSong"></audio>
     <audio src="assets/songs/music/duoClassicMusic.mp3" loop id="duoClassicSong"></audio>
+    <audio src="assets/songs/music/devKeysCentral.mp3" loop id="devKeysCentralSong"></audio>
     <!--SFX-->
     <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
     <audio src="assets/songs/SFX/Alert.wav" id="alertSong"></audio>
@@ -648,6 +660,7 @@
     <script src="assets/js/soloClassic.js"></script>
     <script src="assets/js/duoClassic.js"></script>
     <script src="assets/js/selectScript.js"></script>
+    <script src="assets/js/devKeys.js"></script>
 </body>
 
 </html>

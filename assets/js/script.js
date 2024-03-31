@@ -40,6 +40,7 @@ let pageType = 0
 4.1 - Skin Changer
 5 - Settings
 6 - Credits
+7 - DevKeys Central
 */
 const disButton = document.getElementById('exitDisclaimer')
 let selectGM = document.getElementById('gameModeSelect')
@@ -58,6 +59,7 @@ const settingsPage = document.getElementById('settings')
 const creditsPage = document.getElementById('credits')
 const classicSoloPage = document.getElementById('soloClassic')
 const classicDuoPage = document.getElementById('duoClassic')
+const devKeysCentralPage = document.getElementById('devKeysCentral')
 //End Pages
 
 //Songs
@@ -72,12 +74,14 @@ const settingsSong = document.getElementById('settingsSong') // by dyu / Officia
 const creditsSong = document.getElementById('creditsSong') // by After The Fall 
 const soloClassicSong = document.getElementById('soloClassicSong') // by Chillpeach
 const duoClassicSong = document.getElementById('duoClassicSong') // by Chillpeach
+const devKeysCentralSong = document.getElementById('devKeysCentralSong') // By Nintendo
 
 //End Songs
 const playButton = document.getElementById('playGame')
 const shopButton = document.getElementById('goShop')
 const settingsButton = document.getElementById('editSettings')
 const creditsButton = document.getElementById('viewCredits')
+const devKeysCentralButton = document.getElementById('devKeysEnter')
 const soloButton = document.getElementById('soloPlay')
 const soloClassicButton = document.getElementById('soloClassicPlay')
 const soloButton2 = document.getElementById('SBsoloPlay')
@@ -161,6 +165,8 @@ let changedCursor = false
 let soloSlots = false
 let soloClassicDied = false
 let pausedDClassic = false
+let p1CHSTimer = 0, p2CHSTimer = 0
+let p1CHS = false, p2CHS = false
 
 //Shop PopUp
 const bckgPop = document.getElementById('blurShop')
@@ -225,6 +231,9 @@ let skin4Buy = localStorage.getItem('purchased4')
 
 //Game Mode purchased checker
 let classicBuy = localStorage.getItem('classicPurchased')
+
+//DevKeys Variables
+const shutdownDevKeys = document.getElementById('disableDevKeys')
 
 //End Variables
 
@@ -322,13 +331,6 @@ function organizeColor() {
     }
 }
 
-function enableDevMode() {
-    let isDev = localStorage.getItem('devMode')
-    if (isDev == '1') {
-        
-    }
-}
-
 organizeSound()
 enableOldControls()
 skinChanger()
@@ -407,6 +409,18 @@ creditsButton.addEventListener("click", () => {
         homeSong.pause()
         homeSong.currentTime = 0
         creditsSong.play()
+    }, 500);
+})
+
+devKeysCentralButton.addEventListener("click", () => {
+    pageType = 7
+    homePage.style.opacity = '0'
+    setTimeout(() => {
+        homePage.removeAttribute('style')
+        devKeysCentralPage.style.display = 'block'
+        homeSong.pause()
+        homeSong.currentTime = 0
+        devKeysCentralSong.play()
     }, 500);
 })
 
@@ -1575,5 +1589,27 @@ document.getElementById('deleteSave').addEventListener("click", () => {
             let gameVolume = document.getElementById('vol').value / 100
             settingsSong.volume = gameVolume
         }
+    }
+})
+
+// DevKeys Central 
+document.getElementById('DKCHome').addEventListener('click', () => {
+    devKeysCentralPage.style.opacity = '0'
+    pageType = 1
+    setTimeout(() => {
+        devKeysCentralPage.removeAttribute('style')
+        devKeysCentralSong.pause()
+        devKeysCentralSong.currentTime = 0
+        homePage.style.display = 'flex'
+        homeSong.play()
+    }, 500);
+})
+
+shutdownDevKeys.addEventListener('click', () => {
+    let confirmShutdown = confirm("Deseja desligar o DevKeys? Você pode acessar a qualquer instante com o código inserido anteriormente no Sound Test")
+    if (confirmShutdown == true) {
+        localStorage.removeItem('devMode')
+        alert('DevKeys desligado, iremos reiniciar')
+        window.location = 'index.html'
     }
 })
