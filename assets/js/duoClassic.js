@@ -302,6 +302,21 @@ function checkLifeAllDClassic() {
     }
 }
 
+function endGameDuoClassic() {
+    document.getElementById('scoreDC').style.top = '5%'
+    document.getElementById('p1cr1').style.animationPlayState = 'paused'
+    document.getElementById('p1cr2').style.animationPlayState = 'paused'
+    document.getElementById('p1cr3').style.animationPlayState = 'paused'
+    document.getElementById('p2cr1').style.animationPlayState = 'paused'
+    document.getElementById('p2cr2').style.animationPlayState = 'paused'
+    document.getElementById('p2cr3').style.animationPlayState = 'paused'
+    document.getElementById('p1Soil').style.animationPlayState = 'paused'
+    document.getElementById('p2Soil').style.animationPlayState = 'paused'
+    p1Classic.classList.add('playerPaused')
+    p2Classic.classList.add('playerPaused')
+    
+}
+
 setInterval(() => {
     let checkerCrystal = document.getElementById('p1cr1')
     let crystalLeft = parseInt(

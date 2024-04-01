@@ -2248,12 +2248,40 @@ body {
     position: absolute;
 }
 
+.scoreDuoClassic {
+    width: 50%;
+    padding: 10px 5px;
+    background-color: #f0f0f033;
+    position: fixed;
+    left: calc(50% - 25%);
+    border-radius: 8px;
+    top: -100%;
+    color: white;
+    backdrop-filter: blur(20px);
+    font-size: 20px;
+    transition-duration: .5s;
+}
+
+.scoreDuoClassic h1 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.scoreDuoClassic .goButtons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px 0;
+}
+
 .devKeysCentral {
     width: 100vw;
     height: 100vh;
     display: none;
     background-image: linear-gradient(to bottom, #000 60%, #949100);
     transition-duration: .5s;
+    animation-name: appearPages;
+    animation-duration: .5s;
 }
 
 .devKeysCentral .background {
@@ -2278,6 +2306,7 @@ body {
     background-color: #252525;
     border-radius: 8px;
     transition-duration: .4s;
+    color: white;
 }
 
 .devKeysCentral button:hover {
@@ -2286,7 +2315,7 @@ body {
 
 .shutDownDev {
     position: fixed;
-    bottom: 5px;
+    top: 20px;
     right: 5px;
 }
 
@@ -2301,6 +2330,60 @@ body {
 
 .devKeysCentral p {
     top: 40px;
+}
+
+/*DevKeys Editors*/
+.keysEditor {
+    width: 100vw;
+    height: 85vh;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #25252577;
+    backdrop-filter: blur(10px);
+    display: flex;
+}
+
+.keysEditor .title {
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 100vw;
+    background-color: #191919;
+    padding: 10px 0;
+    top: -36px;
+}
+
+.keysEditor .regRow {
+    background-color: #25252577;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+#keyValueRow {
+    position: relative;
+}
+
+#keyValueRow::before {
+    content: '';
+    width: 6px;
+    height: 80%;
+    position: absolute;
+    left: -3px;
+    background-color: #949100;
+    top: 10%;
+    border-radius: 120px;
+}
+
+#keyValueRow::after {
+    content: '';
+    width: 6px;
+    height: 80%;
+    position: absolute;
+    right: -3px;
+    background-color: #949100;
+    top: 10%;
+    border-radius: 120px;
 }
 
 .muteAlert {

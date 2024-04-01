@@ -35,7 +35,6 @@
 
         </div>
         <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts" id="gameName">
-        <p id="devAlert"></p>
         <div class="alignHomeButtons">
             <button id="playGame">Jogar</button>
             <button id="goShop">Loja e Skins</button>
@@ -419,6 +418,18 @@
             <div class="crystal cType1" id="p2cr3"></div>
             <div class="player" id="p2Classic"></div>
         </div>
+        <div class="scoreDuoClassic" id="scoreDC">
+            <h1>Jogador <span id="duoClassicWinner">0</span> Ganha a partida!</h1>
+            Pontuação: <span id="duoClassicScore">0</span> <br>
+            Melhor Pontuação: <span id="duoClassicBestScore">0</span> <br>
+            <div class="newHigh" id="duoClassicHighAlert">Nova Melhor pontuação</div>
+            Moedas: <span id="duoClassicPlusMoney">0</span> <br>
+            Velocidade: <span id="duoClassicSpeed">0</span> <br>
+            <div class="goButtons">
+                <button id="soloClassicHome">Ir para o início</button>
+                <button id="soloClassicGame">Começar novamente</button>
+            </div>
+        </div>
         <div class="duoControls" id="duoClassicControls">
             <button class="returnHome" id="DCretHome">
             </button>
@@ -593,6 +604,12 @@
         <button id="DKCHome" class="returnHome"></button>
         <h1>DevKeys Central</h1>
         <p>Alterações/Configurações disponíveis:</p>
+        <div class="keysEditor">
+            <span class="title">Editor de Chaves (localStorage)</span>
+            <div class="regRow" id="keyNameRow"></div>
+            <div class="regRow" id="keyValueRow"></div>
+            <div class="regRow" id="newKeyValueRow"></div>
+        </div>
         <button id="disableDevKeys" class="shutDownDev">Desligar DevKeys</button>
     </section>
     <!--Credits-->

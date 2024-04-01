@@ -255,6 +255,7 @@ function organizeSound() {
         soloClassicSong.volume = gameVolume
         alertSong.volume = gameVolume
         duoClassicSong.volume = gameVolume
+        devKeysCentralSong.volume = gameVolume
         document.getElementById('volumeNum').innerText = `${gameVolume * 100}%`
         document.getElementById('quickVolNum').innerText = `${gameVolume * 100}%`
         document.getElementById('vol').value = gameVolume * 100
@@ -1461,6 +1462,7 @@ document.getElementById('vol').addEventListener('change', () => {
     soloClassicSong.volume = gameVolume
     alertSong.volume = gameVolume
     duoClassicSong.volume = gameVolume
+    devKeysCentralSong.volume = gameVolume
     localStorage.setItem('volume', gameVolume)
     document.getElementById('volumeNum').innerText = `${document.getElementById('vol').value}%`
     document.getElementById('quickVolNum').innerText = `${document.getElementById('vol').value}%`
@@ -1530,6 +1532,7 @@ document.getElementById('quickVol').addEventListener('change', () => {
     soloClassicSong.volume = gameVolume
     alertSong.volume = gameVolume
     duoClassicSong.volume = gameVolume
+    devKeysCentralSong.volume = gameVolume
     localStorage.setItem('volume', gameVolume)
     document.getElementById('volumeNum').innerText = `${document.getElementById('vol').value}%`
     document.getElementById('quickVolNum').innerText = `${document.getElementById('vol').value}%`
