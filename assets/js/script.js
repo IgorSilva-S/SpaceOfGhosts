@@ -242,6 +242,40 @@ if (localStorage.getItem('money') == undefined) {
     localStorage.setItem('money', 0)
 }
 
+function rearrangeShop() {
+    psA = localStorage.getItem("purchasedA")
+    ps1 = localStorage.getItem("purchased1")
+    ps2 = localStorage.getItem("purchased2")
+    ps3 = localStorage.getItem("purchased3")
+    ps4 = localStorage.getItem("purchased4")
+
+    if (psA == 'true') {
+        skinABuy = true
+    } else {
+        skinABuy = false
+    }
+    if (ps1 == 'true') {
+        skin1Buy = true
+    } else {
+        skin1Buy = false
+    }
+    if (ps2 == 'true') {
+        skin2Buy = true
+    } else {
+        skin2Buy = false
+    }
+    if (ps3 == 'true') {
+        skin3Buy = true
+    } else {
+        skin3Buy = false
+    }
+    if (ps4 == 'true') {
+        skin4Buy = true
+    } else {
+        skin4Buy = false
+    }
+}
+
 function organizeSound() {
     let gameVolume = localStorage.getItem('volume')
     if (gameVolume != undefined) {
@@ -272,7 +306,13 @@ function enableOldControls() {
         if (oldEnabled == 'true') {
             document.getElementById('oldControls').checked = true
             type2Controls = true
+        } else {
+            document.getElementById('oldControls').checked = false
+            type2Controls = false
         }
+    } else {
+        document.getElementById('oldControls').checked = false
+        type2Controls = false
     }
 }
 
@@ -305,7 +345,11 @@ function enableSoloSlots() {
         soloSlots = soloSlotsEnabled
         if (soloSlotsEnabled) {
             document.getElementById('soloSlots').checked = true
+        } else {
+            document.getElementById('soloSlots').checked = false
         }
+    } else {
+        document.getElementById('soloSlots').checked = false
     }
 }
 
@@ -316,7 +360,15 @@ function organizeCursor() {
             document.getElementById("mainCSS").href = 'assets/css/styleLight.css'
             changedCursor = true
             document.getElementById('invertCursor').checked = true
+        } else {
+            document.getElementById("mainCSS").href = 'assets/css/style.css'
+            changedCursor = false
+            document.getElementById('invertCursor').checked = false
         }
+    } else {
+        document.getElementById("mainCSS").href = 'assets/css/style.css'
+        changedCursor = false
+        document.getElementById('invertCursor').checked = false
     }
 }
 
@@ -328,7 +380,15 @@ function organizeColor() {
             document.body.style.filter = 'invert()'
             document.body.style.backgroundColor = 'white'
             checker.checked = true
+        } else {
+            document.body.style.filter = 'none'
+            document.body.style.backgroundColor = 'black'
+            checker.checked = false
         }
+    } else {
+        document.body.style.filter = 'none'
+        document.body.style.backgroundColor = 'black'
+        checker.checked = false
     }
 }
 

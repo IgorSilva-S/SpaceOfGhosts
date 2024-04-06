@@ -241,8 +241,8 @@ function checkSecretCode() {
         localStorage.setItem('purchased2', 'true')
         localStorage.setItem('purchased3', 'true')
         localStorage.setItem('purchased4', 'true')
-    } else if (soundIdCode[0] == 0 && soundIdCode[1] == 2 && soundIdCode[2] == 0 && soundIdCode[3] == 2 && soundIdCode[4] == 2 && soundIdCode[5] == 3) {
+    } /*else if (soundIdCode[0] == 0 && soundIdCode[1] == 2 && soundIdCode[2] == 0 && soundIdCode[3] == 2 && soundIdCode[4] == 2 && soundIdCode[5] == 3) {
         alert('noLifeMode')
         localStorage.setItem('noLife', 1)
-    }
+    }*/
 }

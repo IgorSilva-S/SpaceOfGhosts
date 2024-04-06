@@ -602,13 +602,22 @@
     <section id="devKeysCentral" class="devKeysCentral">
         <div class="background"></div>
         <button id="DKCHome" class="returnHome"></button>
-        <h1>DevKeys Central</h1>
+        <h1 id="devKeysTitle">DevKeys Central</h1>
         <p>Alterações/Configurações disponíveis:</p>
         <div class="keysEditor">
-            <span class="title">Editor de Chaves (localStorage)</span>
+            <div class="title">Editor de Chaves (localStorage)
+                <span class="material-symbols-rounded" id="refreshData">
+                    refresh
+                </span>
+                <span class="material-symbols-rounded" id="addKey">
+                    add
+                    </span>
+            </div>
             <div class="regRow" id="keyNameRow"></div>
             <div class="regRow" id="keyValueRow"></div>
-            <div class="regRow" id="newKeyValueRow"></div>
+        </div>
+        <div class="toggleKeys">
+            <span class="title">Configurações de</span>
         </div>
         <button id="disableDevKeys" class="shutDownDev">Desligar DevKeys</button>
     </section>

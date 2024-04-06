@@ -2334,7 +2334,7 @@ body {
 
 /*DevKeys Editors*/
 .keysEditor {
-    width: 100vw;
+    width: 50vw;
     height: 85vh;
     position: absolute;
     left: 0;
@@ -2348,14 +2348,26 @@ body {
     position: absolute;
     color: white;
     text-align: center;
-    width: 100vw;
+    width: 50vw;
     background-color: #191919;
     padding: 10px 0;
     top: -36px;
 }
 
+.keysEditor .title span {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 100px;
+    top: 0px;
+}
+
+.keysEditor .title #addKey {
+    right: 50px;
+}
+
 .keysEditor .regRow {
-    background-color: #25252577;
     flex-grow: 1;
     box-sizing: border-box;
 }
@@ -2375,15 +2387,43 @@ body {
     border-radius: 120px;
 }
 
-#keyValueRow::after {
-    content: '';
-    width: 6px;
-    height: 80%;
+.cellDiv,
+.cellDivVal {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    transition-duration: .2s;
+    color: white;
+    margin: 4px auto;
+    border-radius: 4px;
+}
+
+.cellDiv:hover,
+.cellDivVal:hover {
+    background-color: #27272744;
+}
+
+.toggleKeys {
+    width: 50vw;
+    height: 85vh;
     position: absolute;
-    right: -3px;
-    background-color: #949100;
-    top: 10%;
-    border-radius: 120px;
+    right: 0;
+    bottom: 0;
+    background-color: #25252577;
+    backdrop-filter: blur(10px);
+    display: flex;
+}
+
+.toggleKeys .title {
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 50vw;
+    background-color: #191919;
+    padding: 10px 0;
+    top: -36px;
 }
 
 .muteAlert {

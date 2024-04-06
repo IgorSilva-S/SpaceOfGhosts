@@ -1,0 +1,17 @@
+money;
+volume;
+oldControls;
+soloSlots;
+changedCursor;
+invertedColor;
+purchasedA;
+purchased1;
+purchased2;
+purchased3;
+classicPurchased;
+purchased4;
+actualSkin;
+highScore;
+classicBestScore;
+devMode;
+noLife

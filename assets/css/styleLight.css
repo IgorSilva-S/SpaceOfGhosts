@@ -244,7 +244,6 @@ body {
 }
 
 .meteor {
-    border-radius: 6px;
     position: absolute;
     left: 120%;
     TOP: 50%;
@@ -279,12 +278,10 @@ body {
 @keyframes kill {
     from {
         left: 120%;
-        rotate: 0deg
     }
 
     to {
         left: -20%;
-        rotate: 360deg
     }
 }
 
@@ -462,14 +459,14 @@ body {
     height: 40px;
     font-size: 20px;
     border-radius: 120px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     color: white;
     transition-duration: .4s;
 }
 
 #disclaimer button:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 #disclaimer .waveGhost {
@@ -523,8 +520,8 @@ body {
     padding: 5px 20px;
     font-size: 20px;
     border-radius: 120px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     color: white;
     transition-duration: .4s;
     z-index: 1;
@@ -538,7 +535,7 @@ body {
 }
 
 #homeScreen button:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 #homeScreen .background {
@@ -752,14 +749,14 @@ body {
     padding: 5px 20px;
     font-size: 20px;
     border-radius: 120px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     color: white;
     transition-duration: .4s;
 }
 
 .goButtons button:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 #gameModeScreen {
@@ -868,8 +865,8 @@ body {
 #gameModeScreen button {
     width: 18vw;
     height: 50vh;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     border-radius: 8px;
     z-index: 1;
     display: flex;
@@ -927,7 +924,7 @@ body {
 }
 
 #gameModeScreen button:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 #gameModeScreen h1 {
@@ -970,13 +967,38 @@ body {
     bottom: 0;
 }
 
+.sysBar {
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 10000;
+}
+
 /*Hearts & Items*/
+
+.normalGameHud {
+    width: 98%;
+    height: 40px;
+    position: fixed;
+    top: 1%;
+    left: 1%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row-reverse;
+    z-index: 1;
+}
+
+.playerScreen .normalGameHud {
+    position: absolute;
+}
+
 .hearts {
     width: 120px;
     height: 24px;
-    position: fixed;
     left: 0;
-    bottom: 0;
     background-size: cover;
     background-position: center;
     z-index: 1;
@@ -1054,24 +1076,26 @@ body {
 }
 
 .itemsAlertCont {
-    width: 120px;
-    height: 200px;
-    position: fixed;
-    bottom: 24px;
     display: flex;
-    flex-direction: column;
     z-index: 1;
+}
+
+.playerScreen .itemsAlertCont {
+    width: 50%;
+    position: absolute;
+    left: 150px;
 }
 
 .itemCont {
     width: 120px;
     height: 40px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     margin: 0 2px;
     box-sizing: border-box;
     color: white;
+    border-radius: 4px;
 }
 
 .emptySlot {
@@ -1121,12 +1145,11 @@ body {
 
 /*Score screen*/
 .score {
-    width: 120px;
-    height: 40px;
     color: white;
-    position: absolute;
-    bottom: 224px;
-    left: 10px;
+    left: 150px;
+    z-index: 1;
+    top: 10px;
+    font-size: 20px;
 }
 
 .pauseAlert .speed {
@@ -1476,7 +1499,7 @@ body {
     height: 45px;
 }
 
-#shop .items {
+.items {
     width: 100%;
     height: 60vh;
     position: fixed;
@@ -1542,8 +1565,8 @@ body {
     align-items: center;
     flex-direction: column;
     margin: 0 20px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     color: white;
     font-size: 15px;
     transition-duration: .5s;
@@ -1551,7 +1574,7 @@ body {
 }
 
 .items .Sitem:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 .Sitem img {
@@ -1575,10 +1598,10 @@ body {
 }
 
 .confirmPurchasePopUp {
-    width: 929px;
-    height: 559px;
+    width: 75vw;
+    height: 75vh;
     border-radius: 16px;
-    background-color: #191919;
+    background-color: #090909;
     position: relative;
     padding: 5px;
     font-size: 25px;
@@ -1611,6 +1634,38 @@ body {
     position: fixed;
 }
 
+
+#skinChanger .Sitem {
+    min-width: 300px;
+    height: 300px;
+}
+
+.ChoosedSkin {
+    border: 2px solid orange;
+    background-color: orangered;
+    min-width: 300px;
+    min-height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 20px;
+    color: white;
+    font-size: 15px;
+    transition-duration: .5s;
+    border-radius: 8px;
+}
+
+.ChoosedSkin img {
+    width: 100px;
+    height: 100px;
+}
+
+.ChoosedSkin:hover {
+    background-color: orange;
+}
+
 .alignShopButtons {
     width: 100%;
     position: absolute;
@@ -1627,7 +1682,7 @@ body {
     border: none;
     color: white;
     font-size: 25px;
-    transition-duration: .5s;
+    transition-duration: .3s;
 }
 
 .normalButtonShop {
@@ -1702,6 +1757,20 @@ body {
     flex-direction: column;
 }
 
+.sideBar::-webkit-scrollbar {
+    appearance: none;
+    width: 0px;
+    transition-duration: .5s;
+}
+
+.sideBar:hover::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sideBar::-webkit-scrollbar-thumb {
+    background-color: #008;
+}
+
 .sideBar h2 {
     margin: 20px 0;
 }
@@ -1721,26 +1790,6 @@ body {
 
 .sideBar .skin:hover {
     background-color: #f0f0f022;
-}
-
-#cs0 {
-    background-image: url(../img/sprites/skins/normal/Flying.gif);
-}
-
-#csA {
-    background-image: url(../img/sprites/skins/female/Flying.gif);
-}
-
-#cs1 {
-    background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
-}
-
-#cs2 {
-    background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
-}
-
-#cs3 {
-    background-image: url(../img/sprites/skins/catGhost/Flying.gif);
 }
 
 #settings {
@@ -1836,6 +1885,11 @@ body {
     box-sizing: border-box;
     padding: 0 20px;
     align-items: center;
+    color: white;
+}
+
+.alignSetting span {
+    color: white;
 }
 
 .alignItems {
@@ -1861,8 +1915,8 @@ body {
 }
 
 .settingButton {
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #252525;
+    border: 2px solid #202020;
     padding: 3px 10px;
     border-radius: 20px;
     color: white;
@@ -1870,7 +1924,7 @@ body {
 }
 
 .settingButton:hover {
-    background-color: #0632ff;
+    border-color: #0632ff;
 }
 
 .settingsPanel p {
@@ -1939,6 +1993,14 @@ body {
     transition-duration: .5s;
 }
 
+#b2bCredits {
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    left: 10px;
+
+}
+
 .rollCredits {
     width: 100%;
     padding: 20px 0;
@@ -1948,7 +2010,6 @@ body {
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    animation: rollCredits 25s linear;
 
 }
 
@@ -2014,7 +2075,8 @@ body {
     left: 100px;
 }
 
-#soloClassic .crystal {
+#soloClassic .crystal,
+#duoClassic .crystal {
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -2124,9 +2186,11 @@ body {
     height: 50px;
 }
 
-#soloClassic .hearts {
-    bottom: auto;
-    top: 0;
+#soloClassic .hearts,
+#duoClassic .hearts {
+    top: 5px;
+    left: 5px;
+    position: absolute;
 }
 
 .classicInfos {
@@ -2184,6 +2248,179 @@ body {
     position: absolute;
 }
 
+.scoreDuoClassic {
+    width: 50%;
+    padding: 10px 5px;
+    background-color: #f0f0f033;
+    position: fixed;
+    left: calc(50% - 25%);
+    border-radius: 8px;
+    top: -100%;
+    color: white;
+    backdrop-filter: blur(20px);
+    font-size: 20px;
+    transition-duration: .5s;
+}
+
+.scoreDuoClassic h1 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.scoreDuoClassic .goButtons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.devKeysCentral {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    background-image: linear-gradient(to bottom, #000 60%, #949100);
+    transition-duration: .5s;
+    animation-name: appearPages;
+    animation-duration: .5s;
+}
+
+.devKeysCentral .background {
+    animation-duration: 90s;
+}
+
+.devKeysCentral .returnHome {
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border: none;
+    backdrop-filter: none;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+}
+
+.devKeysCentral button {
+    padding: 10px;
+    border: 2px solid #202020;
+    background-color: #252525;
+    border-radius: 8px;
+    transition-duration: .4s;
+    color: white;
+}
+
+.devKeysCentral button:hover {
+    border-color: #0632ff
+}
+
+.shutDownDev {
+    position: fixed;
+    top: 20px;
+    right: 5px;
+}
+
+.devKeysCentral h1,
+.devKeysCentral p {
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+    position: absolute;
+}
+
+.devKeysCentral p {
+    top: 40px;
+}
+
+/*DevKeys Editors*/
+.keysEditor {
+    width: 50vw;
+    height: 85vh;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #25252577;
+    backdrop-filter: blur(10px);
+    display: flex;
+}
+
+.keysEditor .title {
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 50vw;
+    background-color: #191919;
+    padding: 10px 0;
+    top: -36px;
+}
+
+.keysEditor .title span {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 100px;
+    top: 0px;
+}
+
+.keysEditor .regRow {
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+#keyValueRow {
+    position: relative;
+}
+
+#keyValueRow::before {
+    content: '';
+    width: 6px;
+    height: 80%;
+    position: absolute;
+    left: -3px;
+    background-color: #949100;
+    top: 10%;
+    border-radius: 120px;
+}
+
+.cellDiv,
+.cellDivVal {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    transition-duration: .2s;
+    color: white;
+    margin: 4px auto;
+    border-radius: 4px;
+}
+
+.cellDiv:hover,
+.cellDivVal:hover {
+    background-color: #27272744;
+}
+
+.toggleKeys {
+    width: 50vw;
+    height: 85vh;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #25252577;
+    backdrop-filter: blur(10px);
+    display: flex;
+}
+
+.toggleKeys .title {
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 50vw;
+    background-color: #191919;
+    padding: 10px 0;
+    top: -36px;
+}
 
 .muteAlert {
     position: fixed;
