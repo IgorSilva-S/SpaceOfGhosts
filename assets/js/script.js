@@ -685,6 +685,7 @@ duoClassicButton.addEventListener('click', () => {
         duoClassicSong.play()
         p1DuoClassicLife = 100
         p2DuoClassicLife = 100
+        checkLifeAllDClassic()
     }, 500);
 })
 
@@ -697,6 +698,9 @@ duoClassicButton2.addEventListener('click', () => {
         homeSong.pause()
         homeSong.currentTime = 0
         duoClassicSong.play()
+        p1DuoClassicLife = 100
+        p2DuoClassicLife = 100
+        checkLifeAllDClassic()
     }, 500);
 })
 

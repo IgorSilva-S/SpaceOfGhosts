@@ -2288,16 +2288,29 @@ body {
     animation-duration: 90s;
 }
 
+.devKeysHeader {
+    width: 100%;
+    height: 15vh;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #025;
+}
+
 .devKeysCentral .returnHome {
-    top: 10px;
-    left: 10px;
     background-color: transparent;
     border: none;
     backdrop-filter: none;
-    position: fixed;
+    position: unset;
     width: 60px;
     height: 60px;
     z-index: 1000;
+    background-size: 80%;
+}
+
+.devKeysCentral .returnHome:hover {
+    background-size: 80%;
 }
 
 .devKeysCentral button {
@@ -2313,29 +2326,16 @@ body {
     border-color: #0632ff
 }
 
-.shutDownDev {
-    position: fixed;
-    top: 20px;
-    right: 5px;
-}
-
 .devKeysCentral h1,
 .devKeysCentral p {
-    width: 100%;
+    margin: 5px 0;
     color: white;
-    text-align: center;
-    margin: 20px 0;
-    position: absolute;
-}
-
-.devKeysCentral p {
-    top: 40px;
 }
 
 /*DevKeys Editors*/
 .keysEditor {
-    width: 50vw;
-    height: 85vh;
+    width: 100vw;
+    height: calc(85vh - 36px);
     position: absolute;
     left: 0;
     bottom: 0;
@@ -2348,10 +2348,10 @@ body {
     position: absolute;
     color: white;
     text-align: center;
-    width: 50vw;
+    width: 100%;
     background-color: #191919;
     padding: 10px 0;
-    top: -36px;
+    top: 0px;
 }
 
 .keysEditor .title span {
@@ -2368,8 +2368,9 @@ body {
 }
 
 .keysEditor .regRow {
-    flex-grow: 1;
-    box-sizing: border-box;
+    width: 50%;
+    margin-top: 36px;
+    height: calc(100% - 36px);
 }
 
 #keyValueRow {
@@ -2403,27 +2404,6 @@ body {
 .cellDiv:hover,
 .cellDivVal:hover {
     background-color: #27272744;
-}
-
-.toggleKeys {
-    width: 50vw;
-    height: 85vh;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background-color: #25252577;
-    backdrop-filter: blur(10px);
-    display: flex;
-}
-
-.toggleKeys .title {
-    position: absolute;
-    color: white;
-    text-align: center;
-    width: 50vw;
-    background-color: #191919;
-    padding: 10px 0;
-    top: -36px;
 }
 
 .muteAlert {

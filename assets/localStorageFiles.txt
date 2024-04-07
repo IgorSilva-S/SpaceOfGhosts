@@ -1,17 +1,77 @@
-money;
-volume;
-oldControls;
-soloSlots;
-changedCursor;
-invertedColor;
-purchasedA;
-purchased1;
-purchased2;
-purchased3;
-classicPurchased;
-purchased4;
-actualSkin;
-highScore;
-classicBestScore;
-devMode;
+Actual Keys:
+money
+-> Values: Any number
+-> What does this key change?: Money values
+
+volume
+-> Values: From 0 to 1
+-> What does this key change?: Volume value (value * 100)%
+
+oldControls
+-> Values: true or false
+-> What does this key change?: Enable or disbale old controls (Dev to back controls)
+
+soloSlots
+-> Values: true or false
+-> What does this key change?: Enable/Disable the keep items in slot for solo game
+
+changedCursor
+-> Values: true or false
+-> What does this key change?: Change cursor style, for true, the cursor will be light, for false, the cursor will be black
+
+invertedColor
+-> Values: true or false
+-> What does this key change?: Enable/Disable Inverted Color mode
+
+purchasedA
+-> Values: true or false
+-> What does this key change?: Check if the Female Skin are purchased or not
+
+purchased1
+-> Values: true or false
+-> What does this key change?: Check if the TranspGhost Skin are purchased or not
+
+purchased2
+-> Values: true or false
+-> What does this key change?: Check if the Dog Ghost Skin are purchased or not
+
+purchased3
+-> Values: true or false
+-> What does this key change?: Check if the Cat Skin are purchased or not
+
+classicPurchased
+-> Values: true or false
+-> What does this key change?: Check if the Classic game style are purchased or not (Now, check if Classic game style are enabled or not)
+
+purchased4
+-> Values: true or false
+-> What does this key change?: Check if the Mecha Ghost Skin are purchased or not
+
+actualSkin
+-> Values: s in front and the skin code, example: s2 (value from Dog Ghost)
+-> What does this key change?: Check what skin the user are wearing now
+
+highScore
+-> Values: Any number
+-> What does this key change?: The solo game best score
+
+classicBestScore
+-> Values: Any number
+-> What does this key change?: The solo classic game best score
+
+devMode
+-> Values: 0 or 1
+-> What does this key change?: Enable/Disable devMode (devKeys) from game
+
 noLife
+-> Values: 0 or 1
+-> What does this key change?: Enable/Disable no life mode from game (Only from develop test)
+
+Future Keys:
+gameDevSys
+-> Values: true or false
+-> What will this key change?: Dev Controls in pause menu from games
+
+collisionView
+-> Values: partial, true or false
+-> What will this key change?: The user will can view collision borders, to better management
