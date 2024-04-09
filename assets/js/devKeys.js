@@ -76,7 +76,7 @@ if (isDev == '1') {
           alert('Sem valor inserido, o valor será tratado como 0')
           localStorage.setItem(valueName, 0)
           if (valueName == 'devMode') {
-            document.getElementById('devKeysTitle').innerText = 'DevKeys Central - Alerta: Chave devMode alterada, o devKeys será desligado ao recarregar'
+            document.getElementById('devKeysTitle').innerHTML = 'DevKeys Central <br> Alerta: Chave devMode alterada, o devKeys será desligado ao recarregar'
           }
           refreshPane()
         } else if (newValue == 'notChange') {
@@ -88,9 +88,9 @@ if (isDev == '1') {
             refreshPane()
             if (valueName == 'devMode') {
             if (newValue != '1') {
-              document.getElementById('devKeysTitle').innerText = 'DevKeys Central - Alerta: Chave devMode alterada, o devKeys será desligado ao recarregar'
+              document.getElementById('devKeysTitle').innerHTML = 'DevKeys Central <br> Alerta: Chave devMode alterada, o devKeys será desligado ao recarregar'
             } else {
-              document.getElementById('devKeysTitle').innerText = 'DevKeys Central'
+              document.getElementById('devKeysTitle').innerHTML = 'DevKeys Central'
             }
             }
           }, 1);

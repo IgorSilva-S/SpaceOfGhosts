@@ -2295,18 +2295,18 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #025;
 }
 
 .devKeysCentral .returnHome {
     background-color: transparent;
     border: none;
     backdrop-filter: none;
-    position: unset;
+    position: absolute;
     width: 60px;
     height: 60px;
     z-index: 1000;
     background-size: 80%;
+    left: 100px;
 }
 
 .devKeysCentral .returnHome:hover {
@@ -2332,16 +2332,31 @@ body {
     color: white;
 }
 
+.titleAlign {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.devKeysCentral .devKeysHeader .shutDownDev{
+    position: absolute;
+    right: 100px;
+}
+
 /*DevKeys Editors*/
 .keysEditor {
     width: 100vw;
-    height: calc(85vh - 36px);
+    height: 85vh;
     position: absolute;
     left: 0;
     bottom: 0;
     background-color: #25252577;
     backdrop-filter: blur(10px);
     display: flex;
+    border-radius: 8px 8px 0 0;
 }
 
 .keysEditor .title {
@@ -2352,6 +2367,7 @@ body {
     background-color: #191919;
     padding: 10px 0;
     top: 0px;
+    border-radius: 8px 8px 0 0;
 }
 
 .keysEditor .title span {
