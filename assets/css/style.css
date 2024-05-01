@@ -505,6 +505,7 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    filter: drop-shadow(0px 0px 10px #fff);
 }
 
 @keyframes appearPages {
@@ -780,6 +781,8 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px
 }
 
 .cusSelAlign {
@@ -864,8 +867,8 @@ body {
 }
 
 #gameModeScreen button {
-    width: 18vw;
-    height: 50vh;
+    width: 400px;
+    height: 400px;
     background-color: #252525;
     border: 2px solid #202020;
     border-radius: 8px;
@@ -1216,7 +1219,7 @@ body {
     width: 150px;
     height: 220px;
     position: absolute;
-    top: -220px;
+    top: -300px;
     transition-duration: .4s;
     z-index: 10;
     left: calc(50% - 75px);
@@ -1253,6 +1256,26 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 8px;
     background-image: url(../img/sprites/duoRun!/restartGame.png);
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    margin: 10px 0;
+}
+
+.duoDevKeys:hover {
+    background-color: #0632FF;
+}
+
+.duoDevKeys {
+    width: 150px;
+    height: 50px;
+    transition-duration: .4s;
+    bottom: 0;
+    background-color: #0632ff77;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    background-image: url(../img/sprites/duoRun!/devKeys.png);
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;

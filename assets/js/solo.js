@@ -1433,8 +1433,7 @@ function soloKeyDown(e) {
 }
 
 function soloKeyUp(e) {
-    let keyType = e.key
-    keysSolo[keyType] = false
+    keysSolo = []
 }
 
 let soloControls = setInterval(() => {

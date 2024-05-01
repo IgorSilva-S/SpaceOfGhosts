@@ -14,6 +14,8 @@ function pauseClassicDuo() {
         document.getElementById('p2Soil').style.animationPlayState = 'paused'
         document.getElementById('duoClassicClouds').style.animationPlayState = 'paused'
         pausedDClassic = true
+        clearInterval(p1CHSCounter)
+        clearInterval(p2CHSCounter)
     } else {
         p1Classic.classList.remove('playerPaused')
         p2Classic.classList.remove('playerPaused')
@@ -29,6 +31,28 @@ function pauseClassicDuo() {
         document.getElementById('p2Soil').style.animationPlayState = 'running'
         document.getElementById('duoClassicClouds').style.animationPlayState = 'running'
         pausedDClassic = false
+        if (p1CHS) {
+            p1CHSCounter = setInterval(() => {
+                p1CHSTimer++
+                if (p1CHSTimer == 5) {
+                    p1CHSTimer = 0
+                    p1Classic.classList.remove('hShield')
+                    clearInterval(p1CHSCounter)
+                    p1CHS = false
+                }
+            }, 1000);
+        }
+        if (p2CHS) {
+            p2CHSCounter = setInterval(() => {
+                p2CHSTimer++
+                if (p2CHSTimer == 5) {
+                    p2CHSTimer = 0
+                    p2Classic.classList.remove('hShield')
+                    clearInterval(p2CHSCounter)
+                    p2CHS = false
+                }
+            }, 1000);
+        }
     }
 }
 
@@ -92,8 +116,7 @@ function duoClassicKeyDown(e) {
 }
 
 function duoClassicKeyUp(e) {
-    let keyType = e.key
-    keysDuoClassic[keyType] = false
+    keysDuoClassic = []
 }
 
 function moveCharsClassic() {
@@ -102,6 +125,9 @@ function moveCharsClassic() {
         p1Classic.addEventListener('animationend', () => {
             setTimeout(() => {
                 p1Classic.className = 'player'
+                if (p1CHS) {
+                    p1Classic.classList.add('hShield')
+                }
             }, 200);
         })
 
@@ -109,6 +135,9 @@ function moveCharsClassic() {
         p2Classic.addEventListener('animationend', () => {
             setTimeout(() => {
                 p2Classic.className = 'player'
+                if (p2CHS) {
+                    p2Classic.classList.add('hShield')
+                }
             }, 200);
         })
     }
@@ -118,6 +147,9 @@ function moveCharsClassic() {
         p2Classic.addEventListener('animationend', () => {
             setTimeout(() => {
                 p2Classic.className = 'player'
+                if (p2CHS) {
+                    p2Classic.classList.add('hShield')
+                }
             }, 200);
         })
     }
@@ -128,6 +160,9 @@ function moveCharsClassic() {
         p1Classic.addEventListener('animationend', () => {
             setTimeout(() => {
                 p1Classic.className = 'player'
+                if (p1CHS) {
+                    p1Classic.classList.add('hShield')
+                }
             }, 200);
         })
     }
@@ -263,6 +298,20 @@ function checkLifeAllDClassic() {
     } else if (p1DuoClassicLife <= 5) {
         p1DuoClassicLifeAlert.className = 'hearts'
         p1DuoClassicLifeAlert.classList.add('h0')
+    } else if (p1DuoClassicLife >= 0) {
+        p1Classic.classList.add('playerPaused')
+        p2Classic.classList.add('playerPaused')
+        document.getElementById('p1cr1').style.animationPlayState = 'paused'
+        document.getElementById('p1cr2').style.animationPlayState = 'paused'
+        document.getElementById('p1cr3').style.animationPlayState = 'paused'
+        document.getElementById('p2cr1').style.animationPlayState = 'paused'
+        document.getElementById('p2cr2').style.animationPlayState = 'paused'
+        document.getElementById('p2cr3').style.animationPlayState = 'paused'
+        document.getElementById('p1Soil').style.animationPlayState = 'paused'
+        document.getElementById('p2Soil').style.animationPlayState = 'paused'
+        clearInterval(p1CHSCounter)
+        clearInterval(p2CHSCounter)
+        p1Classic.style.rotate = '90deg'
     }
 
     // Player 2
@@ -299,6 +348,20 @@ function checkLifeAllDClassic() {
     } else if (p2DuoClassicLife <= 5) {
         p2DuoClassicLifeAlert.className = 'hearts'
         p2DuoClassicLifeAlert.classList.add('h0')
+    } else if (p2DuoClassicLife >= 0) {
+        p1Classic.classList.add('playerPaused')
+        p2Classic.classList.add('playerPaused')
+        document.getElementById('p1cr1').style.animationPlayState = 'paused'
+        document.getElementById('p1cr2').style.animationPlayState = 'paused'
+        document.getElementById('p1cr3').style.animationPlayState = 'paused'
+        document.getElementById('p2cr1').style.animationPlayState = 'paused'
+        document.getElementById('p2cr2').style.animationPlayState = 'paused'
+        document.getElementById('p2cr3').style.animationPlayState = 'paused'
+        document.getElementById('p1Soil').style.animationPlayState = 'paused'
+        document.getElementById('p2Soil').style.animationPlayState = 'paused'
+        clearInterval(p1CHSCounter)
+        clearInterval(p2CHSCounter)
+        p2Classic.style.rotate = '90deg'
     }
 }
 
@@ -330,12 +393,12 @@ setInterval(() => {
         checkLifeAllDClassic()
         p1CHS = true
         p1Classic.classList.add('hShield')
-        let p1CHSCounter = setInterval(() => {
+        p1CHSCounter = setInterval(() => {
             p1CHSTimer++
             if (p1CHSTimer == 5) {
                 p1CHSTimer = 0
                 p1Classic.classList.remove('hShield')
-                p1CHSCounter = NaN
+                clearInterval(p1CHSCounter)
                 p1CHS = false
             }
         }, 1000);
@@ -355,12 +418,12 @@ setInterval(() => {
         checkLifeAllDClassic()
         p1CHS = true
         p1Classic.classList.add('hShield')
-        let p1CHSCounter = setInterval(() => {
+        p1CHSCounter = setInterval(() => {
             p1CHSTimer++
             if (p1CHSTimer == 5) {
                 p1CHSTimer = 0
                 p1Classic.classList.remove('hShield')
-                p1CHSCounter = NaN
+                clearInterval(p1CHSCounter)
                 p1CHS = false
             }
         }, 1000);
@@ -380,12 +443,12 @@ setInterval(() => {
         checkLifeAllDClassic()
         p1CHS = true
         p1Classic.classList.add('hShield')
-        let p1CHSCounter = setInterval(() => {
+        p1CHSCounter = setInterval(() => {
             p1CHSTimer++
             if (p1CHSTimer == 5) {
                 p1CHSTimer = 0
                 p1Classic.classList.remove('hShield')
-                p1CHSCounter = NaN
+                clearInterval(p1CHSCounter)
                 p1CHS = false
             }
         }, 1000);
@@ -405,11 +468,11 @@ setInterval(() => {
         checkLifeAllDClassic()
         p2CHS = true
         p2Classic.classList.add('hShield')
-        let p2CHSCounter = setInterval(() => {
+        p2CHSCounter = setInterval(() => {
             p2CHSTimer++
             if (p2CHSTimer == 5) {
                 p2CHSTimer = 0
-                p2CHSCounter = NaN
+                clearInterval(p2CHSCounter)
                 p2Classic.classList.remove('hShield')
                 p2CHS = false
             }
@@ -430,11 +493,11 @@ setInterval(() => {
         checkLifeAllDClassic()
         p2CHS = true
         p2Classic.classList.add('hShield')
-        let p2CHSCounter = setInterval(() => {
+        p2CHSCounter = setInterval(() => {
             p2CHSTimer++
             if (p2CHSTimer == 5) {
                 p2CHSTimer = 0
-                p2CHSCounter = NaN
+                clearInterval(p2CHSCounter)
                 p2Classic.classList.remove('hShield')
                 p2CHS = false
             }
@@ -455,11 +518,11 @@ setInterval(() => {
         checkLifeAllDClassic()
         p2CHS = true
         p2Classic.classList.add('hShield')
-        let p2CHSCounter = setInterval(() => {
+        p2CHSCounter = setInterval(() => {
             p2CHSTimer++
             if (p2CHSTimer == 5) {
                 p2CHSTimer = 0
-                p2CHSCounter = NaN
+                clearInterval(p2CHSCounter)
                 p2Classic.classList.remove('hShield')
                 p2CHS = false
             }

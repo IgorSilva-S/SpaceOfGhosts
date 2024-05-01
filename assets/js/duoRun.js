@@ -95,8 +95,7 @@ function duoRunKeyDown(e) {
 }
 
 function duoRunKeyUp(e) {
-    let keyType = e.key
-    keysDuoRun[keyType] = false
+    keysDuoRun = []
 }
 
 function moveChars() {

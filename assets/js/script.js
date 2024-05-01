@@ -167,6 +167,7 @@ let soloClassicDied = false
 let pausedDClassic = false
 let p1CHSTimer = 0, p2CHSTimer = 0
 let p1CHS = false, p2CHS = false
+let p1CHSCounter = undefined, p2CHSCounter = undefined
 
 //Shop PopUp
 const bckgPop = document.getElementById('blurShop')
