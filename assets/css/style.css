@@ -37,7 +37,7 @@ body {
     top: 0;
     background-image: url(../img/sprites/background/BackgroundPureStarII.png);
     animation-name: moveBckg;
-    animation-duration: 10s;
+    animation-duration: 40s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
@@ -357,7 +357,7 @@ body {
 
 .pauseAlert button:hover {
     background-color: #011222;
-    border: 2px solid #0632ff
+    border: 1px solid #0632ff
 }
 
 .pauseAlert .pauseAnim {
@@ -461,7 +461,7 @@ body {
     font-size: 20px;
     border-radius: 120px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     color: white;
     transition-duration: .4s;
 }
@@ -523,7 +523,7 @@ body {
     font-size: 20px;
     border-radius: 120px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     color: white;
     transition-duration: .4s;
     z-index: 1;
@@ -752,7 +752,7 @@ body {
     font-size: 20px;
     border-radius: 120px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     color: white;
     transition-duration: .4s;
 }
@@ -870,7 +870,7 @@ body {
     width: 400px;
     height: 400px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     border-radius: 8px;
     z-index: 1;
     display: flex;
@@ -1463,8 +1463,7 @@ body {
 
 
 
-#shop,
-#skinChanger {
+#shop {
     width: 100vw;
     height: 100vh;
     background-image: linear-gradient(to bottom, #2E1A47,
@@ -1478,6 +1477,25 @@ body {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
+}
+
+#skinChanger {
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    display: none;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
+}
+
+.shopBckg {
+    background-image: linear-gradient(to bottom, #2E1A47,
+            #111133,
+            #04051a);
 }
 
 #shop .clouds,
@@ -1552,22 +1570,30 @@ body {
     background-color: transparent;
 }
 
-#shop .goSkin {
+#shop .goSkin,
+#gameModeScreen .goSkin {
     padding: 5px;
     position: fixed;
     bottom: 10px;
     right: 10px;
     margin: 0 20px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #292929;
+    border: 1px solid #292929;
     color: white;
     font-size: 15px;
     transition-duration: .5s;
     border-radius: 20px;
 }
 
+#gameModeScreen .goSkin {
+    width: 120px;
+    height: 30px;
+    right: 100px;
+    bottom: 15px;
+}
+
 #shop .goSkin:hover {
-    background-color: #0632ff;
+   border-color: #0632ff;
 }
 
 .items::-webkit-scrollbar {
@@ -1600,7 +1626,7 @@ body {
     flex-direction: column;
     margin: 0 20px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     color: white;
     font-size: 15px;
     transition-duration: .5s;
@@ -1675,7 +1701,7 @@ body {
 }
 
 .ChoosedSkin {
-    border: 2px solid orange;
+    border: 1px solid orange;
     background-color: orangered;
     min-width: 300px;
     min-height: 300px;
@@ -1950,7 +1976,7 @@ body {
 
 .settingButton {
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     padding: 3px 10px;
     border-radius: 20px;
     color: white;
@@ -2349,7 +2375,7 @@ body {
 
 .devKeysCentral button {
     padding: 10px;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     background-color: #252525;
     border-radius: 8px;
     transition-duration: .4s;

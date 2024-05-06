@@ -263,7 +263,7 @@ document.getElementById('p2cr3').addEventListener("animationiteration", () => {
     }, 1)
 })
 
-function checkLifeAllDClassic() {
+function checkLifeP1DClassic() {
     // Player 1 Check
     if (p1DuoClassicLife >= 91) {
         p1DuoClassicLifeAlert.className = 'hearts'
@@ -313,6 +313,8 @@ function checkLifeAllDClassic() {
         clearInterval(p2CHSCounter)
         p1Classic.style.rotate = '90deg'
     }
+
+
 
     // Player 2
     if (p2DuoClassicLife >= 91) {

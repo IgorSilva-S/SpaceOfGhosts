@@ -496,11 +496,19 @@ document.getElementById('mechaSkinPurchase').addEventListener('click', () => {
 //Skin Changer
 document.getElementById('returnShop').addEventListener("click", () => {
     skinChangerPage.style.opacity = '0'
-    pageType = 4
-    setTimeout(() => {
-        skinChangerPage.removeAttribute('style')
-        shopPage.style.display = 'block'
-    }, 500);
+    if (modeToSkinChanger == 'shop') {
+        pageType = 4
+        setTimeout(() => {
+            skinChangerPage.removeAttribute('style')
+            shopPage.style.display = 'block'
+        }, 500);
+    } else if (modeToSkinChanger == 'gameMode') {
+        pageType = 1.1
+        setTimeout(() => {
+            skinChangerPage.removeAttribute('style')
+            gameMPage.style.display = 'flex'
+        }, 500);
+    }
 })
 
 s0b.addEventListener("click", () => {

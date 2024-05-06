@@ -168,6 +168,7 @@ let pausedDClassic = false
 let p1CHSTimer = 0, p2CHSTimer = 0
 let p1CHS = false, p2CHS = false
 let p1CHSCounter = undefined, p2CHSCounter = undefined
+let modeToSkinChanger = undefined
 
 //Shop PopUp
 const bckgPop = document.getElementById('blurShop')
@@ -416,7 +417,7 @@ playButton.addEventListener("click", () => {
     pageType = 1.1
     homePage.style.opacity = '0'
     setTimeout(() => {
-        if (classicBuy) {
+        if (classicBuy == "true") {
             soloClassicButton.removeAttribute('style')
             soloClassicButton2.removeAttribute('style')
             duoClassicButton.removeAttribute('style')
@@ -444,8 +445,25 @@ shopButton.addEventListener("click", () => {
 document.getElementById('skins').addEventListener("click", () => {
     pageType = 4.1
     shopPage.style.opacity = '0'
+    modeToSkinChanger = 'shop'
+    document.getElementById('scStars').style.display = 'none'
+    document.getElementById('scClouds').removeAttribute('style')
+    skinChangerPage.className = 'shopBckg'
     setTimeout(() => {
         shopPage.removeAttribute('style')
+        skinChangerPage.style.display = 'block'
+    }, 500);
+})
+
+document.getElementById('skinsGS').addEventListener("click", () => {
+    pageType = 4.1
+    gameMPage.style.opacity = '0'
+    modeToSkinChanger = 'gameMode'
+    document.getElementById('scClouds').style.display = 'none'
+    document.getElementById('scStars').removeAttribute('style')
+    skinChangerPage.removeAttribute('class')
+    setTimeout(() => {
+        gameMPage.removeAttribute('style')
         skinChangerPage.style.display = 'block'
     }, 500);
 })

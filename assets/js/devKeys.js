@@ -73,11 +73,11 @@ if (isDev == '1') {
         let valueName = localStorage.key(valueKey)
         let newValue = prompt(`Digite o valor da chave ${valueName}: \nPalavras-chaves: \nnotChange - Não altera o valor da chave`)
         if (newValue == null || newValue == "") {
-          alert('Sem valor inserido, o valor será tratado como 0')
-          localStorage.setItem(valueName, 0)
+          alert('Sem valor inserido, o valor não será alterado')
+          /*localStorage.setItem(valueName, 0)
           if (valueName == 'devMode') {
             document.getElementById('devKeysTitle').innerHTML = 'DevKeys Central <br> Alerta: Chave devMode alterada, o devKeys será desligado ao recarregar'
-          }
+          }*/
           refreshPane()
         } else if (newValue == 'notChange') {
           alert(`O valor da chave ${valueName} não foi alterado`)
