@@ -313,9 +313,9 @@ function checkLifeP1DClassic() {
         clearInterval(p2CHSCounter)
         p1Classic.style.rotate = '90deg'
     }
+}
 
-
-
+    function checkLifeP2DClassic() {
     // Player 2
     if (p2DuoClassicLife >= 91) {
         p2DuoClassicLifeAlert.className = 'hearts'
@@ -392,7 +392,7 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !p1CHS && !pausedDClassic) {
         p1DuoClassicLife = p1DuoClassicLife - 5
-        checkLifeAllDClassic()
+        checkLifeP1DClassic()
         p1CHS = true
         p1Classic.classList.add('hShield')
         p1CHSCounter = setInterval(() => {
@@ -417,7 +417,7 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !p1CHS && !pausedDClassic) {
         p1DuoClassicLife = p1DuoClassicLife - 5
-        checkLifeAllDClassic()
+        checkLifeP1DClassic()
         p1CHS = true
         p1Classic.classList.add('hShield')
         p1CHSCounter = setInterval(() => {
@@ -442,7 +442,7 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !p1CHS && !pausedDClassic) {
         p1DuoClassicLife = p1DuoClassicLife - 5
-        checkLifeAllDClassic()
+        checkLifeP1DClassic()
         p1CHS = true
         p1Classic.classList.add('hShield')
         p1CHSCounter = setInterval(() => {
@@ -467,7 +467,7 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !p2CHS && !pausedDClassic) {
         p2DuoClassicLife = p2DuoClassicLife - 5
-        checkLifeAllDClassic()
+        checkLifeP2DClassic()
         p2CHS = true
         p2Classic.classList.add('hShield')
         p2CHSCounter = setInterval(() => {
@@ -492,7 +492,7 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !p2CHS && !pausedDClassic) {
         p2DuoClassicLife = p2DuoClassicLife - 5
-        checkLifeAllDClassic()
+        checkLifeP2DClassic()
         p2CHS = true
         p2Classic.classList.add('hShield')
         p2CHSCounter = setInterval(() => {
@@ -517,7 +517,7 @@ setInterval(() => {
     );
     if ((crystalLeft <= 200 && crystalLeft >= 101) && playerBottom == 50 && !p2CHS && !pausedDClassic) {
         p2DuoClassicLife = p2DuoClassicLife - 5
-        checkLifeAllDClassic()
+        checkLifeP2DClassic()
         p2CHS = true
         p2Classic.classList.add('hShield')
         p2CHSCounter = setInterval(() => {

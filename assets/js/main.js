@@ -67,8 +67,6 @@ const homeSong = document.getElementById('homeSong') // by Artificial Music
 const song = document.getElementById('soloSong') // by Prod. Riddiman
 const duoRSong = document.getElementById('duoRunSong') // by After the Fall
 const hSong = document.getElementById('hSong') // by SEGA and Sonic Team (1992)
-const alertSong = document.getElementById('alertSong') // by Microsoft
-const exclamationSong = document.getElementById('exclamationSong') // by Microsoft
 const shopSong = document.getElementById('shopSong') // by dyu / Official by Nintendo
 const settingsSong = document.getElementById('settingsSong') // by dyu / Official by Nintendo
 const creditsSong = document.getElementById('creditsSong') // by After The Fall 
@@ -289,7 +287,6 @@ function organizeSound() {
         settingsSong.volume = gameVolume
         creditsSong.volume = gameVolume
         soloClassicSong.volume = gameVolume
-        alertSong.volume = gameVolume
         duoClassicSong.volume = gameVolume
         devKeysCentralSong.volume = gameVolume
         document.getElementById('volumeNum').innerText = `${gameVolume * 100}%`
@@ -704,7 +701,8 @@ duoClassicButton.addEventListener('click', () => {
         duoClassicSong.play()
         p1DuoClassicLife = 100
         p2DuoClassicLife = 100
-        checkLifeAllDClassic()
+        checkLifeP1DClassic()
+        checkLifeP2DClassic()
     }, 500);
 })
 
@@ -719,7 +717,8 @@ duoClassicButton2.addEventListener('click', () => {
         duoClassicSong.play()
         p1DuoClassicLife = 100
         p2DuoClassicLife = 100
-        checkLifeAllDClassic()
+        checkLifeP1DClassic()
+        checkLifeP2DClassic()
     }, 500);
 })
 
@@ -731,12 +730,16 @@ document.addEventListener("keydown", function (e) {
         e.preventDefault()
         let volAlertCont = document.getElementById('volAlertCont')
         if (!allControlsAppeared) {
-            document.getElementById('quickVolCont').style.bottom = '20px'
-            volAlertCont.style.bottom = '120px'
+            document.getElementById('quickVolCont').style.bottom = '30px'
+            document.getElementById('quickVolCont').style.backgroundColor = '#0000'
+            volAlertCont.style.bottom = '130px'
+            volAlertCont.style.backgroundColor = '#0000'
+            document.getElementById('volCenter').style.bottom = '20px'
             allControlsAppeared = true
         } else {
             volAlertCont.removeAttribute('style')
             document.getElementById('quickVolCont').removeAttribute('style')
+            document.getElementById('volCenter').removeAttribute('style')
             allControlsAppeared = false
         }
     }
@@ -1529,9 +1532,6 @@ document.getElementById("muteGameSetting").addEventListener('click', () => {
 //Settings volume Slider
 
 document.getElementById('vol').addEventListener('change', () => {
-    alertSong.pause()
-    alertSong.currentTime = 0
-    alertSong.play()
 
     let gameVolume = document.getElementById('vol').value / 100
     document.getElementById('quickVol').value = gameVolume * 100
@@ -1543,7 +1543,6 @@ document.getElementById('vol').addEventListener('change', () => {
     settingsSong.volume = gameVolume
     creditsSong.volume = gameVolume
     soloClassicSong.volume = gameVolume
-    alertSong.volume = gameVolume
     duoClassicSong.volume = gameVolume
     devKeysCentralSong.volume = gameVolume
     localStorage.setItem('volume', gameVolume)
@@ -1600,9 +1599,6 @@ document.getElementById('invertColor').addEventListener('change', () => {
 
 
 document.getElementById('quickVol').addEventListener('change', () => {
-    alertSong.pause()
-    alertSong.currentTime = 0
-    alertSong.play()
     let gameVolume = document.getElementById('quickVol').value / 100
     document.getElementById('vol').value = gameVolume * 100
     homeSong.volume = gameVolume
@@ -1613,7 +1609,6 @@ document.getElementById('quickVol').addEventListener('change', () => {
     settingsSong.volume = gameVolume
     creditsSong.volume = gameVolume
     soloClassicSong.volume = gameVolume
-    alertSong.volume = gameVolume
     duoClassicSong.volume = gameVolume
     devKeysCentralSong.volume = gameVolume
     localStorage.setItem('volume', gameVolume)

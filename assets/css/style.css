@@ -2539,6 +2539,24 @@ body {
     box-shadow: -1005px 0 0 1000px #0632ff;
 }
 
+.volCenter {
+    position: fixed;
+    width: 300px;
+    height: 220px;
+    border-radius: 8px;
+    bottom: -220px;
+    background-color: #0632ff66;
+    backdrop-filter: blur(10px);
+    left: calc(50% - 150px);
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition-duration: .3s;
+    z-index: 10000;
+}
+
 
 
 /*Import Google Icons*/
