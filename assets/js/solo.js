@@ -154,17 +154,6 @@ function pauseGameSolo() {
             scoreNum++
             sScore.innerText = scoreNum
         }, 500);
-        if (plusSpeed >= 1) {
-            trail = setInterval(() => {
-                let trailElm = document.createElement('div')
-                trailElm.setAttribute('class', 'trail')
-                trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                trailElm.addEventListener("animationend", () => {
-                    trailElm.remove()
-                })
-                soloPage.insertAdjacentElement('beforeend', trailElm)
-            }, 100);
-        }
         addSpeed = setInterval(() => {
             if (scoreNum % 250 == 0 && scoreNum != 0) {
                 plusSpeed = plusSpeed + 0.25
@@ -825,23 +814,9 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
-                if (plusSpeed >= 1) {
-                    clearInterval(trail)
-                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
-                    if (plusSpeed >= 1) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -887,23 +862,9 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
-                if (plusSpeed >= 1) {
-                    clearInterval(trail)
-                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
-                    if (plusSpeed >= 1) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -948,23 +909,9 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
-                if (plusSpeed >= 1) {
-                    clearInterval(trail)
-                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
-                    if (plusSpeed >= 1) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -1009,23 +956,9 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
-                if (plusSpeed >= 1) {
-                    clearInterval(trail)
-                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
-                    if (plusSpeed >= 1) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -1070,23 +1003,9 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
-                if (plusSpeed >= 1) {
-                    clearInterval(trail)
-                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
-                    if (plusSpeed >= 1) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -1131,23 +1050,9 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
-                if (plusSpeed >= 1) {
-                    clearInterval(trail)
-                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
-                    if (plusSpeed >= 1) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++
@@ -1192,23 +1097,9 @@ setInterval(() => {
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
-                if (plusSpeed >= 1) {
-                    clearInterval(trail)
-                }
                 setTimeout(() => {
                     player.classList.remove('hurted')
                     hurtAnim = false
-                    if (plusSpeed >= 1) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
                 }, 1000);
                 hurtSWaiter = setInterval(() => {
                     hurtShieldTimer++

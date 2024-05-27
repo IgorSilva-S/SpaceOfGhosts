@@ -235,6 +235,8 @@ let classicBuy = localStorage.getItem('classicPurchased')
 //DevKeys Variables
 const shutdownDevKeys = document.getElementById('disableDevKeys')
 
+let lastPageDK = undefined
+
 //End Variables
 
 //Organize LocalStorage items

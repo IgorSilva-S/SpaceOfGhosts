@@ -335,7 +335,7 @@ body {
     align-items: center;
 }
 
-.pauseAlert .pauseText {
+.pauseAlert .pauseTextAlt {
     position: absolute;
     top: 20px;
     font-size: 40px;
@@ -1215,6 +1215,16 @@ body {
     overflow: hidden;
 }
 
+.soloControls {
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 210px;
+    transition-duration: .4s;
+    z-index: 10;
+    right: -150px;
+}
+
 .duoControls {
     width: 150px;
     height: 220px;
@@ -1251,7 +1261,6 @@ body {
     width: 150px;
     height: 50px;
     transition-duration: .4s;
-    bottom: 0;
     background-color: #0632ff77;
     backdrop-filter: blur(10px);
     border-radius: 8px;
@@ -1263,6 +1272,22 @@ body {
     margin: 10px 0;
 }
 
+.pauseText {
+    width: 150px;
+    height: 50px;
+    transition-duration: .4s;
+    background-color: #0632ff77;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: none;
+    margin: 10px 0;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 20px;
+}
+
 .duoDevKeys:hover {
     background-color: #0632FF;
 }
@@ -1271,7 +1296,6 @@ body {
     width: 150px;
     height: 50px;
     transition-duration: .4s;
-    bottom: 0;
     background-color: #0632ff77;
     backdrop-filter: blur(10px);
     border-radius: 8px;
