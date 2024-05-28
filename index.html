@@ -180,20 +180,20 @@
         <div class="moveBlock" id="upBlock"></div>
         <div class="moveBlock" id="downBlock"></div>
 
-        <div class="soloControls" id="pauseDuoControls">
+        <div class="soloControls" id="pauseSolo">
             <div class="pauseText">Pause</div>
             <div class="pauseText">+Speed: <span id="plusSpeedAlert">0%</span></div>
-            <button class="returnHome" id="retHome">
+            <button class="returnHome" id="retHomeSolo">
             </button>
-            <button class="restartDuo" id="duoRestart"></button>
-            <button class="duoDevKeys"></button>
+            <button class="restartSolo" id="soloRestart"></button>
+            <button class="DevKeysPause"></button>
         </div>
         <div class="pauseContainer" id="soloPauseBCKG">
             <div class="pauseAlert" id="soloPauseGui">
                 <div class="pauseAnim"></div>
                 <div class="pauseTextAlt">Pause</div>
                 <div class="speed">
-                    Velocidade a mais: <span id="plusSpeedAlert">0%</span>
+                    Velocidade a mais: <span id="plusSpeedAlertAlt">0%</span>
                 </div>
                 <button id="backInf">Voltar para seleção de modo</button>
                 <button id="restartInf">Reiniciar Jogo</button>
@@ -286,7 +286,7 @@
             <button class="returnHome" id="retHome">
             </button>
             <button class="restartDuo" id="duoRestart"></button>
-            <button class="duoDevKeys"></button>
+            <button class="DevKeysPause"></button>
         </div>
         <div class="background" id="dRunBckg"></div>
         <div class="playerScreen">
@@ -441,7 +441,7 @@
             <button class="returnHome" id="DCretHome">
             </button>
             <button class="restartDuo" id="DCRestart"></button>
-            <button class="duoDevKeys"></button>
+            <button class="DevKeysPause"></button>
         </div>
     </section>
 
@@ -578,6 +578,10 @@
             <div class="alignSetting" style="display: none">
                 <label for="simpleLightMode">Tema Claro</label>
                 <input type="checkbox" name="" id="simpleLightMode">
+            </div>
+            <div class="alignSetting">
+                <label for="altPause">Menu de pausa alternatvo (Modos solo)</label>
+                <input type="checkbox" name="" id="altPause">
             </div>
             <span style="display: none">O Tema Claro Altera:</span>
             <ul style="display: none">

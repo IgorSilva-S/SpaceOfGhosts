@@ -44,8 +44,9 @@ function displaySlotsSolo() {
 
 function pauseGameSolo() {
     if (!gamePaused && !relaxStts) {
-        pauseGui.style.right = '0'
-        pauseBack.style.right = '0'
+        document.getElementById('pauseSolo').style.right = '10px'
+        /*pauseGui.style.right = '0'
+        pauseBack.style.right = '0'*/
         meteor1.style.animationPlayState = 'paused'
         meteor2.style.animationPlayState = 'paused'
         meteor3.style.animationPlayState = 'paused'
@@ -72,8 +73,9 @@ function pauseGameSolo() {
         }
         soloPage.classList.add('paused')
     } else {
-        pauseGui.style.right = '-25%'
-        pauseBack.style.right = '-130%'
+        document.getElementById('pauseSolo').removeAttribute('style')
+        /*pauseGui.style.right = '-25%'
+        pauseBack.style.right = '-130%'*/
         meteor1.style.animationPlayState = 'running'
         meteor2.style.animationPlayState = 'running'
         meteor3.style.animationPlayState = 'running'
@@ -267,6 +269,66 @@ document.getElementById('backInf').addEventListener("click", () => {
         hurtSWaiter = 0
         scoreNum = 0
         //Pause
+        pauseGui.style.right = '-25%'
+        pauseBack.style.right = '-130%'
+        meteor1.style.animationPlayState = 'running'
+        meteor2.style.animationPlayState = 'running'
+        meteor3.style.animationPlayState = 'running'
+        meteor4.style.animationPlayState = 'running'
+        meteor5.style.animationPlayState = 'running'
+        meteor6.style.animationPlayState = 'running'
+        meteor7.style.animationPlayState = 'running'
+        player.classList.remove('playerPaused')
+        document.getElementById('gameBckg').removeAttribute('style')
+        gamePaused = false
+        pageType = 1
+        clearSlotSolo()
+        sScore.innerText = '0'
+    }, 500);
+})
+
+document.getElementById('retHomeSolo').addEventListener("click", () => {
+    soloPage.style.opacity = '0'
+    setTimeout(() => {
+        soloPage.removeAttribute('style')
+        soloPage.style.display = 'none'
+        gameMPage.style.display = 'flex'
+        homeSong.play()
+        homeSong.currentTime = 0
+        if (acceleratorP1) {
+            acceleratorP1 = false
+            clearInterval(trail)
+            invencible.style.display = 'none'
+        } else {
+            acceleratorP1 = false
+        }
+        if (hurtShield) {
+            hurtShield = false
+            player.classList.remove('hShield')
+        } else {
+            hurtShield = false
+        } if (shieldActive) {
+            shieldActive = false
+            shield = false
+            player.classList.remove('shield')
+        } else {
+            shieldActive = false
+            shield = false
+        }
+        song.currentTime = 0
+        acceleratorTimer = 0
+        hurtShieldTimer = 0
+        playerPosi = 45
+        player.removeAttribute('style')
+        clearInterval(acceleratorWaiter)
+        clearInterval(hurtSWaiter)
+        clearInterval(addSpeed)
+        plusSpeed = 0
+        acceleratorTimer = 0
+        hurtSWaiter = 0
+        scoreNum = 0
+        //Pause
+        document.getElementById('pauseSolo').removeAttribute('style')
         pauseGui.style.right = '-25%'
         pauseBack.style.right = '-130%'
         meteor1.style.animationPlayState = 'running'

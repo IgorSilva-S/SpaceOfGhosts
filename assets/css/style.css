@@ -1217,12 +1217,16 @@ body {
 
 .soloControls {
     width: 150px;
-    height: 220px;
+    height: 500px;
     position: absolute;
-    bottom: 210px;
+    bottom: calc(50% - 250px);
     transition-duration: .4s;
     z-index: 10;
-    right: -150px;
+    right: -225px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .duoControls {
@@ -1253,23 +1257,32 @@ body {
     background-color: #0632FF;
 }
 
-.restartDuo:hover {
+.restartDuo:hover,
+.restartSolo:hover {
     background-color: #0632FF;
 }
 
-.restartDuo {
+.restartDuo,
+.restartSolo {
     width: 150px;
     height: 50px;
     transition-duration: .4s;
     background-color: #0632ff77;
     backdrop-filter: blur(10px);
     border-radius: 8px;
-    background-image: url(../img/sprites/duoRun!/restartGame.png);
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
     border: none;
     margin: 10px 0;
+}
+
+.restartDuo {
+    background-image: url(../img/sprites/duoRun!/restartGame.png);
+}
+
+.restartSolo {
+    content: 'Restart';
 }
 
 .pauseText {
@@ -1288,18 +1301,17 @@ body {
     font-size: 20px;
 }
 
-.duoDevKeys:hover {
+.DevKeysPause:hover {
     background-color: #0632FF;
 }
 
-.duoDevKeys {
+.DevKeysPause {
     width: 150px;
     height: 50px;
     transition-duration: .4s;
     background-color: #0632ff77;
     backdrop-filter: blur(10px);
     border-radius: 8px;
-    background-image: url(../img/sprites/duoRun!/devKeys.png);
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
