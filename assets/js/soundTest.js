@@ -228,6 +228,7 @@ function checkSecretCode() {
     if (soundIdCode[0] == 0 && soundIdCode[1] == 5 && soundIdCode[2] == 0 && soundIdCode[3] == 1 && soundIdCode[4] == 2 && soundIdCode[5] == 4) {
         alert('DevMode')
         localStorage.setItem('devMode', '1')
+        localStorage.setItem('collisionView', 'false')
         soundIdCode = []
     } else if (soundIdCode[0] == 0 && soundIdCode[1] == 1 && soundIdCode[2] == 1 && soundIdCode[3] == 2 && soundIdCode[4] == 2 && soundIdCode[5] == 3) {
         alert('classicMode')

@@ -240,6 +240,18 @@ let lastPageDK = undefined
 //End Variables
 
 //Organize LocalStorage items
+if (localStorage.getItem('collisionView') != undefined) {
+    if (localStorage.getItem('collisionView') == 'true') {
+        document.body.classList.add('totalCollision')
+        document.getElementById('collisionView').checked = true
+        document.getElementById('collisionViewSettings').style.display = 'flex'
+    } else if (localStorage.getItem('collisionView') == 'false') {
+        document.getElementById('collisionViewSettings').style.display = 'flex'
+    } else if (localStorage.getItem('collisionView') == 'settings') {
+        document.body.classList.add('totalCollision')
+    }
+}
+
 if (localStorage.getItem('money') == undefined) {
     localStorage.setItem('money', 0)
 }
@@ -877,7 +889,7 @@ document.addEventListener("keydown", function (e) {
                 document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
                 acceleratorWaiter = setInterval(() => {
                     acceleratorTimer++
-                    if (acceleratorTimer == 50) {
+                    if (acceleratorTimer == 15) {
                         clearInterval(acceleratorWaiter)
                         acceleratorP1 = false
                         acceleratorTimer = 0
@@ -1597,6 +1609,16 @@ document.getElementById('invertColor').addEventListener('change', () => {
     }
 })
 
+//Settings light theme
+document.getElementById('simpleLightMode').addEventListener('change', () => {
+    let checker = document.getElementById('simpleLightMode')
+    if (checker.checked) {
+        document.body.classList.add('lightMode')
+    } else {
+        document.body.classList.remove('lightMode')
+    }
+})
+
 //Quick Volume Slider
 
 
@@ -1675,7 +1697,7 @@ document.getElementById('deleteSave').addEventListener("click", () => {
     }
 })
 
-// DevKeys Central 
+// DevKeys Central and DevKeys checkers in settings
 document.getElementById('DKCHome').addEventListener('click', () => {
     devKeysCentralPage.style.opacity = '0'
     pageType = 1
@@ -1692,7 +1714,19 @@ shutdownDevKeys.addEventListener('click', () => {
     let confirmShutdown = confirm("Deseja desligar o DevKeys? Você pode acessar a qualquer instante com o código inserido anteriormente no Sound Test")
     if (confirmShutdown == true) {
         localStorage.removeItem('devMode')
+        localStorage.removeItem('collisionView')
         alert('DevKeys desligado, iremos reiniciar')
         window.location = 'index.html'
+    }
+})
+
+document.getElementById('collisionView').addEventListener('change', () => {
+    let cvToggle = document.getElementById('collisionView')
+    if (cvToggle.checked) {
+        document.body.classList.add('totalCollision')
+        localStorage.setItem('collisionView', 'true')
+    } else {
+        document.body.classList.remove('totalCollision')
+        localStorage.setItem('collisionView', 'false')
     }
 })

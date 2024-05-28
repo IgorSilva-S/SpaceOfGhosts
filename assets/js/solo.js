@@ -102,7 +102,7 @@ function pauseGameSolo() {
             }, 1);
             acceleratorWaiter = setInterval(() => {
                 acceleratorTimer++
-                if (acceleratorTimer == 50) {
+                if (acceleratorTimer == 15) {
                     clearInterval(acceleratorWaiter)
                     acceleratorP1 = false
                     acceleratorTimer = 0
@@ -1258,7 +1258,7 @@ setInterval(() => {
                         document.getElementById('gameBckg').style.display = 'none'
                         invencible.style.display = 'block'
                         //.style.display = 'block'
-                        if (plusSpeed < 1) {
+            
                             trail = setInterval(() => {
                                 let trailElm = document.createElement('div')
                                 trailElm.setAttribute('class', 'trail')
@@ -1268,7 +1268,7 @@ setInterval(() => {
                                 })
                                 soloPage.insertAdjacentElement('beforeend', trailElm)
                             }, 100);
-                        }
+                        
                         document.getElementById('gameBckg').style.animationDuration = '7.5s'
                         setTimeout(() => {
                             document.getElementById('gameBckg').style.display = 'block'
@@ -1277,29 +1277,15 @@ setInterval(() => {
                         document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
                         acceleratorWaiter = setInterval(() => {
                             acceleratorTimer++
-                            if (acceleratorTimer == 50) {
+                            if (acceleratorTimer == 15) {
                                 clearInterval(acceleratorWaiter)
                                 acceleratorP1 = false
                                 acceleratorTimer = 0
                                 invencible.removeAttribute('style')
                                 //trail.removeAttribute('style')
-                                if (plusSpeed < 1) {
+                             
                                     clearInterval(trail)
-                                } else {
-                                    clearInterval(trail)
-                                    trail = NaN
-                                    setTimeout(() => {
-                                        trail = setInterval(() => {
-                                            let trailElm = document.createElement('div')
-                                            trailElm.setAttribute('class', 'trail')
-                                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                                            trailElm.addEventListener("animationend", () => {
-                                                trailElm.remove()
-                                            })
-                                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                                        }, 100);
-                                    }, 10);
-                                }
+                                
                                 if (shieldActive) {
                                     player.classList.add('shield')
                                 }

@@ -65,6 +65,10 @@ body {
     border-radius: 100%;
 }
 
+.totalCollision .player {
+    border: 1px solid #008;
+}
+
 .inv {
     width: 120px;
     height: 120px;
@@ -211,6 +215,10 @@ body {
     background-color: #0632ff33;
 }
 
+.totalCollision .shield {
+    border: 2px solid #888
+}
+
 .hShield {
     opacity: .5
 }
@@ -260,6 +268,12 @@ body {
     width: 40px;
     height: 40px;
     background-image: url(../img/sprites/meteorSprites/type1.png);
+}
+
+.totalCollision .mt1,
+.totalCollision .mt2,
+.totalCollision .mt3 {
+    border: 1px solid #800
 }
 
 .mt2 {
@@ -393,6 +407,10 @@ body {
     animation: boost 10s linear infinite;
     background-size: cover;
     background-position: center;
+}
+
+.totalCollision .boost {
+    border: 1px solid #080
 }
 
 .shieldBoost {
@@ -575,6 +593,10 @@ body {
     border-radius: 100%;
     animation: floatHome 10s linear infinite;
     transition-duration: .2s;
+}
+
+.totalCollision .homeGhost1 {
+    border: 1px solid #888
 }
 
 @keyframes floatHome {
@@ -1898,6 +1920,10 @@ body {
     background-color: #070b34;
 }
 
+.lightMode #settings {
+    background-color: #5b6ee1;
+}
+
 .earthCloud {
     width: 3840px;
     height: 150px;
@@ -1910,6 +1936,10 @@ body {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     transition-duration: .5s;
+}
+
+.lightMode .earthCloud {
+    background-image: url(../img/sprites/background/settingsClouds.png);
 }
 
 @keyframes moveBckgInv {
@@ -1931,6 +1961,11 @@ body {
     overflow-x: hidden;
     box-sizing: border-box;
     padding-bottom: 10px;
+}
+
+.lightMode .settingsPanel {
+    background-color: #f0f8ff;
+    color: black;
 }
 
 .settingsPanel::-webkit-scrollbar {
@@ -1984,8 +2019,17 @@ body {
     color: white;
 }
 
+.lightMode .alignSetting {
+    background-color: #ddd;
+    color: black;
+}
+
 .alignSetting span {
     color: white;
+}
+
+.lightMode .alignSetting span {
+    color: black;
 }
 
 .alignItems {
@@ -2010,6 +2054,11 @@ body {
     height: 40px;
 }
 
+.lightMode .alignSetting img {
+    background-color: #191919;
+    border-radius: 8px;
+}
+
 .settingButton {
     background-color: #252525;
     border: 1px solid #202020;
@@ -2017,6 +2066,12 @@ body {
     border-radius: 20px;
     color: white;
     transition-duration: .2s;
+}
+
+.lightMode .settingButton {
+    background-color: #fff;
+    border-color: #f0f0f0;
+    color: black; 
 }
 
 .settingButton:hover {
