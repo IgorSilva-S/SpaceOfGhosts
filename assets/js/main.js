@@ -740,7 +740,7 @@ duoClassicButton2.addEventListener('click', () => {
 
 
 document.addEventListener("keydown", function (e) {
-    if (e.key == "F1") {
+    if (e.key == "F1" && isGameTotalLoad) {
         e.preventDefault()
         let volAlertCont = document.getElementById('volAlertCont')
         if (!allControlsAppeared) {
@@ -757,7 +757,7 @@ document.addEventListener("keydown", function (e) {
             allControlsAppeared = false
         }
     }
-    if ((e.key == "m" || e.key == "M") && !allControlsAppeared) {
+    if ((e.key == "m" || e.key == "M") && !allControlsAppeared && isGameTotalLoad) {
         let volAlert = document.getElementById('volAlert')
         let volAlertCont = document.getElementById('volAlertCont')
         if (muted) {
@@ -788,7 +788,7 @@ document.addEventListener("keydown", function (e) {
             }, 2000);
         }
     }
-    if ((e.key == "v" || e.key == "V") && !allControlsAppeared) {
+    if ((e.key == "v" || e.key == "V") && !allControlsAppeared && isGameTotalLoad) {
         let volAlertCont = document.getElementById('volAlertCont')
         if (!quickVolAppeared) {
             quickVolAppeared = true

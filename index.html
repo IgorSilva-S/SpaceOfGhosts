@@ -10,9 +10,23 @@
     <link rel="shortcut icon" href="assets/img/sprites/skins/normal/Flying.gif" type="image/gif">
 </head>
 
+<!--Style to Loading Page-->
+
+
 <body>
+    <!--Loading-->
+    <section id="loadingPage">
+        <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts">
+        <div class="loadingBallCont">
+            <div class="loadingBall" id="lb1"></div>
+            <div class="loadingBall" id="lb2"></div>
+            <div class="loadingBall" id="lb3"></div>
+            <div class="loadingBall" id="lb4"></div>
+            <div class="loadingBall" id="lb5"></div>
+        </div>
+    </section>
     <!--Disclaimer-->
-    <section id="disclaimer">
+    <section id="disclaimer" style="display: none">
         <span>Aviso</span>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. At veritatis sit quasi voluptatem sapiente, enim rerum ullam aliquid eum repudiandae. Repellat odio voluptatum, expedita quae autem ipsam dolorum error ducimus.
         <div id="devKeysDisclaimer" style="display: none">Obs.: A configuração DevKeys está ativa nessa seção, você pode desativar a qualquer momento no DevKeys Central.</div>
@@ -618,6 +632,7 @@
 
     <!--DevKeys Central-->
     <section id="devKeysCentral" class="devKeysCentral">
+        <div class="earthCloud"></div>
         <div class="background"></div>
         <div class="devKeysHeader">
             <button id="DKCHome" class="returnHome"></button>
@@ -690,13 +705,14 @@
     <audio src="assets/songs/music/creditsMusic.mp3" loop id="creditsSong"></audio>
     <audio src="assets/songs/music/soloClassicMusic.mp3" loop id="soloClassicSong"></audio>
     <audio src="assets/songs/music/duoClassicMusic.mp3" loop id="duoClassicSong"></audio>
-    <audio src="assets/songs/music/devKeysCentral.mp3" loop id="devKeysCentralSong"></audio>
+    <audio src="assets/songs/music/settingsAlt.wav" loop id="devKeysCentralSong"></audio>
     <!--SFX-->
     <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
 
     <!--End Audios-->
 
     <!--Script Area-->
+    <script src="assets/js/loadingGame.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/solo.js"></script>
     <script src="assets/js/duoRun.js"></script>

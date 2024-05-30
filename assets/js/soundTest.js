@@ -111,11 +111,11 @@ function checkSong() {
     } else if (soundId == 8) {
         let isDev = localStorage.getItem('devMode')
         if (isDev == '1') {
-            songName.innerText = 'Introduction/Local Share - DevKeys Central'
+            songName.innerText = 'First Time Setup - DevKeys Central'
         } else {
-            songName.innerText = 'Introduction/Local Share'
+            songName.innerText = 'First Time Setup'
         }
-        songCredit.innerText = 'Nintendo - Tomodachi Life'
+        songCredit.innerText = 'Nintendo'
     }
 }
 
@@ -247,3 +247,61 @@ function checkSecretCode() {
         localStorage.setItem('noLife', 1)
     }*/
 }
+
+// Volume script
+let muteButton = document.getElementById('volAlertCont');
+let muteButtonAlert = document.getElementById('volAlert');
+let volRange = document.getElementById('quickVol');
+let volRangeAlert = document.getElementById('quickVolNum');
+let isMuted = false
+
+muteButton.addEventListener('click', () => {
+    if (isMuted) {
+        isMuted = false
+        homeSong.volume = 1
+        song.volume = 1
+        duoRSong.volume = 1
+        shopSong.volume = 1
+        settingsSong.volume = 1
+        creditsSong.volume = 1
+        soloClassicSong.volume = 1
+        duoClassicSong.volume = 1
+        devKeysCentralSong.volume = 1
+        muteButtonAlert.innerText = 'volume_up'
+        volRange.value = 100
+        volRangeAlert.innerText = '100%'
+    } else {
+        isMuted = true
+        homeSong.volume = 0
+        song.volume = 0
+        duoRSong.volume = 0
+        shopSong.volume = 0
+        settingsSong.volume = 0
+        creditsSong.volume = 0
+        soloClassicSong.volume = 0
+        duoClassicSong.volume = 0
+        devKeysCentralSong.volume = 0
+        muteButtonAlert.innerText = 'volume_off'
+        volRange.value = 0
+        volRangeAlert.innerText = '0%'
+    }
+})
+
+volRange.addEventListener('change', () => {
+    let actualVol = volRange.value
+    let actualVolSong = actualVol / 100
+    volRangeAlert.innerText = `${actualVol}%`
+    homeSong.volume = actualVolSong
+    song.volume = actualVolSong
+    duoRSong.volume = actualVolSong
+    shopSong.volume = actualVolSong
+    settingsSong.volume = actualVolSong
+    creditsSong.volume = actualVolSong
+    soloClassicSong.volume = actualVolSong
+    duoClassicSong.volume = actualVolSong
+    devKeysCentralSong.volume = actualVolSong
+    if (actualVol == 0) {
+        isMuted = true
+        muteButtonAlert.innerText = 'volume_off'
+    }
+})
