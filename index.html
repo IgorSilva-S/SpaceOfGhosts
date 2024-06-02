@@ -27,6 +27,7 @@
         <div class="errorContainer" id="errorCont" style="display: none;">
             <p id="errorText">Space Of Ghosts teve um erro inesperado. Tente recarregar a página, caso não funcione, tente apagar os seus dados</p>
             <div class="goButtons">
+                <button id="errReload">Recarregar página</button>
                 <button id="errGit">Abrir uma issue no GitHub</button>
                 <button id="errReset">Apagar dados</button>
             </div>
@@ -36,7 +37,7 @@
     <!--Disclaimer-->
     <section id="disclaimer" style="display: none">
         <span>Aviso</span>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At veritatis sit quasi voluptatem sapiente, enim rerum ullam aliquid eum repudiandae. Repellat odio voluptatum, expedita quae autem ipsam dolorum error ducimus.
+        Obrigado por testar Space of Ghosts! Esse jogo está em desenvolvimento, então, bugs poderão ser encontrados. Caso encontre algum bug, por favor, avise os desenvolvedores abrindo uma issue no GitHub.
         <div id="devKeysDisclaimer" style="display: none">Obs.: A configuração DevKeys está ativa nessa seção, você pode desativar a qualquer momento no DevKeys Central.</div>
         <button id="exitDisclaimer">Okay</button>
         <div class="waveGhost"></div>
@@ -57,10 +58,10 @@
             <button id="goShop">Loja e Skins</button>
             <button id="editSettings">Configurações</button>
             <button id="devKeysEnter" style="display: none">DevKeys Central</button>
-            <button id="viewCredits">Créditos</button>
+            <button id="viewCredits"  style="display: none">Créditos</button>
         </div>
         <div class="version">
-            Dev
+            Beta 149.24
         </div>
     </section>
 
@@ -78,20 +79,20 @@
                 <select name="" id="gameModeSelect">
                     <option value="Text">Filtrar:</option>
                     <option value="All">Todos</option>
-                    <option value="Solos">Um Jogador</option>
-                    <option value="Duos">Dois Jogadores</option>
+                    <option value="Space">Espacial</option>
+                    <option value="Classic">Clássico</option>
                 </select>
             </div>
         </div>
         <div class="alignButtonsGameMode" id="allBlocks">
             <button id="soloPlay">
-                <div></div> Um Jogador: Normal
+                <div></div> Um Jogador: Espacial
             </button>
             <button id="soloClassicPlay" style="display: none;">
                 <div></div> Um Jogador: Clássico
             </button>
             <button id="duoPlay">
-                <div></div> Dois Jogadores: Normal
+                <div></div> Dois Jogadores: Espacial
             </button>
             <button id="duoBattlePlay" style="display: none">
                 <div></div> Dois Jogadores: Batalha
@@ -100,32 +101,29 @@
                 <div></div> Dois Jogadores: Clássico
             </button>
         </div>
-        <div class="alignButtonsGameMode" id="soloBlocks" style="display: none">
+        <div class="alignButtonsGameMode" id="spatialBlocks" style="display: none">
             <button id="SBsoloPlay">
-                <div></div> Um Jogador: Normal
+                <div></div> Um Jogador: Espacial
             </button>
-            <button id="SBsoloClassicPlay" style="display: none;">
-                <div></div> Um Jogador: Clássico
+            <button id="DBduoPlay">
+                <div></div> Dois Jogadores: Espacial
             </button>
         </div>
-        <div class="alignButtonsGameMode" id="duoBlocks" style="display: none">
-            <button id="DBduoPlay">
-                <div></div> Dois Jogadores: Normal
-            </button>
-            <button id="DBduoBattlePlay" style="display: none">
-                <div></div> Dois Jogadores: Batalha
+        <div class="alignButtonsGameMode" id="classicBlocks" style="display: none">
+            <button id="SBsoloClassicPlay" style="display: none;">
+                <div></div> Um Jogador: Clássico
             </button>
             <button id="DBduoClassicPlay" style="display: none">
                 <div></div> Dois Jogadores: Clássico
             </button>
         </div>
         <div class="version">
-            Dev
+            Beta 149.24
         </div>
         <button class="goSkin" id="skinsGS">Trocar a Skin</button>
     </section>
 
-    <!--Solo Mode: Normal-->
+    <!--Solo Mode: Espatial-->
     <section id="soloMode">
         <div class="background" id="gameBckg">
 
@@ -205,11 +203,14 @@
         <div class="soloControls" id="pauseSolo">
             <div class="pauseText">Pause</div>
             <div class="pauseText">+Speed: <span id="plusSpeedAlert">0%</span></div>
-            <button class="returnHome" id="retHomeSolo">
-            </button>
-            <button class="restartSolo" id="soloRestart"></button>
-            <button class="DevKeysPause"></button>
+            <button class="pauseHome" id="retHomeSolo">Voltar</button>
+            <button class="pauseRestart" id="soloRestart">Reiniciar</button>
+            <button class="pauseDev" id="soloDevKeys" style="display: none;">DevKeys</button>
+            <button class="pauseSettings" id="soloConfig">Config.</button>
         </div>
+
+
+
         <div class="pauseContainer" id="soloPauseBCKG">
             <div class="pauseAlert" id="soloPauseGui">
                 <div class="pauseAnim"></div>
@@ -224,7 +225,7 @@
         </div>
     </section>
 
-    <!--Solo Mode: Normal - Score-->
+    <!--Solo Mode: Espatial - Score-->
     <section id="soloScoreMark">
         <div class="background">
 
@@ -302,13 +303,13 @@
         </div>
     </section>
 
-    <!--Duo Mode: Normal-->
+    <!--Duo Mode: Espatial-->
     <section id="duoRun">
         <div class="duoControls" id="pauseDuoControls">
-            <button class="returnHome" id="retHome">
-            </button>
-            <button class="restartDuo" id="duoRestart"></button>
-            <button class="DevKeysPause"></button>
+            <button class="pauseHome" id="retHome">Voltar</button>
+            <button class="pauseRestart" id="duoRestart">Reiniciar</button>
+            <button class="pauseDev" id="duoDevKeys" style="display: none;">DevKeys</button>
+            <button class="pauseSettings" id="duoSettings">Config.</button>
         </div>
         <div class="background" id="dRunBckg"></div>
         <div class="playerScreen">
@@ -387,7 +388,7 @@
 
     </section>
 
-    <!--Duo Mode: Normal - Score-->
+    <!--Duo Mode: Espatial - Score-->
     <section id="duoRunScore">
         <div class="background">
 
@@ -460,10 +461,10 @@
             </div>
         </div>
         <div class="duoControls" id="duoClassicControls">
-            <button class="returnHome" id="DCretHome">
+            <button class="pauseHome" id="DCretHome">
             </button>
-            <button class="restartDuo" id="DCRestart"></button>
-            <button class="DevKeysPause"></button>
+            <button class="pauseRestart" id="DCRestart"></button>
+            <button class="pauseDev"></button>
         </div>
     </section>
 
@@ -718,7 +719,7 @@
     <audio src="assets/songs/music/creditsMusic.mp3" loop id="creditsSong"></audio>
     <audio src="assets/songs/music/soloClassicMusic.mp3" loop id="soloClassicSong"></audio>
     <audio src="assets/songs/music/duoClassicMusic.mp3" loop id="duoClassicSong"></audio>
-    <audio src="assets/songs/music/settingsAlt.wav" loop id="devKeysCentralSong"></audio>
+    <audio src="assets/songs/music/devKeysCentral.mp3" loop id="devKeysCentralSong"></audio>
     <!--SFX-->
     <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
 

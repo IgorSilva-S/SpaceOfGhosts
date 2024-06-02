@@ -83,15 +83,15 @@ document.addEventListener("click", closeAllSelect);
 function changeGameMode() {
     if(selectGM.value == 'All') {
         document.getElementById('allBlocks').removeAttribute('style')
-        document.getElementById('soloBlocks').style.display = 'none'
-        document.getElementById('duoBlocks').style.display = 'none'
-    } else if (selectGM.value == 'Solos') {
-        document.getElementById('soloBlocks').removeAttribute('style')
+        document.getElementById('spatialBlocks').style.display = 'none'
+        document.getElementById('classicBlocks').style.display = 'none'
+    } else if (selectGM.value == 'Space') {
+        document.getElementById('spatialBlocks').removeAttribute('style')
         document.getElementById('allBlocks').style.display = 'none'
-        document.getElementById('duoBlocks').style.display = 'none'
-    } else if (selectGM.value == 'Duos') {
-        document.getElementById('duoBlocks').removeAttribute('style')
-        document.getElementById('soloBlocks').style.display = 'none'
+        document.getElementById('classicBlocks').style.display = 'none'
+    } else if (selectGM.value == 'Classic') {
+        document.getElementById('classicBlocks').removeAttribute('style')
+        document.getElementById('spatialBlocks').style.display = 'none'
         document.getElementById('allBlocks').style.display = 'none'
     }
 }

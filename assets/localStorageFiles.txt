@@ -89,16 +89,17 @@ collisionView
 -> Default: false
 -> What will this key change?: The user will can view collision borders, to better management (if key == settings, will be like true, but, the settings option to toggle if developer can view or not collisions will not appear)
 
-lightTheme
--> Values: true or false
--> Default: false
--> What will this key change?: Toggle light theme in game
-
-Future Keys:
 gameDevSys
 -> Values: true or false
 -> Default: false (when devMode == 0) / true (when devMode == 1)
 -> What will this key change?: Dev Controls in pause menu from games
+
+Future Keys:
+
+lightTheme
+-> Values: true or false
+-> Default: false
+-> What will this key change?: Toggle light theme in game
 
 altPauseMenu
 -> Values: true or false

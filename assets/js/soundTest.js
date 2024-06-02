@@ -128,11 +128,11 @@ function checkSong() {
     } else if (soundId == 8) {
         let isDev = localStorage.getItem('devMode')
         if (isDev == '1') {
-            songName.innerText = 'First Time Setup - DevKeys Central'
+            songName.innerText = 'Introduction / Send and Receive - DevKeys Central'
         } else {
-            songName.innerText = 'First Time Setup'
+            songName.innerText = 'Introduction / Send and Receive'
         }
-        songCredit.innerText = 'Nintendo'
+        songCredit.innerText = 'Nintendo (Tomodachi Life OST)'
     }
 }
 
@@ -246,6 +246,7 @@ function checkSecretCode() {
         alert('DevMode')
         localStorage.setItem('devMode', '1')
         localStorage.setItem('collisionView', 'false')
+        localStorage.setItem('gameDevSys', true)
         soundIdCode = []
     } else if (soundIdCode[0] == 0 && soundIdCode[1] == 1 && soundIdCode[2] == 1 && soundIdCode[3] == 2 && soundIdCode[4] == 2 && soundIdCode[5] == 3) {
         alert('classicMode')

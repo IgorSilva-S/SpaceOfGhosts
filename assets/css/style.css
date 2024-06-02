@@ -12,6 +12,8 @@ button,
 a,
 input {
     cursor: url(../img/non-sprites/cursors/darkCursor/link.cur), auto;
+    font-family: 'Josefin Sans',
+    sans-serif;
 }
 
 /*Base Screen Size : 1366x768px*/
@@ -216,7 +218,7 @@ body {
 }
 
 .totalCollision .shield {
-    border: 2px solid #888
+    border: 3px solid yellow
 }
 
 .hShield {
@@ -456,7 +458,7 @@ body {
 }
 
 #disclaimer {
-    width: 100vw;
+    width: 80vw;
     height: 100vh;
     display: flex;
     justify-content: space-evenly;
@@ -464,6 +466,7 @@ body {
     flex-direction: column;
     text-align: center;
     color: white;
+    margin: 0 auto;
     background-color: #000;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -666,6 +669,23 @@ body {
 .roundHome {
     rotate: 180deg
 }
+
+.returnHome {
+    background-image: url(../img/sprites/navButtons/white/backHome.png);
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.returnGame {
+    background-image: url(../img/sprites/navButtons/white/backGame.png);
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+}
+
 
 #soloMode {
     display: none;
@@ -1206,6 +1226,20 @@ body {
     }
 }
 
+.soloControls {
+    width: 150px;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    transition-duration: .4s;
+    z-index: 10;
+    right: -225px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 /*Score screen*/
 .score {
     color: white;
@@ -1274,19 +1308,7 @@ body {
     overflow: hidden;
 }
 
-.soloControls {
-    width: 150px;
-    height: 500px;
-    position: absolute;
-    bottom: calc(50% - 250px);
-    transition-duration: .4s;
-    z-index: 10;
-    right: -225px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+
 
 .duoControls {
     width: 150px;
@@ -1298,50 +1320,49 @@ body {
     left: calc(50% - 75px);
 }
 
-.returnHome {
-    width: 150px;
-    height: 150px;
-    transition-duration: .4s;
-    background-color: #0632ff77;
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-    background-image: url(../img/sprites/navButtons/white/backHome.png);
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: none;
-}
 
-.returnHome:hover {
+.pauseHome:hover,
+.pauseRestart:hover,
+.pauseDev:hover,
+.pauseSettings:hover {
     background-color: #0632FF;
 }
 
-.restartDuo:hover,
-.restartSolo:hover {
-    background-color: #0632FF;
-}
-
-.restartDuo,
-.restartSolo {
+.pauseHome,
+.pauseRestart,
+.pauseDev,
+.pauseSettings {
     width: 150px;
     height: 50px;
     transition-duration: .4s;
     background-color: #0632ff77;
     backdrop-filter: blur(10px);
     border-radius: 8px;
-    background-size: 80%;
+    background-size: 90%;
     background-position: center;
     background-repeat: no-repeat;
     border: none;
     margin: 10px 0;
+    box-sizing: border-box;
+    padding-left: 50px;
+    color: white;
+    font-size: 20px;
 }
 
-.restartDuo {
-    background-image: url(../img/sprites/duoRun!/restartGame.png);
+.pauseHome {
+    background-image: url(../img/sprites/pauseButtons/homePause.png);
 }
 
-.restartSolo {
-    content: 'Restart';
+.pauseRestart {
+    background-image: url(../img/sprites/pauseButtons/restartPause.png);
+}
+
+.pauseDev {
+    background-image: url(../img/sprites/pauseButtons/devPause.png);
+}
+
+.pauseSettings {
+    background-image: url(../img/sprites/pauseButtons/settingsPause.png);
 }
 
 .pauseText {
@@ -1360,31 +1381,10 @@ body {
     font-size: 20px;
 }
 
-.DevKeysPause:hover {
-    background-color: #0632FF;
-}
-
-.DevKeysPause {
-    width: 150px;
-    height: 50px;
-    transition-duration: .4s;
-    background-color: #0632ff77;
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: none;
-    margin: 10px 0;
-}
 
 /*.duoControls:hover {
     top: 20px;
 }*/
-
-.returnHome:active {
-    background-size: 60%;
-}
 
 
 .player2Screen {
@@ -1683,7 +1683,7 @@ body {
 #gameModeScreen .goSkin {
     width: 120px;
     height: 30px;
-    right: 100px;
+    left: 10px;
     bottom: 15px;
 }
 
@@ -2025,19 +2025,31 @@ body {
     text-align: center;
 }
 
-.settingsPanel .returnHome {
+.settingsPanel .returnHome,
+.settingsPanel .returnGame {
     position: absolute;
     width: 50px;
     height: 50px;
-    background-image: url(../img/sprites/navButtons/white/backHome.png);
     border-radius: 0;
     left: 2%;
     background-color: transparent;
     top: 2px;
 }
 
+.settingsPanel .returnHome {
+    background-image: url(../img/sprites/navButtons/white/backHome.png);
+}
+
+.settingsPanel .returnGame {
+    background-image: url(../img/sprites/navButtons/white/backGame.png);
+}
+
 .lightMode .settingsPanel .returnHome {
     background-image: url(../img/sprites/navButtons/black/backHome.png);
+}
+
+.lightMode .settingsPanel .returnGame {
+    background-image: url(../img/sprites/navButtons/black/backGame.png);
 }
 
 
@@ -2493,7 +2505,8 @@ body {
     align-items: center;
 }
 
-.devKeysCentral .returnHome {
+.devKeysCentral .returnHome,
+.devKeysCentral .returnGame {
     background-color: transparent;
     border: none;
     backdrop-filter: none;
@@ -2553,6 +2566,12 @@ body {
     display: flex;
     border-radius: 8px 8px 0 0;
     z-index: 2;
+    color: white;
+}
+
+.lightMode .keysEditor {
+    background-color: #d9d9d977;
+    color: black;
 }
 
 .keyContextMenu {
@@ -2569,6 +2588,11 @@ body {
     gap: 10px;
     animation: appearContext .2s ease-out;
     z-index: 10;
+}
+
+.light .keyContextMenu {
+    border: 1px solid #d6d6d677;
+    background-color: #e6e6e677;
 }
 
 @keyframes appearContext {
@@ -2603,6 +2627,11 @@ body {
     padding: 10px 0;
     top: 0px;
     border-radius: 8px 8px 0 0;
+}
+
+.lightMode .keysEditor .title {
+    background-color: #e6e6e6;
+    color: black;
 }
 
 .keysEditor .title span {
@@ -2647,7 +2676,6 @@ body {
     align-items: center;
     padding: 10px 0;
     transition-duration: .2s;
-    color: white;
     margin: 4px auto;
     border-radius: 4px;
 }

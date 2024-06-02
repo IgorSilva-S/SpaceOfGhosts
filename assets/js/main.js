@@ -1,4 +1,5 @@
 //Variables
+const gameVersion = 149.24
 
 const player = document.getElementById('ghost')
 let keysSolo = []
@@ -27,6 +28,7 @@ const soloCPGUI = document.getElementById('soloCPauseGui')
 const soloCPBack = document.getElementById('soloCPauseBCKG')
 let playerBeforePause
 let pageType = 0
+let lastPage = undefined
 /*Pages Types
 0 - Disclaimer
 1 - Home
@@ -235,8 +237,6 @@ let classicBuy = localStorage.getItem('classicPurchased')
 //DevKeys Variables
 const shutdownDevKeys = document.getElementById('disableDevKeys')
 
-let lastPageDK = undefined
-
 //End Variables
 
 //Organize LocalStorage items
@@ -399,7 +399,19 @@ function organizeColor() {
         }
     } else {
         document.body.removeAttribute('style')
+        
         checker.checked = false
+    }
+}
+
+function gameDevSys() {
+    let devSys = localStorage.getItem('gameDevSys')
+    let devModeOn = localStorage.getItem('devMode')
+    if (devSys != undefined && devModeOn == 1) {
+        if (devSys == 'true') {
+            document.getElementById('soloDevKeys').removeAttribute('style')
+            document.getElementById('duoDevKeys').removeAttribute('style')
+        }
     }
 }
 
@@ -409,6 +421,7 @@ skinChanger()
 enableSoloSlots()
 organizeCursor()
 organizeColor()
+gameDevSys()
 //End Organize localStorage Items
 
 
@@ -427,7 +440,7 @@ playButton.addEventListener("click", () => {
     pageType = 1.1
     homePage.style.opacity = '0'
     setTimeout(() => {
-        if (classicBuy == "true") {
+        if (classicBuy == "true" && gameVersion != 149.24) {
             soloClassicButton.removeAttribute('style')
             soloClassicButton2.removeAttribute('style')
             duoClassicButton.removeAttribute('style')
@@ -548,15 +561,39 @@ document.getElementById('shopHome').addEventListener("click", () => {
 })
 
 document.getElementById('settingsHome').addEventListener("click", () => {
-    pageType = 1
-    settingsPage.style.opacity = '0'
-    setTimeout(() => {
-        settingsPage.removeAttribute('style')
-        homePage.style.display = 'flex'
-        settingsSong.pause()
-        settingsSong.currentTime = 0
-        homeSong.play()
-    }, 500);
+    if (lastPage == 2) {
+        lastPage = undefined
+        pageType = 2
+        settingsPage.style.opacity = '0'
+        setTimeout(() => {
+            settingsPage.removeAttribute('style')
+            soloPage.style.display = 'block'
+            settingsSong.pause()
+            settingsSong.currentTime = 0
+            document.getElementById('settingsHome').className = 'returnHome'
+        }, 500);
+    } else if (lastPage == 3) {
+        lastPage = undefined
+        pageType = 3
+        settingsPage.style.opacity = '0'
+        setTimeout(() => {
+            settingsPage.removeAttribute('style')
+            duoRunPage.style.display = 'flex'
+            settingsSong.pause()
+            settingsSong.currentTime = 0
+            document.getElementById('settingsHome').className = 'returnHome'
+        }, 500);
+    } else {
+        pageType = 1
+        settingsPage.style.opacity = '0'
+        setTimeout(() => {
+            settingsPage.removeAttribute('style')
+            homePage.style.display = 'flex'
+            settingsSong.pause()
+            settingsSong.currentTime = 0
+            homeSong.play()
+        }, 500);
+    }
 })
 
 soloButton.addEventListener("click", () => {
@@ -1701,14 +1738,36 @@ document.getElementById('deleteSave').addEventListener("click", () => {
 // DevKeys Central and DevKeys checkers in settings
 document.getElementById('DKCHome').addEventListener('click', () => {
     devKeysCentralPage.style.opacity = '0'
-    pageType = 1
-    setTimeout(() => {
-        devKeysCentralPage.removeAttribute('style')
-        devKeysCentralSong.pause()
-        devKeysCentralSong.currentTime = 0
-        homePage.style.display = 'flex'
-        homeSong.play()
-    }, 500);
+    if (lastPage == 2) {
+        pageType = 2
+        lastPage = undefined
+        setTimeout(() => {
+            devKeysCentralPage.removeAttribute('style')
+            devKeysCentralSong.pause()
+            devKeysCentralSong.currentTime = 0
+            soloPage.style.display = 'block'
+            document.getElementById('DKCHome').className = 'returnHome'
+        }, 500);
+    } else if (lastPage == 3) {
+        pageType = 3
+        lastPage = undefined
+        setTimeout(() => {
+            devKeysCentralPage.removeAttribute('style')
+            devKeysCentralSong.pause()
+            devKeysCentralSong.currentTime = 0
+            duoRunPage.style.display = 'flex'
+            document.getElementById('DKCHome').className = 'returnHome'
+        }, 500);
+    }else {
+        pageType = 1
+        setTimeout(() => {
+            devKeysCentralPage.removeAttribute('style')
+            devKeysCentralSong.pause()
+            devKeysCentralSong.currentTime = 0
+            homePage.style.display = 'flex'
+            homeSong.play()
+        }, 500);
+    }
 })
 
 shutdownDevKeys.addEventListener('click', () => {
@@ -1716,6 +1775,7 @@ shutdownDevKeys.addEventListener('click', () => {
     if (confirmShutdown == true) {
         localStorage.removeItem('devMode')
         localStorage.removeItem('collisionView')
+        localStorage.removeItem('gameDevSys')
         alert('DevKeys desligado, iremos reiniciar')
         window.location = 'index.html'
     }
@@ -1735,7 +1795,7 @@ document.getElementById('collisionView').addEventListener('change', () => {
 function emergencialReset() {
     console.log('Emergencial reset... Expect a prompt')
     setTimeout(() => {
-        let confirmDel = confirm("Are you sure you want to delete ALL your data? \nThere's no turning back!")
+        let confirmDel = confirm("DevKeys: Are you sure you want to delete ALL your data? \nThere's no turning back!")
         if (confirmDel) {
             localStorage.clear()
             let isDevError = confirm('You data are ereased, do you want to enable DevKeys again?')
@@ -1743,6 +1803,7 @@ function emergencialReset() {
                 alert('Game Reseted and DevKeys enabled, expect a page refresh')
                 window.location = 'index.html'
                 localStorage.setItem('devMode', 1)
+                localStorage.setItem('collisionView', 'false')
             } else {
                 alert("Game Reseted and DevKeys isn't enabled, expect a page refresh")
                 window.location = 'index.html'

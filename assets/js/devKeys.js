@@ -39,6 +39,7 @@ if (isDev == '1') {
     organizeCursor()
     organizeColor()
     rearrangeShop()
+    gameDevSys()
     setTimeout(() => {
       regeditDevKeys()
       makeButtonsWork()

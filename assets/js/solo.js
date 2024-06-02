@@ -346,6 +346,80 @@ document.getElementById('retHomeSolo').addEventListener("click", () => {
         sScore.innerText = '0'
     }, 500);
 })
+
+document.getElementById('soloRestart').addEventListener('click', () => {
+    pauseGameSolo()
+    song.currentTime = 0
+    soloPage.style.display = 'none'
+    if (acceleratorP1) {
+        acceleratorP1 = false
+        clearInterval(trail)
+        invencible.style.display = 'none'
+    } else {
+        acceleratorP1 = false
+    }
+    if (hurtShield) {
+        hurtShield = false
+        player.classList.remove('hShield')
+    } else {
+        hurtShield = false
+    } if (shieldActive) {
+        shieldActive = false
+        shield = false
+        player.classList.remove('shield')
+    } else {
+        shieldActive = false
+        shield = false
+    }
+    player.style.top = `45%`
+    playerPosi = 45
+    shieldSlot = 0
+    lives1p = 100
+    checkLive1p()
+    setTimeout(() => {
+        soloPage.style.display = 'block'
+    }, 1);
+    clearSlotSolo()
+    clearInterval(acceleratorWaiter)
+    clearInterval(hurtSWaiter)
+    acceleratorTimer = 0
+    hurtSWaiter = 0
+    song.play()
+    scoreNum = 0
+    sScore.innerText = '0'
+    clearInterval(scoreCounter)
+    setTimeout(() => {
+        scoreCounter = setInterval(() => {
+            scoreNum++
+            sScore.innerText = scoreNum
+        }, 500);
+    }, 1)
+    plusSpeed = 0
+})
+
+document.getElementById('soloConfig').addEventListener('click', () => {
+    lastPage = 2
+    pageType = 5
+    soloPage.style.opacity = '0'
+    setTimeout(() => {
+        soloPage.removeAttribute('style')
+        settingsPage.style.display = 'block'
+        settingsSong.play()
+        document.getElementById('settingsHome').className = 'returnGame'
+    }, 500);
+})
+
+document.getElementById('soloDevKeys').addEventListener('click', () => {
+    lastPage = 2
+    pageType = 7
+    soloPage.style.opacity = '0'
+    setTimeout(() => {
+        soloPage.removeAttribute('style')
+        devKeysCentralPage.style.display = 'block'
+        devKeysCentralSong.play()
+        document.getElementById('DKCHome').className = 'returnGame'
+    }, 500);
+})
 //End Pause Controls
 //End Pause Game
 

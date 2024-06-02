@@ -15,8 +15,22 @@ window.onload = () => {
         enableSoloSlots()
         organizeCursor()
         organizeColor()
+        gameDevSys()
     } catch {
-        document.getElementById('disclaimer').style.display = 'none'
+        disPage.style.display = 'none'
+        soloPage.style.display = 'none'
+        soloScorePage.style.display = 'none'
+        homePage.style.display = 'none'
+        gameMPage.style.display = 'none'
+        duoRunPage.style.display = 'none'
+        duoRunScorePage.style.display = 'none'
+        shopPage.style.display = 'none'
+        skinChangerPage.style.display = 'none'
+        settingsPage.style.display = 'none'
+        creditsPage.style.display = 'none'
+        classicSoloPage.style.display = 'none'
+        classicDuoPage.style.display = 'none'
+        devKeysCentralPage.style.display = 'none'
         document.getElementById('loadingPage').removeAttribute('style')
         errBox.style.display = 'flex'
         loadingBox.style.display = 'none'

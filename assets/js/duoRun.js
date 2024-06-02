@@ -89,6 +89,30 @@ document.getElementById('duoRestart').addEventListener('click', () => {
     }
 })
 
+document.getElementById('duoSettings').addEventListener('click', () => {
+    lastPage = 3
+    pageType = 5
+    duoRunPage.style.opacity = '0'
+    setTimeout(() => {
+        duoRunPage.removeAttribute('style')
+        settingsPage.style.display = 'block'
+        settingsSong.play()
+        document.getElementById('settingsHome').className = 'returnGame'
+    }, 500);
+})
+
+document.getElementById('duoDevKeys').addEventListener('click', () => {
+    lastPage = 3
+    pageType = 7
+    duoRunPage.style.opacity = '0'
+    setTimeout(() => {
+        duoRunPage.removeAttribute('style')
+        devKeysCentralPage.style.display = 'block'
+        devKeysCentralSong.play()
+        document.getElementById('DKCHome').className = 'returnGame'
+    }, 500);
+})
+
 function duoRunKeyDown(e) {
     let keyType = e.key
     keysDuoRun[keyType] = true
@@ -282,7 +306,7 @@ function pauseDuoRun() {
         p1RBoost.style.animationPlayState = 'paused'
         p2RBoost.style.animationPlayState = 'paused'
         document.getElementById('dRunBckg').style.animationPlayState = 'paused'
-        document.getElementById('pauseDuoControls').style.top = '20px'
+        document.getElementById('pauseDuoControls').style.top = '10px'
         duoRunPaused = true
         duoRSong.pause()
         p1RInv.classList.add('pinv')
