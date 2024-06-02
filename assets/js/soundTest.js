@@ -3,12 +3,14 @@ let soundIdCode = []
 const ghost = document.getElementById('soundGhost')
 const songName = document.getElementById("soundName")
 const songCredit = document.getElementById("soundCredit")
+let isReloadable = true
 //Buttons
 const playButton = document.getElementById("playControl")
 const resetButton = document.getElementById("resetControl")
 const pauseButton = document.getElementById("pauseControl")
 const prevID = document.getElementById("prevID")
 const afterID = document.getElementById("afterID")
+const reloadButton = document.getElementById('reloadButton')
 //End Buttons
 
 //Song vars
@@ -22,6 +24,21 @@ const soloClassicSong = document.getElementById('soloClassicSong') // by Chillpe
 const duoClassicSong = document.getElementById('duoClassicSong') // by Chillpeach - On The Top
 const devKeysCentralSong = document.getElementById('devKeysCentralSong') // By Nintendo - Tomodachi Life Introduction / Local Share
 //End song vars
+
+
+reloadButton.addEventListener('click', () => {
+    if (isReloadable) {
+        alert('No reload')
+        window.onbeforeunload = function() {
+            return "Dude, are you sure you want to leave? Think of the kittens!";
+        }
+        isReloadable = false
+    } else {
+        alert('Reload')
+        window.onbeforeunload = undefined
+        isReloadable = true
+    }
+})
 
 prevID.addEventListener('click', () => {
     if (soundId == 0) {

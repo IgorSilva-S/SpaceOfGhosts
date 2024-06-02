@@ -394,13 +394,11 @@ function organizeColor() {
             document.body.style.backgroundColor = 'white'
             checker.checked = true
         } else {
-            document.body.style.filter = 'none'
-            document.body.style.backgroundColor = 'black'
+            document.body.removeAttribute('style')
             checker.checked = false
         }
     } else {
-        document.body.style.filter = 'none'
-        document.body.style.backgroundColor = 'black'
+        document.body.removeAttribute('style')
         checker.checked = false
     }
 }
@@ -412,6 +410,7 @@ enableSoloSlots()
 organizeCursor()
 organizeColor()
 //End Organize localStorage Items
+
 
 //Navigations Functions
 disButton.addEventListener("click", () => {
@@ -746,8 +745,10 @@ document.addEventListener("keydown", function (e) {
         if (!allControlsAppeared) {
             document.getElementById('quickVolCont').style.bottom = '30px'
             document.getElementById('quickVolCont').style.backgroundColor = '#0000'
+            document.getElementById('quickVolCont').style.backdropFilter = 'none'
             volAlertCont.style.bottom = '130px'
             volAlertCont.style.backgroundColor = '#0000'
+            volAlertCont.style.backdropFilter = 'none'
             document.getElementById('volCenter').style.bottom = '20px'
             allControlsAppeared = true
         } else {
@@ -1730,3 +1731,22 @@ document.getElementById('collisionView').addEventListener('change', () => {
         localStorage.setItem('collisionView', 'false')
     }
 })
+
+function emergencialReset() {
+    console.log('Emergencial reset... Expect a prompt')
+    setTimeout(() => {
+        let confirmDel = confirm("Are you sure you want to delete ALL your data? \nThere's no turning back!")
+        if (confirmDel) {
+            localStorage.clear()
+            let isDevError = confirm('You data are ereased, do you want to enable DevKeys again?')
+            if (isDevError) {
+                alert('Game Reseted and DevKeys enabled, expect a page refresh')
+                window.location = 'index.html'
+                localStorage.setItem('devMode', 1)
+            } else {
+                alert("Game Reseted and DevKeys isn't enabled, expect a page refresh")
+                window.location = 'index.html'
+            }
+        }
+    }, 500);
+}

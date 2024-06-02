@@ -14,15 +14,23 @@
 
 
 <body>
-    <!--Loading-->
+    <!--Loading and Fatal JS error-->
     <section id="loadingPage">
         <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts">
-        <div class="loadingBallCont">
+        <div class="loadingBallCont" id="lbCont">
             <div class="loadingBall" id="lb1"></div>
             <div class="loadingBall" id="lb2"></div>
             <div class="loadingBall" id="lb3"></div>
             <div class="loadingBall" id="lb4"></div>
             <div class="loadingBall" id="lb5"></div>
+        </div>
+        <div class="errorContainer" id="errorCont" style="display: none;">
+            <p id="errorText">Space Of Ghosts teve um erro inesperado. Tente recarregar a página, caso não funcione, tente apagar os seus dados</p>
+            <div class="goButtons">
+                <button id="errGit">Abrir uma issue no GitHub</button>
+                <button id="errReset">Apagar dados</button>
+            </div>
+
         </div>
     </section>
     <!--Disclaimer-->
@@ -593,7 +601,7 @@
                 <label for="simpleLightMode">Tema Claro</label>
                 <input type="checkbox" name="" id="simpleLightMode">
             </div>
-            <div class="alignSetting">
+            <div class="alignSetting" style="display: none;">
                 <label for="altPause">Menu de pausa alternatvo (Modos solo)</label>
                 <input type="checkbox" name="" id="altPause">
             </div>
@@ -642,7 +650,7 @@
             </div>
             <button id="disableDevKeys" class="shutDownDev">Desligar DevKeys</button>
         </div>
-        <div class="keysEditor">
+        <div class="keysEditor" id="ke">
             <div class="title">Editor de Chaves (localStorage)
                 <span class="material-symbols-rounded" id="refreshData">
                     refresh
@@ -650,6 +658,11 @@
                 <span class="material-symbols-rounded" id="addKey">
                     add
                     </span>
+            </div>
+            <div class="keyContextMenu" id="contextMenu">
+                <div class="keyName" id="kn">Nome da chave</div>
+                <div class="CMOption" id="delKey">Deletar chave</div>
+                <div class="CMOption" id="renKey">Renomear chave</div>
             </div>
             <div class="regRow" id="keyNameRow"></div>
             <div class="regRow" id="keyValueRow"></div>
@@ -721,6 +734,7 @@
     <script src="assets/js/duoClassic.js"></script>
     <script src="assets/js/selectScript.js"></script>
     <script src="assets/js/devKeys.js"></script>
+    <script src="assets/js/errorScript.js"></script>
 </body>
 
 </html>

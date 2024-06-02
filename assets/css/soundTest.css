@@ -305,6 +305,25 @@ img {
     z-index: 10000;
 }
 
+.volCenter button {
+    padding: 6px;
+    border-radius: 120px;
+    font-size: 15px;
+    border: 1px solid #202020;
+    background-color: #191919;
+    color: white;
+    transition-duration: .2s;
+}
+
+.volCenter button:hover {
+    border-color: #0632ff;
+}
+
+.volCenter button:active {
+    border-color: #0632ff;
+    background-color: #0632ff;
+}
+
 /*Import Google Icons*/
 @font-face {
     font-family: 'Material Symbols Rounded';
