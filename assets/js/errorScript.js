@@ -56,7 +56,7 @@ function errorReset() {
 }
 
 function errorIssue() {
-    window.location = 'https://github.com/IgorSilva-S/SpaceOfGhosts/issues'
+    window.location = 'https://github.com/IgorSilva-S/SpaceOfGhosts_Releases/issues'
 }
 
 document.getElementById('errGit').addEventListener('click', errorIssue)
