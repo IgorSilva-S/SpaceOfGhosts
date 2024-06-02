@@ -1,3 +1,3 @@
 # Space Of Ghosts
-Release Version 4.0
-NOT Final!
+Welcome to Space of Ghosts!  
+This game is in beta, so, it can have bugs.
