@@ -12,6 +12,8 @@ button,
 a,
 input {
     cursor: url(../img/non-sprites/cursors/lightCursor/link.cur), auto;
+    font-family: 'Josefin Sans',
+    sans-serif;
 }
 
 /*Base Screen Size : 1366x768px*/
@@ -37,7 +39,7 @@ body {
     top: 0;
     background-image: url(../img/sprites/background/BackgroundPureStarII.png);
     animation-name: moveBckg;
-    animation-duration: 10s;
+    animation-duration: 40s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
@@ -63,6 +65,10 @@ body {
     left: 150px;
     top: 45%;
     border-radius: 100%;
+}
+
+.totalCollision .player {
+    border: 1px solid #008;
 }
 
 .inv {
@@ -211,6 +217,10 @@ body {
     background-color: #0632ff33;
 }
 
+.totalCollision .shield {
+    border: 3px solid yellow
+}
+
 .hShield {
     opacity: .5
 }
@@ -260,6 +270,12 @@ body {
     width: 40px;
     height: 40px;
     background-image: url(../img/sprites/meteorSprites/type1.png);
+}
+
+.totalCollision .mt1,
+.totalCollision .mt2,
+.totalCollision .mt3 {
+    border: 1px solid #800
 }
 
 .mt2 {
@@ -335,7 +351,7 @@ body {
     align-items: center;
 }
 
-.pauseAlert .pauseText {
+.pauseAlert .pauseTextAlt {
     position: absolute;
     top: 20px;
     font-size: 40px;
@@ -352,11 +368,12 @@ body {
     color: white;
     transition-duration: .2s;
     font-size: 20px;
+    box-sizing: border-box;
 }
 
 .pauseAlert button:hover {
     background-color: #011222;
-    border-radius: 20px;
+    border: 1px solid #0632ff
 }
 
 .pauseAlert .pauseAnim {
@@ -392,6 +409,10 @@ body {
     animation: boost 10s linear infinite;
     background-size: cover;
     background-position: center;
+}
+
+.totalCollision .boost {
+    border: 1px solid #080
 }
 
 .shieldBoost {
@@ -437,7 +458,7 @@ body {
 }
 
 #disclaimer {
-    width: 100vw;
+    width: 80vw;
     height: 100vh;
     display: flex;
     justify-content: space-evenly;
@@ -445,7 +466,11 @@ body {
     flex-direction: column;
     text-align: center;
     color: white;
+    margin: 0 auto;
     background-color: #000;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
 }
 
 #disclaimer span {
@@ -460,9 +485,15 @@ body {
     font-size: 20px;
     border-radius: 120px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     color: white;
     transition-duration: .4s;
+}
+
+.lightMode #disclaimer button {
+    background-color: #d9d9d9;
+    border: 1px solid #d0d0d0;
+    color: black;
 }
 
 #disclaimer button:hover {
@@ -504,6 +535,7 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    filter: drop-shadow(0px 0px 10px #fff);
 }
 
 @keyframes appearPages {
@@ -521,10 +553,16 @@ body {
     font-size: 20px;
     border-radius: 120px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     color: white;
     transition-duration: .4s;
     z-index: 1;
+}
+
+.lightMode #homeScreen button {
+    background-color: #d9d9d9;
+    border: 1px solid #d0d0d0;
+    color: black;
 }
 
 .alignHomeButtons {
@@ -543,7 +581,8 @@ body {
     animation-duration: 60s;
 }
 
-#homeScreen .earthCloud {
+#homeScreen .earthCloud,
+.devKeysCentral .earthCloud {
     top: auto;
     bottom: 0px;
     animation-name: moveBckg;
@@ -573,6 +612,10 @@ body {
     border-radius: 100%;
     animation: floatHome 10s linear infinite;
     transition-duration: .2s;
+}
+
+.totalCollision .homeGhost1 {
+    border: 1px solid #888
 }
 
 @keyframes floatHome {
@@ -626,6 +669,23 @@ body {
 .roundHome {
     rotate: 180deg
 }
+
+.returnHome {
+    background-image: url(../img/sprites/navButtons/white/backHome.png);
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.returnGame {
+    background-image: url(../img/sprites/navButtons/white/backGame.png);
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+}
+
 
 #soloMode {
     display: none;
@@ -750,9 +810,15 @@ body {
     font-size: 20px;
     border-radius: 120px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     color: white;
     transition-duration: .4s;
+}
+
+.lightMode .goButtons button {
+    background-color: #d9d9d9;
+    border: 1px solid #d0d0d0;
+    color: black;
 }
 
 .goButtons button:hover {
@@ -779,6 +845,8 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px
 }
 
 .cusSelAlign {
@@ -863,10 +931,10 @@ body {
 }
 
 #gameModeScreen button {
-    width: 18vw;
-    height: 50vh;
+    width: 400px;
+    height: 400px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     border-radius: 8px;
     z-index: 1;
     display: flex;
@@ -876,6 +944,16 @@ body {
     transition-duration: .2s;
     color: white;
     font-size: 20px;
+}
+
+.lightMode #gameModeScreen button {
+    background-color: #d9d9d9;
+    border: 1px solid #d0d0d0;
+    color: black;
+}
+
+.lightMode #gameModeScreen button div {
+  filter: invert()
 }
 
 #soloPlay div,
@@ -945,6 +1023,11 @@ body {
     background-color: transparent;
     border: none;
     backdrop-filter: none;
+}
+
+.lightMode #gameModeScreen .returnHome {
+    background-color: transparent;
+    border: none;
 }
 
 #gameModeScreen .returnHome:hover {
@@ -1143,6 +1226,20 @@ body {
     }
 }
 
+.soloControls {
+    width: 150px;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    transition-duration: .4s;
+    z-index: 10;
+    right: -225px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 /*Score screen*/
 .score {
     color: white;
@@ -1211,61 +1308,83 @@ body {
     overflow: hidden;
 }
 
+
+
 .duoControls {
     width: 150px;
     height: 220px;
     position: absolute;
-    top: -220px;
+    top: -300px;
     transition-duration: .4s;
     z-index: 10;
     left: calc(50% - 75px);
 }
 
-.returnHome {
-    width: 150px;
-    height: 150px;
-    transition-duration: .4s;
-    background-color: #0632ff77;
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-    background-image: url(../img/sprites/navButtons/white/backHome.png);
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: none;
-}
 
-.returnHome:hover {
+.pauseHome:hover,
+.pauseRestart:hover,
+.pauseDev:hover,
+.pauseSettings:hover {
     background-color: #0632FF;
 }
 
-.restartDuo:hover {
-    background-color: #0632FF;
-}
-
-.restartDuo {
+.pauseHome,
+.pauseRestart,
+.pauseDev,
+.pauseSettings {
     width: 150px;
     height: 50px;
     transition-duration: .4s;
-    bottom: 0;
     background-color: #0632ff77;
     backdrop-filter: blur(10px);
     border-radius: 8px;
-    background-image: url(../img/sprites/duoRun!/restartGame.png);
-    background-size: 80%;
+    background-size: 90%;
     background-position: center;
     background-repeat: no-repeat;
     border: none;
     margin: 10px 0;
+    box-sizing: border-box;
+    padding-left: 50px;
+    color: white;
+    font-size: 20px;
 }
+
+.pauseHome {
+    background-image: url(../img/sprites/pauseButtons/homePause.png);
+}
+
+.pauseRestart {
+    background-image: url(../img/sprites/pauseButtons/restartPause.png);
+}
+
+.pauseDev {
+    background-image: url(../img/sprites/pauseButtons/devPause.png);
+}
+
+.pauseSettings {
+    background-image: url(../img/sprites/pauseButtons/settingsPause.png);
+}
+
+.pauseText {
+    width: 150px;
+    height: 50px;
+    transition-duration: .4s;
+    background-color: #0632ff77;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: none;
+    margin: 10px 0;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 20px;
+}
+
 
 /*.duoControls:hover {
     top: 20px;
 }*/
-
-.returnHome:active {
-    background-size: 60%;
-}
 
 
 .player2Screen {
@@ -1439,8 +1558,7 @@ body {
 
 
 
-#shop,
-#skinChanger {
+#shop {
     width: 100vw;
     height: 100vh;
     background-image: linear-gradient(to bottom, #2E1A47,
@@ -1454,6 +1572,25 @@ body {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
+}
+
+#skinChanger {
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    display: none;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
+}
+
+.shopBckg {
+    background-image: linear-gradient(to bottom, #2E1A47,
+            #111133,
+            #04051a);
 }
 
 #shop .clouds,
@@ -1528,32 +1665,50 @@ body {
     background-color: transparent;
 }
 
-#shop .goSkin {
+#shop .goSkin,
+#gameModeScreen .goSkin {
     padding: 5px;
     position: fixed;
     bottom: 10px;
     right: 10px;
     margin: 0 20px;
-    background-color: #025;
-    border: 2px solid #0632ff;
+    background-color: #292929;
+    border: 1px solid #292929;
     color: white;
     font-size: 15px;
     transition-duration: .5s;
     border-radius: 20px;
 }
 
+#gameModeScreen .goSkin {
+    width: 120px;
+    height: 30px;
+    left: 10px;
+    bottom: 15px;
+}
+
 #shop .goSkin:hover {
-    background-color: #0632ff;
+   border-color: #0632ff;
 }
 
 .items::-webkit-scrollbar {
     appearance: none;
+    height: 4px;
 }
 
 .items::-webkit-scrollbar-thumb {
-    height: 10px;
-    background-color: #0632ff;
+    background-color: #292929;
     border-radius: 20px;
+}
+
+.items::-webkit-scrollbar:hover {
+    appearance: none;
+    height: 6px;
+}
+
+
+.items::-webkit-scrollbar-thumb:hover {
+    background-color: #0632FF;
 }
 
 .items .Sitem {
@@ -1566,7 +1721,7 @@ body {
     flex-direction: column;
     margin: 0 20px;
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     color: white;
     font-size: 15px;
     transition-duration: .5s;
@@ -1641,7 +1796,7 @@ body {
 }
 
 .ChoosedSkin {
-    border: 2px solid orange;
+    border: 1px solid orange;
     background-color: orangered;
     min-width: 300px;
     min-height: 300px;
@@ -1802,6 +1957,10 @@ body {
     background-color: #070b34;
 }
 
+.lightMode #settings {
+    background-color: #5b6ee1;
+}
+
 .earthCloud {
     width: 3840px;
     height: 150px;
@@ -1814,6 +1973,10 @@ body {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     transition-duration: .5s;
+}
+
+.lightMode .earthCloud {
+    background-image: url(../img/sprites/background/settingsClouds.png);
 }
 
 @keyframes moveBckgInv {
@@ -1837,6 +2000,11 @@ body {
     padding-bottom: 10px;
 }
 
+.lightMode .settingsPanel {
+    background-color: #f0f8ff;
+    color: black;
+}
+
 .settingsPanel::-webkit-scrollbar {
     appearance: none;
     width: 5px;
@@ -1857,15 +2025,31 @@ body {
     text-align: center;
 }
 
-.settingsPanel .returnHome {
+.settingsPanel .returnHome,
+.settingsPanel .returnGame {
     position: absolute;
     width: 50px;
     height: 50px;
-    background-image: url(../img/sprites/navButtons/white/backHome.png);
     border-radius: 0;
     left: 2%;
     background-color: transparent;
     top: 2px;
+}
+
+.settingsPanel .returnHome {
+    background-image: url(../img/sprites/navButtons/white/backHome.png);
+}
+
+.settingsPanel .returnGame {
+    background-image: url(../img/sprites/navButtons/white/backGame.png);
+}
+
+.lightMode .settingsPanel .returnHome {
+    background-image: url(../img/sprites/navButtons/black/backHome.png);
+}
+
+.lightMode .settingsPanel .returnGame {
+    background-image: url(../img/sprites/navButtons/black/backGame.png);
 }
 
 
@@ -1888,8 +2072,17 @@ body {
     color: white;
 }
 
+.lightMode .alignSetting {
+    background-color: #ddd;
+    color: black;
+}
+
 .alignSetting span {
     color: white;
+}
+
+.lightMode .alignSetting span {
+    color: black;
 }
 
 .alignItems {
@@ -1914,13 +2107,23 @@ body {
     height: 40px;
 }
 
+.lightMode .alignSetting img {
+    filter: invert();
+}
+
 .settingButton {
     background-color: #252525;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     padding: 3px 10px;
     border-radius: 20px;
     color: white;
     transition-duration: .2s;
+}
+
+.lightMode .settingButton {
+    background-color: #fff;
+    border-color: #f0f0f0;
+    color: black; 
 }
 
 .settingButton:hover {
@@ -2284,25 +2487,44 @@ body {
     animation-duration: .5s;
 }
 
-.devKeysCentral .background {
-    animation-duration: 90s;
+.devKeysCentral .earthCloud {
+    z-index: 1;
 }
 
-.devKeysCentral .returnHome {
-    top: 10px;
-    left: 10px;
+.devKeysCentral .background {
+    animation-duration: 90s;
+    z-index: 0;
+}
+
+.devKeysHeader {
+    width: 100%;
+    height: 15vh;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.devKeysCentral .returnHome,
+.devKeysCentral .returnGame {
     background-color: transparent;
     border: none;
     backdrop-filter: none;
-    position: fixed;
+    position: absolute;
     width: 60px;
     height: 60px;
     z-index: 1000;
+    background-size: 80%;
+    left: 100px;
+}
+
+.devKeysCentral .returnHome:hover {
+    background-size: 80%;
 }
 
 .devKeysCentral button {
     padding: 10px;
-    border: 2px solid #202020;
+    border: 1px solid #202020;
     background-color: #252525;
     border-radius: 8px;
     transition-duration: .4s;
@@ -2313,45 +2535,103 @@ body {
     border-color: #0632ff
 }
 
-.shutDownDev {
-    position: fixed;
-    top: 20px;
-    right: 5px;
-}
-
 .devKeysCentral h1,
 .devKeysCentral p {
-    width: 100%;
+    margin: 5px 0;
     color: white;
+}
+
+.titleAlign {
     text-align: center;
-    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.devKeysCentral .devKeysHeader .shutDownDev{
     position: absolute;
+    right: 100px;
 }
 
-.devKeysCentral p {
-    top: 40px;
-}
-
-/*DevKeys Editors*/
+/*DevKeys Editor*/
 .keysEditor {
-    width: 50vw;
+    width: 100vw;
     height: 85vh;
     position: absolute;
     left: 0;
     bottom: 0;
     background-color: #25252577;
-    backdrop-filter: blur(10px);
     display: flex;
+    border-radius: 8px 8px 0 0;
+    z-index: 2;
+    color: white;
+}
+
+.lightMode .keysEditor {
+    background-color: #d9d9d977;
+    color: black;
+}
+
+.keyContextMenu {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #29292977;
+    background-color: #19191977;
+    position: fixed;
+    backdrop-filter: blur(15px);
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    animation: appearContext .2s ease-out;
+    z-index: 10;
+}
+
+.light .keyContextMenu {
+    border: 1px solid #d6d6d677;
+    background-color: #e6e6e677;
+}
+
+@keyframes appearContext {
+    from {
+        opacity: 0;
+        margin-top: -20px;
+    } to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+.keyContextMenu .CMOption,
+.keyContextMenu .keyName {
+    border-radius: 4px;
+    transition-duration: .1s;
+    color: white;
+    padding: 10px;
+    width: calc(100% - 20px);
+}
+
+.keyContextMenu .CMOption:hover {
+    background-color: #7777;
 }
 
 .keysEditor .title {
     position: absolute;
     color: white;
     text-align: center;
-    width: 50vw;
+    width: 100%;
     background-color: #191919;
     padding: 10px 0;
-    top: -36px;
+    top: 0px;
+    border-radius: 8px 8px 0 0;
+}
+
+.lightMode .keysEditor .title {
+    background-color: #e6e6e6;
+    color: black;
 }
 
 .keysEditor .title span {
@@ -2363,9 +2643,14 @@ body {
     top: 0px;
 }
 
+.keysEditor .title #addKey {
+    right: 50px;
+}
+
 .keysEditor .regRow {
-    flex-grow: 1;
-    box-sizing: border-box;
+    width: 50%;
+    margin-top: 36px;
+    height: calc(100% - 36px);
 }
 
 #keyValueRow {
@@ -2391,7 +2676,6 @@ body {
     align-items: center;
     padding: 10px 0;
     transition-duration: .2s;
-    color: white;
     margin: 4px auto;
     border-radius: 4px;
 }
@@ -2399,27 +2683,7 @@ body {
 .cellDiv:hover,
 .cellDivVal:hover {
     background-color: #27272744;
-}
-
-.toggleKeys {
-    width: 50vw;
-    height: 85vh;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background-color: #25252577;
-    backdrop-filter: blur(10px);
-    display: flex;
-}
-
-.toggleKeys .title {
-    position: absolute;
-    color: white;
-    text-align: center;
-    width: 50vw;
-    background-color: #191919;
-    padding: 10px 0;
-    top: -36px;
+    backdrop-filter: blur(8px);
 }
 
 .muteAlert {
@@ -2479,7 +2743,102 @@ body {
     box-shadow: -1005px 0 0 1000px #0632ff;
 }
 
+.volCenter {
+    position: fixed;
+    width: 300px;
+    height: 220px;
+    border-radius: 8px;
+    bottom: -220px;
+    background-color: #0632ff66;
+    backdrop-filter: blur(10px);
+    left: calc(50% - 150px);
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition-duration: .3s;
+    z-index: 10000;
+}
 
+#loadingPage {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+}
+
+#loadingPage img {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 100px;
+}
+
+.loadingBallCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 100px;
+}
+
+.loadingBall {
+    width: 30px;
+    height: 30px;
+    background-color: #00a;
+    border-radius: 100%;
+    animation: loadingUp 2s infinite;
+}
+
+@keyframes loadingUp {
+    0% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -300px;
+    }
+
+    100% {
+        margin-top: 0;
+    }
+}
+
+#lb2 {
+    animation-delay: .2s;
+}
+
+#lb3 {
+    animation-delay: .4s;
+}
+
+#lb4 {
+    animation-delay: .6s;
+}
+
+#lb5 {
+    animation-delay: .8s;
+}
+
+.errorContainer {
+    width: 80%;
+    margin-bottom: 100px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 25px;
+    text-align: center;
+}
+
+.errorContainer .goButtons {
+    margin-top: 50px;
+}
 
 /*Import Google Icons*/
 @font-face {
@@ -2496,6 +2855,10 @@ body {
 }
 
 @media (max-width: 1366px) {
+    #gameModeScreen button {
+        width: 300px;
+    }
+
     .mt1 {
         width: 32px;
         height: 32px;
@@ -2512,5 +2875,32 @@ body {
         width: 100px;
         height: 100px;
         background-image: url(../img/sprites/meteorSprites/type3.png);
+    }
+}
+
+/*Phone alert*/
+.notForPhones {
+    display: none
+}
+
+@media (max-width: 768px) {
+    .notForPhones {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        z-index: 10000;
+        background-color: black;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    .notForPhones img {
+        width: 300px;
+        height: 300px;
     }
 }

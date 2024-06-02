@@ -2877,3 +2877,30 @@ body {
         background-image: url(../img/sprites/meteorSprites/type3.png);
     }
 }
+
+/*Phone alert*/
+.notForPhones {
+    display: none
+}
+
+@media (max-width: 768px) {
+    .notForPhones {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        z-index: 10000;
+        background-color: black;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    .notForPhones img {
+        width: 300px;
+        height: 300px;
+    }
+}
