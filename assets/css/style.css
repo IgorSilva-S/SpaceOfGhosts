@@ -269,7 +269,7 @@ body {
 .mt1 {
     width: 40px;
     height: 40px;
-    background-image: url(../img/sprites/meteorSprites/type1.png);
+    background-image: url(../img/sprites/meteorSprites/type1.gif);
 }
 
 .totalCollision .mt1,
@@ -2187,6 +2187,9 @@ body {
 }
 
 #credits {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     color: white;
@@ -2194,6 +2197,12 @@ body {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    background-color: #19191966;
+    backdrop-filter: blur(15px);
 }
 
 #b2bCredits {
@@ -2201,32 +2210,28 @@ body {
     height: 50px;
     top: 10px;
     left: 10px;
-
+    position: absolute;
+    background-color: transparent;
 }
 
-.rollCredits {
-    width: 100%;
-    padding: 20px 0;
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-
+#credits img {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 0px;
 }
 
-.rollCredits img {
-    width: 300px;
-    height: 300px;
-    margin: 20px 0;
-}
-
-.rollCredits .creditsSection {
+#credits .creditsSection,
+#credits .creditsSectionEnd {
     margin: 20px 0;
     text-align: center;
     width: 350px;
     font-size: 15px;
+}
+
+#credits .creditsSectionEnd {
+    position: absolute;
+    bottom: 30px;
 }
 
 .creditsSection .sectionTitle {
@@ -2862,7 +2867,7 @@ body {
     .mt1 {
         width: 32px;
         height: 32px;
-        background-image: url(../img/sprites/meteorSprites/type1.png);
+        background-image: url(../img/sprites/meteorSprites/type1.gif);
     }
 
     .mt2 {

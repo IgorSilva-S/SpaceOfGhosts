@@ -30,7 +30,7 @@
             <div class="loadingBall" id="lb5"></div>
         </div>
         <div class="errorContainer" id="errorCont" style="display: none;">
-            <p id="errorText">Space Of Ghosts teve um erro inesperado. Tente recarregar a página, caso não funcione, tente apagar os seus dados</p>
+            <p id="errorText">Houve um erro inesperado no jogo, estamos corrigindo a situação!</p>
             <div class="goButtons">
                 <button id="errReload">Recarregar página</button>
                 <button id="errGit">Abrir uma issue no GitHub</button>
@@ -42,8 +42,10 @@
     <!--Disclaimer-->
     <section id="disclaimer" style="display: none">
         <span>Aviso</span>
-        Obrigado por testar Space of Ghosts! Esse jogo está em desenvolvimento, então, bugs poderão ser encontrados. Caso encontre algum bug, por favor, avise os desenvolvedores abrindo uma issue no GitHub.
-        <div id="devKeysDisclaimer" style="display: none">Obs.: A configuração DevKeys está ativa nessa seção, você pode desativar a qualquer momento no DevKeys Central.</div>
+        Obrigado por testar Space of Ghosts! Esse jogo está em desenvolvimento, então, bugs poderão ser encontrados.
+        Caso encontre algum bug, por favor, avise os desenvolvedores abrindo uma issue no GitHub.
+        <div id="devKeysDisclaimer" style="display: none">Obs.: A configuração DevKeys está ativa nessa seção, você pode
+            desativar a qualquer momento no DevKeys Central.</div>
         <button id="exitDisclaimer">Okay</button>
         <div class="waveGhost"></div>
     </section>
@@ -58,15 +60,15 @@
 
         </div>
         <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts" id="gameName">
-        <div class="alignHomeButtons">
+        <div class="alignHomeButtons" id="homeButtons">
             <button id="playGame">Jogar</button>
             <button id="goShop">Loja e Skins</button>
             <button id="editSettings">Configurações</button>
             <button id="devKeysEnter" style="display: none">DevKeys Central</button>
-            <button id="viewCredits"  style="display: none">Créditos</button>
+            <button id="viewCredits">Créditos</button>
         </div>
-        <div class="version">
-            Beta 149.24
+        <div class="version" id="homeVersion">
+            gameVersion
         </div>
     </section>
 
@@ -122,8 +124,8 @@
                 <div></div> Dois Jogadores: Clássico
             </button>
         </div>
-        <div class="version">
-            Beta 149.24
+        <div class="version" id="gameModeVersion">
+            gameVersion
         </div>
         <button class="goSkin" id="skinsGS">Trocar a Skin</button>
     </section>
@@ -663,7 +665,7 @@
                 </span>
                 <span class="material-symbols-rounded" id="addKey">
                     add
-                    </span>
+                </span>
             </div>
             <div class="keyContextMenu" id="contextMenu">
                 <div class="keyName" id="kn">Nome da chave</div>
@@ -677,28 +679,26 @@
     <!--Credits-->
     <section id="credits">
         <button class="returnHome" id="b2bCredits"></button>
-        <div class="rollCredits">
-            <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts - Créditos">
-            <div class="creditsSection">
-                <span class="sectionTitle">Música</span><br><br>
-                Início: Artificial Music <br>
-                Modo Solo: Prod. Riddiman <br>
-                Modo Solo: Clássico: Chillpeach <br>
-                Modo Duo: After The Fall <br>
-                Loja e Configurações: dyu / Mix oficial: Nintendo <br>
-                Créditos: After The Fall <br>
-            </div>
-            <div class="creditsSection">
-                <span class="sectionTitle">Beta Testers</span><br><br>
-                Caio Plácido <br>
-                Yuri Matsumoto <br>
-                Nicolas Faria <br>
-                Roberto Endo <br>
-                Enzo Souza <br>
-            </div>
-            <div class="creditsSection">
-                <span class="thanks">Obrigado por jogar!</span>
-            </div>
+        <img src="assets/img/non-sprites/gameName/credits.png" alt="Space of Ghosts - Créditos">
+        <div class="creditsSection">
+            <span class="sectionTitle">Música</span><br><br>
+            Início: Artificial Music <br>
+            Modo Solo: Prod. Riddiman <br>
+            Modo Solo: Clássico: Chillpeach <br>
+            Modo Duo: After The Fall <br>
+            Loja e Configurações: dyu / Mix oficial: Nintendo <br>
+            Créditos: After The Fall <br>
+        </div>
+        <div class="creditsSection">
+            <span class="sectionTitle">Beta Testers</span><br><br>
+            Caio Plácido <br>
+            Yuri Matsumoto <br>
+            Nicolas Faria <br>
+            Roberto Endo <br>
+            Enzo Souza <br>
+        </div>
+        <div class="creditsSectionEnd">
+            <span class="thanks">Obrigado por jogar!</span>
         </div>
     </section>
 
@@ -731,6 +731,7 @@
     <!--End Audios-->
 
     <!--Script Area-->
+    <script src="assets/js/variables.js"></script>
     <script src="assets/js/loadingGame.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/solo.js"></script>

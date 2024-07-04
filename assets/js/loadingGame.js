@@ -8,6 +8,16 @@ window.onload = () => {
     let errBox = document.getElementById('errorCont')
     let loadingBox = document.getElementById('lbCont')
 
+    //Game Version Catcher
+    if (isPreview) {
+        let publicVersion = `${previewType} ${gameVersion}`
+        document.getElementById('homeVersion').innerText = publicVersion
+        document.getElementById('gameModeVersion').innerText = publicVersion
+    } else {
+        document.getElementById('homeVersion').innerText = gameVersion
+        document.getElementById('gameModeVersion').innerText = gameVersion
+    }
+
     try {
         organizeSound()
         enableOldControls()
