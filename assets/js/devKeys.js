@@ -1,9 +1,20 @@
 // Developer Mode (DevMode or DevKeys) script
 let isDev = localStorage.getItem('devMode')
 if (isDev == '1') {
-  document.getElementById('gameName').src = 'assets/img/non-sprites/gameName/devKeys.png'
+  let noDevTitle = localStorage.getItem('noDevTitle')
+  if (noDevTitle != undefined) {
+    if (noDevTitle == "false") {
+        document.getElementById('gameName').src = 'assets/img/non-sprites/gameName/devKeys.png'
+    }
+  }
   document.getElementById('devKeysEnter').removeAttribute('style')
   document.getElementById('devKeysDisclaimer').removeAttribute('style')
+  document.getElementById('reloadGame').addEventListener('click', () => {
+    let canReload = confirm('Tem certeza que quer recarregar o jogo?')
+    if (canReload) {
+      window.location.reload()
+    }
+  })
   function regeditDevKeys() {
     for (var i = 0, len = localStorage.length; i < len; i++) {
       var key = localStorage.key(i);

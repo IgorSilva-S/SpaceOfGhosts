@@ -1,7 +1,7 @@
 //Variables
-const gameVersion = 149.24
+const gameVersion = 'Repo'
 const isPreview = true
-const previewType = 'Beta'
+const previewType = 'Dev'
 const lastDayOfChanges = '07/04/2024 - MM/DD/YYYY'
 
 const player = document.getElementById('ghost')

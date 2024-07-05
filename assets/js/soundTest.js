@@ -247,6 +247,7 @@ function checkSecretCode() {
         localStorage.setItem('devMode', '1')
         localStorage.setItem('collisionView', 'false')
         localStorage.setItem('gameDevSys', true)
+        localStorage.setItem('noDevTitle', false)
         soundIdCode = []
     } else if (soundIdCode[0] == 0 && soundIdCode[1] == 1 && soundIdCode[2] == 1 && soundIdCode[3] == 2 && soundIdCode[4] == 2 && soundIdCode[5] == 3) {
         alert('classicMode')

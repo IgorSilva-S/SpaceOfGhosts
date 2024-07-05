@@ -388,6 +388,13 @@ try {
             scoreCounter = setInterval(() => {
                 scoreNum++
                 sScore.innerText = scoreNum
+                if (scoreNum != 0 && scoreNum % 100 == 0) {
+                    let biomeType = Math.floor(Math.random() * 11)
+                    soloPage.className = ''
+                    if (biomeType != 0) {
+                        soloPage.className = `biome${biomeType}`
+                    }
+                }
             }, 500);
             addSpeed = setInterval(() => {
                 if (scoreNum % 250 == 0 && scoreNum != 0) {
@@ -428,6 +435,13 @@ try {
             scoreCounter = setInterval(() => {
                 scoreNum++
                 sScore.innerText = scoreNum
+                if (scoreNum != 0 && scoreNum % 100 == 0) {
+                    let biomeType = Math.floor(Math.random() * 11)
+                    soloPage.className = ''
+                    if (biomeType != 0) {
+                        soloPage.className = `biome${biomeType}`
+                    }
+                }
             }, 500);
             addSpeed = setInterval(() => {
                 if (scoreNum % 250 == 0 && scoreNum != 0) {
@@ -648,6 +662,12 @@ try {
             } else {
                 soloKeyDown(e)
             }
+
+            if (e.key == 'b') {
+                let randBiome = Math.floor((Math.random() * 10) + 1)
+                soloPage.className = ''
+                soloPage.className = `biome${randBiome}`
+            }
             if (e.key == "1") {
                 if (shieldSlot > 0 && !shieldActive) {
                     player.classList.add('shield')
@@ -695,6 +715,13 @@ try {
                     scoreCounter = setInterval(() => {
                         scoreNum++
                         sScore.innerText = scoreNum
+                        if (scoreNum != 0 && scoreNum % 100 == 0) {
+                            let biomeType = Math.floor(Math.random() * 11)
+                            soloPage.className = ''
+                            if (biomeType != 0) {
+                                soloPage.className = `biome${biomeType}`
+                            }
+                        }
                     }, 500);
                     plusSpeed = plusSpeed + 0.25
                     document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
@@ -735,6 +762,13 @@ try {
                             scoreCounter = setInterval(() => {
                                 scoreNum++
                                 sScore.innerText = scoreNum
+                                if (scoreNum != 0 && scoreNum % 100 == 0) {
+                                    let biomeType = Math.floor(Math.random() * 11)
+                                    soloPage.className = ''
+                                    if (biomeType != 0) {
+                                        soloPage.className = `biome${biomeType}`
+                                    }
+                                }
                             }, 500)
                         }
                     }, 1000);
@@ -1251,6 +1285,13 @@ try {
             scoreCounter = setInterval(() => {
                 scoreNum++
                 sScore.innerText = scoreNum
+                if (scoreNum != 0 && scoreNum % 100 == 0) {
+                    let biomeType = Math.floor(Math.random() * 11)
+                    soloPage.className = ''
+                    if (biomeType != 0) {
+                        soloPage.className = `biome${biomeType}`
+                    }
+                }
             }, 500)
             document.getElementById('soloHighAlert').removeAttribute('style')
         }, 500)

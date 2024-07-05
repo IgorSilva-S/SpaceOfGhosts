@@ -155,6 +155,13 @@ function pauseGameSolo() {
         scoreCounter = setInterval(() => {
             scoreNum++
             sScore.innerText = scoreNum
+            if (scoreNum != 0 && scoreNum % 100 == 0) {
+                let biomeType = Math.floor(Math.random() * 11)
+                soloPage.className = ''
+                if (biomeType != 0) {
+                    soloPage.className = `biome${biomeType}`
+                }
+            }
         }, 500);
         addSpeed = setInterval(() => {
             if (scoreNum % 250 == 0 && scoreNum != 0) {
@@ -181,6 +188,7 @@ document.getElementById('restartInf').addEventListener("click", () => {
     pauseGameSolo()
     song.currentTime = 0
     soloPage.style.display = 'none'
+    soloPage.className = ''
     if (acceleratorP1) {
         acceleratorP1 = false
         clearInterval(trail)
@@ -222,6 +230,13 @@ document.getElementById('restartInf').addEventListener("click", () => {
         scoreCounter = setInterval(() => {
             scoreNum++
             sScore.innerText = scoreNum
+            if (scoreNum != 0 && scoreNum % 100 == 0) {
+                let biomeType = Math.floor(Math.random() * 11)
+                soloPage.className = ''
+                if (biomeType != 0) {
+                    soloPage.className = `biome${biomeType}`
+                }
+            }
         }, 500);
     }, 1)
     plusSpeed = 0
@@ -351,6 +366,7 @@ document.getElementById('soloRestart').addEventListener('click', () => {
     pauseGameSolo()
     song.currentTime = 0
     soloPage.style.display = 'none'
+    soloPage.className = ''
     if (acceleratorP1) {
         acceleratorP1 = false
         clearInterval(trail)
@@ -392,6 +408,13 @@ document.getElementById('soloRestart').addEventListener('click', () => {
         scoreCounter = setInterval(() => {
             scoreNum++
             sScore.innerText = scoreNum
+            if (scoreNum != 0 && scoreNum % 100 == 0) {
+                let biomeType = Math.floor(Math.random() * 11)
+                soloPage.className = ''
+                if (biomeType != 0) {
+                    soloPage.className = `biome${biomeType}`
+                }
+            }
         }, 500);
     }, 1)
     plusSpeed = 0
@@ -483,7 +506,7 @@ meteor1.addEventListener('animationiteration', () => {
 meteor2.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
-     typeOf2 = Math.floor((Math.random() * 3) + 1)
+    typeOf2 = Math.floor((Math.random() * 3) + 1)
     if (acceleratorP1) {
         speedNum--
     }
@@ -508,7 +531,7 @@ meteor2.addEventListener('animationiteration', () => {
 meteor3.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
-     typeOf3 = Math.floor((Math.random() * 3) + 1)
+    typeOf3 = Math.floor((Math.random() * 3) + 1)
     if (acceleratorP1) {
         speedNum--
     }
@@ -533,7 +556,7 @@ meteor3.addEventListener('animationiteration', () => {
 meteor4.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
-     typeOf4 = Math.floor((Math.random() * 3) + 1)
+    typeOf4 = Math.floor((Math.random() * 3) + 1)
     if (acceleratorP1) {
         speedNum--
     }
@@ -558,7 +581,7 @@ meteor4.addEventListener('animationiteration', () => {
 meteor5.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
-     typeOf5 = Math.floor((Math.random() * 3) + 1)
+    typeOf5 = Math.floor((Math.random() * 3) + 1)
     if (acceleratorP1) {
         speedNum--
     }
@@ -583,7 +606,7 @@ meteor5.addEventListener('animationiteration', () => {
 meteor6.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
-     typeOf6 = Math.floor((Math.random() * 3) + 1)
+    typeOf6 = Math.floor((Math.random() * 3) + 1)
     if (acceleratorP1) {
         speedNum--
     }
@@ -608,7 +631,7 @@ meteor6.addEventListener('animationiteration', () => {
 meteor7.addEventListener('animationiteration', () => {
     let randomNum = Math.random() * 84
     let speedNum = Math.floor((Math.random() * 3) + 3)
-     typeOf7 = Math.floor((Math.random() * 3) + 1)
+    typeOf7 = Math.floor((Math.random() * 3) + 1)
     if (acceleratorP1) {
         speedNum--
     }
@@ -808,6 +831,7 @@ function checkLive1p() {
 }
 //End Check Lives
 
+
 //Check Meteor Type
 setInterval(() => {
     if (typeOf1 == 1) {
@@ -843,7 +867,7 @@ setInterval(() => {
             mt2Type = 100
         }
     }
-    
+
     if (typeOf3 == 1) {
         mt3Type = 40
         if (screenWidth <= 1366) {
@@ -1332,17 +1356,17 @@ setInterval(() => {
                         document.getElementById('gameBckg').style.display = 'none'
                         invencible.style.display = 'block'
                         //.style.display = 'block'
-            
-                            trail = setInterval(() => {
-                                let trailElm = document.createElement('div')
-                                trailElm.setAttribute('class', 'trail')
-                                trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                                trailElm.addEventListener("animationend", () => {
-                                    trailElm.remove()
-                                })
-                                soloPage.insertAdjacentElement('beforeend', trailElm)
-                            }, 100);
-                        
+
+                        trail = setInterval(() => {
+                            let trailElm = document.createElement('div')
+                            trailElm.setAttribute('class', 'trail')
+                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
+                            trailElm.addEventListener("animationend", () => {
+                                trailElm.remove()
+                            })
+                            soloPage.insertAdjacentElement('beforeend', trailElm)
+                        }, 100);
+
                         document.getElementById('gameBckg').style.animationDuration = '7.5s'
                         setTimeout(() => {
                             document.getElementById('gameBckg').style.display = 'block'
@@ -1357,9 +1381,9 @@ setInterval(() => {
                                 acceleratorTimer = 0
                                 invencible.removeAttribute('style')
                                 //trail.removeAttribute('style')
-                             
-                                    clearInterval(trail)
-                                
+
+                                clearInterval(trail)
+
                                 if (shieldActive) {
                                     player.classList.add('shield')
                                 }
