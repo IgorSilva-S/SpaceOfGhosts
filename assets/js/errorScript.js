@@ -97,7 +97,6 @@ document.getElementById('errReload').addEventListener('click', () => {
     let vol = localStorage.getItem('volume')
     if (vol < 0 || vol > 1 || typeof vol !== 'number') {
         localStorage.setItem('volume', 1)
-        alert('Erro identificado e corrigido')
     }
     window.location = 'index.html'
 })

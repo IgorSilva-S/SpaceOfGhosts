@@ -158,9 +158,7 @@ function pauseGameSolo() {
             if (scoreNum != 0 && scoreNum % 100 == 0) {
                 let biomeType = Math.floor(Math.random() * 11)
                 soloPage.className = ''
-                if (biomeType != 0) {
-                    soloPage.className = `biome${biomeType}`
-                }
+                soloPage.className = `biome${biomeType}`
             }
         }, 500);
         addSpeed = setInterval(() => {
@@ -189,6 +187,7 @@ document.getElementById('restartInf').addEventListener("click", () => {
     song.currentTime = 0
     soloPage.style.display = 'none'
     soloPage.className = ''
+    soloPage.className = 'biome0'
     if (acceleratorP1) {
         acceleratorP1 = false
         clearInterval(trail)
@@ -233,9 +232,7 @@ document.getElementById('restartInf').addEventListener("click", () => {
             if (scoreNum != 0 && scoreNum % 100 == 0) {
                 let biomeType = Math.floor(Math.random() * 11)
                 soloPage.className = ''
-                if (biomeType != 0) {
-                    soloPage.className = `biome${biomeType}`
-                }
+                soloPage.className = `biome${biomeType}`
             }
         }, 500);
     }, 1)
@@ -367,6 +364,7 @@ document.getElementById('soloRestart').addEventListener('click', () => {
     song.currentTime = 0
     soloPage.style.display = 'none'
     soloPage.className = ''
+    soloPage.className = 'biome0'
     if (acceleratorP1) {
         acceleratorP1 = false
         clearInterval(trail)
@@ -411,9 +409,7 @@ document.getElementById('soloRestart').addEventListener('click', () => {
             if (scoreNum != 0 && scoreNum % 100 == 0) {
                 let biomeType = Math.floor(Math.random() * 11)
                 soloPage.className = ''
-                if (biomeType != 0) {
-                    soloPage.className = `biome${biomeType}`
-                }
+                soloPage.className = `biome${biomeType}`
             }
         }, 500);
     }, 1)

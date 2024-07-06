@@ -269,7 +269,7 @@ body {
 .mt1 {
     width: 40px;
     height: 40px;
-    background-image: url(../img/sprites/meteorSprites/type1.gif);
+    background-image: url(../img/sprites/meteorSprites/type1.png);
 }
 
 .totalCollision .mt1,
@@ -694,48 +694,74 @@ body {
     transition-duration: .5s;
     width: 100vw;
     height: 100vh;
+    background-size: cover;
 }
 
 /*Biomes*/
 
+.biome0 {
+    background-image: url(../img/non-sprites/biomesGradient/biome0.png);
+    transition-duration: .5s;
+}
+
 .biome1 {
-    background-image: linear-gradient(to bottom, #000, #052707);
+    /*background-image: linear-gradient(to bottom, #000, #052707);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome1.png);
+    transition-duration: .5s;
 }
 
 .biome2 {
-    background-image: linear-gradient(to bottom, #000, #5b330d);
+    /*background-image: linear-gradient(to bottom, #000, #5b330d);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome2.png);
+    transition-duration: .5s;
 }
 
 .biome3 {
-    background-image: linear-gradient(to bottom, #000, #05181f);
+    /*background-image: linear-gradient(to bottom, #000, #05181f);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome3.png);
+    transition-duration: .5s;
 }
 
 .biome4 {
-    background-image: linear-gradient(to bottom, #000, #102273);
+    /*background-image: linear-gradient(to bottom, #000, #102273);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome4.png);
+    transition-duration: .5s;
 }
 
 .biome5 {
-    background-image: linear-gradient(to bottom, #000, #590d2a);
+    /*background-image: linear-gradient(to bottom, #000, #590d2a);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome5.png);
+    transition-duration: .5s;
 }
 
 .biome6 {
-    background-image: linear-gradient(to bottom, #000, #410d5d);
+    /*background-image: linear-gradient(to bottom, #000, #410d5d);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome6.png);
+    transition-duration: .5s;
 }
 
 .biome7 {
-    background-image: linear-gradient(to bottom, #000, #510c0c);
+    /*background-image: linear-gradient(to bottom, #000, #510c0c);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome7.png);
+    transition-duration: .5s;
 }
 
 .biome8 {
-    background-image: linear-gradient(to bottom, #000, #57570c);
+    /*background-image: linear-gradient(to bottom, #000, #57570c);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome8.png);
+    transition-duration: .5s;
 }
 
 .biome9 {
-    background-image: linear-gradient(to bottom, #000, #0d5858);
+    /*background-image: linear-gradient(to bottom, #000, #0d5858);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome9.png);
+    transition-duration: .5s;
 }
 
 .biome10 {
-    background-image: linear-gradient(to bottom, #000, #f0f8ff);
+    /*background-image: linear-gradient(to bottom, #000, #f0f8ff);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome10.png);
+    transition-duration: .5s;
 }
 
 #soloScoreMark {
@@ -2927,7 +2953,7 @@ body {
     .mt1 {
         width: 32px;
         height: 32px;
-        background-image: url(../img/sprites/meteorSprites/type1.gif);
+        background-image: url(../img/sprites/meteorSprites/type1.png);
     }
 
     .mt2 {

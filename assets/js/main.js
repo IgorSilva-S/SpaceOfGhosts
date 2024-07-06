@@ -201,22 +201,12 @@ try {
         pageType = 1.1
         homePage.style.opacity = '0'
         setTimeout(() => {
-            if (classicBuy == "true" && !isPreview) {
+            if (classicBuy == "true" && canEnablePreviewItems) {
                 soloClassicButton.removeAttribute('style')
                 soloClassicButton2.removeAttribute('style')
                 duoClassicButton.removeAttribute('style')
                 duoClassicButton2.removeAttribute('style')
                 document.getElementById('gameModeDiv').removeAttribute('style')
-            } else if (isPreview) {
-                if (gameVersion != 149.24) {
-                    soloClassicButton.removeAttribute('style')
-                    soloClassicButton2.removeAttribute('style')
-                    duoClassicButton.removeAttribute('style')
-                    duoClassicButton2.removeAttribute('style')
-                    document.getElementById('gameModeDiv').removeAttribute('style')
-                } else {
-                    console.log('Preview Mode is enabled, try to not get error')
-                }
             }
             homePage.removeAttribute('style')
             gameMPage.style.display = 'flex'
@@ -379,7 +369,8 @@ try {
             soloPage.style.display = 'block'
             homeSong.pause()
             song.play()
-
+            soloPage.className = ''
+            soloPage.className = 'biome0'
             homeSong.currentTime = 0
             acceleratorP1 = false
             acceleratorTimer = 0
@@ -391,9 +382,7 @@ try {
                 if (scoreNum != 0 && scoreNum % 100 == 0) {
                     let biomeType = Math.floor(Math.random() * 11)
                     soloPage.className = ''
-                    if (biomeType != 0) {
-                        soloPage.className = `biome${biomeType}`
-                    }
+                    soloPage.className = `biome${biomeType}`
                 }
             }, 500);
             addSpeed = setInterval(() => {
@@ -426,7 +415,8 @@ try {
             soloPage.style.display = 'block'
             homeSong.pause()
             song.play()
-
+            soloPage.className = ''
+            soloPage.className = 'biome0'
             homeSong.currentTime = 0
             acceleratorP1 = false
             acceleratorTimer = 0
@@ -438,9 +428,7 @@ try {
                 if (scoreNum != 0 && scoreNum % 100 == 0) {
                     let biomeType = Math.floor(Math.random() * 11)
                     soloPage.className = ''
-                    if (biomeType != 0) {
-                        soloPage.className = `biome${biomeType}`
-                    }
+                    soloPage.className = `biome${biomeType}`
                 }
             }, 500);
             addSpeed = setInterval(() => {
@@ -508,6 +496,11 @@ try {
             checkLiveDRun1()
             checkLiveDRun2()
             duoRSortMeteors()
+            duoBiomeChanger = setInterval(() => {
+                let biomeType = Math.floor(Math.random() * 11)
+                duoRunPage.className = ''
+                duoRunPage.className = `biome${biomeType}`
+            }, 500);
         }, 500);
     })
 
@@ -524,6 +517,11 @@ try {
             checkLiveDRun1()
             checkLiveDRun2()
             duoRSortMeteors()
+            duoBiomeChanger = setInterval(() => {
+                let biomeType = Math.floor(Math.random() * 11)
+                duoRunPage.className = ''
+                duoRunPage.className = `biome${biomeType}`
+            }, 500);
         }, 500);
     })
 
@@ -718,9 +716,7 @@ try {
                         if (scoreNum != 0 && scoreNum % 100 == 0) {
                             let biomeType = Math.floor(Math.random() * 11)
                             soloPage.className = ''
-                            if (biomeType != 0) {
-                                soloPage.className = `biome${biomeType}`
-                            }
+                            soloPage.className = `biome${biomeType}`
                         }
                     }, 500);
                     plusSpeed = plusSpeed + 0.25
@@ -765,9 +761,7 @@ try {
                                 if (scoreNum != 0 && scoreNum % 100 == 0) {
                                     let biomeType = Math.floor(Math.random() * 11)
                                     soloPage.className = ''
-                                    if (biomeType != 0) {
-                                        soloPage.className = `biome${biomeType}`
-                                    }
+                                    soloPage.className = `biome${biomeType}`
                                 }
                             }, 500)
                         }
@@ -1134,7 +1128,7 @@ try {
 
         if (pageType == 6) {
             if ((e.key == 'l' || e.key == 'L') && isDev == '1') {
-                alert(`Last day of changes in SoG: ${lastDayOfChanges}`)
+                alert(`Last day of changes in SoG: ${lastDayOfChanges}\nDate Type: ${datetype}`)
             }
         }
     })
@@ -1288,9 +1282,7 @@ try {
                 if (scoreNum != 0 && scoreNum % 100 == 0) {
                     let biomeType = Math.floor(Math.random() * 11)
                     soloPage.className = ''
-                    if (biomeType != 0) {
-                        soloPage.className = `biome${biomeType}`
-                    }
+                    soloPage.className = `biome${biomeType}`
                 }
             }, 500)
             document.getElementById('soloHighAlert').removeAttribute('style')
@@ -1611,10 +1603,10 @@ try {
             localStorage.setItem('collisionView', 'false')
         }
     })
-    
+
 
     //Last Day Code - Alert
-    console.log(`Last day of changes: ${lastDayOfChanges}`)
+    console.log(`Last day of changes: ${lastDayOfChanges} - ${datetype}`)
 } catch {
     console.log('Error on Main Script!')
     mainAlertError()

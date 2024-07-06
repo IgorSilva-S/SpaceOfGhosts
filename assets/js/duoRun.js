@@ -39,6 +39,7 @@ document.getElementById('retHome').addEventListener('click', () => {
         setTimeout(() => {
             duoRSong.pause()
         }, 1);
+        clearInterval(duoBiomeChanger)
     }, 500);
 })
 
@@ -84,9 +85,17 @@ document.getElementById('duoRestart').addEventListener('click', () => {
     p2Run.removeAttribute('class')
     p2Run.className = 'player'
     duoRSortMeteors()
+    clearInterval(duoBiomeChanger)
     if (duoRunPaused) {
         pauseDuoRun()
     }
+    setTimeout(() => {
+        duoBiomeChanger = setInterval(() => {
+            let biomeType = Math.floor(Math.random() * 11)
+            duoRunPage.className = ''
+            duoRunPage.className = `biome${biomeType}`
+        }, 500);
+    }, 1);
 })
 
 document.getElementById('duoSettings').addEventListener('click', () => {
@@ -119,7 +128,8 @@ function duoRunKeyDown(e) {
 }
 
 function duoRunKeyUp(e) {
-    keysDuoRun = []
+    let keyType = e.key
+    keysDuoRun[keyType] = false
 }
 
 function moveChars() {
@@ -315,6 +325,7 @@ function pauseDuoRun() {
         clearInterval(p2RInvWaiter)
         clearInterval(p1RHSWaiter)
         clearInterval(p2RHSWaiter)
+        clearInterval(duoBiomeChanger)
     } else {
         p1Rm1.style.animationPlayState = 'running'
         p1Rm2.style.animationPlayState = 'running'
@@ -386,6 +397,11 @@ function pauseDuoRun() {
                 }
             }, 1000);
         }
+        duoBiomeChanger = setInterval(() => {
+            let biomeType = Math.floor(Math.random() * 11)
+            duoRunPage.className = ''
+            duoRunPage.className = `biome${biomeType}`
+        }, 500);
     }
 }
 

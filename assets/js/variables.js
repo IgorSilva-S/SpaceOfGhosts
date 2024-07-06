@@ -1,8 +1,12 @@
 //Variables
+
+// Game Env Variables
 const gameVersion = 'Repo'
 const isPreview = true
 const previewType = 'Dev'
-const lastDayOfChanges = '07/04/2024 - MM/DD/YYYY'
+const lastDayOfChanges = '06/07/2024'
+const datetype = 'DD/MM/YYYY'
+const canEnablePreviewItems = false
 
 const player = document.getElementById('ghost')
 let keysSolo = []
@@ -113,8 +117,9 @@ let relaxStts = false
 const mControlUp = document.getElementById('upBlock')
 const mControlDown = document.getElementById('downBlock')
 let acceleratorWaiter, hurtSWaiter
-let scoreCounter
+let scoreCounter, duoBiomeChanger
 let scoreNum = 0
+let secondsBiomeDuo = 0
 const sScore = document.getElementById('soloDistance')
 let finalScore
 let p1RHS = false, p2RHS = false
