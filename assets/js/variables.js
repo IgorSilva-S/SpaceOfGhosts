@@ -1,10 +1,10 @@
 //Variables
 
 // Game Env Variables
-const gameVersion = 'Repo'
+const gameVersion = '185.24'
 const isPreview = true
-const previewType = 'Dev'
-const lastDayOfChanges = '06/07/2024'
+const previewType = 'Beta'
+const lastDayOfChanges = '07/07/2024'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = false
 
