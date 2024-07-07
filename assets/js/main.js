@@ -389,19 +389,9 @@ try {
                 if (scoreNum % 250 == 0 && scoreNum != 0) {
                     plusSpeed = plusSpeed + 0.25
                     document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
-                    if (plusSpeed == 1 && trail == NaN) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
                 }
             }, 501);
+            playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
         }, 500);
     })
 
@@ -435,52 +425,56 @@ try {
                 if (scoreNum % 250 == 0 && scoreNum != 0) {
                     plusSpeed = plusSpeed + 0.25
                     document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
-                    if (plusSpeed == 1 && trail == NaN) {
-                        trail = setInterval(() => {
-                            let trailElm = document.createElement('div')
-                            trailElm.setAttribute('class', 'trail')
-                            trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                            trailElm.addEventListener("animationend", () => {
-                                trailElm.remove()
-                            })
-                            soloPage.insertAdjacentElement('beforeend', trailElm)
-                        }, 100);
-                    }
                 }
             }, 501);
+            playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
         }, 500);
     })
 
     soloClassicButton.addEventListener("click", () => {
-        pageType = 2.1
-        gameMPage.style.opacity = '0'
-        setTimeout(() => {
-            gameMPage.removeAttribute('style')
-            homeSong.pause()
-            homeSong.currentTime = 0
-            soloClassicLive = 6
-            makeSCScoreCounter()
-            checkLivesSoloClassic()
-            classicSoloPage.style.display = 'block'
-            soloClassicSong.play()
-            removeEnd()
-        }, 500);
+        if (canEnablePreviewItems && classicBuy == "true") {
+            pageType = 2.1
+            gameMPage.style.opacity = '0'
+            setTimeout(() => {
+                gameMPage.removeAttribute('style')
+                homeSong.pause()
+                homeSong.currentTime = 0
+                soloClassicLive = 6
+                makeSCScoreCounter()
+                checkLivesSoloClassic()
+                classicSoloPage.style.display = 'block'
+                soloClassicSong.play()
+                removeEnd()
+            }, 500);
+        } else {
+            alert(`Algo falta para esse modo ser jogado... Confira se você adquiriu esse modo na loja`)
+            if (!canEnablePreviewItems) {
+                console.log("canEnablePreviewItems = false. You can't use it now!")
+            }
+        }
     })
 
     soloClassicButton2.addEventListener("click", () => {
-        pageType = 2.1
-        gameMPage.style.opacity = '0'
-        setTimeout(() => {
-            gameMPage.removeAttribute('style')
-            homeSong.pause()
-            homeSong.currentTime = 0
-            soloClassicLive = 6
-            makeSCScoreCounter()
-            checkLivesSoloClassic()
-            classicSoloPage.style.display = 'block'
-            soloClassicSong.play()
-            removeEnd()
-        }, 500);
+        if (canEnablePreviewItems && classicBuy == "true") {
+            pageType = 2.1
+            gameMPage.style.opacity = '0'
+            setTimeout(() => {
+                gameMPage.removeAttribute('style')
+                homeSong.pause()
+                homeSong.currentTime = 0
+                soloClassicLive = 6
+                makeSCScoreCounter()
+                checkLivesSoloClassic()
+                classicSoloPage.style.display = 'block'
+                soloClassicSong.play()
+                removeEnd()
+            }, 500);
+        } else {
+            alert(`Algo falta para esse modo ser jogado... Confira se você adquiriu esse modo na loja`)
+            if (!canEnablePreviewItems) {
+                console.log("canEnablePreviewItems = false. You can't use it now!")
+            }
+        }
     })
 
     duoButton.addEventListener("click", () => {
@@ -500,7 +494,7 @@ try {
                 let biomeType = Math.floor(Math.random() * 11)
                 duoRunPage.className = ''
                 duoRunPage.className = `biome${biomeType}`
-            }, 500);
+            }, 50000);
         }, 500);
     })
 
@@ -521,40 +515,55 @@ try {
                 let biomeType = Math.floor(Math.random() * 11)
                 duoRunPage.className = ''
                 duoRunPage.className = `biome${biomeType}`
-            }, 500);
+            }, 50000);
         }, 500);
     })
 
     duoClassicButton.addEventListener('click', () => {
-        pageType = 3.2
-        gameMPage.style.opacity = '0'
-        setTimeout(() => {
-            gameMPage.removeAttribute('style')
-            classicDuoPage.style.display = 'flex'
-            homeSong.pause()
-            homeSong.currentTime = 0
-            duoClassicSong.play()
-            p1DuoClassicLife = 100
-            p2DuoClassicLife = 100
-            checkLifeP1DClassic()
-            checkLifeP2DClassic()
-        }, 500);
+        if (canEnablePreviewItems && classicBuy == "true") {
+            pageType = 3.2
+            gameMPage.style.opacity = '0'
+            setTimeout(() => {
+                gameMPage.removeAttribute('style')
+                classicDuoPage.style.display = 'flex'
+                homeSong.pause()
+                homeSong.currentTime = 0
+                duoClassicSong.play()
+                p1DuoClassicLife = 100
+                p2DuoClassicLife = 100
+                checkLifeP1DClassic()
+                checkLifeP2DClassic()
+            }, 500);
+        } else {
+            alert(`Algo falta para esse modo ser jogado... Confira se você adquiriu esse modo na loja`)
+            if (!canEnablePreviewItems) {
+                console.log("canEnablePreviewItems = false. You can't use it now!")
+            }
+        }
     })
 
     duoClassicButton2.addEventListener('click', () => {
         pageType = 3.2
-        gameMPage.style.opacity = '0'
-        setTimeout(() => {
-            gameMPage.removeAttribute('style')
-            classicDuoPage.style.display = 'flex'
-            homeSong.pause()
-            homeSong.currentTime = 0
-            duoClassicSong.play()
-            p1DuoClassicLife = 100
-            p2DuoClassicLife = 100
-            checkLifeP1DClassic()
-            checkLifeP2DClassic()
-        }, 500);
+        if (canEnablePreviewItems && classicBuy == "true") {
+            pageType = 3.2
+            gameMPage.style.opacity = '0'
+            setTimeout(() => {
+                gameMPage.removeAttribute('style')
+                classicDuoPage.style.display = 'flex'
+                homeSong.pause()
+                homeSong.currentTime = 0
+                duoClassicSong.play()
+                p1DuoClassicLife = 100
+                p2DuoClassicLife = 100
+                checkLifeP1DClassic()
+                checkLifeP2DClassic()
+            }, 500);
+        } else {
+            alert(`Algo falta para esse modo ser jogado... Confira se você adquiriu esse modo na loja`)
+            if (!canEnablePreviewItems) {
+                console.log("canEnablePreviewItems = false. You can't use it now!")
+            }
+        }
     })
 
 
@@ -734,7 +743,7 @@ try {
                                 clearInterval(trail)
                             } else {
                                 clearInterval(trail)
-                                trail = NaN
+                                
                                 setTimeout(() => {
                                     trail = setInterval(() => {
                                         let trailElm = document.createElement('div')
@@ -804,7 +813,7 @@ try {
                         relaxStts = false
                         if (plusSpeed < 1) {
                             clearInterval(trail)
-                            trail = NaN
+                            
                         }
                     }, 2000);
                 } else if (relaxSlot == 0) {

@@ -165,17 +165,6 @@ function pauseGameSolo() {
             if (scoreNum % 250 == 0 && scoreNum != 0) {
                 plusSpeed = plusSpeed + 0.25
                 document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
-                if (plusSpeed == 1 && trail == NaN) {
-                    trail = setInterval(() => {
-                        let trailElm = document.createElement('div')
-                        trailElm.setAttribute('class', 'trail')
-                        trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                        trailElm.addEventListener("animationend", () => {
-                            trailElm.remove()
-                        })
-                        soloPage.insertAdjacentElement('beforeend', trailElm)
-                    }, 100);
-                }
             }
         }, 600);
     }
@@ -237,7 +226,7 @@ document.getElementById('restartInf').addEventListener("click", () => {
         }, 500);
     }, 1)
     plusSpeed = 0
-
+    playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
 })
 
 document.getElementById('backInf').addEventListener("click", () => {
@@ -414,6 +403,7 @@ document.getElementById('soloRestart').addEventListener('click', () => {
         }, 500);
     }, 1)
     plusSpeed = 0
+    playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
 })
 
 document.getElementById('soloConfig').addEventListener('click', () => {
@@ -1425,7 +1415,7 @@ setInterval(() => {
                             relaxStts = false
                             if (plusSpeed < 1) {
                                 clearInterval(trail)
-                                trail = NaN
+                                
                             }
                         }, 2000);
                     }

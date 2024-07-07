@@ -94,7 +94,7 @@ document.getElementById('duoRestart').addEventListener('click', () => {
             let biomeType = Math.floor(Math.random() * 11)
             duoRunPage.className = ''
             duoRunPage.className = `biome${biomeType}`
-        }, 500);
+        }, 50000);
     }, 1);
 })
 
@@ -401,7 +401,7 @@ function pauseDuoRun() {
             let biomeType = Math.floor(Math.random() * 11)
             duoRunPage.className = ''
             duoRunPage.className = `biome${biomeType}`
-        }, 500);
+        }, 50000);
     }
 }
 

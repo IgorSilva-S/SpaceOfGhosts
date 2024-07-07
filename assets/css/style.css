@@ -65,6 +65,7 @@ body {
     left: 150px;
     top: 45%;
     border-radius: 100%;
+    z-index: 999;
 }
 
 .totalCollision .player {
@@ -106,7 +107,7 @@ body {
     animation-duration: 1s;
     animation-timing-function: linear;
     border-radius: 100%;
-    z-index: -1;
+    z-index: 0;
     background-image: url(../img/sprites/skins/normal/Flying.gif);
     background-position: center;
     background-size: 90%;
@@ -257,7 +258,7 @@ body {
     position: absolute;
     left: 120%;
     TOP: 50%;
-    animation-name: kill;
+    animation-name: meteorMove;
     animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
@@ -291,7 +292,7 @@ body {
 }
 
 
-@keyframes kill {
+@keyframes meteorMove {
     from {
         left: 120%;
     }

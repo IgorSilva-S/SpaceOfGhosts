@@ -65,6 +65,7 @@ body {
     left: 150px;
     top: 45%;
     border-radius: 100%;
+    z-index: 999;
 }
 
 .totalCollision .player {
@@ -106,7 +107,7 @@ body {
     animation-duration: 1s;
     animation-timing-function: linear;
     border-radius: 100%;
-    z-index: -1;
+    z-index: 0;
     background-image: url(../img/sprites/skins/normal/Flying.gif);
     background-position: center;
     background-size: 90%;
@@ -257,7 +258,7 @@ body {
     position: absolute;
     left: 120%;
     TOP: 50%;
-    animation-name: kill;
+    animation-name: meteorMove;
     animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
@@ -291,7 +292,7 @@ body {
 }
 
 
-@keyframes kill {
+@keyframes meteorMove {
     from {
         left: 120%;
     }
@@ -691,6 +692,76 @@ body {
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
+    transition-duration: .5s;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+}
+
+/*Biomes*/
+
+.biome0 {
+    background-image: url(../img/non-sprites/biomesGradient/biome0.png);
+    transition-duration: .5s;
+}
+
+.biome1 {
+    /*background-image: linear-gradient(to bottom, #000, #052707);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome1.png);
+    transition-duration: .5s;
+}
+
+.biome2 {
+    /*background-image: linear-gradient(to bottom, #000, #5b330d);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome2.png);
+    transition-duration: .5s;
+}
+
+.biome3 {
+    /*background-image: linear-gradient(to bottom, #000, #05181f);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome3.png);
+    transition-duration: .5s;
+}
+
+.biome4 {
+    /*background-image: linear-gradient(to bottom, #000, #102273);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome4.png);
+    transition-duration: .5s;
+}
+
+.biome5 {
+    /*background-image: linear-gradient(to bottom, #000, #590d2a);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome5.png);
+    transition-duration: .5s;
+}
+
+.biome6 {
+    /*background-image: linear-gradient(to bottom, #000, #410d5d);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome6.png);
+    transition-duration: .5s;
+}
+
+.biome7 {
+    /*background-image: linear-gradient(to bottom, #000, #510c0c);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome7.png);
+    transition-duration: .5s;
+}
+
+.biome8 {
+    /*background-image: linear-gradient(to bottom, #000, #57570c);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome8.png);
+    transition-duration: .5s;
+}
+
+.biome9 {
+    /*background-image: linear-gradient(to bottom, #000, #0d5858);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome9.png);
+    transition-duration: .5s;
+}
+
+.biome10 {
+    /*background-image: linear-gradient(to bottom, #000, #f0f8ff);*/
+    background-image: url(../img/non-sprites/biomesGradient/biome10.png);
     transition-duration: .5s;
 }
 
@@ -2187,6 +2258,9 @@ body {
 }
 
 #credits {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     color: white;
@@ -2194,6 +2268,12 @@ body {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    background-color: #19191966;
+    backdrop-filter: blur(15px);
 }
 
 #b2bCredits {
@@ -2201,32 +2281,28 @@ body {
     height: 50px;
     top: 10px;
     left: 10px;
-
+    position: absolute;
+    background-color: transparent;
 }
 
-.rollCredits {
-    width: 100%;
-    padding: 20px 0;
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-
+#credits img {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 0px;
 }
 
-.rollCredits img {
-    width: 300px;
-    height: 300px;
-    margin: 20px 0;
-}
-
-.rollCredits .creditsSection {
+#credits .creditsSection,
+#credits .creditsSectionEnd {
     margin: 20px 0;
     text-align: center;
     width: 350px;
     font-size: 15px;
+}
+
+#credits .creditsSectionEnd {
+    position: absolute;
+    bottom: 30px;
 }
 
 .creditsSection .sectionTitle {
@@ -2485,6 +2561,22 @@ body {
     transition-duration: .5s;
     animation-name: appearPages;
     animation-duration: .5s;
+}
+
+#reloadGame {
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+    background-size: cover;
+    left: 200px;
+    background-color: transparent;
+    background-image: url(../img/sprites/pauseButtons/restartPause.png);
+    border: none;
+    position: fixed;
+}
+
+#reloadGame:hover {
+    border: none;
 }
 
 .devKeysCentral .earthCloud {
