@@ -23,7 +23,7 @@ CB1.addEventListener("click", () => {
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
-            aDesc.innerText = 'Você não tem moedas suficientes para adquirir esse item!'
+            aDesc.innerText = 'Você não tem stardusts suficientes para adquirir esse item!'
             CB2.style.display = 'none'
             CB1.innerText = 'Ok'
         }
@@ -44,7 +44,7 @@ CB1.addEventListener("click", () => {
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
-            aDesc.innerText = 'Você não tem moedas suficientes para adquirir esse item!'
+            aDesc.innerText = 'Você não tem stardusts suficientes para adquirir esse item!'
             CB2.style.display = 'none'
             CB1.innerText = 'Ok'
         }
@@ -65,7 +65,7 @@ CB1.addEventListener("click", () => {
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
-            aDesc.innerText = 'Você não tem moedas suficientes para adquirir esse item!'
+            aDesc.innerText = 'Você não tem stardusts suficientes para adquirir esse item!'
             CB2.style.display = 'none'
             CB1.innerText = 'Ok'
         }
@@ -86,7 +86,7 @@ CB1.addEventListener("click", () => {
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
-            aDesc.innerText = 'Você não tem moedas suficientes para adquirir esse item!'
+            aDesc.innerText = 'Você não tem stardusts suficientes para adquirir esse item!'
             CB2.style.display = 'none'
             CB1.innerText = 'Ok'
         }
@@ -108,7 +108,7 @@ CB1.addEventListener("click", () => {
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
-            aDesc.innerText = 'Você não tem moedas suficientes para adquirir esse item!'
+            aDesc.innerText = 'Você não tem stardusts suficientes para adquirir esse item!'
             CB2.style.display = 'none'
             CB1.innerText = 'Ok'
         }
@@ -129,7 +129,7 @@ CB1.addEventListener("click", () => {
         } else {
             CB1.className = 'justOkayShop'
             CB1.value = 'B2B'
-            aDesc.innerText = 'Você não tem moedas suficientes para adquirir esse item!'
+            aDesc.innerText = 'Você não tem stardusts suficientes para adquirir esse item!'
             CB2.style.display = 'none'
             CB1.innerText = 'Ok'
         }
@@ -241,7 +241,7 @@ document.getElementById('femaleSkinPurchase').addEventListener("click", () => {
                 document.getElementById('moneyShopView').innerText = money
                 localStorage.setItem('purchasedA', true)
             } else {
-                alert('Você não tem moedas suficientes para adquirir esse produto!')
+                alert('Você não tem stardusts suficientes para adquirir esse produto!')
             }
         }
     } else {
@@ -294,7 +294,7 @@ document.getElementById('transpSkinPurchase').addEventListener("click", () => {
                 document.getElementById('moneyShopView').innerText = money
                 localStorage.setItem('purchased1', true)
             } else {
-                alert('Você não tem moedas suficientes para adquirir esse produto!')
+                alert('Você não tem stardusts suficientes para adquirir esse produto!')
             }
         }
     } else {
@@ -346,7 +346,7 @@ document.getElementById('dogSkinPurchase').addEventListener("click", () => {
                 document.getElementById('moneyShopView').innerText = money
                 localStorage.setItem('purchased2', true)
             } else {
-                alert('Você não tem moedas suficientes para adquirir esse produto!')
+                alert('Você não tem stardusts suficientes para adquirir esse produto!')
             }
         }
     } else {
@@ -396,7 +396,7 @@ document.getElementById('catSkinPurchase').addEventListener("click", () => {
                 document.getElementById('moneyShopView').innerText = money
                 localStorage.setItem('purchased3', true)
             } else {
-                alert('Você não tem moedas suficientes para adquirir esse produto!')
+                alert('Você não tem stardusts suficientes para adquirir esse produto!')
             }
         }
     } else {
