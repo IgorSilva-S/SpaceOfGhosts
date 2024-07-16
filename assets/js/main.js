@@ -64,8 +64,9 @@ try {
             soloClassicSong.volume = gameVolume
             duoClassicSong.volume = gameVolume
             devKeysCentralSong.volume = gameVolume
-            document.getElementById('volumeNum').innerText = `${gameVolume * 100}%`
-            document.getElementById('quickVolNum').innerText = `${gameVolume * 100}%`
+            let volumePrintNum = `${Math.round(gameVolume * 100)}%`
+            document.getElementById('volumeNum').innerText = volumePrintNum
+            document.getElementById('quickVolNum').innerText = volumePrintNum
             document.getElementById('vol').value = gameVolume * 100
             document.getElementById('quickVol').value = gameVolume * 100
         } if (gameVolume == 0) {
@@ -1419,8 +1420,8 @@ try {
         duoClassicSong.volume = gameVolume
         devKeysCentralSong.volume = gameVolume
         localStorage.setItem('volume', gameVolume)
-        document.getElementById('volumeNum').innerText = `${document.getElementById('vol').value}%`
-        document.getElementById('quickVolNum').innerText = `${document.getElementById('vol').value}%`
+        document.getElementById('volumeNum').innerText = volumePrintNum
+        document.getElementById('quickVolNum').innerText = volumePrintNum
         if (gameVolume == 0) {
             muted = true
             document.getElementById('volAlert').innerText = 'volume_off'
@@ -1495,8 +1496,8 @@ try {
         duoClassicSong.volume = gameVolume
         devKeysCentralSong.volume = gameVolume
         localStorage.setItem('volume', gameVolume)
-        document.getElementById('volumeNum').innerText = `${document.getElementById('vol').value}%`
-        document.getElementById('quickVolNum').innerText = `${document.getElementById('vol').value}%`
+        document.getElementById('volumeNum').innerText = volumePrintNum
+        document.getElementById('quickVolNum').innerText = volumePrintNum
         if (gameVolume == 0) {
             muted = true
             document.getElementById('volAlert').innerText = 'volume_off'

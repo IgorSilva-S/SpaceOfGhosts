@@ -4,7 +4,7 @@
 const gameVersion = 'Branch'
 const isPreview = true
 const previewType = 'Dev'
-const lastDayOfChanges = '07/07/2024'
+const lastDayOfChanges = '15/07/2024'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = false
 

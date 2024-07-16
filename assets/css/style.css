@@ -2995,6 +2995,15 @@ body {
     margin-top: 50px;
 }
 
+#biomeLoader {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
 /*Import Google Icons*/
 @font-face {
     font-family: 'Material Symbols Rounded';
