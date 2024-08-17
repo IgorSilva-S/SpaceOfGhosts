@@ -1664,6 +1664,18 @@ body {
     transition-duration: .5s;
 }
 
+.itemType {
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 100%;
+}
+
+.itemType p {
+    font-size: 30px;
+}
+
 .shopBckg {
     background-image: linear-gradient(to bottom, #2E1A47,
             #111133,
@@ -1795,8 +1807,8 @@ body {
 }
 
 .items .Sitem {
-    min-width: 15%;
-    height: 90%;
+    min-width: 300px;
+    height: 300px;
     position: relative;
     display: flex;
     justify-content: space-evenly;
@@ -3018,7 +3030,7 @@ body {
     font-style: normal;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1600px) {
     #gameModeScreen button {
         width: 300px;
     }

@@ -226,7 +226,7 @@ CB2.addEventListener("click", () => {
 })
 
 document.getElementById('femaleSkinPurchase').addEventListener("click", () => {
-    prodImg.className = 'prodImage'
+    /*prodImg.className = 'prodImage'
     prodImg.classList.add('prodSA')
     //Old Script
     /*if (!skinABuy) {
@@ -246,7 +246,7 @@ document.getElementById('femaleSkinPurchase').addEventListener("click", () => {
         }
     } else {
         alert('Esse item já foi comprado')
-    }*/
+    }
 
     //New Script
     if (!skinABuy) {
@@ -275,7 +275,12 @@ document.getElementById('femaleSkinPurchase').addEventListener("click", () => {
         CB2.innerText = 'Desejo Reembolsar'
         CB1.value = 'B2B'
         CB2.value = 'R:SA'
-    }
+    }*/
+
+    let barName = document.getElementById('itemName')
+    let barType = document.getElementById('itemType')
+    barName.innerText = 'Ghost Fêmea'
+    barType.innerText = 'Skin'
 })
 
 document.getElementById('transpSkinPurchase').addEventListener("click", () => {

@@ -186,6 +186,11 @@ try {
     gameDevSys()
     //End Organize localStorage Items
 
+    //Enable Preview
+    if (canEnablePreviewItems) {
+        document.getElementById('classicModePurchase').removeAttribute('style')
+    }
+
 
     //Navigations Functions
     disButton.addEventListener("click", () => {

@@ -6,7 +6,7 @@ const isPreview = true
 const previewType = 'Dev'
 const lastDayOfChanges = '15/07/2024'
 const datetype = 'DD/MM/YYYY'
-const canEnablePreviewItems = false
+const canEnablePreviewItems = true
 
 const player = document.getElementById('ghost')
 let keysSolo = []
