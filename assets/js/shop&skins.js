@@ -281,6 +281,8 @@ document.getElementById('femaleSkinPurchase').addEventListener("click", () => {
     let barType = document.getElementById('itemType')
     barName.innerText = 'Ghost Fêmea'
     barType.innerText = 'Skin'
+    actualShopItem = 1
+    document.getElementById('femaleSkinPurchase').classList.add('selSitem')
 })
 
 document.getElementById('transpSkinPurchase').addEventListener("click", () => {

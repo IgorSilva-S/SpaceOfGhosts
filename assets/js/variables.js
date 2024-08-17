@@ -242,6 +242,9 @@ let skin4Buy = localStorage.getItem('purchased4')
 //Game Mode purchased checker
 let classicBuy = localStorage.getItem('classicPurchased')
 
+//Shop - Actual Item
+let actualShopItem = 0
+
 //DevKeys Variables
 const shutdownDevKeys = document.getElementById('disableDevKeys')
 

@@ -28,6 +28,7 @@ body {
     overflow: hidden;
     font-family: 'Josefin Sans',
         sans-serif;
+    user-select: none;
 
 }
 
@@ -1664,18 +1665,6 @@ body {
     transition-duration: .5s;
 }
 
-.itemType {
-    padding-left: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    height: 100%;
-}
-
-.itemType p {
-    font-size: 30px;
-}
-
 .shopBckg {
     background-image: linear-gradient(to bottom, #2E1A47,
             #111133,
@@ -1823,6 +1812,23 @@ body {
     border-radius: 8px;
 }
 
+.items .selSitem {
+    min-width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 20px;
+    background-color: #008;
+    border: 1px solid #0632ff;
+    color: white;
+    font-size: 15px;
+    transition-duration: .5s;
+    border-radius: 8px;
+}
+
 .lightMode .items .Sitem {
     background-color: #f0f8ff;
     border: 1px solid #d0d0d0;
@@ -1852,6 +1858,7 @@ body {
 .Sitem img {
     width: 100px;
     height: 100px;
+    border-radius: 4px;
 }
 
 .shopBlur {
@@ -1875,7 +1882,8 @@ body {
     border-radius: 16px;
     background-color: #090909;
     position: relative;
-    padding: 5px;
+    padding: 20px;
+    box-sizing: border-box;
     font-size: 25px;
     overflow: hidden;
     transition-duration: .5s;
@@ -2007,20 +2015,50 @@ body {
     position: absolute;
     top: 30%;
     right: 30px;
+    border-radius: 4px;
 }
 
 .itemDesc {
     width: 100%;
-    height: 20%;
+    height: 19%;
     position: absolute;
     bottom: 0;
     left: 0;
-    border-radius: 8px 8px 0 0;
     background-color: #191919;
 }
 
 .lightMode .itemDesc {
     background-color: #f0f8ff;
+}
+
+.itemType {
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 100%;
+}
+
+.itemType p {
+    font-size: 30px;
+}
+
+.itemDesc #prodPopup {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    padding: 5px;
+    margin: 0 20px;
+    background-color: #292929;
+    border: 1px solid #292929;
+    color: white;
+    font-size: 15px;
+    transition-duration: .3s;
+    border-radius: 20px;
+}
+
+.itemDesc #prodPopup:hover {
+    border-color: #0632FF;
 }
 
 .prodGM1 {
