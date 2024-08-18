@@ -1,12 +1,14 @@
 let isGameTotalLoad = false
 
 window.onload = () => {
-    console.log('Page Fully loaded, starting game')
-    isGameTotalLoad = true
-    document.getElementById('loadingPage').style.display = 'none'
-    document.getElementById('disclaimer').removeAttribute('style')
-    let errBox = document.getElementById('errorCont')
-    let loadingBox = document.getElementById('lbCont')
+    if (canLoad) {
+        console.log('Page Fully loaded, starting game')
+        isGameTotalLoad = true
+        document.getElementById('loadingPage').style.display = 'none'
+        document.getElementById('disclaimer').removeAttribute('style')
+        let errBox = document.getElementById('errorCont')
+        let loadingBox = document.getElementById('lbCont')
+    }
 
     //Game Version Catcher
     if (isPreview) {

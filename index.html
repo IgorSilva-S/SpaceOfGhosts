@@ -38,7 +38,6 @@
             </div>
 
         </div>
-        <div id="biomeLoader"></div>
     </section>
     <!--Disclaimer-->
     <section id="disclaimer" style="display: none">
@@ -63,7 +62,7 @@
         <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts" id="gameName">
         <div class="alignHomeButtons" id="homeButtons">
             <button id="playGame">Jogar</button>
-            <button id="goShop">Loja e Skins</button>
+            <button id="goShop">Loja</button>
             <button id="editSettings">Configurações</button>
             <button id="devKeysEnter" style="display: none">DevKeys Central</button>
             <button id="viewCredits">Créditos</button>
@@ -476,8 +475,8 @@
         </div>
     </section>
 
-    <!--Shop-->
-    <section id="shop">
+    <!--Shop - Old-->
+    <!--<section id="shop">
         <div class="clouds"></div>
         <div class="moneyAlert">
             <img src="assets/img/sprites/Items/stardust.png" alt="moneyImage">
@@ -517,6 +516,7 @@
         <div class="shopBlur" id="blurShop">
             <div class="confirmPurchasePopUp" id="confPurch">
                 <h2 id="iName">Item Name</h2>
+                <h4 id="iDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi omnis, quas provident dignissimos nulla repudiandae blanditiis dicta suscipit ad repellat cum consequatur rem? Id ipsum voluptates, incidunt dolorem libero reprehenderit.</h4>
                 <h3 id="aDesc">Action Description</h3>
                 <div class="infosPopUp">
                     Valor: <span id="itemValue">000</span><br>
@@ -529,10 +529,24 @@
                 </div>
             </div>
         </div>
+    </section>-->
+    <section id="shop">
+        <button id="shopHome" class="returnHome"></button>
+        <h1 style="text-align: center; padding-top: 30px;">Olá! Estamos trabalhando na nova versão! Esteja atento por novos commits!</h1>
+        <button onclick="betaShop()">Testar novo Design</button>
+        <button class="goSkin" id="skins" style="display: none;">Trocar a Skin</button>
+    </section>
+    <section id="shop">
+        <div class="background">
+
+        </div>
+        <div class="sideBar">
+            <div class="alignItens"</div>
+        </div>
     </section>
 
-    <!--Skin Changer-->
-    <section id="skinChanger">
+    <!--Skin Changer - Old-->
+    <!--<section id="skinChanger">
         <div class="clouds" id="scClouds"></div>
         <div class="background" id="scStars">
 
@@ -567,7 +581,12 @@
             <button class="skin" id="cs2"></button>
             <button class="skin" id="cs3"></button>
             <button class="skin" id="cs4"></button>
-        </div>-->
+        </div>
+    </section>-->
+    <section id="skinChanger">
+        <h1 style="text-align: center; padding-top: 30px;">Olá! Estamos trabalhando na nova versão! Esteja atento por novos commits! <br> <br>Pressione F5 para recarregar</h1>
+        <div class="clouds" id="scClouds"></div>
+        <div class="background" id="scStars">
     </section>
 
     <!--Settings-->
@@ -730,15 +749,15 @@
     <!--Script Area-->
     <script src="assets/js/variables.js"></script>
     <script src="assets/js/loadingGame.js"></script>
+    <script src="assets/js/errorScript.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/solo.js"></script>
     <script src="assets/js/duoRun.js"></script>
-    <script src="assets/js/shop&skins.js"></script>
+    <!--<script src="assets/js/shop&skins.js"></script>-->
     <script src="assets/js/soloClassic.js"></script>
     <script src="assets/js/duoClassic.js"></script>
     <script src="assets/js/selectScript.js"></script>
     <script src="assets/js/devKeys.js"></script>
-    <script src="assets/js/errorScript.js"></script>
 </body>
 
 </html>

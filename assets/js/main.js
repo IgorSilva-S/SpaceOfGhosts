@@ -177,6 +177,13 @@ try {
         }
     }
 
+    function useHDVersion() {
+        let useHD = localStorage.getItem('useHD')
+        if (useHD == 'true') {
+            document.body.classList.add('hd')
+        }
+    }
+
     organizeSound()
     enableOldControls()
     skinChanger()
@@ -184,11 +191,12 @@ try {
     organizeCursor()
     organizeColor()
     gameDevSys()
+    useHDVersion()
     //End Organize localStorage Items
 
     //Enable Preview
     if (canEnablePreviewItems) {
-        document.getElementById('classicModePurchase').removeAttribute('style')
+        //document.getElementById('classicModePurchase').removeAttribute('style')
     }
 
 
@@ -228,7 +236,7 @@ try {
             homeSong.pause()
             homeSong.currentTime = 0
             shopSong.play()
-            document.getElementById('moneyShopView').innerText = localStorage.getItem('money')
+            //document.getElementById('moneyShopView').innerText = localStorage.getItem('money')
         }, 500);
     })
 
@@ -1622,9 +1630,10 @@ try {
 
     //Last Day Code - Alert
     console.log(`Last day of changes: ${lastDayOfChanges} - ${datetype}`)
-} catch {
+} catch (err) {
     console.log('Error on Main Script!')
     mainAlertError()
+    console.log(`Error: ${err}`)
 }
 
 function emergencialReset() {

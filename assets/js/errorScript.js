@@ -2,6 +2,7 @@ let errBox = document.getElementById('errorCont')
 let loadingBox = document.getElementById('lbCont')
 
 function mainAlertError() {
+    canLoad = false
     disPage.style.display = 'none'
     soloPage.style.display = 'none'
     soloScorePage.style.display = 'none'

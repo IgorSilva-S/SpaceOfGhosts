@@ -403,3 +403,7 @@
 .prodS4 {
     background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
 }
+
+.hd .player {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+}

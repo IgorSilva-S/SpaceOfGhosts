@@ -4,9 +4,10 @@
 const gameVersion = 'Branch'
 const isPreview = true
 const previewType = 'Dev'
-const lastDayOfChanges = '15/07/2024'
+const lastDayOfChanges = '18/08/2024'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = true
+let canLoad = true
 
 const player = document.getElementById('ghost')
 let keysSolo = []

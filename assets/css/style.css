@@ -849,7 +849,6 @@ body {
     animation-duration: 30s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    background-position: center;
 }
 
 .soloScore {
@@ -1646,6 +1645,15 @@ body {
     transition-duration: .5s;
 }
 
+#betaShop {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    animation-name: appearPages;
+    animation-duration: .5s;
+    transition-duration: .5s;
+}
+
 .lightMode #shop {
     background-image: linear-gradient(to bottom, #5fcde4,
     #639bff,
@@ -1883,6 +1891,7 @@ body {
     background-color: #090909;
     position: relative;
     padding: 20px;
+    padding-top: 5px;
     box-sizing: border-box;
     font-size: 25px;
     overflow: hidden;
@@ -1901,6 +1910,14 @@ body {
     margin: 10px 0;
     font-size: 30px;
     font-weight: normal;
+}
+
+.confirmPurchasePopUp h4 {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 20px;
 }
 
 #skinChanger .backPage {
@@ -2066,15 +2083,14 @@ body {
 }
 
 .sideBar {
-    width: 15%;
+    width: 20%;
     height: 100%;
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
-    background-color: #f0f0f033;
+    background-color: #A0B2FFaa;
     backdrop-filter: blur(10px);
-    overflow-y: auto;
-    overflow-x: hidden;
+    border-radius: 0 8px 8px 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
