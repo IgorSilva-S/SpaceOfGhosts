@@ -536,12 +536,54 @@
         <button onclick="betaShop()">Testar novo Design</button>
         <button class="goSkin" id="skins" style="display: none;">Trocar a Skin</button>
     </section>
-    <section id="shop">
+    <section id="betaShop">
         <div class="background">
 
         </div>
         <div class="sideBar">
-            <div class="alignItens"</div>
+            <div class="alignSideBarItems">
+                <button id="shopHome" class="returnHome"></button>
+                <h1>Loja</h1>
+            </div>
+            <div class="alignStardusts">
+                <div class="stardustIcon"></div>
+                <div class="stardustsView">
+                    Stardusts: <br>
+                    <p id="allStardusts">0</p>
+                </div>
+            </div>
+            <button class="shopNav">Todos os itens</button>
+            <button class="shopNav">Skins</button>
+            <button class="shopNav">Modos de jogo</button>
+            <button class="shopNav">Mecânicas</button>
+            <button class="shopNav">Músicas/Audios</button>
+            <button class="shopNav bottomNav">Altear Skin</button>
+        </div>
+        <div class="shopTitle">
+            <h1>Todos os itens</h1>
+        </div>
+        <div class="shopItems">
+            <button class="shopBlock" id="femaleSkinPurchase">
+                <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
+            </button>
+            <button class="shopBlock" id="transpSkinPurchase">
+                <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
+            </button>
+            <button class="shopBlock" id="dogSkinPurchase">
+                <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
+            </button>
+            <button class="shopBlock" id="catSkinPurchase">
+                <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
+            </button>
+            <button class="shopBlock" id="classicModePurchase">
+                <img src="assets/img/sprites/shopItems/classicMode.gif" alt="classicMode">
+            </button>
+            <button class="shopBlock" id="mechaSkinPurchase">
+                <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
+            </button>
+            <button class="shopBlock" id="hdGhostPurchase">
+                <img src="assets/img/non-sprites/skins/HDGhost/Flying.gif" alt="HDGhostSkin">
+            </button>
         </div>
     </section>
 
@@ -758,6 +800,7 @@
     <script src="assets/js/duoClassic.js"></script>
     <script src="assets/js/selectScript.js"></script>
     <script src="assets/js/devKeys.js"></script>
+    <script src="assets/js/betaItems.js"></script>
 </body>
 
 </html>
