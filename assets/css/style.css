@@ -1667,10 +1667,11 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
+    z-index:2;
 }
 
 .shopTitle h1 {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .shopItems {
@@ -1679,12 +1680,25 @@ body {
     position: absolute;
     right: 5px;
     bottom: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-items: center;
     overflow-y: auto;
     padding-bottom: 20px;
+    box-sizing: border-box;
+    animation: appearShopItems .3s ease-out;
+}
+
+.itemDesc {
+    width: 82%;
+    height: 100%;
+    background-color: #191919aa;
+    backdrop-filter: blur(20px);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-top: 17%;
     box-sizing: border-box;
     animation: appearShopItems .3s ease-out;
 }
@@ -1714,7 +1728,7 @@ body {
 .shopItems .shopBlock {
     width: 270px;
     height: 270px;
-    background-color: #191919ee;
+    background-color: #191919aa;
     backdrop-filter: blur(20px);
     border-radius: 8px;
     border: 1px solid #191919;
@@ -2114,19 +2128,6 @@ body {
     border-radius: 4px;
 }
 
-.itemDesc {
-    width: 100%;
-    height: 19%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #191919;
-}
-
-.lightMode .itemDesc {
-    background-color: #f0f8ff;
-}
-
 .itemType {
     padding-left: 10px;
     display: flex;
@@ -2137,24 +2138,6 @@ body {
 
 .itemType p {
     font-size: 30px;
-}
-
-.itemDesc #prodPopup {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    padding: 5px;
-    margin: 0 20px;
-    background-color: #292929;
-    border: 1px solid #292929;
-    color: white;
-    font-size: 15px;
-    transition-duration: .3s;
-    border-radius: 20px;
-}
-
-.itemDesc #prodPopup:hover {
-    border-color: #0632FF;
 }
 
 .prodGM1 {
@@ -2170,12 +2153,14 @@ body {
     background-color: #A0B2FFaa;
     backdrop-filter: blur(10px);
     border-radius: 0 8px 8px 0;
+    z-index: 2
    
 }
 
 .sideBar .shopNav {
-    width: 90%;
+    width: 95%;
     font-size: 25px;
+    min-height: 60px;
     border-radius: 0 120px 120px 0;
     box-sizing: border-box;
     padding: 10px;
@@ -2199,27 +2184,39 @@ body {
 
 .sideBar .shopNav:active {
     background-color: #617df5;
+    transition-duration: .1s;
 }
 
 .alignSideBarItems {
     width: 100%;
     height: 40px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    padding: 0 20px 0 20px;
     align-items: center;
     margin: 20px 0;
+    position: relative;
 }
 
 .alignSideBarItems h1 {
     font-size: 40px;
+    position: absolute;
+    text-align: center;
+    width: 100%
 }
 
 .alignStardusts {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding-left: 20px;
     align-items: center;
     width: 100%;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .alignStardusts .stardustIcon {
