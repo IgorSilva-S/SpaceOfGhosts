@@ -3333,3 +3333,9 @@ body {
         height: 300px;
     }
 }
+
+/*HD Masks*/
+.hd .background {
+    background-image: url(../img/non-sprites/backgrounds/backgroundPureStarB.png);
+    filter: blur(7px);
+}

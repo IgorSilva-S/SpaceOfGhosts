@@ -407,3 +407,80 @@
 .hd .player {
     background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
 }
+
+.hd .playerPaused {
+    background-image: url(../img/non-sprites/skins/HDGhost/Stopped.png);
+}
+
+.hd .shield {
+    border-radius: 100%;
+}
+
+.hd .upping {
+    background-image: url(../img/non-sprites/skins/HDGhost/Upping.png);
+    animation-name: uppingGhostHD;
+    animation-duration: .58s;
+}
+
+@keyframes uppingGhostHD {
+    0% {
+        background-image: url(../img/non-sprites/skins/HDGhost/Upping.gif);
+    }
+
+    100% {
+        background-image: url(../img/non-sprites/skins/HDGhost/Upping.gif);
+    }
+}
+
+.hd .falling {
+    background-image: url(../img/non-sprites/skins/HDGhost/Falling.png);
+    animation-name: fallingGhostHD;
+    animation-duration: .8s;
+}
+
+@keyframes fallingGhostHD {
+    0% {
+        background-image: url(../img/non-sprites/skins/HDGhost/Falling.gif);
+    }
+
+    100% {
+        background-image: url(../img/non-sprites/skins/HDGhost/Falling.gif);
+    }
+}
+
+.hd .fire {
+    background-image: url(../img/non-sprites/skins/HDGhost/Fire.gif);
+}
+
+.hd .relaxing {
+    background-image: url(../img/non-sprites/skins/HDGhost/Relaxing.gif);
+    border-radius: 100%;
+}
+
+.hd .homeGhost1 {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+}
+
+.hd .ghostScore {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+}
+
+.hd .ghostWon {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+}
+
+.hd .ghostLose {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+}
+
+.hd .trail {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+}
+
+.hd .paused .trail {
+    background-image: url(../img/non-sprites/skins/HDGhost/Stopped.png);
+}
+
+.prodS4 {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+}
