@@ -406,10 +406,12 @@
 
 .hd .player {
     background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 .hd .playerPaused {
     background-image: url(../img/non-sprites/skins/HDGhost/Stopped.png);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 .hd .shield {
@@ -420,6 +422,7 @@
     background-image: url(../img/non-sprites/skins/HDGhost/Upping.png);
     animation-name: uppingGhostHD;
     animation-duration: .58s;
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 @keyframes uppingGhostHD {
@@ -436,6 +439,7 @@
     background-image: url(../img/non-sprites/skins/HDGhost/Falling.png);
     animation-name: fallingGhostHD;
     animation-duration: .8s;
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 @keyframes fallingGhostHD {
@@ -450,37 +454,46 @@
 
 .hd .fire {
     background-image: url(../img/non-sprites/skins/HDGhost/Fire.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 .hd .relaxing {
     background-image: url(../img/non-sprites/skins/HDGhost/Relaxing.gif);
     border-radius: 100%;
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 .hd .homeGhost1 {
     background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 .hd .ghostScore {
     background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 .hd .ghostWon {
     background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 .hd .ghostLose {
     background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 .hd .trail {
     background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
 .hd .paused .trail {
     background-image: url(../img/non-sprites/skins/HDGhost/Stopped.png);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
 
-.prodS4 {
+.prodHD {
     background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }
