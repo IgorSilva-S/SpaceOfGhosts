@@ -1767,6 +1767,27 @@ body {
     color: white;
 }
 
+.shopBuy {
+    transition-duration: .2s;
+}
+
+.shopBuy.getItem {
+    background-color: #0632FF;
+}
+
+.shopBuy.resetItem {
+    background-color: #e45258;
+}
+
+.shopBuy.resetItem:hover {
+    background-color: #fc9fa2;
+}
+
+
+.shopBuy.getItem:hover {
+    background-color: #798ee9;
+}
+
 .shopItems::-webkit-scrollbar {
     width: 6px;
 }
@@ -2228,7 +2249,7 @@ body {
     border-radius: 0 120px 120px 0;
     box-sizing: border-box;
     padding: 10px;
-    border: 1px solid #617df5;
+    border: none;
     border-left: none;
     margin-bottom: 10px;
     text-align: left;
