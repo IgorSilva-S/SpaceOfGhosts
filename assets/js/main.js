@@ -243,10 +243,7 @@ try {
     document.getElementById('skins').addEventListener("click", () => {
         pageType = 4.1
         shopPage.style.opacity = '0'
-        modeToSkinChanger = 'shop'
-        document.getElementById('scStars').style.display = 'none'
-        document.getElementById('scClouds').removeAttribute('style')
-        skinChangerPage.className = 'shopBckg'
+        document.getElementById('scStars')
         setTimeout(() => {
             shopPage.removeAttribute('style')
             skinChangerPage.style.display = 'block'

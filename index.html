@@ -530,13 +530,8 @@
             </div>
         </div>
     </section>-->
+ 
     <section id="shop">
-        <button id="shopHome" class="returnHome"></button>
-        <h1 style="text-align: center; padding-top: 30px;">Olá! Estamos trabalhando na nova versão! Esteja atento por novos commits!</h1>
-        <button onclick="betaShop()">Testar novo Design</button>
-        <button class="goSkin" id="skins" style="display: none;">Trocar a Skin</button>
-    </section>
-    <section id="betaShop">
         <div class="background">
 
         </div>
@@ -557,39 +552,36 @@
             <button class="shopNav">Modos de jogo</button>
             <button class="shopNav">Mecânicas</button>
             <button class="shopNav">Músicas/Audios</button>
-            <button class="shopNav bottomNav">Alterar Skin</button>
+            <button class="shopNav bottomNav" id="skins">Alterar Skin</button>
         </div>
         <div class="shopTitle">
             <h1>Todos os itens</h1>
         </div>
-        <div class="shopItems" style="display: none">
-            <button class="shopBlock" id="femaleSkinPurchase">
+        <div class="shopItems" id="shopItems">
+            <button class="shopBlock" id="femaleSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
             </button>
-            <button class="shopBlock" id="transpSkinPurchase">
+            <button class="shopBlock" id="transpSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
             </button>
-            <button class="shopBlock" id="dogSkinPurchase">
+            <button class="shopBlock" id="dogSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
             </button>
-            <button class="shopBlock" id="catSkinPurchase">
+            <button class="shopBlock" id="catSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
             </button>
-            <button class="shopBlock" id="classicModePurchase">
+            <button class="shopBlock" id="classicModePurchase" shopButton>
                 <img src="assets/img/sprites/shopItems/classicMode.gif" alt="classicMode">
             </button>
-            <button class="shopBlock" id="mechaSkinPurchase">
+            <button class="shopBlock" id="mechaSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
             </button>
-            <button class="shopBlock" id="hdGhostPurchase">
-                <img src="assets/img/non-sprites/skins/HDGhost/Flying.gif" alt="HDGhostSkin">
-            </button>
-            <button class="shopBlock"></button><button class="shopBlock"></button><button class="shopBlock"></button><button class="shopBlock"></button><button class="shopBlock"></button><button class="shopBlock"></button><button class="shopBlock"></button><button class="shopBlock"></button><button class="shopBlock"></button><button class="shopBlock"></button>
+
         </div>
-        <div class="itemDesc">
+        <div class="itemDesc" id="itemDesc" style="display: none">
             <div class="itemDetails">
                 <div class="itemImage">
-                    <img src="assets/img/sprites/animations/waving/waving.gif" alt="">
+                    <img src="assets/img/sprites/animations/waving/waving.gif" alt="" id="prodImage">
                 </div>
                 <div class="itemInfos">
                     <p type="itemName">Waving</p>
@@ -651,7 +643,6 @@
     </section>-->
     <section id="skinChanger">
         <h1 style="text-align: center; padding-top: 30px;">Olá! Estamos trabalhando na nova versão! Esteja atento por novos commits! <br> <br>Pressione F5 para recarregar</h1>
-        <div class="clouds" id="scClouds"></div>
         <div class="background" id="scStars">
     </section>
 
@@ -819,7 +810,7 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/solo.js"></script>
     <script src="assets/js/duoRun.js"></script>
-    <!--<script src="assets/js/shop&skins.js"></script>-->
+    <script src="assets/js/shop&skins.js"></script>
     <script src="assets/js/soloClassic.js"></script>
     <script src="assets/js/duoClassic.js"></script>
     <script src="assets/js/selectScript.js"></script>
