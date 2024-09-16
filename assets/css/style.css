@@ -678,6 +678,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     border: none;
+    z-index: 999;
 }
 
 .returnGame {
@@ -1796,7 +1797,6 @@ body {
     width: 270px;
     height: 270px;
     background-color: #191919aa;
-    backdrop-filter: blur(20px);
     border-radius: 8px;
     border: 1px solid #191919;
     box-sizing: border-box;
@@ -2030,15 +2030,15 @@ body {
     margin-bottom: 20px;
 }
 
-#skinChanger .backPage {
-    width: 100px;
-    height: 100px;
+.backPage {
+    width: 60px;
+    height: 60px;
     background-color: transparent;
-    background-image: url(../img/sprites/navButtons/white/backArrow.png);
+    background-image: url(../img/sprites/navButtons/black/backArrow.png);
     border: none;
     filter: drop-shadow(0px 0px 10px #000);
     z-index: 1000;
-    position: fixed;
+    background-size: cover;
 }
 
 
@@ -2049,19 +2049,19 @@ body {
 
 .ChoosedSkin {
     border: 1px solid orange;
-    background-color: orangered;
-    min-width: 300px;
-    min-height: 300px;
+    background-color: #ff450077;
     position: relative;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    margin: 0 20px;
     color: white;
     font-size: 15px;
     transition-duration: .5s;
     border-radius: 8px;
+    width: 270px;
+    height: 270px;
+    box-sizing: border-box;
 }
 
 .ChoosedSkin img {
@@ -2216,6 +2216,11 @@ body {
     align-items: center;
     margin: 20px 0;
     position: relative;
+    color: black;
+}
+
+.alignSideBarItems.skinChangerAlign {
+    margin-bottom: 60px;
 }
 
 .alignSideBarItems h1 {
@@ -2223,6 +2228,11 @@ body {
     position: absolute;
     text-align: center;
     width: 100%
+}
+
+.alignSideBarItems.skinChangerAlign h1 {
+    position: static;
+    margin-top: 10px;
 }
 
 .alignStardusts {
@@ -3293,4 +3303,13 @@ body {
 .hd .background {
     background-image: url(../img/non-sprites/backgrounds/backgroundPureStarB.png);
     filter: blur(7px);
+}
+
+.hd .earthCloud {
+    background-image: url(../img/non-sprites/backgrounds/settingsCloudsDark.png);
+    box-shadow: 10px 0 10px 10px #485b9e;
+}
+
+.hd #settings .earthCloud {
+    box-shadow: none;
 }

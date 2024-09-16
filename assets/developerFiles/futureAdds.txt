@@ -1,1 +1,4 @@
-Spatial mode - Bioms
+Game Mode - New Classic
+Game Mode - Story Mode (Electron only)
+Filter - HD
+Spatial Mode - Biomes

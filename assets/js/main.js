@@ -243,7 +243,7 @@ try {
     document.getElementById('skins').addEventListener("click", () => {
         pageType = 4.1
         shopPage.style.opacity = '0'
-        document.getElementById('scStars')
+        modeToSkinChanger = 'shop'
         setTimeout(() => {
             shopPage.removeAttribute('style')
             skinChangerPage.style.display = 'block'
@@ -254,9 +254,6 @@ try {
         pageType = 4.1
         gameMPage.style.opacity = '0'
         modeToSkinChanger = 'gameMode'
-        document.getElementById('scClouds').style.display = 'none'
-        document.getElementById('scStars').removeAttribute('style')
-        skinChangerPage.removeAttribute('class')
         setTimeout(() => {
             gameMPage.removeAttribute('style')
             skinChangerPage.style.display = 'block'
@@ -443,26 +440,7 @@ try {
     })
 
     soloClassicButton.addEventListener("click", () => {
-        if (canEnablePreviewItems && classicBuy == "true") {
-            pageType = 2.1
-            gameMPage.style.opacity = '0'
-            setTimeout(() => {
-                gameMPage.removeAttribute('style')
-                homeSong.pause()
-                homeSong.currentTime = 0
-                soloClassicLive = 6
-                makeSCScoreCounter()
-                checkLivesSoloClassic()
-                classicSoloPage.style.display = 'block'
-                soloClassicSong.play()
-                removeEnd()
-            }, 500);
-        } else {
-            alert(`Algo falta para esse modo ser jogado... Confira se você adquiriu esse modo na loja`)
-            if (!canEnablePreviewItems) {
-                console.log("canEnablePreviewItems = false. You can't use it now!")
-            }
-        }
+        console.log('Remember: Make the new version')
     })
 
     soloClassicButton2.addEventListener("click", () => {
