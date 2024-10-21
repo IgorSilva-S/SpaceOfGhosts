@@ -177,7 +177,7 @@ let pausedDClassic = false
 let p1CHSTimer = 0, p2CHSTimer = 0
 let p1CHS = false, p2CHS = false
 let p1CHSCounter = undefined, p2CHSCounter = undefined
-let modeToSkinChanger = undefined
+let modeToSkinChanger = undefined, shopBackType = 'default'
 
 //Shop PopUp
 const bckgPop = document.getElementById('blurShop')
@@ -245,6 +245,7 @@ let classicBuy = localStorage.getItem('classicPurchased')
 
 //Shop - Actual Item
 let actualShopItem = 0
+let shopButtons = document.querySelectorAll('[shopButton]')
 
 //DevKeys Variables
 const shutdownDevKeys = document.getElementById('disableDevKeys')

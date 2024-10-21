@@ -1,23 +1,52 @@
-let shopButtons = document.querySelectorAll('[shopButton]')
+document.getElementById('allStardusts').innerHTML = localStorage.getItem("money")
+
 shopButtons.forEach((i) => {
     i.addEventListener('click', () => {
         document.getElementById('shopItems').style.display = 'none'
         document.getElementById('itemDesc').removeAttribute('style')
+        document.getElementById('shopHome').className = 'backPage'
 
         let prodImage = document.getElementById('prodImage')
         let prodName = document.querySelector('[type="itemName"]')
         let prodType = document.querySelector('[type="itemType"]')
+        let prodValue = document.getElementById('itemStardust')
         let prodDesc = document.querySelector('[type="itemDesc"]')
         if (i.id == "femaleSkinPurchase") {
            prodImage.src = 'assets/img/sprites/skins/female/Flying.gif'
-           prodName.innerHTML = 'Feminina'
+           prodName.innerHTML = 'FemaleSkin Name'
+           prodValue.innerHTML = "300"
            prodType.innerHTML = 'Aparência/Skin'
-           prodDesc.innerHTML = 'As mulheres estão na área agora! Use seu gênero favorito para voar no espaço com essa skin'
+           prodDesc.innerHTML = 'Female Desc'
+        } else if (i.id == "transpSkinPurchase") {
+            prodImage.src = 'assets/img/sprites/skins/transpGhost/Flying.gif'
+            prodName.innerHTML = 'TranspGhost'
+            prodValue.innerHTML = "300"
+            prodType.innerHTML = 'Aparência/Skin'
+            prodDesc.innerHTML = 'Com essa poção de transparência, se torna muto mais difícil de ser localizado'
+        } else if (i.id == "dogSkinPurchase") {
+            prodImage.src = 'assets/img/sprites/skins/dogGhost/Flying.gif'
+            prodName.innerHTML = 'Cachorro Fantasma'
+            prodValue.innerHTML = "400"
+            prodType.innerHTML = 'Aparência/Skin'
+            prodDesc.innerHTML = 'Cachorros também podem ir para o espaço'
+        } else if (i.id == "catSkinPurchase") {
+            prodImage.src = 'assets/img/sprites/skins/catGhost/Flying.gif'
+            prodName.innerHTML = 'Gato Fantasma'
+            prodValue.innerHTML = "350"
+            prodType.innerHTML = 'Aparência/Skin'
+            prodDesc.innerHTML = 'Os gatos também podem ir para o espaço'
+        } else if (i.id == "mechaSkinPurchase") {
+            prodImage.src = 'assets/img/sprites/skins/mechaGhost/Flying.gif'
+            prodName.innerHTML = 'Mecha'
+            prodValue.innerHTML = "425"
+            prodType.innerHTML = 'Aparência/Skin'
+            prodDesc.innerHTML = 'A maior criação da comunidade Ghost, o Mecha Ghost, que consegue facilmente se comportar como um Ghost'
         }
+        shopBackType = 'back'
     })
 })
 
-//Old Skin Changer
+//Skin Changer
 s0b.addEventListener("click", () => {
     document.body.removeAttribute('class')
     localStorage.removeItem('actualSkin')

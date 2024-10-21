@@ -320,15 +320,22 @@ try {
     })
 
     document.getElementById('shopHome').addEventListener("click", () => {
-        pageType = 1
-        shopPage.style.opacity = '0'
-        setTimeout(() => {
-            shopPage.removeAttribute('style')
-            homePage.style.display = 'flex'
-            shopSong.pause()
-            shopSong.currentTime = 0
-            homeSong.play()
-        }, 500);
+        if (shopBackType == 'default') {
+            pageType = 1
+            shopPage.style.opacity = '0'
+            setTimeout(() => {
+                shopPage.removeAttribute('style')
+                homePage.style.display = 'flex'
+                shopSong.pause()
+                shopSong.currentTime = 0
+                homeSong.play()
+            }, 500);
+        } else {
+            document.getElementById('itemDesc').style.display = 'none'
+            document.getElementById('shopItems').removeAttribute('style')
+            document.getElementById('shopHome').className = 'returnHome'
+            shopBackType = 'default'
+        }
     })
 
     document.getElementById('settingsHome').addEventListener("click", () => {
