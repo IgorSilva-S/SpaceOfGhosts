@@ -13,6 +13,9 @@ window.onload = () => {
     //Game Version Catcher
     if (isPreview) {
         let publicVersion = `${previewType} ${gameVersion}`
+        if (isDevBranch) {
+            publicVersion = `${previewType} ${gameVersion} - Build date: ${lastDayOfChanges}`
+        }
         document.getElementById('homeVersion').innerText = publicVersion
         document.getElementById('gameModeVersion').innerText = publicVersion
     } else {

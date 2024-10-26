@@ -4,10 +4,11 @@
 const gameVersion = 'Branch'
 const isPreview = true
 const previewType = 'Dev'
-const lastDayOfChanges = '19/08/2024'
+const lastDayOfChanges = '25/10/2024'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = true
 let canLoad = true
+const isDevBranch = true
 
 const player = document.getElementById('ghost')
 let keysSolo = []
@@ -67,7 +68,7 @@ const shopPage = document.getElementById('shop')
 const skinChangerPage = document.getElementById('skinChanger')
 const settingsPage = document.getElementById('settings')
 const creditsPage = document.getElementById('credits')
-const classicSoloPage = document.getElementById('soloClassic')
+const soloRunnerPage = document.getElementById('soloRunner')
 const classicDuoPage = document.getElementById('duoClassic')
 const devKeysCentralPage = document.getElementById('devKeysCentral')
 //End Pages
@@ -90,6 +91,8 @@ const shopButton = document.getElementById('goShop')
 const settingsButton = document.getElementById('editSettings')
 const creditsButton = document.getElementById('viewCredits')
 const devKeysCentralButton = document.getElementById('devKeysEnter')
+const startButton = document.getElementById('startGame')
+let selectedGameMode = 1
 const soloButton = document.getElementById('soloPlay')
 const soloClassicButton = document.getElementById('soloClassicPlay')
 const soloButton2 = document.getElementById('SBsoloPlay')

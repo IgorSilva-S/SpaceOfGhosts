@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" id="html">
 
 <head>
     <meta charset="UTF-8">
@@ -52,24 +52,74 @@
 
     <!--Home-->
     <section id="homeScreen">
-        <div class="background">
-
-        </div>
-        <div class="earthCloud"></div>
-        <div class="homeGhost1" id="hgh1">
-
-        </div>
         <div class="alignHomeButtons" id="homeButtons">
             <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts" id="gameName">
             <button id="playGame">Jogar</button>
-            <button id="helpGame">Ajuda</button>
             <button id="goShop">Loja</button>
+            <button id="skinsGS">Skins</button>
             <button id="editSettings">Configurações</button>
+            <button id="helpGame" style="display: none">Ajuda</button>
             <button id="devKeysEnter" style="display: none">DevKeys Central</button>
             <button id="viewCredits">Créditos</button>
+
+            <div class="version" id="homeVersion">
+                gameVersion
+            </div>
         </div>
-        <div class="version" id="homeVersion">
-            gameVersion
+        <div class="alignHomeButtons" id="gameButtons" style="margin-left: -40%; display: none;">
+            <div class="alignHomeTitles">
+                <div class="lBackPage" id="GMRHome">
+
+                </div>
+                <h1>Selecione o seu modo</h1>
+            </div>
+            <button id="spatialMode">
+                Espacial: Infinito
+            </button>
+            <button id="runnerMode" style="display: none;">
+                Corredor: Infinito
+            </button>
+            <div class="playGame" id="playPopup">
+                <div class="playersContainer">
+                    <p>Quantidade de jogadores</p>
+                    <div>
+                        <input type="radio" name="players" id="onePlayer">
+                        <label for="onePlayer">Um jogador</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="players" id="twoPlayers">
+                        <label for="twoPlayers">Dois jogadores</label>
+                    </div>
+                </div>
+
+                <button class="startGame" id="startGame">
+                    Iniciar partida
+                </button>
+            </div>
+        </div>
+        <div class="homeAnimation" id="homeAnimation">
+            <div id="spatialModeAnimation">
+                <div class="background">
+
+                </div>
+                <div class="earthCloud"></div>
+                <div class="homeGhost1" id="hgh1">
+
+                </div>
+                <div class="homeGhost2" id="hgh2"></div>
+            </div>
+
+            <div id="runnerModeAnimation" style="display: none;">
+                <div class="clouds"></div>
+                <div class="classicSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
+                <div class="classicSoil"></div>
+                <div class="runningGhost1"></div>
+                <div class="runningGhost2"></div>
+            </div>
+
+            <div class="interference" id="interferenceAnim" style="display: none">
+
+            </div>
         </div>
     </section>
 
@@ -78,9 +128,7 @@
         <div class="background">
 
         </div>
-        <button class="returnHome" id="GMRHome">
 
-        </button>
         <h1>Escolha o seu modo</h1>
         <div class="cusSelAlign">
             <div class="custom-select" id="gameModeDiv" style="display: none">
@@ -275,40 +323,11 @@
     </section>
 
     <!--Solo Mode: Classic-->
-    <section id="soloClassic">
+    <section id="soloRunner">
         <div class="clouds" id="classicClouds"></div>
         <div class="classicSoil"></div>
         <div class="player" id="classicPlayer"></div>
         <div id="classicLifes" class="hearts"></div>
-        <div class="crystal cType2" id="cr1"></div>
-        <div class="crystal cType6" id="cr2"></div>
-        <div class="crystal cType1" id="cr3"></div>
-        <div class="crystal cType5" id="cr4"></div>
-        <div class="scoreSoloClassic" id="scoreSC">
-            <h1>Pontuação: Clássico</h1>
-            Pontuação: <span id="soloClassicScore">0</span> <br>
-            Melhor Pontuação: <span id="soloClassicBestScore">0</span> <br>
-            <div class="newHigh" id="soloClassicHighAlert">Nova Melhor pontuação</div>
-            Stardusts: <span id="soloClassicPlusMoney">0</span> <br>
-            <div class="goButtons">
-                <button id="soloClassicHome">Ir para o início</button>
-                <button id="soloClassicGame">Começar novamente</button>
-            </div>
-        </div>
-        <div class="pauseContainer" id="soloCPauseBCKG">
-            <div class="pauseAlert" id="soloCPauseGui">
-                <div class="pauseAnim"></div>
-                <div class="pauseText">Pause</div>
-                <div class="classicInfos">
-                    Pontuação atual: <span id="actualScore">0</span><br>
-                    Maior pontuação: <span id="bestScoreClassic">0</span><br>
-                    Pronto para voo: <span id="canFly">Sim</span>
-                </div>
-                <button id="backSoloClassic">Voltar para seleção de modo</button>
-                <button id="resetSoloClassic">Reiniciar Jogo</button>
-                <button id="devKeysSoloClassic">Abrir DevKeys</button>
-            </div>
-        </div>
     </section>
 
     <!--Duo Mode: Espatial-->
@@ -531,7 +550,7 @@
             </div>
         </div>
     </section>-->
- 
+
     <section id="shop">
         <div class="background">
 
@@ -596,7 +615,8 @@
                     </div>
                 </div>
             </div>
-            <p class="itemDescription" type="itemDesc">Uma animação do Ghost acenando... Nos causa um dejá-vu certo? Parece que ele já esteve em uma tela famíliar</p>
+            <p class="itemDescription" type="itemDesc">Uma animação do Ghost acenando... Nos causa um dejá-vu certo?
+                Parece que ele já esteve em uma tela famíliar</p>
             <div class="alignBuyButtons">
                 <button class="shopBuy getItem">Adquirir</button>
                 <button class="shopBuy resetItem">Reembolsar</button>
@@ -649,15 +669,14 @@
                 <button class="backPage" id="returnShop"></button>
                 <h1>Skin</h1>
             </div>
-           
-            <button class="shopNav">Todos os Jogadores</button>
-            <button class="shopNav">Jogador 1</button>
+
+            <button class="shopNav">Todos os Jogadores / Jogador 1</button>
             <button class="shopNav">Jogador 2</button>
             <button class="shopNav bottomNav" id="skins">Ir para Loja</button>
         </div>
 
         <div class="shopTitle">
-            <h1>Todos os Jogadores</h1>
+            <h1>Todos os Jogadores / Jogador 1</h1>
         </div>
 
         <div class="shopItems">
@@ -710,24 +729,18 @@
             </div>
             <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, alterar o volume com a tecla
                 V e abrir o Controle de Som rápido ao clicar F1</span>
-            <div class="alignSetting">
+            <div class="alignSetting" style="display: none">
                 <label for="invertCursor">Alterar cor do Cursor</label>
                 <input type="checkbox" name="" id="invertCursor">
             </div>
             <div class="alignSetting">
-                <label for="simpleLightMode">Tema Claro</label>
+                <label for="simpleLightMode">Tema Claro (Beta)</label>
                 <input type="checkbox" name="" id="simpleLightMode">
             </div>
             <div class="alignSetting" style="display: none;">
                 <label for="altPause">Menu de pausa alternatvo (Modos solo)</label>
                 <input type="checkbox" name="" id="altPause">
             </div>
-            <span style="display: none">O Tema Claro Altera:</span>
-            <ul style="display: none">
-                <li>Confugurações;</li>
-                <li>PopUp da Loja e;</li>
-                <li>Página de Início.</li>
-            </ul>
             <div class="alignSetting">
                 <label for="invertColor">Inverter Cores</label>
                 <input type="checkbox" name="" id="invertColor">
@@ -739,8 +752,8 @@
                         src="assets/img/sprites/navButtons/white/externalWebsite.png" alt="Ir para GitHub"></a>
             </div>
             <div class="alignSetting">
-                Sound Test (Beta)
-                <a href="soundTest.html" title="Sound Test (Beta)"><img
+                Sound Test
+                <a href="soundTest.html" title="Sound Test"><img
                         src="assets/img/sprites/navButtons/white/externalWebsite.png" alt="Go To Sound Test"></a>
             </div>
             <div class="alignSetting">

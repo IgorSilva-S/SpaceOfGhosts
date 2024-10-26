@@ -234,7 +234,7 @@ document.getElementById('backInf').addEventListener("click", () => {
     setTimeout(() => {
         soloPage.removeAttribute('style')
         soloPage.style.display = 'none'
-        gameMPage.style.display = 'flex'
+        homePage.style.display = 'flex'
         homeSong.play()
         homeSong.currentTime = 0
         if (acceleratorP1) {
@@ -293,7 +293,7 @@ document.getElementById('retHomeSolo').addEventListener("click", () => {
     setTimeout(() => {
         soloPage.removeAttribute('style')
         soloPage.style.display = 'none'
-        gameMPage.style.display = 'flex'
+        homePage.style.display = 'flex'
         homeSong.play()
         homeSong.currentTime = 0
         if (acceleratorP1) {

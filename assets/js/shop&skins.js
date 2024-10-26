@@ -17,30 +17,35 @@ shopButtons.forEach((i) => {
            prodValue.innerHTML = "300"
            prodType.innerHTML = 'Aparência/Skin'
            prodDesc.innerHTML = 'Female Desc'
+           actualShopItem = 1
         } else if (i.id == "transpSkinPurchase") {
             prodImage.src = 'assets/img/sprites/skins/transpGhost/Flying.gif'
             prodName.innerHTML = 'TranspGhost'
             prodValue.innerHTML = "300"
             prodType.innerHTML = 'Aparência/Skin'
             prodDesc.innerHTML = 'Com essa poção de transparência, se torna muto mais difícil de ser localizado'
+            actualShopItem = 2
         } else if (i.id == "dogSkinPurchase") {
             prodImage.src = 'assets/img/sprites/skins/dogGhost/Flying.gif'
             prodName.innerHTML = 'Cachorro Fantasma'
             prodValue.innerHTML = "400"
             prodType.innerHTML = 'Aparência/Skin'
             prodDesc.innerHTML = 'Cachorros também podem ir para o espaço'
+            actualShopItem = 3
         } else if (i.id == "catSkinPurchase") {
             prodImage.src = 'assets/img/sprites/skins/catGhost/Flying.gif'
             prodName.innerHTML = 'Gato Fantasma'
             prodValue.innerHTML = "350"
             prodType.innerHTML = 'Aparência/Skin'
             prodDesc.innerHTML = 'Os gatos também podem ir para o espaço'
+            actualShopItem = 4
         } else if (i.id == "mechaSkinPurchase") {
             prodImage.src = 'assets/img/sprites/skins/mechaGhost/Flying.gif'
             prodName.innerHTML = 'Mecha'
             prodValue.innerHTML = "425"
             prodType.innerHTML = 'Aparência/Skin'
             prodDesc.innerHTML = 'A maior criação da comunidade Ghost, o Mecha Ghost, que consegue facilmente se comportar como um Ghost'
+            actualShopItem = 5
         }
         shopBackType = 'back'
     })
@@ -141,11 +146,11 @@ document.getElementById('returnShop').addEventListener("click", () => {
             skinChangerPage.removeAttribute('style')
             shopPage.style.display = 'block'
         }, 500);
-    } else if (modeToSkinChanger == 'gameMode') {
+    } else if (modeToSkinChanger == 'homePage') {
         pageType = 1.1
         setTimeout(() => {
             skinChangerPage.removeAttribute('style')
-            gameMPage.style.display = 'flex'
+            homePage.style.display = 'flex'
         }, 500);
     }
 })

@@ -2,7 +2,7 @@ document.getElementById('retHome').addEventListener('click', () => {
     duoRunPage.style.opacity = '0'
     setTimeout(() => {
         duoRunPage.removeAttribute('style')
-        gameMPage.style.display = 'flex'
+        homePage.style.display = 'flex'
         duoRSong.currentTime = 0
         homeSong.currentTime = 0
         P1DRShieldSlot = 0

@@ -17,7 +17,7 @@ const reloadButton = document.getElementById('reloadButton')
 const homeSong = document.getElementById('homeSong') // by Artificial Music - Alone Two Days Ago
 const song = document.getElementById('soloSong') // by Prod. Riddiman - Deep Space
 const duoRSong = document.getElementById('duoRunSong') // by After The Fall - Pieces
-const shopSong = document.getElementById('shopSong') // by dyu / Official by Nintendo - Nintendo eShop
+const shopSong = document.getElementById('shopSong') // by Snivys / Official by Nintendo - Boutique (Pokémon X and Y)
 const settingsSong = document.getElementById('settingsSong') // by dyu / Official by Nintendo - Nintendo 3DS Internet Settings
 const creditsSong = document.getElementById('creditsSong') // by After The Fall - Winter Lights
 const soloClassicSong = document.getElementById('soloClassicSong') // by Chillpeach - 2:00 AM
@@ -111,10 +111,10 @@ function checkSong() {
         songName.innerText = 'Pieces - Duo Normal'
         songCredit.innerText = 'After The Fall'
     } else if (soundId == 3) {
-        songName.innerText = 'Nintendo eShop (Lofi) - Loja'
-        songCredit.innerText = 'dyu/Nintendo'
+        songName.innerText = 'Boutique - Pokémon X and Y (LoFi)'
+        songCredit.innerText = 'Snivys/Nintendo'
     } else if (soundId == 4) {
-        songName.innerText = 'Nintendo 3DS Config. Internet (Lofi) - Configurações'
+        songName.innerText = 'Nintendo 3DS Config. Internet (LoFi) - Configurações'
         songCredit.innerText = 'dyu/Nintendo'
     } else if (soundId == 5) {
         songName.innerText = 'Winter Lights - Créditos'

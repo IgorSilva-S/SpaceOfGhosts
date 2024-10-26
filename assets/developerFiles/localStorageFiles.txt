@@ -19,7 +19,7 @@ soloSlots
 -> Default: false
 -> What does this key change?: Enable/Disable the keep items in slot for solo game
 
-changedCursor
+changedCursor (deprecated)
 -> Values: true or false
 -> Default: false
 -> What does this key change?: Change cursor style, for true, the cursor will be light, for false, the cursor will be black

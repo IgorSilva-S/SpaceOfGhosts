@@ -526,6 +526,103 @@ body {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
+    background-color: #000512;
+}
+
+.lightMode #homeScreen {
+    background-color: rgb(177, 177, 255);
+}
+
+.homeAnimation {
+    width: 55%;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    right: 2.5%;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #0632ff;
+    background-color: #000;
+}
+
+#spatialModeAnimation {
+    background-color: #000;
+}
+
+#runnerModeAnimation {
+    background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.interference {
+    background-image: url(../img/non-sprites/backgrounds/interference.gif);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.playGame {
+    width: 40%;
+    position: absolute;
+    bottom: -140px;
+    left: 1.1%;
+    background-color: #191919;
+    height: 120px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+    transition-duration: .3s;
+}
+
+.lightMode .playGame {
+    background-color: #c9c9c9;
+    color: black;
+}
+
+.playersContainer p {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.playersContainer div {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    align-items: center;
+}
+
+.playersContainer input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #000;
+    transition-duration: .2s;
+}
+
+.lightMode .playersContainer input[type="radio"] {
+    background-color: #fff;
+}
+
+.playersContainer input[type="radio"]:checked {
+    border: 3px solid #0632ff
+}
+
+.alignHomeButtons .playGame .startGame {
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 120px;
+    margin-left: 0;
+    box-sizing: border-box;
+}
+
+.alignHomeButtons .playGame .startGame:hover {
+    margin-left: 0;
+    border: 1px solid #0632ff
 }
 
 #homeScreen img {
@@ -540,6 +637,10 @@ body {
     filter: drop-shadow(0px 0px 10px #fff);
 }
 
+.lightMode #homeScreen img {
+    filter: invert(100%);
+}
+
 @keyframes appearPages {
     from {
         opacity: 0;
@@ -550,7 +651,21 @@ body {
     }
 }
 
-#homeScreen button {
+.alignHomeButtons {
+    width: 40%;
+    height: 100%;
+    gap: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    z-index: 2;
+    overflow: auto;
+    padding: 20px 0;
+    transition-duration: .3s;
+    margin-left: 0px;
+}
+
+.alignHomeButtons button {
     padding: 20px;
     font-size: 20px;
     border-radius: 0 20px 20px 0;
@@ -563,22 +678,40 @@ body {
     margin-left: -40px;
 }
 
-.lightMode #homeScreen button {
+.lightMode .alignHomeButtons button {
     background-color: #d9d9d9;
     border: 1px solid #d0d0d0;
     color: black;
 }
 
-.alignHomeButtons {
-    width: 40%;
-    height: 100%;
-    gap: 20px;
+.alignHomeButtons button:hover {
+    margin-left: -10px;
+}
+
+.alignHomeTitles {
+    width: 90%;
+    padding: 20px 10px;
+    font-size: 25px;
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    z-index: 2;
-    overflow: auto;
-    padding-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lightMode .alignHomeTitles {
+    color: black;
+}
+
+.alignHomeTitles div {
+    width: 60px;
+    height: 60px;
+}
+
+#homeButtons {
+    margin-top: 300px;
+}
+
+#gameButtons {
+    padding-bottom: 150px;
 }
 
 .alignHomeButtons::-webkit-scrollbar {
@@ -587,11 +720,10 @@ body {
 
 #gameName {
     align-self: center;
+    position: fixed;
+    top: 0;
 }
 
-#homeScreen button:hover {
-    margin-left: -10px;
-}
 
 #homeScreen .background {
     z-index: 0;
@@ -617,7 +749,17 @@ body {
     color: white;
 }
 
-.homeGhost1 {
+.lightMode .version {
+    color: black;
+}
+
+#homeScreen .version {
+    position: initial;
+    margin-left: 10px;
+}
+
+.homeGhost1,
+.homeGhost2 {
     width: 100px;
     height: 100px;
     background-image: url(../img/sprites/skins/normal/Flying.gif);
@@ -627,11 +769,130 @@ body {
     position: absolute;
     top: 10%;
     border-radius: 100%;
-    animation: floatHome 10s linear infinite;
     transition-duration: .2s;
 }
 
-.totalCollision .homeGhost1 {
+.runningGhost1,
+.runningGhost2 {
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    position: absolute;
+    border-radius: 100%;
+    transition-duration: .2s;
+    left: 1%;
+}
+
+.runningGhost1 {
+    top: 80%;
+    animation: running1 10s linear infinite;
+}
+
+.runningGhost2 {
+    top: 63%;
+    animation: running2 10s linear infinite;
+}
+
+@keyframes running1 {
+    0% {
+        left: 0;
+    }
+
+    10% {
+        left: 20%;
+        top: 80%;
+    }
+
+    11% {
+        top: 63%;
+    }
+
+    30% {
+        top: 63%;
+        left: 40%;
+    }
+
+    31% {
+        top: 80%;
+    }
+
+    60% {
+        left: 40%;
+    }
+
+    79% {
+        left: 40%;
+        rotate: 0deg;
+        background-image: url(../img/sprites/skins/normal/Flying.gif);
+    }
+
+    80% {
+        rotate: 90deg;
+        left: 40%;
+        background-image: url(../img/sprites/skins/normal/Stopped.png);
+    }
+
+    90% {
+        rotate: 90deg;
+        left: 1%;
+        background-image: url(../img/sprites/skins/normal/Stopped.png);
+    }
+
+    91% {
+        left: 1%;
+        rotate: 0deg;
+        background-image: url(../img/sprites/skins/normal/Flying.gif);
+    }
+}
+
+@keyframes running2 {
+    0% {
+        left: 0;
+    }
+
+    10% {
+        top: 63%;
+    }
+
+    11% {
+        top: 80%;
+    }
+
+    30% {
+        top: 80%;
+        left: 80%;
+    }
+
+    31% {
+        top: 63%;
+    }
+
+    60% {
+        left: 40%;
+    }
+
+    79% {
+        left: 20%;
+    }
+
+    91% {
+        left: 1%;
+    }
+}
+
+.homeGhost1 {
+    animation: floatHome 10s linear infinite;
+}
+
+.homeGhost2 {
+    animation: floatHome2 8s linear infinite;
+}
+
+.totalCollision .homeGhost1,
+.totalCollision .homeGhost2 {
     border: 1px solid #888
 }
 
@@ -682,6 +943,55 @@ body {
         left: 120%
     }
 }
+
+@keyframes floatHome2 {
+    0% {
+        top: 40%;
+        left: -130px;
+    }
+
+    10% {
+        top: 30%
+    }
+
+    20% {
+        top: 10%;
+    }
+
+    30% {
+        top: 50%;
+    }
+
+    40% {
+        top: 30%;
+    }
+
+    50% {
+        top: 2%;
+    }
+
+    60% {
+        top: 15%;
+    }
+
+    70% {
+        top: 40%;
+    }
+
+    80% {
+        top: 50%;
+    }
+
+    90% {
+        top: 30%;
+    }
+
+    100% {
+        top: 20%;
+        left: 120%
+    }
+}
+
 
 .roundHome {
     rotate: 180deg
@@ -1385,6 +1695,7 @@ body {
     transition-duration: .5s;
     justify-content: flex-start;
     align-items: center;
+    background-size: cover;
     flex-direction: row;
 }
 
@@ -1670,6 +1981,11 @@ body {
     z-index:2;
 }
 
+.lightMode .shopTitle {
+    background-color: #d9d9d9dd;
+    color: black;
+}
+
 .shopTitle h1 {
     font-size: 40px;
 }
@@ -1703,6 +2019,11 @@ body {
     animation: appearShopItems .3s ease-out;
 }
 
+.lightMode .itemDesc {
+    background-color: #d9d9d9aa;
+    color: black;
+}
+
 .itemDetails {
     display: flex;
     box-sizing: border-box;
@@ -1712,6 +2033,10 @@ body {
     margin-left: 30px;
     color: white;
 }
+
+.lightMode .itemDetails {
+    color: black;
+} 
 
 .itemImage {
     width: 300px;
@@ -1747,6 +2072,10 @@ body {
     text-wrap: wrap;
     margin-left: 70px;
     width: 90%;
+}
+
+.lightMode .itemDescription {
+    color: black;
 }
 
 .alignBuyButtons {
@@ -1816,7 +2145,11 @@ body {
     border: 1px solid #191919;
     box-sizing: border-box;
     transition-duration: .2s;
+}
 
+.lightMode .shopItems .shopBlock {
+    background-color: #d9d9d9aa;
+    border-color: #d9d9d9;
 }
 
 .shopItems .shopBlock:hover {
@@ -1973,15 +2306,15 @@ body {
     transition-duration: .2s;
 }
 
-.lightMode #transpSkinPurchase:hover {
-    background-color: #252525;
+/*.lightMode #transpSkinPurchase:hover {
+    background-color: #252525aa;
     border: 1px solid #d0d0d0;
     color: white;
 }
 
 .lightMode #transpSkinPurchase:hover img {
     filter: none;
-}
+}*/
 
 .items .Sitem:hover {
     border-color: #0632ff;
@@ -2054,6 +2387,20 @@ body {
     filter: drop-shadow(0px 0px 10px #000);
     z-index: 1000;
     background-size: cover;
+}
+
+.lBackPage {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    background-image: url(../img/sprites/navButtons/white/backArrow.png);
+    border: none;
+    z-index: 1000;
+    background-size: cover;
+}
+
+.lightMode .lBackPage {
+    background-image: url(../img/sprites/navButtons/black/backArrow.png);
 }
 
 
@@ -2196,12 +2543,14 @@ body {
     border-radius: 0 120px 120px 0;
     box-sizing: border-box;
     padding: 10px;
+    padding-left: 20px;
     border: none;
     border-left: none;
     margin-bottom: 10px;
     text-align: left;
     background-color: #A0B2FF77;
     transition-duration: .2s;
+    margin-left: -10px;
 }
 
 .sideBar .shopNav.bottomNav {
@@ -2211,11 +2560,11 @@ body {
 }
 
 .sideBar .shopNav:hover {
-    background-color: #A0B2FF;
+ margin-left: 0;;
 }
 
 .sideBar .shopNav:active {
-    background-color: #617df5;
+    background-color: #A0B2FF;
     transition-duration: .1s;
 }
 
@@ -2614,8 +2963,7 @@ body {
     font-size: 30px;
 }
 
-/*R 1.0*/
-#soloClassic {
+#soloRunner {
     width: 100vw;
     height: 100vh;
     display: none;
@@ -2629,25 +2977,25 @@ body {
     width: 3840px;
     height: 125px;
     background-image: url(../img/sprites/background/Soil.png);
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     animation: moveBckg 5s linear infinite;
 }
 
-#soloClassic .clouds {
+#soloRunner .clouds {
     top: -150px;
     background-image: url(../img/sprites/background/cloudsBckg.png);
 }
 
-#soloClassic .player,
+#soloRunner .player,
 #duoClassic .player {
     top: auto;
     bottom: 50px;
     left: 100px;
 }
 
-#soloClassic .crystal,
+#soloRunner .crystal,
 #duoClassic .crystal {
     background-position: center;
     background-size: cover;
@@ -2758,7 +3106,7 @@ body {
     height: 50px;
 }
 
-#soloClassic .hearts,
+#soloRunner .hearts,
 #duoClassic .hearts {
     top: 5px;
     left: 5px;
