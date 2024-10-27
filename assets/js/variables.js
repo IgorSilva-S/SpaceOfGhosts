@@ -4,7 +4,7 @@
 const gameVersion = 'Branch'
 const isPreview = true
 const previewType = 'Dev'
-const lastDayOfChanges = '25/10/2024'
+const lastDayOfChanges = '26/10/2024'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = true
 let canLoad = true
@@ -182,8 +182,8 @@ let p1CHS = false, p2CHS = false
 let p1CHSCounter = undefined, p2CHSCounter = undefined
 let modeToSkinChanger = undefined, shopBackType = 'default'
 
-//Shop PopUp
-const bckgPop = document.getElementById('blurShop')
+//Shop PopUp - Deprecated (Only for learning)
+/*const bckgPop = document.getElementById('blurShop')
 const PUShop = document.getElementById('confPurch')
 const iName = document.getElementById('iName')
 const aDesc = document.getElementById('aDesc')
@@ -191,7 +191,7 @@ const iValue = document.getElementById('itemValue')
 const aMoney = document.getElementById('actualMoney')
 let prodImg = document.getElementById('pImg')
 const CB1 = document.getElementById('SPPB1')
-const CB2 = document.getElementById('SPPB2')
+const CB2 = document.getElementById('SPPB2')*/
 
 //Solo Meteors
 const meteor1 = document.getElementById('m1')
@@ -221,7 +221,6 @@ let P1WTC1, P1WTC2, P1WTC3, P1WTC4, P1WTC5, P2WTC1, P2WTC2, P2WTC3, P2WTC4, P2WT
 //Responsivity Meteors
 const screenWidth = screen.width
 
-
 //Classic Solo Crystals
 const crystal1 = document.getElementById('cr1')
 const crystal2 = document.getElementById('cr2')
@@ -235,6 +234,20 @@ const s1b = document.getElementById('cs1')
 const s2b = document.getElementById('cs2')
 const s3b = document.getElementById('cs3')
 const s4b = document.getElementById('cs4')
+const s5b = document.getElementById('cs5')
+const s6b = document.getElementById('cs6')
+const noneSkin2 = document.getElementById('noneSecond')
+const s0b2 = document.getElementById('Scs0')
+const sAb2 = document.getElementById('ScsA')
+const s1b2 = document.getElementById('Scs1')
+const s2b2 = document.getElementById('Scs2')
+const s3b2 = document.getElementById('Scs3')
+const s4b2 = document.getElementById('Scs4')
+const s5b2 = document.getElementById('Scs5')
+const s6b2 = document.getElementById('Scs6')
+
+// Player 2 Screen to change skin
+const p2ScreenSpatial = document.getElementById('p2Screen')
 
 //Skin purchased checker
 let skinABuy = localStorage.getItem('purchasedA')
@@ -242,6 +255,8 @@ let skin1Buy = localStorage.getItem('purchased1')
 let skin2Buy = localStorage.getItem('purchased2')
 let skin3Buy = localStorage.getItem('purchased3')
 let skin4Buy = localStorage.getItem('purchased4')
+let skin5Buy = localStorage.getItem('purchased5')
+let skin6Buy = localStorage.getItem('purchased6')
 
 //Game Mode purchased checker
 let classicBuy = localStorage.getItem('classicPurchased')

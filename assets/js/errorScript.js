@@ -14,8 +14,6 @@ function mainAlertError() {
     skinChangerPage.style.display = 'none'
     settingsPage.style.display = 'none'
     creditsPage.style.display = 'none'
-    classicSoloPage.style.display = 'none'
-    classicDuoPage.style.display = 'none'
     devKeysCentralPage.style.display = 'none'
     document.getElementById('loadingPage').removeAttribute('style')
     errBox.style.display = 'flex'
@@ -50,8 +48,6 @@ setInterval(() => {
         skinChangerPage.style.display = 'none'
         settingsPage.style.display = 'none'
         creditsPage.style.display = 'none'
-        classicSoloPage.style.display = 'none'
-        classicDuoPage.style.display = 'none'
         devKeysCentralPage.style.display = 'none'
         document.getElementById('loadingPage').removeAttribute('style')
         errBox.style.display = 'flex'

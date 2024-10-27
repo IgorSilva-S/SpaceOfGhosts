@@ -959,7 +959,7 @@ body {
     }
 
     30% {
-        top: 50%;
+        top: 20%;
     }
 
     40% {
@@ -995,6 +995,10 @@ body {
 
 .roundHome {
     rotate: 180deg
+}
+
+.flipHome {
+    transform: scaleX(-1);
 }
 
 .returnHome {
@@ -1907,13 +1911,13 @@ body {
 
 .duoRunScore {
     width: 50%;
+    margin: 0 25%;
     padding: 10px 5px 5px 5px;
-    border-radius: 8px;
-    position: fixed;
-    left: calc(50% - 25%);
-    top: 50px;
+    position: absolute;
+    top: 5%;
     background-color: #444a;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
     color: white;
 }
 
@@ -3315,7 +3319,7 @@ body {
 }
 
 .lightMode .keysEditor {
-    background-color: #d9d9d977;
+    background-color: #d9d9d9aa;
     color: black;
 }
 

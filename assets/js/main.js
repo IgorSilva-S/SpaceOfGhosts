@@ -96,20 +96,58 @@ try {
     if (skinTypo != undefined) {
       document.body.className = skinTypo;
       if (skinTypo == "sA") {
-        s0b.className = "Sitem";
+        s0b.className = "shopBlock";
         sAb.className = "ChoosedSkin";
       } else if (skinTypo == "s1") {
-        s0b.className = "Sitem";
+        s0b.className = "shopBlock";
         s1b.className = "ChoosedSkin";
       } else if (skinTypo == "s2") {
-        s0b.className = "Sitem";
+        s0b.className = "shopBlock";
         s2b.className = "ChoosedSkin";
       } else if (skinTypo == "s3") {
-        s0b.className = "Sitem";
+        s0b.className = "shopBlock";
         s3b.className = "ChoosedSkin";
       } else if (skinTypo == "s4") {
-        s0b.className = "Sitem";
+        s0b.className = "shopBlock";
         s4b.className = "ChoosedSkin";
+      } else if (skinTypo == "s5") {
+        s0b.className = "shopBlock";
+        s5b.className = "ChoosedSkin";
+      } else if (skinTypo == "s6") {
+        s0b.className = "shopBlock";
+        s6b.className = "ChoosedSkin";
+      }
+    }
+  }
+
+  function skinChangerP2() {
+    let skinTypo = localStorage.getItem("actualP2Screen");
+    if (skinTypo != undefined) {
+      p2ScreenSpatial.setAttribute("class", `playerScreen player2Screen ${skinTypo}`);
+      if (skinTypo == "s0") {
+        noneSkin2.className = "shopBlock";
+        s0b2.className = "ChoosedSkin";
+      } else if (skinTypo == "sA") {
+        noneSkin2.className = "shopBlock";
+        sAb2.className = "ChoosedSkin";
+      } else if (skinTypo == "s1") {
+        noneSkin2.className = "shopBlock";
+        s1b2.className = "ChoosedSkin";
+      } else if (skinTypo == "s2") {
+        noneSkin2.className = "shopBlock";
+        s2b2.className = "ChoosedSkin";
+      } else if (skinTypo == "s3") {
+        noneSkin2.className = "shopBlock";
+        s3b2.className = "ChoosedSkin";
+      } else if (skinTypo == "s4") {
+        noneSkin2.className = "shopBlock";
+        s4b2.className = "ChoosedSkin";
+      } else if (skinTypo == "s5") {
+        noneSkin2.className = "shopBlock";
+        s5b2.className = "ChoosedSkin";
+      } else if (skinTypo == "s6") {
+        noneSkin2.className = "shopBlock";
+        s6b2.className = "ChoosedSkin";
       }
     }
   }
@@ -195,6 +233,7 @@ try {
   organizeSound();
   enableOldControls();
   skinChanger();
+  skinChangerP2();
   enableSoloSlots();
   organizeCursor();
   organizeColor();
@@ -332,6 +371,7 @@ try {
     pageType = 7;
     homePage.style.opacity = "0";
     setTimeout(() => {
+      refreshPane()
       homePage.removeAttribute("style");
       devKeysCentralPage.style.display = "block";
       homeSong.pause();
@@ -1708,6 +1748,13 @@ try {
     document.getElementById("hgh1").classList.add("roundHome");
     setTimeout(() => {
       document.getElementById("hgh1").classList.remove("roundHome");
+    }, 5000);
+  });
+
+  document.getElementById("hgh2").addEventListener("click", () => {
+    document.getElementById("hgh2").classList.add("flipHome");
+    setTimeout(() => {
+      document.getElementById("hgh2").classList.remove("flipHome");
     }, 5000);
   });
   //End Easter Egg Home

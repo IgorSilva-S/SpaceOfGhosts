@@ -375,7 +375,7 @@
                 <div class="hearts" id="dRunP1Live"></div>
             </div>
         </div>
-        <div class="playerScreen player2Screen">
+        <div class="playerScreen player2Screen" id="p2Screen">
             <div class="p2KM" id="p2KM"></div>
             <div class="player" id="player2Run">
                 <div class="inv" id="InvP2R"></div>
@@ -423,20 +423,22 @@
         <div class="clouds"></div>
         <div class="duoRunScore">
             <h1>Jogador <span id="playerNum">0</span> Vence a partida</h1>
-            <div>Soma dos boosts do jogador 1: <span id="p1BstS">0</span></div>
-            <div>Soma dos boosts do jogador 2: <span id="p2BstS">0</span></div>
-            <div>Soma de todos os boosts: <span id="BstSumDuoRun">0</span></div>
+            <div class="soloScoreAlign">
+                <div>Soma dos boosts do jogador 1: <span id="p1BstS">0</span></div>
+                <div>Soma dos boosts do jogador 2: <span id="p2BstS">0</span></div>
+                <div>Soma de todos os boosts: <span id="BstSumDuoRun">0</span></div>
+            </div>
             <div class="goButtons">
                 <button id="duoRSHome">Ir para o início</button>
                 <button id="duoRSGame">Começar novamente</button>
             </div>
         </div>
-        <div class="ghostLoseAnim">
+        <!--<div class="ghostLoseAnim">
             <div class="ghostLose"></div>
         </div>
         <div class="ghostWonAnim">
             <div class="ghostWon"></div>
-        </div>
+        </div>-->
         <div class="soilContainer">
             <div class="soil">
                 <div class="blueCrystal"></div>
@@ -568,10 +570,12 @@
                 </div>
             </div>
             <button class="shopNav">Todos os itens</button>
-            <button class="shopNav">Skins</button>
-            <button class="shopNav">Modos de jogo</button>
-            <button class="shopNav">Mecânicas</button>
-            <button class="shopNav">Músicas/Audios</button>
+            <div style="display: none">
+                <button class="shopNav">Skins</button>
+                <button class="shopNav">Modos de jogo</button>
+                <button class="shopNav">Mecânicas</button>
+                <button class="shopNav">Músicas/Audios</button>
+            </div>
             <button class="shopNav bottomNav" id="skins">Alterar Skin</button>
         </div>
         <div class="shopTitle">
@@ -596,6 +600,12 @@
             <button class="shopBlock" id="mechaSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
             </button>
+            <button class="shopBlock" id="wizardSkinPurchase" shopButton>
+                <img src="assets/img/sprites/skins/wizardGhost/Flying.gif" alt="wizardGhostSkin">
+            </button>
+            <button class="shopBlock" id="saraSkinPurchase" shopButton>
+                <img src="assets/img/sprites/skins/saraGhost/Flying.gif" alt="saraGhostSkin">
+            </button>
 
         </div>
         <div class="itemDesc" id="itemDesc" style="display: none">
@@ -618,8 +628,8 @@
             <p class="itemDescription" type="itemDesc">Uma animação do Ghost acenando... Nos causa um dejá-vu certo?
                 Parece que ele já esteve em uma tela famíliar</p>
             <div class="alignBuyButtons">
-                <button class="shopBuy getItem">Adquirir</button>
-                <button class="shopBuy resetItem">Reembolsar</button>
+                <button class="shopBuy getItem" id="purchaseItem">Adquirir</button>
+                <button class="shopBuy resetItem" id="getMoneyBack">Reembolsar</button>
             </div>
         </div>
     </section>
@@ -670,16 +680,16 @@
                 <h1>Skin</h1>
             </div>
 
-            <button class="shopNav">Todos os Jogadores / Jogador 1</button>
-            <button class="shopNav">Jogador 2</button>
-            <button class="shopNav bottomNav" id="skins">Ir para Loja</button>
+            <button class="shopNav" id="defaultSkinChanger">Todos os Jogadores / Jogador 1</button>
+            <button class="shopNav" id="secondPlayerSkinChanger">Jogador 2</button>
+            <button class="shopNav bottomNav" id="goShopbySkin">Ir para Loja</button>
         </div>
 
         <div class="shopTitle">
-            <h1>Todos os Jogadores / Jogador 1</h1>
+            <h1 id="skinTitle">Todos os Jogadores / Jogador 1</h1>
         </div>
 
-        <div class="shopItems">
+        <div class="shopItems" id="allPlayersChanger">
             <button class="ChoosedSkin" id="cs0">
                 <img src="assets/img/sprites/skins/normal/Flying.gif" alt="normalSkin">
             </button>
@@ -697,6 +707,41 @@
             </button>
             <button class="shopBlock" id="cs4">
                 <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
+            </button>
+            <button class="shopBlock" id="cs5">
+                <img src="assets/img/sprites/skins/wizardGhost/Flying.gif" alt="wizardGhostSkin">
+            </button>
+            <button class="shopBlock" id="cs6">
+                <img src="assets/img/sprites/skins/saraGhost/Flying.gif" alt="saraGhostSkin">
+            </button>
+        </div>
+        <div class="shopItems" id="secondPlayerChanger" style="display: none;">
+            <button class="ChoosedSkin" id="noneSecond">
+                <img src="assets/img/sprites/shopItems/noSkin.png" alt="noSkin">
+            </button>
+            <button class="shopBlock" id="Scs0">
+                <img src="assets/img/sprites/skins/normal/Flying.gif" alt="normalSkin">
+            </button>
+            <button class="shopBlock" id="ScsA">
+                <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
+            </button>
+            <button class="shopBlock" id="Scs1">
+                <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs2">
+                <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs3">
+                <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs4">
+                <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs5">
+                <img src="assets/img/sprites/skins/wizardGhost/Flying.gif" alt="wizardGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs6">
+                <img src="assets/img/sprites/skins/saraGhost/Flying.gif" alt="saraGhostSkin">
             </button>
         </div>
     </section>
@@ -860,8 +905,8 @@
     <script src="assets/js/solo.js"></script>
     <script src="assets/js/duoRun.js"></script>
     <script src="assets/js/shop&skins.js"></script>
-    <script src="assets/js/soloClassic.js"></script>
-    <script src="assets/js/duoClassic.js"></script>
+    <!--<script src="assets/js/soloClassic.js"></script>
+    <script src="assets/js/duoClassic.js"></script>-->
     <script src="assets/js/selectScript.js"></script>
     <script src="assets/js/devKeys.js"></script>
     <script src="assets/js/betaItems.js"></script>

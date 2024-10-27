@@ -111,8 +111,8 @@ function checkSong() {
         songName.innerText = 'Pieces - Duo Normal'
         songCredit.innerText = 'After The Fall'
     } else if (soundId == 3) {
-        songName.innerText = 'Boutique - Pokémon X and Y (LoFi)'
-        songCredit.innerText = 'Snivys/Nintendo'
+        songName.innerText = 'eShop - 3DS and WiiU (LoFi)'
+        songCredit.innerText = 'dyu/Nintendo'
     } else if (soundId == 4) {
         songName.innerText = 'Nintendo 3DS Config. Internet (LoFi) - Configurações'
         songCredit.innerText = 'dyu/Nintendo'
@@ -261,6 +261,8 @@ function checkSecretCode() {
         localStorage.setItem('purchased2', 'true')
         localStorage.setItem('purchased3', 'true')
         localStorage.setItem('purchased4', 'true')
+        localStorage.setItem('purchased5', 'true')
+        localStorage.setItem('purchased6', 'true')
     } /*else if (soundIdCode[0] == 0 && soundIdCode[1] == 2 && soundIdCode[2] == 0 && soundIdCode[3] == 2 && soundIdCode[4] == 2 && soundIdCode[5] == 3) {
         alert('noLifeMode')
         localStorage.setItem('noLife', 1)
