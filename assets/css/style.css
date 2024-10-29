@@ -4,14 +4,12 @@
 * {
     margin: 0;
     padding: 0;
-    cursor: url(../img/non-sprites/cursors/darkCursor/pointer.cur),
-        auto;
 }
 
 button,
 a,
 input {
-    cursor: url(../img/non-sprites/cursors/darkCursor/link.cur), auto;
+    cursor: pointer;
     font-family: 'Josefin Sans',
     sans-serif;
 }
@@ -576,10 +574,12 @@ body {
     align-items: center;
     z-index: 2;
     transition-duration: .3s;
+    border: 1px solid #191919;
 }
 
 .lightMode .playGame {
     background-color: #c9c9c9;
+    border: 1px solid #c9c9c9;
     color: black;
 }
 
@@ -770,6 +770,11 @@ body {
     top: 10%;
     border-radius: 100%;
     transition-duration: .2s;
+}
+
+.homeGhost1::hover,
+.runningGhost1::hover {
+    filter: drop-shadow(0px 0px 10px #008dfe);
 }
 
 .runningGhost1,
@@ -3636,6 +3641,12 @@ body {
         width: 100px;
         height: 100px;
         background-image: url(../img/sprites/meteorSprites/type3.png);
+    }
+}
+
+@media (max-width: 1440px)  {
+    .shopItems {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 

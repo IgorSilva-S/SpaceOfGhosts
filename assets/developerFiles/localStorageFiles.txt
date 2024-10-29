@@ -29,7 +29,7 @@ invertedColor
 -> Default: false
 -> What does this key change?: Enable/Disable Inverted Color mode
 
-purchasedA
+purchasedA (Deprecated - Already purchased in default game)
 -> Values: true or false
 -> Default: false
 -> What does this key change?: Check if the Female Skin are purchased or not

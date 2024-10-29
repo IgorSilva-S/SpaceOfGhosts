@@ -17,10 +17,8 @@ window.onload = () => {
             publicVersion = `${previewType} ${gameVersion} - Build date: ${lastDayOfChanges}`
         }
         document.getElementById('homeVersion').innerText = publicVersion
-        document.getElementById('gameModeVersion').innerText = publicVersion
     } else {
         document.getElementById('homeVersion').innerText = gameVersion
-        document.getElementById('gameModeVersion').innerText = gameVersion
     }
 
     try {

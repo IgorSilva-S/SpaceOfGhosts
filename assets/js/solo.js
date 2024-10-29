@@ -162,9 +162,16 @@ function pauseGameSolo() {
             }
         }, 500);
         addSpeed = setInterval(() => {
-            if (scoreNum % 250 == 0 && scoreNum != 0) {
-                plusSpeed = plusSpeed + 0.25
-                document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+            if (challengeType == null) {
+                if (scoreNum % 250 == 0 && scoreNum != 0) {
+                    plusSpeed = plusSpeed + 0.25
+                    document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                }
+            } else if (challengeType == 'extreme') {
+                if (scoreNum % 100 == 0 && scoreNum != 0) {
+                    plusSpeed = plusSpeed + 0.5
+                    document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                }
             }
         }, 600);
     }
@@ -645,7 +652,48 @@ boostItem.addEventListener("animationiteration", () => {
     boostOn = false
     let baseSpeed = 10
     boostItem.style.opacity = '0'
-    let appearBoost = Math.floor((Math.random() * 2))
+    if (challengeType == 'extreme') {
+        let appearBoost = Math.floor((Math.random() * 4))
+    if (appearBoost == 2) {
+        if (plusSpeed > 0) {
+            baseSpeed = baseSpeed - plusSpeed
+        }
+        boostItem.style.display = 'none'
+        setTimeout(() => {
+            boostItem.style.display = 'block'
+        }, 1);
+        let boostTop = Math.random() * 84
+        boostStyle = Math.floor(Math.random() * 5)
+        boostTop = parseInt(boostTop)
+        boostItem.style.opacity = '1'
+        boostItem.style.top = `${boostTop}%`
+        boostItem.style.animationDuration = `${baseSpeed}s`
+        boostOn = true
+        boostItem.removeAttribute('class')
+        boostItem.className = 'boost'
+        if (boostStyle == 0) {
+            boostItem.classList.add('shieldBoost')
+        }
+        if (boostStyle == 1) {
+            boostItem.classList.add('lifeBoost')
+        }
+        if (boostStyle == 2) {
+            boostItem.classList.add('SlifeBoost')
+        }
+
+        if (boostStyle == 3) {
+            boostItem.classList.add('acceleratorBoost')
+        }
+
+        if (boostStyle == 4) {
+            boostItem.classList.add('relaxBoost')
+        }
+    } else {
+        boostItem.style.opacity = '0'
+        boostOn = false
+    }
+    } else {
+        let appearBoost = Math.floor((Math.random() * 2))
     if (appearBoost != 0) {
         if (plusSpeed > 0) {
             baseSpeed = baseSpeed - plusSpeed
@@ -683,6 +731,7 @@ boostItem.addEventListener("animationiteration", () => {
     } else {
         boostItem.style.opacity = '0'
         boostOn = false
+    }
     }
 })
 //End Sort Boost
@@ -1272,6 +1321,13 @@ setInterval(() => {
     }
 }, 1);
 //End check meteor
+
+//Beta tester bug report: Shield "active" but not working - Correction
+setInterval(() => {
+    if (!shieldActive) {
+        player.classList.remove('shield')
+    }
+}, 10);
 
 //Check if boosts hit player
 setInterval(() => {

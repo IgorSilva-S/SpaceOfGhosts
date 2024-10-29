@@ -94,7 +94,22 @@ try {
   function skinChanger() {
     let skinTypo = localStorage.getItem("actualSkin");
     if (skinTypo != undefined) {
-      document.body.className = skinTypo;
+      let isP2Defined = localStorage.getItem("actualP2Screen");
+      skinSpatialOne.className = skinTypo;
+      p1ScreenSpatial.className = "playerScreen";
+      p1ScreenSpatial.classList.add(skinTypo);
+      document.getElementById("hgh1").className = "homeGhost1";
+      document.getElementById("hgh1").classList.add(skinTypo);
+      if (isP2Defined == undefined) {
+        p2ScreenSpatial.removeAttribute("class");
+        p2ScreenSpatial.setAttribute(
+          "class",
+          `playerScreen player2Screen ${skinTypo}`
+        );
+        document.getElementById("hgh2").className = "homeGhost2";
+        document.getElementById("hgh2").classList.add(skinTypo);
+      }
+
       if (skinTypo == "sA") {
         s0b.className = "shopBlock";
         sAb.className = "ChoosedSkin";
@@ -123,7 +138,13 @@ try {
   function skinChangerP2() {
     let skinTypo = localStorage.getItem("actualP2Screen");
     if (skinTypo != undefined) {
-      p2ScreenSpatial.setAttribute("class", `playerScreen player2Screen ${skinTypo}`);
+      p2ScreenSpatial.removeAttribute("class");
+      p2ScreenSpatial.setAttribute(
+        "class",
+        `playerScreen player2Screen ${skinTypo}`
+      );
+      document.getElementById("hgh2").className = "homeGhost2";
+      document.getElementById("hgh2").classList.add(skinTypo);
       if (skinTypo == "s0") {
         noneSkin2.className = "shopBlock";
         s0b2.className = "ChoosedSkin";
@@ -223,10 +244,10 @@ try {
   }
 
   function organizeTheme() {
-    let isLightTheme = localStorage.getItem('lightTheme')
-    if (isLightTheme == 'true') {
-        document.getElementById('html').classList.add("lightMode");
-        document.getElementById("simpleLightMode").checked = true
+    let isLightTheme = localStorage.getItem("lightTheme");
+    if (isLightTheme == "true") {
+      document.getElementById("html").classList.add("lightMode");
+      document.getElementById("simpleLightMode").checked = true;
     }
   }
 
@@ -286,8 +307,23 @@ try {
     document.getElementById("spatialModeAnimation").style.display = "none";
     document.getElementById("runnerModeAnimation").style.display = "none";
     document.getElementById("interferenceAnim").removeAttribute("style");
-    document.getElementById("playPopup").style.bottom = "20px";
-    selectedGameMode = 1
+    document.getElementById("playPopup").style.bottom = "5%";
+    selectedGameMode = 1;
+    challengeType = null;
+    setTimeout(() => {
+      document.getElementById("spatialModeAnimation").removeAttribute("style");
+      document.getElementById("runnerModeAnimation").style.display = "none";
+      document.getElementById("interferenceAnim").style.display = "none";
+    }, 200);
+  });
+
+  document.getElementById("spatialXtremeMode").addEventListener("click", () => {
+    document.getElementById("spatialModeAnimation").style.display = "none";
+    document.getElementById("runnerModeAnimation").style.display = "none";
+    document.getElementById("interferenceAnim").removeAttribute("style");
+    document.getElementById("playPopup").style.bottom = "5%";
+    selectedGameMode = 1.1;
+    challengeType = "extreme";
     setTimeout(() => {
       document.getElementById("spatialModeAnimation").removeAttribute("style");
       document.getElementById("runnerModeAnimation").style.display = "none";
@@ -299,8 +335,9 @@ try {
     document.getElementById("spatialModeAnimation").style.display = "none";
     document.getElementById("runnerModeAnimation").style.display = "none";
     document.getElementById("interferenceAnim").removeAttribute("style");
-    document.getElementById("playPopup").style.bottom = "20px";
-    selectedGameMode = 2
+    document.getElementById("playPopup").style.bottom = "5%";
+    selectedGameMode = 2;
+    challengeType = null;
     setTimeout(() => {
       document.getElementById("spatialModeAnimation").style.display = "none";
       document.getElementById("runnerModeAnimation").removeAttribute("style");
@@ -362,8 +399,8 @@ try {
     setTimeout(() => {
       document.getElementById("gameName").style.display = "none";
       document.getElementById("homeButtons").style.display = "none";
-      document.getElementById('homeAnimation').style.display = 'none'
-      document.getElementById('')
+      document.getElementById("homeAnimation").style.display = "none";
+      document.getElementById("");
     }, 100);
   });
 
@@ -371,7 +408,7 @@ try {
     pageType = 7;
     homePage.style.opacity = "0";
     setTimeout(() => {
-      refreshPane()
+      refreshPane();
       homePage.removeAttribute("style");
       devKeysCentralPage.style.display = "block";
       homeSong.pause();
@@ -385,7 +422,7 @@ try {
     pageType = 1;
     document.getElementById("gameName").removeAttribute("style");
     document.getElementById("homeButtons").removeAttribute("style");
-    document.getElementById('homeAnimation').removeAttribute('style')
+    document.getElementById("homeAnimation").removeAttribute("style");
     setTimeout(() => {
       creditsPage.removeAttribute("style");
       homePage.style.display = "flex";
@@ -422,7 +459,7 @@ try {
       document.getElementById("itemDesc").style.display = "none";
       document.getElementById("shopItems").removeAttribute("style");
       document.getElementById("shopHome").className = "returnHome";
-      actualShopItem = 0
+      actualShopItem = 0;
       shopBackType = "default";
     }
   });
@@ -467,287 +504,146 @@ try {
     let isOnePlayer = document.getElementById("onePlayer").checked;
     let isTwoPlayers = document.getElementById("twoPlayers").checked;
     if (!isOnePlayer && !isTwoPlayers) {
-        alert('Selecione a quantidade de jogadores e vambora')
+      alert("Selecione a quantidade de jogadores e vambora");
     } else {
-        if (selectedGameMode == 1) {
-            if (isOnePlayer) {
-                pageType = 2;
-                lives1p = 100;
-                checkLive1p();
-                homePage.style.opacity = "0";
-                setTimeout(() => {
-                  homePage.removeAttribute("style");
-                  soloPage.style.display = "block";
-                  homeSong.pause();
-                  song.play();
-                  soloPage.className = "";
-                  soloPage.className = "biome0";
-                  homeSong.currentTime = 0;
-                  acceleratorP1 = false;
-                  acceleratorTimer = 0;
-                  hurtShieldTimer = 0;
-                  displaySlotsSolo();
-                  scoreCounter = setInterval(() => {
-                    scoreNum++;
-                    sScore.innerText = scoreNum;
-                    if (scoreNum != 0 && scoreNum % 100 == 0) {
-                      let biomeType = Math.floor(Math.random() * 11);
-                      soloPage.className = "";
-                      soloPage.className = `biome${biomeType}`;
-                    }
-                  }, 500);
-                  addSpeed = setInterval(() => {
-                    if (scoreNum % 250 == 0 && scoreNum != 0) {
-                      plusSpeed = plusSpeed + 0.25;
-                      document.getElementById("plusSpeedAlert").innerText = `${
-                        plusSpeed * 100
-                      }%`;
-                    }
-                  }, 501);
-                  playerPXPosi = parseInt(
-                    window.getComputedStyle(player).getPropertyValue("top")
-                  );
-                }, 500);
-            } else if (isTwoPlayers) {
-                pageType = 3;
-                homePage.style.opacity = "0";
-                duoLiveP1 = 100;
-                duoLiveP2 = 100;
-                setTimeout(() => {
-                  homePage.removeAttribute("style");
-                  duoRunPage.style.display = "flex";
-                  homeSong.pause();
-                  duoRSong.play();
-                  checkLiveDRun1();
-                  checkLiveDRun2();
-                  duoRSortMeteors();
-                  duoBiomeChanger = setInterval(() => {
-                    let biomeType = Math.floor(Math.random() * 11);
-                    duoRunPage.className = "";
-                    duoRunPage.className = `biome${biomeType}`;
-                  }, 50000);
-                }, 500);
-            }
+      if (selectedGameMode == 1) {
+        if (isOnePlayer) {
+          pageType = 2;
+          lives1p = 100;
+          checkLive1p();
+          homePage.style.opacity = "0";
+          setTimeout(() => {
+            homePage.removeAttribute("style");
+            soloPage.style.display = "block";
+            homeSong.pause();
+            song.play();
+            soloPage.className = "";
+            soloPage.className = "biome0";
+            homeSong.currentTime = 0;
+            acceleratorP1 = false;
+            acceleratorTimer = 0;
+            hurtShieldTimer = 0;
+            displaySlotsSolo();
+            scoreCounter = setInterval(() => {
+              scoreNum++;
+              sScore.innerText = scoreNum;
+              if (scoreNum != 0 && scoreNum % 100 == 0) {
+                let biomeType = Math.floor(Math.random() * 11);
+                soloPage.className = "";
+                soloPage.className = `biome${biomeType}`;
+              }
+            }, 500);
+            addSpeed = setInterval(() => {
+              if (scoreNum % 250 == 0 && scoreNum != 0) {
+                plusSpeed = plusSpeed + 0.25;
+                document.getElementById("plusSpeedAlert").innerText = `${
+                  plusSpeed * 100
+                }%`;
+              }
+            }, 501);
+            playerPXPosi = parseInt(
+              window.getComputedStyle(player).getPropertyValue("top")
+            );
+          }, 500);
+        } else if (isTwoPlayers) {
+          pageType = 3;
+          homePage.style.opacity = "0";
+          duoLiveP1 = 100;
+          duoLiveP2 = 100;
+          setTimeout(() => {
+            homePage.removeAttribute("style");
+            duoRunPage.style.display = "flex";
+            homeSong.pause();
+            duoRSong.play();
+            checkLiveDRun1();
+            checkLiveDRun2();
+            duoRSortMeteors();
+            duoBiomeChanger = setInterval(() => {
+              let biomeType = Math.floor(Math.random() * 11);
+              duoRunPage.className = "";
+              duoRunPage.className = `biome${biomeType}`;
+            }, 50000);
+          }, 500);
         }
-
-        if (selectedGameMode == 2) {
-            if (isOnePlayer) {
-                pageType = 2.1;
-                homePage.style.opacity = "0";
-                setTimeout(() => {
-                  homePage.removeAttribute("style");
-                  homeSong.pause();
-                  homeSong.currentTime = 0;
-                  soloClassicLive = 6;
-                  makeSCScoreCounter();
-                  checkLivesSoloClassic();
-                  soloRunnerPage.style.display = "block";
-                  soloClassicSong.play();
-                  removeEnd();
-                }, 500);
-            }
-        }
-    }
-  });
-
-  /*soloButton.addEventListener("click", () => {
-    pageType = 2;
-    lives1p = 100;
-    checkLive1p();
-    gameMPage.style.opacity = "0";
-    setTimeout(() => {
-      gameMPage.removeAttribute("style");
-      soloPage.style.display = "block";
-      homeSong.pause();
-      song.play();
-      soloPage.className = "";
-      soloPage.className = "biome0";
-      homeSong.currentTime = 0;
-      acceleratorP1 = false;
-      acceleratorTimer = 0;
-      hurtShieldTimer = 0;
-      displaySlotsSolo();
-      scoreCounter = setInterval(() => {
-        scoreNum++;
-        sScore.innerText = scoreNum;
-        if (scoreNum != 0 && scoreNum % 100 == 0) {
-          let biomeType = Math.floor(Math.random() * 11);
-          soloPage.className = "";
-          soloPage.className = `biome${biomeType}`;
-        }
-      }, 500);
-      addSpeed = setInterval(() => {
-        if (scoreNum % 250 == 0 && scoreNum != 0) {
-          plusSpeed = plusSpeed + 0.25;
-          document.getElementById("plusSpeedAlert").innerText = `${
-            plusSpeed * 100
-          }%`;
-        }
-      }, 501);
-      playerPXPosi = parseInt(
-        window.getComputedStyle(player).getPropertyValue("top")
-      );
-    }, 500);
-  });
-
-  soloButton2.addEventListener("click", () => {
-    pageType = 2;
-    lives1p = 100;
-    checkLive1p();
-    gameMPage.style.opacity = "0";
-    setTimeout(() => {
-      gameMPage.removeAttribute("style");
-      soloPage.style.display = "block";
-      homeSong.pause();
-      song.play();
-      soloPage.className = "";
-      soloPage.className = "biome0";
-      homeSong.currentTime = 0;
-      acceleratorP1 = false;
-      acceleratorTimer = 0;
-      hurtShieldTimer = 0;
-      displaySlotsSolo();
-      scoreCounter = setInterval(() => {
-        scoreNum++;
-        sScore.innerText = scoreNum;
-        if (scoreNum != 0 && scoreNum % 100 == 0) {
-          let biomeType = Math.floor(Math.random() * 11);
-          soloPage.className = "";
-          soloPage.className = `biome${biomeType}`;
-        }
-      }, 500);
-      addSpeed = setInterval(() => {
-        if (scoreNum % 250 == 0 && scoreNum != 0) {
-          plusSpeed = plusSpeed + 0.25;
-          document.getElementById("plusSpeedAlert").innerText = `${
-            plusSpeed * 100
-          }%`;
-        }
-      }, 501);
-      playerPXPosi = parseInt(
-        window.getComputedStyle(player).getPropertyValue("top")
-      );
-    }, 500);
-  });*/
-
-  soloClassicButton.addEventListener("click", () => {
-    console.log("Remember: Make the new version");
-  });
-
-  soloClassicButton2.addEventListener("click", () => {
-    if (canEnablePreviewItems && classicBuy == "true") {
-      pageType = 2.1;
-      gameMPage.style.opacity = "0";
-      setTimeout(() => {
-        gameMPage.removeAttribute("style");
-        homeSong.pause();
-        homeSong.currentTime = 0;
-        soloClassicLive = 6;
-        makeSCScoreCounter();
-        checkLivesSoloClassic();
-        soloRunnerPage.style.display = "block";
-        soloClassicSong.play();
-        removeEnd();
-      }, 500);
-    } else {
-      alert(
-        `Algo falta para esse modo ser jogado... Confira se você adquiriu esse modo na loja`
-      );
-      if (!canEnablePreviewItems) {
-        console.log("canEnablePreviewItems = false. You can't use it now!");
       }
-    }
-  });
 
-  /*duoButton.addEventListener("click", () => {
-    pageType = 3;
-    gameMPage.style.opacity = "0";
-    duoLiveP1 = 100;
-    duoLiveP2 = 100;
-    setTimeout(() => {
-      gameMPage.removeAttribute("style");
-      duoRunPage.style.display = "flex";
-      homeSong.pause();
-      duoRSong.play();
-      checkLiveDRun1();
-      checkLiveDRun2();
-      duoRSortMeteors();
-      duoBiomeChanger = setInterval(() => {
-        let biomeType = Math.floor(Math.random() * 11);
-        duoRunPage.className = "";
-        duoRunPage.className = `biome${biomeType}`;
-      }, 50000);
-    }, 500);
-  });
-
-  duoButton2.addEventListener("click", () => {
-    pageType = 3;
-    gameMPage.style.opacity = "0";
-    duoLiveP1 = 100;
-    duoLiveP2 = 100;
-    setTimeout(() => {
-      gameMPage.removeAttribute("style");
-      duoRunPage.style.display = "flex";
-      homeSong.pause();
-      duoRSong.play();
-      checkLiveDRun1();
-      checkLiveDRun2();
-      duoRSortMeteors();
-      duoBiomeChanger = setInterval(() => {
-        let biomeType = Math.floor(Math.random() * 11);
-        duoRunPage.className = "";
-        duoRunPage.className = `biome${biomeType}`;
-      }, 50000);
-    }, 500);
-  });*/
-
-  duoClassicButton.addEventListener("click", () => {
-    if (canEnablePreviewItems && classicBuy == "true") {
-      pageType = 3.2;
-      gameMPage.style.opacity = "0";
-      setTimeout(() => {
-        gameMPage.removeAttribute("style");
-        classicDuoPage.style.display = "flex";
-        homeSong.pause();
-        homeSong.currentTime = 0;
-        duoClassicSong.play();
-        p1DuoClassicLife = 100;
-        p2DuoClassicLife = 100;
-        checkLifeP1DClassic();
-        checkLifeP2DClassic();
-      }, 500);
-    } else {
-      alert(
-        `Algo falta para esse modo ser jogado... Confira se você adquiriu esse modo na loja`
-      );
-      if (!canEnablePreviewItems) {
-        console.log("canEnablePreviewItems = false. You can't use it now!");
+      if (selectedGameMode == 1.1) {
+        if (isOnePlayer) {
+          pageType = 2;
+          lives1p = 10;
+          checkLive1p();
+          homePage.style.opacity = "0";
+          setTimeout(() => {
+            homePage.removeAttribute("style");
+            soloPage.style.display = "block";
+            homeSong.pause();
+            song.play();
+            soloPage.className = "";
+            soloPage.className = "biome0";
+            homeSong.currentTime = 0;
+            acceleratorP1 = false;
+            acceleratorTimer = 0;
+            hurtShieldTimer = 0;
+            displaySlotsSolo();
+            scoreCounter = setInterval(() => {
+              scoreNum++;
+              sScore.innerText = scoreNum;
+              if (scoreNum != 0 && scoreNum % 100 == 0) {
+                let biomeType = Math.floor(Math.random() * 11);
+                soloPage.className = "";
+                soloPage.className = `biome${biomeType}`;
+              }
+            }, 500);
+            addSpeed = setInterval(() => {
+              if (scoreNum % 100 == 0 && scoreNum != 0) {
+                plusSpeed = plusSpeed + 0.5;
+                document.getElementById("plusSpeedAlert").innerText = `${
+                  plusSpeed * 100
+                }%`;
+              }
+            }, 501);
+            playerPXPosi = parseInt(
+              window.getComputedStyle(player).getPropertyValue("top")
+            );
+          }, 500);
+        } else if (isTwoPlayers) {
+          pageType = 3;
+          homePage.style.opacity = "0";
+          duoLiveP1 = 10;
+          duoLiveP2 = 10;
+          setTimeout(() => {
+            homePage.removeAttribute("style");
+            duoRunPage.style.display = "flex";
+            homeSong.pause();
+            duoRSong.play();
+            checkLiveDRun1();
+            checkLiveDRun2();
+            duoRSortMeteors();
+            duoBiomeChanger = setInterval(() => {
+              let biomeType = Math.floor(Math.random() * 11);
+              duoRunPage.className = "";
+              duoRunPage.className = `biome${biomeType}`;
+            }, 50000);
+          }, 500);
+        }
       }
-    }
-  });
 
-  duoClassicButton2.addEventListener("click", () => {
-    pageType = 3.2;
-    if (canEnablePreviewItems && classicBuy == "true") {
-      pageType = 3.2;
-      gameMPage.style.opacity = "0";
-      setTimeout(() => {
-        gameMPage.removeAttribute("style");
-        classicDuoPage.style.display = "flex";
-        homeSong.pause();
-        homeSong.currentTime = 0;
-        duoClassicSong.play();
-        p1DuoClassicLife = 100;
-        p2DuoClassicLife = 100;
-        checkLifeP1DClassic();
-        checkLifeP2DClassic();
-      }, 500);
-    } else {
-      alert(
-        `Algo falta para esse modo ser jogado... Confira se você adquiriu esse modo na loja`
-      );
-      if (!canEnablePreviewItems) {
-        console.log("canEnablePreviewItems = false. You can't use it now!");
+      if (selectedGameMode == 2) {
+        if (isOnePlayer) {
+          pageType = 2.1;
+          homePage.style.opacity = "0";
+          setTimeout(() => {
+            homePage.removeAttribute("style");
+            homeSong.pause();
+            homeSong.currentTime = 0;
+            soloClassicLive = 6;
+            makeSCScoreCounter();
+            checkLivesSoloClassic();
+            soloRunnerPage.style.display = "block";
+            soloClassicSong.play();
+            removeEnd();
+          }, 500);
+        }
       }
     }
   });
@@ -836,6 +732,24 @@ try {
         homeSong.play();
         song.pause();
         song.currentTime = 0;
+      }
+    }
+
+    //Home - Ghost Player detection
+    if (pageType == 1) {
+      if (e.key == "1") {
+        document.getElementById("hgh1").style.filter =
+          "drop-shadow(0px 0px 10px #008dfe)";
+        setTimeout(() => {
+          document.getElementById("hgh1").removeAttribute("style");
+        }, 1000);
+      }
+      if (e.key == "2") {
+        document.getElementById("hgh2").style.filter =
+          "drop-shadow(0px 0px 10px #fb3936)";
+        setTimeout(() => {
+          document.getElementById("hgh2").removeAttribute("style");
+        }, 1000);
       }
     }
 
@@ -1328,10 +1242,10 @@ try {
         displaySlotsAllDuoR();
       }
 
-      if (e.key == 'b' || e.key == 'B') {
-        let biomeType = Math.floor(Math.random() * 11)
-        duoRunPage.className = ''
-        duoRunPage.className = `biome${biomeType}`
+      if (e.key == "b" || e.key == "B") {
+        let biomeType = Math.floor(Math.random() * 11);
+        duoRunPage.className = "";
+        duoRunPage.className = `biome${biomeType}`;
       }
     }
 
@@ -1464,58 +1378,113 @@ try {
     soloScorePage.style.opacity = "0";
     scoreNum = 0;
     setTimeout(() => {
-      lives1p = 100;
-      soloScorePage.removeAttribute("style");
-      soloScorePage.style.display = "none";
-      soloPage.style.display = "block";
-      song.currentTime = 0;
-      homeSong.currentTime = 0;
-      homeSong.pause();
-      song.play();
-      acceleratorTimer = 0;
-      hurtShieldTimer = 0;
-      playerPosi = 45;
-      player.removeAttribute("style");
-      pageType = 2;
-      if (acceleratorP1) {
-        acceleratorP1 = false;
-        clearInterval(trail);
-        invencible.style.display = "none";
-      } else {
-        acceleratorP1 = false;
-      }
-      if (relaxStts) {
-        relaxStts = false;
-      } else {
-        relaxStts = false;
-      }
-      if (hurtShield) {
-        hurtShield = false;
-        player.classList.remove("hShield");
-      } else {
-        hurtShield = false;
-      }
-      if (shieldActive) {
-        shieldActive = false;
-        shield = false;
-        player.classList.remove("shield");
-      } else {
-        shieldActive = false;
-        shield = false;
-      }
-      clearSlotSolo();
-      checkLive1p();
-      clearInterval(scoreCounter);
-      scoreCounter = setInterval(() => {
-        scoreNum++;
-        sScore.innerText = scoreNum;
-        if (scoreNum != 0 && scoreNum % 100 == 0) {
-          let biomeType = Math.floor(Math.random() * 11);
-          soloPage.className = "";
-          soloPage.className = `biome${biomeType}`;
+      if (challengeType == null) {
+        lives1p = 100;
+        soloScorePage.removeAttribute("style");
+        soloScorePage.style.display = "none";
+        soloPage.style.display = "block";
+        song.currentTime = 0;
+        homeSong.currentTime = 0;
+        homeSong.pause();
+        song.play();
+        acceleratorTimer = 0;
+        hurtShieldTimer = 0;
+        playerPosi = 45;
+        player.removeAttribute("style");
+        pageType = 2;
+        if (acceleratorP1) {
+          acceleratorP1 = false;
+          clearInterval(trail);
+          invencible.style.display = "none";
+        } else {
+          acceleratorP1 = false;
         }
-      }, 500);
-      document.getElementById("soloHighAlert").removeAttribute("style");
+        if (relaxStts) {
+          relaxStts = false;
+        } else {
+          relaxStts = false;
+        }
+        if (hurtShield) {
+          hurtShield = false;
+          player.classList.remove("hShield");
+        } else {
+          hurtShield = false;
+        }
+        if (shieldActive) {
+          shieldActive = false;
+          shield = false;
+          player.classList.remove("shield");
+        } else {
+          shieldActive = false;
+          shield = false;
+        }
+        clearSlotSolo();
+        checkLive1p();
+        clearInterval(scoreCounter);
+        scoreCounter = setInterval(() => {
+          scoreNum++;
+          sScore.innerText = scoreNum;
+          if (scoreNum != 0 && scoreNum % 100 == 0) {
+            let biomeType = Math.floor(Math.random() * 11);
+            soloPage.className = "";
+            soloPage.className = `biome${biomeType}`;
+          }
+        }, 500);
+        document.getElementById("soloHighAlert").removeAttribute("style");
+      } else if (challengeType == "extreme") {
+        lives1p = 10;
+        soloScorePage.removeAttribute("style");
+        soloScorePage.style.display = "none";
+        soloPage.style.display = "block";
+        song.currentTime = 0;
+        homeSong.currentTime = 0;
+        homeSong.pause();
+        song.play();
+        acceleratorTimer = 0;
+        hurtShieldTimer = 0;
+        playerPosi = 45;
+        player.removeAttribute("style");
+        pageType = 2;
+        if (acceleratorP1) {
+          acceleratorP1 = false;
+          clearInterval(trail);
+          invencible.style.display = "none";
+        } else {
+          acceleratorP1 = false;
+        }
+        if (relaxStts) {
+          relaxStts = false;
+        } else {
+          relaxStts = false;
+        }
+        if (hurtShield) {
+          hurtShield = false;
+          player.classList.remove("hShield");
+        } else {
+          hurtShield = false;
+        }
+        if (shieldActive) {
+          shieldActive = false;
+          shield = false;
+          player.classList.remove("shield");
+        } else {
+          shieldActive = false;
+          shield = false;
+        }
+        clearSlotSolo();
+        checkLive1p();
+        clearInterval(scoreCounter);
+        scoreCounter = setInterval(() => {
+          scoreNum++;
+          sScore.innerText = scoreNum;
+          if (scoreNum != 0 && scoreNum % 100 == 0) {
+            let biomeType = Math.floor(Math.random() * 11);
+            soloPage.className = "";
+            soloPage.className = `biome${biomeType}`;
+          }
+        }, 500);
+        document.getElementById("soloHighAlert").removeAttribute("style");
+      }
     }, 500);
   });
 
@@ -1692,10 +1661,10 @@ try {
   document.getElementById("simpleLightMode").addEventListener("change", () => {
     let checker = document.getElementById("simpleLightMode");
     if (checker.checked) {
-        document.getElementById('html').classList.add("lightMode");
+      document.getElementById("html").classList.add("lightMode");
       localStorage.setItem("lightTheme", true);
     } else {
-        document.getElementById('html').classList.remove("lightMode");
+      document.getElementById("html").classList.remove("lightMode");
       localStorage.setItem("lightTheme", false);
     }
   });

@@ -134,7 +134,7 @@ function duoRunKeyUp(e) {
 
 function moveChars() {
     if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
-        if (keysDuoRun['ArrowUp'] == true && !p2RFire) {
+        if (keysDuoRun['ArrowUp'] == true && !p2RFire && !p2HurtAnim) {
             p2Posi--
             if (p2Posi < 0) {
                 p2Posi = 0
@@ -142,7 +142,7 @@ function moveChars() {
             p2Run.style.top = `${p2Posi}%`
             p2Run.classList.add('upping')
         }
-        if (keysDuoRun['ArrowDown'] == true && !p2RFire) {
+        if (keysDuoRun['ArrowDown'] == true && !p2RFire && !p2HurtAnim) {
             p2Posi++
             if (p2Posi >= 84) {
                 p2Posi = 84
@@ -150,7 +150,7 @@ function moveChars() {
             p2Run.style.top = `${p2Posi}%`
             p2Run.classList.add('falling')
         }
-        if (keysDuoRun['w'] == true || keysDuoRun['W'] == true && !p1RFire) {
+        if (keysDuoRun['w'] == true || keysDuoRun['W'] == true && !p1RFire && !p1HurtAnim) {
             p1Posi--
             if (p1Posi < 0) {
                 p1Posi = 0
@@ -158,7 +158,7 @@ function moveChars() {
             p1Run.style.top = `${p1Posi}%`
             p1Run.classList.add('upping')
         }
-        if (keysDuoRun['s'] == true || keysDuoRun['S'] == true && !p1RFire) {
+        if (keysDuoRun['s'] == true || keysDuoRun['S'] == true && !p1RFire && !p1HurtAnim) {
             p1Posi++
             if (p1Posi >= 84) {
                 p1Posi = 84
@@ -702,6 +702,32 @@ p1Rm5.addEventListener('animationiteration', () => {
 p1RBoost.addEventListener('animationiteration', () => {
     p1RBoost.removeAttribute('class')
     p1RBoost.className = 'boost'
+  if (challengeType == 'extreme') {
+    let isAppear = Math.floor(Math.random() * 4)
+    p1RBoost.style.opacity = '0'
+    p1RBoostOn = false
+    if (isAppear == 1) {
+        p1RBoost.style.opacity = '1'
+        p1RBoostOn = true
+        let BRandTop = Math.random() * 84
+        BRandTop = parseInt(BRandTop)
+        p1RBoost.style.top = `${BRandTop}%`
+        p1RBStyle = Math.floor(Math.random() * 4)
+        if (p1RBStyle == 0) {
+            p1RBoost.classList.add('shieldBoost')
+        }
+        if (p1RBStyle == 1) {
+            p1RBoost.classList.add('gunBoost')
+        }
+        if (p1RBStyle == 2) {
+            p1RBoost.classList.add('invBoost')
+        }
+        if (p1RBStyle == 3) {
+            p1RBoost.classList.add('lifeBoost')
+        }
+
+    }
+  } else {
     let isAppear = Math.floor(Math.random() * 2)
     p1RBoost.style.opacity = '0'
     p1RBoostOn = false
@@ -726,6 +752,7 @@ p1RBoost.addEventListener('animationiteration', () => {
         }
 
     }
+  }
 })
 
 
@@ -810,29 +837,31 @@ p2Rm5.addEventListener('animationiteration', () => {
 p2RBoost.addEventListener('animationiteration', () => {
     p2RBoost.removeAttribute('class')
     p2RBoost.className = 'boost'
-    let isAppear = Math.floor(Math.random() * 2)
-    p2RBoost.style.opacity = '0'
-    p2RBoostOn = false
-    if (isAppear == 1) {
-        p2RBoost.style.opacity = '1'
-        p2RBoostOn = true
-        let BRandTop = Math.random() * 84
-        BRandTop = parseInt(BRandTop)
-        p2RBoost.style.top = `${BRandTop}%`
-        p2RBStyle = Math.floor(Math.random() * 4)
-        if (p2RBStyle == 0) {
-            p2RBoost.classList.add('shieldBoost')
+    if (challengeType == 'extreme') {
+        let isAppear = Math.floor(Math.random() * 4)
+        p2RBoost.style.opacity = '0'
+        p2RBoostOn = false
+        if (isAppear == 1) {
+            p2RBoost.style.opacity = '1'
+            p2RBoostOn = true
+            let BRandTop = Math.random() * 84
+            BRandTop = parseInt(BRandTop)
+            p2RBoost.style.top = `${BRandTop}%`
+            p2RBStyle = Math.floor(Math.random() * 4)
+            if (p2RBStyle == 0) {
+                p2RBoost.classList.add('shieldBoost')
+            }
+            if (p2RBStyle == 1) {
+                p2RBoost.classList.add('gunBoost')
+            }
+            if (p2RBStyle == 2) {
+                p2RBoost.classList.add('invBoost')
+            }
+            if (p2RBStyle == 3) {
+                p2RBoost.classList.add('lifeBoost')
+            }
+    
         }
-        if (p2RBStyle == 1) {
-            p2RBoost.classList.add('gunBoost')
-        }
-        if (p2RBStyle == 2) {
-            p2RBoost.classList.add('invBoost')
-        }
-        if (p2RBStyle == 3) {
-            p2RBoost.classList.add('lifeBoost')
-        }
-
     }
 })
 

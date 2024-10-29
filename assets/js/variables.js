@@ -4,7 +4,7 @@
 const gameVersion = 'Branch'
 const isPreview = true
 const previewType = 'Dev'
-const lastDayOfChanges = '26/10/2024'
+const lastDayOfChanges = '28/10/2024'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = true
 let canLoad = true
@@ -54,14 +54,12 @@ let lastPage = undefined
 7 - DevKeys Central
 */
 const disButton = document.getElementById('exitDisclaimer')
-let selectGM = document.getElementById('gameModeSelect')
 
 //Pages
 const disPage = document.getElementById('disclaimer')
 const soloPage = document.getElementById('soloMode')
 const soloScorePage = document.getElementById('soloScoreMark')
 const homePage = document.getElementById('homeScreen')
-const gameMPage = document.getElementById('gameModeScreen')
 const duoRunPage = document.getElementById('duoRun')
 const duoRunScorePage = document.getElementById('duoRunScore')
 const shopPage = document.getElementById('shop')
@@ -93,14 +91,7 @@ const creditsButton = document.getElementById('viewCredits')
 const devKeysCentralButton = document.getElementById('devKeysEnter')
 const startButton = document.getElementById('startGame')
 let selectedGameMode = 1
-const soloButton = document.getElementById('soloPlay')
-const soloClassicButton = document.getElementById('soloClassicPlay')
-const soloButton2 = document.getElementById('SBsoloPlay')
-const soloClassicButton2 = document.getElementById('SBsoloClassicPlay')
-const duoButton = document.getElementById('duoPlay')
-const duoButton2 = document.getElementById('DBduoPlay')
-const duoClassicButton = document.getElementById('duoClassicPlay')
-const duoClassicButton2 = document.getElementById('DBduoClassicPlay')
+let challengeType = null
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
 let acceleratorSlot = 0
@@ -246,11 +237,12 @@ const s4b2 = document.getElementById('Scs4')
 const s5b2 = document.getElementById('Scs5')
 const s6b2 = document.getElementById('Scs6')
 
-// Player 2 Screen to change skin
+// Players Screen to change skin
+const skinSpatialOne = document.getElementById('skinAppearance')
+const p1ScreenSpatial = document.getElementById('p1Screen')
 const p2ScreenSpatial = document.getElementById('p2Screen')
 
 //Skin purchased checker
-let skinABuy = localStorage.getItem('purchasedA')
 let skin1Buy = localStorage.getItem('purchased1')
 let skin2Buy = localStorage.getItem('purchased2')
 let skin3Buy = localStorage.getItem('purchased3')

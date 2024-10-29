@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space Of Ghosts</title>
-    <link rel="stylesheet" href="assets/css/style.css" id="mainCSS">
     <link rel="stylesheet" href="assets/css/skins.css">
+    <link rel="stylesheet" href="assets/css/style.css" id="mainCSS">
     <link rel="shortcut icon" href="assets/img/sprites/skins/normal/Flying.gif" type="image/gif">
 </head>
 
@@ -76,6 +76,9 @@
             <button id="spatialMode">
                 Espacial: Infinito
             </button>
+            <button id="spatialXtremeMode">
+                Espacial: Infinito (Extremo)
+            </button>
             <button id="runnerMode" style="display: none;">
                 Corredor: Infinito
             </button>
@@ -123,64 +126,9 @@
         </div>
     </section>
 
-    <!--Game Mode-->
-    <section id="gameModeScreen">
-        <div class="background">
-
-        </div>
-
-        <h1>Escolha o seu modo</h1>
-        <div class="cusSelAlign">
-            <div class="custom-select" id="gameModeDiv" style="display: none">
-                <select name="" id="gameModeSelect">
-                    <option value="Text">Filtrar:</option>
-                    <option value="All">Todos</option>
-                    <option value="Space">Espacial</option>
-                    <option value="Classic">Clássico</option>
-                </select>
-            </div>
-        </div>
-        <div class="alignButtonsGameMode" id="allBlocks">
-            <button id="soloPlay">
-                <div></div> Um Jogador: Espacial
-            </button>
-            <button id="soloClassicPlay" style="display: none;">
-                <div></div> Um Jogador: Clássico
-            </button>
-            <button id="duoPlay">
-                <div></div> Dois Jogadores: Espacial
-            </button>
-            <button id="duoBattlePlay" style="display: none">
-                <div></div> Dois Jogadores: Batalha
-            </button>
-            <button id="duoClassicPlay" style="display: none">
-                <div></div> Dois Jogadores: Clássico
-            </button>
-        </div>
-        <div class="alignButtonsGameMode" id="spatialBlocks" style="display: none">
-            <button id="SBsoloPlay">
-                <div></div> Um Jogador: Espacial
-            </button>
-            <button id="DBduoPlay">
-                <div></div> Dois Jogadores: Espacial
-            </button>
-        </div>
-        <div class="alignButtonsGameMode" id="classicBlocks" style="display: none">
-            <button id="SBsoloClassicPlay" style="display: none;">
-                <div></div> Um Jogador: Clássico
-            </button>
-            <button id="DBduoClassicPlay" style="display: none">
-                <div></div> Dois Jogadores: Clássico
-            </button>
-        </div>
-        <div class="version" id="gameModeVersion">
-            gameVersion
-        </div>
-        <button class="goSkin" id="skinsGS">Trocar a Skin</button>
-    </section>
-
     <!--Solo Mode: Espatial-->
     <section id="soloMode">
+      <div id="skinAppearance">
         <div class="background" id="gameBckg">
 
         </div>
@@ -279,6 +227,7 @@
                 <button id="devKeysInf">Abrir DevKeys</button>
             </div>
         </div>
+      </div>
     </section>
 
     <!--Solo Mode: Espatial - Score-->
@@ -339,7 +288,7 @@
             <button class="pauseSettings" id="duoSettings">Config.</button>
         </div>
         <div class="background" id="dRunBckg"></div>
-        <div class="playerScreen">
+        <div class="playerScreen" id="p1Screen">
             <div class="player" id="player1Run">
                 <div class="inv" id="InvP1R"></div>
             </div>
@@ -497,62 +446,7 @@
         </div>
     </section>
 
-    <!--Shop - Old-->
-    <!--<section id="shop">
-        <div class="clouds"></div>
-        <div class="moneyAlert">
-            <img src="assets/img/sprites/Items/stardust.png" alt="moneyImage">
-            <span id="moneyShopView"></span>
-        </div>
-        <div class="pageName">Loja</div>
-        <button id="shopHome" class="returnHome"></button>
-        <div class="itemDesc">
-            <div class="itemType">
-                <p id="itemName">Selecione um item</p>
-
-                <p id="itemType">O tipo do item aparecerá aqui</p>
-            </div>
-            <button id="prodPopup">Ver mais detalhes</button>
-        </div>
-        <button class="goSkin" id="skins">Trocar a Skin</button>
-        <div class="items">
-            <button class="Sitem" id="femaleSkinPurchase">
-                <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
-            </button>
-            <button class="Sitem" id="transpSkinPurchase">
-                <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
-            </button>
-            <button class="Sitem" id="dogSkinPurchase">
-                <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
-            </button>
-            <button class="Sitem" id="catSkinPurchase">
-                <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
-            </button>
-            <button class="Sitem" id="classicModePurchase" style="display: none;">
-                <img src="assets/img/sprites/shopItems/classicMode.gif" alt="classicMode">
-            </button>
-            <button class="Sitem" id="mechaSkinPurchase">
-                <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
-            </button>
-        </div>
-        <div class="shopBlur" id="blurShop">
-            <div class="confirmPurchasePopUp" id="confPurch">
-                <h2 id="iName">Item Name</h2>
-                <h4 id="iDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi omnis, quas provident dignissimos nulla repudiandae blanditiis dicta suscipit ad repellat cum consequatur rem? Id ipsum voluptates, incidunt dolorem libero reprehenderit.</h4>
-                <h3 id="aDesc">Action Description</h3>
-                <div class="infosPopUp">
-                    Valor: <span id="itemValue">000</span><br>
-                    Stardusts: <span id="actualMoney">000</span>
-                </div>
-                <div class="prodImage" id="pImg"></div>
-                <div class="alignShopButtons">
-                    <button id="SPPB1">Text 1</button>
-                    <button id="SPPB2">Text 2</button>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
+    <!--Shop-->
     <section id="shop">
         <div class="background">
 
@@ -582,9 +476,6 @@
             <h1>Todos os itens</h1>
         </div>
         <div class="shopItems" id="shopItems">
-            <button class="shopBlock" id="femaleSkinPurchase" shopButton>
-                <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
-            </button>
             <button class="shopBlock" id="transpSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
             </button>
@@ -629,49 +520,12 @@
                 Parece que ele já esteve em uma tela famíliar</p>
             <div class="alignBuyButtons">
                 <button class="shopBuy getItem" id="purchaseItem">Adquirir</button>
-                <button class="shopBuy resetItem" id="getMoneyBack">Reembolsar</button>
+                <button class="shopBuy resetItem" id="refundItem">Reembolsar</button>
             </div>
         </div>
     </section>
 
-    <!--Skin Changer - Old-->
-    <!--<section id="skinChanger">
-        <div class="clouds" id="scClouds"></div>
-        <div class="background" id="scStars">
-
-        </div>
-        <button class="backPage" id="returnShop"></button>
-        <h1>Troca de Skin</h1>
-        <div class="items">
-            <button class="ChoosedSkin" id="cs0">
-                <img src="assets/img/sprites/skins/normal/Flying.gif" alt="normalSkin">
-            </button>
-            <button class="Sitem" id="csA">
-                <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
-            </button>
-            <button class="Sitem" id="cs1">
-                <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
-            </button>
-            <button class="Sitem" id="cs2">
-                <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
-            </button>
-            <button class="Sitem" id="cs3">
-                <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
-            </button>
-            <button class="Sitem" id="cs4">
-                <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
-            </button>
-        </div>
-        <!--<div class="sideBar">
-            <h2>Skins</h2>
-            <button class="skin" id="cs0"></button>
-            <button class="skin" id="csA"></button>
-            <button class="skin" id="cs1"></button>
-            <button class="skin" id="cs2"></button>
-            <button class="skin" id="cs3"></button>
-            <button class="skin" id="cs4"></button>
-        </div>
-    </section>-->
+    <!--Skin Changer-->
     <section id="skinChanger">
         <div class="background" id="scStars"></div>
         <div class="sideBar">
@@ -779,12 +633,8 @@
                 <input type="checkbox" name="" id="invertCursor">
             </div>
             <div class="alignSetting">
-                <label for="simpleLightMode">Tema Claro (Beta)</label>
+                <label for="simpleLightMode">Tema Claro</label>
                 <input type="checkbox" name="" id="simpleLightMode">
-            </div>
-            <div class="alignSetting" style="display: none;">
-                <label for="altPause">Menu de pausa alternatvo (Modos solo)</label>
-                <input type="checkbox" name="" id="altPause">
             </div>
             <div class="alignSetting">
                 <label for="invertColor">Inverter Cores</label>
@@ -851,8 +701,8 @@
         <div class="creditsSection">
             <span class="sectionTitle">Música</span><br><br>
             Início: Artificial Music <br>
-            Modo Solo: Prod. Riddiman <br>
-            Modo Duo: After The Fall <br>
+            Espacial - Um jogagor: Prod. Riddiman <br>
+            Espacial - Dois jogadores: After The Fall <br>
             Loja e Configurações: dyu / Mix oficial: Nintendo <br>
             Créditos: After The Fall <br>
         </div>
@@ -906,8 +756,8 @@
     <script src="assets/js/duoRun.js"></script>
     <script src="assets/js/shop&skins.js"></script>
     <!--<script src="assets/js/soloClassic.js"></script>
-    <script src="assets/js/duoClassic.js"></script>-->
-    <script src="assets/js/selectScript.js"></script>
+    <script src="assets/js/duoClassic.js"></script>
+    <script src="assets/js/selectScript.js"></script>-->
     <script src="assets/js/devKeys.js"></script>
     <script src="assets/js/betaItems.js"></script>
 </body>

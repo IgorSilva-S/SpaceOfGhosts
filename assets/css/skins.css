@@ -28,12 +28,12 @@
     background-image: url(../img/sprites/skins/normal/Relaxing.gif);
 }
 
-/*.s0 .homeGhost1,
-.s0 .homeGhost2,
-.s0 .runningGhost1,
-.s0 .runningGhost2 {
+.s0.homeGhost1,
+.s0.homeGhost2,
+.s0.runningGhost1,
+.s0.runningGhost2 {
     background-image: url(../img/sprites/skins/normal/Flying.gif);
-}*/
+}
 
 .s0 .ghostScore {
     background-image: url(../img/sprites/skins/normal/Flying.gif);
@@ -105,12 +105,12 @@
     background-image: url(../img/sprites/skins/female/Relaxing.gif);
 }
 
-/*.sA .homeGhost1,
-.sA .homeGhost2,
-.sA .runningGhost1,
-.sA .runningGhost2 {
+.sA.homeGhost1,
+.sA.homeGhost2,
+.sA.runningGhost1,
+.sA.runningGhost2 {
     background-image: url(../img/sprites/skins/female/Flying.gif);
-}*/
+}
 
 .sA .ghostScore {
     background-image: url(../img/sprites/skins/female/Flying.gif);
@@ -186,12 +186,12 @@
     background-image: url(../img/sprites/skins/transpGhost/Relaxing.gif);
 }
 
-/*.s1 .homeGhost1,
-.s1 .homeGhost2,
-.s1 .runningGhost1,
-.s1 .runningGhost2 {
+.s1.homeGhost1,
+.s1.homeGhost2,
+.s1.runningGhost1,
+.s1.runningGhost2 {
     background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
-}*/
+}
 
 .s1 .ghostScore {
     background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
@@ -273,12 +273,12 @@
     border-radius: 100%;
 }
 
-/*.s2 .homeGhost1,
-.s2 .homeGhost2,
-.s2 .runningGhost1,
-.s2 .runningGhost2 {
+.s2.homeGhost1,
+.s2.homeGhost2,
+.s2.runningGhost1,
+.s2.runningGhost2 {
     background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
-}*/
+}
 
 .s2 .ghostScore {
     background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
@@ -359,12 +359,12 @@
     border-radius: 100%;
 }
 
-/*.s3 .homeGhost1,
-.s3 .homeGhost2,
-.s3 .runningGhost1,
-.s3 .runningGhost2 {
+.s3.homeGhost1,
+.s3.homeGhost2,
+.s3.runningGhost1,
+.s3.runningGhost2 {
     background-image: url(../img/sprites/skins/catGhost/Flying.gif);
-}*/
+}
 
 .s3 .ghostScore {
     background-image: url(../img/sprites/skins/catGhost/Flying.gif);
@@ -445,12 +445,12 @@
     border-radius: 100%;
 }
 
-/*.s4 .homeGhost1,
-.s4 .homeGhost2,
-.s4 .runningGhost1,
-.s4 .runningGhost2 {
+.s4.homeGhost1,
+.s4.homeGhost2,
+.s4.runningGhost1,
+.s4.runningGhost2 {
     background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
-}*/
+}
 
 .s4 .ghostScore {
     background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
@@ -531,12 +531,12 @@
     border-radius: 100%;
 }
 
-/*.s5 .homeGhost1,
-.s5 .homeGhost2,
-.s5 .runningGhost1,
-.s5 .runningGhost2 {
+.s5.homeGhost1,
+.s5.homeGhost2,
+.s5.runningGhost1,
+.s5.runningGhost2 {
     background-image: url(../img/sprites/skins/wizardGhost/Flying.gif);
-}*/
+}
 
 .s5 .ghostScore {
     background-image: url(../img/sprites/skins/wizardGhost/Flying.gif);
@@ -617,12 +617,12 @@
     border-radius: 100%;
 }
 
-/*.s6 .homeGhost1,
-.s6 .homeGhost2,
-.s6 .runningGhost1,
-.s6 .runningGhost2 {
+.s6.homeGhost1,
+.s6.homeGhost2,
+.s6.runningGhost1,
+.s6.runningGhost2 {
     background-image: url(../img/sprites/skins/saraGhost/Flying.gif);
-}*/
+}
 
 .s6 .ghostScore {
     background-image: url(../img/sprites/skins/saraGhost/Flying.gif);
