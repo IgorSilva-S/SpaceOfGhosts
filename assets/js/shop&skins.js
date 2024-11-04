@@ -183,14 +183,14 @@ document.getElementById("refundItem").addEventListener("click", () => {
         "Você tem certeza que quer reembolsar esse item?"
       );
       if (canRefund) {
-        localStorage.setItem("purchased1", false);
+        localStorage.removeItem('purchased1')
         skin1Buy = false;
         let newStardustsValue = stardusts + 300;
         localStorage.setItem("money", newStardustsValue);
         let p1Skin = localStorage.getItem("actualSkin");
+        let isP2Defined = localStorage.getItem("actualP2Screen");
         if (p1Skin == "s1") {
           localStorage.removeItem("actualSkin");
-          let isP2Defined = localStorage.getItem("actualP2Screen");
           skinSpatialOne.removeAttribute("class");
           p1ScreenSpatial.removeAttribute("class");
           p1ScreenSpatial.className = "playerScreen";
@@ -199,6 +199,10 @@ document.getElementById("refundItem").addEventListener("click", () => {
             p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
             document.getElementById("hgh2").className = "homeGhost2";
           }
+        }
+        if (isP2Defined == 's1') {
+          p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
+          document.getElementById("hgh2").className = "homeGhost2";
         }
         alert("Item reembolsado!");
       }
@@ -211,14 +215,14 @@ document.getElementById("refundItem").addEventListener("click", () => {
         "Você tem certeza que quer reembolsar esse item?"
       );
       if (canRefund) {
-        localStorage.setItem("purchased2", false);
-        skin1Buy = false;
+        localStorage.removeItem('purchased2')
+        skin2Buy = false;
         let newStardustsValue = stardusts + 400;
         localStorage.setItem("money", newStardustsValue);
         let p1Skin = localStorage.getItem("actualSkin");
+        let isP2Defined = localStorage.getItem("actualP2Screen");
         if (p1Skin == "s2") {
           localStorage.removeItem("actualSkin");
-          let isP2Defined = localStorage.getItem("actualP2Screen");
           skinSpatialOne.removeAttribute("class");
           p1ScreenSpatial.removeAttribute("class");
           document.getElementById("hgh1").className = "homeGhost1";
@@ -227,6 +231,10 @@ document.getElementById("refundItem").addEventListener("click", () => {
             p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
             document.getElementById("hgh2").className = "homeGhost2";
           }
+        }
+        if (isP2Defined == 's2') {
+          p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
+          document.getElementById("hgh2").className = "homeGhost2";
         }
         alert("Item reembolsado!");
       }
@@ -239,14 +247,14 @@ document.getElementById("refundItem").addEventListener("click", () => {
         "Você tem certeza que quer reembolsar esse item?"
       );
       if (canRefund) {
-        localStorage.setItem("purchased3", false);
-        skin1Buy = false;
+        localStorage.removeItem('purchased3')
+        skin3Buy = false;
         let newStardustsValue = stardusts + 350;
         localStorage.setItem("money", newStardustsValue);
         let p1Skin = localStorage.getItem("actualSkin");
+        let isP2Defined = localStorage.getItem("actualP2Screen");
         if (p1Skin == "s3") {
           localStorage.removeItem("actualSkin");
-          let isP2Defined = localStorage.getItem("actualP2Screen");
           skinSpatialOne.removeAttribute("class");
           p1ScreenSpatial.removeAttribute("class");
           document.getElementById("hgh1").className = "homeGhost1";
@@ -255,6 +263,10 @@ document.getElementById("refundItem").addEventListener("click", () => {
             p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
             document.getElementById("hgh2").className = "homeGhost2";
           }
+        }
+        if (isP2Defined == 's3') {
+          p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
+          document.getElementById("hgh2").className = "homeGhost2";
         }
         alert("Item reembolsado!");
       }
@@ -267,14 +279,14 @@ document.getElementById("refundItem").addEventListener("click", () => {
         "Você tem certeza que quer reembolsar esse item?"
       );
       if (canRefund) {
-        localStorage.setItem("purchased4", false);
-        skin1Buy = false;
+        localStorage.removeItem('purchased4')
+        skin4Buy = false;
         let newStardustsValue = stardusts + 425;
         localStorage.setItem("money", newStardustsValue);
         let p1Skin = localStorage.getItem("actualSkin");
+        let isP2Defined = localStorage.getItem("actualP2Screen");
         if (p1Skin == "s4") {
           localStorage.removeItem("actualSkin");
-          let isP2Defined = localStorage.getItem("actualP2Screen");
           skinSpatialOne.removeAttribute("class");
           p1ScreenSpatial.removeAttribute("class");
           document.getElementById("hgh1").className = "homeGhost1";
@@ -283,6 +295,10 @@ document.getElementById("refundItem").addEventListener("click", () => {
             p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
             document.getElementById("hgh2").className = "homeGhost2";
           }
+        }
+        if (isP2Defined == 's4') {
+          p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
+          document.getElementById("hgh2").className = "homeGhost2";
         }
         alert("Item reembolsado!");
       }
@@ -295,14 +311,14 @@ document.getElementById("refundItem").addEventListener("click", () => {
         "Você tem certeza que quer reembolsar esse item?"
       );
       if (canRefund) {
-        localStorage.setItem("purchased5", false);
-        skin1Buy = false;
+        localStorage.removeItem('purchased5')
+        skin5Buy = false;
         let newStardustsValue = stardusts + 550;
         localStorage.setItem("money", newStardustsValue);
         let p1Skin = localStorage.getItem("actualSkin");
+        let isP2Defined = localStorage.getItem("actualP2Screen");
         if (p1Skin == "s5") {
           localStorage.removeItem("actualSkin");
-          let isP2Defined = localStorage.getItem("actualP2Screen");
           skinSpatialOne.removeAttribute("class");
           p1ScreenSpatial.removeAttribute("class");
           document.getElementById("hgh1").className = "homeGhost1";
@@ -311,6 +327,10 @@ document.getElementById("refundItem").addEventListener("click", () => {
             p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
             document.getElementById("hgh2").className = "homeGhost2";
           }
+        }
+        if (isP2Defined == 's5') {
+          p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
+          document.getElementById("hgh2").className = "homeGhost2";
         }
         alert("Item reembolsado!");
       }
@@ -323,14 +343,14 @@ document.getElementById("refundItem").addEventListener("click", () => {
         "Você tem certeza que quer reembolsar esse item?"
       );
       if (canRefund) {
-        localStorage.setItem("purchased6", false);
-        skin1Buy = false;
+        localStorage.removeItem('purchased6')
+        skin6Buy = false;
         let newStardustsValue = stardusts + 620;
         localStorage.setItem("money", newStardustsValue);
         let p1Skin = localStorage.getItem("actualSkin");
+        let isP2Defined = localStorage.getItem("actualP2Screen");
         if (p1Skin == "s6") {
           localStorage.removeItem("actualSkin");
-          let isP2Defined = localStorage.getItem("actualP2Screen");
           skinSpatialOne.removeAttribute("class");
           p1ScreenSpatial.removeAttribute("class");
           document.getElementById("hgh1").className = "homeGhost1";
@@ -339,6 +359,10 @@ document.getElementById("refundItem").addEventListener("click", () => {
             p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
             document.getElementById("hgh2").className = "homeGhost2";
           }
+        }
+        if (isP2Defined == 's6') {
+          p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
+          document.getElementById("hgh2").className = "homeGhost2";
         }
         alert("Item reembolsado!");
       }

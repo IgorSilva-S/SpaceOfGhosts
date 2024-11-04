@@ -654,17 +654,11 @@ try {
       let volAlertCont = document.getElementById("volAlertCont");
       if (!allControlsAppeared) {
         document.getElementById("quickVolCont").style.bottom = "30px";
-        document.getElementById("quickVolCont").style.backgroundColor = "#0000";
-        document.getElementById("quickVolCont").style.backdropFilter = "none";
-        volAlertCont.style.bottom = "130px";
-        volAlertCont.style.backgroundColor = "#0000";
-        volAlertCont.style.backdropFilter = "none";
-        document.getElementById("volCenter").style.bottom = "20px";
+        volAlertCont.style.bottom = "30px";
         allControlsAppeared = true;
       } else {
         volAlertCont.removeAttribute("style");
         document.getElementById("quickVolCont").removeAttribute("style");
-        document.getElementById("volCenter").removeAttribute("style");
         allControlsAppeared = false;
       }
     }
@@ -680,11 +674,7 @@ try {
         localStorage.setItem("volume", 1);
         organizeSound();
         volAlert.innerText = "volume_up";
-        if (quickVolAppeared) {
-          volAlertCont.style.bottom = "120px";
-        } else {
-          volAlertCont.style.bottom = "20px";
-        }
+        volAlertCont.style.bottom = "30px";
         setTimeout(() => {
           volAlertCont.removeAttribute("style");
         }, 2000);
@@ -693,11 +683,7 @@ try {
         localStorage.setItem("volume", 0);
         organizeSound();
         volAlert.innerText = "volume_off";
-        if (quickVolAppeared) {
-          volAlertCont.style.bottom = "120px";
-        } else {
-          volAlertCont.style.bottom = "20px";
-        }
+        volAlertCont.style.bottom = "30px";
         setTimeout(() => {
           volAlertCont.removeAttribute("style");
         }, 2000);
@@ -711,16 +697,10 @@ try {
       let volAlertCont = document.getElementById("volAlertCont");
       if (!quickVolAppeared) {
         quickVolAppeared = true;
-        document.getElementById("quickVolCont").style.bottom = "20px";
-        if (volAlertCont.style.bottom == "20px") {
-          volAlertCont.style.bottom = "120px";
-        }
+        document.getElementById("quickVolCont").style.bottom = "30px";
       } else {
         quickVolAppeared = false;
         document.getElementById("quickVolCont").removeAttribute("style");
-        if (volAlertCont.style.bottom == "120px") {
-          volAlertCont.style.bottom = "20px";
-        }
       }
     }
     if (pageType == 0) {
