@@ -109,22 +109,9 @@ function pauseGameSolo() {
                     document.getElementById('gameBckg').removeAttribute('style')
                     invencible.removeAttribute('style')
                     //trail.removeAttribute('style')
-                    if (plusSpeed < 1) {
+                    
                         clearInterval(trail)
-                    } else {
-                        clearInterval(trail)
-                        setTimeout(() => {
-                            trail = setInterval(() => {
-                                let trailElm = document.createElement('div')
-                                trailElm.setAttribute('class', 'trail')
-                                trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                                trailElm.addEventListener("animationend", () => {
-                                    trailElm.remove()
-                                })
-                                soloPage.insertAdjacentElement('beforeend', trailElm)
-                            }, 100);
-                        }, 10);
-                    }
+                   
                     if (shieldActive) {
                         player.classList.add('shield')
                     }
@@ -1469,10 +1456,6 @@ setInterval(() => {
                             boostItem.style.animationPlayState = 'running'
                             document.getElementById('gameBckg').style.animationPlayState = 'running'
                             relaxStts = false
-                            if (plusSpeed < 1) {
-                                clearInterval(trail)
-                                
-                            }
                         }, 2000);
                     }
                 }

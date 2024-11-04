@@ -785,7 +785,7 @@ try {
           acceleratorSlot--;
           invencible.style.display = "block";
           //trail.style.display = 'block'
-          if (plusSpeed < 1) {
+        
             trail = setInterval(() => {
               let trailElm = document.createElement("div");
               trailElm.setAttribute("class", "trail");
@@ -795,7 +795,7 @@ try {
               });
               soloPage.insertAdjacentElement("beforeend", trailElm);
             }, 100);
-          }
+          
           acceleratorP1 = true;
           document.getElementById("gameBckg").style.display = "none";
           document.getElementById("gameBckg").style.animationDuration = "7.5s";
@@ -829,23 +829,9 @@ try {
               document.getElementById("gameBckg").style.display = "none";
               invencible.removeAttribute("style");
               //trail.removeAttribute('style')
-              if (plusSpeed < 1) {
+           
                 clearInterval(trail);
-              } else {
-                clearInterval(trail);
-
-                setTimeout(() => {
-                  trail = setInterval(() => {
-                    let trailElm = document.createElement("div");
-                    trailElm.setAttribute("class", "trail");
-                    trailElm.setAttribute("style", `top: ${playerPosi}%`);
-                    trailElm.addEventListener("animationend", () => {
-                      trailElm.remove();
-                    });
-                    soloPage.insertAdjacentElement("beforeend", trailElm);
-                  }, 100);
-                }, 10);
-              }
+ 
               if (shieldActive) {
                 player.classList.add("shield");
               }
@@ -909,9 +895,7 @@ try {
             document.getElementById("gameBckg").style.animationPlayState =
               "running";
             relaxStts = false;
-            if (plusSpeed < 1) {
-              clearInterval(trail);
-            }
+
           }, 2000);
         } else if (relaxSlot == 0) {
           document.getElementById("relaxAlert").classList.add("emptySlot");
