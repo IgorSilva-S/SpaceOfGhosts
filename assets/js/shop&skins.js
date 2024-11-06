@@ -611,6 +611,14 @@ noneSkin2.addEventListener("click", () => {
   s4b2.className = "shopBlock";
   s5b2.className = "shopBlock";
   s6b2.className = "shopBlock";
+
+  let p1Skin = localStorage.getItem('actualSkin')
+  if (p1Skin != undefined) {
+    p2ScreenSpatial.removeAttribute("class");
+    p2ScreenSpatial.setAttribute("class", `playerScreen player2Screen ${p1Skin}`);
+    document.getElementById("hgh2").className = "homeGhost2";
+    document.getElementById("hgh2").classList.add(p1Skin);
+  }
 });
 
 s0b2.addEventListener("click", () => {

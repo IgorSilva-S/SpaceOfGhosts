@@ -1503,7 +1503,7 @@ let soloControls = setInterval(() => {
 }, 40);
 function moveChar() {
     if (keysSolo['ArrowUp'] == true) {
-        if (!hurtAnim) {
+        if (!hurtAnim && !relaxStts) {
             playerPosi--
             if (playerPosi < 0) {
                 playerPosi = 0
@@ -1518,7 +1518,7 @@ function moveChar() {
         }
     }
     if (keysSolo['ArrowDown'] == true) {
-        if (!hurtAnim) {
+        if (!hurtAnim && !relaxStts) {
             playerPosi++
             if (playerPosi >= 84) {
                 playerPosi = 84
