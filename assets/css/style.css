@@ -577,6 +577,23 @@ body {
     border: 1px solid #191919;
 }
 
+.playGameAlert {
+    width: 40%;
+    position: absolute;
+    bottom: -140px;
+    left: 1.1%;
+    background-color: #500000;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+    transition-duration: .5s;
+    border: 1px solid #500000;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
 .lightMode .playGame {
     background-color: #c9c9c9;
     border: 1px solid #c9c9c9;
@@ -1491,6 +1508,7 @@ body {
     background-size: cover;
     background-position: center;
     z-index: 1;
+    filter: drop-shadow(0 0 10px red);
 }
 
 .playerScreen .hearts {
@@ -1585,13 +1603,23 @@ body {
     box-sizing: border-box;
     color: white;
     border-radius: 4px;
+    transition-duration: .2s;
+}
+
+.itemCont:hover {
+    background-color: #0632ff77;
 }
 
 .emptySlot {
     animation-name: emptySlot;
-    animation-duration: .5s;
+    animation-duration: 1s;
     animation-iteration-count: 3;
-    animation-timing-function: linear;
+}
+
+.almostEnd {
+    animation-name: almostEnd;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
 }
 
 .itemCont .slots {
@@ -1623,8 +1651,30 @@ body {
         background-color: transparent;
     }
 
-    25% {
+    75% {
         background-color: red;
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
+@keyframes almostEnd {
+    0% {
+        background-color: transparent;
+    }
+
+    25% {
+        background-color: #00ccff;
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    75% {
+        background-color: #00ccff;
     }
 
     100% {
@@ -1734,7 +1784,7 @@ body {
 .pauseRestart:hover,
 .pauseDev:hover,
 .pauseSettings:hover {
-    background-color: #0632FF;
+    background-color: #353535;
 }
 
 .pauseHome,
@@ -1744,7 +1794,7 @@ body {
     width: 150px;
     height: 50px;
     transition-duration: .4s;
-    background-color: #0632ff77;
+    background-color: #252525aa;
     backdrop-filter: blur(10px);
     border-radius: 8px;
     background-size: 90%;
@@ -2108,7 +2158,7 @@ body {
 }
 
 .shopBuy.getItem {
-    background-color: #0632FF;
+    background-color: #0632ff;
 }
 
 .shopBuy.resetItem {
@@ -2267,7 +2317,7 @@ body {
 
 
 .items::-webkit-scrollbar-thumb:hover {
-    background-color: #0632FF;
+    background-color: #0632ff;
 }
 
 .items .Sitem {
@@ -3469,7 +3519,7 @@ body {
     height: 70px;
     background-color: #252525aa;
     backdrop-filter: blur(10px);
-    right: 120px;
+    right: 10px;
     font-size: 20px;
     display: flex;
     justify-content: space-evenly;

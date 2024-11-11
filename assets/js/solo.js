@@ -59,6 +59,7 @@ function pauseGameSolo() {
         invencible.classList.add('pinv')
         document.getElementById('gameBckg').style.animationPlayState = 'paused'
         song.pause()
+        soloXtremeSong.pause()
         gamePaused = true
         playerBeforePause = playerPosi
         clearInterval(acceleratorWaiter)
@@ -89,6 +90,10 @@ function pauseGameSolo() {
         document.getElementById('gameBckg').removeAttribute('style')
         gamePaused = false
         song.play()
+        if (challengeType == 'extreme') {
+            song.pause()
+            soloXtremeSong.play()
+        }
         player.style.top = `${playerBeforePause}%`
         playerPosi = playerBeforePause
         if (acceleratorP1) {
@@ -102,19 +107,26 @@ function pauseGameSolo() {
             }, 1);
             acceleratorWaiter = setInterval(() => {
                 acceleratorTimer++
+                if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
+                    document.getElementById('acceleratorAlert').classList.add('almostEnd')
+                }
                 if (acceleratorTimer == 15) {
                     clearInterval(acceleratorWaiter)
                     acceleratorP1 = false
                     acceleratorTimer = 0
-                    document.getElementById('gameBckg').removeAttribute('style')
                     invencible.removeAttribute('style')
                     //trail.removeAttribute('style')
-                    
-                        clearInterval(trail)
-                   
+
+                    clearInterval(trail)
+
                     if (shieldActive) {
                         player.classList.add('shield')
                     }
+                    document.getElementById('gameBckg').style.display = 'none'
+                    setTimeout(() => {
+                        document.getElementById('gameBckg').removeAttribute('style')
+                    }, 1);
+                    document.getElementById('acceleratorAlert').classList.remove('almostEnd')
                 }
             }, 1000);
             trail = setInterval(() => {
@@ -221,6 +233,13 @@ document.getElementById('restartInf').addEventListener("click", () => {
     }, 1)
     plusSpeed = 0
     playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+    if (challengeType = 'extreme') {
+        plusSpeed = 0.5
+        lives1p = 20
+        song.pause()
+        song.currentTime = 0
+        soloXtremeSong.play()
+    }
 })
 
 document.getElementById('backInf').addEventListener("click", () => {
@@ -252,6 +271,7 @@ document.getElementById('backInf').addEventListener("click", () => {
             shield = false
         }
         song.currentTime = 0
+        soloXtremeSong.currentTime = 0
         acceleratorTimer = 0
         hurtShieldTimer = 0
         playerPosi = 45
@@ -311,6 +331,7 @@ document.getElementById('retHomeSolo').addEventListener("click", () => {
             shield = false
         }
         song.currentTime = 0
+        soloXtremeSong.currentTime = 0
         acceleratorTimer = 0
         hurtShieldTimer = 0
         playerPosi = 45
@@ -398,6 +419,14 @@ document.getElementById('soloRestart').addEventListener('click', () => {
     }, 1)
     plusSpeed = 0
     playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+    if (challengeType = 'extreme') {
+        plusSpeed = 0.5
+        lives1p = 20
+        song.pause()
+        song.currentTime = 0
+        soloXtremeSong.play()
+        soloXtremeSong.currentTime = 0
+    }
 })
 
 document.getElementById('soloConfig').addEventListener('click', () => {
@@ -640,7 +669,7 @@ boostItem.addEventListener("animationiteration", () => {
     let baseSpeed = 10
     boostItem.style.opacity = '0'
     if (challengeType == 'extreme') {
-        let appearBoost = Math.floor((Math.random() * 4))
+        let appearBoost = Math.floor((Math.random() * 5))
     if (appearBoost == 2) {
         if (plusSpeed > 0) {
             baseSpeed = baseSpeed - plusSpeed
@@ -819,6 +848,8 @@ function checkLive1p() {
                     homeSong.play()
                     song.pause()
                     song.currentTime = 0
+                    soloXtremeSong.pause()
+                    soloXtremeSong.currentTime = 0
                     player.classList.remove('deathAnim')
                     player.removeAttribute('style')
                     playerPosi = 45
@@ -1404,6 +1435,9 @@ setInterval(() => {
                         document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
                         acceleratorWaiter = setInterval(() => {
                             acceleratorTimer++
+                            if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
+                                document.getElementById('acceleratorAlert').classList.add('almostEnd')
+                            }
                             if (acceleratorTimer == 15) {
                                 clearInterval(acceleratorWaiter)
                                 acceleratorP1 = false
@@ -1420,6 +1454,7 @@ setInterval(() => {
                                 setTimeout(() => {
                                     document.getElementById('gameBckg').removeAttribute('style')
                                 }, 1);
+                                document.getElementById('acceleratorAlert').classList.remove('almostEnd')
                             }
                         }, 1000);
                     } else {
@@ -1606,3 +1641,25 @@ mControlDown.addEventListener('touchend', () => {
     }
 })
 //End Mobile Controls : Solo
+
+// Plus speed real viewer
+setInterval(() => {
+    document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+}, 1000);
+
+// Plus speed real time speed song
+setInterval(() => {
+    if (plusSpeed >= 1) {
+        if (challengeType == null) {
+            song.playbackRate = 1.5;
+        } else {
+            soloXtremeSong.playbackRate = 1.5;
+        }
+    } else {
+        if (challengeType == null) {
+            song.playbackRate = 1;
+        } else {
+            soloXtremeSong.playbackRate = 1;
+        }
+    }
+}, 1000);

@@ -83,6 +83,9 @@
                 Corredor: Infinito
             </button>
      
+            <div class="playGameAlert" id="alertPlay">
+                Selecione a quantidade de jogadores e vambora
+            </div>
             <div class="playGame" id="playPopup">
                 <div class="playersContainer">
                     <p>Quantidade de jogadores</p>
@@ -111,6 +114,21 @@
 
                 </div>
                 <div class="homeGhost2" id="hgh2"></div>
+            </div>
+
+            <div id="spatialXtremeModeAnimation" style="display: none;">
+                <div class="background" style="animation-duration: 10s;">
+
+                </div>
+                <div class="earthCloud" style="animation-duration: 11s;"></div>
+                <div class="homeGhost1" id="hghX1" style="animation-duration: 6s;">
+
+                </div>
+                <div class="homeGhost2" id="hghX2" style="animation-duration: 5s;"></div>
+                <div class="meteor mt3" style="top: 20%; animation-duration: 3s;"></div>
+                <div class="meteor mt2" style="top: 60%; animation-duration: 4s;"></div>
+                <div class="meteor mt3" style="top: 35%; animation-duration: 2s;"></div>
+                <div class="meteor mt1" style="top: 75%; animation-duration: 5s;"></div>
             </div>
 
             <div id="runnerModeAnimation" style="display: none;">
@@ -703,6 +721,7 @@
             Início: Artificial Music <br>
             Espacial - Um jogagor: Prod. Riddiman <br>
             Espacial - Dois jogadores: After The Fall <br>
+            Espacial Extremo - Um jogador: Tiểu Long <br>
             Loja e Configurações: dyu / Mix oficial: Nintendo <br>
             Créditos: After The Fall <br>
         </div>
@@ -735,6 +754,7 @@
     <!--Music-->
     <audio src="assets/songs/music/homeMusic.mp3" id="homeSong" loop></audio>
     <audio src="assets/songs/music/soloMusic.mp3" id="soloSong" loop></audio>
+    <audio src="assets/songs/music/soloExtremeMusic.mp3" id="soloXtremeSong" loop></audio>
     <audio src="assets/songs/music/duoRunMusic.mp3" loop id="duoRunSong"></audio>
     <audio src="assets/songs/music/gameShop&Skin.mp3" loop id="shopSong"></audio>
     <audio src="assets/songs/music/gameSettings.mp3" loop id="settingsSong"></audio>

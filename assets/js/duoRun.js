@@ -483,6 +483,7 @@ function checkLiveDRun1() {
         document.getElementById('p1BstS').innerText = p1BoostSum
         document.getElementById('p2BstS').innerText = p2BoostSum
         document.getElementById('BstSumDuoRun').innerText = allSum
+        clearInterval(duoBiomeChanger)
         setTimeout(() => {
             duoRunPage.style.opacity = '0'
             p1Run.style.top = '120%'
@@ -594,6 +595,7 @@ function checkLiveDRun2() {
         p2Run.classList.add('deathAnim')
         duoRunK2 = true
         document.getElementById('playerNum').innerText = '1'
+        clearInterval(duoBiomeChanger)
         setTimeout(() => {
             duoRunPage.style.opacity = '0'
             p2Run.style.top = '120%'
@@ -703,7 +705,7 @@ p1RBoost.addEventListener('animationiteration', () => {
     p1RBoost.removeAttribute('class')
     p1RBoost.className = 'boost'
   if (challengeType == 'extreme') {
-    let isAppear = Math.floor(Math.random() * 4)
+    let isAppear = Math.floor(Math.random() * 5)
     p1RBoost.style.opacity = '0'
     p1RBoostOn = false
     if (isAppear == 1) {
@@ -838,7 +840,7 @@ p2RBoost.addEventListener('animationiteration', () => {
     p2RBoost.removeAttribute('class')
     p2RBoost.className = 'boost'
     if (challengeType == 'extreme') {
-        let isAppear = Math.floor(Math.random() * 4)
+        let isAppear = Math.floor(Math.random() * 5)
         p2RBoost.style.opacity = '0'
         p2RBoostOn = false
         if (isAppear == 1) {

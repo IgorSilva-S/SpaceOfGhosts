@@ -4,7 +4,7 @@
 const gameVersion = 'Branch'
 const isPreview = true
 const previewType = 'Dev'
-const lastDayOfChanges = '06/11/2024'
+const lastDayOfChanges = '10/11/2024'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = true
 let canLoad = true
@@ -74,6 +74,7 @@ const devKeysCentralPage = document.getElementById('devKeysCentral')
 //Songs
 const homeSong = document.getElementById('homeSong') // by Artificial Music
 const song = document.getElementById('soloSong') // by Prod. Riddiman
+const soloXtremeSong = document.getElementById('soloXtremeSong')
 const duoRSong = document.getElementById('duoRunSong') // by After the Fall
 const hSong = document.getElementById('hSong') // by SEGA and Sonic Team (1992)
 const shopSong = document.getElementById('shopSong') // by dyu / Official by Nintendo
@@ -162,6 +163,7 @@ let canFlyWaiter, flyTimer = 0
 let flyingNow = false
 let scScoreCounter
 let scScore = 0
+let muteControlAppeared = false
 let quickVolAppeared = false
 let allControlsAppeared = false
 let changedCursor = false

@@ -55,6 +55,7 @@ try {
     if (gameVolume != undefined) {
       homeSong.volume = gameVolume;
       song.volume = gameVolume;
+      soloXtremeSong.volume = gameVolume;
       duoRSong.volume = gameVolume;
       hSong.volume = gameVolume;
       shopSong.volume = gameVolume;
@@ -100,6 +101,8 @@ try {
       p1ScreenSpatial.classList.add(skinTypo);
       document.getElementById("hgh1").className = "homeGhost1";
       document.getElementById("hgh1").classList.add(skinTypo);
+      document.getElementById("hghX1").className = "homeGhost1";
+      document.getElementById("hghX1").classList.add(skinTypo);
       if (isP2Defined == undefined) {
         p2ScreenSpatial.removeAttribute("class");
         p2ScreenSpatial.setAttribute(
@@ -108,6 +111,8 @@ try {
         );
         document.getElementById("hgh2").className = "homeGhost2";
         document.getElementById("hgh2").classList.add(skinTypo);
+        document.getElementById("hghX2").className = "homeGhost2";
+        document.getElementById("hghX2").classList.add(skinTypo);
       }
 
       if (skinTypo == "sA") {
@@ -145,6 +150,8 @@ try {
       );
       document.getElementById("hgh2").className = "homeGhost2";
       document.getElementById("hgh2").classList.add(skinTypo);
+      document.getElementById("hghX2").className = "homeGhost2";
+      document.getElementById("hghX2").classList.add(skinTypo);
       if (skinTypo == "s0") {
         noneSkin2.className = "shopBlock";
         s0b2.className = "ChoosedSkin";
@@ -305,6 +312,7 @@ try {
 
   document.getElementById("spatialMode").addEventListener("click", () => {
     document.getElementById("spatialModeAnimation").style.display = "none";
+    document.getElementById("spatialXtremeModeAnimation").style.display = "none";
     document.getElementById("runnerModeAnimation").style.display = "none";
     document.getElementById("interferenceAnim").removeAttribute("style");
     document.getElementById("playPopup").style.bottom = "5%";
@@ -312,6 +320,7 @@ try {
     challengeType = null;
     setTimeout(() => {
       document.getElementById("spatialModeAnimation").removeAttribute("style");
+      document.getElementById("spatialXtremeModeAnimation").style.display = "none";
       document.getElementById("runnerModeAnimation").style.display = "none";
       document.getElementById("interferenceAnim").style.display = "none";
     }, 200);
@@ -319,13 +328,15 @@ try {
 
   document.getElementById("spatialXtremeMode").addEventListener("click", () => {
     document.getElementById("spatialModeAnimation").style.display = "none";
+    document.getElementById("spatialXtremeModeAnimation").style.display = "none";
     document.getElementById("runnerModeAnimation").style.display = "none";
     document.getElementById("interferenceAnim").removeAttribute("style");
     document.getElementById("playPopup").style.bottom = "5%";
     selectedGameMode = 1.1;
     challengeType = "extreme";
     setTimeout(() => {
-      document.getElementById("spatialModeAnimation").removeAttribute("style");
+      document.getElementById("spatialModeAnimation").style.display = "none";
+      document.getElementById("spatialXtremeModeAnimation").removeAttribute("style");
       document.getElementById("runnerModeAnimation").style.display = "none";
       document.getElementById("interferenceAnim").style.display = "none";
     }, 200);
@@ -333,6 +344,7 @@ try {
 
   document.getElementById("runnerMode").addEventListener("click", () => {
     document.getElementById("spatialModeAnimation").style.display = "none";
+    document.getElementById("spatialXtremeModeAnimation").style.display = "none";
     document.getElementById("runnerModeAnimation").style.display = "none";
     document.getElementById("interferenceAnim").removeAttribute("style");
     document.getElementById("playPopup").style.bottom = "5%";
@@ -340,6 +352,7 @@ try {
     challengeType = null;
     setTimeout(() => {
       document.getElementById("spatialModeAnimation").style.display = "none";
+      document.getElementById("spatialXtremeModeAnimation").style.display = "none";
       document.getElementById("runnerModeAnimation").removeAttribute("style");
       document.getElementById("interferenceAnim").style.display = "none";
     }, 200);
@@ -504,7 +517,10 @@ try {
     let isOnePlayer = document.getElementById("onePlayer").checked;
     let isTwoPlayers = document.getElementById("twoPlayers").checked;
     if (!isOnePlayer && !isTwoPlayers) {
-      alert("Selecione a quantidade de jogadores e vambora");
+      document.getElementById('alertPlay').style.bottom = 'calc(6% + 120px)'
+      setTimeout(() => {
+        document.getElementById('alertPlay').removeAttribute('style')
+      }, 3000);
     } else {
       if (selectedGameMode == 1) {
         if (isOnePlayer) {
@@ -570,14 +586,14 @@ try {
       if (selectedGameMode == 1.1) {
         if (isOnePlayer) {
           pageType = 2;
-          lives1p = 10;
+          lives1p = 20;
           checkLive1p();
           homePage.style.opacity = "0";
           setTimeout(() => {
             homePage.removeAttribute("style");
             soloPage.style.display = "block";
             homeSong.pause();
-            song.play();
+            soloXtremeSong.play();
             soloPage.className = "";
             soloPage.className = "biome0";
             homeSong.currentTime = 0;
@@ -594,6 +610,7 @@ try {
                 soloPage.className = `biome${biomeType}`;
               }
             }, 500);
+            plusSpeed = 0.5
             addSpeed = setInterval(() => {
               if (scoreNum % 100 == 0 && scoreNum != 0) {
                 plusSpeed = plusSpeed + 0.5;
@@ -654,6 +671,7 @@ try {
       let volAlertCont = document.getElementById("volAlertCont");
       if (!allControlsAppeared) {
         document.getElementById("quickVolCont").style.bottom = "30px";
+        document.getElementById("quickVolCont").style.right = "120px";
         volAlertCont.style.bottom = "30px";
         allControlsAppeared = true;
       } else {
@@ -675,8 +693,16 @@ try {
         organizeSound();
         volAlert.innerText = "volume_up";
         volAlertCont.style.bottom = "30px";
+        muteControlAppeared = true
+        if (quickVolAppeared) {
+          document.getElementById("quickVolCont").style.right = "120px";
+        }
         setTimeout(() => {
           volAlertCont.removeAttribute("style");
+          muteControlAppeared = false
+          if (quickVolAppeared) {
+            document.getElementById("quickVolCont").style.right = "10px";
+          }
         }, 2000);
       } else {
         muted = true;
@@ -684,8 +710,16 @@ try {
         organizeSound();
         volAlert.innerText = "volume_off";
         volAlertCont.style.bottom = "30px";
+        muteControlAppeared = true
+        if (quickVolAppeared) {
+          document.getElementById("quickVolCont").style.right = "120px";
+        }
         setTimeout(() => {
           volAlertCont.removeAttribute("style");
+          if (quickVolAppeared) {
+            document.getElementById("quickVolCont").style.right = "10px";
+          }
+          muteControlAppeared = false
         }, 2000);
       }
     }
@@ -697,6 +731,9 @@ try {
       if (!quickVolAppeared) {
         quickVolAppeared = true;
         document.getElementById("quickVolCont").style.bottom = "30px";
+        if (muteControlAppeared) {
+          document.getElementById("quickVolCont").style.right = "120px";
+        }
       } else {
         quickVolAppeared = false;
         document.getElementById("quickVolCont").removeAttribute("style");
@@ -722,6 +759,11 @@ try {
         setTimeout(() => {
           document.getElementById("hgh1").removeAttribute("style");
         }, 1000);
+        document.getElementById("hghX1").style.filter =
+        "drop-shadow(0px 0px 10px #008dfe)";
+      setTimeout(() => {
+        document.getElementById("hghX1").style.filter = 'none'
+      }, 1000);
       }
       if (e.key == "2") {
         document.getElementById("hgh2").style.filter =
@@ -729,6 +771,11 @@ try {
         setTimeout(() => {
           document.getElementById("hgh2").removeAttribute("style");
         }, 1000);
+        document.getElementById("hghX2").style.filter =
+        "drop-shadow(0px 0px 10px #fb3936)";
+      setTimeout(() => {
+        document.getElementById("hghX2").style.filter = 'none'
+      }, 1000);
       }
     }
 
@@ -742,6 +789,9 @@ try {
           }
           player.style.top = `${playerPosi}%`;
           player.classList.add("upping");
+          setTimeout(() => {
+            playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+        }, 1);
         }
         if (e.key == "ArrowDown") {
           playerPosi++;
@@ -750,6 +800,9 @@ try {
           }
           player.style.top = `${playerPosi}%`;
           player.classList.add("falling");
+          setTimeout(() => {
+            playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+        }, 1);
         }
       } else {
         soloKeyDown(e);
@@ -821,34 +874,27 @@ try {
           }%`;
           acceleratorWaiter = setInterval(() => {
             acceleratorTimer++;
-            if (acceleratorTimer == 15) {
-              clearInterval(acceleratorWaiter);
-              acceleratorP1 = false;
-              acceleratorTimer = 0;
-              document.getElementById("gameBckg").style.display = "none";
-              invencible.removeAttribute("style");
+            if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
+              document.getElementById('acceleratorAlert').classList.add('almostEnd')
+          }
+          if (acceleratorTimer == 15) {
+              clearInterval(acceleratorWaiter)
+              acceleratorP1 = false
+              acceleratorTimer = 0
+              invencible.removeAttribute('style')
               //trail.removeAttribute('style')
-           
-                clearInterval(trail);
- 
-              if (shieldActive) {
-                player.classList.add("shield");
-              }
-              setTimeout(() => {
-                document.getElementById("gameBckg").removeAttribute("style");
-              }, 1);
 
-              clearInterval(scoreCounter);
-              scoreCounter = setInterval(() => {
-                scoreNum++;
-                sScore.innerText = scoreNum;
-                if (scoreNum != 0 && scoreNum % 100 == 0) {
-                  let biomeType = Math.floor(Math.random() * 11);
-                  soloPage.className = "";
-                  soloPage.className = `biome${biomeType}`;
-                }
-              }, 500);
-            }
+              clearInterval(trail)
+
+              if (shieldActive) {
+                  player.classList.add('shield')
+              }
+              document.getElementById('gameBckg').style.display = 'none'
+              setTimeout(() => {
+                  document.getElementById('gameBckg').removeAttribute('style')
+              }, 1);
+              document.getElementById('acceleratorAlert').classList.remove('almostEnd')
+          }
           }, 1000);
         } else if (acceleratorSlot == 0) {
           document
@@ -936,6 +982,9 @@ try {
       }
       if (e.key == "x") {
         alert(playerPXPosi);
+      }
+      if (e.key == "p") {
+        plusSpeed = 1
       }
       displaySlotsSolo();
     }
@@ -1300,6 +1349,7 @@ try {
       soloScorePage.style.display = "none";
       homePage.style.display = "flex";
       song.currentTime = 0;
+      soloXtremeSong.currentTime = 0
       acceleratorTimer = 0;
       hurtShieldTimer = 0;
       playerPosi = 45;
@@ -1355,6 +1405,7 @@ try {
         playerPosi = 45;
         player.removeAttribute("style");
         pageType = 2;
+        plusSpeed = 0
         if (acceleratorP1) {
           acceleratorP1 = false;
           clearInterval(trail);
@@ -1395,19 +1446,20 @@ try {
         }, 500);
         document.getElementById("soloHighAlert").removeAttribute("style");
       } else if (challengeType == "extreme") {
-        lives1p = 10;
+        lives1p = 20;
         soloScorePage.removeAttribute("style");
         soloScorePage.style.display = "none";
         soloPage.style.display = "block";
-        song.currentTime = 0;
+        soloXtremeSong.currentTime = 0;
         homeSong.currentTime = 0;
         homeSong.pause();
-        song.play();
+        soloXtremeSong.play();
         acceleratorTimer = 0;
         hurtShieldTimer = 0;
         playerPosi = 45;
         player.removeAttribute("style");
         pageType = 2;
+        plusSpeed = 0.5
         if (acceleratorP1) {
           acceleratorP1 = false;
           clearInterval(trail);
@@ -1532,6 +1584,11 @@ try {
         p1Run.className = "player";
         p2Run.removeAttribute("class");
         p2Run.className = "player";
+        duoBiomeChanger = setInterval(() => {
+          let biomeType = Math.floor(Math.random() * 11)
+          duoRunPage.className = ''
+          duoRunPage.className = `biome${biomeType}`
+      }, 50000);
         duoRSortMeteors();
       } else if (challengeType == 'extreme') {
         duoRunScorePage.removeAttribute("style");
@@ -1573,6 +1630,11 @@ try {
         p1Run.className = "player";
         p2Run.removeAttribute("class");
         p2Run.className = "player";
+        duoBiomeChanger = setInterval(() => {
+          let biomeType = Math.floor(Math.random() * 11)
+          duoRunPage.className = ''
+          duoRunPage.className = `biome${biomeType}`
+      }, 50000);
         duoRSortMeteors();
       }
     }, 500);
@@ -1605,6 +1667,7 @@ try {
     document.getElementById("quickVol").value = gameVolume * 100;
     homeSong.volume = gameVolume;
     song.volume = gameVolume;
+    soloXtremeSong.volume = gameVolume;
     duoRSong.volume = gameVolume;
     hSong.volume = gameVolume;
     shopSong.volume = gameVolume;
@@ -1682,6 +1745,7 @@ try {
     document.getElementById("vol").value = gameVolume * 100;
     homeSong.volume = gameVolume;
     song.volume = gameVolume;
+    soloXtremeSong.volume = gameVolume;
     duoRSong.volume = gameVolume;
     hSong.volume = gameVolume;
     shopSong.volume = gameVolume;
