@@ -808,7 +808,7 @@ try {
         soloKeyDown(e);
       }
 
-      if (e.key == "b") {
+      if (e.key == "b" && isDev) {
         let randBiome = Math.floor(Math.random() * 10 + 1);
         soloPage.className = "";
         soloPage.className = `biome${randBiome}`;
@@ -954,6 +954,12 @@ try {
           fullHealSlot--;
           lives1p = 100;
           checkLive1p();
+          
+          if (challengeType == 'extreme') {
+            lives1p = 20
+            checkLive1p();
+          }
+
         } else if (fullHealSlot == 0) {
           document.getElementById("FhealAlert").classList.add("emptySlot");
           setTimeout(() => {
@@ -964,9 +970,16 @@ try {
       if (e.key == "5") {
         if (healSlot > 0 && lives1p < 100) {
           healSlot--;
-          lives1p = lives1p + 20;
-          if (lives1p > 100) {
-            lives1p = 100;
+          if (challengeType == null) {
+            lives1p = lives1p + 20;
+            if (lives1p > 100) {
+              lives1p = 100;
+            }
+          } else {
+            lives1p = lives1p + 5;
+            if (lives1p > 20) {
+              lives1p = 20;
+            }
           }
           checkLive1p();
         } else if (healSlot == 0) {
@@ -976,14 +989,14 @@ try {
           }, 1500);
         }
       }
-      if (e.key == "k") {
+      if (e.key == "k" && isDev) {
         lives1p = 5;
-        checkLive1p();
+        checkLive1p(); 
       }
-      if (e.key == "x") {
+      if (e.key == "x" && isDev) {
         alert(playerPXPosi);
       }
-      if (e.key == "p") {
+      if (e.key == "p" && isDev) {
         plusSpeed = 1
       }
       displaySlotsSolo();
@@ -1018,7 +1031,7 @@ try {
         });
       }
 
-      if (e.key == "k") {
+      if (e.key == "k" && isDev) {
         soloClassicLive = 1;
         checkLivesSoloClassic();
       }
@@ -1033,11 +1046,11 @@ try {
     if (pageType == 3 && !duoRunPaused) {
       duoRunKeyDown(e);
 
-      if (e.key == "k") {
+      if (e.key == "k" && isDev) {
         duoLiveP1 = 5;
         checkLiveDRun1();
       }
-      if (e.key == "K") {
+      if (e.key == "K" && isDev) {
         duoLiveP2 = 5;
         checkLiveDRun2();
       }
@@ -1254,7 +1267,7 @@ try {
         displaySlotsAllDuoR();
       }
 
-      if (e.key == "b" || e.key == "B") {
+      if (e.key == "b" || e.key == "B" && isDev) {
         let biomeType = Math.floor(Math.random() * 11);
         duoRunPage.className = "";
         duoRunPage.className = `biome${biomeType}`;

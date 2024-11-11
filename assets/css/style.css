@@ -547,6 +547,13 @@ body {
     background-color: #000;
 }
 
+#spatialXtremeModeAnimation .biome7 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: -10%;
+}
+
 #runnerModeAnimation {
     background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
     width: 100%;
@@ -702,8 +709,13 @@ body {
 }
 
 .alignHomeButtons button:hover {
-    margin-left: -10px;
+    margin-left: -20px;
 }
+
+.alignHomeButtons button:active {
+    margin-left: 0px;
+}
+
 
 .alignHomeTitles {
     width: 90%;
@@ -3384,7 +3396,6 @@ body {
     border: 1px solid #29292977;
     background-color: #19191977;
     position: fixed;
-    backdrop-filter: blur(15px);
     display: none;
     justify-content: center;
     align-items: flex-start;

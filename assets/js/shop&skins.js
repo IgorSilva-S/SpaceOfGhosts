@@ -383,9 +383,11 @@ s0b.addEventListener("click", () => {
   p1ScreenSpatial.removeAttribute("class");
   p1ScreenSpatial.className = "playerScreen";
   document.getElementById("hgh1").className = "homeGhost1";
+  document.getElementById("hghX1").className = "homeGhost1";
   if (isP2Defined == undefined) {
     p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
     document.getElementById("hgh2").className = "homeGhost2";
+    document.getElementById("hghX2").className = "homeGhost2";
   }
   localStorage.removeItem("actualSkin");
   s0b.className = "ChoosedSkin";
@@ -405,11 +407,15 @@ sAb.addEventListener("click", () => {
   p1ScreenSpatial.classList.add("sA");
   document.getElementById("hgh1").className = "homeGhost1";
   document.getElementById("hgh1").classList.add("sA");
+  document.getElementById("hghX1").className = "homeGhost1";
+  document.getElementById("hghX1").classList.add("sA");
   if (isP2Defined == undefined) {
     p2ScreenSpatial.removeAttribute("class");
     p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen sA");
     document.getElementById("hgh2").className = "homeGhost2";
     document.getElementById("hgh2").classList.add("sA");
+    document.getElementById("hghX2").className = "homeGhost2";
+    document.getElementById("hghX2").classList.add("sA");
   }
   localStorage.setItem("actualSkin", "sA");
   s0b.className = "shopBlock";
@@ -430,11 +436,15 @@ s1b.addEventListener("click", () => {
     p1ScreenSpatial.classList.add("s1");
     document.getElementById("hgh1").className = "homeGhost1";
     document.getElementById("hgh1").classList.add("s1");
+    document.getElementById("hghX1").className = "homeGhost1";
+    document.getElementById("hghX1").classList.add("s1");
     if (isP2Defined == undefined) {
       p2ScreenSpatial.removeAttribute("class");
       p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s1");
       document.getElementById("hgh2").className = "homeGhost2";
       document.getElementById("hgh2").classList.add("s1");
+      document.getElementById("hghX2").className = "homeGhost2";
+      document.getElementById("hghX2").classList.add("s1");
     }
 
     localStorage.setItem("actualSkin", "s1");
@@ -459,11 +469,15 @@ s2b.addEventListener("click", () => {
     p1ScreenSpatial.classList.add("s2");
     document.getElementById("hgh1").className = "homeGhost1";
     document.getElementById("hgh1").classList.add("s2");
+    document.getElementById("hghX1").className = "homeGhost1";
+    document.getElementById("hghX1").classList.add("s2");
     if (isP2Defined == undefined) {
       p2ScreenSpatial.removeAttribute("class");
       p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s2");
       document.getElementById("hgh2").className = "homeGhost2";
       document.getElementById("hgh2").classList.add("s2");
+      document.getElementById("hghX2").className = "homeGhost2";
+      document.getElementById("hghX2").classList.add("s2");
     }
 
     localStorage.setItem("actualSkin", "s2");
@@ -488,11 +502,15 @@ s3b.addEventListener("click", () => {
     p1ScreenSpatial.classList.add("s3");
     document.getElementById("hgh1").className = "homeGhost1";
     document.getElementById("hgh1").classList.add("s3");
+    document.getElementById("hghX1").className = "homeGhost1";
+    document.getElementById("hghX1").classList.add("s3");
     if (isP2Defined == undefined) {
       p2ScreenSpatial.removeAttribute("class");
       p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s3");
       document.getElementById("hgh2").className = "homeGhost2";
       document.getElementById("hgh2").classList.add("s3");
+      document.getElementById("hghX2").className = "homeGhost2";
+      document.getElementById("hghX2").classList.add("s3");
     }
 
     localStorage.setItem("actualSkin", "s3");
@@ -517,11 +535,15 @@ s4b.addEventListener("click", () => {
     p1ScreenSpatial.classList.add("s4");
     document.getElementById("hgh1").className = "homeGhost1";
     document.getElementById("hgh1").classList.add("s4");
+    document.getElementById("hghX1").className = "homeGhost1";
+    document.getElementById("hghX1").classList.add("s4");
     if (isP2Defined == undefined) {
       p2ScreenSpatial.removeAttribute("class");
       p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s4");
       document.getElementById("hgh2").className = "homeGhost2";
       document.getElementById("hgh2").classList.add("s4");
+      document.getElementById("hghX2").className = "homeGhost2";
+      document.getElementById("hghX2").classList.add("s4");
     }
 
     localStorage.setItem("actualSkin", "s4");
@@ -546,11 +568,15 @@ s5b.addEventListener("click", () => {
     p1ScreenSpatial.classList.add("s5");
     document.getElementById("hgh1").className = "homeGhost1";
     document.getElementById("hgh1").classList.add("s5");
+    document.getElementById("hghX1").className = "homeGhost1";
+    document.getElementById("hghX1").classList.add("s5");
     if (isP2Defined == undefined) {
       p2ScreenSpatial.removeAttribute("class");
       p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s5");
       document.getElementById("hgh2").className = "homeGhost2";
       document.getElementById("hgh2").classList.add("s5");
+      document.getElementById("hghX2").className = "homeGhost2";
+      document.getElementById("hghX2").classList.add("s5");
     }
 
     localStorage.setItem("actualSkin", "s5");
@@ -575,11 +601,15 @@ s6b.addEventListener("click", () => {
     p1ScreenSpatial.classList.add("s6");
     document.getElementById("hgh1").className = "homeGhost1";
     document.getElementById("hgh1").classList.add("s6");
+    document.getElementById("hghX1").className = "homeGhost1";
+    document.getElementById("hghX1").classList.add("s6");
     if (isP2Defined == undefined) {
       p2ScreenSpatial.removeAttribute("class");
       p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s6");
       document.getElementById("hgh2").className = "homeGhost2";
       document.getElementById("hgh2").classList.add("s6");
+      document.getElementById("hghX2").className = "homeGhost2";
+      document.getElementById("hghX2").classList.add("s6");
     }
 
     localStorage.setItem("actualSkin", "s6");
@@ -601,6 +631,7 @@ noneSkin2.addEventListener("click", () => {
   p2ScreenSpatial.removeAttribute("class");
   p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen");
   document.getElementById("hgh2").className = "homeGhost2";
+  document.getElementById("hghX2").className = "homeGhost2";
   localStorage.removeItem("actualP2Screen");
   noneSkin2.className = "ChoosedSkin";
   s0b2.className = "shopBlock";
@@ -618,6 +649,8 @@ noneSkin2.addEventListener("click", () => {
     p2ScreenSpatial.setAttribute("class", `playerScreen player2Screen ${p1Skin}`);
     document.getElementById("hgh2").className = "homeGhost2";
     document.getElementById("hgh2").classList.add(p1Skin);
+    document.getElementById("hghX2").className = "homeGhost2";
+    document.getElementById("hghX2").classList.add(p1Skin);
   }
 });
 
@@ -626,6 +659,8 @@ s0b2.addEventListener("click", () => {
   p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s0");
   document.getElementById("hgh2").className = "homeGhost2";
   document.getElementById("hgh2").classList.add("s0");
+  document.getElementById("hghX2").className = "homeGhost2";
+  document.getElementById("hghX2").classList.add("s0");
   localStorage.setItem("actualP2Screen", "s0");
   noneSkin2.className = "shopBlock";
   s0b2.className = "ChoosedSkin";
@@ -643,6 +678,8 @@ sAb2.addEventListener("click", () => {
   p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen sA");
   document.getElementById("hgh2").className = "homeGhost2";
   document.getElementById("hgh2").classList.add("sA");
+  document.getElementById("hghX2").className = "homeGhost2";
+  document.getElementById("hghX2").classList.add("sA");
   localStorage.setItem("actualP2Screen", "sA");
   noneSkin2.className = "shopBlock";
   s0b2.className = "shopBlock";
@@ -661,6 +698,8 @@ s1b2.addEventListener("click", () => {
     p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s1");
     document.getElementById("hgh2").className = "homeGhost2";
     document.getElementById("hgh2").classList.add("s1");
+    document.getElementById("hghX2").className = "homeGhost2";
+    document.getElementById("hghX2").classList.add("s1");
     localStorage.setItem("actualP2Screen", "s1");
     noneSkin2.className = "shopBlock";
     s0b2.className = "shopBlock";
@@ -682,6 +721,8 @@ s2b2.addEventListener("click", () => {
     p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s2");
     document.getElementById("hgh2").className = "homeGhost2";
     document.getElementById("hgh2").classList.add("s2");
+    document.getElementById("hghX2").className = "homeGhost2";
+    document.getElementById("hghX2").classList.add("s2");
     localStorage.setItem("actualP2Screen", "s2");
     noneSkin2.className = "shopBlock";
     s0b2.className = "shopBlock";
@@ -703,6 +744,8 @@ s3b2.addEventListener("click", () => {
     p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s3");
     document.getElementById("hgh2").className = "homeGhost2";
     document.getElementById("hgh2").classList.add("s3");
+    document.getElementById("hghX2").className = "homeGhost2";
+    document.getElementById("hghX2").classList.add("s3");
     localStorage.setItem("actualP2Screen", "s3");
     noneSkin2.className = "shopBlock";
     s0b2.className = "shopBlock";
@@ -724,6 +767,8 @@ s4b2.addEventListener("click", () => {
     p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s4");
     document.getElementById("hgh2").className = "homeGhost2";
     document.getElementById("hgh2").classList.add("s4");
+    document.getElementById("hghX2").className = "homeGhost2";
+    document.getElementById("hghX2").classList.add("s4");
     localStorage.setItem("actualP2Screen", "s4");
     noneSkin2.className = "shopBlock";
     s0b2.className = "shopBlock";
@@ -745,6 +790,8 @@ s5b2.addEventListener("click", () => {
     p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s5");
     document.getElementById("hgh2").className = "homeGhost2";
     document.getElementById("hgh2").classList.add("s5");
+    document.getElementById("hghX2").className = "homeGhost2";
+    document.getElementById("hghX2").classList.add("s5");
     localStorage.setItem("actualP2Screen", "s5");
     noneSkin2.className = "shopBlock";
     s0b2.className = "shopBlock";
@@ -766,6 +813,8 @@ s6b2.addEventListener("click", () => {
     p2ScreenSpatial.setAttribute("class", "playerScreen player2Screen s6");
     document.getElementById("hgh2").className = "homeGhost2";
     document.getElementById("hgh2").classList.add("s6");
+    document.getElementById("hghX2").className = "homeGhost2";
+    document.getElementById("hghX2").classList.add("s6");
     localStorage.setItem("actualP2Screen", "s6");
     noneSkin2.className = "shopBlock";
     s0b2.className = "shopBlock";

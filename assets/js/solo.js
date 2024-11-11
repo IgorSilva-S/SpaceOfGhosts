@@ -1382,16 +1382,31 @@ setInterval(() => {
                     boostItem.style.opacity = '0'
                     boostOn = false
 
-                    if (lives1p < 90) {
-                        lives1p = lives1p + 20
-                        if (lives1p > 100) {
-                            lives1p = 100
+                    if (challengeType == null) {
+                        if (lives1p < 90) {
+                            lives1p = lives1p + 20
+                            if (lives1p > 100) {
+                                lives1p = 100
+                            }
+                        } else {
+                            lives1p = lives1p + 20
+                            healSlot++
+                            if (lives1p > 100) {
+                                lives1p = 100
+                            }
                         }
                     } else {
-                        lives1p = lives1p + 20
-                        healSlot++
-                        if (lives1p > 100) {
-                            lives1p = 100
+                        if (lives1p < 20) {
+                            lives1p = lives1p + 5
+                            if (lives1p > 20) {
+                                lives1p = 20
+                            }
+                        } else {
+                            lives1p = lives1p + 5
+                            healSlot++
+                            if (lives1p > 20) {
+                                lives1p = 20
+                            }
                         }
                     }
 
@@ -1402,6 +1417,10 @@ setInterval(() => {
                     if (lives1p < 100) {
                         lives1p = 100
                         checkLive1p()
+                        if (challengeType == 'extreme') {
+                            lives1p = 20
+                            checkLive1p()
+                        }
                     } else {
                         fullHealSlot++
                     }
