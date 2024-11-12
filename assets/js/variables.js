@@ -74,7 +74,7 @@ const devKeysCentralPage = document.getElementById('devKeysCentral')
 //Songs
 const homeSong = document.getElementById('homeSong') // by Artificial Music
 const song = document.getElementById('soloSong') // by Prod. Riddiman
-const soloXtremeSong = document.getElementById('soloXtremeSong')
+const soloXtremeSong = document.getElementById('soloXtremeSong') // by Tiểu Long
 const duoRSong = document.getElementById('duoRunSong') // by After the Fall
 const hSong = document.getElementById('hSong') // by SEGA and Sonic Team (1992)
 const shopSong = document.getElementById('shopSong') // by dyu / Official by Nintendo

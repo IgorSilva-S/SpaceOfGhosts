@@ -16,6 +16,7 @@ const reloadButton = document.getElementById('reloadButton')
 //Song vars
 const homeSong = document.getElementById('homeSong') // by Artificial Music - Alone Two Days Ago
 const song = document.getElementById('soloSong') // by Prod. Riddiman - Deep Space
+const soloXtremeSong = document.getElementById('soloXtremeSong') // by Tiểu Long
 const duoRSong = document.getElementById('duoRunSong') // by After The Fall - Pieces
 const shopSong = document.getElementById('shopSong') // by Snivys / Official by Nintendo - Boutique (Pokémon X and Y)
 const settingsSong = document.getElementById('settingsSong') // by dyu / Official by Nintendo - Nintendo 3DS Internet Settings
@@ -30,7 +31,7 @@ reloadButton.addEventListener('click', () => {
     if (isReloadable) {
         alert('No reload')
         window.onbeforeunload = function() {
-            return "Dude, are you sure you want to leave? Think of the kittens!";
+            return "isReloadable is set to false";
         }
         isReloadable = false
     } else {
@@ -42,12 +43,13 @@ reloadButton.addEventListener('click', () => {
 
 prevID.addEventListener('click', () => {
     if (soundId == 0) {
-        soundId = 8
+        soundId = 9
     } else {
         soundId--
     }
     homeSong.pause()
     song.pause()
+    soloXtremeSong.pause()
     duoRSong.pause()
     shopSong.pause()
     settingsSong.pause()
@@ -58,6 +60,7 @@ prevID.addEventListener('click', () => {
 
     homeSong.currentTime = 0
     song.currentTime = 0
+    soloXtremeSong.currentTime = 0
     duoRSong.currentTime = 0
     shopSong.currentTime = 0
     settingsSong.currentTime = 0
@@ -71,13 +74,14 @@ prevID.addEventListener('click', () => {
 })
 
 afterID.addEventListener('click', () => {
-    if (soundId == 8) {
+    if (soundId == 9) {
         soundId = 0
     } else {
         soundId++
     }
     homeSong.pause()
     song.pause()
+    soloXtremeSong.pause()
     duoRSong.pause()
     shopSong.pause()
     settingsSong.pause()
@@ -88,6 +92,7 @@ afterID.addEventListener('click', () => {
 
     homeSong.currentTime = 0
     song.currentTime = 0
+    soloXtremeSong.currentTime = 0
     duoRSong.currentTime = 0
     shopSong.currentTime = 0
     settingsSong.currentTime = 0
@@ -133,6 +138,9 @@ function checkSong() {
             songName.innerText = 'Introduction / Send and Receive'
         }
         songCredit.innerText = 'Nintendo (Tomodachi Life OST)'
+    } else if (soundId == 9) {
+        songName.innerText = 'Solo Extreme Song'
+        songCredit.innerText = 'Tiểu Long'
     }
 }
 
