@@ -23,9 +23,21 @@
                 <img src="assets/img/non-sprites/navButtons/prev.png" alt="PrevSong">
             </div>
             <div class="soundControls">
-                <button id="playControl"></button>
-                <button id="resetControl"></button>
-                <button id="pauseControl"></button>
+                <button id="playControl">
+                    <span class="material-symbols-rounded">
+                        play_circle
+                    </span>
+                </button>
+                <button id="resetControl">
+                    <span class="material-symbols-rounded">
+                        replay
+                        </span>
+                </button>
+                <button id="pauseControl">
+                    <span class="material-symbols-rounded">
+                        pause_circle
+                    </span>
+                </button>
             </div>
             <div class="soundInfos">
                 <div class="soundGhost stopped" id="soundGhost"></div>
@@ -36,7 +48,7 @@
                 <img src="assets/img/non-sprites/navButtons/after.png" alt="PrevSong">
             </div>
         </div>
-        
+
         <div class="volCenter">
             <div class="muteAlert" id="volAlertCont">
                 <span class="material-symbols-rounded" id="volAlert">
@@ -46,8 +58,8 @@
             <div class="volumeModifier" id="quickVolCont">
                 <span id="quickVolNum">100%</span>
                 <input type="range" name="" id="quickVol" value="100">
-        </div>
-        <button id="reloadButton">Prevent Reload</button>
+            </div>
+            <button id="reloadButton">Prevent Reload</button>
         </div>
     </div>
 
