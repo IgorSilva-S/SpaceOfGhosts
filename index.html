@@ -23,11 +23,16 @@
     <section id="loadingPage">
         <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts">
         <div class="loadingBallCont" id="lbCont">
-            <div class="loadingBall" id="lb1"></div>
-            <div class="loadingBall" id="lb2"></div>
-            <div class="loadingBall" id="lb3"></div>
-            <div class="loadingBall" id="lb4"></div>
-            <div class="loadingBall" id="lb5"></div>
+            <div class="loadingGhost">
+                
+            </div>
+            <div style="display: none">
+                <div class="loadingBall" id="lb1"></div>
+                <div class="loadingBall" id="lb2"></div>
+                <div class="loadingBall" id="lb3"></div>
+                <div class="loadingBall" id="lb4"></div>
+                <div class="loadingBall" id="lb5"></div>
+            </div>
         </div>
         <div class="errorContainer" id="errorCont" style="display: none;">
             <p id="errorText">Houve um erro inesperado no jogo, estamos corrigindo a situação!</p>
@@ -79,7 +84,7 @@
             <button id="spatialXtremeMode">
                 Espacial: Infinito (Extremo)
             </button>
-            <button id="runnerMode" style="display: none;">
+            <button id="runnerMode">
                 Corredor: Infinito
             </button>
      
@@ -133,7 +138,9 @@
             </div>
 
             <div id="runnerModeAnimation" style="display: none;">
-                <div class="clouds"></div>
+                <div class="background" style="animation-duration: 8s;">
+
+                </div>
                 <div class="classicSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
                 <div class="classicSoil"></div>
                 <div class="runningGhost1"></div>
@@ -293,7 +300,7 @@
 
     <!--Solo Mode: Classic-->
     <section id="soloRunner">
-        <div class="clouds" id="classicClouds"></div>
+        <div class="background"></div>
         <div class="classicSoil"></div>
         <div class="player" id="classicPlayer"></div>
         <div id="classicLifes" class="hearts"></div>

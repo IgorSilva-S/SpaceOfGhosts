@@ -555,7 +555,7 @@ body {
 }
 
 #runnerModeAnimation {
-    background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
+    background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -604,6 +604,12 @@ body {
 .lightMode .playGame {
     background-color: #c9c9c9;
     border: 1px solid #c9c9c9;
+    color: black;
+}
+
+.lightMode .playGameAlert {
+    background-color: #fc3a3a;
+    border-color: #fc3a3a;
     color: black;
 }
 
@@ -826,7 +832,7 @@ body {
 }
 
 .runningGhost2 {
-    top: 63%;
+    top: 67%;
     animation: running2 10s linear infinite;
 }
 
@@ -841,11 +847,11 @@ body {
     }
 
     11% {
-        top: 63%;
+        top: 67%;
     }
 
     30% {
-        top: 63%;
+        top: 67%;
         left: 40%;
     }
 
@@ -888,7 +894,7 @@ body {
     }
 
     10% {
-        top: 63%;
+        top: 67%;
     }
 
     11% {
@@ -901,7 +907,7 @@ body {
     }
 
     31% {
-        top: 63%;
+        top: 67%;
     }
 
     60% {
@@ -3041,7 +3047,7 @@ body {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
-    background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
+    background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);
 }
 
 .classicSoil {
@@ -3610,6 +3616,24 @@ body {
     background-color: #00a;
     border-radius: 100%;
     animation: loadingUp 2s infinite;
+}
+
+.loadingGhost {
+    width: 150px;
+    height: 150px;
+    background-image: url(../img/sprites/animations/loading.png);
+    background-position: center;
+    background-size: cover;
+    animation: loadingGhost 4s linear infinite;
+}
+
+@keyframes loadingGhost {
+    from {
+        rotate: 0deg;
+    } 
+    to {
+        rotate: 360deg;
+    }
 }
 
 @keyframes loadingUp {

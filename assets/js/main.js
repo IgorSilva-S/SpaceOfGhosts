@@ -653,12 +653,8 @@ try {
             homePage.removeAttribute("style");
             homeSong.pause();
             homeSong.currentTime = 0;
-            soloClassicLive = 6;
-            makeSCScoreCounter();
-            checkLivesSoloClassic();
             soloRunnerPage.style.display = "block";
             soloClassicSong.play();
-            removeEnd();
           }, 500);
         }
       }
