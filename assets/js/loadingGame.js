@@ -34,7 +34,6 @@ window.onload = () => {
         soloPage.style.display = 'none'
         soloScorePage.style.display = 'none'
         homePage.style.display = 'none'
-        gameMPage.style.display = 'none'
         duoRunPage.style.display = 'none'
         duoRunScorePage.style.display = 'none'
         shopPage.style.display = 'none'
