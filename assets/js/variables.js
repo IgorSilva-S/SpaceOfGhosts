@@ -4,7 +4,7 @@
 const gameVersion = 'Branch'
 const isPreview = true
 const previewType = 'Dev'
-const lastDayOfChanges = '12/11/2024'
+const lastDayOfChanges = '13/11/2024'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = true
 let canLoad = true
@@ -90,6 +90,8 @@ const shopButton = document.getElementById('goShop')
 const settingsButton = document.getElementById('editSettings')
 const creditsButton = document.getElementById('viewCredits')
 const devKeysCentralButton = document.getElementById('devKeysEnter')
+const fullscreenAnimationButton = document.getElementById('fullscreenAnimation')
+let isAnimFull = false
 const startButton = document.getElementById('startGame')
 let selectedGameMode = 1
 let challengeType = null

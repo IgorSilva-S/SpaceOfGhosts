@@ -513,6 +513,26 @@ try {
     }
   });
 
+  fullscreenAnimationButton.addEventListener('click', () => {
+    if (!isAnimFull) {
+      homePage.style.opacity = '0'
+      setTimeout(() => {
+        document.getElementById("homeAnimation").setAttribute('style', 'top: 0; left: 0; width: 100vw; height: 100vh; border: none')
+        document.getElementById('fsAnimIcon').innerHTML = 'fullscreen_exit'
+        isAnimFull = true
+        homePage.style.opacity = '1'
+      }, 500);
+    } else {
+      homePage.style.opacity = '0'
+      setTimeout(() => {
+        document.getElementById("homeAnimation").removeAttribute('style')
+        document.getElementById('fsAnimIcon').innerHTML = 'fullscreen'
+        isAnimFull = false
+        homePage.style.opacity = '1'
+      }, 500);
+    }
+  })
+
   startGame.addEventListener("click", () => {
     let isOnePlayer = document.getElementById("onePlayer").checked;
     let isTwoPlayers = document.getElementById("twoPlayers").checked;

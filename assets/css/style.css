@@ -541,6 +541,24 @@ body {
     border-radius: 8px;
     border: 1px solid #0632ff;
     background-color: #000;
+    z-index: 998;
+}
+
+#fullscreenAnimation {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    z-index: 999;
+    font-size: 50px;
+    opacity: .2;
+    transition-duration: .2s;
+}
+
+#fullscreenAnimation:hover {
+    opacity: 1;
 }
 
 #spatialModeAnimation {
@@ -3052,8 +3070,8 @@ body {
 
 .classicSoil {
     width: 3840px;
-    height: 125px;
-    background-image: url(../img/sprites/background/Soil.png);
+    height: 140px;
+    background-image: url(../img/sprites/background/superSoil.png);
     position: absolute;
     bottom: 0;
     left: 0;
