@@ -443,6 +443,28 @@ body {
     background-image: url(../img/sprites/Items/relaxBoost.png);
 }
 
+.vanishBoost {
+    background-image: url(../img/sprites/Items/vanishBoost.png);
+}
+
+.waitStts {
+    background-image: url(../img/sprites/Items/loadingBoost.gif);
+    width: 37px;
+    height: 37px;
+    background-size: cover;
+    background-position: center;
+    margin-left: 5px;
+}
+
+.okayStts {
+    background-image: url(../img/sprites/Items/loadedBoost.png);
+    width: 37px;
+    height: 37px;
+    background-size: cover;
+    background-position: center;
+    margin-left: 5px;
+}
+
 @keyframes boost {
     0% {
         left: 120%
@@ -926,6 +948,11 @@ body {
 
     31% {
         top: 67%;
+        transform: scaleX(1);
+    }
+
+    32% {
+        transform: scaleX(-1);
     }
 
     60% {
@@ -938,6 +965,11 @@ body {
 
     91% {
         left: 1%;
+        transform: scaleX(-1);
+    }
+
+    92% {
+        transform: scaleX(1);
     }
 }
 
@@ -1424,11 +1456,11 @@ body {
     background-size: cover;
 }
 
-#soloClassicPlay div,
-#SBsoloClassicPlay div {
+#soloRunnerPlay div,
+#SBsoloRunnerPlay div {
     width: 150px;
     height: 150px;
-    background-image: url(../img/sprites/gameMode/soloClassic.png);
+    background-image: url(../img/sprites/gameMode/soloRunner.png);
     background-position: center;
     background-size: cover;
 }
@@ -1451,11 +1483,11 @@ body {
     background-size: cover;
 }
 
-#duoClassicPlay div,
-#DBduoClassicPlay div {
+#duoRunnerPlay div,
+#DBduoRunnerPlay div {
     width: 150px;
     height: 150px;
-    background-image: url(../img/sprites/gameMode/duoClassic.png);
+    background-image: url(../img/sprites/gameMode/duoRunner.png);
     background-position: center;
     background-size: cover;
 }
@@ -2615,7 +2647,7 @@ body {
 }
 
 .prodGM1 {
-    background-image: url(../img/sprites/shopItems/classicMode.gif);
+    background-image: url(../img/sprites/shopItems/RunnerMode.gif);
 }
 
 .sideBar {
@@ -3068,10 +3100,20 @@ body {
     background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);
 }
 
-.classicSoil {
+.rockSoil {
     width: 3840px;
     height: 140px;
     background-image: url(../img/sprites/background/superSoil.png);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: moveBckg 5s linear infinite;
+}
+
+.bRockSoil {
+    width: 3840px;
+    height: 140px;
+    background-image: url(../img/sprites/background/superSoil2.png);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -3084,14 +3126,22 @@ body {
 }
 
 #soloRunner .player,
-#duoClassic .player {
+#duoRunner .player {
     top: auto;
     bottom: 50px;
+    left: 100px;
+    transition-duration: .1s;
+}
+
+#soloRunner .player.secondTrail,
+#duoRunner .player.player.secondTrail {
+    top: auto;
+    bottom: 175px;
     left: 100px;
 }
 
 #soloRunner .crystal,
-#duoClassic .crystal {
+#duoRunner .crystal {
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -3100,52 +3150,30 @@ body {
     left: -500px;
 }
 
-.jump {
-    animation: jumpPlayer .7s linear;
+#soloRunner .player.jumping,
+#duoRunner .player.player.jumping {
+    top: auto;
+    bottom: 175px;
+    left: 100px;
+    animation: jumping 2s linear;
 }
 
-@keyframes jumpPlayer {
+@keyframes jumping {
     0% {
-        bottom: 50px;
-    }
-
-    40% {
-        bottom: 150px;
-    }
-
-    50% {
         bottom: 175px;
     }
 
-
-    60% {
-        bottom: 150px;
+    10% {
+        bottom: 300px;
     }
+
+    80% {
+        bottom: 300px;
+    }
+
 
     100% {
-        bottom: 50px;
-    }
-}
-
-.fly {
-    animation: flyPlayer 10s linear;
-}
-
-@keyframes flyPlayer {
-    0% {
-        bottom: 50px;
-    }
-
-    5% {
         bottom: 175px;
-    }
-
-    95% {
-        bottom: 175px;
-    }
-
-    100% {
-        bottom: 50px;
     }
 }
 
@@ -3166,27 +3194,27 @@ body {
 }
 
 .cType1 {
-    background-image: url(../img/sprites/classic/Crystal1.png);
+    background-image: url(../img/sprites/crystals/Crystal1.png);
 }
 
 .cType2 {
-    background-image: url(../img/sprites/classic/Crystal2.png);
+    background-image: url(../img/sprites/crystals/Crystal2.png);
 }
 
 .cType3 {
-    background-image: url(../img/sprites/classic/Crystal3.png);
+    background-image: url(../img/sprites/crystals/Crystal3.png);
 }
 
 .cType4 {
-    background-image: url(../img/sprites/classic/Crystal4.png);
+    background-image: url(../img/sprites/crystals/Crystal4.png);
 }
 
 .cType5 {
-    background-image: url(../img/sprites/classic/Crystal5.png);
+    background-image: url(../img/sprites/crystals/Crystal5.png);
 }
 
 .cType6 {
-    background-image: url(../img/sprites/classic/Crystal6.png);
+    background-image: url(../img/sprites/crystals/Crystal6.png);
 }
 
 .cType2,
@@ -3201,14 +3229,7 @@ body {
     height: 50px;
 }
 
-#soloRunner .hearts,
-#duoClassic .hearts {
-    top: 5px;
-    left: 5px;
-    position: absolute;
-}
-
-.classicInfos {
+.RunnerInfos {
     font-size: 30px;
     text-align: left;
     position: absolute;
@@ -3216,7 +3237,7 @@ body {
     left: 20px;
 }
 
-.scoreSoloClassic {
+.scoreSoloRunner {
     width: 50%;
     padding: 10px 5px;
     background-color: #f0f0f033;
@@ -3230,12 +3251,12 @@ body {
     transition-duration: .5s;
 }
 
-.scoreSoloClassic h1 {
+.scoreSoloRunner h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.scoreSoloClassic .goButtons {
+.scoreSoloRunner .goButtons {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -3243,7 +3264,7 @@ body {
     margin-bottom: 5px;
 }
 
-#duoClassic {
+#duoRunner {
     width: 100vw;
     height: 100vh;
     display: none;
@@ -3255,15 +3276,15 @@ body {
     flex-direction: row;
 }
 
-#duoClassic .playerScreen {
+#duoRunner .playerScreen {
     background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
 }
 
-.playerScreen .classicSoil {
+.playerScreen .rockSoil {
     position: absolute;
 }
 
-.scoreDuoClassic {
+.scoreDuoRunner {
     width: 50%;
     padding: 10px 5px;
     background-color: #f0f0f033;
@@ -3277,12 +3298,12 @@ body {
     transition-duration: .5s;
 }
 
-.scoreDuoClassic h1 {
+.scoreDuoRunner h1 {
     text-align: center;
     margin: 10px 0;
 }
 
-.scoreDuoClassic .goButtons {
+.scoreDuoRunner .goButtons {
     display: flex;
     justify-content: space-evenly;
     align-items: center;

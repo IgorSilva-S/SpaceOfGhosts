@@ -61,8 +61,8 @@ try {
       shopSong.volume = gameVolume;
       settingsSong.volume = gameVolume;
       creditsSong.volume = gameVolume;
-      soloClassicSong.volume = gameVolume;
-      duoClassicSong.volume = gameVolume;
+      soloRunnerSong.volume = gameVolume;
+      duoRunnerSong.volume = gameVolume;
       devKeysCentralSong.volume = gameVolume;
       let volumePrintNum = `${Math.round(gameVolume * 100)}%`;
       document.getElementById("volumeNum").innerText = volumePrintNum;
@@ -272,7 +272,7 @@ try {
 
   //Enable Preview
   if (canEnablePreviewItems) {
-    //document.getElementById('classicModePurchase').removeAttribute('style')
+    //document.getElementById('RunnerModePurchase').removeAttribute('style')
   }
 
   //Navigations Functions
@@ -290,11 +290,11 @@ try {
     /*pageType = 1.1
         homePage.style.opacity = '0'
         setTimeout(() => {
-            if (classicBuy == "true" && canEnablePreviewItems) {
-                soloClassicButton.removeAttribute('style')
-                soloClassicButton2.removeAttribute('style')
-                duoClassicButton.removeAttribute('style')
-                duoClassicButton2.removeAttribute('style')
+            if (RunnerBuy == "true" && canEnablePreviewItems) {
+                soloRunnerButton.removeAttribute('style')
+                soloRunnerButton2.removeAttribute('style')
+                duoRunnerButton.removeAttribute('style')
+                duoRunnerButton2.removeAttribute('style')
                 document.getElementById('gameModeDiv').removeAttribute('style')
             }
             homePage.removeAttribute('style')
@@ -673,8 +673,21 @@ try {
             homePage.removeAttribute("style");
             homeSong.pause();
             homeSong.currentTime = 0;
+            soloRunnerLife = 100
             soloRunnerPage.style.display = "block";
-            soloClassicSong.play();
+            soloRunnerSong.play();
+            checkSRLives()
+
+            vanishWaiter = setInterval(() => {
+              if (vanishTimer < 15) {
+                  vanishTimer++
+              } else {
+                  clearInterval(vanishWaiter)
+                  canVanish = true
+                  document.getElementById('vanishStts').className = 'okayStts'
+              }
+          }, 1000);
+
           }, 500);
         }
       }
@@ -1025,35 +1038,47 @@ try {
     }
 
     if (pageType == 2.1) {
-      if (e.key == " " && !pausedClassicSolo) {
-        playerClassic.classList.add("jump");
-        playerClassic.addEventListener("animationend", () => {
-          setTimeout(() => {
-            playerClassic.className = "player";
-            if (scHurted) {
-              playerClassic.classList.add("hShield");
+      if (e.key == 'ArrowUp') {
+        if (!isInSecTrail) {
+          isInSecTrail = true
+          playerRunner.classList.add('secondTrail')
+        } else {
+          playerRunner.classList.remove('secondTrail')
+          playerRunner.classList.add('jumping')
+          playerRunner.addEventListener('animationend', () => {
+            playerRunner.classList.remove('jumping')
+            playerRunner.classList.add('secondTrail')
+          })
+        }
+      }
+
+      if (e.key == 'ArrowDown' && isInSecTrail) {
+        isInSecTrail = false
+        playerRunner.classList.remove('secondTrail')
+      }
+
+      if (e.key == '1' && canVanish == true) {
+        playerRunner.style.opacity = '.5'
+        vanished = true
+        canVanish = false
+        vanishTimer = 0
+        setTimeout(() => {
+          playerRunner.style.opacity = '.5'
+          vanished = false
+          playerRunner.removeAttribute('style')
+          document.getElementById('vanishStts').className = 'waitStts'
+
+          vanishWaiter = setInterval(() => {
+            if (vanishTimer < 15) {
+                vanishTimer++
+            } else {
+                clearInterval(vanishWaiter)
+                canVanish = true
+                document.getElementById('vanishStts').className = 'okayStts'
             }
-          }, 200);
-        });
-      }
+        }, 1000);
 
-      if (e.key == "ArrowUp" && !pausedClassicSolo && canFly) {
-        playerClassic.classList.add("fly");
-        flyingNow = true;
-        playerClassic.addEventListener("animationend", () => {
-          flyingNow = false;
-          canFly = false;
-          makePlayerFlyAgain();
-        });
-      }
-
-      if (e.key == "k" && isDev) {
-        soloClassicLive = 1;
-        checkLivesSoloClassic();
-      }
-
-      if (e.key == "Enter" && !soloClassicDied) {
-        pauseSoloClassic();
+        }, 10000);
       }
     }
     //End Solo Game Controls
@@ -1297,9 +1322,9 @@ try {
     }
 
     if (pageType == 3.2) {
-      duoClassicKeyDown(e);
+      duoRunnerKeyDown(e);
       if (e.key == "Enter") {
-        pauseClassicDuo();
+        pauseRunnerDuo();
       }
     }
 
@@ -1362,9 +1387,9 @@ try {
 
     //End Duo : Run! Restore
 
-    //Duo : Classic Restore
+    //Duo : Runner Restore
     if (pageType == 3.2) {
-      duoClassicKeyUp(e);
+      duoRunnerKeyUp(e);
     }
   });
 
@@ -1702,8 +1727,8 @@ try {
     shopSong.volume = gameVolume;
     settingsSong.volume = gameVolume;
     creditsSong.volume = gameVolume;
-    soloClassicSong.volume = gameVolume;
-    duoClassicSong.volume = gameVolume;
+    soloRunnerSong.volume = gameVolume;
+    duoRunnerSong.volume = gameVolume;
     devKeysCentralSong.volume = gameVolume;
     localStorage.setItem("volume", gameVolume);
     document.getElementById("volumeNum").innerText = volumePrintNum;
@@ -1780,8 +1805,8 @@ try {
     shopSong.volume = gameVolume;
     settingsSong.volume = gameVolume;
     creditsSong.volume = gameVolume;
-    soloClassicSong.volume = gameVolume;
-    duoClassicSong.volume = gameVolume;
+    soloRunnerSong.volume = gameVolume;
+    duoRunnerSong.volume = gameVolume;
     devKeysCentralSong.volume = gameVolume;
     localStorage.setItem("volume", gameVolume);
     document.getElementById("volumeNum").innerText = volumePrintNum;

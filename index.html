@@ -141,8 +141,8 @@
                 <div class="background" style="animation-duration: 8s;">
 
                 </div>
-                <div class="classicSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
-                <div class="classicSoil"></div>
+                <div class="bRockSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
+                <div class="rockSoil"></div>
                 <div class="runningGhost1"></div>
                 <div class="runningGhost2"></div>
             </div>
@@ -303,12 +303,30 @@
         </div>
     </section>
 
-    <!--Solo Mode: Classic-->
+    <!--Solo Mode: Runner-->
     <section id="soloRunner">
         <div class="background"></div>
-        <div class="classicSoil"></div>
-        <div class="player" id="classicPlayer"></div>
-        <div id="classicLifes" class="hearts"></div>
+        <div class="bRockSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
+        <div class="rockSoil"></div>
+        <div class="normalGameHud">
+            <div class="score">
+                <span id="soloRunnerDistance">0
+                </span>m
+            </div>
+            <div class="itemsAlertCont">
+                <div class="itemCont" id="vanishAlert">
+                    <div class="item vanishBoost"></div>
+                    <div class="slots">
+                        <div id="vanishStts" class="waitStts"></div>
+                    </div>
+                    (1)
+                </div>
+            </div>
+            <div class="hearts" id="RunnerLifes">
+
+            </div>
+        </div>
+        <div class="player" id="runnerPlayer"></div>
     </section>
 
     <!--Duo Mode: Espatial-->
@@ -439,38 +457,37 @@
         </div>
     </section>
 
-    <!--Duo Mode: Classic-->
-    <section id="duoClassic">
-        <div class="clouds" id="duoClassicClouds"></div>
+    <!--Duo Mode: Runner-->
+    <section id="duoRunner">
         <div class="playerScreen">
             <div class="hearts h100" id="DCP1Hearts"></div>
-            <div class="classicSoil" id="p1Soil"></div>
+            <div class="rockSoil" id="p1Soil"></div>
             <div class="crystal cType2" id="p1cr1"></div>
             <div class="crystal cType6" id="p1cr2"></div>
             <div class="crystal cType1" id="p1cr3"></div>
-            <div class="player" id="p1Classic"></div>
+            <div class="player" id="p1Runner"></div>
         </div>
         <div class="playerScreen player2Screen">
             <div class="hearts h100" id="DCP2Hearts"></div>
-            <div class="classicSoil" id="p2Soil"></div>
+            <div class="rockSoil" id="p2Soil"></div>
             <div class="crystal cType2" id="p2cr1"></div>
             <div class="crystal cType6" id="p2cr2"></div>
             <div class="crystal cType1" id="p2cr3"></div>
-            <div class="player" id="p2Classic"></div>
+            <div class="player" id="p2Runner"></div>
         </div>
-        <div class="scoreDuoClassic" id="scoreDC">
-            <h1>Jogador <span id="duoClassicWinner">0</span> Ganha a partida!</h1>
-            Pontuação: <span id="duoClassicScore">0</span> <br>
-            Melhor Pontuação: <span id="duoClassicBestScore">0</span> <br>
-            <div class="newHigh" id="duoClassicHighAlert">Nova Melhor pontuação</div>
-            Stardusts: <span id="duoClassicPlusMoney">0</span> <br>
-            Velocidade: <span id="duoClassicSpeed">0</span> <br>
+        <div class="scoreDuoRunner" id="scoreDC">
+            <h1>Jogador <span id="duoRunnerWinner">0</span> Ganha a partida!</h1>
+            Pontuação: <span id="duoRunnerScore">0</span> <br>
+            Melhor Pontuação: <span id="duoRunnerBestScore">0</span> <br>
+            <div class="newHigh" id="duoRunnerHighAlert">Nova Melhor pontuação</div>
+            Stardusts: <span id="duoRunnerPlusMoney">0</span> <br>
+            Velocidade: <span id="duoRunnerSpeed">0</span> <br>
             <div class="goButtons">
-                <button id="soloClassicHome">Ir para o início</button>
-                <button id="soloClassicGame">Começar novamente</button>
+                <button id="soloRunnerHome">Ir para o início</button>
+                <button id="soloRunnerGame">Começar novamente</button>
             </div>
         </div>
-        <div class="duoControls" id="duoClassicControls">
+        <div class="duoControls" id="duoRunnerControls">
             <button class="pauseHome" id="DCretHome">
             </button>
             <button class="pauseRestart" id="DCRestart"></button>
@@ -517,8 +534,8 @@
             <button class="shopBlock" id="catSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
             </button>
-            <button class="shopBlock" id="classicModePurchase" shopButton style="display: none;">
-                <img src="assets/img/sprites/shopItems/classicMode.gif" alt="classicMode">
+            <button class="shopBlock" id="RunnerModePurchase" shopButton style="display: none;">
+
             </button>
             <button class="shopBlock" id="mechaSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
@@ -772,8 +789,8 @@
     <audio src="assets/songs/music/gameShop&Skin.mp3" loop id="shopSong"></audio>
     <audio src="assets/songs/music/gameSettings.mp3" loop id="settingsSong"></audio>
     <audio src="assets/songs/music/creditsMusic.mp3" loop id="creditsSong"></audio>
-    <audio src="assets/songs/music/soloClassicMusic.mp3" loop id="soloClassicSong"></audio>
-    <audio src="assets/songs/music/duoClassicMusic.mp3" loop id="duoClassicSong"></audio>
+    <audio src="assets/songs/music/soloRunnerMusic.mp3" loop id="soloRunnerSong"></audio>
+    <audio src="assets/songs/music/duoRunnerMusic.mp3" loop id="duoRunnerSong"></audio>
     <audio src="assets/songs/music/devKeysCentral.mp3" loop id="devKeysCentralSong"></audio>
     <!--SFX-->
     <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
@@ -788,8 +805,8 @@
     <script src="assets/js/solo.js"></script>
     <script src="assets/js/duoRun.js"></script>
     <script src="assets/js/shop&skins.js"></script>
-    <!--<script src="assets/js/soloClassic.js"></script>
-    <script src="assets/js/duoClassic.js"></script>
+    <script src="assets/js/soloRunner.js"></script>
+    <!--<script src="assets/js/duoRunner.js"></script>
     <script src="assets/js/selectScript.js"></script>-->
     <script src="assets/js/devKeys.js"></script>
     <script src="assets/js/betaItems.js"></script>

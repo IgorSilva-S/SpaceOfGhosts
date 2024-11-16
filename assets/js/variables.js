@@ -4,7 +4,7 @@
 const gameVersion = 'Branch'
 const isPreview = true
 const previewType = 'Dev'
-const lastDayOfChanges = '13/11/2024'
+const lastDayOfChanges = '16/11/2024'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = true
 let canLoad = true
@@ -14,9 +14,9 @@ const player = document.getElementById('ghost')
 let keysSolo = []
 const p1Run = document.getElementById('player1Run')
 const p2Run = document.getElementById('player2Run')
-const playerClassic = document.getElementById('classicPlayer')
-const p1Classic = document.getElementById('p1Classic')
-const p2Classic = document.getElementById('p2Classic')
+const playerRunner = document.getElementById('runnerPlayer')
+const p1Runner = document.getElementById('p1Runner')
+const p2Runner = document.getElementById('p2Runner')
 const invencible = document.getElementById('Inv')
 let trail = NaN, kill
 const trailsElms = document.querySelectorAll('.trail')
@@ -43,10 +43,10 @@ let lastPage = undefined
 1 - Home
 1.1 - Game Mode
 2 - Game : 1p Style
-2.1- Game : Classic 1p Mode
+2.1- Game : Runner 1p Mode
 3 - Game : 2p VS (Infinite Mode)
 3.1 - Game : 2p VS (Battle! Mode)
-3.2 - Game : 2p VS (Classic Mode)
+3.2 - Game : 2p VS (Runner Mode)
 4 - Shop
 4.1 - Skin Changer
 5 - Settings
@@ -67,7 +67,7 @@ const skinChangerPage = document.getElementById('skinChanger')
 const settingsPage = document.getElementById('settings')
 const creditsPage = document.getElementById('credits')
 const soloRunnerPage = document.getElementById('soloRunner')
-const classicDuoPage = document.getElementById('duoClassic')
+const RunnerDuoPage = document.getElementById('duoRunner')
 const devKeysCentralPage = document.getElementById('devKeysCentral')
 //End Pages
 
@@ -80,8 +80,8 @@ const hSong = document.getElementById('hSong') // by SEGA and Sonic Team (1992)
 const shopSong = document.getElementById('shopSong') // by dyu / Official by Nintendo
 const settingsSong = document.getElementById('settingsSong') // by dyu / Official by Nintendo
 const creditsSong = document.getElementById('creditsSong') // by After The Fall 
-const soloClassicSong = document.getElementById('soloClassicSong') // by Chillpeach
-const duoClassicSong = document.getElementById('duoClassicSong') // by Chillpeach
+const soloRunnerSong = document.getElementById('soloRunnerSong') // by Chillpeach
+const duoRunnerSong = document.getElementById('duoRunnerSong') // by Chillpeach
 const devKeysCentralSong = document.getElementById('devKeysCentralSong') // By Nintendo
 
 //End Songs
@@ -123,7 +123,7 @@ let finalScore
 let p1RHS = false, p2RHS = false
 let p1HurtAnim = false, p2HurtAnim = false
 let keysDuoRun = []
-let keysDuoClassic = []
+let keysDuoRunner = []
 let duoRunPaused = false
 const duoRunLiveP1Alert = document.getElementById('dRunP1Live')
 const duoRunLiveP2Alert = document.getElementById('dRunP2Live')
@@ -152,17 +152,18 @@ let p1RBStyle, p2RBstyle
 let type2Controls = false
 let muted = false
 let scHurted = false
-let pausedClassicSolo = false
+let pausedRunnerSolo = false
 let scHurtWaiter, scHurtTimer = 0
-let soloClassicLive = 0
-const soloClassicHearts = document.getElementById('classicLifes')
-let p1DuoClassicLife = 0
-let p2DuoClassicLife = 0
-const p1DuoClassicLifeAlert = document.getElementById('DCP1Hearts')
-const p2DuoClassicLifeAlert = document.getElementById('DCP2Hearts')
-let canFly = true
-let canFlyWaiter, flyTimer = 0
-let flyingNow = false
+let soloRunnerLife = 0
+const soloRunnerHearts = document.getElementById('RunnerLifes')
+let p1DuoRunnerLife = 0
+let p2DuoRunnerLife = 0
+const p1DuoRunnerLifeAlert = document.getElementById('DCP1Hearts')
+const p2DuoRunnerLifeAlert = document.getElementById('DCP2Hearts')
+let isInSecTrail = false
+let canVanish = false
+let vanishWaiter, vanishTimer = 0
+let vanished = false
 let scScoreCounter
 let scScore = 0
 let muteControlAppeared = false
@@ -170,8 +171,8 @@ let quickVolAppeared = false
 let allControlsAppeared = false
 let changedCursor = false
 let soloSlots = false
-let soloClassicDied = false
-let pausedDClassic = false
+let soloRunnerDied = false
+let pausedDRunner = false
 let p1CHSTimer = 0, p2CHSTimer = 0
 let p1CHS = false, p2CHS = false
 let p1CHSCounter = undefined, p2CHSCounter = undefined
@@ -216,7 +217,7 @@ let P1WTC1, P1WTC2, P1WTC3, P1WTC4, P1WTC5, P2WTC1, P2WTC2, P2WTC3, P2WTC4, P2WT
 //Responsivity Meteors
 const screenWidth = screen.width
 
-//Classic Solo Crystals
+//Runner Solo Crystals
 const crystal1 = document.getElementById('cr1')
 const crystal2 = document.getElementById('cr2')
 const crystal3 = document.getElementById('cr3')
@@ -255,7 +256,7 @@ let skin5Buy = localStorage.getItem('purchased5')
 let skin6Buy = localStorage.getItem('purchased6')
 
 //Game Mode purchased checker
-let classicBuy = localStorage.getItem('classicPurchased')
+let RunnerBuy = localStorage.getItem('RunnerPurchased')
 
 //Shop - Actual Item
 let actualShopItem = 0
