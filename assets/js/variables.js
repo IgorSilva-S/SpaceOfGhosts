@@ -161,9 +161,13 @@ let p2DuoRunnerLife = 0
 const p1DuoRunnerLifeAlert = document.getElementById('DCP1Hearts')
 const p2DuoRunnerLifeAlert = document.getElementById('DCP2Hearts')
 let isInSecTrail = false
+let isJumping = false
 let canVanish = false
 let vanishWaiter, vanishTimer = 0
 let vanished = false
+let canSpeed = false
+let speedWaiter, speedTimer = 0
+let speeded = false
 let scScoreCounter
 let scScore = 0
 let muteControlAppeared = false

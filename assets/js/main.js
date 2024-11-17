@@ -688,6 +688,16 @@ try {
               }
           }, 1000);
 
+          speedWaiter = setInterval(() => {
+            if (speedTimer < 45) {
+                speedTimer++
+            } else {
+                clearInterval(speedWaiter)
+                canSpeed = true
+                document.getElementById('speedStts').className = 'okayStts'
+            }
+        }, 1000);
+
           }, 500);
         }
       }
@@ -1045,9 +1055,11 @@ try {
         } else {
           playerRunner.classList.remove('secondTrail')
           playerRunner.classList.add('jumping')
+          isJumping = true
           playerRunner.addEventListener('animationend', () => {
             playerRunner.classList.remove('jumping')
             playerRunner.classList.add('secondTrail')
+            isJumping = false
           })
         }
       }
@@ -1057,13 +1069,12 @@ try {
         playerRunner.classList.remove('secondTrail')
       }
 
-      if (e.key == '1' && canVanish == true) {
+      if (e.key == '1' && canVanish) {
         playerRunner.style.opacity = '.5'
         vanished = true
         canVanish = false
         vanishTimer = 0
         setTimeout(() => {
-          playerRunner.style.opacity = '.5'
           vanished = false
           playerRunner.removeAttribute('style')
           document.getElementById('vanishStts').className = 'waitStts'
@@ -1079,6 +1090,26 @@ try {
         }, 1000);
 
         }, 10000);
+      }
+
+      if (e.key == '2' && canSpeed && !isJumping) {
+        playerRunner.classList.add('boosting')
+        speeded = true
+        speedTimer = 0
+        playerRunner.addEventListener('animationend', () => {
+          speeded = false
+          playerRunner.classList.remove('boosting')
+             document.getElementById('speedStts').className = 'waitStts'
+             speedWaiter = setInterval(() => {
+              if (speedTimer < 45) {
+                  speedTimer++
+              } else {
+                  clearInterval(speedWaiter)
+                  canSpeed = true
+                  document.getElementById('speedStts').className = 'okayStts'
+              }
+          }, 1000);
+        })
       }
     }
     //End Solo Game Controls
