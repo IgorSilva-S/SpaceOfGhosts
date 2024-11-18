@@ -143,6 +143,8 @@ if (isDev == '1') {
         let mouseX = mouse.clientX;
         let mouseY = mouse.clientY;
         let context = document.getElementById('contextMenu')
+        let contextOptions = document.getElementById('contextOptions')
+        contextOptions.innerHTML = ''
         context.removeAttribute('style')
         setTimeout(() => {
           context.style.top = `${mouseY}px`
@@ -150,9 +152,34 @@ if (isDev == '1') {
           context.style.display = "flex"
         }, 10);
         document.getElementById('kn').innerText = keyName
+        context.addEventListener('click', () => {
+          context.removeAttribute('style')
+        })
+        let dkcm = document.createElement('div')
+        dkcm.className = 'CMOption'
+        dkcm.innerHTML = 'Deletar'
+        dkcm.addEventListener('click', () => {
+          alert(`A chave ${keyName} foi deletada`)
+          context.removeAttribute('style')
+          localStorage.removeItem(keyName)
+          refreshPane()
+        })
+        contextOptions.insertAdjacentElement('beforeend', dkcm)
+        let rkcm = document.createElement('div')
+        rkcm.className = 'CMOption'
+        rkcm.innerHTML = 'Renomear'
+        rkcm.addEventListener('click', () => {
+          let newKeyName = prompt(`Digite o novo nome da chave ${keyName}`)
+          let oldKey = localStorage.getItem(keyName)
+          localStorage.setItem(newKeyName, oldKey)
+          localStorage.removeItem(keyName)
+          alert(`Chave renomeade de ${keyName} para ${newKeyName}`)
+          context.removeAttribute('style')
+          refreshPane()
+        })
+        contextOptions.insertAdjacentElement('beforeend', rkcm)
 
-        document.getElementById('delKey').addEventListener('click', delKey)
-        document.getElementById('renKey').addEventListener('click', renKey)
+
         /*let makeSomething = prompt(`O que deseja fazer com a chave ${keyName}? \nDeletar a chave - delKey \nRenomear a chave - renKey \nNada - notChange ou qualquer coisa`)
         if (makeSomething == 'delKey') {
           let confirmDelKey = confirm(`Deseja deletar a chave ${keyName}?`)

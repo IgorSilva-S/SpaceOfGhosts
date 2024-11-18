@@ -3503,6 +3503,10 @@ body {
     }
 }
 
+.keyContextMenu #contextOptions {
+    width: 100%;
+}
+
 .keyContextMenu .CMOption,
 .keyContextMenu .keyName {
     border-radius: 4px;
