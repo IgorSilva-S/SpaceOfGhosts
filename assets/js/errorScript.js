@@ -2,19 +2,16 @@ let errBox = document.getElementById('errorCont')
 let loadingBox = document.getElementById('lbCont')
 
 function mainAlertError() {
+    canLoad = false
     disPage.style.display = 'none'
     soloPage.style.display = 'none'
-    soloScorePage.style.display = 'none'
     homePage.style.display = 'none'
-    gameMPage.style.display = 'none'
     duoRunPage.style.display = 'none'
     duoRunScorePage.style.display = 'none'
     shopPage.style.display = 'none'
     skinChangerPage.style.display = 'none'
     settingsPage.style.display = 'none'
     creditsPage.style.display = 'none'
-    classicSoloPage.style.display = 'none'
-    classicDuoPage.style.display = 'none'
     devKeysCentralPage.style.display = 'none'
     document.getElementById('loadingPage').removeAttribute('style')
     errBox.style.display = 'flex'
@@ -40,17 +37,13 @@ setInterval(() => {
     } catch {
         disPage.style.display = 'none'
         soloPage.style.display = 'none'
-        soloScorePage.style.display = 'none'
         homePage.style.display = 'none'
-        gameMPage.style.display = 'none'
         duoRunPage.style.display = 'none'
         duoRunScorePage.style.display = 'none'
         shopPage.style.display = 'none'
         skinChangerPage.style.display = 'none'
         settingsPage.style.display = 'none'
         creditsPage.style.display = 'none'
-        classicSoloPage.style.display = 'none'
-        classicDuoPage.style.display = 'none'
         devKeysCentralPage.style.display = 'none'
         document.getElementById('loadingPage').removeAttribute('style')
         errBox.style.display = 'flex'

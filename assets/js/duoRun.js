@@ -2,7 +2,7 @@ document.getElementById('retHome').addEventListener('click', () => {
     duoRunPage.style.opacity = '0'
     setTimeout(() => {
         duoRunPage.removeAttribute('style')
-        gameMPage.style.display = 'flex'
+        homePage.style.display = 'flex'
         duoRSong.currentTime = 0
         homeSong.currentTime = 0
         P1DRShieldSlot = 0
@@ -134,7 +134,7 @@ function duoRunKeyUp(e) {
 
 function moveChars() {
     if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
-        if (keysDuoRun['ArrowUp'] == true && !p2RFire) {
+        if (keysDuoRun['ArrowUp'] == true && !p2RFire && !p2HurtAnim) {
             p2Posi--
             if (p2Posi < 0) {
                 p2Posi = 0
@@ -142,7 +142,7 @@ function moveChars() {
             p2Run.style.top = `${p2Posi}%`
             p2Run.classList.add('upping')
         }
-        if (keysDuoRun['ArrowDown'] == true && !p2RFire) {
+        if (keysDuoRun['ArrowDown'] == true && !p2RFire && !p2HurtAnim) {
             p2Posi++
             if (p2Posi >= 84) {
                 p2Posi = 84
@@ -150,7 +150,7 @@ function moveChars() {
             p2Run.style.top = `${p2Posi}%`
             p2Run.classList.add('falling')
         }
-        if (keysDuoRun['w'] == true || keysDuoRun['W'] == true && !p1RFire) {
+        if (keysDuoRun['w'] == true || keysDuoRun['W'] == true && !p1RFire && !p1HurtAnim) {
             p1Posi--
             if (p1Posi < 0) {
                 p1Posi = 0
@@ -158,7 +158,7 @@ function moveChars() {
             p1Run.style.top = `${p1Posi}%`
             p1Run.classList.add('upping')
         }
-        if (keysDuoRun['s'] == true || keysDuoRun['S'] == true && !p1RFire) {
+        if (keysDuoRun['s'] == true || keysDuoRun['S'] == true && !p1RFire && !p1HurtAnim) {
             p1Posi++
             if (p1Posi >= 84) {
                 p1Posi = 84
@@ -483,6 +483,7 @@ function checkLiveDRun1() {
         document.getElementById('p1BstS').innerText = p1BoostSum
         document.getElementById('p2BstS').innerText = p2BoostSum
         document.getElementById('BstSumDuoRun').innerText = allSum
+        clearInterval(duoBiomeChanger)
         setTimeout(() => {
             duoRunPage.style.opacity = '0'
             p1Run.style.top = '120%'
@@ -594,6 +595,7 @@ function checkLiveDRun2() {
         p2Run.classList.add('deathAnim')
         duoRunK2 = true
         document.getElementById('playerNum').innerText = '1'
+        clearInterval(duoBiomeChanger)
         setTimeout(() => {
             duoRunPage.style.opacity = '0'
             p2Run.style.top = '120%'
@@ -702,6 +704,32 @@ p1Rm5.addEventListener('animationiteration', () => {
 p1RBoost.addEventListener('animationiteration', () => {
     p1RBoost.removeAttribute('class')
     p1RBoost.className = 'boost'
+  if (challengeType == 'extreme') {
+    let isAppear = Math.floor(Math.random() * 5)
+    p1RBoost.style.opacity = '0'
+    p1RBoostOn = false
+    if (isAppear == 1) {
+        p1RBoost.style.opacity = '1'
+        p1RBoostOn = true
+        let BRandTop = Math.random() * 84
+        BRandTop = parseInt(BRandTop)
+        p1RBoost.style.top = `${BRandTop}%`
+        p1RBStyle = Math.floor(Math.random() * 4)
+        if (p1RBStyle == 0) {
+            p1RBoost.classList.add('shieldBoost')
+        }
+        if (p1RBStyle == 1) {
+            p1RBoost.classList.add('gunBoost')
+        }
+        if (p1RBStyle == 2) {
+            p1RBoost.classList.add('invBoost')
+        }
+        if (p1RBStyle == 3) {
+            p1RBoost.classList.add('lifeBoost')
+        }
+
+    }
+  } else {
     let isAppear = Math.floor(Math.random() * 2)
     p1RBoost.style.opacity = '0'
     p1RBoostOn = false
@@ -726,6 +754,7 @@ p1RBoost.addEventListener('animationiteration', () => {
         }
 
     }
+  }
 })
 
 
@@ -810,29 +839,31 @@ p2Rm5.addEventListener('animationiteration', () => {
 p2RBoost.addEventListener('animationiteration', () => {
     p2RBoost.removeAttribute('class')
     p2RBoost.className = 'boost'
-    let isAppear = Math.floor(Math.random() * 2)
-    p2RBoost.style.opacity = '0'
-    p2RBoostOn = false
-    if (isAppear == 1) {
-        p2RBoost.style.opacity = '1'
-        p2RBoostOn = true
-        let BRandTop = Math.random() * 84
-        BRandTop = parseInt(BRandTop)
-        p2RBoost.style.top = `${BRandTop}%`
-        p2RBStyle = Math.floor(Math.random() * 4)
-        if (p2RBStyle == 0) {
-            p2RBoost.classList.add('shieldBoost')
+    if (challengeType == 'extreme') {
+        let isAppear = Math.floor(Math.random() * 5)
+        p2RBoost.style.opacity = '0'
+        p2RBoostOn = false
+        if (isAppear == 1) {
+            p2RBoost.style.opacity = '1'
+            p2RBoostOn = true
+            let BRandTop = Math.random() * 84
+            BRandTop = parseInt(BRandTop)
+            p2RBoost.style.top = `${BRandTop}%`
+            p2RBStyle = Math.floor(Math.random() * 4)
+            if (p2RBStyle == 0) {
+                p2RBoost.classList.add('shieldBoost')
+            }
+            if (p2RBStyle == 1) {
+                p2RBoost.classList.add('gunBoost')
+            }
+            if (p2RBStyle == 2) {
+                p2RBoost.classList.add('invBoost')
+            }
+            if (p2RBStyle == 3) {
+                p2RBoost.classList.add('lifeBoost')
+            }
+    
         }
-        if (p2RBStyle == 1) {
-            p2RBoost.classList.add('gunBoost')
-        }
-        if (p2RBStyle == 2) {
-            p2RBoost.classList.add('invBoost')
-        }
-        if (p2RBStyle == 3) {
-            p2RBoost.classList.add('lifeBoost')
-        }
-
     }
 })
 
@@ -1626,3 +1657,206 @@ setInterval(() => {
         }
     }
 }, 1);
+
+/*Touch controls*/
+// P1
+mControlUpSRP1.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!duoRunPaused) {
+        p1Posi--
+        if (p1Posi < 0) {
+            p1Posi = 0
+        }
+        p1Run.style.top = `${p1Posi}%`
+        p1Run.classList.add('upping')
+
+        p1UpHold = setInterval(() => {
+            p1Posi--
+            if (p1Posi < 0) {
+                p1Posi = 0
+            }
+            p1Run.style.top = `${p1Posi}%`
+            p1Run.classList.add('upping')
+        }, 40)
+    }
+})
+
+mControlUpSRP1.addEventListener('touchend', (e) => {
+    e.preventDefault()
+    clearInterval(p1UpHold)    
+
+    if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+        if (!p1HurtAnim && !p1RFire) {
+          p1Run.removeAttribute("class");
+          p1Run.className = "player";
+        }
+        if (!p2HurtAnim && !p2RFire) {
+          p2Run.removeAttribute("class");
+          p2Run.className = "player";
+        }
+        if (p1RHS) {
+          p1Run.classList.add("hShield");
+        }
+        if (p2RHS) {
+          p2Run.classList.add("hShield");
+        }
+        if (p1RunShield) {
+          p1Run.classList.add("shield");
+        }
+        if (p2RunShield) {
+          p2Run.classList.add("shield");
+        }
+      }
+})
+
+mControlDownSRP1.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!duoRunPaused) {
+        if (!hurtAnim && !relaxStts) {
+            p1Posi++
+            if (p1Posi >= 84) {
+                p1Posi = 84
+            }
+            p1Run.style.top = `${p1Posi}%`
+            p1Run.classList.add('falling')
+
+        p1DownHold = setInterval(() => {
+            p1Posi++
+            if (p1Posi >= 84) {
+                p1Posi = 84
+            }
+            p1Run.style.top = `${p1Posi}%`
+            p1Run.classList.add('falling')
+        }, 40)
+    }
+}
+})
+
+mControlDownSRP1.addEventListener('touchend', (e) => {
+    e.preventDefault()
+    clearInterval(p1DownHold)
+
+    if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+        if (!p1HurtAnim && !p1RFire) {
+          p1Run.removeAttribute("class");
+          p1Run.className = "player";
+        }
+        if (!p2HurtAnim && !p2RFire) {
+          p2Run.removeAttribute("class");
+          p2Run.className = "player";
+        }
+        if (p1RHS) {
+          p1Run.classList.add("hShield");
+        }
+        if (p2RHS) {
+          p2Run.classList.add("hShield");
+        }
+        if (p1RunShield) {
+          p1Run.classList.add("shield");
+        }
+        if (p2RunShield) {
+          p2Run.classList.add("shield");
+        }
+      }
+})
+
+// P2
+mControlUpSRP2.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!duoRunPaused) {
+        p2Posi--
+        if (p2Posi < 0) {
+            p2Posi = 0
+        }
+        p2Run.style.top = `${p2Posi}%`
+        p2Run.classList.add('upping')
+
+        p2UpHold = setInterval(() => {
+            p2Posi--
+            if (p2Posi < 0) {
+                p2Posi = 0
+            }
+            p2Run.style.top = `${p2Posi}%`
+            p2Run.classList.add('upping')
+        }, 40)
+    }
+})
+
+mControlUpSRP2.addEventListener('touchend', (e) => {
+    e.preventDefault()
+    clearInterval(p2UpHold)    
+
+    if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+        if (!p1HurtAnim && !p1RFire) {
+          p1Run.removeAttribute("class");
+          p1Run.className = "player";
+        }
+        if (!p2HurtAnim && !p2RFire) {
+          p2Run.removeAttribute("class");
+          p2Run.className = "player";
+        }
+        if (p1RHS) {
+          p1Run.classList.add("hShield");
+        }
+        if (p2RHS) {
+          p2Run.classList.add("hShield");
+        }
+        if (p1RunShield) {
+          p1Run.classList.add("shield");
+        }
+        if (p2RunShield) {
+          p2Run.classList.add("shield");
+        }
+      }
+})
+
+mControlDownSRP2.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!duoRunPaused) {
+        if (!hurtAnim && !relaxStts) {
+            p2Posi++
+            if (p2Posi >= 84) {
+                p2Posi = 84
+            }
+            p2Run.style.top = `${p2Posi}%`
+            p2Run.classList.add('falling')
+
+        p2DownHold = setInterval(() => {
+            p2Posi++
+            if (p2Posi >= 84) {
+                p2Posi = 84
+            }
+            p2Run.style.top = `${p2Posi}%`
+            p2Run.classList.add('falling')
+        }, 40)
+    }
+}
+})
+
+mControlDownSRP2.addEventListener('touchend', (e) => {
+    e.preventDefault()
+    clearInterval(p2DownHold)
+
+    if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+        if (!p1HurtAnim && !p1RFire) {
+          p1Run.removeAttribute("class");
+          p1Run.className = "player";
+        }
+        if (!p2HurtAnim && !p2RFire) {
+          p2Run.removeAttribute("class");
+          p2Run.className = "player";
+        }
+        if (p1RHS) {
+          p1Run.classList.add("hShield");
+        }
+        if (p2RHS) {
+          p2Run.classList.add("hShield");
+        }
+        if (p1RunShield) {
+          p1Run.classList.add("shield");
+        }
+        if (p2RunShield) {
+          p2Run.classList.add("shield");
+        }
+      }
+})

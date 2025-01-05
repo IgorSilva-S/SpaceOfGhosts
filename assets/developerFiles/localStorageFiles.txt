@@ -19,7 +19,7 @@ soloSlots
 -> Default: false
 -> What does this key change?: Enable/Disable the keep items in slot for solo game
 
-changedCursor
+changedCursor (deprecated)
 -> Values: true or false
 -> Default: false
 -> What does this key change?: Change cursor style, for true, the cursor will be light, for false, the cursor will be black
@@ -29,7 +29,7 @@ invertedColor
 -> Default: false
 -> What does this key change?: Enable/Disable Inverted Color mode
 
-purchasedA
+purchasedA (Deprecated - Already purchased in default game)
 -> Values: true or false
 -> Default: false
 -> What does this key change?: Check if the Female Skin are purchased or not
@@ -59,10 +59,25 @@ purchased4
 -> Default: false
 -> What does this key change?: Check if the Mecha Ghost Skin are purchased or not
 
+purchased5
+-> Values: true or false
+-> Default: false
+-> What does this key change?: Check if the Wizard Ghost Skin are purchased or not
+
+purchased6
+-> Values: true or false
+-> Default: false
+-> What does this key change?: Check if the Sara Ghost Skin are purchased or not
+
 actualSkin
 -> Values: s in front and the skin code, example: s2 (value from Dog Ghost)
 -> Default: undefined or s0
 -> What does this key change?: Check what skin the user are wearing now
+
+actualP2Screen
+-> Values: s in front and the skin code, example: s5 (value from Wizard Ghost)
+-> Default: undefined
+-> What does this key change?: Check what skin the player 2 are wearing now
 
 highScore
 -> Values: Any number
@@ -98,6 +113,11 @@ noDevTitle
 -> Values: true or false
 -> Default: false
 -> What will this key change?: Text "DevKeys Enabled" in game home title
+
+useHD
+-> Values: true or false
+-> Default: undefined
+-> What will this key change?: HD Filter for the game
 
 Future Keys:
 

@@ -1,20 +1,22 @@
 //Variables
 
 // Game Env Variables
-const gameVersion = '185.24'
+const gameVersion = 'Beta'
 const isPreview = true
-const previewType = 'Beta'
-const lastDayOfChanges = '07/07/2024'
+const previewType = '1y'
+const lastDayOfChanges = '05/01/2025'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = false
+let canLoad = true
+const isDevBranch = false
 
 const player = document.getElementById('ghost')
 let keysSolo = []
 const p1Run = document.getElementById('player1Run')
 const p2Run = document.getElementById('player2Run')
-const playerClassic = document.getElementById('classicPlayer')
-const p1Classic = document.getElementById('p1Classic')
-const p2Classic = document.getElementById('p2Classic')
+const playerRunner = document.getElementById('runnerPlayer')
+const p1Runner = document.getElementById('p1Runner')
+const p2Runner = document.getElementById('p2Runner')
 const invencible = document.getElementById('Inv')
 let trail = NaN, kill
 const trailsElms = document.querySelectorAll('.trail')
@@ -41,10 +43,10 @@ let lastPage = undefined
 1 - Home
 1.1 - Game Mode
 2 - Game : 1p Style
-2.1- Game : Classic 1p Mode
+2.1- Game : Runner 1p Mode
 3 - Game : 2p VS (Infinite Mode)
 3.1 - Game : 2p VS (Battle! Mode)
-3.2 - Game : 2p VS (Classic Mode)
+3.2 - Game : 2p VS (Runner Mode)
 4 - Shop
 4.1 - Skin Changer
 5 - Settings
@@ -52,35 +54,33 @@ let lastPage = undefined
 7 - DevKeys Central
 */
 const disButton = document.getElementById('exitDisclaimer')
-let selectGM = document.getElementById('gameModeSelect')
 
 //Pages
 const disPage = document.getElementById('disclaimer')
 const soloPage = document.getElementById('soloMode')
-const soloScorePage = document.getElementById('soloScoreMark')
 const homePage = document.getElementById('homeScreen')
-const gameMPage = document.getElementById('gameModeScreen')
 const duoRunPage = document.getElementById('duoRun')
 const duoRunScorePage = document.getElementById('duoRunScore')
 const shopPage = document.getElementById('shop')
 const skinChangerPage = document.getElementById('skinChanger')
 const settingsPage = document.getElementById('settings')
 const creditsPage = document.getElementById('credits')
-const classicSoloPage = document.getElementById('soloClassic')
-const classicDuoPage = document.getElementById('duoClassic')
+const soloRunnerPage = document.getElementById('soloRunner')
+const RunnerDuoPage = document.getElementById('duoRunner')
 const devKeysCentralPage = document.getElementById('devKeysCentral')
 //End Pages
 
 //Songs
 const homeSong = document.getElementById('homeSong') // by Artificial Music
 const song = document.getElementById('soloSong') // by Prod. Riddiman
+const soloXtremeSong = document.getElementById('soloXtremeSong') // by Tiểu Long
 const duoRSong = document.getElementById('duoRunSong') // by After the Fall
 const hSong = document.getElementById('hSong') // by SEGA and Sonic Team (1992)
 const shopSong = document.getElementById('shopSong') // by dyu / Official by Nintendo
 const settingsSong = document.getElementById('settingsSong') // by dyu / Official by Nintendo
 const creditsSong = document.getElementById('creditsSong') // by After The Fall 
-const soloClassicSong = document.getElementById('soloClassicSong') // by Chillpeach
-const duoClassicSong = document.getElementById('duoClassicSong') // by Chillpeach
+const soloRunnerSong = document.getElementById('soloRunnerSong') // by Chillpeach
+const duoRunnerSong = document.getElementById('duoRunnerSong') // by Chillpeach
 const devKeysCentralSong = document.getElementById('devKeysCentralSong') // By Nintendo
 
 //End Songs
@@ -89,14 +89,12 @@ const shopButton = document.getElementById('goShop')
 const settingsButton = document.getElementById('editSettings')
 const creditsButton = document.getElementById('viewCredits')
 const devKeysCentralButton = document.getElementById('devKeysEnter')
-const soloButton = document.getElementById('soloPlay')
-const soloClassicButton = document.getElementById('soloClassicPlay')
-const soloButton2 = document.getElementById('SBsoloPlay')
-const soloClassicButton2 = document.getElementById('SBsoloClassicPlay')
-const duoButton = document.getElementById('duoPlay')
-const duoButton2 = document.getElementById('DBduoPlay')
-const duoClassicButton = document.getElementById('duoClassicPlay')
-const duoClassicButton2 = document.getElementById('DBduoClassicPlay')
+const fullscreenAnimationButton = document.getElementById('fullscreenAnimation')
+let isAnimFull = false
+const mobileSoundControl = document.getElementById('mobileSoundControl')
+const startButton = document.getElementById('startGame')
+let selectedGameMode = 1
+let challengeType = null
 const boostItem = document.getElementById('bst')
 let shieldSlot = 0
 let acceleratorSlot = 0
@@ -108,6 +106,11 @@ const acceleratorSW = document.getElementById('acceleratorS')
 const relaxSW = document.getElementById('relaxS')
 const ShealSW = document.getElementById('SlifeS')
 const healSW = document.getElementById('lifeS')
+const shieldSWP = document.getElementById('shieldSP')
+const acceleratorSWP = document.getElementById('acceleratorSP')
+const relaxSWP = document.getElementById('relaxSP')
+const ShealSWP = document.getElementById('SlifeSP')
+const healSWP = document.getElementById('lifeSP')
 let lives1p = 0
 const lives1pAlert = document.getElementById('live1p')
 let boostStyle
@@ -116,6 +119,10 @@ let acceleratorTimer = 0
 let relaxStts = false
 const mControlUp = document.getElementById('upBlock')
 const mControlDown = document.getElementById('downBlock')
+const mControlUpSRP1 = document.getElementById('p1UpBlock')
+const mControlDownSRP1 = document.getElementById('p1DownBlock')
+const mControlUpSRP2 = document.getElementById('p2UpBlock')
+const mControlDownSRP2 = document.getElementById('p2DownBlock')
 let acceleratorWaiter, hurtSWaiter
 let scoreCounter, duoBiomeChanger
 let scoreNum = 0
@@ -125,7 +132,7 @@ let finalScore
 let p1RHS = false, p2RHS = false
 let p1HurtAnim = false, p2HurtAnim = false
 let keysDuoRun = []
-let keysDuoClassic = []
+let keysDuoRunner = []
 let duoRunPaused = false
 const duoRunLiveP1Alert = document.getElementById('dRunP1Live')
 const duoRunLiveP2Alert = document.getElementById('dRunP2Live')
@@ -154,32 +161,38 @@ let p1RBStyle, p2RBstyle
 let type2Controls = false
 let muted = false
 let scHurted = false
-let pausedClassicSolo = false
+let pausedRunnerSolo = false
 let scHurtWaiter, scHurtTimer = 0
-let soloClassicLive = 0
-const soloClassicHearts = document.getElementById('classicLifes')
-let p1DuoClassicLife = 0
-let p2DuoClassicLife = 0
-const p1DuoClassicLifeAlert = document.getElementById('DCP1Hearts')
-const p2DuoClassicLifeAlert = document.getElementById('DCP2Hearts')
-let canFly = true
-let canFlyWaiter, flyTimer = 0
-let flyingNow = false
+let soloRunnerLife = 0
+const soloRunnerHearts = document.getElementById('RunnerLifes')
+let p1DuoRunnerLife = 0
+let p2DuoRunnerLife = 0
+const p1DuoRunnerLifeAlert = document.getElementById('DCP1Hearts')
+const p2DuoRunnerLifeAlert = document.getElementById('DCP2Hearts')
+let isInSecTrail = false
+let isJumping = false
+let canVanish = false
+let vanishWaiter, vanishTimer = 0
+let vanished = false
+let canSpeed = false
+let speedWaiter, speedTimer = 0
+let speeded = false
 let scScoreCounter
 let scScore = 0
+let muteControlAppeared = false
 let quickVolAppeared = false
 let allControlsAppeared = false
 let changedCursor = false
 let soloSlots = false
-let soloClassicDied = false
-let pausedDClassic = false
+let soloRunnerDied = false
+let pausedDRunner = false
 let p1CHSTimer = 0, p2CHSTimer = 0
 let p1CHS = false, p2CHS = false
 let p1CHSCounter = undefined, p2CHSCounter = undefined
-let modeToSkinChanger = undefined
+let modeToSkinChanger = undefined, shopBackType = 'default'
 
-//Shop PopUp
-const bckgPop = document.getElementById('blurShop')
+//Shop PopUp - Deprecated (Only for learning)
+/*const bckgPop = document.getElementById('blurShop')
 const PUShop = document.getElementById('confPurch')
 const iName = document.getElementById('iName')
 const aDesc = document.getElementById('aDesc')
@@ -187,7 +200,7 @@ const iValue = document.getElementById('itemValue')
 const aMoney = document.getElementById('actualMoney')
 let prodImg = document.getElementById('pImg')
 const CB1 = document.getElementById('SPPB1')
-const CB2 = document.getElementById('SPPB2')
+const CB2 = document.getElementById('SPPB2')*/
 
 //Solo Meteors
 const meteor1 = document.getElementById('m1')
@@ -217,8 +230,7 @@ let P1WTC1, P1WTC2, P1WTC3, P1WTC4, P1WTC5, P2WTC1, P2WTC2, P2WTC3, P2WTC4, P2WT
 //Responsivity Meteors
 const screenWidth = screen.width
 
-
-//Classic Solo Crystals
+//Runner Solo Crystals
 const crystal1 = document.getElementById('cr1')
 const crystal2 = document.getElementById('cr2')
 const crystal3 = document.getElementById('cr3')
@@ -231,16 +243,37 @@ const s1b = document.getElementById('cs1')
 const s2b = document.getElementById('cs2')
 const s3b = document.getElementById('cs3')
 const s4b = document.getElementById('cs4')
+const s5b = document.getElementById('cs5')
+const s6b = document.getElementById('cs6')
+const noneSkin2 = document.getElementById('noneSecond')
+const s0b2 = document.getElementById('Scs0')
+const sAb2 = document.getElementById('ScsA')
+const s1b2 = document.getElementById('Scs1')
+const s2b2 = document.getElementById('Scs2')
+const s3b2 = document.getElementById('Scs3')
+const s4b2 = document.getElementById('Scs4')
+const s5b2 = document.getElementById('Scs5')
+const s6b2 = document.getElementById('Scs6')
+
+// Players Screen to change skin
+const skinSpatialOne = document.getElementById('skinAppearance')
+const p1ScreenSpatial = document.getElementById('p1Screen')
+const p2ScreenSpatial = document.getElementById('p2Screen')
 
 //Skin purchased checker
-let skinABuy = localStorage.getItem('purchasedA')
 let skin1Buy = localStorage.getItem('purchased1')
 let skin2Buy = localStorage.getItem('purchased2')
 let skin3Buy = localStorage.getItem('purchased3')
 let skin4Buy = localStorage.getItem('purchased4')
+let skin5Buy = localStorage.getItem('purchased5')
+let skin6Buy = localStorage.getItem('purchased6')
 
 //Game Mode purchased checker
-let classicBuy = localStorage.getItem('classicPurchased')
+let RunnerBuy = localStorage.getItem('RunnerPurchased')
+
+//Shop - Actual Item
+let actualShopItem = 0
+let shopButtons = document.querySelectorAll('[shopButton]')
 
 //DevKeys Variables
 const shutdownDevKeys = document.getElementById('disableDevKeys')

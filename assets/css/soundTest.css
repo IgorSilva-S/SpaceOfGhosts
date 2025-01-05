@@ -183,13 +183,18 @@ img {
     border: none;
     transition-duration: .2s;
     border-radius: 8px;
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 .soundControls button:hover {
     background-color: #0632ff;
 }
 
-#playControl {
+/*#playControl {
     background-image: url(../img/non-sprites/navButtons/play.png);
 }
 
@@ -199,7 +204,7 @@ img {
 
 #resetControl {
     background-image: url(../img/non-sprites/navButtons//reset.png);
-}
+}*/
 
 .soundInfos {
     width: 80%;

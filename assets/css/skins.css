@@ -1,3 +1,60 @@
+/*Skin 0 - PLayer 2*/ 
+.s0 .player {
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+}
+
+.s0 .playerPaused {
+    background-image: url(../img/sprites/skins/normal/Stopped.png);
+}
+
+.s0 .upping {
+    background-image: url(../img/sprites/skins/normal/Upping.png);
+    animation-name: uppingGhost;
+    animation-duration: .58s;
+}
+
+.s0 .falling {
+    background-image: url(../img/sprites/skins/normal/Falling.png);
+    animation-name: fallingGhost;
+    animation-duration: .8s;
+}
+
+
+.s0 .fire {
+    background-image: url(../img/sprites/skins/normal/Fire.gif);
+}
+
+.s0 .relaxing {
+    background-image: url(../img/sprites/skins/normal/Relaxing.gif);
+}
+
+.s0.homeGhost1,
+.s0.homeGhost2,
+.s0.runningGhost1,
+.s0.runningGhost2 {
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+}
+
+.s0 .ghostScore {
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+}
+
+.s0 .ghostWon {
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+}
+
+.s0 .ghostLose {
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+}
+
+.s0 .trail {
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+}
+
+.s0 .paused .trail {
+    background-image: url(../img/sprites/skins/normal/Stopped.png);
+}
+
 /*Skin A - Female Ghost*/
 
 .sA .player {
@@ -48,7 +105,10 @@
     background-image: url(../img/sprites/skins/female/Relaxing.gif);
 }
 
-.sA .homeGhost1 {
+.sA.homeGhost1,
+.sA.homeGhost2,
+.sA.runningGhost1,
+.sA.runningGhost2 {
     background-image: url(../img/sprites/skins/female/Flying.gif);
 }
 
@@ -126,7 +186,10 @@
     background-image: url(../img/sprites/skins/transpGhost/Relaxing.gif);
 }
 
-.s1 .homeGhost1 {
+.s1.homeGhost1,
+.s1.homeGhost2,
+.s1.runningGhost1,
+.s1.runningGhost2 {
     background-image: url(../img/sprites/skins/transpGhost/Flying.gif);
 }
 
@@ -210,7 +273,10 @@
     border-radius: 100%;
 }
 
-.s2 .homeGhost1 {
+.s2.homeGhost1,
+.s2.homeGhost2,
+.s2.runningGhost1,
+.s2.runningGhost2 {
     background-image: url(../img/sprites/skins/dogGhost/Flying.gif);
 }
 
@@ -293,7 +359,10 @@
     border-radius: 100%;
 }
 
-.s3 .homeGhost1 {
+.s3.homeGhost1,
+.s3.homeGhost2,
+.s3.runningGhost1,
+.s3.runningGhost2 {
     background-image: url(../img/sprites/skins/catGhost/Flying.gif);
 }
 
@@ -376,7 +445,10 @@
     border-radius: 100%;
 }
 
-.s4 .homeGhost1 {
+.s4.homeGhost1,
+.s4.homeGhost2,
+.s4.runningGhost1,
+.s4.runningGhost2 {
     background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
 }
 
@@ -402,4 +474,274 @@
 
 .prodS4 {
     background-image: url(../img/sprites/skins/mechaGhost/Flying.gif);
+}
+
+/*Skin 5 - Wizard Ghost*/
+.s5 .player {
+    background-image: url(../img/sprites/skins/wizardGhost/Flying.gif);
+    border-radius: 0;
+}
+
+.s5 .playerPaused {
+    background-image: url(../img/sprites/skins/wizardGhost/Stopped.png);
+}
+
+.s5 .shield {
+    border-radius: 100%;
+}
+
+.s5 .upping {
+    background-image: url(../img/sprites/skins/wizardGhost/Upping.png);
+    animation-name: uppingGhosts6;
+    animation-duration: .58s;
+}
+
+@keyframes uppingGhosts6 {
+    0% {
+        background-image: url(../img/sprites/skins/wizardGhost/Upping.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/wizardGhost/Upping.gif);
+    }
+}
+
+.s5 .falling {
+    background-image: url(../img/sprites/skins/wizardGhost/Falling.png);
+    animation-name: fallingGhosts6;
+    animation-duration: .8s;
+}
+
+@keyframes fallingGhosts6 {
+    0% {
+        background-image: url(../img/sprites/skins/wizardGhost/Falling.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/wizardGhost/Falling.gif);
+    }
+}
+
+.s5 .fire {
+    background-image: url(../img/sprites/skins/wizardGhost/Fire.gif);
+}
+
+.s5 .relaxing {
+    background-image: url(../img/sprites/skins/wizardGhost/Relaxing.gif);
+    border-radius: 100%;
+}
+
+.s5.homeGhost1,
+.s5.homeGhost2,
+.s5.runningGhost1,
+.s5.runningGhost2 {
+    background-image: url(../img/sprites/skins/wizardGhost/Flying.gif);
+}
+
+.s5 .ghostScore {
+    background-image: url(../img/sprites/skins/wizardGhost/Flying.gif);
+}
+
+.s5 .ghostWon {
+    background-image: url(../img/sprites/skins/wizardGhost/Flying.gif);
+}
+
+.s5 .ghostLose {
+    background-image: url(../img/sprites/skins/wizardGhost/Flying.gif);
+}
+
+.s5 .trail {
+    background-image: url(../img/sprites/skins/wizardGhost/Flying.gif);
+}
+
+.s5 .paused .trail {
+    background-image: url(../img/sprites/skins/wizardGhost/Stopped.png);
+}
+
+.prods5 {
+    background-image: url(../img/sprites/skins/wizardGhost/Flying.gif);
+}
+
+/*Skin 6 - Sara From Just Dance*/
+.s6 .player {
+    background-image: url(../img/sprites/skins/saraGhost/Flying.gif);
+    border-radius: 0;
+}
+
+.s6 .playerPaused {
+    background-image: url(../img/sprites/skins/saraGhost/Stopped.png);
+}
+
+.s6 .shield {
+    border-radius: 100%;
+}
+
+.s6 .upping {
+    background-image: url(../img/sprites/skins/saraGhost/Upping.png);
+    animation-name: uppingGhosts7;
+    animation-duration: .58s;
+}
+
+@keyframes uppingGhosts7 {
+    0% {
+        background-image: url(../img/sprites/skins/saraGhost/Upping.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/saraGhost/Upping.gif);
+    }
+}
+
+.s6 .falling {
+    background-image: url(../img/sprites/skins/saraGhost/Falling.png);
+    animation-name: fallingGhosts7;
+    animation-duration: .8s;
+}
+
+@keyframes fallingGhosts7 {
+    0% {
+        background-image: url(../img/sprites/skins/saraGhost/Falling.gif);
+    }
+
+    100% {
+        background-image: url(../img/sprites/skins/saraGhost/Falling.gif);
+    }
+}
+
+.s6 .fire {
+    background-image: url(../img/sprites/skins/saraGhost/Fire.gif);
+}
+
+.s6 .relaxing {
+    background-image: url(../img/sprites/skins/saraGhost/Relaxing.gif);
+    border-radius: 100%;
+}
+
+.s6.homeGhost1,
+.s6.homeGhost2,
+.s6.runningGhost1,
+.s6.runningGhost2 {
+    background-image: url(../img/sprites/skins/saraGhost/Flying.gif);
+}
+
+.s6 .ghostScore {
+    background-image: url(../img/sprites/skins/saraGhost/Flying.gif);
+}
+
+.s6 .ghostWon {
+    background-image: url(../img/sprites/skins/saraGhost/Flying.gif);
+}
+
+.s6 .ghostLose {
+    background-image: url(../img/sprites/skins/saraGhost/Flying.gif);
+}
+
+.s6 .trail {
+    background-image: url(../img/sprites/skins/saraGhost/Flying.gif);
+}
+
+.s6 .paused .trail {
+    background-image: url(../img/sprites/skins/saraGhost/Stopped.png);
+}
+
+.prods6 {
+    background-image: url(../img/sprites/skins/saraGhost/Flying.gif);
+}
+
+/*HD Mode*/
+.hd .player {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.hd .playerPaused {
+    background-image: url(../img/non-sprites/skins/HDGhost/Stopped.png);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.hd .shield {
+    border-radius: 100%;
+}
+
+.hd .upping {
+    background-image: url(../img/non-sprites/skins/HDGhost/Upping.png);
+    animation-name: uppingGhostHD;
+    animation-duration: .58s;
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+@keyframes uppingGhostHD {
+    0% {
+        background-image: url(../img/non-sprites/skins/HDGhost/Upping.gif);
+    }
+
+    100% {
+        background-image: url(../img/non-sprites/skins/HDGhost/Upping.gif);
+    }
+}
+
+.hd .falling {
+    background-image: url(../img/non-sprites/skins/HDGhost/Falling.png);
+    animation-name: fallingGhostHD;
+    animation-duration: .8s;
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+@keyframes fallingGhostHD {
+    0% {
+        background-image: url(../img/non-sprites/skins/HDGhost/Falling.gif);
+    }
+
+    100% {
+        background-image: url(../img/non-sprites/skins/HDGhost/Falling.gif);
+    }
+}
+
+.hd .fire {
+    background-image: url(../img/non-sprites/skins/HDGhost/Fire.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.hd .relaxing {
+    background-image: url(../img/non-sprites/skins/HDGhost/Relaxing.gif);
+    border-radius: 100%;
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.hd .homeGhost1,
+.hd .homeGhost2,
+.hd .runningGhost1,
+.hd .runningGhost2 {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.hd .ghostScore {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.hd .ghostWon {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.hd .ghostLose {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.hd .trail {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.hd .paused .trail {
+    background-image: url(../img/non-sprites/skins/HDGhost/Stopped.png);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
+}
+
+.prodHD {
+    background-image: url(../img/non-sprites/skins/HDGhost/Flying.gif);
+    filter: drop-shadow(0px 0px 8px #f0f8ff);
 }

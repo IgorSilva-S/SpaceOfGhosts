@@ -4,14 +4,12 @@
 * {
     margin: 0;
     padding: 0;
-    cursor: url(../img/non-sprites/cursors/darkCursor/pointer.cur),
-        auto;
 }
 
 button,
 a,
 input {
-    cursor: url(../img/non-sprites/cursors/darkCursor/link.cur), auto;
+    cursor: pointer;
     font-family: 'Josefin Sans',
     sans-serif;
 }
@@ -26,9 +24,15 @@ body {
     /*background-image: linear-gradient(to bottom, #000, #04051a);*/
     background-color: #000;
     overflow: hidden;
+    position: fixed;
     font-family: 'Josefin Sans',
         sans-serif;
+    user-select: none;
 
+}
+
+html {
+    overflow: hidden;
 }
 
 .background {
@@ -444,6 +448,32 @@ body {
     background-image: url(../img/sprites/Items/relaxBoost.png);
 }
 
+.vanishBoost {
+    background-image: url(../img/sprites/Items/vanishBoost.png);
+}
+
+.speedBoost {
+    background-image: url(../img/sprites/Items/speedBoost.png);
+}
+
+.waitStts {
+    background-image: url(../img/sprites/Items/loadingBoost.gif);
+    width: 37px;
+    height: 37px;
+    background-size: cover;
+    background-position: center;
+    margin-left: 5px;
+}
+
+.okayStts {
+    background-image: url(../img/sprites/Items/loadedBoost.png);
+    width: 37px;
+    height: 37px;
+    background-size: cover;
+    background-position: center;
+    margin-left: 5px;
+}
+
 @keyframes boost {
     0% {
         left: 120%
@@ -518,13 +548,160 @@ body {
     /*background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);*/
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     display: none;
     color: white;
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
+    background-color: #000512;
+}
+
+.lightMode #homeScreen {
+    background-color: rgb(177, 177, 255);
+}
+
+.homeAnimation {
+    width: 55%;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    right: 2.5%;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #0632ff;
+    background-color: #000;
+    z-index: 998;
+}
+
+#fullscreenAnimation {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    z-index: 999;
+    font-size: 50px;
+    opacity: .2;
+    transition-duration: .2s;
+}
+
+#fullscreenAnimation:hover {
+    opacity: 1;
+}
+
+#spatialModeAnimation {
+    background-color: #000;
+}
+
+#spatialXtremeModeAnimation .biome7 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: -10%;
+}
+
+#runnerModeAnimation {
+    background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.interference {
+    background-image: url(../img/non-sprites/backgrounds/interference.gif);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.playGame {
+    width: 40%;
+    position: absolute;
+    bottom: -140px;
+    left: 1.1%;
+    background-color: #191919;
+    height: 120px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+    transition-duration: .3s;
+    border: 1px solid #191919;
+}
+
+.playGameAlert {
+    width: 40%;
+    position: absolute;
+    bottom: -140px;
+    left: 1.1%;
+    background-color: #500000;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+    transition-duration: .5s;
+    border: 1px solid #500000;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+.lightMode .playGame {
+    background-color: #c9c9c9;
+    border: 1px solid #c9c9c9;
+    color: black;
+}
+
+.lightMode .playGameAlert {
+    background-color: #fc3a3a;
+    border-color: #fc3a3a;
+    color: black;
+}
+
+.playersContainer p {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.playersContainer div {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    align-items: center;
+}
+
+.playersContainer input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #000;
+    transition-duration: .2s;
+}
+
+.lightMode .playersContainer input[type="radio"] {
+    background-color: #fff;
+}
+
+.playersContainer input[type="radio"]:checked {
+    border: 3px solid #0632ff
+}
+
+.alignHomeButtons .playGame .startGame {
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 120px;
+    margin-left: 0;
+    box-sizing: border-box;
+}
+
+.alignHomeButtons .playGame .startGame:hover {
+    margin-left: 0;
+    border: 1px solid #0632ff
 }
 
 #homeScreen img {
@@ -539,6 +716,10 @@ body {
     filter: drop-shadow(0px 0px 10px #fff);
 }
 
+.lightMode #homeScreen img {
+    filter: invert(100%);
+}
+
 @keyframes appearPages {
     from {
         opacity: 0;
@@ -549,33 +730,103 @@ body {
     }
 }
 
-#homeScreen button {
-    padding: 5px 20px;
+.alignHomeButtons {
+    width: 40%;
+    height: 100%;
+    gap: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    z-index: 2;
+    overflow: auto;
+    padding: 20px 0;
+    transition-duration: .3s;
+    margin-left: 0px;
+}
+
+.alignHomeButtons.gameSelectControls {
+    margin-left: -40%;
+    display: none;
+}
+
+.alignHomeButtons button {
+    padding: 20px;
     font-size: 20px;
-    border-radius: 120px;
+    border-radius: 0 20px 20px 0;
     background-color: #252525;
     border: 1px solid #202020;
     color: white;
-    transition-duration: .4s;
+    transition-duration: .2s;
     z-index: 1;
+    width: 100%;
+    margin-left: -40px;
 }
 
-.lightMode #homeScreen button {
+.lightMode .alignHomeButtons button {
     background-color: #d9d9d9;
     border: 1px solid #d0d0d0;
     color: black;
 }
 
-.alignHomeButtons {
-    width: 100%;
+.alignHomeButtons button:hover {
+    margin-left: -20px;
+}
+
+.alignHomeButtons button:active {
+    margin-left: 0px;
+}
+
+
+.alignHomeTitles {
+    width: 90%;
+    padding: 20px 10px;
+    font-size: 25px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
-#homeScreen button:hover {
-    border-color: #0632ff;
+.lightMode .alignHomeTitles {
+    color: black;
 }
+
+.alignHomeTitles .lBackPage {
+    width: 60px;
+    height: 60px;
+}
+
+.pseudoLink {
+    font-size: 17px;
+    margin-top: 10px;
+    color: rgb(177, 177, 255);
+}
+
+.lightMode .pseudoLink {
+    color: #000512;
+}
+
+.pseudoLink:hover {
+    cursor: pointer;
+}
+
+#homeButtons {
+    margin-top: 300px;
+}
+
+#gameButtons {
+    padding-bottom: calc(5% + 100px);
+}
+
+.alignHomeButtons::-webkit-scrollbar {
+    width: 0;
+}
+
+#gameName {
+    align-self: center;
+    position: fixed;
+    top: 0;
+}
+
 
 #homeScreen .background {
     z-index: 0;
@@ -601,7 +852,17 @@ body {
     color: white;
 }
 
-.homeGhost1 {
+.lightMode .version {
+    color: black;
+}
+
+#homeScreen .version {
+    position: initial;
+    margin-left: 10px;
+}
+
+.homeGhost1,
+.homeGhost2 {
     width: 100px;
     height: 100px;
     background-image: url(../img/sprites/skins/normal/Flying.gif);
@@ -611,11 +872,145 @@ body {
     position: absolute;
     top: 10%;
     border-radius: 100%;
-    animation: floatHome 10s linear infinite;
     transition-duration: .2s;
 }
 
-.totalCollision .homeGhost1 {
+.homeGhost1::hover,
+.runningGhost1::hover {
+    filter: drop-shadow(0px 0px 10px #008dfe);
+}
+
+.runningGhost1,
+.runningGhost2 {
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/sprites/skins/normal/Flying.gif);
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    position: absolute;
+    border-radius: 100%;
+    transition-duration: .2s;
+    left: 1%;
+}
+
+.runningGhost1 {
+    top: 80%;
+    animation: running1 10s linear infinite;
+}
+
+.runningGhost2 {
+    top: 67%;
+    animation: running2 10s linear infinite;
+}
+
+@keyframes running1 {
+    0% {
+        left: 0;
+    }
+
+    10% {
+        left: 20%;
+        top: 80%;
+    }
+
+    11% {
+        top: 67%;
+    }
+
+    30% {
+        top: 67%;
+        left: 40%;
+    }
+
+    31% {
+        top: 80%;
+    }
+
+    60% {
+        left: 40%;
+    }
+
+    79% {
+        left: 40%;
+        rotate: 0deg;
+        background-image: url(../img/sprites/skins/normal/Flying.gif);
+    }
+
+    80% {
+        rotate: 90deg;
+        left: 40%;
+        background-image: url(../img/sprites/skins/normal/Stopped.png);
+    }
+
+    90% {
+        rotate: 90deg;
+        left: 1%;
+        background-image: url(../img/sprites/skins/normal/Stopped.png);
+    }
+
+    91% {
+        left: 1%;
+        rotate: 0deg;
+        background-image: url(../img/sprites/skins/normal/Flying.gif);
+    }
+}
+
+@keyframes running2 {
+    0% {
+        left: 0;
+    }
+
+    10% {
+        top: 67%;
+    }
+
+    11% {
+        top: 80%;
+    }
+
+    30% {
+        top: 80%;
+        left: 80%;
+    }
+
+    31% {
+        top: 67%;
+        transform: scaleX(1);
+    }
+
+    32% {
+        transform: scaleX(-1);
+    }
+
+    60% {
+        left: 40%;
+    }
+
+    79% {
+        left: 20%;
+    }
+
+    91% {
+        left: 1%;
+        transform: scaleX(-1);
+    }
+
+    92% {
+        transform: scaleX(1);
+    }
+}
+
+.homeGhost1 {
+    animation: floatHome 10s linear infinite;
+}
+
+.homeGhost2 {
+    animation: floatHome2 8s linear infinite;
+}
+
+.totalCollision .homeGhost1,
+.totalCollision .homeGhost2 {
     border: 1px solid #888
 }
 
@@ -630,7 +1025,7 @@ body {
     }
 
     20% {
-        top: 10%;
+        top: 40%;
     }
 
     30% {
@@ -667,8 +1062,61 @@ body {
     }
 }
 
+@keyframes floatHome2 {
+    0% {
+        top: 40%;
+        left: -130px;
+    }
+
+    10% {
+        top: 30%
+    }
+
+    20% {
+        top: 10%;
+    }
+
+    30% {
+        top: 20%;
+    }
+
+    40% {
+        top: 30%;
+    }
+
+    50% {
+        top: 2%;
+    }
+
+    60% {
+        top: 15%;
+    }
+
+    70% {
+        top: 40%;
+    }
+
+    80% {
+        top: 50%;
+    }
+
+    90% {
+        top: 30%;
+    }
+
+    100% {
+        top: 20%;
+        left: 120%
+    }
+}
+
+
 .roundHome {
     rotate: 180deg
+}
+
+.flipHome {
+    transform: scaleX(-1);
 }
 
 .returnHome {
@@ -677,6 +1125,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     border: none;
+    z-index: 999;
 }
 
 .returnGame {
@@ -848,7 +1297,6 @@ body {
     animation-duration: 30s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    background-position: center;
 }
 
 .soloScore {
@@ -856,11 +1304,11 @@ body {
     margin: 0 25%;
     padding: 10px 5px 5px 5px;
     position: absolute;
-    top: 5%;
+    top: -100%;
     background-color: #444a;
-    backdrop-filter: blur(10px);
     border-radius: 8px;
     color: white;
+    transition-duration: .5s;
 }
 
 .soloScore h1 {
@@ -1036,11 +1484,11 @@ body {
     background-size: cover;
 }
 
-#soloClassicPlay div,
-#SBsoloClassicPlay div {
+#soloRunnerPlay div,
+#SBsoloRunnerPlay div {
     width: 150px;
     height: 150px;
-    background-image: url(../img/sprites/gameMode/soloClassic.png);
+    background-image: url(../img/sprites/gameMode/soloRunner.png);
     background-position: center;
     background-size: cover;
 }
@@ -1063,11 +1511,11 @@ body {
     background-size: cover;
 }
 
-#duoClassicPlay div,
-#DBduoClassicPlay div {
+#duoRunnerPlay div,
+#DBduoRunnerPlay div {
     width: 150px;
     height: 150px;
-    background-image: url(../img/sprites/gameMode/duoClassic.png);
+    background-image: url(../img/sprites/gameMode/duoRunner.png);
     background-position: center;
     background-size: cover;
 }
@@ -1106,18 +1554,18 @@ body {
 }
 
 
-#soloMode .moveBlock {
-    width: 100vw;
+.moveBlock {
+    width: 100%;
     height: 50vh;
     position: absolute;
     left: 0;
 }
 
-#upBlock {
+.moveBlock.upBlock {
     top: 0;
 }
 
-#downBlock {
+.moveBlock.downBlock {
     bottom: 0;
 }
 
@@ -1139,7 +1587,7 @@ body {
     top: 1%;
     left: 1%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row-reverse;
     z-index: 1;
@@ -1156,6 +1604,7 @@ body {
     background-size: cover;
     background-position: center;
     z-index: 1;
+    filter: drop-shadow(0 0 10px red);
 }
 
 .playerScreen .hearts {
@@ -1234,6 +1683,17 @@ body {
     z-index: 1;
 }
 
+
+.itemsAlertContDown {
+    display: flex;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    flex-direction: row;
+
+}
+
 .playerScreen .itemsAlertCont {
     width: 50%;
     position: absolute;
@@ -1250,13 +1710,23 @@ body {
     box-sizing: border-box;
     color: white;
     border-radius: 4px;
+    transition-duration: .2s;
+}
+
+.itemCont:hover {
+    background-color: #0632ff77;
 }
 
 .emptySlot {
     animation-name: emptySlot;
-    animation-duration: .5s;
+    animation-duration: 1s;
     animation-iteration-count: 3;
-    animation-timing-function: linear;
+}
+
+.almostEnd {
+    animation-name: almostEnd;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
 }
 
 .itemCont .slots {
@@ -1288,8 +1758,30 @@ body {
         background-color: transparent;
     }
 
-    25% {
+    75% {
         background-color: red;
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
+@keyframes almostEnd {
+    0% {
+        background-color: transparent;
+    }
+
+    25% {
+        background-color: #00ccff;
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    75% {
+        background-color: #00ccff;
     }
 
     100% {
@@ -1369,6 +1861,7 @@ body {
     transition-duration: .5s;
     justify-content: flex-start;
     align-items: center;
+    background-size: cover;
     flex-direction: row;
 }
 
@@ -1377,6 +1870,8 @@ body {
     height: 100vh;
     position: relative;
     overflow: hidden;
+    background-position: center;
+    background-size: cover;
 }
 
 
@@ -1396,7 +1891,7 @@ body {
 .pauseRestart:hover,
 .pauseDev:hover,
 .pauseSettings:hover {
-    background-color: #0632FF;
+    background-color: #353535;
 }
 
 .pauseHome,
@@ -1406,7 +1901,7 @@ body {
     width: 150px;
     height: 50px;
     transition-duration: .4s;
-    background-color: #0632ff77;
+    background-color: #252525aa;
     backdrop-filter: blur(10px);
     border-radius: 8px;
     background-size: 90%;
@@ -1578,13 +2073,13 @@ body {
 
 .duoRunScore {
     width: 50%;
+    margin: 0 25%;
     padding: 10px 5px 5px 5px;
-    border-radius: 8px;
-    position: fixed;
-    left: calc(50% - 25%);
-    top: 50px;
+    position: absolute;
+    top: 5%;
     background-color: #444a;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
     color: white;
 }
 
@@ -1627,22 +2122,210 @@ body {
     background-image: url(../img/sprites/background/pCrystal.png);
 }
 
-
-
 #shop {
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(to bottom, #2E1A47,
-            #111133,
-            #04051a);
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-    color: white;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
+}
+
+.shopTitle {
+    width: calc(100vw - 22%);
+    position: absolute;
+    top: 10px;
+    right: 1%;
+    border-radius: 8px;
+    background-color: #191919dd;
+    backdrop-filter: blur(10px);
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index:2;
+}
+
+.lightMode .shopTitle {
+    background-color: #d9d9d9dd;
+    color: black;
+}
+
+.shopTitle h1 {
+    font-size: 40px;
+}
+
+.shopItems {
+    width: calc(80% - 10px);
+    height: 83%;
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-items: center;
+    overflow-y: auto;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    animation: appearShopItems .3s ease-out;
+}
+
+.itemDesc {
+    width: 82%;
+    height: 100%;
+    background-color: #191919aa;
+    backdrop-filter: blur(20px);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-top: 8%;
+    box-sizing: border-box;
+    animation: appearShopItems .3s ease-out;
+}
+
+.lightMode .itemDesc {
+    background-color: #d9d9d9aa;
+    color: black;
+}
+
+.itemDetails {
+    display: flex;
+    box-sizing: border-box;
+    padding: 10px;
+    align-items: center;
+    gap: 20px;
+    margin-left: 30px;
+    color: white;
+}
+
+.lightMode .itemDetails {
+    color: black;
+} 
+
+.itemImage {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemImage img {
+    width: 150px;
+    height: 150px
+}
+
+.itemInfos [type="itemName"] {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.itemInfos [type="itemType"] {
+    font-size: 30px;
+}
+
+.itemInfos .alignStardusts {
+   padding-left: 0px;
+   margin-left: -5px;
+}
+
+.itemDescription {
+    color: white;
+    font-size: 30px;
+    text-wrap: wrap;
+    margin-left: 70px;
+    width: 90%;
+}
+
+.lightMode .itemDescription {
+    color: black;
+}
+
+.alignBuyButtons {
+    position: absolute;
+    gap: 20px;
+    right: 50px;
+    bottom: 50px;
+}
+
+.alignBuyButtons button {
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #252525;
+    color: white;
+}
+
+.shopBuy {
+    transition-duration: .2s;
+}
+
+.shopBuy.getItem {
+    background-color: #0632ff;
+}
+
+.shopBuy.resetItem {
+    background-color: #e45258;
+}
+
+.shopBuy.resetItem:hover {
+    background-color: #fc9fa2;
+}
+
+
+.shopBuy.getItem:hover {
+    background-color: #798ee9;
+}
+
+.shopItems::-webkit-scrollbar {
+    width: 6px;
+}
+
+.shopItems::-webkit-scrollbar-thumb {
+    background-color: #191919;
+    transition-duration: .2s;
+    border-radius: 120px;
+}
+
+.shopItems::-webkit-scrollbar-thumb:hover {
+    background-color: #A0B2FF;
+}
+
+@keyframes appearShopItems {
+    from {
+        bottom: -200px;
+    } to {
+        bottom: 0;
+    }
+}
+
+.shopItems .shopBlock {
+    width: 270px;
+    height: 270px;
+    background-color: #191919aa;
+    border-radius: 8px;
+    border: 1px solid #191919;
+    box-sizing: border-box;
+    transition-duration: .2s;
+}
+
+.lightMode .shopItems .shopBlock {
+    background-color: #d9d9d9aa;
+    border-color: #d9d9d9;
+}
+
+.shopItems .shopBlock:hover {
+    border-color: #0632ff;
+}
+
+.shopItems .shopBlock img {
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
 }
 
 #skinChanger {
@@ -1664,37 +2347,10 @@ body {
             #04051a);
 }
 
-#shop .clouds,
-#skinChanger .clouds {
-    background-image: url(../img/sprites/background/cloudsBckgII.png);
-    animation-duration: 60s;
-    z-index: 0;
-    height: 300px;
-    background-size: cover;
-}
-
-#shop .moneyAlert {
-    width: 150px;
-    height: 50px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    text-shadow: 0px 0px 10px #000;
-}
-
-#shop .pageName,
-#skinChanger h1 {
-    text-align: center;
-    font-size: 30px;
-    padding: 20px 0;
-    text-shadow: 0px 0px 10px #000;
-    z-index: 5;
-    position: fixed;
-    width: 100%;
+.lightMode .shopBckg {
+    background-image: linear-gradient(to bottom, #5fcde4,
+    #639bff,
+    #5b6ee1);
 }
 
 #skinChanger h1 {
@@ -1719,18 +2375,7 @@ body {
     overflow-y: hidden;
 }
 
-#shop .returnHome {
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    background-color: transparent;
-    backdrop-filter: none;
-    border: none;
-    z-index: 1000;
-    filter: drop-shadow(0px 0px 10px #000)
-}
+
 
 #shop .returnHome:hover {
     background-color: transparent;
@@ -1779,12 +2424,12 @@ body {
 
 
 .items::-webkit-scrollbar-thumb:hover {
-    background-color: #0632FF;
+    background-color: #0632ff;
 }
 
 .items .Sitem {
-    min-width: 15%;
-    height: 90%;
+    min-width: 300px;
+    height: 300px;
     position: relative;
     display: flex;
     justify-content: space-evenly;
@@ -1799,13 +2444,53 @@ body {
     border-radius: 8px;
 }
 
+.items .selSitem {
+    min-width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 20px;
+    background-color: #008;
+    border: 1px solid #0632ff;
+    color: white;
+    font-size: 15px;
+    transition-duration: .5s;
+    border-radius: 8px;
+}
+
+.lightMode .items .Sitem {
+    background-color: #f0f8ff;
+    border: 1px solid #d0d0d0;
+    color: black;
+}
+
+.lightMode #transpSkinPurchase img {
+    filter: invert();
+    transition-duration: .2s;
+}
+
+/*.lightMode #transpSkinPurchase:hover {
+    background-color: #252525aa;
+    border: 1px solid #d0d0d0;
+    color: white;
+}
+
+.lightMode #transpSkinPurchase:hover img {
+    filter: none;
+}*/
+
 .items .Sitem:hover {
     border-color: #0632ff;
 }
 
+
 .Sitem img {
     width: 100px;
     height: 100px;
+    border-radius: 4px;
 }
 
 .shopBlur {
@@ -1829,7 +2514,9 @@ body {
     border-radius: 16px;
     background-color: #090909;
     position: relative;
-    padding: 5px;
+    padding: 20px;
+    padding-top: 5px;
+    box-sizing: border-box;
     font-size: 25px;
     overflow: hidden;
     transition-duration: .5s;
@@ -1849,15 +2536,37 @@ body {
     font-weight: normal;
 }
 
-#skinChanger .backPage {
-    width: 100px;
-    height: 100px;
+.confirmPurchasePopUp h4 {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.backPage {
+    width: 60px;
+    height: 60px;
     background-color: transparent;
-    background-image: url(../img/sprites/navButtons/white/backArrow.png);
+    background-image: url(../img/sprites/navButtons/black/backArrow.png);
     border: none;
     filter: drop-shadow(0px 0px 10px #000);
     z-index: 1000;
-    position: fixed;
+    background-size: cover;
+}
+
+.lBackPage {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    background-image: url(../img/sprites/navButtons/white/backArrow.png);
+    border: none;
+    z-index: 1000;
+    background-size: cover;
+}
+
+.lightMode .lBackPage {
+    background-image: url(../img/sprites/navButtons/black/backArrow.png);
 }
 
 
@@ -1868,19 +2577,19 @@ body {
 
 .ChoosedSkin {
     border: 1px solid orange;
-    background-color: orangered;
-    min-width: 300px;
-    min-height: 300px;
+    background-color: #ff450077;
     position: relative;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    margin: 0 20px;
     color: white;
     font-size: 15px;
     transition-duration: .5s;
     border-radius: 8px;
+    width: 270px;
+    height: 270px;
+    box-sizing: border-box;
 }
 
 .ChoosedSkin img {
@@ -1961,26 +2670,125 @@ body {
     position: absolute;
     top: 30%;
     right: 30px;
+    border-radius: 4px;
+}
+
+.itemType {
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 100%;
+}
+
+.itemType p {
+    font-size: 30px;
 }
 
 .prodGM1 {
-    background-image: url(../img/sprites/shopItems/classicMode.gif);
+    background-image: url(../img/sprites/shopItems/RunnerMode.gif);
 }
 
 .sideBar {
-    width: 15%;
+    width: 20%;
     height: 100%;
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
-    background-color: #f0f0f033;
+    background-color: #A0B2FFaa;
     backdrop-filter: blur(10px);
-    overflow-y: auto;
-    overflow-x: hidden;
+    border-radius: 0 8px 8px 0;
+    z-index: 2
+   
+}
+
+.sideBar .shopNav {
+    width: 95%;
+    font-size: 25px;
+    min-height: 60px;
+    border-radius: 0 120px 120px 0;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-left: 20px;
+    border: none;
+    border-left: none;
+    margin-bottom: 10px;
+    text-align: left;
+    background-color: #A0B2FF77;
+    transition-duration: .2s;
+    margin-left: -10px;
+}
+
+.sideBar .shopNav.bottomNav {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+}
+
+.sideBar .shopNav:hover {
+ margin-left: 0;;
+}
+
+.sideBar .shopNav:active {
+    background-color: #A0B2FF;
+    transition-duration: .1s;
+}
+
+.alignSideBarItems {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    padding: 0 20px 0 20px;
+    align-items: center;
+    margin: 20px 0;
+    position: relative;
+    color: black;
+}
+
+.alignSideBarItems.skinChangerAlign {
+    margin-bottom: 60px;
+}
+
+.alignSideBarItems h1 {
+    font-size: 40px;
+    position: absolute;
+    text-align: center;
+    width: 100%
+}
+
+.alignSideBarItems.skinChangerAlign h1 {
+    position: static;
+    margin-top: 10px;
+}
+
+.alignStardusts {
     display: flex;
     justify-content: flex-start;
+    box-sizing: border-box;
+    padding-left: 20px;
     align-items: center;
-    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.alignStardusts .stardustIcon {
+    width: 60px;
+    height: 60px;
+    background-image: url(../img/sprites/Items/stardust.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.sideBar .returnHome {
+    background-image: url(../img/sprites/navButtons/black/backHome.png);
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
 }
 
 .sideBar::-webkit-scrollbar {
@@ -2321,95 +3129,120 @@ body {
     font-size: 30px;
 }
 
-/*R 1.0*/
-#soloClassic {
+#soloRunner {
     width: 100vw;
     height: 100vh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
-    background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
+    background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);
 }
 
-.classicSoil {
+.rockSoil {
     width: 3840px;
-    height: 125px;
-    background-image: url(../img/sprites/background/Soil.png);
-    position: fixed;
+    height: 140px;
+    background-image: url(../img/sprites/background/superSoil.png);
+    position: absolute;
     bottom: 0;
     left: 0;
     animation: moveBckg 5s linear infinite;
 }
 
-#soloClassic .clouds {
+.bRockSoil {
+    width: 3840px;
+    height: 140px;
+    background-image: url(../img/sprites/background/superSoil2.png);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: moveBckg 5s linear infinite;
+}
+
+#soloRunner .clouds {
     top: -150px;
     background-image: url(../img/sprites/background/cloudsBckg.png);
 }
 
-#soloClassic .player,
-#duoClassic .player {
+#soloRunner .player,
+#duoRunner .player {
     top: auto;
     bottom: 50px;
     left: 100px;
+    transition-duration: .1s;
 }
 
-#soloClassic .crystal,
-#duoClassic .crystal {
+#soloRunner .player.secondTrail,
+#duoRunner .player.player.secondTrail {
+    top: auto;
+    bottom: 175px;
+    left: 100px;
+}
+
+#soloRunner .crystal,
+#duoRunner .crystal {
     background-position: center;
     background-size: cover;
     position: absolute;
-    animation: moveCrystal 5.2s linear infinite;
+    animation: moveCrystal 5.4s linear infinite;
     bottom: 50px;
     left: -500px;
 }
 
-.jump {
-    animation: jumpPlayer .7s linear;
+#soloRunner .crystalT,
+#duoRunner .crystalT {
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    animation: moveCrystal 5.4s linear infinite;
+    bottom: 180px;
+    left: -500px;
 }
 
-@keyframes jumpPlayer {
+#soloRunner .player.jumping,
+#duoRunner .player.player.jumping {
+    top: auto;
+    bottom: 175px;
+    left: 100px;
+    animation: jumping 2s linear;
+}
+
+@keyframes jumping {
     0% {
-        bottom: 50px;
-    }
-
-    40% {
-        bottom: 150px;
-    }
-
-    50% {
         bottom: 175px;
     }
 
-
-    60% {
-        bottom: 150px;
+    10% {
+        bottom: 300px;
     }
+
+    80% {
+        bottom: 300px;
+    }
+
 
     100% {
-        bottom: 50px;
+        bottom: 175px;
     }
 }
 
-.fly {
-    animation: flyPlayer 10s linear;
+#soloRunner .player.boosting,
+#duoRunner .player.player.boosting {
+    animation: boosting .6s linear;
 }
 
-@keyframes flyPlayer {
+@keyframes boosting {
     0% {
-        bottom: 50px;
+        left: 100px;
     }
 
-    5% {
-        bottom: 175px;
+    70% {
+        left: 300px;
     }
 
-    95% {
-        bottom: 175px;
-    }
 
     100% {
-        bottom: 50px;
+        left: 100px;
     }
 }
 
@@ -2430,27 +3263,27 @@ body {
 }
 
 .cType1 {
-    background-image: url(../img/sprites/classic/Crystal1.png);
+    background-image: url(../img/sprites/crystals/Crystal1.png);
 }
 
 .cType2 {
-    background-image: url(../img/sprites/classic/Crystal2.png);
+    background-image: url(../img/sprites/crystals/Crystal2.png);
 }
 
 .cType3 {
-    background-image: url(../img/sprites/classic/Crystal3.png);
+    background-image: url(../img/sprites/crystals/Crystal3.png);
 }
 
 .cType4 {
-    background-image: url(../img/sprites/classic/Crystal4.png);
+    background-image: url(../img/sprites/crystals/Crystal4.png);
 }
 
 .cType5 {
-    background-image: url(../img/sprites/classic/Crystal5.png);
+    background-image: url(../img/sprites/crystals/Crystal5.png);
 }
 
 .cType6 {
-    background-image: url(../img/sprites/classic/Crystal6.png);
+    background-image: url(../img/sprites/crystals/Crystal6.png);
 }
 
 .cType2,
@@ -2465,14 +3298,7 @@ body {
     height: 50px;
 }
 
-#soloClassic .hearts,
-#duoClassic .hearts {
-    top: 5px;
-    left: 5px;
-    position: absolute;
-}
-
-.classicInfos {
+.RunnerInfos {
     font-size: 30px;
     text-align: left;
     position: absolute;
@@ -2480,7 +3306,7 @@ body {
     left: 20px;
 }
 
-.scoreSoloClassic {
+.scoreSoloRunner {
     width: 50%;
     padding: 10px 5px;
     background-color: #f0f0f033;
@@ -2494,12 +3320,12 @@ body {
     transition-duration: .5s;
 }
 
-.scoreSoloClassic h1 {
+.scoreSoloRunner h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.scoreSoloClassic .goButtons {
+.scoreSoloRunner .goButtons {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -2507,7 +3333,7 @@ body {
     margin-bottom: 5px;
 }
 
-#duoClassic {
+#duoRunner {
     width: 100vw;
     height: 100vh;
     display: none;
@@ -2519,15 +3345,15 @@ body {
     flex-direction: row;
 }
 
-#duoClassic .playerScreen {
+#duoRunner .playerScreen {
     background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
 }
 
-.playerScreen .classicSoil {
+.playerScreen .rockSoil {
     position: absolute;
 }
 
-.scoreDuoClassic {
+.scoreDuoRunner {
     width: 50%;
     padding: 10px 5px;
     background-color: #f0f0f033;
@@ -2541,12 +3367,12 @@ body {
     transition-duration: .5s;
 }
 
-.scoreDuoClassic h1 {
+.scoreDuoRunner h1 {
     text-align: center;
     margin: 10px 0;
 }
 
-.scoreDuoClassic .goButtons {
+.scoreDuoRunner .goButtons {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -2659,10 +3485,22 @@ body {
     border-radius: 8px 8px 0 0;
     z-index: 2;
     color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.keysEditor::-webkit-scrollbar {
+    appearance: none;
+    width: 6px;
+}
+
+.keysEditor::-webkit-scrollbar-thumb {
+    background-color: #949100;
+    border-radius: 120px;
 }
 
 .lightMode .keysEditor {
-    background-color: #d9d9d977;
+    background-color: #d9d9d9aa;
     color: black;
 }
 
@@ -2672,7 +3510,6 @@ body {
     border: 1px solid #29292977;
     background-color: #19191977;
     position: fixed;
-    backdrop-filter: blur(15px);
     display: none;
     justify-content: center;
     align-items: flex-start;
@@ -2697,6 +3534,10 @@ body {
     }
 }
 
+.keyContextMenu #contextOptions {
+    width: 100%;
+}
+
 .keyContextMenu .CMOption,
 .keyContextMenu .keyName {
     border-radius: 4px;
@@ -2711,14 +3552,15 @@ body {
 }
 
 .keysEditor .title {
-    position: absolute;
+    position: fixed;
     color: white;
     text-align: center;
     width: 100%;
     background-color: #191919;
     padding: 10px 0;
-    top: 0px;
+    top: 15vh;
     border-radius: 8px 8px 0 0;
+    z-index: 1000;
 }
 
 .lightMode .keysEditor .title {
@@ -2747,9 +3589,11 @@ body {
 
 #keyValueRow {
     position: relative;
+    box-sizing: border-box;
+    border-left: 2px solid #949100;
 }
 
-#keyValueRow::before {
+/*#keyValueRow::before {
     content: '';
     width: 6px;
     height: 80%;
@@ -2758,7 +3602,7 @@ body {
     background-color: #949100;
     top: 10%;
     border-radius: 120px;
-}
+}*/
 
 .cellDiv,
 .cellDivVal {
@@ -2784,9 +3628,9 @@ body {
     height: 100px;
     border-radius: 8px;
     bottom: -150px;
-    background-color: #0632ff66;
+    background-color: #252525aa;
     backdrop-filter: blur(10px);
-    left: calc(50% - 50px);
+    right: 10px;
     font-size: 50px;
     display: flex;
     justify-content: center;
@@ -2802,9 +3646,9 @@ body {
     bottom: -100px;
     width: 200px;
     height: 70px;
-    background-color: #0632ff66;
+    background-color: #252525aa;
     backdrop-filter: blur(10px);
-    left: calc(50% - 100px);
+    right: 10px;
     font-size: 20px;
     display: flex;
     justify-content: space-evenly;
@@ -2886,6 +3730,24 @@ body {
     animation: loadingUp 2s infinite;
 }
 
+.loadingGhost {
+    width: 150px;
+    height: 150px;
+    background-image: url(../img/sprites/animations/loading.png);
+    background-position: center;
+    background-size: cover;
+    animation: loadingGhost 4s linear infinite;
+}
+
+@keyframes loadingGhost {
+    from {
+        rotate: 0deg;
+    } 
+    to {
+        rotate: 360deg;
+    }
+}
+
 @keyframes loadingUp {
     0% {
         margin-top: 0;
@@ -2932,6 +3794,15 @@ body {
     margin-top: 50px;
 }
 
+#biomeLoader {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
 /*Import Google Icons*/
 @font-face {
     font-family: 'Material Symbols Rounded';
@@ -2946,7 +3817,7 @@ body {
     font-style: normal;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1600px) {
     #gameModeScreen button {
         width: 300px;
     }
@@ -2970,29 +3841,106 @@ body {
     }
 }
 
-/*Phone alert*/
-.notForPhones {
-    display: none
+.onlyPhone,
+.onlyPhoneF {
+    display: none;
 }
 
-@media (max-width: 768px) {
-    .notForPhones {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        text-align: center;
-        color: white;
-        font-size: 20px;
-        z-index: 10000;
-        background-color: black;
-        position: fixed;
+@media (max-width: 1440px)  {
+    .shopItems {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    section {
         width: 100vw;
         height: 100vh;
-        flex-direction: column;
+        overflow: hidden;
     }
 
-    .notForPhones img {
-        width: 300px;
-        height: 300px;
+    .homeAnimation {
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        border: none;
+        z-index: 0;
     }
+
+    #fullscreenAnimation {
+        display: none;
+    }
+
+    .alignHomeButtons {
+        width: 100%;
+        align-items: center;
+    }
+
+    .alignHomeButtons.gameSelectControls {
+        margin-left: -100%;
+    }
+
+    .alignHomeButtons button {
+        margin-left: 0px;
+        width: 80%;
+        border-radius: 8px;
+    }
+
+    .alignHomeButtons button:hover {
+        margin-left: 0px;
+        border-color: #0632ff;
+    }
+
+    .excludePhone,
+    .playersContainer .excludePhone {
+        display: none;
+    }
+
+    .onlyPhone {
+        display: block;
+    }
+
+    .onlyPhoneF {
+        display: flex;
+    }
+
+    .playGame {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    .soloScore {
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        top: -120%;
+        margin: 0;
+        position: fixed;
+        padding-top: 50px;
+        z-index: 10;
+    }
+
+    .settingsPanel {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/*HD Masks*/
+.hd .background {
+    background-image: url(../img/non-sprites/backgrounds/backgroundPureStarB.png);
+    filter: blur(7px);
+}
+
+.hd .earthCloud {
+    background-image: url(../img/non-sprites/backgrounds/settingsCloudsDark.png);
+    box-shadow: 10px 0 10px 10px #485b9e;
+}
+
+.hd #settings .earthCloud {
+    box-shadow: none;
 }

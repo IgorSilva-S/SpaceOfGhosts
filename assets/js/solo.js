@@ -38,6 +38,11 @@ function displaySlotsSolo() {
     relaxSW.innerText = relaxSlot
     ShealSW.innerText = fullHealSlot
     healSW.innerText = healSlot
+    shieldSWP.innerText = shieldSlot
+    acceleratorSWP.innerText = acceleratorSlot
+    relaxSWP.innerText = relaxSlot
+    ShealSWP.innerText = fullHealSlot
+    healSWP.innerText = healSlot
 }
 
 //Pause Game
@@ -59,6 +64,7 @@ function pauseGameSolo() {
         invencible.classList.add('pinv')
         document.getElementById('gameBckg').style.animationPlayState = 'paused'
         song.pause()
+        soloXtremeSong.pause()
         gamePaused = true
         playerBeforePause = playerPosi
         clearInterval(acceleratorWaiter)
@@ -89,6 +95,10 @@ function pauseGameSolo() {
         document.getElementById('gameBckg').removeAttribute('style')
         gamePaused = false
         song.play()
+        if (challengeType == 'extreme') {
+            song.pause()
+            soloXtremeSong.play()
+        }
         player.style.top = `${playerBeforePause}%`
         playerPosi = playerBeforePause
         if (acceleratorP1) {
@@ -102,32 +112,26 @@ function pauseGameSolo() {
             }, 1);
             acceleratorWaiter = setInterval(() => {
                 acceleratorTimer++
+                if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
+                    document.getElementById('acceleratorAlert').classList.add('almostEnd')
+                }
                 if (acceleratorTimer == 15) {
                     clearInterval(acceleratorWaiter)
                     acceleratorP1 = false
                     acceleratorTimer = 0
-                    document.getElementById('gameBckg').removeAttribute('style')
                     invencible.removeAttribute('style')
                     //trail.removeAttribute('style')
-                    if (plusSpeed < 1) {
-                        clearInterval(trail)
-                    } else {
-                        clearInterval(trail)
-                        setTimeout(() => {
-                            trail = setInterval(() => {
-                                let trailElm = document.createElement('div')
-                                trailElm.setAttribute('class', 'trail')
-                                trailElm.setAttribute('style', `top: ${playerPosi}%`)
-                                trailElm.addEventListener("animationend", () => {
-                                    trailElm.remove()
-                                })
-                                soloPage.insertAdjacentElement('beforeend', trailElm)
-                            }, 100);
-                        }, 10);
-                    }
+
+                    clearInterval(trail)
+
                     if (shieldActive) {
                         player.classList.add('shield')
                     }
+                    document.getElementById('gameBckg').style.display = 'none'
+                    setTimeout(() => {
+                        document.getElementById('gameBckg').removeAttribute('style')
+                    }, 1);
+                    document.getElementById('acceleratorAlert').classList.remove('almostEnd')
                 }
             }, 1000);
             trail = setInterval(() => {
@@ -162,9 +166,16 @@ function pauseGameSolo() {
             }
         }, 500);
         addSpeed = setInterval(() => {
-            if (scoreNum % 250 == 0 && scoreNum != 0) {
-                plusSpeed = plusSpeed + 0.25
-                document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+            if (challengeType == null) {
+                if (scoreNum % 250 == 0 && scoreNum != 0) {
+                    plusSpeed = plusSpeed + 0.25
+                    document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                }
+            } else if (challengeType == 'extreme') {
+                if (scoreNum % 100 == 0 && scoreNum != 0) {
+                    plusSpeed = plusSpeed + 0.5
+                    document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                }
             }
         }, 600);
     }
@@ -227,6 +238,13 @@ document.getElementById('restartInf').addEventListener("click", () => {
     }, 1)
     plusSpeed = 0
     playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+    if (challengeType = 'extreme') {
+        plusSpeed = 0.5
+        lives1p = 20
+        song.pause()
+        song.currentTime = 0
+        soloXtremeSong.play()
+    }
 })
 
 document.getElementById('backInf').addEventListener("click", () => {
@@ -234,7 +252,7 @@ document.getElementById('backInf').addEventListener("click", () => {
     setTimeout(() => {
         soloPage.removeAttribute('style')
         soloPage.style.display = 'none'
-        gameMPage.style.display = 'flex'
+        homePage.style.display = 'flex'
         homeSong.play()
         homeSong.currentTime = 0
         if (acceleratorP1) {
@@ -258,6 +276,7 @@ document.getElementById('backInf').addEventListener("click", () => {
             shield = false
         }
         song.currentTime = 0
+        soloXtremeSong.currentTime = 0
         acceleratorTimer = 0
         hurtShieldTimer = 0
         playerPosi = 45
@@ -293,7 +312,7 @@ document.getElementById('retHomeSolo').addEventListener("click", () => {
     setTimeout(() => {
         soloPage.removeAttribute('style')
         soloPage.style.display = 'none'
-        gameMPage.style.display = 'flex'
+        homePage.style.display = 'flex'
         homeSong.play()
         homeSong.currentTime = 0
         if (acceleratorP1) {
@@ -317,6 +336,7 @@ document.getElementById('retHomeSolo').addEventListener("click", () => {
             shield = false
         }
         song.currentTime = 0
+        soloXtremeSong.currentTime = 0
         acceleratorTimer = 0
         hurtShieldTimer = 0
         playerPosi = 45
@@ -404,6 +424,15 @@ document.getElementById('soloRestart').addEventListener('click', () => {
     }, 1)
     plusSpeed = 0
     playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+    if (challengeType = 'extreme') {
+        plusSpeed = 0.5
+        lives1p = 20
+        song.pause()
+        song.currentTime = 0
+        soloXtremeSong.play()
+        soloXtremeSong.currentTime = 0
+        checkLive1p()
+    }
 })
 
 document.getElementById('soloConfig').addEventListener('click', () => {
@@ -645,44 +674,86 @@ boostItem.addEventListener("animationiteration", () => {
     boostOn = false
     let baseSpeed = 10
     boostItem.style.opacity = '0'
-    let appearBoost = Math.floor((Math.random() * 2))
-    if (appearBoost != 0) {
-        if (plusSpeed > 0) {
-            baseSpeed = baseSpeed - plusSpeed
-        }
-        boostItem.style.display = 'none'
-        setTimeout(() => {
-            boostItem.style.display = 'block'
-        }, 1);
-        let boostTop = Math.random() * 84
-        boostStyle = Math.floor(Math.random() * 5)
-        boostTop = parseInt(boostTop)
-        boostItem.style.opacity = '1'
-        boostItem.style.top = `${boostTop}%`
-        boostItem.style.animationDuration = `${baseSpeed}s`
-        boostOn = true
-        boostItem.removeAttribute('class')
-        boostItem.className = 'boost'
-        if (boostStyle == 0) {
-            boostItem.classList.add('shieldBoost')
-        }
-        if (boostStyle == 1) {
-            boostItem.classList.add('lifeBoost')
-        }
-        if (boostStyle == 2) {
-            boostItem.classList.add('SlifeBoost')
-        }
+    if (challengeType == 'extreme') {
+        let appearBoost = Math.floor((Math.random() * 5))
+        if (appearBoost == 2) {
+            if (plusSpeed > 0) {
+                baseSpeed = baseSpeed - plusSpeed
+            }
+            boostItem.style.display = 'none'
+            setTimeout(() => {
+                boostItem.style.display = 'block'
+            }, 1);
+            let boostTop = Math.random() * 84
+            boostStyle = Math.floor(Math.random() * 5)
+            boostTop = parseInt(boostTop)
+            boostItem.style.opacity = '1'
+            boostItem.style.top = `${boostTop}%`
+            boostItem.style.animationDuration = `${baseSpeed}s`
+            boostOn = true
+            boostItem.removeAttribute('class')
+            boostItem.className = 'boost'
+            if (boostStyle == 0) {
+                boostItem.classList.add('shieldBoost')
+            }
+            if (boostStyle == 1) {
+                boostItem.classList.add('lifeBoost')
+            }
+            if (boostStyle == 2) {
+                boostItem.classList.add('SlifeBoost')
+            }
 
-        if (boostStyle == 3) {
-            boostItem.classList.add('acceleratorBoost')
-        }
+            if (boostStyle == 3) {
+                boostItem.classList.add('acceleratorBoost')
+            }
 
-        if (boostStyle == 4) {
-            boostItem.classList.add('relaxBoost')
+            if (boostStyle == 4) {
+                boostItem.classList.add('relaxBoost')
+            }
+        } else {
+            boostItem.style.opacity = '0'
+            boostOn = false
         }
     } else {
-        boostItem.style.opacity = '0'
-        boostOn = false
+        let appearBoost = Math.floor((Math.random() * 2))
+        if (appearBoost != 0) {
+            if (plusSpeed > 0) {
+                baseSpeed = baseSpeed - plusSpeed
+            }
+            boostItem.style.display = 'none'
+            setTimeout(() => {
+                boostItem.style.display = 'block'
+            }, 1);
+            let boostTop = Math.random() * 84
+            boostStyle = Math.floor(Math.random() * 5)
+            boostTop = parseInt(boostTop)
+            boostItem.style.opacity = '1'
+            boostItem.style.top = `${boostTop}%`
+            boostItem.style.animationDuration = `${baseSpeed}s`
+            boostOn = true
+            boostItem.removeAttribute('class')
+            boostItem.className = 'boost'
+            if (boostStyle == 0) {
+                boostItem.classList.add('shieldBoost')
+            }
+            if (boostStyle == 1) {
+                boostItem.classList.add('lifeBoost')
+            }
+            if (boostStyle == 2) {
+                boostItem.classList.add('SlifeBoost')
+            }
+
+            if (boostStyle == 3) {
+                boostItem.classList.add('acceleratorBoost')
+            }
+
+            if (boostStyle == 4) {
+                boostItem.classList.add('relaxBoost')
+            }
+        } else {
+            boostItem.style.opacity = '0'
+            boostOn = false
+        }
     }
 })
 //End Sort Boost
@@ -770,45 +841,32 @@ function checkLive1p() {
             clearInterval(addSpeed)
             plusSpeed = 0
             setTimeout(() => {
-                soloPage.style.opacity = '0'
+                if (screenWidth <= 1000) {
+                    document.getElementById('soloScoreContainer').style.top = '0%'
+                } else {
+                    document.getElementById('soloScoreContainer').style.top = '6%'
+                }
+                finalScore = scoreNum + ((shieldSlot + acceleratorSlot + relaxSlot + fullHealSlot + healSlot) * 10)
+                document.getElementById('distance').innerText = scoreNum
+                document.getElementById('slots').innerText = (shieldSlot + acceleratorSlot + relaxSlot + fullHealSlot + healSlot)
+                document.getElementById('finalScore').innerText = finalScore
+                finalScore = parseInt(finalScore)
+                let localMoney = localStorage.getItem('money')
+                localMoney = parseInt(localMoney)
+                let actualMoney = localMoney + finalScore
+                localStorage.setItem('money', actualMoney)
+                let highScore = localStorage.getItem('highScore')
+                document.getElementById('moneyAlert').innerText = actualMoney
+                if (finalScore > highScore) {
+                    document.getElementById('soloHighAlert').style.display = 'block'
+                    localStorage.setItem('highScore', finalScore)
+                    document.getElementById('highScore').innerText = finalScore
+                } else {
+                    document.getElementById('highScore').innerText = highScore
+                }
+                player.classList.remove('deathAnim')
                 player.style.top = '120%'
-                setTimeout(() => {
-                    disPage.style.display = 'none'
-                    homePage.style.display = 'none'
-                    soloPage.style.display = 'none'
-                    soloScorePage.style.display = 'block'
-                    soloPage.style.opacity = '1'
-                    hSong.pause()
-                    hSong.currentTime = 0
-                    homeSong.play()
-                    song.pause()
-                    song.currentTime = 0
-                    player.classList.remove('deathAnim')
-                    player.removeAttribute('style')
-                    playerPosi = 45
-                    kill = false
-                    sScore.innerText = '0'
-                    acceleratorTimer = 0
-                    hurtSWaiter = 0
-                    finalScore = scoreNum + ((shieldSlot + acceleratorSlot + relaxSlot + fullHealSlot + healSlot) * 10)
-                    document.getElementById('distance').innerText = scoreNum
-                    document.getElementById('slots').innerText = (shieldSlot + acceleratorSlot + relaxSlot + fullHealSlot + healSlot)
-                    document.getElementById('finalScore').innerText = finalScore
-                    finalScore = parseInt(finalScore)
-                    let localMoney = localStorage.getItem('money')
-                    localMoney = parseInt(localMoney)
-                    let actualMoney = localMoney + finalScore
-                    localStorage.setItem('money', actualMoney)
-                    let highScore = localStorage.getItem('highScore')
-                    document.getElementById('moneyAlert').innerText = actualMoney
-                    if (finalScore > highScore) {
-                        document.getElementById('soloHighAlert').style.display = 'block'
-                        localStorage.setItem('highScore', finalScore)
-                        document.getElementById('highScore').innerText = finalScore
-                    } else {
-                        document.getElementById('highScore').innerText = highScore
-                    }
-                }, 500);
+
             }, 3000);
         }
     } else {
@@ -1273,6 +1331,13 @@ setInterval(() => {
 }, 1);
 //End check meteor
 
+//Beta tester bug report: Shield "active" but not working - Correction
+setInterval(() => {
+    if (!shieldActive) {
+        player.classList.remove('shield')
+    }
+}, 10);
+
 //Check if boosts hit player
 setInterval(() => {
     let boostTop = boostItem.style.top
@@ -1308,16 +1373,31 @@ setInterval(() => {
                     boostItem.style.opacity = '0'
                     boostOn = false
 
-                    if (lives1p < 90) {
-                        lives1p = lives1p + 20
-                        if (lives1p > 100) {
-                            lives1p = 100
+                    if (challengeType == null) {
+                        if (lives1p < 90) {
+                            lives1p = lives1p + 20
+                            if (lives1p > 100) {
+                                lives1p = 100
+                            }
+                        } else {
+                            lives1p = lives1p + 20
+                            healSlot++
+                            if (lives1p > 100) {
+                                lives1p = 100
+                            }
                         }
                     } else {
-                        lives1p = lives1p + 20
-                        healSlot++
-                        if (lives1p > 100) {
-                            lives1p = 100
+                        if (lives1p < 20) {
+                            lives1p = lives1p + 5
+                            if (lives1p > 20) {
+                                lives1p = 20
+                            }
+                        } else {
+                            lives1p = lives1p + 5
+                            healSlot++
+                            if (lives1p > 20) {
+                                lives1p = 20
+                            }
                         }
                     }
 
@@ -1328,6 +1408,10 @@ setInterval(() => {
                     if (lives1p < 100) {
                         lives1p = 100
                         checkLive1p()
+                        if (challengeType == 'extreme') {
+                            lives1p = 20
+                            checkLive1p()
+                        }
                     } else {
                         fullHealSlot++
                     }
@@ -1361,6 +1445,9 @@ setInterval(() => {
                         document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
                         acceleratorWaiter = setInterval(() => {
                             acceleratorTimer++
+                            if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
+                                document.getElementById('acceleratorAlert').classList.add('almostEnd')
+                            }
                             if (acceleratorTimer == 15) {
                                 clearInterval(acceleratorWaiter)
                                 acceleratorP1 = false
@@ -1377,6 +1464,7 @@ setInterval(() => {
                                 setTimeout(() => {
                                     document.getElementById('gameBckg').removeAttribute('style')
                                 }, 1);
+                                document.getElementById('acceleratorAlert').classList.remove('almostEnd')
                             }
                         }, 1000);
                     } else {
@@ -1413,10 +1501,6 @@ setInterval(() => {
                             boostItem.style.animationPlayState = 'running'
                             document.getElementById('gameBckg').style.animationPlayState = 'running'
                             relaxStts = false
-                            if (plusSpeed < 1) {
-                                clearInterval(trail)
-                                
-                            }
                         }, 2000);
                     }
                 }
@@ -1464,7 +1548,7 @@ let soloControls = setInterval(() => {
 }, 40);
 function moveChar() {
     if (keysSolo['ArrowUp'] == true) {
-        if (!hurtAnim) {
+        if (!hurtAnim && !relaxStts) {
             playerPosi--
             if (playerPosi < 0) {
                 playerPosi = 0
@@ -1479,7 +1563,7 @@ function moveChar() {
         }
     }
     if (keysSolo['ArrowDown'] == true) {
-        if (!hurtAnim) {
+        if (!hurtAnim && !relaxStts) {
             playerPosi++
             if (playerPosi >= 84) {
                 playerPosi = 84
@@ -1496,26 +1580,40 @@ function moveChar() {
 }
 //End New Controls : Solo
 
-//Mobile Controls : Solo
-mControlUp.addEventListener('touchstart', () => {
-    playerPosi--
-    if (playerPosi < 0) {
-        playerPosi = 0
-    }
-    player.style.top = `${playerPosi}%`
-    player.classList.add('upping')
-    upHold = setInterval(() => {
-        playerPosi--
-        if (playerPosi < 0) {
-            playerPosi = 0
+//Touch Controls : Solo
+mControlUp.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!gamePaused) {
+        if (!hurtAnim && !relaxStts) {
+            playerPosi--
+            if (playerPosi < 0) {
+                playerPosi = 0
+            }
+            player.style.top = `${playerPosi}%`
+            player.classList.add('upping')
+            setTimeout(() => {
+                playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+            }, 1);
         }
-        player.style.top = `${playerPosi}%`
-    }, 100)
+        upHold = setInterval(() => {
+            playerPosi--
+            if (playerPosi < 0) {
+                playerPosi = 0
+            }
+            player.style.top = `${playerPosi}%`
+            player.classList.add('upping')
+            setTimeout(() => {
+                playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+            }, 1);
+        }, 40)
+    }
 })
 
-mControlUp.addEventListener('touchend', () => {
+mControlUp.addEventListener('touchend', (e) => {
+    e.preventDefault()
     clearInterval(upHold)
-    if (!gamePaused) {
+    displaySlotsSolo()
+
         if (!hurtAnim) {
             player.removeAttribute('class')
             player.className = 'player'
@@ -1529,28 +1627,44 @@ mControlUp.addEventListener('touchend', () => {
                 player.classList.add('playerPaused')
             }
         }
-    }
+    
 })
 
-mControlDown.addEventListener('touchstart', () => {
-    playerPosi++
-    if (playerPosi >= 84) {
-        playerPosi = 84
-    }
-    player.style.top = `${playerPosi}%`
-    player.classList.add('falling')
-    downHold = setInterval(() => {
-        playerPosi++
-        if (playerPosi >= 84) {
-            playerPosi = 84
+mControlDown.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!gamePaused) {
+        if (!hurtAnim && !relaxStts) {
+            playerPosi++
+            if (playerPosi >= 84) {
+                playerPosi = 84
+            }
+            player.style.top = `${playerPosi}%`
+            player.classList.add('falling')
+            setTimeout(() => {
+                playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+            }, 1);
         }
         player.style.top = `${playerPosi}%`
-    }, 100)
+        player.classList.add('falling')
+        downHold = setInterval(() => {
+            playerPosi++
+            if (playerPosi >= 84) {
+                playerPosi = 84
+            }
+            player.style.top = `${playerPosi}%`
+            player.classList.add('falling')
+            setTimeout(() => {
+                playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
+            }, 1);
+        }, 40)
+    }
 })
 
-mControlDown.addEventListener('touchend', () => {
+mControlDown.addEventListener('touchend', (e) => {
+    e.preventDefault()
     clearInterval(downHold)
-    if (!gamePaused) {
+    displaySlotsSolo()
+
         if (!hurtAnim) {
             player.removeAttribute('class')
             player.className = 'player'
@@ -1564,6 +1678,417 @@ mControlDown.addEventListener('touchend', () => {
                 player.classList.add('playerPaused')
             }
         }
-    }
+    
 })
-//End Mobile Controls : Solo
+
+    // Boost controls
+
+    document.getElementById('shieldButton').addEventListener('click', () => {
+        if (shieldSlot > 0 && !shieldActive) {
+            player.classList.add("shield");
+            shield = true;
+            shieldActive = true;
+            shieldSlot--;
+            if (acceleratorP1 || relaxStts) {
+              player.classList.remove("shield");
+            }
+          } else if (shieldSlot == 0) {
+            document.getElementById("shieldButton").classList.add("emptySlot");
+            setTimeout(() => {
+              document
+                .getElementById("shieldButton")
+                .classList.remove("emptySlot");
+            }, 1500);
+          }
+    })
+
+    document.getElementById('acceleratorButton').addEventListener('click', () => {
+        if (acceleratorSlot > 0 && !acceleratorP1) {
+            acceleratorSlot--;
+            invencible.style.display = "block";
+            //trail.style.display = 'block'
+          
+              trail = setInterval(() => {
+                let trailElm = document.createElement("div");
+                trailElm.setAttribute("class", "trail");
+                trailElm.setAttribute("style", `top: ${playerPosi}%`);
+                trailElm.addEventListener("animationend", () => {
+                  trailElm.remove();
+                });
+                soloPage.insertAdjacentElement("beforeend", trailElm);
+              }, 100);
+            
+            acceleratorP1 = true;
+            document.getElementById("gameBckg").style.display = "none";
+            document.getElementById("gameBckg").style.animationDuration = "7.5s";
+            setTimeout(() => {
+              document.getElementById("gameBckg").style.display = "block";
+            }, 1);
+            if (shieldActive) {
+              player.classList.remove("shield");
+            }
+  
+            clearInterval(scoreCounter);
+            scoreCounter = setInterval(() => {
+              scoreNum++;
+              sScore.innerText = scoreNum;
+              if (scoreNum != 0 && scoreNum % 100 == 0) {
+                let biomeType = Math.floor(Math.random() * 11);
+                soloPage.className = "";
+                soloPage.className = `biome${biomeType}`;
+              }
+            }, 500);
+            plusSpeed = plusSpeed + 0.25;
+            document.getElementById("plusSpeedAlert").innerText = `${
+              plusSpeed * 100
+            }%`;
+            acceleratorWaiter = setInterval(() => {
+              acceleratorTimer++;
+              if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
+                document.getElementById('acceleratorButton').classList.add('almostEnd')
+            }
+            if (acceleratorTimer == 15) {
+                clearInterval(acceleratorWaiter)
+                acceleratorP1 = false
+                acceleratorTimer = 0
+                invencible.removeAttribute('style')
+                //trail.removeAttribute('style')
+  
+                clearInterval(trail)
+  
+                if (shieldActive) {
+                    player.classList.add('shield')
+                }
+                document.getElementById('gameBckg').style.display = 'none'
+                setTimeout(() => {
+                    document.getElementById('gameBckg').removeAttribute('style')
+                }, 1);
+                document.getElementById('acceleratorButton').classList.remove('almostEnd')
+            }
+            }, 1000);
+          } else if (acceleratorSlot == 0) {
+            document
+              .getElementById("acceleratorButton")
+              .classList.add("emptySlot");
+            setTimeout(() => {
+              document
+                .getElementById("acceleratorButton")
+                .classList.remove("emptySlot");
+            }, 1500);
+          }
+    })
+
+    document.getElementById('relaxButton').addEventListener('click', () => {
+        if (!acceleratorP1 && !relaxStts && relaxSlot > 0 && plusSpeed > 0) {
+            relaxSlot--;
+            player.classList.add("relaxing");
+            relaxStts = true;
+            meteor1.style.animationPlayState = "paused";
+            meteor2.style.animationPlayState = "paused";
+            meteor3.style.animationPlayState = "paused";
+            meteor4.style.animationPlayState = "paused";
+            meteor5.style.animationPlayState = "paused";
+            meteor6.style.animationPlayState = "paused";
+            meteor7.style.animationPlayState = "paused";
+            boostItem.style.animationPlayState = "paused";
+            document.getElementById("gameBckg").style.animationPlayState =
+              "paused";
+            setTimeout(() => {
+              plusSpeed = plusSpeed - 0.25;
+              document.getElementById("plusSpeedAlert").innerText = `${
+                plusSpeed * 100
+              }%`;
+              player.classList.remove("relaxing");
+              meteor1.style.animationPlayState = "running";
+              meteor2.style.animationPlayState = "running";
+              meteor3.style.animationPlayState = "running";
+              meteor4.style.animationPlayState = "running";
+              meteor5.style.animationPlayState = "running";
+              meteor6.style.animationPlayState = "running";
+              meteor7.style.animationPlayState = "running";
+              boostItem.style.animationPlayState = "running";
+              document.getElementById("gameBckg").style.animationPlayState =
+                "running";
+              relaxStts = false;
+  
+            }, 2000);
+          } else if (relaxSlot == 0) {
+            document.getElementById("relaxButton").classList.add("emptySlot");
+            setTimeout(() => {
+              document.getElementById("relaxButton").classList.remove("emptySlot");
+            }, 1500);
+          }
+    })
+
+    document.getElementById('FhealButton').addEventListener('click', () => {
+        if (fullHealSlot > 0 && lives1p != 100) {
+            fullHealSlot--;
+            lives1p = 100;
+            checkLive1p();
+            
+            if (challengeType == 'extreme') {
+              lives1p = 20
+              checkLive1p();
+            }
+  
+          } else if (fullHealSlot == 0) {
+            document.getElementById("FhealButton").classList.add("emptySlot");
+            setTimeout(() => {
+              document.getElementById("FhealButton").classList.remove("emptySlot");
+            }, 1500);
+          }
+    })
+
+    document.getElementById('healButton').addEventListener('click', () => {
+        if (healSlot > 0 && lives1p < 100) {
+            healSlot--;
+            if (challengeType == null) {
+              lives1p = lives1p + 20;
+              if (lives1p > 100) {
+                lives1p = 100;
+              }
+            } else {
+              lives1p = lives1p + 5;
+              if (lives1p > 20) {
+                lives1p = 20;
+              }
+            }
+            checkLive1p();
+          } else if (healSlot == 0) {
+            document.getElementById("healButton").classList.add("emptySlot");
+            setTimeout(() => {
+              document.getElementById("healButton").classList.remove("emptySlot");
+            }, 1500);
+          }
+    })
+//End Touch Controls : Solo
+
+// Plus speed real viewer
+setInterval(() => {
+    document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+}, 1000);
+
+// Plus speed real time speed song
+setInterval(() => {
+    if (plusSpeed >= 1) {
+        if (challengeType == null) {
+            song.playbackRate = 1.5;
+        } else {
+            soloXtremeSong.playbackRate = 1.5;
+        }
+    } else {
+        if (challengeType == null) {
+            song.playbackRate = 1;
+        } else {
+            soloXtremeSong.playbackRate = 1;
+        }
+    }
+}, 1000);
+
+// Solo Mode - Score Nav
+document.getElementById("soloSHome").addEventListener("click", () => {
+    soloPage.style.opacity = "0";
+    scoreNum = 0;
+    document.getElementById('soloScoreContainer').removeAttribute('style')
+    setTimeout(() => {
+        lives1p = 100;
+        soloPage.removeAttribute("style");
+        soloPage.style.display = "none";
+        homePage.style.display = "flex";
+        song.pause()
+        song.currentTime = 0
+        soloXtremeSong.pause()
+        soloXtremeSong.currentTime = 0
+        hSong.currentTime = 0
+        homeSong.play()
+        acceleratorTimer = 0;
+        hurtShieldTimer = 0;
+        playerPosi = 45;
+        player.removeAttribute("style");
+        pageType = 1;
+        if (acceleratorP1) {
+            acceleratorP1 = false;
+            clearInterval(trail);
+            invencible.style.display = "none";
+        } else {
+            acceleratorP1 = false;
+        }
+        if (relaxStts) {
+            relaxStts = false;
+        } else {
+            relaxStts = false;
+        }
+        if (hurtShield) {
+            hurtShield = false;
+            player.classList.remove("hShield");
+        } else {
+            hurtShield = false;
+        }
+        if (shieldActive) {
+            shieldActive = false;
+            shield = false;
+            player.classList.remove("shield");
+        } else {
+            shieldActive = false;
+            shield = false;
+        }
+        clearSlotSolo();
+        clearInterval(scoreCounter);
+        document.getElementById("soloHighAlert").removeAttribute("style");
+        kill = false
+        sScore.innerText = '0'
+        acceleratorTimer = 0
+        hurtSWaiter = 0
+    }, 500);
+});
+
+document.getElementById("soloSGame").addEventListener("click", () => {
+    if (kill) {
+        soloPage.style.opacity = "0";
+        scoreNum = 0;
+        document.getElementById('soloScoreContainer').removeAttribute('style')
+        setTimeout(() => {
+            if (challengeType == null) {
+                kill = false
+                lives1p = 100;
+                soloPage.removeAttribute("style");
+                setTimeout(() => {
+                    soloPage.style.display = "block";
+                }, 1);
+                song.currentTime = 0;
+                homeSong.currentTime = 0;
+                homeSong.pause();
+                song.play();
+                acceleratorTimer = 0;
+                hurtShieldTimer = 0;
+                playerPosi = 45;
+                player.removeAttribute("style");
+                pageType = 2;
+                plusSpeed = 0
+                if (acceleratorP1) {
+                    acceleratorP1 = false;
+                    clearInterval(trail);
+                    invencible.style.display = "none";
+                } else {
+                    acceleratorP1 = false;
+                }
+                if (relaxStts) {
+                    relaxStts = false;
+                } else {
+                    relaxStts = false;
+                }
+                if (hurtShield) {
+                    hurtShield = false;
+                    player.classList.remove("hShield");
+                } else {
+                    hurtShield = false;
+                }
+                if (shieldActive) {
+                    shieldActive = false;
+                    shield = false;
+                    player.classList.remove("shield");
+                } else {
+                    shieldActive = false;
+                    shield = false;
+                }
+                clearSlotSolo();
+                checkLive1p();
+                clearInterval(scoreCounter);
+                clearInterval(addSpeed);
+                scoreCounter = setInterval(() => {
+                    scoreNum++;
+                    sScore.innerText = scoreNum;
+                    if (scoreNum != 0 && scoreNum % 100 == 0) {
+                        let biomeType = Math.floor(Math.random() * 11);
+                        soloPage.className = "";
+                        soloPage.className = `biome${biomeType}`;
+                    }
+                }, 500);
+                addSpeed = setInterval(() => {
+                    if (challengeType == null) {
+                        if (scoreNum % 250 == 0 && scoreNum != 0) {
+                            plusSpeed = plusSpeed + 0.25
+                            document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                        }
+                    } else if (challengeType == 'extreme') {
+                        if (scoreNum % 100 == 0 && scoreNum != 0) {
+                            plusSpeed = plusSpeed + 0.5
+                            document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                        }
+                    }
+                }, 600);
+                document.getElementById("soloHighAlert").removeAttribute("style");
+            } else if (challengeType == "extreme") {
+                kill = false
+                lives1p = 20;
+                soloPage.removeAttribute("style");
+                setTimeout(() => {
+                    soloPage.style.display = "block";
+                }, 1);
+                soloXtremeSong.currentTime = 0;
+                homeSong.currentTime = 0;
+                homeSong.pause();
+                soloXtremeSong.play();
+                acceleratorTimer = 0;
+                hurtShieldTimer = 0;
+                playerPosi = 45;
+                player.removeAttribute("style");
+                pageType = 2;
+                plusSpeed = 0.5
+                if (acceleratorP1) {
+                    acceleratorP1 = false;
+                    clearInterval(trail);
+                    invencible.style.display = "none";
+                } else {
+                    acceleratorP1 = false;
+                }
+                if (relaxStts) {
+                    relaxStts = false;
+                } else {
+                    relaxStts = false;
+                }
+                if (hurtShield) {
+                    hurtShield = false;
+                    player.classList.remove("hShield");
+                } else {
+                    hurtShield = false;
+                }
+                if (shieldActive) {
+                    shieldActive = false;
+                    shield = false;
+                    player.classList.remove("shield");
+                } else {
+                    shieldActive = false;
+                    shield = false;
+                }
+                clearSlotSolo();
+                checkLive1p();
+                clearInterval(scoreCounter);
+                clearInterval(addSpeed);
+                scoreCounter = setInterval(() => {
+                    scoreNum++;
+                    sScore.innerText = scoreNum;
+                    if (scoreNum != 0 && scoreNum % 100 == 0) {
+                        let biomeType = Math.floor(Math.random() * 11);
+                        soloPage.className = "";
+                        soloPage.className = `biome${biomeType}`;
+                    }
+                }, 500);
+                addSpeed = setInterval(() => {
+                    if (challengeType == null) {
+                        if (scoreNum % 250 == 0 && scoreNum != 0) {
+                            plusSpeed = plusSpeed + 0.25
+                            document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                        }
+                    } else if (challengeType == 'extreme') {
+                        if (scoreNum % 100 == 0 && scoreNum != 0) {
+                            plusSpeed = plusSpeed + 0.5
+                            document.getElementById('plusSpeedAlert').innerText = `${plusSpeed * 100}%`
+                        }
+                    }
+                }, 600);
+                document.getElementById("soloHighAlert").removeAttribute("style");
+            }
+        }, 500);
+    }
+});

@@ -1,6 +1,23 @@
 // Developer Mode (DevMode or DevKeys) script
 let isDev = localStorage.getItem('devMode')
 if (isDev == '1') {
+  function delKey() {
+    alert(`A chave ${keyName} foi deletada`)
+    context.removeAttribute('style')
+    localStorage.removeItem(keyName)
+    refreshPane()
+  }
+
+  function renKey() {
+    let newKeyName = prompt(`Digite o novo nome da chave ${keyName}`)
+    let oldKey = localStorage.getItem(keyName)
+    localStorage.setItem(newKeyName, oldKey)
+    localStorage.removeItem(keyName)
+    alert(`Chave renomeade de ${keyName} para ${newKeyName}`)
+    context.removeAttribute('style')
+    refreshPane()
+  }
+
   let noDevTitle = localStorage.getItem('noDevTitle')
   if (noDevTitle != undefined) {
     if (noDevTitle == "false") {
@@ -55,6 +72,13 @@ if (isDev == '1') {
       regeditDevKeys()
       makeButtonsWork()
     }, 1);
+    try {
+      document.getElementById('delKey').removeEventListener('click', delKey)
+      document.getElementById('renKey').removeEventListener('click', renKey)
+    } catch {
+      console.log('AAA')
+    }
+
   }
 
   function addNewKey() {
@@ -112,11 +136,51 @@ if (isDev == '1') {
 
     let nameCells = document.querySelectorAll('.cellDiv')
     nameCells.forEach((n) => {
-      n.addEventListener('click', () => {
+      n.addEventListener('click', (mouse) => {
         let keyId = n.id
         keyId = keyId.replace('NID', '')
         let keyName = localStorage.key(keyId);
-        let makeSomething = prompt(`O que deseja fazer com a chave ${keyName}? \nDeletar a chave - delKey \nRenomear a chave - renKey \nNada - notChange ou qualquer coisa`)
+        let mouseX = mouse.clientX;
+        let mouseY = mouse.clientY;
+        let context = document.getElementById('contextMenu')
+        let contextOptions = document.getElementById('contextOptions')
+        contextOptions.innerHTML = ''
+        context.removeAttribute('style')
+        setTimeout(() => {
+          context.style.top = `${mouseY}px`
+          context.style.left = `${mouseX}px`
+          context.style.display = "flex"
+        }, 10);
+        document.getElementById('kn').innerText = keyName
+        context.addEventListener('click', () => {
+          context.removeAttribute('style')
+        })
+        let dkcm = document.createElement('div')
+        dkcm.className = 'CMOption'
+        dkcm.innerHTML = 'Deletar'
+        dkcm.addEventListener('click', () => {
+          alert(`A chave ${keyName} foi deletada`)
+          context.removeAttribute('style')
+          localStorage.removeItem(keyName)
+          refreshPane()
+        })
+        contextOptions.insertAdjacentElement('beforeend', dkcm)
+        let rkcm = document.createElement('div')
+        rkcm.className = 'CMOption'
+        rkcm.innerHTML = 'Renomear'
+        rkcm.addEventListener('click', () => {
+          let newKeyName = prompt(`Digite o novo nome da chave ${keyName}`)
+          let oldKey = localStorage.getItem(keyName)
+          localStorage.setItem(newKeyName, oldKey)
+          localStorage.removeItem(keyName)
+          alert(`Chave renomeade de ${keyName} para ${newKeyName}`)
+          context.removeAttribute('style')
+          refreshPane()
+        })
+        contextOptions.insertAdjacentElement('beforeend', rkcm)
+
+
+        /*let makeSomething = prompt(`O que deseja fazer com a chave ${keyName}? \nDeletar a chave - delKey \nRenomear a chave - renKey \nNada - notChange ou qualquer coisa`)
         if (makeSomething == 'delKey') {
           let confirmDelKey = confirm(`Deseja deletar a chave ${keyName}?`)
           if (confirmDelKey) {
@@ -132,7 +196,7 @@ if (isDev == '1') {
         } else {
           alert('Nada foi alterado')
         }
-        refreshPane()
+        refreshPane()*/
       })
     })
   }
