@@ -1,14 +1,14 @@
 //Variables
 
 // Game Env Variables
-const gameVersion = 'Branch'
+const gameVersion = 'Beta'
 const isPreview = true
-const previewType = 'Dev'
-const lastDayOfChanges = '16/11/2024'
+const previewType = '1y'
+const lastDayOfChanges = '05/01/2025'
 const datetype = 'DD/MM/YYYY'
-const canEnablePreviewItems = true
+const canEnablePreviewItems = false
 let canLoad = true
-const isDevBranch = true
+const isDevBranch = false
 
 const player = document.getElementById('ghost')
 let keysSolo = []
@@ -58,7 +58,6 @@ const disButton = document.getElementById('exitDisclaimer')
 //Pages
 const disPage = document.getElementById('disclaimer')
 const soloPage = document.getElementById('soloMode')
-const soloScorePage = document.getElementById('soloScoreMark')
 const homePage = document.getElementById('homeScreen')
 const duoRunPage = document.getElementById('duoRun')
 const duoRunScorePage = document.getElementById('duoRunScore')
@@ -92,6 +91,7 @@ const creditsButton = document.getElementById('viewCredits')
 const devKeysCentralButton = document.getElementById('devKeysEnter')
 const fullscreenAnimationButton = document.getElementById('fullscreenAnimation')
 let isAnimFull = false
+const mobileSoundControl = document.getElementById('mobileSoundControl')
 const startButton = document.getElementById('startGame')
 let selectedGameMode = 1
 let challengeType = null
@@ -106,6 +106,11 @@ const acceleratorSW = document.getElementById('acceleratorS')
 const relaxSW = document.getElementById('relaxS')
 const ShealSW = document.getElementById('SlifeS')
 const healSW = document.getElementById('lifeS')
+const shieldSWP = document.getElementById('shieldSP')
+const acceleratorSWP = document.getElementById('acceleratorSP')
+const relaxSWP = document.getElementById('relaxSP')
+const ShealSWP = document.getElementById('SlifeSP')
+const healSWP = document.getElementById('lifeSP')
 let lives1p = 0
 const lives1pAlert = document.getElementById('live1p')
 let boostStyle
@@ -114,6 +119,10 @@ let acceleratorTimer = 0
 let relaxStts = false
 const mControlUp = document.getElementById('upBlock')
 const mControlDown = document.getElementById('downBlock')
+const mControlUpSRP1 = document.getElementById('p1UpBlock')
+const mControlDownSRP1 = document.getElementById('p1DownBlock')
+const mControlUpSRP2 = document.getElementById('p2UpBlock')
+const mControlDownSRP2 = document.getElementById('p2DownBlock')
 let acceleratorWaiter, hurtSWaiter
 let scoreCounter, duoBiomeChanger
 let scoreNum = 0

@@ -1657,3 +1657,206 @@ setInterval(() => {
         }
     }
 }, 1);
+
+/*Touch controls*/
+// P1
+mControlUpSRP1.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!duoRunPaused) {
+        p1Posi--
+        if (p1Posi < 0) {
+            p1Posi = 0
+        }
+        p1Run.style.top = `${p1Posi}%`
+        p1Run.classList.add('upping')
+
+        p1UpHold = setInterval(() => {
+            p1Posi--
+            if (p1Posi < 0) {
+                p1Posi = 0
+            }
+            p1Run.style.top = `${p1Posi}%`
+            p1Run.classList.add('upping')
+        }, 40)
+    }
+})
+
+mControlUpSRP1.addEventListener('touchend', (e) => {
+    e.preventDefault()
+    clearInterval(p1UpHold)    
+
+    if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+        if (!p1HurtAnim && !p1RFire) {
+          p1Run.removeAttribute("class");
+          p1Run.className = "player";
+        }
+        if (!p2HurtAnim && !p2RFire) {
+          p2Run.removeAttribute("class");
+          p2Run.className = "player";
+        }
+        if (p1RHS) {
+          p1Run.classList.add("hShield");
+        }
+        if (p2RHS) {
+          p2Run.classList.add("hShield");
+        }
+        if (p1RunShield) {
+          p1Run.classList.add("shield");
+        }
+        if (p2RunShield) {
+          p2Run.classList.add("shield");
+        }
+      }
+})
+
+mControlDownSRP1.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!duoRunPaused) {
+        if (!hurtAnim && !relaxStts) {
+            p1Posi++
+            if (p1Posi >= 84) {
+                p1Posi = 84
+            }
+            p1Run.style.top = `${p1Posi}%`
+            p1Run.classList.add('falling')
+
+        p1DownHold = setInterval(() => {
+            p1Posi++
+            if (p1Posi >= 84) {
+                p1Posi = 84
+            }
+            p1Run.style.top = `${p1Posi}%`
+            p1Run.classList.add('falling')
+        }, 40)
+    }
+}
+})
+
+mControlDownSRP1.addEventListener('touchend', (e) => {
+    e.preventDefault()
+    clearInterval(p1DownHold)
+
+    if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+        if (!p1HurtAnim && !p1RFire) {
+          p1Run.removeAttribute("class");
+          p1Run.className = "player";
+        }
+        if (!p2HurtAnim && !p2RFire) {
+          p2Run.removeAttribute("class");
+          p2Run.className = "player";
+        }
+        if (p1RHS) {
+          p1Run.classList.add("hShield");
+        }
+        if (p2RHS) {
+          p2Run.classList.add("hShield");
+        }
+        if (p1RunShield) {
+          p1Run.classList.add("shield");
+        }
+        if (p2RunShield) {
+          p2Run.classList.add("shield");
+        }
+      }
+})
+
+// P2
+mControlUpSRP2.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!duoRunPaused) {
+        p2Posi--
+        if (p2Posi < 0) {
+            p2Posi = 0
+        }
+        p2Run.style.top = `${p2Posi}%`
+        p2Run.classList.add('upping')
+
+        p2UpHold = setInterval(() => {
+            p2Posi--
+            if (p2Posi < 0) {
+                p2Posi = 0
+            }
+            p2Run.style.top = `${p2Posi}%`
+            p2Run.classList.add('upping')
+        }, 40)
+    }
+})
+
+mControlUpSRP2.addEventListener('touchend', (e) => {
+    e.preventDefault()
+    clearInterval(p2UpHold)    
+
+    if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+        if (!p1HurtAnim && !p1RFire) {
+          p1Run.removeAttribute("class");
+          p1Run.className = "player";
+        }
+        if (!p2HurtAnim && !p2RFire) {
+          p2Run.removeAttribute("class");
+          p2Run.className = "player";
+        }
+        if (p1RHS) {
+          p1Run.classList.add("hShield");
+        }
+        if (p2RHS) {
+          p2Run.classList.add("hShield");
+        }
+        if (p1RunShield) {
+          p1Run.classList.add("shield");
+        }
+        if (p2RunShield) {
+          p2Run.classList.add("shield");
+        }
+      }
+})
+
+mControlDownSRP2.addEventListener('touchstart', (e) => {
+    e.preventDefault()
+    if (!duoRunPaused) {
+        if (!hurtAnim && !relaxStts) {
+            p2Posi++
+            if (p2Posi >= 84) {
+                p2Posi = 84
+            }
+            p2Run.style.top = `${p2Posi}%`
+            p2Run.classList.add('falling')
+
+        p2DownHold = setInterval(() => {
+            p2Posi++
+            if (p2Posi >= 84) {
+                p2Posi = 84
+            }
+            p2Run.style.top = `${p2Posi}%`
+            p2Run.classList.add('falling')
+        }, 40)
+    }
+}
+})
+
+mControlDownSRP2.addEventListener('touchend', (e) => {
+    e.preventDefault()
+    clearInterval(p2DownHold)
+
+    if (!duoRunPaused && !duoRunK1 && !duoRunK2) {
+        if (!p1HurtAnim && !p1RFire) {
+          p1Run.removeAttribute("class");
+          p1Run.className = "player";
+        }
+        if (!p2HurtAnim && !p2RFire) {
+          p2Run.removeAttribute("class");
+          p2Run.className = "player";
+        }
+        if (p1RHS) {
+          p1Run.classList.add("hShield");
+        }
+        if (p2RHS) {
+          p2Run.classList.add("hShield");
+        }
+        if (p1RunShield) {
+          p1Run.classList.add("shield");
+        }
+        if (p2RunShield) {
+          p2Run.classList.add("shield");
+        }
+      }
+})

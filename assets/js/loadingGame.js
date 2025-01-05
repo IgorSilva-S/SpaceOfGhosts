@@ -14,11 +14,11 @@ window.onload = () => {
     if (isPreview) {
         let publicVersion = `${previewType} ${gameVersion}`
         if (isDevBranch) {
-            publicVersion = `${previewType} ${gameVersion} - Build date: ${lastDayOfChanges}`
+            publicVersion = `${previewType} ${gameVersion} <br> Build date: ${lastDayOfChanges}`
         }
-        document.getElementById('homeVersion').innerText = publicVersion
+        document.getElementById('homeVersion').innerHTML = publicVersion
     } else {
-        document.getElementById('homeVersion').innerText = gameVersion
+        document.getElementById('homeVersion').innerHTML = gameVersion
     }
 
     try {
@@ -32,7 +32,6 @@ window.onload = () => {
     } catch {
         disPage.style.display = 'none'
         soloPage.style.display = 'none'
-        soloScorePage.style.display = 'none'
         homePage.style.display = 'none'
         duoRunPage.style.display = 'none'
         duoRunScorePage.style.display = 'none'

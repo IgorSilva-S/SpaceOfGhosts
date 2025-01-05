@@ -5,7 +5,6 @@ function mainAlertError() {
     canLoad = false
     disPage.style.display = 'none'
     soloPage.style.display = 'none'
-    soloScorePage.style.display = 'none'
     homePage.style.display = 'none'
     duoRunPage.style.display = 'none'
     duoRunScorePage.style.display = 'none'
@@ -38,7 +37,6 @@ setInterval(() => {
     } catch {
         disPage.style.display = 'none'
         soloPage.style.display = 'none'
-        soloScorePage.style.display = 'none'
         homePage.style.display = 'none'
         duoRunPage.style.display = 'none'
         duoRunScorePage.style.display = 'none'

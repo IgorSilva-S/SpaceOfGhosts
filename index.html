@@ -15,10 +15,10 @@
 
 <body>
     <!--Not for phones alert-->
-    <section class="notForPhones">
+    <!--<section class="notForPhones">
         <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts">
         Space of Ghosts não está pronto para aparelhos mobiles ainda, espere outras atualizações!
-    </section>
+    </section>-->
     <!--Loading and Fatal JS error-->
     <section id="loadingPage">
         <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts">
@@ -60,18 +60,19 @@
         <div class="alignHomeButtons" id="homeButtons">
             <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts" id="gameName">
             <button id="playGame">Jogar</button>
-            <button id="goShop">Loja</button>
-            <button id="skinsGS">Skins</button>
+            <button id="goShop" class="excludePhone">Loja</button>
+            <button id="skinsGS" class="excludePhone">Skins</button>
             <button id="editSettings">Configurações</button>
             <button id="helpGame" style="display: none">Ajuda</button>
-            <button id="devKeysEnter" style="display: none">DevKeys Central</button>
+            <button id="devKeysEnter" style="display: none" class="excludePhone">DevKeys Central</button>
+            <button id="mobileSoundControl" class="onlyPhone">Controle de som</button>
             <button id="viewCredits">Créditos</button>
 
             <div class="version" id="homeVersion">
                 gameVersion
             </div>
         </div>
-        <div class="alignHomeButtons" id="gameButtons" style="margin-left: -40%; display: none;">
+        <div class="alignHomeButtons gameSelectControls" id="gameButtons">
             <div class="alignHomeTitles">
                 <div class="lBackPage" id="GMRHome">
 
@@ -87,7 +88,7 @@
             <button id="spatialXtremeMode">
                 Espacial: Infinito (Extremo)
             </button>
-            <button id="runnerMode">
+            <button id="runnerMode" style="display: none;">
                 Corredor: Infinito
             </button>
      
@@ -101,7 +102,7 @@
                         <input type="radio" name="players" id="onePlayer">
                         <label for="onePlayer">Um jogador</label>
                     </div>
-                    <div>
+                    <div class="excludePhone">
                         <input type="radio" name="players" id="twoPlayers">
                         <label for="twoPlayers">Dois jogadores</label>
                     </div>
@@ -121,7 +122,7 @@
                 <div class="homeGhost1" id="hgh1">
 
                 </div>
-                <div class="homeGhost2" id="hgh2"></div>
+                <div class="homeGhost2 excludePhone" id="hgh2"></div>
             </div>
 
             <div id="spatialXtremeModeAnimation" style="display: none;">
@@ -133,7 +134,7 @@
                 <div class="homeGhost1" id="hghX1" style="animation-duration: 6s;">
 
                 </div>
-                <div class="homeGhost2" id="hghX2" style="animation-duration: 5s;"></div>
+                <div class="homeGhost2 excludePhone" id="hghX2" style="animation-duration: 5s;"></div>
                 <div class="meteor mt3" style="top: 20%; animation-duration: 3s;"></div>
                 <div class="meteor mt2" style="top: 60%; animation-duration: 4s;"></div>
                 <div class="meteor mt3" style="top: 35%; animation-duration: 2s;"></div>
@@ -147,7 +148,7 @@
                 <div class="bRockSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
                 <div class="rockSoil"></div>
                 <div class="runningGhost1"></div>
-                <div class="runningGhost2"></div>
+                <div class="runningGhost2 excludePhone"></div>
             </div>
 
             <div class="interference" id="interferenceAnim" style="display: none">
@@ -172,7 +173,7 @@
                 <span id="soloDistance">0
                 </span>m
             </div>
-            <div class="itemsAlertCont">
+            <div class="itemsAlertCont excludePhone">
                 <div class="itemCont" id="shieldAlert">
                     <div class="item shieldBoost"></div>
                     <div class="slots">x <span id="shieldS"></span></div>
@@ -236,8 +237,31 @@
 
         </div>
 
-        <div class="moveBlock" id="upBlock"></div>
-        <div class="moveBlock" id="downBlock"></div>
+        <div class="moveBlock upBlock" id="upBlock"></div>
+        <div class="moveBlock downBlock" id="downBlock"></div>
+
+        <div class="itemsAlertContDown onlyPhoneF">
+            <div class="itemCont" id="shieldButton">
+                <div class="item shieldBoost"></div>
+                <div class="slots">x <span id="shieldSP"></span></div>
+            </div>
+            <div class="itemCont" id="acceleratorButton">
+                <div class="item acceleratorBoost"></div>
+                <div class="slots">x <span id="acceleratorSP"></span></div>
+            </div>
+            <div class="itemCont" id="relaxButton">
+                <div class="item relaxBoost"></div>
+                <div class="slots">x <span id="relaxSP"></span></div>
+            </div>
+            <div class="itemCont" id="FhealButton">
+                <div class="item SlifeBoost"></div>
+                <div class="slots">x <span id="SlifeSP"></span></div>
+            </div>
+            <div class="itemCont" id="healButton">
+                <div class="item lifeBoost"></div>
+                <div class="slots">x <span id="lifeSP"></span></div>
+            </div>
+        </div>
 
         <div class="soloControls" id="pauseSolo">
             <div class="pauseText">Pause</div>
@@ -263,47 +287,22 @@
             </div>
         </div>
       </div>
-    </section>
 
-    <!--Solo Mode: Espatial - Score-->
-    <section id="soloScoreMark">
-        <div class="background">
-
+      <div class="soloScore" id="soloScoreContainer">
+        <h1>Pontuação</h1>
+        <div class="soloScoreAlign">
+            <div class="distance">Distância do início: <span id="distance">0</span>m</div>
+            <div class="slots">Soma de boosts guardados: <span id="slots">0</span></div>
+            <div class="finalScore">Pontuação final (distância + (boosts * 10)): <span id="finalScore"></span></div>
+            <div class="newHigh" id="soloHighAlert">Nova Melhor pontuação</div>
+            <div class="lastHigh">Melhor pontuação: <span id="highScore">0</span></div>
+            <div class="money">Stardusts: <span id="moneyAlert">0</span></div>
         </div>
-        <div class="clouds"></div>
-        <div class="soloScore">
-            <h1>Pontuação</h1>
-            <div class="soloScoreAlign">
-                <div class="distance">Distância do início: <span id="distance">0</span>m</div>
-                <div class="slots">Soma de boosts guardados: <span id="slots">0</span></div>
-                <div class="finalScore">Pontuação final (distância + (boosts * 10)): <span id="finalScore"></span></div>
-                <div class="newHigh" id="soloHighAlert">Nova Melhor pontuação</div>
-                <div class="lastHigh">Melhor pontuação: <span id="highScore">0</span></div>
-                <div class="money">Stardusts: <span id="moneyAlert">0</span></div>
-            </div>
-            <div class="goButtons">
-                <button id="soloSHome">Ir para o início</button>
-                <button id="soloSGame">Começar novamente</button>
-            </div>
+        <div class="goButtons">
+            <button id="soloSHome">Ir para o início</button>
+            <button id="soloSGame">Começar novamente</button>
         </div>
-        <div class="ghostScore"></div>
-        <div class="soilContainer">
-            <div class="soil">
-                <div class="purpleCrystal"></div>
-            </div>
-            <div class="soil">
-                <div class="blueCrystal"></div>
-            </div>
-            <div class="soil">
-                <div class="purpleCrystal"></div>
-            </div>
-            <div class="soil">
-                <div class="blueCrystal"></div>
-            </div>
-            <div class="soil">
-                <div class="purpleCrystal"></div>
-            </div>
-        </div>
+    </div>
     </section>
 
     <!--Solo Mode: Runner-->
@@ -336,6 +335,15 @@
 
             </div>
         </div>
+        <div class="crystal cType2" id="cr1"></div>
+        <div class="crystal cType6" id="cr2"></div>
+        <div class="crystal cType1" id="cr3"></div>
+        <div class="crystal cType5" id="cr4"></div>
+        
+        <div class="crystalT cType2" id="cr1"></div>
+        <div class="crystalT cType6" id="cr2"></div>
+        <div class="crystalT cType1" id="cr3"></div>
+        <div class="crystalT cType5" id="cr4"></div>
         <div class="player" id="runnerPlayer"></div>
     </section>
 
@@ -358,6 +366,8 @@
             <div class="meteor" id="p1Rm4"></div>
             <div class="meteor" id="p1Rm5"></div>
             <div class="boost" id="p1RBst"></div>
+            <div class="moveBlock upBlock" id="p1UpBlock"></div>
+            <div class="moveBlock downBlock" id="p1DownBlock"></div>
             <div class="normalGameHud">
                 <div class="itemsAlertCont">
                     <div class="itemCont">
@@ -395,6 +405,8 @@
             <div class="meteor" id="p2Rm4"></div>
             <div class="meteor" id="p2Rm5"></div>
             <div class="boost" id="p2RBst"></div>
+            <div class="moveBlock upBlock" id="p2UpBlock"></div>
+            <div class="moveBlock downBlock" id="p2DownBlock"></div>
             <div class="normalGameHud">
                 <div class="itemsAlertCont">
                     <div class="itemCont">
@@ -664,7 +676,7 @@
         <div class="settingsPanel">
             <button id="settingsHome" class="returnHome"></button>
             <h1>Configurações</h1>
-            <div class="alignSetting">
+            <div class="alignSetting excludePhone">
                 <label for="oldControls">Controles no formato de teclas</label>
                 <input type="checkbox" name="" id="oldControls" title="Alterar config. Controles Precisos">
             </div>
@@ -674,7 +686,8 @@
             </div>
             <div class="alignSetting">
                 <label for="vol">Volume</label>
-                <div class="alignItems">
+                <button class="onlyPhone settingButton" id="settingsSoundControl">Controle de Som</button>
+                <div class="alignItems excludePhone">
                     <span id="volumeNum">100%</span>
                     <input type="range" name="" id="vol" max="100" value="100">
                     <button class="muteButton" title="Mutar Jogo" id="muteGameSetting">
@@ -684,12 +697,8 @@
                     </button>
                 </div>
             </div>
-            <span>Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, alterar o volume com a tecla
+            <span class="excludePhone">Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, alterar o volume com a tecla
                 V e abrir o Controle de Som rápido ao clicar F1</span>
-            <div class="alignSetting" style="display: none">
-                <label for="invertCursor">Alterar cor do Cursor</label>
-                <input type="checkbox" name="" id="invertCursor">
-            </div>
             <div class="alignSetting">
                 <label for="simpleLightMode">Tema Claro</label>
                 <input type="checkbox" name="" id="simpleLightMode">
@@ -704,16 +713,16 @@
                     title="Ir para GitHub - Reportar Bugs"><img
                         src="assets/img/sprites/navButtons/white/externalWebsite.png" alt="Ir para GitHub"></a>
             </div>
-            <div class="alignSetting">
+            <div class="alignSetting excludePhone">
                 Sound Test
                 <a href="soundTest.html" title="Sound Test"><img
                         src="assets/img/sprites/navButtons/white/externalWebsite.png" alt="Go To Sound Test"></a>
             </div>
             <div class="alignSetting">
-                Apagar Save
+                Apagar dados
                 <button id="deleteSave" class="settingButton" title="Deletar Save">Apagar</button>
             </div>
-            <div class="alignSetting" id="collisionViewSettings" style="display: none">
+            <div class="alignSetting excludePhone" id="collisionViewSettings" style="display: none">
                 <label for="collisionView">DevKeys: Ver colisões do jogo</label>
                 <input type="checkbox" name="" id="collisionView">
             </div>
@@ -823,6 +832,7 @@
     <script src="assets/js/selectScript.js"></script>-->
     <script src="assets/js/devKeys.js"></script>
     <script src="assets/js/betaItems.js"></script>
+    <script src="assets/js/responsivity.js"></script>
 </body>
 
 </html>

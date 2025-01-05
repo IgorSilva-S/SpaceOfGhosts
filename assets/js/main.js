@@ -200,16 +200,13 @@ try {
       if (changeCursor == "true") {
         document.getElementById("mainCSS").href = "assets/css/styleLight.css";
         changedCursor = true;
-        document.getElementById("invertCursor").checked = true;
       } else {
         document.getElementById("mainCSS").href = "assets/css/style.css";
         changedCursor = false;
-        document.getElementById("invertCursor").checked = false;
       }
     } else {
       document.getElementById("mainCSS").href = "assets/css/style.css";
       changedCursor = false;
-      document.getElementById("invertCursor").checked = false;
     }
   }
 
@@ -300,7 +297,14 @@ try {
             homePage.removeAttribute('style')
             gameMPage.style.display = 'flex'
         }, 500);*/
-    document.getElementById("homeButtons").style.marginLeft = "-40%";
+    if (screenWidth <= 1000) {
+      document.getElementById("homeButtons").style.marginLeft = "-100%";
+      volAlertCont.removeAttribute("style");
+      document.getElementById("quickVolCont").removeAttribute("style");
+      allControlsAppeared = false;
+    } else {
+      document.getElementById("homeButtons").style.marginLeft = "-40%";
+    }
     setTimeout(() => {
       document.getElementById("homeButtons").style.display = "none";
       document.getElementById("gameButtons").style.display = "flex";
@@ -401,6 +405,12 @@ try {
       homeSong.currentTime = 0;
       settingsSong.play();
     }, 500);
+
+    if (screenWidth <= 1000) {
+      volAlertCont.removeAttribute("style");
+      document.getElementById("quickVolCont").removeAttribute("style");
+      allControlsAppeared = false;
+    }
   });
 
   creditsButton.addEventListener("click", () => {
@@ -415,6 +425,12 @@ try {
       document.getElementById("homeAnimation").style.display = "none";
       document.getElementById("");
     }, 100);
+
+    if (screenWidth <= 1000) {
+      volAlertCont.removeAttribute("style");
+      document.getElementById("quickVolCont").removeAttribute("style");
+      allControlsAppeared = false;
+    }
   });
 
   devKeysCentralButton.addEventListener("click", () => {
@@ -446,7 +462,11 @@ try {
   });
 
   document.getElementById("GMRHome").addEventListener("click", () => {
-    document.getElementById("gameButtons").style.marginLeft = "-40%";
+    if (screenWidth <= 1000) {
+      document.getElementById("gameButtons").style.marginLeft = "-100%";
+    } else {
+      document.getElementById("gameButtons").style.marginLeft = "-40%";
+    }
     document.getElementById("playPopup").removeAttribute("style");
     setTimeout(() => {
       document.getElementById("gameButtons").style.display = "none";
@@ -510,6 +530,12 @@ try {
         settingsSong.currentTime = 0;
         homeSong.play();
       }, 500);
+    }
+
+    if (screenWidth <= 1000) {
+      volAlertCont.removeAttribute("style");
+      document.getElementById("quickVolCont").removeAttribute("style");
+      allControlsAppeared = false;
     }
   });
 
@@ -1424,169 +1450,7 @@ try {
     }
   });
 
-  //Solo Score Nav Buttons
-  document.getElementById("soloSHome").addEventListener("click", () => {
-    soloScorePage.style.opacity = "0";
-    scoreNum = 0;
-    setTimeout(() => {
-      lives1p = 100;
-      soloScorePage.removeAttribute("style");
-      soloScorePage.style.display = "none";
-      homePage.style.display = "flex";
-      song.currentTime = 0;
-      soloXtremeSong.currentTime = 0
-      acceleratorTimer = 0;
-      hurtShieldTimer = 0;
-      playerPosi = 45;
-      player.removeAttribute("style");
-      pageType = 1;
-      if (acceleratorP1) {
-        acceleratorP1 = false;
-        clearInterval(trail);
-        invencible.style.display = "none";
-      } else {
-        acceleratorP1 = false;
-      }
-      if (relaxStts) {
-        relaxStts = false;
-      } else {
-        relaxStts = false;
-      }
-      if (hurtShield) {
-        hurtShield = false;
-        player.classList.remove("hShield");
-      } else {
-        hurtShield = false;
-      }
-      if (shieldActive) {
-        shieldActive = false;
-        shield = false;
-        player.classList.remove("shield");
-      } else {
-        shieldActive = false;
-        shield = false;
-      }
-      clearSlotSolo();
-      clearInterval(scoreCounter);
-      document.getElementById("soloHighAlert").removeAttribute("style");
-    }, 500);
-  });
-
-  document.getElementById("soloSGame").addEventListener("click", () => {
-    soloScorePage.style.opacity = "0";
-    scoreNum = 0;
-    setTimeout(() => {
-      if (challengeType == null) {
-        lives1p = 100;
-        soloScorePage.removeAttribute("style");
-        soloScorePage.style.display = "none";
-        soloPage.style.display = "block";
-        song.currentTime = 0;
-        homeSong.currentTime = 0;
-        homeSong.pause();
-        song.play();
-        acceleratorTimer = 0;
-        hurtShieldTimer = 0;
-        playerPosi = 45;
-        player.removeAttribute("style");
-        pageType = 2;
-        plusSpeed = 0
-        if (acceleratorP1) {
-          acceleratorP1 = false;
-          clearInterval(trail);
-          invencible.style.display = "none";
-        } else {
-          acceleratorP1 = false;
-        }
-        if (relaxStts) {
-          relaxStts = false;
-        } else {
-          relaxStts = false;
-        }
-        if (hurtShield) {
-          hurtShield = false;
-          player.classList.remove("hShield");
-        } else {
-          hurtShield = false;
-        }
-        if (shieldActive) {
-          shieldActive = false;
-          shield = false;
-          player.classList.remove("shield");
-        } else {
-          shieldActive = false;
-          shield = false;
-        }
-        clearSlotSolo();
-        checkLive1p();
-        clearInterval(scoreCounter);
-        scoreCounter = setInterval(() => {
-          scoreNum++;
-          sScore.innerText = scoreNum;
-          if (scoreNum != 0 && scoreNum % 100 == 0) {
-            let biomeType = Math.floor(Math.random() * 11);
-            soloPage.className = "";
-            soloPage.className = `biome${biomeType}`;
-          }
-        }, 500);
-        document.getElementById("soloHighAlert").removeAttribute("style");
-      } else if (challengeType == "extreme") {
-        lives1p = 20;
-        soloScorePage.removeAttribute("style");
-        soloScorePage.style.display = "none";
-        soloPage.style.display = "block";
-        soloXtremeSong.currentTime = 0;
-        homeSong.currentTime = 0;
-        homeSong.pause();
-        soloXtremeSong.play();
-        acceleratorTimer = 0;
-        hurtShieldTimer = 0;
-        playerPosi = 45;
-        player.removeAttribute("style");
-        pageType = 2;
-        plusSpeed = 0.5
-        if (acceleratorP1) {
-          acceleratorP1 = false;
-          clearInterval(trail);
-          invencible.style.display = "none";
-        } else {
-          acceleratorP1 = false;
-        }
-        if (relaxStts) {
-          relaxStts = false;
-        } else {
-          relaxStts = false;
-        }
-        if (hurtShield) {
-          hurtShield = false;
-          player.classList.remove("hShield");
-        } else {
-          hurtShield = false;
-        }
-        if (shieldActive) {
-          shieldActive = false;
-          shield = false;
-          player.classList.remove("shield");
-        } else {
-          shieldActive = false;
-          shield = false;
-        }
-        clearSlotSolo();
-        checkLive1p();
-        clearInterval(scoreCounter);
-        scoreCounter = setInterval(() => {
-          scoreNum++;
-          sScore.innerText = scoreNum;
-          if (scoreNum != 0 && scoreNum % 100 == 0) {
-            let biomeType = Math.floor(Math.random() * 11);
-            soloPage.className = "";
-            soloPage.className = `biome${biomeType}`;
-          }
-        }, 500);
-        document.getElementById("soloHighAlert").removeAttribute("style");
-      }
-    }, 500);
-  });
+  
 
   //Duo Run Score Nav Buttons
 
@@ -1782,19 +1646,6 @@ try {
     } else {
       soloSlots = false;
       localStorage.setItem("soloSlots", soloSlots);
-    }
-  });
-
-  //Settings Cursor Type
-  document.getElementById("invertCursor").addEventListener("change", () => {
-    if (!changedCursor) {
-      document.getElementById("mainCSS").href = "assets/css/styleLight.css";
-      changedCursor = true;
-      localStorage.setItem("changedCursor", true);
-    } else {
-      document.getElementById("mainCSS").href = "assets/css/style.css";
-      changedCursor = false;
-      localStorage.setItem("changedCursor", false);
     }
   });
 
