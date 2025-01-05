@@ -24,7 +24,7 @@
         <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts">
         <div class="loadingBallCont" id="lbCont">
             <div class="loadingGhost">
-                
+
             </div>
             <div style="display: none">
                 <div class="loadingBall" id="lb1"></div>
@@ -91,7 +91,7 @@
             <button id="runnerMode" style="display: none;">
                 Corredor: Infinito
             </button>
-     
+
             <div class="playGameAlert" id="alertPlay">
                 Selecione a quantidade de jogadores e vambora
             </div>
@@ -164,145 +164,150 @@
 
     <!--Solo Mode: Espatial-->
     <section id="soloMode">
-      <div id="skinAppearance">
-        <div class="background" id="gameBckg">
+        <div id="skinAppearance">
+            <div class="background" id="gameBckg">
 
-        </div>
-        <div class="normalGameHud">
-            <div class="score">
-                <span id="soloDistance">0
-                </span>m
             </div>
-            <div class="itemsAlertCont excludePhone">
-                <div class="itemCont" id="shieldAlert">
+            <div class="normalGameHud">
+                <button class="onlyPhone pauseButton" id="pauseGameSolo">
+                    <span class="material-symbols-rounded">
+                        pause
+                    </span>
+                </button>
+                <div class="score">
+                    <span id="soloDistance">0
+                    </span>m
+                </div>
+                <div class="itemsAlertCont excludePhone">
+                    <div class="itemCont" id="shieldAlert">
+                        <div class="item shieldBoost"></div>
+                        <div class="slots">x <span id="shieldS"></span></div>
+                        (1)
+                    </div>
+                    <div class="itemCont" id="acceleratorAlert">
+                        <div class="item acceleratorBoost"></div>
+                        <div class="slots">x <span id="acceleratorS"></span></div>
+                        (2)
+                    </div>
+                    <div class="itemCont" id="relaxAlert">
+                        <div class="item relaxBoost"></div>
+                        <div class="slots">x <span id="relaxS"></span></div>
+                        (3)
+                    </div>
+                    <div class="itemCont" id="FhealAlert">
+                        <div class="item SlifeBoost"></div>
+                        <div class="slots">x <span id="SlifeS"></span></div>
+                        (4)
+                    </div>
+                    <div class="itemCont" id="healAlert">
+                        <div class="item lifeBoost"></div>
+                        <div class="slots">x <span id="lifeS"></span></div>
+                        (5)
+                    </div>
+                </div>
+                <div class="hearts" id="live1p">
+
+                </div>
+            </div>
+            <div class="player" id="ghost">
+                <!--<div class="trail" id="trail"></div>-->
+                <div class="inv" id="Inv"></div>
+            </div>
+            <div class="meteor" id="m1" style="top: 48%;">
+
+            </div>
+
+            <div class="meteor" id="m2" style="top: 81%">
+
+            </div>
+
+            <div class="meteor" id="m3" style="top: 52%">
+
+            </div>
+
+            <div class="meteor" id="m4" style="top: 76%">
+
+            </div>
+
+            <div class="meteor" id="m5" style="top: 24%">
+
+            </div>
+            <div class="meteor" id="m6" style="top: 64%">
+
+            </div>
+            <div class="meteor" id="m7" style="top: 57%">
+
+            </div>
+            <div class="boost" id="bst">
+
+            </div>
+
+            <div class="moveBlock upBlock" id="upBlock"></div>
+            <div class="moveBlock downBlock" id="downBlock"></div>
+
+            <div class="itemsAlertContDown onlyPhoneF">
+                <div class="itemCont" id="shieldButton">
                     <div class="item shieldBoost"></div>
-                    <div class="slots">x <span id="shieldS"></span></div>
-                    (1)
+                    <div class="slots">x <span id="shieldSP"></span></div>
                 </div>
-                <div class="itemCont" id="acceleratorAlert">
+                <div class="itemCont" id="acceleratorButton">
                     <div class="item acceleratorBoost"></div>
-                    <div class="slots">x <span id="acceleratorS"></span></div>
-                    (2)
+                    <div class="slots">x <span id="acceleratorSP"></span></div>
                 </div>
-                <div class="itemCont" id="relaxAlert">
+                <div class="itemCont" id="relaxButton">
                     <div class="item relaxBoost"></div>
-                    <div class="slots">x <span id="relaxS"></span></div>
-                    (3)
+                    <div class="slots">x <span id="relaxSP"></span></div>
                 </div>
-                <div class="itemCont" id="FhealAlert">
+                <div class="itemCont" id="FhealButton">
                     <div class="item SlifeBoost"></div>
-                    <div class="slots">x <span id="SlifeS"></span></div>
-                    (4)
+                    <div class="slots">x <span id="SlifeSP"></span></div>
                 </div>
-                <div class="itemCont" id="healAlert">
+                <div class="itemCont" id="healButton">
                     <div class="item lifeBoost"></div>
-                    <div class="slots">x <span id="lifeS"></span></div>
-                    (5)
+                    <div class="slots">x <span id="lifeSP"></span></div>
                 </div>
             </div>
-            <div class="hearts" id="live1p">
 
+            <div class="soloControls" id="pauseSolo">
+                <div class="pauseText">Pause</div>
+                <div class="pauseText">+Speed: <span id="plusSpeedAlert">0%</span></div>
+                <button class="pauseHome" id="retHomeSolo">Voltar</button>
+                <button class="pauseRestart" id="soloRestart">Reiniciar</button>
+                <button class="pauseDev" id="soloDevKeys" style="display: none;">DevKeys</button>
+                <button class="pauseSettings" id="soloConfig">Config.</button>
             </div>
-        </div>
-        <div class="player" id="ghost">
-            <!--<div class="trail" id="trail"></div>-->
-            <div class="inv" id="Inv"></div>
-        </div>
-        <div class="meteor" id="m1" style="top: 48%;">
-
-        </div>
-
-        <div class="meteor" id="m2" style="top: 81%">
-
-        </div>
-
-        <div class="meteor" id="m3" style="top: 52%">
-
-        </div>
-
-        <div class="meteor" id="m4" style="top: 76%">
-
-        </div>
-
-        <div class="meteor" id="m5" style="top: 24%">
-
-        </div>
-        <div class="meteor" id="m6" style="top: 64%">
-
-        </div>
-        <div class="meteor" id="m7" style="top: 57%">
-
-        </div>
-        <div class="boost" id="bst">
-
-        </div>
-
-        <div class="moveBlock upBlock" id="upBlock"></div>
-        <div class="moveBlock downBlock" id="downBlock"></div>
-
-        <div class="itemsAlertContDown onlyPhoneF">
-            <div class="itemCont" id="shieldButton">
-                <div class="item shieldBoost"></div>
-                <div class="slots">x <span id="shieldSP"></span></div>
-            </div>
-            <div class="itemCont" id="acceleratorButton">
-                <div class="item acceleratorBoost"></div>
-                <div class="slots">x <span id="acceleratorSP"></span></div>
-            </div>
-            <div class="itemCont" id="relaxButton">
-                <div class="item relaxBoost"></div>
-                <div class="slots">x <span id="relaxSP"></span></div>
-            </div>
-            <div class="itemCont" id="FhealButton">
-                <div class="item SlifeBoost"></div>
-                <div class="slots">x <span id="SlifeSP"></span></div>
-            </div>
-            <div class="itemCont" id="healButton">
-                <div class="item lifeBoost"></div>
-                <div class="slots">x <span id="lifeSP"></span></div>
-            </div>
-        </div>
-
-        <div class="soloControls" id="pauseSolo">
-            <div class="pauseText">Pause</div>
-            <div class="pauseText">+Speed: <span id="plusSpeedAlert">0%</span></div>
-            <button class="pauseHome" id="retHomeSolo">Voltar</button>
-            <button class="pauseRestart" id="soloRestart">Reiniciar</button>
-            <button class="pauseDev" id="soloDevKeys" style="display: none;">DevKeys</button>
-            <button class="pauseSettings" id="soloConfig">Config.</button>
-        </div>
 
 
 
-        <div class="pauseContainer" id="soloPauseBCKG">
-            <div class="pauseAlert" id="soloPauseGui">
-                <div class="pauseAnim"></div>
-                <div class="pauseTextAlt">Pause</div>
-                <div class="speed">
-                    Velocidade a mais: <span id="plusSpeedAlertAlt">0%</span>
+            <div class="pauseContainer" id="soloPauseBCKG">
+                <div class="pauseAlert" id="soloPauseGui">
+                    <div class="pauseAnim"></div>
+                    <div class="pauseTextAlt">Pause</div>
+                    <div class="speed">
+                        Velocidade a mais: <span id="plusSpeedAlertAlt">0%</span>
+                    </div>
+                    <button id="backInf">Voltar para seleção de modo</button>
+                    <button id="restartInf">Reiniciar Jogo</button>
+                    <button id="devKeysInf">Abrir DevKeys</button>
                 </div>
-                <button id="backInf">Voltar para seleção de modo</button>
-                <button id="restartInf">Reiniciar Jogo</button>
-                <button id="devKeysInf">Abrir DevKeys</button>
             </div>
         </div>
-      </div>
 
-      <div class="soloScore" id="soloScoreContainer">
-        <h1>Pontuação</h1>
-        <div class="soloScoreAlign">
-            <div class="distance">Distância do início: <span id="distance">0</span>m</div>
-            <div class="slots">Soma de boosts guardados: <span id="slots">0</span></div>
-            <div class="finalScore">Pontuação final (distância + (boosts * 10)): <span id="finalScore"></span></div>
-            <div class="newHigh" id="soloHighAlert">Nova Melhor pontuação</div>
-            <div class="lastHigh">Melhor pontuação: <span id="highScore">0</span></div>
-            <div class="money">Stardusts: <span id="moneyAlert">0</span></div>
+        <div class="soloScore" id="soloScoreContainer">
+            <h1>Pontuação</h1>
+            <div class="soloScoreAlign">
+                <div class="distance">Distância do início: <span id="distance">0</span>m</div>
+                <div class="slots">Soma de boosts guardados: <span id="slots">0</span></div>
+                <div class="finalScore">Pontuação final (distância + (boosts * 10)): <span id="finalScore"></span></div>
+                <div class="newHigh" id="soloHighAlert">Nova Melhor pontuação</div>
+                <div class="lastHigh">Melhor pontuação: <span id="highScore">0</span></div>
+                <div class="money">Stardusts: <span id="moneyAlert">0</span></div>
+            </div>
+            <div class="goButtons">
+                <button id="soloSHome">Ir para o início</button>
+                <button id="soloSGame">Começar novamente</button>
+            </div>
         </div>
-        <div class="goButtons">
-            <button id="soloSHome">Ir para o início</button>
-            <button id="soloSGame">Começar novamente</button>
-        </div>
-    </div>
     </section>
 
     <!--Solo Mode: Runner-->
@@ -339,7 +344,7 @@
         <div class="crystal cType6" id="cr2"></div>
         <div class="crystal cType1" id="cr3"></div>
         <div class="crystal cType5" id="cr4"></div>
-        
+
         <div class="crystalT cType2" id="cr1"></div>
         <div class="crystalT cType6" id="cr2"></div>
         <div class="crystalT cType1" id="cr3"></div>
@@ -697,7 +702,8 @@
                     </button>
                 </div>
             </div>
-            <span class="excludePhone">Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, alterar o volume com a tecla
+            <span class="excludePhone">Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, alterar o
+                volume com a tecla
                 V e abrir o Controle de Som rápido ao clicar F1</span>
             <div class="alignSetting">
                 <label for="simpleLightMode">Tema Claro</label>
