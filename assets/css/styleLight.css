@@ -20,7 +20,7 @@ input {
 
 body {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     /*background-image: linear-gradient(to bottom, #2E1A47, #111133, #04051a);*/
     /*background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);*/
     /*background-image: linear-gradient(to bottom, #000, #04051a);*/
@@ -33,7 +33,7 @@ body {
 
 .background {
     width: 3840px;
-    height: 100vh;
+    height: 100dvh;
     position: absolute;
     left: 0;
     top: 0;
@@ -328,7 +328,7 @@ body {
 
 .pauseContainer {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     position: fixed;
     top: 0;
     right: -130%;
@@ -339,7 +339,7 @@ body {
 
 .pauseAlert {
     width: 25vw;
-    height: 100vh;
+    height: 100dvh;
     position: absolute;
     right: -25%;
     top: 0;
@@ -460,7 +460,7 @@ body {
 
 #disclaimer {
     width: 80vw;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -514,7 +514,7 @@ body {
 
 #homeScreen {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     /*background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);*/
     display: flex;
     justify-content: space-evenly;
@@ -694,7 +694,7 @@ body {
     animation-duration: .5s;
     transition-duration: .5s;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-size: cover;
 }
 
@@ -767,7 +767,7 @@ body {
 
 #soloScoreMark {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-image: linear-gradient(to bottom, #008, #00f, #00f, #00f, #40f, #70f);
     display: none;
     animation-name: appearPages;
@@ -839,7 +839,7 @@ body {
 
 .clouds {
     width: 3840px;
-    height: 100vh;
+    height: 100dvh;
     position: absolute;
     left: 0;
     top: 0;
@@ -858,9 +858,9 @@ body {
     position: absolute;
     top: 5%;
     background-color: #444a;
-    backdrop-filter: blur(10px);
     border-radius: 8px;
     color: white;
+    z-index: 12;
 }
 
 .soloScore h1 {
@@ -898,7 +898,7 @@ body {
 
 #gameModeScreen {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -1229,6 +1229,16 @@ body {
 
 }
 
+.pauseButton {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: white;
+}
+
 .itemsAlertCont {
     display: flex;
     z-index: 1;
@@ -1362,7 +1372,7 @@ body {
 
 #duoRun {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -1374,7 +1384,7 @@ body {
 
 .playerScreen {
     width: 50%;
-    height: 100vh;
+    height: 100dvh;
     position: relative;
     overflow: hidden;
 }
@@ -1465,7 +1475,7 @@ body {
 
 #duoRunScore {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-image: linear-gradient(to bottom, #008, #00f, #00f, #00f, #40f, #70f);
     display: none;
     animation-name: appearPages;
@@ -1631,7 +1641,7 @@ body {
 
 #shop {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-image: linear-gradient(to bottom, #2E1A47,
             #111133,
             #04051a);
@@ -1647,7 +1657,7 @@ body {
 
 #skinChanger {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
@@ -2020,7 +2030,7 @@ body {
 
 #settings {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -2058,7 +2068,7 @@ body {
 
 .settingsPanel {
     width: 96%;
-    height: calc(100vh - 150px);
+    height: calc(100dvh - 150px);
     border-radius: 8px 8px 0px 0px;
     background-color: #191919;
     color: white;
@@ -2262,7 +2272,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     color: white;
     display: none;
     animation-name: appearPages;
@@ -2324,7 +2334,7 @@ body {
 /*R 1.0*/
 #soloClassic {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -2509,7 +2519,7 @@ body {
 
 #duoClassic {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -2555,7 +2565,7 @@ body {
 
 .devKeysCentral {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     background-image: linear-gradient(to bottom, #000 60%, #949100);
     transition-duration: .5s;
@@ -2855,7 +2865,7 @@ body {
 
 #loadingPage {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: #000;
     display: flex;
     justify-content: flex-end;
@@ -2970,29 +2980,90 @@ body {
     }
 }
 
-/*Phone alert*/
-.notForPhones {
-    display: none
+.onlyPhone,
+.onlyPhoneF {
+    display: none;
 }
 
-@media (max-width: 768px) {
-    .notForPhones {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        text-align: center;
-        color: white;
-        font-size: 20px;
-        z-index: 10000;
-        background-color: black;
-        position: fixed;
+@media (max-width: 1440px)  {
+    .shopItems {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    section {
         width: 100vw;
-        height: 100vh;
-        flex-direction: column;
+        height: 100dvh;
+        overflow: hidden;
     }
 
-    .notForPhones img {
-        width: 300px;
-        height: 300px;
+    .homeAnimation {
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        border: none;
+        z-index: 0;
+    }
+
+    #fullscreenAnimation {
+        display: none;
+    }
+
+    .alignHomeButtons {
+        width: 100%;
+        align-items: center;
+    }
+
+    .alignHomeButtons.gameSelectControls {
+        margin-left: -100%;
+    }
+
+    .alignHomeButtons button {
+        margin-left: 0px;
+        width: 80%;
+        border-radius: 8px;
+    }
+
+    .alignHomeButtons button:hover {
+        margin-left: 0px;
+        border-color: #0632ff;
+    }
+
+    .excludePhone,
+    .playersContainer .excludePhone {
+        display: none;
+    }
+
+    .onlyPhone {
+        display: block;
+    }
+
+    .onlyPhoneF {
+        display: flex;
+    }
+
+    .playGame {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    .soloScore {
+        width: 100vw;
+        height: 100dvh;
+        left: 0;
+        top: -120%;
+        margin: 0;
+        position: fixed;
+        padding-top: 50px;
+    }
+
+    .settingsPanel {
+        width: 100%;
+        left: 0;
     }
 }

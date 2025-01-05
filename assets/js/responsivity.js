@@ -29,3 +29,8 @@ document.getElementById('settingsSoundControl').addEventListener('click', () => 
       allControlsAppeared = false;
     }
 })
+
+document.getElementById('pauseGameSolo').addEventListener('click', () => {
+  console.log('clicked')
+  pauseGameSolo()
+})

@@ -18,7 +18,7 @@ input {
 
 body {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     /*background-image: linear-gradient(to bottom, #2E1A47, #111133, #04051a);*/
     /*background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);*/
     /*background-image: linear-gradient(to bottom, #000, #04051a);*/
@@ -37,7 +37,7 @@ html {
 
 .background {
     width: 3840px;
-    height: 100vh;
+    height: 100dvh;
     position: absolute;
     left: 0;
     top: 0;
@@ -332,7 +332,7 @@ html {
 
 .pauseContainer {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     position: fixed;
     top: 0;
     right: -130%;
@@ -343,7 +343,7 @@ html {
 
 .pauseAlert {
     width: 25vw;
-    height: 100vh;
+    height: 100dvh;
     position: absolute;
     right: -25%;
     top: 0;
@@ -490,7 +490,7 @@ html {
 
 #disclaimer {
     width: 80vw;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -544,7 +544,7 @@ html {
 
 #homeScreen {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     /*background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);*/
     display: flex;
     justify-content: space-evenly;
@@ -1143,7 +1143,7 @@ html {
     animation-duration: .5s;
     transition-duration: .5s;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-size: cover;
 }
 
@@ -1216,7 +1216,7 @@ html {
 
 #soloScoreMark {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-image: linear-gradient(to bottom, #008, #00f, #00f, #00f, #40f, #70f);
     display: none;
     animation-name: appearPages;
@@ -1288,7 +1288,7 @@ html {
 
 .clouds {
     width: 3840px;
-    height: 100vh;
+    height: 100dvh;
     position: absolute;
     left: 0;
     top: 0;
@@ -1309,6 +1309,7 @@ html {
     border-radius: 8px;
     color: white;
     transition-duration: .5s;
+    z-index: 12;
 }
 
 .soloScore h1 {
@@ -1346,7 +1347,7 @@ html {
 
 #gameModeScreen {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -1590,11 +1591,12 @@ html {
     justify-content: space-between;
     align-items: center;
     flex-direction: row-reverse;
-    z-index: 1;
+    z-index: 11;
 }
 
 .playerScreen .normalGameHud {
     position: absolute;
+    z-index: 11;
 }
 
 .hearts {
@@ -1676,6 +1678,16 @@ html {
         opacity: 0;
     }
 
+}
+
+.pauseButton {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: white;
 }
 
 .itemsAlertCont {
@@ -1854,7 +1866,7 @@ html {
 
 #duoRun {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -1867,7 +1879,7 @@ html {
 
 .playerScreen {
     width: 50%;
-    height: 100vh;
+    height: 100dvh;
     position: relative;
     overflow: hidden;
     background-position: center;
@@ -1960,7 +1972,7 @@ html {
 
 #duoRunScore {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-image: linear-gradient(to bottom, #008, #00f, #00f, #00f, #40f, #70f);
     display: none;
     animation-name: appearPages;
@@ -2124,7 +2136,7 @@ html {
 
 #shop {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -2330,7 +2342,7 @@ html {
 
 #skinChanger {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
@@ -2828,7 +2840,7 @@ html {
 
 #settings {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -2866,7 +2878,7 @@ html {
 
 .settingsPanel {
     width: 96%;
-    height: calc(100vh - 150px);
+    height: calc(100dvh - 150px);
     border-radius: 8px 8px 0px 0px;
     background-color: #191919;
     color: white;
@@ -3070,7 +3082,7 @@ html {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     color: white;
     display: none;
     animation-name: appearPages;
@@ -3131,7 +3143,7 @@ html {
 
 #soloRunner {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -3335,7 +3347,7 @@ html {
 
 #duoRunner {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -3381,7 +3393,7 @@ html {
 
 .devKeysCentral {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: none;
     background-image: linear-gradient(to bottom, #000 60%, #949100);
     transition-duration: .5s;
@@ -3699,7 +3711,7 @@ html {
 
 #loadingPage {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: #000;
     display: flex;
     justify-content: flex-end;
@@ -3855,7 +3867,7 @@ html {
 @media (max-width: 1000px) {
     section {
         width: 100vw;
-        height: 100vh;
+        height: 100dvh;
         overflow: hidden;
     }
 
@@ -3863,7 +3875,7 @@ html {
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vh;
+        height: 100dvh;
         border: none;
         z-index: 0;
     }
@@ -3915,13 +3927,12 @@ html {
 
     .soloScore {
         width: 100vw;
-        height: 100vh;
+        height: 100dvh;
         left: 0;
         top: -120%;
         margin: 0;
         position: fixed;
         padding-top: 50px;
-        z-index: 10;
     }
 
     .settingsPanel {
