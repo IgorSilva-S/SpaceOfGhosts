@@ -65,3 +65,102 @@ function checkSRLives() {
         soloRunnerHearts.classList.add('h0')
     }
 }
+
+// Crystals sorter
+document.getElementById('cr1').addEventListener('animationiteration', () => {
+    const aCrystal = document.getElementById('cr1')
+
+    let cType = Math.floor(Math.random() * 6 + 1)
+    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aCrystal.className = 'crystal'
+    aCrystal.classList.add(`cType${cType}`)
+    aCrystal.style.display = 'none'
+    setTimeout(() => {
+        aCrystal.removeAttribute('style')
+        setTimeout(() => {
+                    aCrystal.style.animationDuration = `${cSpeed}s`
+        }, 1);
+    }, 1);
+})
+
+document.getElementById('cr2').addEventListener('animationiteration', () => {
+    const aCrystal = document.getElementById('cr2')
+
+    let cType = Math.floor(Math.random() * 6 + 1)
+    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aCrystal.className = 'crystal'
+    aCrystal.classList.add(`cType${cType}`)
+    aCrystal.style.display = 'none'
+    setTimeout(() => {
+        aCrystal.removeAttribute('style')
+        setTimeout(() => {
+                    aCrystal.style.animationDuration = `${cSpeed}s`
+        }, 1);
+    }, 1);
+})
+
+document.getElementById('cr3').addEventListener('animationiteration', () => {
+    const aCrystal = document.getElementById('cr3')
+
+    let cType = Math.floor(Math.random() * 6 + 1)
+    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aCrystal.className = 'crystal'
+    aCrystal.classList.add(`cType${cType}`)
+    aCrystal.style.display = 'none'
+    setTimeout(() => {
+        aCrystal.removeAttribute('style')
+        setTimeout(() => {
+                    aCrystal.style.animationDuration = `${cSpeed}s`
+        }, 1);
+    }, 1);
+})
+
+document.getElementById('crt1').addEventListener('animationiteration', () => {
+    const aCrystal = document.getElementById('crt1')
+
+    let cType = Math.floor(Math.random() * 6 + 1)
+    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aCrystal.className = 'crystalT'
+    aCrystal.classList.add(`cType${cType}`)
+    aCrystal.style.display = 'none'
+    setTimeout(() => {
+        aCrystal.removeAttribute('style')
+        setTimeout(() => {
+                    aCrystal.style.animationDuration = `${cSpeed}s`
+        }, 1);
+    }, 1);
+})
+
+document.getElementById('crt2').addEventListener('animationiteration', () => {
+    const aCrystal = document.getElementById('crt2')
+
+    let cType = Math.floor(Math.random() * 6 + 1)
+    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aCrystal.className = 'crystalT'
+    aCrystal.classList.add(`cType${cType}`)
+    aCrystal.style.display = 'none'
+    setTimeout(() => {
+        aCrystal.removeAttribute('style')
+        setTimeout(() => {
+                    aCrystal.style.animationDuration = `${cSpeed}s`
+        }, 1);
+    }, 1);
+})
+
+document.getElementById('crt3').addEventListener('animationiteration', () => {
+    const aCrystal = document.getElementById('crt3')
+
+    let cType = Math.floor(Math.random() * 6 + 1)
+    let cSpeed = Math.floor(Math.random() * 3 + 5.4)
+    aCrystal.className = 'crystalT'
+    aCrystal.classList.add(`cType${cType}`)
+    aCrystal.style.display = 'none'
+    setTimeout(() => {
+        aCrystal.removeAttribute('style')
+        setTimeout(() => {
+                    aCrystal.style.animationDuration = `${cSpeed}s`
+        }, 1);
+    }, 1);
+})
+
+/*Collision Detection*/

@@ -48,6 +48,19 @@ html {
     animation-timing-function: linear;
 }
 
+.cityBackground {
+    width: 3840px;
+    height: 100dvh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url(../img/sprites/background/city.png);
+    animation-name: moveBckg;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
 @keyframes moveBckg {
     from {
         left: 0
@@ -604,7 +617,8 @@ html {
 }
 
 #runnerModeAnimation {
-    background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);
+    /*background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);*/
+    background-image: linear-gradient(to bottom, black, rgb(150, 30, 0));
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -828,7 +842,8 @@ html {
 }
 
 
-#homeScreen .background {
+#homeScreen .background,
+#homeScreen .cityBackground {
     z-index: 0;
     animation-duration: 60s;
 }
@@ -1280,10 +1295,6 @@ html {
     background-size: cover;
     background-position: top;
     position: relative;
-}
-
-#soloScoreMark .background {
-    animation-duration: 60s;
 }
 
 .clouds {
@@ -3148,27 +3159,33 @@ html {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
-    background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);
+    /*background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);*/
+    background-image: linear-gradient(to bottom, black, rgb(150, 30, 0));
 }
 
-.rockSoil {
+#soloRunner .background,
+#runnerModeAnimation .background {
+    background-image: url(../img/sprites/background/cityStars.png);
+}
+
+.bottomRoad {
     width: 3840px;
     height: 140px;
-    background-image: url(../img/sprites/background/superSoil.png);
+    background-image: url(../img/sprites/background/bRoad.png);
     position: absolute;
     bottom: 0;
     left: 0;
     animation: moveBckg 5s linear infinite;
 }
 
-.bRockSoil {
+.topRoad {
     width: 3840px;
     height: 140px;
-    background-image: url(../img/sprites/background/superSoil2.png);
+    background-image: url(../img/sprites/background/uRoad.png);
     position: absolute;
     bottom: 0;
     left: 0;
-    animation: moveBckg 5s linear infinite;
+    animation: moveBckg 3s linear infinite;
 }
 
 #soloRunner .clouds {
@@ -3184,6 +3201,56 @@ html {
     transition-duration: .1s;
 }
 
+#soloRunner .player.hurtB,
+#duoRunner .player.player.hurtB {
+    top: auto;
+    bottom: 50px;
+    left: 100px;
+    animation: hurtB .5s linear;
+}
+
+@keyframes hurtB {
+    0% {
+        bottom: 50px;
+        rotate: 0deg;
+    }
+
+    50% {
+        bottom: 200px;
+        rotate: 720deg;
+    }
+
+    100% {
+        bottom: 50px;
+        rotate: 1440deg;
+    }
+}
+
+#soloRunner .player.hurtT,
+#duoRunner .player.player.hurtT {
+    top: auto;
+    bottom: 175px;
+    left: 100px;
+    animation: hurtT .5s linear;
+}
+
+@keyframes hurtT {
+    0% {
+        bottom: 175px;
+        rotate: 0deg;
+    }
+
+    50% {
+        bottom: 325px;
+        rotate: 720deg;
+    }
+
+    100% {
+        bottom: 175px;
+        rotate: 1440deg;
+    }
+}
+
 #soloRunner .player.secondTrail,
 #duoRunner .player.player.secondTrail {
     top: auto;
@@ -3196,7 +3263,7 @@ html {
     background-position: center;
     background-size: cover;
     position: absolute;
-    animation: moveCrystal 5.4s linear infinite;
+    animation: moveCrystal 7.4s linear infinite;
     bottom: 50px;
     left: -500px;
 }
@@ -3206,7 +3273,7 @@ html {
     background-position: center;
     background-size: cover;
     position: absolute;
-    animation: moveCrystal 5.4s linear infinite;
+    animation: moveCrystal 7.4s linear infinite;
     bottom: 180px;
     left: -500px;
 }
@@ -3235,6 +3302,50 @@ html {
 
     100% {
         bottom: 175px;
+    }
+}
+
+#soloRunner .player.stomp,
+#duoRunner .player.player.stomp {
+    top: auto;
+    bottom: 175px;
+    left: 100px;
+    animation: doAStomp 1s ease-in;
+}
+
+@keyframes doAStomp {
+    0% {
+        bottom: 300px;
+    } 
+    
+    5% {
+        bottom: 175px;
+        opacity: .5;
+    } 
+
+    10% {
+        opacity: .5;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: .5;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: .5;
+    }
+    
+    100% {
+        bottom: 175px;
+        opacity: 1;
     }
 }
 
@@ -3270,44 +3381,44 @@ html {
 
 .cType1,
 .cType4 {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 
 .cType1 {
-    background-image: url(../img/sprites/crystals/Crystal1.png);
+    background-image: url(../img/sprites/ufos/ufo1.gif);
 }
 
 .cType2 {
-    background-image: url(../img/sprites/crystals/Crystal2.png);
+    background-image: url(../img/sprites/ufos/ufo2.gif);
 }
 
 .cType3 {
-    background-image: url(../img/sprites/crystals/Crystal3.png);
+    background-image: url(../img/sprites/ufos/ufo3.gif);
 }
 
 .cType4 {
-    background-image: url(../img/sprites/crystals/Crystal4.png);
+    background-image: url(../img/sprites/ufos/ufo4.gif);
 }
 
 .cType5 {
-    background-image: url(../img/sprites/crystals/Crystal5.png);
+    background-image: url(../img/sprites/ufos/ufo5.gif);
 }
 
 .cType6 {
-    background-image: url(../img/sprites/crystals/Crystal6.png);
+    background-image: url(../img/sprites/ufos/ufo6.gif);
 }
 
 .cType2,
 .cType5 {
-    width: 75px;
-    height: 50px;
+    width: 112px;
+    height: 75px;
 }
 
 .cType3,
 .cType6 {
-    width: 100px;
-    height: 50px;
+    width: 200px;
+    height: 100px;
 }
 
 .RunnerInfos {

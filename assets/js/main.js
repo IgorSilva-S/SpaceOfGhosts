@@ -1074,7 +1074,7 @@ try {
     }
 
     if (pageType == 2.1) {
-      if (e.key == 'ArrowUp') {
+      if (e.key == 'ArrowUp' && !isJumping) {
         if (!isInSecTrail) {
           isInSecTrail = true
           playerRunner.classList.add('secondTrail')
@@ -1084,15 +1084,27 @@ try {
           isJumping = true
           playerRunner.addEventListener('animationend', () => {
             playerRunner.classList.remove('jumping')
-            playerRunner.classList.add('secondTrail')
+            if (isInSecTrail) {
+              playerRunner.classList.add('secondTrail')
+            }
             isJumping = false
           })
         }
       }
 
-      if (e.key == 'ArrowDown' && isInSecTrail) {
+      if (e.key == 'ArrowDown' && isInSecTrail && !isJumping) {
         isInSecTrail = false
         playerRunner.classList.remove('secondTrail')
+      } else if (e.key == 'ArrowDown' && isJumping) {
+        playerRunner.classList.remove('jumping')
+        playerRunner.classList.add('stomp')
+        playerRunner.addEventListener('animationend', () => {
+          isJumping = false
+          playerRunner.classList.remove('stomp')
+          if (isInSecTrail) {
+            playerRunner.classList.add('secondTrail')
+          }
+        })
       }
 
       if (e.key == '1' && canVanish) {
@@ -1136,6 +1148,24 @@ try {
               }
           }, 1000);
         })
+      }
+
+      if (e.key == 'h' || e.key == 'H') {
+        if (isInSecTrail) {
+          playerRunner.classList.remove('secondTrail')
+          playerRunner.classList.add('hurtT')
+          playerRunner.addEventListener('animationend', () => {
+            playerRunner.classList.remove('hurtT')
+            if (isInSecTrail) {
+              playerRunner.classList.add('secondTrail')
+            }
+          })
+        } else {
+          playerRunner.classList.add('hurtB')
+          playerRunner.addEventListener('animationend', () => {
+            playerRunner.classList.remove('hurtB')
+          })
+        }
       }
     }
     //End Solo Game Controls

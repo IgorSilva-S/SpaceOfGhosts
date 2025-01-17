@@ -88,7 +88,7 @@
             <button id="spatialXtremeMode">
                 Espacial: Infinito (Extremo)
             </button>
-            <button id="runnerMode" style="display: none;">
+            <button id="runnerMode">
                 Corredor: Infinito
             </button>
 
@@ -145,8 +145,9 @@
                 <div class="background" style="animation-duration: 8s;">
 
                 </div>
-                <div class="bRockSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
-                <div class="rockSoil"></div>
+                <div class="cityBackground" style="animation-duration: 8s;"></div>
+                <div class="topRoad" style="margin-bottom: 80px;"></div>
+                <div class="bottomRoad"></div>
                 <div class="runningGhost1"></div>
                 <div class="runningGhost2 excludePhone"></div>
             </div>
@@ -313,8 +314,9 @@
     <!--Solo Mode: Runner-->
     <section id="soloRunner">
         <div class="background"></div>
-        <div class="bRockSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
-        <div class="rockSoil"></div>
+        <div class="cityBackground" style="animation-duration: 8s;"></div>
+        <div class="topRoad" style="margin-bottom: 80px;"></div>
+        <div class="bottomRoad"></div>
         <div class="normalGameHud">
             <div class="score">
                 <span id="soloRunnerDistance">0
@@ -343,12 +345,10 @@
         <div class="crystal cType2" id="cr1"></div>
         <div class="crystal cType6" id="cr2"></div>
         <div class="crystal cType1" id="cr3"></div>
-        <div class="crystal cType5" id="cr4"></div>
 
-        <div class="crystalT cType2" id="cr1"></div>
-        <div class="crystalT cType6" id="cr2"></div>
-        <div class="crystalT cType1" id="cr3"></div>
-        <div class="crystalT cType5" id="cr4"></div>
+        <div class="crystalT cType2" id="crt1"></div>
+        <div class="crystalT cType6" id="crt2"></div>
+        <div class="crystalT cType1" id="crt3"></div>
         <div class="player" id="runnerPlayer"></div>
     </section>
 
@@ -488,7 +488,7 @@
     <section id="duoRunner">
         <div class="playerScreen">
             <div class="hearts h100" id="DCP1Hearts"></div>
-            <div class="rockSoil" id="p1Soil"></div>
+            <div class="bottomRoad" id="p1Soil"></div>
             <div class="crystal cType2" id="p1cr1"></div>
             <div class="crystal cType6" id="p1cr2"></div>
             <div class="crystal cType1" id="p1cr3"></div>
@@ -496,7 +496,7 @@
         </div>
         <div class="playerScreen player2Screen">
             <div class="hearts h100" id="DCP2Hearts"></div>
-            <div class="rockSoil" id="p2Soil"></div>
+            <div class="bottomRoad" id="p2Soil"></div>
             <div class="crystal cType2" id="p2cr1"></div>
             <div class="crystal cType6" id="p2cr2"></div>
             <div class="crystal cType1" id="p2cr3"></div>

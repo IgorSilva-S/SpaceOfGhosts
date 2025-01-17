@@ -1,14 +1,14 @@
 //Variables
 
 // Game Env Variables
-const gameVersion = 'Beta'
+const gameVersion = 'Branch'
 const isPreview = true
-const previewType = '1y'
-const lastDayOfChanges = '05/01/2025'
+const previewType = 'Dev'
+const lastDayOfChanges = '17/01/2025'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = false
 let canLoad = true
-const isDevBranch = false
+const isDevBranch = true
 
 const player = document.getElementById('ghost')
 let keysSolo = []
