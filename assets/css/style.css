@@ -14,7 +14,7 @@ input {
     sans-serif;
 }
 
-/*Base Screen Size : 1366x768px*/
+/*Base Screen Size : 1920x1080*/
 
 body {
     width: 100vw;
@@ -28,7 +28,7 @@ body {
     font-family: 'Josefin Sans',
         sans-serif;
     user-select: none;
-
+    transition-duration: .5s;
 }
 
 html {
@@ -845,7 +845,7 @@ html {
 #homeScreen .background,
 #homeScreen .cityBackground {
     z-index: 0;
-    animation-duration: 60s;
+    animation-duration: 8s;
 }
 
 #homeScreen .earthCloud,
@@ -1605,6 +1605,60 @@ html {
     z-index: 11;
 }
 
+.effectsHud {
+    width: 60px;
+    height: calc(100dvh - 40px);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 11;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0;
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+.effectsHud img {
+    width: 40px;
+    height: 40px;
+    display: none;
+    animation: appearEffect .2s linear;
+    transition-duration: .2s;
+}
+
+@keyframes appearEffect {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+.effectsHud .blinkEffect {
+    width: 40px;
+    height: 40px;
+    display: none;
+    animation: blinkEffect 1s linear;
+    transition-duration: .2s;
+}
+
+@keyframes blinkEffect {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 .playerScreen .normalGameHud {
     position: absolute;
     z-index: 11;
@@ -1709,7 +1763,7 @@ html {
 
 .itemsAlertContDown {
     display: flex;
-    z-index: 1;
+    z-index: 12;
     position: absolute;
     bottom: 0;
     width: 100vw;
@@ -1747,9 +1801,11 @@ html {
 }
 
 .almostEnd {
-    animation-name: almostEnd;
+    /*animation-name: almostEnd;
     animation-duration: 1s;
-    animation-iteration-count: infinite;
+    animation-iteration-count: infinite;*/
+    border-radius: 4px;
+    background-color: #00ccff;
 }
 
 .itemCont .slots {
@@ -1818,7 +1874,7 @@ html {
     position: absolute;
     bottom: 0;
     transition-duration: .4s;
-    z-index: 10;
+    z-index: 15;
     right: -225px;
     display: flex;
     justify-content: center;
@@ -3183,7 +3239,7 @@ html {
     height: 140px;
     background-image: url(../img/sprites/background/uRoad.png);
     position: absolute;
-    bottom: 0;
+    bottom: 80px;
     left: 0;
     animation: moveBckg 3s linear infinite;
 }
@@ -3258,8 +3314,8 @@ html {
     left: 100px;
 }
 
-#soloRunner .crystal,
-#duoRunner .crystal {
+#soloRunner .ufo,
+#duoRunner .ufo {
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -3268,8 +3324,8 @@ html {
     left: -500px;
 }
 
-#soloRunner .crystalT,
-#duoRunner .crystalT {
+#soloRunner .ufoT,
+#duoRunner .ufoT {
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -3283,7 +3339,7 @@ html {
     top: auto;
     bottom: 175px;
     left: 100px;
-    animation: jumping 2s linear;
+    animation: jumping 3s linear;
 }
 
 @keyframes jumping {
@@ -3310,7 +3366,7 @@ html {
     top: auto;
     bottom: 175px;
     left: 100px;
-    animation: doAStomp 1s ease-in;
+    animation: doAStomp 2s ease-in;
 }
 
 @keyframes doAStomp {
@@ -3318,34 +3374,34 @@ html {
         bottom: 300px;
     } 
     
-    5% {
+    3% {
         bottom: 175px;
-        opacity: .5;
     } 
-
-    10% {
-        opacity: .5;
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    40% {
-        opacity: .5;
-    }
-
-    60% {
-        opacity: 1;
-    }
-
-    80% {
-        opacity: .5;
-    }
     
     100% {
         bottom: 175px;
-        opacity: 1;
+    }
+}
+
+#soloRunner .player.sJumpB,
+#duoRunner .player.player.sJumpB {
+    top: auto;
+    bottom: 175px;
+    left: 100px;
+    animation: doAStomp 2s ease-in;
+}
+
+@keyframes doAStomp {
+    0% {
+        bottom: 300px;
+    } 
+    
+    3% {
+        bottom: 175px;
+    } 
+    
+    100% {
+        bottom: 175px;
     }
 }
 
@@ -3379,44 +3435,44 @@ html {
     }
 }
 
-.cType1,
-.cType4 {
+.uType1,
+.uType4 {
     width: 60px;
     height: 60px;
 }
 
-.cType1 {
+.uType1 {
     background-image: url(../img/sprites/ufos/ufo1.gif);
 }
 
-.cType2 {
+.uType2 {
     background-image: url(../img/sprites/ufos/ufo2.gif);
 }
 
-.cType3 {
+.uType3 {
     background-image: url(../img/sprites/ufos/ufo3.gif);
 }
 
-.cType4 {
+.uType4 {
     background-image: url(../img/sprites/ufos/ufo4.gif);
 }
 
-.cType5 {
+.uType5 {
     background-image: url(../img/sprites/ufos/ufo5.gif);
 }
 
-.cType6 {
+.uType6 {
     background-image: url(../img/sprites/ufos/ufo6.gif);
 }
 
-.cType2,
-.cType5 {
+.uType2,
+.uType5 {
     width: 112px;
     height: 75px;
 }
 
-.cType3,
-.cType6 {
+.uType3,
+.uType6 {
     width: 200px;
     height: 100px;
 }
@@ -3466,10 +3522,7 @@ html {
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-}
-
-#duoRunner .playerScreen {
-    background-image: linear-gradient(to bottom, #0632ff66 20%, #8706d466);
+    background-image: linear-gradient(to bottom, black, rgb(150, 30, 0));
 }
 
 .playerScreen .rockSoil {
@@ -3506,7 +3559,8 @@ html {
     width: 100vw;
     height: 100dvh;
     display: none;
-    background-image: linear-gradient(to bottom, #000 60%, #949100);
+    /*background-image: linear-gradient(to bottom, #000 60%, #949100);*/
+    background-image: linear-gradient(to bottom, #000 40%, rgb(255, 145, 0));
     transition-duration: .5s;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -3618,7 +3672,7 @@ html {
 }
 
 .keysEditor::-webkit-scrollbar-thumb {
-    background-color: #949100;
+    background-color: /*#949100*/ rgb(255, 145, 0);
     border-radius: 120px;
 }
 
@@ -3707,13 +3761,13 @@ html {
 .keysEditor .regRow {
     width: 50%;
     margin-top: 36px;
-    height: calc(100% - 36px);
+    height: auto;
 }
 
 #keyValueRow {
     position: relative;
     box-sizing: border-box;
-    border-left: 2px solid #949100;
+    border-left: 2px solid /*#949100*/ rgb(255, 145, 0);
 }
 
 /*#keyValueRow::before {
@@ -4034,6 +4088,7 @@ html {
         right: 5%;
         box-sizing: border-box;
         padding: 10px;
+        background-color: #191919ee;
     }
 
     .soloScore {

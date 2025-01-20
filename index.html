@@ -115,7 +115,7 @@
         </div>
         <div class="homeAnimation" id="homeAnimation">
             <div id="spatialModeAnimation">
-                <div class="background">
+                <div class="background" style="animation-duration: 40s;">
 
                 </div>
                 <div class="earthCloud"></div>
@@ -145,8 +145,8 @@
                 <div class="background" style="animation-duration: 8s;">
 
                 </div>
-                <div class="cityBackground" style="animation-duration: 8s;"></div>
-                <div class="topRoad" style="margin-bottom: 80px;"></div>
+                <div class="cityBackground"></div>
+                <div class="topRoad"></div>
                 <div class="bottomRoad"></div>
                 <div class="runningGhost1"></div>
                 <div class="runningGhost2 excludePhone"></div>
@@ -209,6 +209,14 @@
                 <div class="hearts" id="live1p">
 
                 </div>
+            </div>
+            <div class="effectsHud">
+                <img src="assets/img/sprites/Items/vanishBoost.png" alt="" id="hShieldEffect">
+                <img src="assets/img/sprites/Items/shieldBoost.png" alt="" id="shieldEffect">
+                <img src="assets/img/sprites/Items/acceleratorBoost.png" alt="" id="acEffect">
+                <img src="assets/img/sprites/Items/relaxBoost.png" alt="" id="relaxEffect">
+                <img src="assets/img/sprites/Items/SlifeBoost.png" alt="" id="sLifeEffect" class="blinkEffect">
+                <img src="assets/img/sprites/Items/lifeBoost.png" alt="" id="lifeEffect" class="blinkEffect">
             </div>
             <div class="player" id="ghost">
                 <!--<div class="trail" id="trail"></div>-->
@@ -314,14 +322,14 @@
     <!--Solo Mode: Runner-->
     <section id="soloRunner">
         <div class="background"></div>
-        <div class="cityBackground" style="animation-duration: 8s;"></div>
-        <div class="topRoad" style="margin-bottom: 80px;"></div>
+        <div class="cityBackground"></div>
+        <div class="topRoad"></div>
         <div class="bottomRoad"></div>
         <div class="normalGameHud">
-            <div class="score">
-                <span id="soloRunnerDistance">0
-                </span>m
-            </div>
+                <div class="score">
+                    <span id="soloRunnerDistance">0
+                    </span>m
+                </div>
             <div class="itemsAlertCont">
                 <div class="itemCont" id="vanishAlert">
                     <div class="item vanishBoost"></div>
@@ -342,13 +350,17 @@
 
             </div>
         </div>
-        <div class="crystal cType2" id="cr1"></div>
-        <div class="crystal cType6" id="cr2"></div>
-        <div class="crystal cType1" id="cr3"></div>
+        <div class="effectsHud">
+            <img src="assets/img/sprites/Items/stompEffect.png" alt="" id="stompEffect" title="Tempo de espera de movimento">
+            <img src="assets/img/sprites/Items/vanishBoost.png" alt="" id="vanishEffect" title="Efeito de transparencia">
+        </div>
+        <div class="ufo cType2" id="cr1"></div>
+        <div class="ufo cType6" id="cr2"></div>
+        <div class="ufo cType1" id="cr3"></div>
 
-        <div class="crystalT cType2" id="crt1"></div>
-        <div class="crystalT cType6" id="crt2"></div>
-        <div class="crystalT cType1" id="crt3"></div>
+        <div class="ufoT cType2" id="crt1"></div>
+        <div class="ufoT cType6" id="crt2"></div>
+        <div class="ufoT cType1" id="crt3"></div>
         <div class="player" id="runnerPlayer"></div>
     </section>
 
@@ -486,8 +498,11 @@
 
     <!--Duo Mode: Runner-->
     <section id="duoRunner">
+ 
         <div class="playerScreen">
+            <div class="cityBackground"></div>
             <div class="hearts h100" id="DCP1Hearts"></div>
+            <div class="topRoad"></div>
             <div class="bottomRoad" id="p1Soil"></div>
             <div class="crystal cType2" id="p1cr1"></div>
             <div class="crystal cType6" id="p1cr2"></div>
@@ -495,7 +510,9 @@
             <div class="player" id="p1Runner"></div>
         </div>
         <div class="playerScreen player2Screen">
+            <div class="cityBackground"></div>
             <div class="hearts h100" id="DCP2Hearts"></div>
+            <div class="topRoad"></div>
             <div class="bottomRoad" id="p2Soil"></div>
             <div class="crystal cType2" id="p2cr1"></div>
             <div class="crystal cType6" id="p2cr2"></div>
@@ -677,7 +694,7 @@
 
     <!--Settings-->
     <section id="settings">
-        <div class="earthCloud"></div>
+        <div class="earthCloud" id="ecSettings"></div>
         <div class="settingsPanel">
             <button id="settingsHome" class="returnHome"></button>
             <h1>Configurações</h1>

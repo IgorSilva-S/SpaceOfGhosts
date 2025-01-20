@@ -68,99 +68,105 @@ function checkSRLives() {
 
 // Crystals sorter
 document.getElementById('cr1').addEventListener('animationiteration', () => {
-    const aCrystal = document.getElementById('cr1')
+    const aUfo = document.getElementById('cr1')
 
-    let cType = Math.floor(Math.random() * 6 + 1)
-    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
-    aCrystal.className = 'crystal'
-    aCrystal.classList.add(`cType${cType}`)
-    aCrystal.style.display = 'none'
+    let uType = Math.floor(Math.random() * 6 + 1)
+    let uSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aUfo.className = 'ufo'
+    aUfo.classList.add(`uType${uType}`)
+    aUfo.style.display = 'none'
     setTimeout(() => {
-        aCrystal.removeAttribute('style')
+        aUfo.removeAttribute('style')
         setTimeout(() => {
-                    aCrystal.style.animationDuration = `${cSpeed}s`
+                    aUfo.style.animationDuration = `${uSpeed}s`
         }, 1);
     }, 1);
 })
 
 document.getElementById('cr2').addEventListener('animationiteration', () => {
-    const aCrystal = document.getElementById('cr2')
+    const aUfo = document.getElementById('cr2')
 
-    let cType = Math.floor(Math.random() * 6 + 1)
-    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
-    aCrystal.className = 'crystal'
-    aCrystal.classList.add(`cType${cType}`)
-    aCrystal.style.display = 'none'
+    let uType = Math.floor(Math.random() * 6 + 1)
+    let uSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aUfo.className = 'ufo'
+    aUfo.classList.add(`uType${uType}`)
+    aUfo.style.display = 'none'
     setTimeout(() => {
-        aCrystal.removeAttribute('style')
+        aUfo.removeAttribute('style')
         setTimeout(() => {
-                    aCrystal.style.animationDuration = `${cSpeed}s`
+                    aUfo.style.animationDuration = `${uSpeed}s`
         }, 1);
     }, 1);
 })
 
 document.getElementById('cr3').addEventListener('animationiteration', () => {
-    const aCrystal = document.getElementById('cr3')
+    const aUfo = document.getElementById('cr3')
 
-    let cType = Math.floor(Math.random() * 6 + 1)
-    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
-    aCrystal.className = 'crystal'
-    aCrystal.classList.add(`cType${cType}`)
-    aCrystal.style.display = 'none'
+    let uType = Math.floor(Math.random() * 6 + 1)
+    let uSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aUfo.className = 'ufo'
+    aUfo.classList.add(`uType${uType}`)
+    aUfo.style.display = 'none'
     setTimeout(() => {
-        aCrystal.removeAttribute('style')
+        aUfo.removeAttribute('style')
         setTimeout(() => {
-                    aCrystal.style.animationDuration = `${cSpeed}s`
+                    aUfo.style.animationDuration = `${uSpeed}s`
         }, 1);
     }, 1);
 })
 
 document.getElementById('crt1').addEventListener('animationiteration', () => {
-    const aCrystal = document.getElementById('crt1')
+    const aUfo = document.getElementById('crt1')
 
-    let cType = Math.floor(Math.random() * 6 + 1)
-    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
-    aCrystal.className = 'crystalT'
-    aCrystal.classList.add(`cType${cType}`)
-    aCrystal.style.display = 'none'
+    let uType = Math.floor(Math.random() * 6 + 1)
+    let uSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aUfo.className = 'ufoT'
+    aUfo.classList.add(`uType${uType}`)
+    aUfo.style.display = 'none'
     setTimeout(() => {
-        aCrystal.removeAttribute('style')
+        aUfo.removeAttribute('style')
         setTimeout(() => {
-                    aCrystal.style.animationDuration = `${cSpeed}s`
+                    aUfo.style.animationDuration = `${uSpeed}s`
         }, 1);
     }, 1);
 })
 
 document.getElementById('crt2').addEventListener('animationiteration', () => {
-    const aCrystal = document.getElementById('crt2')
+    const aUfo = document.getElementById('crt2')
 
-    let cType = Math.floor(Math.random() * 6 + 1)
-    let cSpeed = Math.floor(Math.random() * 3 + 3.4)
-    aCrystal.className = 'crystalT'
-    aCrystal.classList.add(`cType${cType}`)
-    aCrystal.style.display = 'none'
+    let uType = Math.floor(Math.random() * 6 + 1)
+    let uSpeed = Math.floor(Math.random() * 3 + 3.4)
+    aUfo.className = 'ufoT'
+    aUfo.classList.add(`uType${uType}`)
+    aUfo.style.display = 'none'
     setTimeout(() => {
-        aCrystal.removeAttribute('style')
+        aUfo.removeAttribute('style')
         setTimeout(() => {
-                    aCrystal.style.animationDuration = `${cSpeed}s`
+                    aUfo.style.animationDuration = `${uSpeed}s`
         }, 1);
     }, 1);
 })
 
 document.getElementById('crt3').addEventListener('animationiteration', () => {
-    const aCrystal = document.getElementById('crt3')
+    const aUfo = document.getElementById('crt3')
 
-    let cType = Math.floor(Math.random() * 6 + 1)
-    let cSpeed = Math.floor(Math.random() * 3 + 5.4)
-    aCrystal.className = 'crystalT'
-    aCrystal.classList.add(`cType${cType}`)
-    aCrystal.style.display = 'none'
+    let uType = Math.floor(Math.random() * 6 + 1)
+    let uSpeed = Math.floor(Math.random() * 3 + 5.4)
+    aUfo.className = 'ufoT'
+    aUfo.classList.add(`uType${uType}`)
+    aUfo.style.display = 'none'
     setTimeout(() => {
-        aCrystal.removeAttribute('style')
+        aUfo.removeAttribute('style')
         setTimeout(() => {
-                    aCrystal.style.animationDuration = `${cSpeed}s`
+                    aUfo.style.animationDuration = `${uSpeed}s`
         }, 1);
     }, 1);
 })
 
 /*Collision Detection*/
+
+// Ufo Bottom (CrB)
+// 1
+setInterval(() => {
+    const aUfo = document.getElementById('cr1')
+}, 1);
