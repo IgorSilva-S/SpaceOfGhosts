@@ -93,11 +93,30 @@ if (isDev == '1') {
   }
 
   document.getElementById('addKey').addEventListener('click', () => {
-    addNewKey()
+    if (isCardView) {
+      alert('No modo de visualização de cards, não é possível adicionar e/ou ver variáveis customizadas')
+    } else {
+      addNewKey()
+    }
   })
 
   document.getElementById('refreshData').addEventListener('click', () => {
     refreshPane()
+  })
+
+  let isCardView = false
+  document.getElementById('changeType').addEventListener('click', () => {
+    if (!isCardView) {
+      document.getElementById('regView').style.display = 'none'
+      document.getElementById('cardView').removeAttribute('style')
+      document.getElementById('changeType').style.rotate = '360deg'
+      isCardView = true
+    } else {
+      document.getElementById('cardView').style.display = 'none'
+      document.getElementById('regView').removeAttribute('style')
+      document.getElementById('changeType').removeAttribute('style')
+      isCardView = false
+    }
   })
 
   function makeButtonsWork() {

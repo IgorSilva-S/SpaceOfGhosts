@@ -478,6 +478,10 @@ html {
     margin-left: 5px;
 }
 
+.pausedSR .waitStts {
+    background-image: url(../img/sprites/Items/loadingBoost.png);
+}
+
 .okayStts {
     background-image: url(../img/sprites/Items/loadedBoost.png);
     width: 37px;
@@ -617,8 +621,7 @@ html {
 }
 
 #runnerModeAnimation {
-    /*background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);*/
-    background-image: linear-gradient(to bottom, black, rgb(150, 30, 0));
+    background-image: linear-gradient(to bottom, #000 ,  #0632ff66 , #8706d466);
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -774,6 +777,7 @@ html {
     z-index: 1;
     width: 100%;
     margin-left: -40px;
+ 
 }
 
 .lightMode .alignHomeButtons button {
@@ -810,9 +814,10 @@ html {
 }
 
 .pseudoLink {
-    font-size: 17px;
+    font-size: 20px;
     margin-top: 10px;
     color: rgb(177, 177, 255);
+    padding-left: 20px;
 }
 
 .lightMode .pseudoLink {
@@ -3215,8 +3220,8 @@ html {
     animation-name: appearPages;
     animation-duration: .5s;
     transition-duration: .5s;
-    /*background-image: linear-gradient(to bottom, #000 10%,  #0632ff66 20%, #8706d466);*/
-    background-image: linear-gradient(to bottom, black, rgb(150, 30, 0));
+    background-image: linear-gradient(to bottom, #000 ,  #0632ff66 , #8706d466);
+    /*background-image: linear-gradient(to bottom, black, rgb(150, 30, 0));*/
 }
 
 #soloRunner .background,
@@ -3258,7 +3263,7 @@ html {
 }
 
 #soloRunner .player.hurtB,
-#duoRunner .player.player.hurtB {
+#duoRunner .playerScreen.hurtB {
     top: auto;
     bottom: 50px;
     left: 100px;
@@ -3283,7 +3288,7 @@ html {
 }
 
 #soloRunner .player.hurtT,
-#duoRunner .player.player.hurtT {
+#duoRunner .playerScreen.player.hurtT {
     top: auto;
     bottom: 175px;
     left: 100px;
@@ -3308,7 +3313,7 @@ html {
 }
 
 #soloRunner .player.secondTrail,
-#duoRunner .player.player.secondTrail {
+#duoRunner .playerScreen.player.secondTrail {
     top: auto;
     bottom: 175px;
     left: 100px;
@@ -3335,7 +3340,7 @@ html {
 }
 
 #soloRunner .player.jumping,
-#duoRunner .player.player.jumping {
+#duoRunner .playerScreen.player.jumping {
     top: auto;
     bottom: 175px;
     left: 100px;
@@ -3362,7 +3367,7 @@ html {
 }
 
 #soloRunner .player.stomp,
-#duoRunner .player.player.stomp {
+#duoRunner .playerScreen.player.stomp {
     top: auto;
     bottom: 175px;
     left: 100px;
@@ -3384,29 +3389,51 @@ html {
 }
 
 #soloRunner .player.sJumpB,
-#duoRunner .player.player.sJumpB {
+#duoRunner .playerScreen.player.sJumpB {
     top: auto;
     bottom: 175px;
     left: 100px;
-    animation: doAStomp 2s ease-in;
+    animation: sJB .55s linear;
 }
 
-@keyframes doAStomp {
+@keyframes sJB {
     0% {
-        bottom: 300px;
-    } 
-    
-    3% {
+        bottom: 50px;
+    }
+
+    50% {
+        bottom: 200px;
+    }
+
+    100% {
+        bottom: 50px;
+    }
+}
+
+#soloRunner .player.sJumpT,
+#duoRunner .playerScreen.player.sJumpT {
+    top: auto;
+    bottom: 175px;
+    left: 100px;
+    animation: sJT .55s linear;
+}
+
+@keyframes sJT {
+    0% {
         bottom: 175px;
-    } 
-    
+    }
+
+    50% {
+        bottom: 325px;
+    }
+
     100% {
         bottom: 175px;
     }
 }
 
 #soloRunner .player.boosting,
-#duoRunner .player.player.boosting {
+#duoRunner .playerScreen.player.boosting {
     animation: boosting .6s linear;
 }
 
@@ -3463,6 +3490,30 @@ html {
 
 .uType6 {
     background-image: url(../img/sprites/ufos/ufo6.gif);
+}
+
+.pausedSR .uType1 {
+    background-image: url(../img/sprites/ufos/ufo1.png);
+}
+
+.pausedSR .uType2 {
+    background-image: url(../img/sprites/ufos/ufo2.png);
+}
+
+.pausedSR .uType3 {
+    background-image: url(../img/sprites/ufos/ufo3.png);
+}
+
+.pausedSR .uType4 {
+    background-image: url(../img/sprites/ufos/ufo4.png);
+}
+
+.pausedSR .uType5 {
+    background-image: url(../img/sprites/ufos/ufo5.png);
+}
+
+.pausedSR .uType6 {
+    background-image: url(../img/sprites/ufos/ufo6.png);
 }
 
 .uType2,
@@ -3522,7 +3573,8 @@ html {
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    background-image: linear-gradient(to bottom, black, rgb(150, 30, 0));
+    background-image: linear-gradient(to bottom, #000 ,  #0632ff66 , #8706d466);
+    /*background-image: linear-gradient(to bottom, black, rgb(150, 30, 0));*/
 }
 
 .playerScreen .rockSoil {
@@ -3756,6 +3808,79 @@ html {
 
 .keysEditor .title #addKey {
     right: 50px;
+}
+
+.keysEditor .title #changeType {
+    right: 150px;
+    transition-duration: .6s;
+}
+
+
+.keysEditor .devKeysSystemView {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.keysEditor .devCardView {
+    width: 25%;
+    height: auto;
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.keysEditor .devCardView .card {
+    width: 300px;
+    height: 456px;
+    position: relative;
+    background-image: url(../img/sprites/Items/sDevCard.gif);
+    background-position: center;
+    background-size: cover;
+}
+
+.keysEditor .devCardView .cardTitle {
+    position: absolute;
+    top: 14%;
+    left: 7%;
+    font-size: 25px;
+}
+
+.keysEditor .devCardView .cardAnim {
+    position: absolute;
+    top: 105px;
+    left: 16px;
+    font-size: 25px;
+    width: 270px;
+    height: 144px;
+}
+
+.keysEditor .devCardView .cardDesc {
+    position: absolute;
+    top: 68%;
+    left: 8%;
+    width: 62%;
+    text-align: justify;
+}
+
+.keysEditor .allCards {
+    width: 75%;
+    margin-top: 36px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.keysEditor .allCards .miniCard {
+    width: 100px;
+    height: 152px;
+    background-image: url(../img/sprites/Items/devCard.gif);
+    background-color: transparent;
+    border: none;
+    background-size: cover;
+    background-position: center;
 }
 
 .keysEditor .regRow {

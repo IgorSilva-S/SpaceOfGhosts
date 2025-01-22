@@ -1,3 +1,23 @@
+function pauseSoloRunner() {
+    if (!pausedRunnerSolo) {
+        document.getElementById('pauseRunner').style.right = '10px'
+        
+       ufoB1.style.animationPlayState = 'paused'
+       ufoB2.style.animationPlayState = 'paused'
+       ufoB3.style.animationPlayState = 'paused'
+       ufoT1.style.animationPlayState = 'paused'
+       ufoT2.style.animationPlayState = 'paused'
+       ufoT3.style.animationPlayState = 'paused'
+        document.getElementById('srTR').style.animationPlayState = 'paused'
+        document.getElementById('srBR').style.animationPlayState = 'paused'
+        document.getElementById('srBCKG1').style.animationPlayState = 'paused'
+        document.getElementById('srBCKG2').style.animationPlayState = 'paused'
+        playerRunner.classList.add('playerPaused')
+        soloRunnerPage.classList.add('pausedSR')
+        pausedRunnerSolo = true
+    } 
+}
+
 function checkSRLives() {
     if (soloRunnerLife == 100) {
         soloRunnerHearts.removeAttribute('class')
@@ -66,14 +86,14 @@ function checkSRLives() {
     }
 }
 
-// Crystals sorter
-document.getElementById('cr1').addEventListener('animationiteration', () => {
-    const aUfo = document.getElementById('cr1')
+// Ufos sorter
+ufoB1.addEventListener('animationiteration', () => {
+    const aUfo = ufoB1
 
-    let uType = Math.floor(Math.random() * 6 + 1)
+    UB1T = Math.floor(Math.random() * 6 + 1)
     let uSpeed = Math.floor(Math.random() * 3 + 3.4)
     aUfo.className = 'ufo'
-    aUfo.classList.add(`uType${uType}`)
+    aUfo.classList.add(`uType${UB1T}`)
     aUfo.style.display = 'none'
     setTimeout(() => {
         aUfo.removeAttribute('style')
@@ -83,13 +103,13 @@ document.getElementById('cr1').addEventListener('animationiteration', () => {
     }, 1);
 })
 
-document.getElementById('cr2').addEventListener('animationiteration', () => {
-    const aUfo = document.getElementById('cr2')
+ufoB2.addEventListener('animationiteration', () => {
+    const aUfo = ufoB2
 
-    let uType = Math.floor(Math.random() * 6 + 1)
+    UB2T = Math.floor(Math.random() * 6 + 1)
     let uSpeed = Math.floor(Math.random() * 3 + 3.4)
     aUfo.className = 'ufo'
-    aUfo.classList.add(`uType${uType}`)
+    aUfo.classList.add(`uType${UB2T}`)
     aUfo.style.display = 'none'
     setTimeout(() => {
         aUfo.removeAttribute('style')
@@ -99,13 +119,13 @@ document.getElementById('cr2').addEventListener('animationiteration', () => {
     }, 1);
 })
 
-document.getElementById('cr3').addEventListener('animationiteration', () => {
-    const aUfo = document.getElementById('cr3')
+ufoB3.addEventListener('animationiteration', () => {
+    const aUfo = ufoB3
 
-    let uType = Math.floor(Math.random() * 6 + 1)
+    UB3T = Math.floor(Math.random() * 6 + 1)
     let uSpeed = Math.floor(Math.random() * 3 + 3.4)
     aUfo.className = 'ufo'
-    aUfo.classList.add(`uType${uType}`)
+    aUfo.classList.add(`uType${UB3T}`)
     aUfo.style.display = 'none'
     setTimeout(() => {
         aUfo.removeAttribute('style')
@@ -115,13 +135,13 @@ document.getElementById('cr3').addEventListener('animationiteration', () => {
     }, 1);
 })
 
-document.getElementById('crt1').addEventListener('animationiteration', () => {
-    const aUfo = document.getElementById('crt1')
+ufoT1.addEventListener('animationiteration', () => {
+    const aUfo = ufoT1
 
-    let uType = Math.floor(Math.random() * 6 + 1)
+    UT1T = Math.floor(Math.random() * 6 + 1)
     let uSpeed = Math.floor(Math.random() * 3 + 3.4)
     aUfo.className = 'ufoT'
-    aUfo.classList.add(`uType${uType}`)
+    aUfo.classList.add(`uType${UT1T}`)
     aUfo.style.display = 'none'
     setTimeout(() => {
         aUfo.removeAttribute('style')
@@ -131,13 +151,13 @@ document.getElementById('crt1').addEventListener('animationiteration', () => {
     }, 1);
 })
 
-document.getElementById('crt2').addEventListener('animationiteration', () => {
-    const aUfo = document.getElementById('crt2')
+ufoT2.addEventListener('animationiteration', () => {
+    const aUfo = ufoT2
 
-    let uType = Math.floor(Math.random() * 6 + 1)
+    UT2T = Math.floor(Math.random() * 6 + 1)
     let uSpeed = Math.floor(Math.random() * 3 + 3.4)
     aUfo.className = 'ufoT'
-    aUfo.classList.add(`uType${uType}`)
+    aUfo.classList.add(`uType${UT2T}`)
     aUfo.style.display = 'none'
     setTimeout(() => {
         aUfo.removeAttribute('style')
@@ -147,13 +167,13 @@ document.getElementById('crt2').addEventListener('animationiteration', () => {
     }, 1);
 })
 
-document.getElementById('crt3').addEventListener('animationiteration', () => {
-    const aUfo = document.getElementById('crt3')
+ufoT3.addEventListener('animationiteration', () => {
+    const aUfo = ufoT3
 
-    let uType = Math.floor(Math.random() * 6 + 1)
+    UT3T = Math.floor(Math.random() * 6 + 1)
     let uSpeed = Math.floor(Math.random() * 3 + 5.4)
     aUfo.className = 'ufoT'
-    aUfo.classList.add(`uType${uType}`)
+    aUfo.classList.add(`uType${UT3T}`)
     aUfo.style.display = 'none'
     setTimeout(() => {
         aUfo.removeAttribute('style')
@@ -165,8 +185,5 @@ document.getElementById('crt3').addEventListener('animationiteration', () => {
 
 /*Collision Detection*/
 
-// Ufo Bottom (CrB)
+// Ufo Bottom
 // 1
-setInterval(() => {
-    const aUfo = document.getElementById('cr1')
-}, 1);

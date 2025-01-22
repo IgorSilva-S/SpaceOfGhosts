@@ -79,7 +79,6 @@
                 </div>
                 <div>
                     <h1>Selecione o modo de jogo</h1>
-                    <p class="pseudoLink" style="display: none;">Ou, adquira novos modos na loja</p>
                 </div>
             </div>
             <button id="spatialMode">
@@ -91,9 +90,10 @@
             <button id="runnerMode">
                 Corredor: Infinito
             </button>
+            <p class="pseudoLink excludePhone">Adquira novos modos na loja</p>
 
             <div class="playGameAlert" id="alertPlay">
-                Selecione a quantidade de jogadores e vambora
+                Selecione a quantidade de jogadores
             </div>
             <div class="playGame" id="playPopup">
                 <div class="playersContainer">
@@ -148,8 +148,8 @@
                 <div class="cityBackground"></div>
                 <div class="topRoad"></div>
                 <div class="bottomRoad"></div>
-                <div class="runningGhost1"></div>
-                <div class="runningGhost2 excludePhone"></div>
+                <div class="runningGhost1" id="hghR1"></div>
+                <div class="runningGhost2 excludePhone" id="hghR2"></div>
             </div>
 
             <div class="interference" id="interferenceAnim" style="display: none">
@@ -321,10 +321,10 @@
 
     <!--Solo Mode: Runner-->
     <section id="soloRunner">
-        <div class="background"></div>
-        <div class="cityBackground"></div>
-        <div class="topRoad"></div>
-        <div class="bottomRoad"></div>
+        <div class="background" id="srBCKG1"></div>
+        <div class="cityBackground" id="srBCKG2"></div>
+        <div class="topRoad" id="srTR"></div>
+        <div class="bottomRoad" id="srBR"></div>
         <div class="normalGameHud">
                 <div class="score">
                     <span id="soloRunnerDistance">0
@@ -362,6 +362,15 @@
         <div class="ufoT cType6" id="crt2"></div>
         <div class="ufoT cType1" id="crt3"></div>
         <div class="player" id="runnerPlayer"></div>
+
+        
+        <div class="soloControls" id="pauseRunner">
+            <div class="pauseText">Pause</div>
+            <button class="pauseHome" id="retHomeSRunner">Voltar</button>
+            <button class="pauseRestart" id="sRunnerRestart">Reiniciar</button>
+            <button class="pauseDev" id="sRunnerDevKeys" style="display: none;">DevKeys</button>
+            <button class="pauseSettings" id="sRunnerConfig">Config.</button>
+        </div>
     </section>
 
     <!--Duo Mode: Espatial-->
@@ -768,6 +777,9 @@
         </div>
         <div class="keysEditor" id="ke">
             <div class="title">Editor de Chaves (localStorage)
+                <span class="material-symbols-rounded" id="changeType">
+                    change_circle
+                    </span>
                 <span class="material-symbols-rounded" id="refreshData">
                     refresh
                 </span>
@@ -775,9 +787,32 @@
                     add
                 </span>
             </div>
-            <div class="regRow" id="keyNameRow"></div>
-            <div class="regRow" id="keyValueRow"></div>
+            <div id="regView" class="devKeysSystemView">
+                <div class="regRow" id="keyNameRow"></div>
+                <div class="regRow" id="keyValueRow"></div>
+            </div>
+            <div id="cardView" class="devKeysSystemView" style="display: none;">
+                <div class="devCardView">
+                    <div class="card">
+                        <p class="cardTitle">Card Title</p>
+                        <div class="cardAnim"></div>
+                        <p class="cardDesc">Lorem ipsum dolor sit amet consectetur
+                </div>
+                <div>
+                    Insira o valor da variável <br>
+                    <input type="text">
+                </div>
+                <div>
+                    Voltar ao valor padrão
+                    <button>Voltar</button>
+                </div>
+            </div>
+
+            <div class="allCards">
+                <button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button>
+            </div>
         </div>
+
         <div class="keyContextMenu" id="contextMenu">
             <div class="keyName" id="kn">Nome da chave</div>
             <!--<div class="CMOption" id="delKey">Deletar chave</div>

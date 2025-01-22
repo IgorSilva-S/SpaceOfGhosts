@@ -564,9 +564,12 @@ try {
     let isOnePlayer = document.getElementById("onePlayer").checked;
     let isTwoPlayers = document.getElementById("twoPlayers").checked;
     if (!isOnePlayer && !isTwoPlayers) {
-      document.getElementById('alertPlay').style.bottom = 'calc(6% + 120px)'
+      document.getElementById("playPopup").style.bottom = "calc(5% + 60px)";
+      document.getElementById('alertPlay').style.bottom = '5%'
+      document.getElementById('alertPlay').innerText = 'Selecione a quantidade de jogadores'
       setTimeout(() => {
         document.getElementById('alertPlay').removeAttribute('style')
+        document.getElementById("playPopup").style.bottom = "5%";
       }, 3000);
     } else {
       if (selectedGameMode == 1) {
@@ -724,6 +727,14 @@ try {
             }, 1000);
 
           }, 500);
+        } else {
+          document.getElementById("playPopup").style.bottom = "calc(5% + 60px)";
+          document.getElementById('alertPlay').style.bottom = '5%'
+          document.getElementById('alertPlay').innerText = 'Esse modo de jogo ainda não está pronto, espere por futuros updates'
+          setTimeout(() => {
+            document.getElementById('alertPlay').removeAttribute('style')
+            document.getElementById("playPopup").style.bottom = "5%";
+          }, 3000);
         }
       }
     }
@@ -818,28 +829,24 @@ try {
     //Home - Ghost Player detection
     if (pageType == 1) {
       if (e.key == "1") {
-        document.getElementById("hgh1").style.filter =
-          "drop-shadow(0px 0px 10px #008dfe)";
+        document.getElementById("hgh1").style.filter = "drop-shadow(0px 0px 10px #008dfe)";
+        document.getElementById("hghX1").style.filter = "drop-shadow(0px 0px 10px #008dfe)";
+        document.getElementById('hghR1').style.filter = "drop-shadow(0px 0px 10px #008dfe)";
         setTimeout(() => {
           document.getElementById("hgh1").removeAttribute("style");
-        }, 1000);
-        document.getElementById("hghX1").style.filter =
-          "drop-shadow(0px 0px 10px #008dfe)";
-        setTimeout(() => {
           document.getElementById("hghX1").style.filter = 'none'
+          document.getElementById("hghR1").removeAttribute("style");
         }, 1000);
       }
       if (e.key == "2") {
-        document.getElementById("hgh2").style.filter =
-          "drop-shadow(0px 0px 10px #fb3936)";
-        setTimeout(() => {
-          document.getElementById("hgh2").removeAttribute("style");
-        }, 1000);
-        document.getElementById("hghX2").style.filter =
-          "drop-shadow(0px 0px 10px #fb3936)";
-        setTimeout(() => {
-          document.getElementById("hghX2").style.filter = 'none'
-        }, 1000);
+        document.getElementById("hgh2").style.filter = "drop-shadow(0px 0px 10px #fb3936)";
+        document.getElementById("hghX2").style.filter = "drop-shadow(0px 0px 10px #fb3936)";
+        document.getElementById("hghR2").style.filter = "drop-shadow(0px 0px 10px #fb3936)";
+          setTimeout(() => {
+            document.getElementById("hgh2").removeAttribute("style");
+            document.getElementById("hghX2").style.filter = 'none'
+            document.getElementById("hghR2").removeAttribute("style");
+          }, 1000);
       }
     }
 
@@ -1184,6 +1191,31 @@ try {
             }, 1000);
           }
         })
+      }
+
+      if (e.key == ' ') {
+        if (isInSecTrail) {
+          playerRunner.classList.remove('secondTrail')
+          playerRunner.classList.add('sJumpT')
+          playerRunner.addEventListener('animationend', () => {
+            playerRunner.classList.remove('sJumpT')
+            if (isInSecTrail) {
+              playerRunner.classList.add('secondTrail')
+            }
+          })
+        } else {
+          playerRunner.classList.add('sJumpB')
+          playerRunner.addEventListener('animationend', () => {
+            playerRunner.classList.remove('sJumpB')
+            if (isInSecTrail) {
+              playerRunner.classList.add('secondTrail')
+            }
+          })
+        }
+      }
+
+      if (e.key == 'Enter') {
+        pauseSoloRunner()
       }
 
       if (e.key == 'h' || e.key == 'H') {

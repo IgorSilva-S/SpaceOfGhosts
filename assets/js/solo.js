@@ -113,13 +113,17 @@ function pauseGameSolo() {
             acceleratorWaiter = setInterval(() => {
                 acceleratorTimer++
                 if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
-                    document.getElementById('acceleratorAlert').classList.add('almostEnd')
+                    document.getElementById('acEffect').classList.add('almostEnd')
                 }
                 if (acceleratorTimer == 15) {
                     clearInterval(acceleratorWaiter)
                     acceleratorP1 = false
                     acceleratorTimer = 0
                     invencible.removeAttribute('style')
+                    document.getElementById('acEffect').style.opacity = '0'
+                    setTimeout(() => {
+                      document.getElementById('acEffect').removeAttribute('style')
+                    }, 200);
                     //trail.removeAttribute('style')
 
                     clearInterval(trail)

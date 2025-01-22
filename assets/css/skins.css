@@ -1,4 +1,20 @@
-/*Skin 0 - PLayer 2*/ 
+/*Making screen size for all skins*/
+.s0,
+.sA,
+.s1,
+.s2,
+.s3,
+.s4,
+.s5,
+.s6,
+.hd {
+    width: 100vw;
+    height: 100dvh;
+    position: relative;
+}
+
+/*Skin 0 - Player 2*/ 
+
 .s0 .player {
     background-image: url(../img/sprites/skins/normal/Flying.gif);
 }
