@@ -326,10 +326,10 @@
         <div class="topRoad" id="srTR"></div>
         <div class="bottomRoad" id="srBR"></div>
         <div class="normalGameHud">
-                <div class="score">
-                    <span id="soloRunnerDistance">0
-                    </span>m
-                </div>
+            <div class="score">
+                <span id="soloRunnerDistance">0
+                </span>m
+            </div>
             <div class="itemsAlertCont">
                 <div class="itemCont" id="vanishAlert">
                     <div class="item vanishBoost"></div>
@@ -351,8 +351,10 @@
             </div>
         </div>
         <div class="effectsHud">
-            <img src="assets/img/sprites/Items/stompEffect.png" alt="" id="stompEffect" title="Tempo de espera de movimento">
-            <img src="assets/img/sprites/Items/vanishBoost.png" alt="" id="vanishEffect" title="Efeito de transparencia">
+            <img src="assets/img/sprites/Items/stompEffect.png" alt="" id="stompEffect"
+                title="Tempo de espera de movimento">
+            <img src="assets/img/sprites/Items/vanishBoost.png" alt="" id="vanishEffect"
+                title="Efeito de transparencia">
         </div>
         <div class="ufo cType2" id="cr1"></div>
         <div class="ufo cType6" id="cr2"></div>
@@ -363,7 +365,7 @@
         <div class="ufoT cType1" id="crt3"></div>
         <div class="player" id="runnerPlayer"></div>
 
-        
+
         <div class="soloControls" id="pauseRunner">
             <div class="pauseText">Pause</div>
             <button class="pauseHome" id="retHomeSRunner">Voltar</button>
@@ -507,7 +509,7 @@
 
     <!--Duo Mode: Runner-->
     <section id="duoRunner">
- 
+
         <div class="playerScreen">
             <div class="cityBackground"></div>
             <div class="hearts h100" id="DCP1Hearts"></div>
@@ -779,7 +781,7 @@
             <div class="title">Editor de Chaves (localStorage)
                 <span class="material-symbols-rounded" id="changeType">
                     change_circle
-                    </span>
+                </span>
                 <span class="material-symbols-rounded" id="refreshData">
                     refresh
                 </span>
@@ -793,34 +795,31 @@
             </div>
             <div id="cardView" class="devKeysSystemView" style="display: none;">
                 <div class="devCardView">
-                    <div class="card">
-                        <p class="cardTitle">Card Title</p>
-                        <div class="cardAnim"></div>
-                        <p class="cardDesc">Lorem ipsum dolor sit amet consectetur
+                    <div class="card" id="dkCard" style="transform: scaleX(0);">
+                        <p class="cardTitle" id='cTitle'>Card Title</p>
+                        <p class="cardType" id="cType">Card Type</p>
+                        <p class="cardDesc" id="cDesc">Lorem ipsum dolor sit amet consectetur</p>
+                        <div class="cardBAlign">
+                            <button id="cardSeeValue">Ver valor</button>
+                            <button id="cardEdit">Editar valor</button>
+                            <button id="cardDelVar">Apagar variável</button>
+                        </div>
+                    </div>
+                    <div class="bCard" id="bCard"></div>
                 </div>
-                <div>
-                    Insira o valor da variável <br>
-                    <input type="text">
-                </div>
-                <div>
-                    Voltar ao valor padrão
-                    <button>Voltar</button>
+
+                <div class="allCards" id="mcCont">
                 </div>
             </div>
 
-            <div class="allCards">
-                <button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button><button class="miniCard"></button>
-            </div>
-        </div>
-
-        <div class="keyContextMenu" id="contextMenu">
-            <div class="keyName" id="kn">Nome da chave</div>
-            <!--<div class="CMOption" id="delKey">Deletar chave</div>
+            <div class="keyContextMenu" id="contextMenu">
+                <div class="keyName" id="kn">Nome da chave</div>
+                <!--<div class="CMOption" id="delKey">Deletar chave</div>
             <div class="CMOption" id="renKey">Renomear chave</div>-->
-            <div id="contextOptions">
+                <div id="contextOptions">
 
+                </div>
             </div>
-        </div>
     </section>
     <!--Credits-->
     <section id="credits">

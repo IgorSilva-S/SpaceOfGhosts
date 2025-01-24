@@ -1,5 +1,6 @@
 /*Font Import*/
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 * {
     margin: 0;
@@ -3839,48 +3840,132 @@ html {
     background-image: url(../img/sprites/Items/sDevCard.gif);
     background-position: center;
     background-size: cover;
+    transition-duration: .3s;
+}
+
+.keysEditor .devCardView .bCard {
+    width: 300px;
+    height: 456px;
+    position: absolute;
+    background-image: url(../img/sprites/Items/backDevCard.png);
+    background-position: center;
+    background-size: cover;
+    animation: flipCard .4s linear;
+    transform: scaleX(0);
+    display: none;
+}
+
+@keyframes flipCard {
+    0% {
+        transform: scaleX(0);
+    }
+
+    50% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
 }
 
 .keysEditor .devCardView .cardTitle {
+    font-family: "Pixelify Sans", serif;
     position: absolute;
-    top: 14%;
-    left: 7%;
+    top: 12%;
+    left: 5%;
     font-size: 25px;
+    width: 90%;
+    height: 9%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 7px;
 }
 
-.keysEditor .devCardView .cardAnim {
+.keysEditor .devCardView .cardType {
+    font-family: "Pixelify Sans", serif;
     position: absolute;
-    top: 105px;
-    left: 16px;
-    font-size: 25px;
-    width: 270px;
-    height: 144px;
+    top: 56.6%;
+    left: 7%;
+    font-size: 20px;
+    width: 45%;
 }
 
 .keysEditor .devCardView .cardDesc {
+    font-family: "Pixelify Sans", serif;
     position: absolute;
-    top: 68%;
+    top: 24%;
     left: 8%;
-    width: 62%;
-    text-align: justify;
+    width: 84%;
+    height: 27%;
+    overflow: auto;
+    font-size: 16px;
+}
+
+.keysEditor .devCardView .cardBAlign {
+    position: absolute;
+    top: 68.6%;
+    left: 11%;
+    width: 58%;
+    overflow: auto;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.keysEditor .devCardView .cardBAlign button {
+    font-family: "Pixelify Sans", serif;
+    padding: 7px;
+    font-size: 16px;
+    background-color: #191919aa;
+    border: none;
+    clip-path: polygon(
+    0px calc(100% - 4px),
+    4px calc(100% - 4px),
+    4px 100%,
+    calc(100% - 4px) 100%,
+    calc(100% - 4px) calc(100% - 4px),
+    100% calc(100% - 4px),
+    100% 4px,
+    calc(100% - 4px) 4px,
+    calc(100% - 4px) 0px,
+    4px 0px,
+    4px 4px,
+    0px 4px
+  );
+}
+
+.keysEditor .devCardView .cardBAlign button:hover {
+    background-color: #191919dd;
 }
 
 .keysEditor .allCards {
     width: 75%;
     margin-top: 36px;
-    display: flex;
+    display: grid;
     gap: 20px;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(9, 1fr);
+    box-sizing: border-box;
+    padding-top: 20px;
 }
 
 .keysEditor .allCards .miniCard {
     width: 100px;
     height: 152px;
-    background-image: url(../img/sprites/Items/devCard.gif);
+    background-image: url(../img/sprites/Items/stopDevCard.png);
     background-color: transparent;
     border: none;
     background-size: cover;
     background-position: center;
+    transition-duration: .1s;
+}
+
+.keysEditor .allCards .miniCard:hover {
+    background-image: url(../img/sprites/Items/devCard.gif);
+    margin-top: -5px;
 }
 
 .keysEditor .regRow {
