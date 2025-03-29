@@ -87,10 +87,7 @@
             <button id="spatialXtremeMode">
                 Espacial: Infinito (Extremo)
             </button>
-            <button id="runnerMode">
-                Corredor: Infinito
-            </button>
-            <p class="pseudoLink excludePhone">Adquira novos modos na loja</p>
+            <p class="pseudoLink excludePhone">Adquira novos desafios na loja</p>
 
             <div class="playGameAlert" id="alertPlay">
                 Selecione a quantidade de jogadores
@@ -139,17 +136,6 @@
                 <div class="meteor mt2" style="top: 60%; animation-duration: 4s;"></div>
                 <div class="meteor mt3" style="top: 35%; animation-duration: 2s;"></div>
                 <div class="meteor mt1" style="top: 75%; animation-duration: 5s;"></div>
-            </div>
-
-            <div id="runnerModeAnimation" style="display: none;">
-                <div class="background" style="animation-duration: 8s;">
-
-                </div>
-                <div class="cityBackground"></div>
-                <div class="topRoad"></div>
-                <div class="bottomRoad"></div>
-                <div class="runningGhost1" id="hghR1"></div>
-                <div class="runningGhost2 excludePhone" id="hghR2"></div>
             </div>
 
             <div class="interference" id="interferenceAnim" style="display: none">
@@ -319,62 +305,6 @@
         </div>
     </section>
 
-    <!--Solo Mode: Runner-->
-    <section id="soloRunner">
-        <div class="background" id="srBCKG1"></div>
-        <div class="cityBackground" id="srBCKG2"></div>
-        <div class="topRoad" id="srTR"></div>
-        <div class="bottomRoad" id="srBR"></div>
-        <div class="normalGameHud">
-            <div class="score">
-                <span id="soloRunnerDistance">0
-                </span>m
-            </div>
-            <div class="itemsAlertCont">
-                <div class="itemCont" id="vanishAlert">
-                    <div class="item vanishBoost"></div>
-                    <div class="slots">
-                        <div id="vanishStts" class="waitStts"></div>
-                    </div>
-                    (1)
-                </div>
-                <div class="itemCont" id="speedAlert">
-                    <div class="item speedBoost"></div>
-                    <div class="slots">
-                        <div id="speedStts" class="waitStts"></div>
-                    </div>
-                    (2)
-                </div>
-            </div>
-            <div class="hearts" id="RunnerLifes">
-
-            </div>
-        </div>
-        <div class="effectsHud">
-            <img src="assets/img/sprites/Items/stompEffect.png" alt="" id="stompEffect"
-                title="Tempo de espera de movimento">
-            <img src="assets/img/sprites/Items/vanishBoost.png" alt="" id="vanishEffect"
-                title="Efeito de transparencia">
-        </div>
-        <div class="ufo cType2" id="cr1"></div>
-        <div class="ufo cType6" id="cr2"></div>
-        <div class="ufo cType1" id="cr3"></div>
-
-        <div class="ufoT cType2" id="crt1"></div>
-        <div class="ufoT cType6" id="crt2"></div>
-        <div class="ufoT cType1" id="crt3"></div>
-        <div class="player" id="runnerPlayer"></div>
-
-
-        <div class="soloControls" id="pauseRunner">
-            <div class="pauseText">Pause</div>
-            <button class="pauseHome" id="retHomeSRunner">Voltar</button>
-            <button class="pauseRestart" id="sRunnerRestart">Reiniciar</button>
-            <button class="pauseDev" id="sRunnerDevKeys" style="display: none;">DevKeys</button>
-            <button class="pauseSettings" id="sRunnerConfig">Config.</button>
-        </div>
-    </section>
-
     <!--Duo Mode: Espatial-->
     <section id="duoRun">
         <div class="duoControls" id="pauseDuoControls">
@@ -507,49 +437,6 @@
         </div>
     </section>
 
-    <!--Duo Mode: Runner-->
-    <section id="duoRunner">
-
-        <div class="playerScreen">
-            <div class="cityBackground"></div>
-            <div class="hearts h100" id="DCP1Hearts"></div>
-            <div class="topRoad"></div>
-            <div class="bottomRoad" id="p1Soil"></div>
-            <div class="crystal cType2" id="p1cr1"></div>
-            <div class="crystal cType6" id="p1cr2"></div>
-            <div class="crystal cType1" id="p1cr3"></div>
-            <div class="player" id="p1Runner"></div>
-        </div>
-        <div class="playerScreen player2Screen">
-            <div class="cityBackground"></div>
-            <div class="hearts h100" id="DCP2Hearts"></div>
-            <div class="topRoad"></div>
-            <div class="bottomRoad" id="p2Soil"></div>
-            <div class="crystal cType2" id="p2cr1"></div>
-            <div class="crystal cType6" id="p2cr2"></div>
-            <div class="crystal cType1" id="p2cr3"></div>
-            <div class="player" id="p2Runner"></div>
-        </div>
-        <div class="scoreDuoRunner" id="scoreDC">
-            <h1>Jogador <span id="duoRunnerWinner">0</span> Ganha a partida!</h1>
-            Pontuação: <span id="duoRunnerScore">0</span> <br>
-            Melhor Pontuação: <span id="duoRunnerBestScore">0</span> <br>
-            <div class="newHigh" id="duoRunnerHighAlert">Nova Melhor pontuação</div>
-            Stardusts: <span id="duoRunnerPlusMoney">0</span> <br>
-            Velocidade: <span id="duoRunnerSpeed">0</span> <br>
-            <div class="goButtons">
-                <button id="soloRunnerHome">Ir para o início</button>
-                <button id="soloRunnerGame">Começar novamente</button>
-            </div>
-        </div>
-        <div class="duoControls" id="duoRunnerControls">
-            <button class="pauseHome" id="DCretHome">
-            </button>
-            <button class="pauseRestart" id="DCRestart"></button>
-            <button class="pauseDev"></button>
-        </div>
-    </section>
-
     <!--Shop-->
     <section id="shop">
         <div class="background">
@@ -589,7 +476,6 @@
             <button class="shopBlock" id="catSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
             </button>
-            <button class="shopBlock" id="RunnerModePurchase" shopButton style="display: none;">
 
             </button>
             <button class="shopBlock" id="mechaSkinPurchase" shopButton>
@@ -884,9 +770,6 @@
     <script src="assets/js/solo.js"></script>
     <script src="assets/js/duoRun.js"></script>
     <script src="assets/js/shop&skins.js"></script>
-    <script src="assets/js/soloRunner.js"></script>
-    <!--<script src="assets/js/duoRunner.js"></script>
-    <script src="assets/js/selectScript.js"></script>-->
     <script src="assets/js/devKeys.js"></script>
     <script src="assets/js/betaItems.js"></script>
     <script src="assets/js/responsivity.js"></script>

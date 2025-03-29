@@ -443,9 +443,13 @@ document.getElementById('soloConfig').addEventListener('click', () => {
     lastPage = 2
     pageType = 5
     soloPage.style.opacity = '0'
+    let isLightTheme = localStorage.getItem('lightTheme')
     setTimeout(() => {
         settingsPage.style.display = 'block'
         document.body.style.backgroundColor = '#070b34'
+        if (isLightTheme) {
+            document.body.style.backgroundColor = '#5b6ee1'
+        }
         settingsSong.play()
         document.getElementById('settingsHome').className = 'returnGame'
     }, 500);

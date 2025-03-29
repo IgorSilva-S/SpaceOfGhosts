@@ -102,9 +102,13 @@ document.getElementById('duoSettings').addEventListener('click', () => {
     lastPage = 3
     pageType = 5
     duoRunPage.style.opacity = '0'
+    let isLightTheme = localStorage.getItem('lightTheme')
     setTimeout(() => {
-        duoRunPage.removeAttribute('style')
         settingsPage.style.display = 'block'
+        document.body.style.backgroundColor = '#070b34'
+        if (isLightTheme) {
+            document.body.style.backgroundColor = '#5b6ee1'
+        }
         settingsSong.play()
         document.getElementById('settingsHome').className = 'returnGame'
     }, 500);

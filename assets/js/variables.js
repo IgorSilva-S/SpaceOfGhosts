@@ -65,8 +65,6 @@ const shopPage = document.getElementById('shop')
 const skinChangerPage = document.getElementById('skinChanger')
 const settingsPage = document.getElementById('settings')
 const creditsPage = document.getElementById('credits')
-const soloRunnerPage = document.getElementById('soloRunner')
-const RunnerDuoPage = document.getElementById('duoRunner')
 const devKeysCentralPage = document.getElementById('devKeysCentral')
 //End Pages
 

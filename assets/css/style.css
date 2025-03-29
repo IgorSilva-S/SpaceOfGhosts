@@ -19,7 +19,7 @@ input {
 
 body {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     /*background-image: linear-gradient(to bottom, #2E1A47, #111133, #04051a);*/
     /*background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);*/
     /*background-image: linear-gradient(to bottom, #000, #04051a);*/
@@ -38,7 +38,7 @@ html {
 
 .background {
     width: 3840px;
-    height: 100dvh;
+    height: 100vh;
     position: absolute;
     left: 0;
     top: 0;
@@ -51,7 +51,7 @@ html {
 
 .cityBackground {
     width: 3840px;
-    height: 100dvh;
+    height: 100vh;
     position: absolute;
     left: 0;
     top: 0;
@@ -346,7 +346,7 @@ html {
 
 .pauseContainer {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     position: fixed;
     top: 0;
     right: -130%;
@@ -357,7 +357,7 @@ html {
 
 .pauseAlert {
     width: 25vw;
-    height: 100dvh;
+    height: 100vh;
     position: absolute;
     right: -25%;
     top: 0;
@@ -508,7 +508,7 @@ html {
 
 #disclaimer {
     width: 80vw;
-    height: 100dvh;
+    height: 100vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -562,7 +562,7 @@ html {
 
 #homeScreen {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     /*background-image: linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #008, #00f);*/
     display: flex;
     justify-content: space-evenly;
@@ -1164,7 +1164,7 @@ html {
     animation-duration: .5s;
     transition-duration: .5s;
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     background-size: cover;
 }
 
@@ -1237,7 +1237,7 @@ html {
 
 #soloScoreMark {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     background-image: linear-gradient(to bottom, #008, #00f, #00f, #00f, #40f, #70f);
     display: none;
     animation-name: appearPages;
@@ -1305,7 +1305,7 @@ html {
 
 .clouds {
     width: 3840px;
-    height: 100dvh;
+    height: 100vh;
     position: absolute;
     left: 0;
     top: 0;
@@ -1364,7 +1364,7 @@ html {
 
 #gameModeScreen {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -1613,7 +1613,7 @@ html {
 
 .effectsHud {
     width: 60px;
-    height: calc(100dvh - 40px);
+    height: calc(100vh - 40px);
     position: absolute;
     right: 0;
     bottom: 0;
@@ -1939,7 +1939,7 @@ html {
 
 #duoRun {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -1952,7 +1952,7 @@ html {
 
 .playerScreen {
     width: 50%;
-    height: 100dvh;
+    height: 100vh;
     position: relative;
     overflow: hidden;
     background-position: center;
@@ -2045,7 +2045,7 @@ html {
 
 #duoRunScore {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     background-image: linear-gradient(to bottom, #008, #00f, #00f, #00f, #40f, #70f);
     display: none;
     animation-name: appearPages;
@@ -2209,7 +2209,7 @@ html {
 
 #shop {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -2415,7 +2415,7 @@ html {
 
 #skinChanger {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
@@ -2913,7 +2913,7 @@ html {
 
 #settings {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -2951,7 +2951,7 @@ html {
 
 .settingsPanel {
     width: 96%;
-    height: calc(100dvh - 150px);
+    height: calc(100vh - 150px);
     border-radius: 8px 8px 0px 0px;
     background-color: #191919;
     color: white;
@@ -3155,7 +3155,7 @@ html {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     color: white;
     display: none;
     animation-name: appearPages;
@@ -3216,7 +3216,7 @@ html {
 
 #soloRunner {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -3566,7 +3566,7 @@ html {
 
 #duoRunner {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     display: none;
     animation-name: appearPages;
     animation-duration: .5s;
@@ -3610,7 +3610,7 @@ html {
 
 .devKeysCentral {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     display: none;
     /*background-image: linear-gradient(to bottom, #000 60%, #949100);*/
     background-image: linear-gradient(to bottom, #000 40%, rgb(255, 145, 0));
@@ -4086,7 +4086,7 @@ html {
 
 #loadingPage {
     width: 100vw;
-    height: 100dvh;
+    height: 100vh;
     background-color: #000;
     display: flex;
     justify-content: flex-end;
@@ -4120,19 +4120,9 @@ html {
 .loadingGhost {
     width: 150px;
     height: 150px;
-    background-image: url(../img/sprites/animations/loading.png);
+    background-image: url(../img/sprites/animations/loading.gif);
     background-position: center;
     background-size: cover;
-    animation: loadingGhost 4s linear infinite;
-}
-
-@keyframes loadingGhost {
-    from {
-        rotate: 0deg;
-    } 
-    to {
-        rotate: 360deg;
-    }
 }
 
 @keyframes loadingUp {

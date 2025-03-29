@@ -267,11 +267,6 @@ try {
   organizeTheme();
   //End Organize localStorage Items
 
-  //Enable Preview
-  if (canEnablePreviewItems) {
-    //document.getElementById('RunnerModePurchase').removeAttribute('style')
-  }
-
   //Navigations Functions
   disButton.addEventListener("click", () => {
     pageType = 1;
@@ -284,19 +279,6 @@ try {
   });
 
   playButton.addEventListener("click", () => {
-    /*pageType = 1.1
-        homePage.style.opacity = '0'
-        setTimeout(() => {
-            if (RunnerBuy == "true" && canEnablePreviewItems) {
-                soloRunnerButton.removeAttribute('style')
-                soloRunnerButton2.removeAttribute('style')
-                duoRunnerButton.removeAttribute('style')
-                duoRunnerButton2.removeAttribute('style')
-                document.getElementById('gameModeDiv').removeAttribute('style')
-            }
-            homePage.removeAttribute('style')
-            gameMPage.style.display = 'flex'
-        }, 500);*/
     if (screenWidth <= 1000) {
       document.getElementById("homeButtons").style.marginLeft = "-100%";
       volAlertCont.removeAttribute("style");
@@ -317,7 +299,6 @@ try {
   document.getElementById("spatialMode").addEventListener("click", () => {
     document.getElementById("spatialModeAnimation").style.display = "none";
     document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-    document.getElementById("runnerModeAnimation").style.display = "none";
     document.getElementById("interferenceAnim").removeAttribute("style");
     document.getElementById("playPopup").style.bottom = "5%";
     selectedGameMode = 1;
@@ -325,7 +306,6 @@ try {
     setTimeout(() => {
       document.getElementById("spatialModeAnimation").removeAttribute("style");
       document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-      document.getElementById("runnerModeAnimation").style.display = "none";
       document.getElementById("interferenceAnim").style.display = "none";
     }, 200);
   });
@@ -333,7 +313,6 @@ try {
   document.getElementById("spatialXtremeMode").addEventListener("click", () => {
     document.getElementById("spatialModeAnimation").style.display = "none";
     document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-    document.getElementById("runnerModeAnimation").style.display = "none";
     document.getElementById("interferenceAnim").removeAttribute("style");
     document.getElementById("playPopup").style.bottom = "5%";
     selectedGameMode = 1.1;
@@ -341,23 +320,6 @@ try {
     setTimeout(() => {
       document.getElementById("spatialModeAnimation").style.display = "none";
       document.getElementById("spatialXtremeModeAnimation").removeAttribute("style");
-      document.getElementById("runnerModeAnimation").style.display = "none";
-      document.getElementById("interferenceAnim").style.display = "none";
-    }, 200);
-  });
-
-  document.getElementById("runnerMode").addEventListener("click", () => {
-    document.getElementById("spatialModeAnimation").style.display = "none";
-    document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-    document.getElementById("runnerModeAnimation").style.display = "none";
-    document.getElementById("interferenceAnim").removeAttribute("style");
-    document.getElementById("playPopup").style.bottom = "5%";
-    selectedGameMode = 2;
-    challengeType = null;
-    setTimeout(() => {
-      document.getElementById("spatialModeAnimation").style.display = "none";
-      document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-      document.getElementById("runnerModeAnimation").removeAttribute("style");
       document.getElementById("interferenceAnim").style.display = "none";
     }, 200);
   });
@@ -514,9 +476,10 @@ try {
       lastPage = undefined;
       pageType = 3;
       settingsPage.style.opacity = "0";
+      document.body.removeAttribute('style')
       setTimeout(() => {
         settingsPage.removeAttribute("style");
-        duoRunPage.style.display = "flex";
+        duoRunPage.style.opacity = "1";
         settingsSong.pause();
         settingsSong.currentTime = 0;
         document.getElementById("settingsHome").className = "returnHome";
@@ -690,51 +653,6 @@ try {
               duoRunPage.className = `biome${biomeType}`;
             }, 50000);
           }, 500);
-        }
-      }
-
-      if (selectedGameMode == 2) {
-        if (isOnePlayer) {
-          pageType = 2.1;
-          homePage.style.opacity = "0";
-          setTimeout(() => {
-            homePage.removeAttribute("style");
-            homeSong.pause();
-            homeSong.currentTime = 0;
-            soloRunnerLife = 100
-            soloRunnerPage.style.display = "block";
-            soloRunnerSong.play();
-            checkSRLives()
-
-            vanishWaiter = setInterval(() => {
-              if (vanishTimer < 15) {
-                vanishTimer++
-              } else {
-                clearInterval(vanishWaiter)
-                canVanish = true
-                document.getElementById('vanishStts').className = 'okayStts'
-              }
-            }, 1000);
-
-            speedWaiter = setInterval(() => {
-              if (speedTimer < 45) {
-                speedTimer++
-              } else {
-                clearInterval(speedWaiter)
-                canSpeed = true
-                document.getElementById('speedStts').className = 'okayStts'
-              }
-            }, 1000);
-
-          }, 500);
-        } else {
-          document.getElementById("playPopup").style.bottom = "calc(5% + 60px)";
-          document.getElementById('alertPlay').style.bottom = '5%'
-          document.getElementById('alertPlay').innerText = 'Esse modo de jogo ainda não está pronto, espere por futuros updates'
-          setTimeout(() => {
-            document.getElementById('alertPlay').removeAttribute('style')
-            document.getElementById("playPopup").style.bottom = "5%";
-          }, 3000);
         }
       }
     }
