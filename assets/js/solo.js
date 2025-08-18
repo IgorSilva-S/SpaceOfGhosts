@@ -113,13 +113,17 @@ function pauseGameSolo() {
             acceleratorWaiter = setInterval(() => {
                 acceleratorTimer++
                 if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
-                    document.getElementById('acceleratorAlert').classList.add('almostEnd')
+                    document.getElementById('acEffect').classList.add('almostEnd')
                 }
                 if (acceleratorTimer == 15) {
                     clearInterval(acceleratorWaiter)
                     acceleratorP1 = false
                     acceleratorTimer = 0
                     invencible.removeAttribute('style')
+                    document.getElementById('acEffect').style.opacity = '0'
+                    setTimeout(() => {
+                      document.getElementById('acEffect').removeAttribute('style')
+                    }, 200);
                     //trail.removeAttribute('style')
 
                     clearInterval(trail)
@@ -439,9 +443,13 @@ document.getElementById('soloConfig').addEventListener('click', () => {
     lastPage = 2
     pageType = 5
     soloPage.style.opacity = '0'
+    let isLightTheme = localStorage.getItem('lightTheme')
     setTimeout(() => {
-        soloPage.removeAttribute('style')
         settingsPage.style.display = 'block'
+        document.body.style.backgroundColor = '#070b34'
+        if (isLightTheme) {
+            document.body.style.backgroundColor = '#5b6ee1'
+        }
         settingsSong.play()
         document.getElementById('settingsHome').className = 'returnGame'
     }, 500);
@@ -1015,6 +1023,7 @@ setInterval(() => {
             if (shield == false) {
                 player.classList.add('hurted')
                 player.classList.add('hShield')
+                document.getElementById('hShieldEffect').style.display = 'block'
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
@@ -1027,6 +1036,10 @@ setInterval(() => {
                     if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
+                        document.getElementById('hShieldEffect').style.opacity = '0'
+                        setTimeout(() => {
+                            document.getElementById('hShieldEffect').removeAttribute('style')
+                        }, 200);
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
@@ -1036,7 +1049,6 @@ setInterval(() => {
                 } else {
                     lives1p = lives1p - 5
                 }
-
                 checkLive1p()
             } else {
                 shieldActive = false
@@ -1063,6 +1075,7 @@ setInterval(() => {
             if (shield == false) {
                 player.classList.add('hurted')
                 player.classList.add('hShield')
+                document.getElementById('hShieldEffect').style.display = 'block'
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
@@ -1075,6 +1088,10 @@ setInterval(() => {
                     if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
+                        document.getElementById('hShieldEffect').style.opacity = '0'
+                        setTimeout(() => {
+                            document.getElementById('hShieldEffect').removeAttribute('style')
+                        }, 200);
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
@@ -1110,6 +1127,7 @@ setInterval(() => {
             if (shield == false) {
                 player.classList.add('hurted')
                 player.classList.add('hShield')
+                document.getElementById('hShieldEffect').style.display = 'block'
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
@@ -1122,6 +1140,10 @@ setInterval(() => {
                     if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
+                        document.getElementById('hShieldEffect').style.opacity = '0'
+                        setTimeout(() => {
+                            document.getElementById('hShieldEffect').removeAttribute('style')
+                        }, 200);
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
@@ -1157,6 +1179,7 @@ setInterval(() => {
             if (shield == false) {
                 player.classList.add('hurted')
                 player.classList.add('hShield')
+                document.getElementById('hShieldEffect').style.display = 'block'
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
@@ -1169,6 +1192,10 @@ setInterval(() => {
                     if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
+                        document.getElementById('hShieldEffect').style.opacity = '0'
+                        setTimeout(() => {
+                            document.getElementById('hShieldEffect').removeAttribute('style')
+                        }, 200);
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
@@ -1204,6 +1231,7 @@ setInterval(() => {
             if (shield == false) {
                 player.classList.add('hurted')
                 player.classList.add('hShield')
+                document.getElementById('hShieldEffect').style.display = 'block'
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
@@ -1216,6 +1244,10 @@ setInterval(() => {
                     if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
+                        document.getElementById('hShieldEffect').style.opacity = '0'
+                        setTimeout(() => {
+                            document.getElementById('hShieldEffect').removeAttribute('style')
+                        }, 200);
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
@@ -1251,6 +1283,7 @@ setInterval(() => {
             if (shield == false) {
                 player.classList.add('hurted')
                 player.classList.add('hShield')
+                document.getElementById('hShieldEffect').style.display = 'block'
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
@@ -1263,6 +1296,10 @@ setInterval(() => {
                     if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
+                        document.getElementById('hShieldEffect').style.opacity = '0'
+                        setTimeout(() => {
+                            document.getElementById('hShieldEffect').removeAttribute('style')
+                        }, 200);
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
@@ -1298,6 +1335,7 @@ setInterval(() => {
             if (shield == false) {
                 player.classList.add('hurted')
                 player.classList.add('hShield')
+                document.getElementById('hShieldEffect').style.display = 'block'
                 hSong.play()
                 hurtShield = true
                 hurtAnim = true
@@ -1310,6 +1348,10 @@ setInterval(() => {
                     if (hurtShieldTimer == 5) {
                         hurtShield = false
                         player.classList.remove('hShield')
+                        document.getElementById('hShieldEffect').style.opacity = '0'
+                        setTimeout(() => {
+                            document.getElementById('hShieldEffect').removeAttribute('style')
+                        }, 200);
                         hurtShieldTimer = 0
                         clearInterval(hurtSWaiter)
                     }
@@ -1335,8 +1377,14 @@ setInterval(() => {
 setInterval(() => {
     if (!shieldActive) {
         player.classList.remove('shield')
+        document.getElementById('shieldEffect').style.opacity = '0'
+        setTimeout(() => {
+            document.getElementById('shieldEffect').removeAttribute('style')
+        }, 200);
+    } else {
+          document.getElementById('shieldEffect').style.display = 'block'
     }
-}, 10);
+}, 1000);
 
 //Check if boosts hit player
 setInterval(() => {
@@ -1355,6 +1403,7 @@ setInterval(() => {
                         player.classList.add('shield')
                         shield = true
                         shieldActive = true
+                        document.getElementById('shieldEffect').style.display = 'block'
                         boostItem.style.opacity = '0'
                         boostOn = false
                     } else {
@@ -1379,6 +1428,7 @@ setInterval(() => {
                             if (lives1p > 100) {
                                 lives1p = 100
                             }
+
                         } else {
                             lives1p = lives1p + 20
                             healSlot++
@@ -1402,6 +1452,11 @@ setInterval(() => {
                     }
 
                     checkLive1p()
+                    
+                    document.getElementById('lifeEffect').style.display = 'block'
+                    setTimeout(() => {
+                      document.getElementById('lifeEffect').removeAttribute('style')
+                    }, 1000);
                 } else if (boostStyle == 2) {
                     boostItem.style.opacity = '0'
                     boostOn = false
@@ -1412,9 +1467,15 @@ setInterval(() => {
                             lives1p = 20
                             checkLive1p()
                         }
+
+                        document.getElementById('sLifeEffect').style.display = 'block'
+                        setTimeout(() => {
+                          document.getElementById('sLifeEffect').removeAttribute('style')
+                        }, 1000);
                     } else {
                         fullHealSlot++
                     }
+
                 } else if (boostStyle == 3) {
                     boostItem.style.opacity = '0'
                     boostOn = false
@@ -1423,6 +1484,7 @@ setInterval(() => {
                             player.classList.remove('shield')
                         }
                         acceleratorP1 = true
+                        document.getElementById('acEffect').style.display = 'block'
                         document.getElementById('gameBckg').style.display = 'none'
                         invencible.style.display = 'block'
                         //.style.display = 'block'
@@ -1446,13 +1508,17 @@ setInterval(() => {
                         acceleratorWaiter = setInterval(() => {
                             acceleratorTimer++
                             if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
-                                document.getElementById('acceleratorAlert').classList.add('almostEnd')
+                                document.getElementById('acEffect').classList.add('almostEnd')
                             }
                             if (acceleratorTimer == 15) {
                                 clearInterval(acceleratorWaiter)
                                 acceleratorP1 = false
                                 acceleratorTimer = 0
                                 invencible.removeAttribute('style')
+                                document.getElementById('acEffect').style.opacity = '0'
+                                setTimeout(() => {
+                                    document.getElementById('acEffect').removeAttribute('style')
+                                }, 200);
                                 //trail.removeAttribute('style')
 
                                 clearInterval(trail)
@@ -1464,7 +1530,7 @@ setInterval(() => {
                                 setTimeout(() => {
                                     document.getElementById('gameBckg').removeAttribute('style')
                                 }, 1);
-                                document.getElementById('acceleratorAlert').classList.remove('almostEnd')
+                                document.getElementById('acEffect').classList.remove('almostEnd')
                             }
                         }, 1000);
                     } else {
@@ -1478,6 +1544,7 @@ setInterval(() => {
                     } else {
                         player.classList.add('relaxing')
                         relaxStts = true
+                        document.getElementById('relaxEffect').style.display = 'block'
                         meteor1.style.animationPlayState = 'paused'
                         meteor2.style.animationPlayState = 'paused'
                         meteor3.style.animationPlayState = 'paused'
@@ -1501,6 +1568,10 @@ setInterval(() => {
                             boostItem.style.animationPlayState = 'running'
                             document.getElementById('gameBckg').style.animationPlayState = 'running'
                             relaxStts = false
+                            document.getElementById('relaxEffect').style.opacity = '0'
+                            setTimeout(() => {
+                                document.getElementById('relaxEffect').removeAttribute('style')
+                            }, 200);
                         }, 2000);
                     }
                 }
@@ -1688,15 +1759,16 @@ mControlDown.addEventListener('touchend', (e) => {
             player.classList.add("shield");
             shield = true;
             shieldActive = true;
+            document.getElementById('shieldEffect').style.display = 'block'
             shieldSlot--;
             if (acceleratorP1 || relaxStts) {
               player.classList.remove("shield");
             }
           } else if (shieldSlot == 0) {
-            document.getElementById("shieldButton").classList.add("emptySlot");
+            document.getElementById("shieldAlert").classList.add("emptySlot");
             setTimeout(() => {
               document
-                .getElementById("shieldButton")
+                .getElementById("shieldAlert")
                 .classList.remove("emptySlot");
             }, 1500);
           }
@@ -1707,18 +1779,19 @@ mControlDown.addEventListener('touchend', (e) => {
             acceleratorSlot--;
             invencible.style.display = "block";
             //trail.style.display = 'block'
-          
-              trail = setInterval(() => {
-                let trailElm = document.createElement("div");
-                trailElm.setAttribute("class", "trail");
-                trailElm.setAttribute("style", `top: ${playerPosi}%`);
-                trailElm.addEventListener("animationend", () => {
-                  trailElm.remove();
-                });
-                soloPage.insertAdjacentElement("beforeend", trailElm);
-              }, 100);
-            
+  
+            trail = setInterval(() => {
+              let trailElm = document.createElement("div");
+              trailElm.setAttribute("class", "trail");
+              trailElm.setAttribute("style", `top: ${playerPosi}%`);
+              trailElm.addEventListener("animationend", () => {
+                trailElm.remove();
+              });
+              soloPage.insertAdjacentElement("beforeend", trailElm);
+            }, 100);
+  
             acceleratorP1 = true;
+            document.getElementById('acEffect').style.display = 'block'
             document.getElementById("gameBckg").style.display = "none";
             document.getElementById("gameBckg").style.animationDuration = "7.5s";
             setTimeout(() => {
@@ -1739,40 +1812,43 @@ mControlDown.addEventListener('touchend', (e) => {
               }
             }, 500);
             plusSpeed = plusSpeed + 0.25;
-            document.getElementById("plusSpeedAlert").innerText = `${
-              plusSpeed * 100
-            }%`;
+            document.getElementById("plusSpeedAlert").innerText = `${plusSpeed * 100
+              }%`;
             acceleratorWaiter = setInterval(() => {
               acceleratorTimer++;
               if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
-                document.getElementById('acceleratorButton').classList.add('almostEnd')
-            }
-            if (acceleratorTimer == 15) {
+                document.getElementById('acEffect').classList.add('almostEnd')
+              }
+              if (acceleratorTimer == 15) {
                 clearInterval(acceleratorWaiter)
                 acceleratorP1 = false
                 acceleratorTimer = 0
                 invencible.removeAttribute('style')
+                document.getElementById('acEffect').style.opacity = '0'
+                setTimeout(() => {
+                    document.getElementById('acEffect').removeAttribute('style')
+                }, 200);
                 //trail.removeAttribute('style')
   
                 clearInterval(trail)
   
                 if (shieldActive) {
-                    player.classList.add('shield')
+                  player.classList.add('shield')
                 }
                 document.getElementById('gameBckg').style.display = 'none'
                 setTimeout(() => {
-                    document.getElementById('gameBckg').removeAttribute('style')
+                  document.getElementById('gameBckg').removeAttribute('style')
                 }, 1);
-                document.getElementById('acceleratorButton').classList.remove('almostEnd')
-            }
+                document.getElementById('acEffect').classList.remove('almostEnd')
+              }
             }, 1000);
           } else if (acceleratorSlot == 0) {
             document
-              .getElementById("acceleratorButton")
+              .getElementById("acceleratorAlert")
               .classList.add("emptySlot");
             setTimeout(() => {
               document
-                .getElementById("acceleratorButton")
+                .getElementById("acceleratorAlert")
                 .classList.remove("emptySlot");
             }, 1500);
           }
@@ -1783,6 +1859,7 @@ mControlDown.addEventListener('touchend', (e) => {
             relaxSlot--;
             player.classList.add("relaxing");
             relaxStts = true;
+            document.getElementById('relaxEffect').style.display = 'block'
             meteor1.style.animationPlayState = "paused";
             meteor2.style.animationPlayState = "paused";
             meteor3.style.animationPlayState = "paused";
@@ -1795,9 +1872,8 @@ mControlDown.addEventListener('touchend', (e) => {
               "paused";
             setTimeout(() => {
               plusSpeed = plusSpeed - 0.25;
-              document.getElementById("plusSpeedAlert").innerText = `${
-                plusSpeed * 100
-              }%`;
+              document.getElementById("plusSpeedAlert").innerText = `${plusSpeed * 100
+                }%`;
               player.classList.remove("relaxing");
               meteor1.style.animationPlayState = "running";
               meteor2.style.animationPlayState = "running";
@@ -1810,12 +1886,16 @@ mControlDown.addEventListener('touchend', (e) => {
               document.getElementById("gameBckg").style.animationPlayState =
                 "running";
               relaxStts = false;
+              document.getElementById('relaxEffect').style.opacity = '0'
+              setTimeout(() => {
+                document.getElementById('relaxEffect').removeAttribute('style')
+              }, 200);
   
             }, 2000);
           } else if (relaxSlot == 0) {
-            document.getElementById("relaxButton").classList.add("emptySlot");
+            document.getElementById("relaxAlert").classList.add("emptySlot");
             setTimeout(() => {
-              document.getElementById("relaxButton").classList.remove("emptySlot");
+              document.getElementById("relaxAlert").classList.remove("emptySlot");
             }, 1500);
           }
     })
@@ -1825,16 +1905,25 @@ mControlDown.addEventListener('touchend', (e) => {
             fullHealSlot--;
             lives1p = 100;
             checkLive1p();
-            
+  
             if (challengeType == 'extreme') {
-              lives1p = 20
-              checkLive1p();
+              if (lives1p >= 20) {
+                fullHealSlot++
+              } else {
+                lives1p = 20
+                checkLive1p();
+              }
             }
   
-          } else if (fullHealSlot == 0) {
-            document.getElementById("FhealButton").classList.add("emptySlot");
+            document.getElementById('sLifeEffect').style.display = 'block'
             setTimeout(() => {
-              document.getElementById("FhealButton").classList.remove("emptySlot");
+              document.getElementById('sLifeEffect').removeAttribute('style')
+            }, 1000);
+  
+          } else if (fullHealSlot == 0) {
+            document.getElementById("FhealAlert").classList.add("emptySlot");
+            setTimeout(() => {
+              document.getElementById("FhealAlert").classList.remove("emptySlot");
             }, 1500);
           }
     })
@@ -1854,10 +1943,15 @@ mControlDown.addEventListener('touchend', (e) => {
               }
             }
             checkLive1p();
-          } else if (healSlot == 0) {
-            document.getElementById("healButton").classList.add("emptySlot");
+            
+            document.getElementById('lifeEffect').style.display = 'block'
             setTimeout(() => {
-              document.getElementById("healButton").classList.remove("emptySlot");
+              document.getElementById('lifeEffect').removeAttribute('style')
+            }, 1000);
+          } else if (healSlot == 0) {
+            document.getElementById("healAlert").classList.add("emptySlot");
+            setTimeout(() => {
+              document.getElementById("healAlert").classList.remove("emptySlot");
             }, 1500);
           }
     })

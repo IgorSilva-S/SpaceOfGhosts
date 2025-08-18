@@ -119,12 +119,12 @@ useHD
 -> Default: undefined
 -> What will this key change?: HD Filter for the game
 
-Future Keys:
-
 lightTheme
 -> Values: true or false
 -> Default: false
 -> What will this key change?: Toggle light theme in game
+
+Future Keys:
 
 altPauseMenu
 -> Values: true or false

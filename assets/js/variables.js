@@ -1,10 +1,10 @@
 //Variables
 
 // Game Env Variables
-const gameVersion = 'Beta'
-const isPreview = true
-const previewType = '1y'
-const lastDayOfChanges = '05/01/2025'
+const gameVersion = 'Pre 1'
+const isPreview = false
+const previewType = 'Ver'
+const lastDayOfChanges = '23/01/2025'
 const datetype = 'DD/MM/YYYY'
 const canEnablePreviewItems = false
 let canLoad = true
@@ -65,8 +65,6 @@ const shopPage = document.getElementById('shop')
 const skinChangerPage = document.getElementById('skinChanger')
 const settingsPage = document.getElementById('settings')
 const creditsPage = document.getElementById('credits')
-const soloRunnerPage = document.getElementById('soloRunner')
-const RunnerDuoPage = document.getElementById('duoRunner')
 const devKeysCentralPage = document.getElementById('devKeysCentral')
 //End Pages
 
@@ -230,11 +228,14 @@ let P1WTC1, P1WTC2, P1WTC3, P1WTC4, P1WTC5, P2WTC1, P2WTC2, P2WTC3, P2WTC4, P2WT
 //Responsivity Meteors
 const screenWidth = screen.width
 
-//Runner Solo Crystals
-const crystal1 = document.getElementById('cr1')
-const crystal2 = document.getElementById('cr2')
-const crystal3 = document.getElementById('cr3')
-const crystal4 = document.getElementById('cr4')
+//Runner Solo Ufos
+const ufoB1 = document.getElementById('cr1')
+const ufoB2 = document.getElementById('cr2')
+const ufoB3 = document.getElementById('cr3')
+const ufoT1 = document.getElementById('crt1')
+const ufoT2 = document.getElementById('crt2')
+const ufoT3 = document.getElementById('crt3')
+let UB1T, UB2T, UB3T, UT1T, UT2T, UT3T
 
 //Skin changer button
 const s0b = document.getElementById('cs0')

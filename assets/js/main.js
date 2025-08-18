@@ -267,11 +267,6 @@ try {
   organizeTheme();
   //End Organize localStorage Items
 
-  //Enable Preview
-  if (canEnablePreviewItems) {
-    //document.getElementById('RunnerModePurchase').removeAttribute('style')
-  }
-
   //Navigations Functions
   disButton.addEventListener("click", () => {
     pageType = 1;
@@ -284,19 +279,6 @@ try {
   });
 
   playButton.addEventListener("click", () => {
-    /*pageType = 1.1
-        homePage.style.opacity = '0'
-        setTimeout(() => {
-            if (RunnerBuy == "true" && canEnablePreviewItems) {
-                soloRunnerButton.removeAttribute('style')
-                soloRunnerButton2.removeAttribute('style')
-                duoRunnerButton.removeAttribute('style')
-                duoRunnerButton2.removeAttribute('style')
-                document.getElementById('gameModeDiv').removeAttribute('style')
-            }
-            homePage.removeAttribute('style')
-            gameMPage.style.display = 'flex'
-        }, 500);*/
     if (screenWidth <= 1000) {
       document.getElementById("homeButtons").style.marginLeft = "-100%";
       volAlertCont.removeAttribute("style");
@@ -317,7 +299,6 @@ try {
   document.getElementById("spatialMode").addEventListener("click", () => {
     document.getElementById("spatialModeAnimation").style.display = "none";
     document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-    document.getElementById("runnerModeAnimation").style.display = "none";
     document.getElementById("interferenceAnim").removeAttribute("style");
     document.getElementById("playPopup").style.bottom = "5%";
     selectedGameMode = 1;
@@ -325,7 +306,6 @@ try {
     setTimeout(() => {
       document.getElementById("spatialModeAnimation").removeAttribute("style");
       document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-      document.getElementById("runnerModeAnimation").style.display = "none";
       document.getElementById("interferenceAnim").style.display = "none";
     }, 200);
   });
@@ -333,7 +313,6 @@ try {
   document.getElementById("spatialXtremeMode").addEventListener("click", () => {
     document.getElementById("spatialModeAnimation").style.display = "none";
     document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-    document.getElementById("runnerModeAnimation").style.display = "none";
     document.getElementById("interferenceAnim").removeAttribute("style");
     document.getElementById("playPopup").style.bottom = "5%";
     selectedGameMode = 1.1;
@@ -341,23 +320,6 @@ try {
     setTimeout(() => {
       document.getElementById("spatialModeAnimation").style.display = "none";
       document.getElementById("spatialXtremeModeAnimation").removeAttribute("style");
-      document.getElementById("runnerModeAnimation").style.display = "none";
-      document.getElementById("interferenceAnim").style.display = "none";
-    }, 200);
-  });
-
-  document.getElementById("runnerMode").addEventListener("click", () => {
-    document.getElementById("spatialModeAnimation").style.display = "none";
-    document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-    document.getElementById("runnerModeAnimation").style.display = "none";
-    document.getElementById("interferenceAnim").removeAttribute("style");
-    document.getElementById("playPopup").style.bottom = "5%";
-    selectedGameMode = 2;
-    challengeType = null;
-    setTimeout(() => {
-      document.getElementById("spatialModeAnimation").style.display = "none";
-      document.getElementById("spatialXtremeModeAnimation").style.display = "none";
-      document.getElementById("runnerModeAnimation").removeAttribute("style");
       document.getElementById("interferenceAnim").style.display = "none";
     }, 200);
   });
@@ -502,9 +464,10 @@ try {
       lastPage = undefined;
       pageType = 2;
       settingsPage.style.opacity = "0";
+      document.body.removeAttribute('style')
       setTimeout(() => {
         settingsPage.removeAttribute("style");
-        soloPage.style.display = "block";
+        soloPage.style.opacity = "1";
         settingsSong.pause();
         settingsSong.currentTime = 0;
         document.getElementById("settingsHome").className = "returnHome";
@@ -513,9 +476,10 @@ try {
       lastPage = undefined;
       pageType = 3;
       settingsPage.style.opacity = "0";
+      document.body.removeAttribute('style')
       setTimeout(() => {
         settingsPage.removeAttribute("style");
-        duoRunPage.style.display = "flex";
+        duoRunPage.style.opacity = "1";
         settingsSong.pause();
         settingsSong.currentTime = 0;
         document.getElementById("settingsHome").className = "returnHome";
@@ -563,9 +527,12 @@ try {
     let isOnePlayer = document.getElementById("onePlayer").checked;
     let isTwoPlayers = document.getElementById("twoPlayers").checked;
     if (!isOnePlayer && !isTwoPlayers) {
-      document.getElementById('alertPlay').style.bottom = 'calc(6% + 120px)'
+      document.getElementById("playPopup").style.bottom = "calc(5% + 60px)";
+      document.getElementById('alertPlay').style.bottom = '5%'
+      document.getElementById('alertPlay').innerText = 'Selecione a quantidade de jogadores'
       setTimeout(() => {
         document.getElementById('alertPlay').removeAttribute('style')
+        document.getElementById("playPopup").style.bottom = "5%";
       }, 3000);
     } else {
       if (selectedGameMode == 1) {
@@ -598,9 +565,8 @@ try {
             addSpeed = setInterval(() => {
               if (scoreNum % 250 == 0 && scoreNum != 0) {
                 plusSpeed = plusSpeed + 0.25;
-                document.getElementById("plusSpeedAlert").innerText = `${
-                  plusSpeed * 100
-                }%`;
+                document.getElementById("plusSpeedAlert").innerText = `${plusSpeed * 100
+                  }%`;
               }
             }, 501);
             playerPXPosi = parseInt(
@@ -660,9 +626,8 @@ try {
             addSpeed = setInterval(() => {
               if (scoreNum % 100 == 0 && scoreNum != 0) {
                 plusSpeed = plusSpeed + 0.5;
-                document.getElementById("plusSpeedAlert").innerText = `${
-                  plusSpeed * 100
-                }%`;
+                document.getElementById("plusSpeedAlert").innerText = `${plusSpeed * 100
+                  }%`;
               }
             }, 501);
             playerPXPosi = parseInt(
@@ -687,43 +652,6 @@ try {
               duoRunPage.className = "";
               duoRunPage.className = `biome${biomeType}`;
             }, 50000);
-          }, 500);
-        }
-      }
-
-      if (selectedGameMode == 2) {
-        if (isOnePlayer) {
-          pageType = 2.1;
-          homePage.style.opacity = "0";
-          setTimeout(() => {
-            homePage.removeAttribute("style");
-            homeSong.pause();
-            homeSong.currentTime = 0;
-            soloRunnerLife = 100
-            soloRunnerPage.style.display = "block";
-            soloRunnerSong.play();
-            checkSRLives()
-
-            vanishWaiter = setInterval(() => {
-              if (vanishTimer < 15) {
-                  vanishTimer++
-              } else {
-                  clearInterval(vanishWaiter)
-                  canVanish = true
-                  document.getElementById('vanishStts').className = 'okayStts'
-              }
-          }, 1000);
-
-          speedWaiter = setInterval(() => {
-            if (speedTimer < 45) {
-                speedTimer++
-            } else {
-                clearInterval(speedWaiter)
-                canSpeed = true
-                document.getElementById('speedStts').className = 'okayStts'
-            }
-        }, 1000);
-
           }, 500);
         }
       }
@@ -819,28 +747,24 @@ try {
     //Home - Ghost Player detection
     if (pageType == 1) {
       if (e.key == "1") {
-        document.getElementById("hgh1").style.filter =
-          "drop-shadow(0px 0px 10px #008dfe)";
+        document.getElementById("hgh1").style.filter = "drop-shadow(0px 0px 10px #008dfe)";
+        document.getElementById("hghX1").style.filter = "drop-shadow(0px 0px 10px #008dfe)";
+        document.getElementById('hghR1').style.filter = "drop-shadow(0px 0px 10px #008dfe)";
         setTimeout(() => {
           document.getElementById("hgh1").removeAttribute("style");
+          document.getElementById("hghX1").style.filter = 'none'
+          document.getElementById("hghR1").removeAttribute("style");
         }, 1000);
-        document.getElementById("hghX1").style.filter =
-        "drop-shadow(0px 0px 10px #008dfe)";
-      setTimeout(() => {
-        document.getElementById("hghX1").style.filter = 'none'
-      }, 1000);
       }
       if (e.key == "2") {
-        document.getElementById("hgh2").style.filter =
-          "drop-shadow(0px 0px 10px #fb3936)";
-        setTimeout(() => {
-          document.getElementById("hgh2").removeAttribute("style");
-        }, 1000);
-        document.getElementById("hghX2").style.filter =
-        "drop-shadow(0px 0px 10px #fb3936)";
-      setTimeout(() => {
-        document.getElementById("hghX2").style.filter = 'none'
-      }, 1000);
+        document.getElementById("hgh2").style.filter = "drop-shadow(0px 0px 10px #fb3936)";
+        document.getElementById("hghX2").style.filter = "drop-shadow(0px 0px 10px #fb3936)";
+        document.getElementById("hghR2").style.filter = "drop-shadow(0px 0px 10px #fb3936)";
+          setTimeout(() => {
+            document.getElementById("hgh2").removeAttribute("style");
+            document.getElementById("hghX2").style.filter = 'none'
+            document.getElementById("hghR2").removeAttribute("style");
+          }, 1000);
       }
     }
 
@@ -856,7 +780,7 @@ try {
           player.classList.add("upping");
           setTimeout(() => {
             playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
-        }, 1);
+          }, 1);
         }
         if (e.key == "ArrowDown") {
           playerPosi++;
@@ -867,7 +791,7 @@ try {
           player.classList.add("falling");
           setTimeout(() => {
             playerPXPosi = parseInt(window.getComputedStyle(player).getPropertyValue("top"))
-        }, 1);
+          }, 1);
         }
       } else {
         soloKeyDown(e);
@@ -883,6 +807,7 @@ try {
           player.classList.add("shield");
           shield = true;
           shieldActive = true;
+          document.getElementById('shieldEffect').style.display = 'block'
           shieldSlot--;
           if (acceleratorP1 || relaxStts) {
             player.classList.remove("shield");
@@ -902,18 +827,19 @@ try {
           acceleratorSlot--;
           invencible.style.display = "block";
           //trail.style.display = 'block'
-        
-            trail = setInterval(() => {
-              let trailElm = document.createElement("div");
-              trailElm.setAttribute("class", "trail");
-              trailElm.setAttribute("style", `top: ${playerPosi}%`);
-              trailElm.addEventListener("animationend", () => {
-                trailElm.remove();
-              });
-              soloPage.insertAdjacentElement("beforeend", trailElm);
-            }, 100);
-          
+
+          trail = setInterval(() => {
+            let trailElm = document.createElement("div");
+            trailElm.setAttribute("class", "trail");
+            trailElm.setAttribute("style", `top: ${playerPosi}%`);
+            trailElm.addEventListener("animationend", () => {
+              trailElm.remove();
+            });
+            soloPage.insertAdjacentElement("beforeend", trailElm);
+          }, 100);
+
           acceleratorP1 = true;
+          document.getElementById('acEffect').style.display = 'block'
           document.getElementById("gameBckg").style.display = "none";
           document.getElementById("gameBckg").style.animationDuration = "7.5s";
           setTimeout(() => {
@@ -934,32 +860,35 @@ try {
             }
           }, 500);
           plusSpeed = plusSpeed + 0.25;
-          document.getElementById("plusSpeedAlert").innerText = `${
-            plusSpeed * 100
-          }%`;
+          document.getElementById("plusSpeedAlert").innerText = `${plusSpeed * 100
+            }%`;
           acceleratorWaiter = setInterval(() => {
             acceleratorTimer++;
             if (acceleratorTimer >= 10 && acceleratorTimer < 15) {
-              document.getElementById('acceleratorAlert').classList.add('almostEnd')
-          }
-          if (acceleratorTimer == 15) {
+              document.getElementById('acEffect').classList.add('almostEnd')
+            }
+            if (acceleratorTimer == 15) {
               clearInterval(acceleratorWaiter)
               acceleratorP1 = false
               acceleratorTimer = 0
               invencible.removeAttribute('style')
+              document.getElementById('acEffect').style.opacity = '0'
+              setTimeout(() => {
+                document.getElementById('acEffect').removeAttribute('style')
+              }, 200);
               //trail.removeAttribute('style')
 
               clearInterval(trail)
 
               if (shieldActive) {
-                  player.classList.add('shield')
+                player.classList.add('shield')
               }
               document.getElementById('gameBckg').style.display = 'none'
               setTimeout(() => {
-                  document.getElementById('gameBckg').removeAttribute('style')
+                document.getElementById('gameBckg').removeAttribute('style')
               }, 1);
-              document.getElementById('acceleratorAlert').classList.remove('almostEnd')
-          }
+              document.getElementById('acEffect').classList.remove('almostEnd')
+            }
           }, 1000);
         } else if (acceleratorSlot == 0) {
           document
@@ -978,6 +907,7 @@ try {
           relaxSlot--;
           player.classList.add("relaxing");
           relaxStts = true;
+          document.getElementById('relaxEffect').style.display = 'block'
           meteor1.style.animationPlayState = "paused";
           meteor2.style.animationPlayState = "paused";
           meteor3.style.animationPlayState = "paused";
@@ -990,9 +920,8 @@ try {
             "paused";
           setTimeout(() => {
             plusSpeed = plusSpeed - 0.25;
-            document.getElementById("plusSpeedAlert").innerText = `${
-              plusSpeed * 100
-            }%`;
+            document.getElementById("plusSpeedAlert").innerText = `${plusSpeed * 100
+              }%`;
             player.classList.remove("relaxing");
             meteor1.style.animationPlayState = "running";
             meteor2.style.animationPlayState = "running";
@@ -1005,6 +934,10 @@ try {
             document.getElementById("gameBckg").style.animationPlayState =
               "running";
             relaxStts = false;
+            document.getElementById('relaxEffect').style.opacity = '0'
+            setTimeout(() => {
+              document.getElementById('relaxEffect').removeAttribute('style')
+            }, 200);
 
           }, 2000);
         } else if (relaxSlot == 0) {
@@ -1019,11 +952,20 @@ try {
           fullHealSlot--;
           lives1p = 100;
           checkLive1p();
-          
+
           if (challengeType == 'extreme') {
-            lives1p = 20
-            checkLive1p();
+            if (lives1p >= 20) {
+              fullHealSlot++
+            } else {
+              lives1p = 20
+              checkLive1p();
+            }
           }
+
+          document.getElementById('sLifeEffect').style.display = 'block'
+          setTimeout(() => {
+            document.getElementById('sLifeEffect').removeAttribute('style')
+          }, 1000);
 
         } else if (fullHealSlot == 0) {
           document.getElementById("FhealAlert").classList.add("emptySlot");
@@ -1047,6 +989,11 @@ try {
             }
           }
           checkLive1p();
+
+          document.getElementById('lifeEffect').style.display = 'block'
+          setTimeout(() => {
+            document.getElementById('lifeEffect').removeAttribute('style')
+          }, 1000);
         } else if (healSlot == 0) {
           document.getElementById("healAlert").classList.add("emptySlot");
           setTimeout(() => {
@@ -1056,7 +1003,7 @@ try {
       }
       if (e.key == "k" && isDev) {
         lives1p = 5;
-        checkLive1p(); 
+        checkLive1p();
       }
       if (e.key == "x" && isDev) {
         alert(playerPXPosi);
@@ -1074,7 +1021,7 @@ try {
     }
 
     if (pageType == 2.1) {
-      if (e.key == 'ArrowUp') {
+      if (e.key == 'ArrowUp' && !isJumping) {
         if (!isInSecTrail) {
           isInSecTrail = true
           playerRunner.classList.add('secondTrail')
@@ -1084,15 +1031,32 @@ try {
           isJumping = true
           playerRunner.addEventListener('animationend', () => {
             playerRunner.classList.remove('jumping')
-            playerRunner.classList.add('secondTrail')
+            if (isInSecTrail) {
+              playerRunner.classList.add('secondTrail')
+            }
             isJumping = false
           })
         }
       }
 
-      if (e.key == 'ArrowDown' && isInSecTrail) {
+      if (e.key == 'ArrowDown' && isInSecTrail && !isJumping) {
         isInSecTrail = false
         playerRunner.classList.remove('secondTrail')
+      } else if (e.key == 'ArrowDown' && isJumping) {
+        playerRunner.classList.remove('jumping')
+        playerRunner.classList.add('stomp')
+        document.getElementById('stompEffect').style.display = 'block'
+        playerRunner.addEventListener('animationend', () => {
+          isJumping = false
+          playerRunner.classList.remove('stomp')
+          document.getElementById('stompEffect').style.opacity = '0'
+          setTimeout(() => {
+            document.getElementById('stompEffect').removeAttribute('style')
+          }, 200);
+          if (isInSecTrail) {
+            playerRunner.classList.add('secondTrail')
+          }
+        })
       }
 
       if (e.key == '1' && canVanish) {
@@ -1100,20 +1064,25 @@ try {
         vanished = true
         canVanish = false
         vanishTimer = 0
+        document.getElementById('vanishEffect').style.display = 'block'
         setTimeout(() => {
           vanished = false
           playerRunner.removeAttribute('style')
           document.getElementById('vanishStts').className = 'waitStts'
+          document.getElementById('vanishEffect').style.opacity = '0'
+          setTimeout(() => {
+            document.getElementById('vanishEffect').removeAttribute('style')
+          }, 200);
 
           vanishWaiter = setInterval(() => {
             if (vanishTimer < 15) {
-                vanishTimer++
+              vanishTimer++
             } else {
-                clearInterval(vanishWaiter)
-                canVanish = true
-                document.getElementById('vanishStts').className = 'okayStts'
+              clearInterval(vanishWaiter)
+              canVanish = true
+              document.getElementById('vanishStts').className = 'okayStts'
             }
-        }, 1000);
+          }, 1000);
 
         }, 10000);
       }
@@ -1125,17 +1094,64 @@ try {
         playerRunner.addEventListener('animationend', () => {
           speeded = false
           playerRunner.classList.remove('boosting')
-             document.getElementById('speedStts').className = 'waitStts'
-             speedWaiter = setInterval(() => {
+          if (speedTimer == 45) {
+            document.getElementById('speedStts').className = 'okayStts'
+          } else {
+            document.getElementById('speedStts').className = 'waitStts'
+            speedWaiter = setInterval(() => {
               if (speedTimer < 45) {
-                  speedTimer++
+                speedTimer++
               } else {
-                  clearInterval(speedWaiter)
-                  canSpeed = true
-                  document.getElementById('speedStts').className = 'okayStts'
+                clearInterval(speedWaiter)
+                canSpeed = true
+                document.getElementById('speedStts').className = 'okayStts'
               }
-          }, 1000);
+            }, 1000);
+          }
         })
+      }
+
+      if (e.key == ' ') {
+        if (isInSecTrail) {
+          playerRunner.classList.remove('secondTrail')
+          playerRunner.classList.add('sJumpT')
+          playerRunner.addEventListener('animationend', () => {
+            playerRunner.classList.remove('sJumpT')
+            if (isInSecTrail) {
+              playerRunner.classList.add('secondTrail')
+            }
+          })
+        } else {
+          playerRunner.classList.add('sJumpB')
+          playerRunner.addEventListener('animationend', () => {
+            playerRunner.classList.remove('sJumpB')
+            if (isInSecTrail) {
+              playerRunner.classList.add('secondTrail')
+            }
+          })
+        }
+      }
+
+      if (e.key == 'Enter') {
+        pauseSoloRunner()
+      }
+
+      if (e.key == 'h' || e.key == 'H') {
+        if (isInSecTrail) {
+          playerRunner.classList.remove('secondTrail')
+          playerRunner.classList.add('hurtT')
+          playerRunner.addEventListener('animationend', () => {
+            playerRunner.classList.remove('hurtT')
+            if (isInSecTrail) {
+              playerRunner.classList.add('secondTrail')
+            }
+          })
+        } else {
+          playerRunner.classList.add('hurtB')
+          playerRunner.addEventListener('animationend', () => {
+            playerRunner.classList.remove('hurtB')
+          })
+        }
       }
     }
     //End Solo Game Controls
@@ -1450,7 +1466,7 @@ try {
     }
   });
 
-  
+
 
   //Duo Run Score Nav Buttons
 
@@ -1537,7 +1553,7 @@ try {
           let biomeType = Math.floor(Math.random() * 11)
           duoRunPage.className = ''
           duoRunPage.className = `biome${biomeType}`
-      }, 50000);
+        }, 50000);
         duoRSortMeteors();
       } else if (challengeType == 'extreme') {
         duoRunScorePage.removeAttribute("style");
@@ -1583,7 +1599,7 @@ try {
           let biomeType = Math.floor(Math.random() * 11)
           duoRunPage.className = ''
           duoRunPage.className = `biome${biomeType}`
-      }, 50000);
+        }, 50000);
         duoRSortMeteors();
       }
     }, 500);

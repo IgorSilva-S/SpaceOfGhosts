@@ -48,7 +48,8 @@
     <section id="disclaimer" style="display: none">
         <span>Aviso</span>
         Obrigado por testar Space of Ghosts! Esse jogo está em desenvolvimento, então, bugs poderão ser encontrados.
-        Caso encontre algum bug, por favor, avise os desenvolvedores abrindo uma issue no GitHub.
+        Caso encontre algum bug, por favor, avise os desenvolvedores abrindo uma issue no GitHub. <br><br>
+        Observação: Space Of Ghosts está planejado para ter um futuro remake, recriando toda a experiência de jogo. Espere por novas atualizações para habilitar a nova experiência de jogo. No mesmo, esse estilo do Space Of Ghosts estará disponível para jogar, só não receberá novos itens
         <div id="devKeysDisclaimer" style="display: none">Obs.: A configuração DevKeys está ativa nessa seção, você pode
             desativar a qualquer momento no DevKeys Central.</div>
         <button id="exitDisclaimer">Okay</button>
@@ -79,7 +80,6 @@
                 </div>
                 <div>
                     <h1>Selecione o modo de jogo</h1>
-                    <p class="pseudoLink" style="display: none;">Ou, adquira novos modos na loja</p>
                 </div>
             </div>
             <button id="spatialMode">
@@ -88,12 +88,10 @@
             <button id="spatialXtremeMode">
                 Espacial: Infinito (Extremo)
             </button>
-            <button id="runnerMode" style="display: none;">
-                Corredor: Infinito
-            </button>
+            <p class="pseudoLink excludePhone" style="display: none;">Adquira novos desafios na loja</p>
 
             <div class="playGameAlert" id="alertPlay">
-                Selecione a quantidade de jogadores e vambora
+                Selecione a quantidade de jogadores
             </div>
             <div class="playGame" id="playPopup">
                 <div class="playersContainer">
@@ -115,7 +113,7 @@
         </div>
         <div class="homeAnimation" id="homeAnimation">
             <div id="spatialModeAnimation">
-                <div class="background">
+                <div class="background" style="animation-duration: 40s;">
 
                 </div>
                 <div class="earthCloud"></div>
@@ -139,16 +137,6 @@
                 <div class="meteor mt2" style="top: 60%; animation-duration: 4s;"></div>
                 <div class="meteor mt3" style="top: 35%; animation-duration: 2s;"></div>
                 <div class="meteor mt1" style="top: 75%; animation-duration: 5s;"></div>
-            </div>
-
-            <div id="runnerModeAnimation" style="display: none;">
-                <div class="background" style="animation-duration: 8s;">
-
-                </div>
-                <div class="bRockSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
-                <div class="rockSoil"></div>
-                <div class="runningGhost1"></div>
-                <div class="runningGhost2 excludePhone"></div>
             </div>
 
             <div class="interference" id="interferenceAnim" style="display: none">
@@ -208,6 +196,14 @@
                 <div class="hearts" id="live1p">
 
                 </div>
+            </div>
+            <div class="effectsHud">
+                <img src="assets/img/sprites/Items/vanishBoost.png" alt="" id="hShieldEffect">
+                <img src="assets/img/sprites/Items/shieldBoost.png" alt="" id="shieldEffect">
+                <img src="assets/img/sprites/Items/acceleratorBoost.png" alt="" id="acEffect">
+                <img src="assets/img/sprites/Items/relaxBoost.png" alt="" id="relaxEffect">
+                <img src="assets/img/sprites/Items/SlifeBoost.png" alt="" id="sLifeEffect" class="blinkEffect">
+                <img src="assets/img/sprites/Items/lifeBoost.png" alt="" id="lifeEffect" class="blinkEffect">
             </div>
             <div class="player" id="ghost">
                 <!--<div class="trail" id="trail"></div>-->
@@ -308,48 +304,6 @@
                 <button id="soloSGame">Começar novamente</button>
             </div>
         </div>
-    </section>
-
-    <!--Solo Mode: Runner-->
-    <section id="soloRunner">
-        <div class="background"></div>
-        <div class="bRockSoil" style="margin-bottom: 80px; filter: brightness(.6);"></div>
-        <div class="rockSoil"></div>
-        <div class="normalGameHud">
-            <div class="score">
-                <span id="soloRunnerDistance">0
-                </span>m
-            </div>
-            <div class="itemsAlertCont">
-                <div class="itemCont" id="vanishAlert">
-                    <div class="item vanishBoost"></div>
-                    <div class="slots">
-                        <div id="vanishStts" class="waitStts"></div>
-                    </div>
-                    (1)
-                </div>
-                <div class="itemCont" id="speedAlert">
-                    <div class="item speedBoost"></div>
-                    <div class="slots">
-                        <div id="speedStts" class="waitStts"></div>
-                    </div>
-                    (2)
-                </div>
-            </div>
-            <div class="hearts" id="RunnerLifes">
-
-            </div>
-        </div>
-        <div class="crystal cType2" id="cr1"></div>
-        <div class="crystal cType6" id="cr2"></div>
-        <div class="crystal cType1" id="cr3"></div>
-        <div class="crystal cType5" id="cr4"></div>
-
-        <div class="crystalT cType2" id="cr1"></div>
-        <div class="crystalT cType6" id="cr2"></div>
-        <div class="crystalT cType1" id="cr3"></div>
-        <div class="crystalT cType5" id="cr4"></div>
-        <div class="player" id="runnerPlayer"></div>
     </section>
 
     <!--Duo Mode: Espatial-->
@@ -484,44 +438,6 @@
         </div>
     </section>
 
-    <!--Duo Mode: Runner-->
-    <section id="duoRunner">
-        <div class="playerScreen">
-            <div class="hearts h100" id="DCP1Hearts"></div>
-            <div class="rockSoil" id="p1Soil"></div>
-            <div class="crystal cType2" id="p1cr1"></div>
-            <div class="crystal cType6" id="p1cr2"></div>
-            <div class="crystal cType1" id="p1cr3"></div>
-            <div class="player" id="p1Runner"></div>
-        </div>
-        <div class="playerScreen player2Screen">
-            <div class="hearts h100" id="DCP2Hearts"></div>
-            <div class="rockSoil" id="p2Soil"></div>
-            <div class="crystal cType2" id="p2cr1"></div>
-            <div class="crystal cType6" id="p2cr2"></div>
-            <div class="crystal cType1" id="p2cr3"></div>
-            <div class="player" id="p2Runner"></div>
-        </div>
-        <div class="scoreDuoRunner" id="scoreDC">
-            <h1>Jogador <span id="duoRunnerWinner">0</span> Ganha a partida!</h1>
-            Pontuação: <span id="duoRunnerScore">0</span> <br>
-            Melhor Pontuação: <span id="duoRunnerBestScore">0</span> <br>
-            <div class="newHigh" id="duoRunnerHighAlert">Nova Melhor pontuação</div>
-            Stardusts: <span id="duoRunnerPlusMoney">0</span> <br>
-            Velocidade: <span id="duoRunnerSpeed">0</span> <br>
-            <div class="goButtons">
-                <button id="soloRunnerHome">Ir para o início</button>
-                <button id="soloRunnerGame">Começar novamente</button>
-            </div>
-        </div>
-        <div class="duoControls" id="duoRunnerControls">
-            <button class="pauseHome" id="DCretHome">
-            </button>
-            <button class="pauseRestart" id="DCRestart"></button>
-            <button class="pauseDev"></button>
-        </div>
-    </section>
-
     <!--Shop-->
     <section id="shop">
         <div class="background">
@@ -561,7 +477,6 @@
             <button class="shopBlock" id="catSkinPurchase" shopButton>
                 <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
             </button>
-            <button class="shopBlock" id="RunnerModePurchase" shopButton style="display: none;">
 
             </button>
             <button class="shopBlock" id="mechaSkinPurchase" shopButton>
@@ -677,7 +592,7 @@
 
     <!--Settings-->
     <section id="settings">
-        <div class="earthCloud"></div>
+        <div class="earthCloud" id="ecSettings"></div>
         <div class="settingsPanel">
             <button id="settingsHome" class="returnHome"></button>
             <h1>Configurações</h1>
@@ -751,6 +666,9 @@
         </div>
         <div class="keysEditor" id="ke">
             <div class="title">Editor de Chaves (localStorage)
+                <span class="material-symbols-rounded" id="changeType">
+                    change_circle
+                </span>
                 <span class="material-symbols-rounded" id="refreshData">
                     refresh
                 </span>
@@ -758,17 +676,37 @@
                     add
                 </span>
             </div>
-            <div class="regRow" id="keyNameRow"></div>
-            <div class="regRow" id="keyValueRow"></div>
-        </div>
-        <div class="keyContextMenu" id="contextMenu">
-            <div class="keyName" id="kn">Nome da chave</div>
-            <!--<div class="CMOption" id="delKey">Deletar chave</div>
-            <div class="CMOption" id="renKey">Renomear chave</div>-->
-            <div id="contextOptions">
-
+            <div id="regView" class="devKeysSystemView">
+                <div class="regRow" id="keyNameRow"></div>
+                <div class="regRow" id="keyValueRow"></div>
             </div>
-        </div>
+            <div id="cardView" class="devKeysSystemView" style="display: none;">
+                <div class="devCardView">
+                    <div class="card" id="dkCard" style="transform: scaleX(0);">
+                        <p class="cardTitle" id='cTitle'>Card Title</p>
+                        <p class="cardType" id="cType">Card Type</p>
+                        <p class="cardDesc" id="cDesc">Lorem ipsum dolor sit amet consectetur</p>
+                        <div class="cardBAlign">
+                            <button id="cardSeeValue">Ver valor</button>
+                            <button id="cardEdit">Editar valor</button>
+                            <button id="cardDelVar">Apagar variável</button>
+                        </div>
+                    </div>
+                    <div class="bCard" id="bCard"></div>
+                </div>
+
+                <div class="allCards" id="mcCont">
+                </div>
+            </div>
+
+            <div class="keyContextMenu" id="contextMenu">
+                <div class="keyName" id="kn">Nome da chave</div>
+                <!--<div class="CMOption" id="delKey">Deletar chave</div>
+            <div class="CMOption" id="renKey">Renomear chave</div>-->
+                <div id="contextOptions">
+
+                </div>
+            </div>
     </section>
     <!--Credits-->
     <section id="credits">
@@ -833,9 +771,6 @@
     <script src="assets/js/solo.js"></script>
     <script src="assets/js/duoRun.js"></script>
     <script src="assets/js/shop&skins.js"></script>
-    <script src="assets/js/soloRunner.js"></script>
-    <!--<script src="assets/js/duoRunner.js"></script>
-    <script src="assets/js/selectScript.js"></script>-->
     <script src="assets/js/devKeys.js"></script>
     <script src="assets/js/betaItems.js"></script>
     <script src="assets/js/responsivity.js"></script>
