@@ -1,0 +1,281 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    max-width: 100dvw;
+    max-height: 100dvh;
+    overflow: hidden;
+    user-select: none;
+}
+
+/* GUI */
+.pressButton {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../sprites/GUI/button.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+/*Sections management*/
+#spaceArea {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #010101;
+}
+
+.bckg {
+    width: 200dvw;
+    height: 100dvh;
+    background-size: cover;
+    background-position: center;
+    animation: runBackground 12s infinite linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bckg.preview {
+    top: 30%;
+}
+
+.bckg.stars {
+    background-image: url(../sprites/backgrounds/stars.png);
+}
+
+.bckg.city {
+    background-image: url(../sprites/backgrounds/city.png);
+}
+
+/* Player */
+
+.ghost {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    position: absolute;
+    left: 123px;
+    top: 48%;
+}
+
+.shield {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    animation: shieldAnimation 2.6s steps(1) infinite;
+    position: absolute;
+    left: 98px;
+    top: 45%;
+    display: none;
+}
+
+.ghost.aLittleHurt {
+    animation: hurt 1s linear;
+}
+
+/* Objects */
+.stardust {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 0%;
+    left: 120%;
+    animation: mtMover linear infinite;
+    background-image: url(../sprites/objects/stardust.gif);
+}
+
+.meteorite {
+    background-size: cover;
+    position: absolute;
+    top: 20%;
+    left: 120%;
+    animation: mtMover linear infinite;
+}
+
+.meteorite.type1 {
+    width: 40px;
+    height: 40px;
+    background-image: url(../sprites/objects/mtType1.png);
+}
+
+.meteorite.type2 {
+    width: 80px;
+    height: 80px;
+    background-image: url(../sprites/objects/mtType2.png);
+}
+
+.meteorite.type3 {
+    width: 120px;
+    height: 120px;
+    background-image: url(../sprites/objects/mtType3.png);
+}
+
+.meteorite.type4 {
+    width: 160px;
+    height: 160px;
+    background-image: url(../sprites/objects/mtType4.png);
+}
+
+.meteorite.type5 {
+    width: 200px;
+    height: 200px;
+    background-image: url(../sprites/objects/mtType5.png);
+}
+
+/*Animations*/
+@keyframes runBackground {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -100%
+    }
+}
+
+@keyframes hurt {
+    0% {
+        left: 123px;
+        rotate: 0deg;
+    }
+
+    50% {
+        left: 10px;
+        rotate: 720deg;
+    }
+
+    85% {
+        left: 10px;
+        rotate: 1440deg
+    }
+
+    100% {
+        left: 123px;
+        rotate: 1440deg
+    }
+}
+
+@keyframes mtMover {
+    from {
+        left: 120%;
+        /* rotate: 0deg; */
+    }
+
+    to {
+        left: -20%;
+        /* rotate: 2520deg; */
+    }
+}
+
+@keyframes shieldAnimation {
+    0% {
+        background-image: url('../sprites/boosts/shield/shield1.png');
+    }
+
+    3.846% {
+        background-image: url('../sprites/boosts/shield/shield2.png');
+    }
+
+    7.692% {
+        background-image: url('../sprites/boosts/shield/shield3.png');
+    }
+
+    11.538% {
+        background-image: url('../sprites/boosts/shield/shield4.png');
+    }
+
+    15.384% {
+        background-image: url('../sprites/boosts/shield/shield5.png');
+    }
+
+    19.230% {
+        background-image: url('../sprites/boosts/shield/shield6.png');
+    }
+
+    23.076% {
+        background-image: url('../sprites/boosts/shield/shield7.png');
+    }
+
+    26.922% {
+        background-image: url('../sprites/boosts/shield/shield8.png');
+    }
+
+    30.768% {
+        background-image: url('../sprites/boosts/shield/shield9.png');
+    }
+
+    34.614% {
+        background-image: url('../sprites/boosts/shield/shield10.png');
+    }
+
+    38.460% {
+        background-image: url('../sprites/boosts/shield/shield11.png');
+    }
+
+    42.306% {
+        background-image: url('../sprites/boosts/shield/shield12.png');
+    }
+
+    46.152% {
+        background-image: url('../sprites/boosts/shield/shield13.png');
+    }
+
+    49.998% {
+        background-image: url('../sprites/boosts/shield/shield14.png');
+    }
+
+    53.844% {
+        background-image: url('../sprites/boosts/shield/shield15.png');
+    }
+
+    57.690% {
+        background-image: url('../sprites/boosts/shield/shield16.png');
+    }
+
+    61.536% {
+        background-image: url('../sprites/boosts/shield/shield17.png');
+    }
+
+    65.382% {
+        background-image: url('../sprites/boosts/shield/shield18.png');
+    }
+
+    69.228% {
+        background-image: url('../sprites/boosts/shield/shield19.png');
+    }
+
+    73.074% {
+        background-image: url('../sprites/boosts/shield/shield20.png');
+    }
+
+    76.920% {
+        background-image: url('../sprites/boosts/shield/shield21.png');
+    }
+
+    80.766% {
+        background-image: url('../sprites/boosts/shield/shield22.png');
+    }
+
+    84.612% {
+        background-image: url('../sprites/boosts/shield/shield23.png');
+    }
+
+    88.458% {
+        background-image: url('../sprites/boosts/shield/shield24.png');
+    }
+
+    92.304% {
+        background-image: url('../sprites/boosts/shield/shield25.png');
+    }
+
+    100% {
+        background-image: url('../sprites/boosts/shield/shield26.png');
+    }
+}

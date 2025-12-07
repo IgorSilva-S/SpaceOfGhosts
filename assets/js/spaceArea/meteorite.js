@@ -1,0 +1,71 @@
+const meteoritesSize = {
+    "type1": 40,
+    "type2": 80,
+    "type3": 120,
+    "type4": 160,
+    "type5": 200
+}
+
+const meteorites = document.getElementsByClassName('meteorite')
+const manipulableMeteorites = [...meteorites]
+manipulableMeteorites.forEach(meteorite => {
+    let topPosi = Math.floor(Math.random() * 80)
+    let meteoriteSpeed = Math.floor((Math.random() * 3) + 4)
+    let meteoriteDelay = Math.floor(Math.random() * 2)
+    let meteoriteType = Math.floor((Math.random() * 5) + 1)
+
+    meteorite.classList.add(`type${meteoriteType}`)
+    meteorite.style.animationDuration = `${meteoriteSpeed}s`
+    meteorite.style.top = `${topPosi}%`
+    meteorite.style.animationDelay = `${meteoriteDelay}s`
+
+    meteorite.addEventListener('animationiteration', () => {
+        meteorite.removeAttribute('style')
+        meteorite.style.display = 'none'
+        topPosi = Math.floor(Math.random() * 80)
+        meteoriteSpeed = Math.floor((Math.random() * 3) + 4)
+        meteoriteDelay = Math.floor(Math.random() * 2)
+        meteoriteType = Math.floor((Math.random() * 5) + 1)
+
+        meteorite.className = 'meteorite'
+        meteorite.classList.add(`type${meteoriteType}`)
+        meteorite.style.animationDuration = `${meteoriteSpeed}s`
+        meteorite.style.top = `${topPosi}%`
+        meteorite.style.animationDelay = `${meteoriteDelay}s`
+        setTimeout(() => {
+            meteorite.style.display = 'block'
+        }, 1);
+    })
+
+
+});
+
+// Stardust
+const stardusts = document.getElementsByClassName('stardust')
+const manipulableStardusts = [...stardusts]
+manipulableStardusts.forEach(stardust => {
+    let topPosi = Math.floor(Math.random() * 80)
+    let stardustSpeed = Math.floor((Math.random() * 3) + 6)
+    let stardustDelay = Math.floor(Math.random() * 10)
+
+    stardust.style.animationDuration = `${stardustSpeed}s`
+    stardust.style.top = `${topPosi}%`
+    stardust.style.animationDelay = `${stardustDelay}s`
+
+    stardust.addEventListener('animationiteration', () => {
+        stardust.removeAttribute('style')
+        stardust.style.display = 'none'
+        topPosi = Math.floor(Math.random() * 80)
+        stardustSpeed = Math.floor((Math.random() * 3) + 4)
+        stardustDelay = Math.floor(Math.random() * 2)
+
+        stardust.style.animationDuration = `${stardustSpeed}s`
+        stardust.style.top = `${topPosi}%`
+        stardust.style.animationDelay = `${stardustDelay}s`
+        setTimeout(() => {
+            stardust.style.display = 'block'
+        }, 1);
+    })
+
+
+});
