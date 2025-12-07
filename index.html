@@ -9,12 +9,54 @@
 </head>
 
 <body>
-    <section id="spaceArea">
+    <!--Main Menu-->
+    <section id="mainMenu" style="display: block;">
         <div class="bckg stars"></div>
+        <div class="movingChar"></div>
+        <div class="bckgMeteorite type4" style="top: 37%; animation-delay: 1s;"></div>
+        <div class="bckgMeteorite type1" style="top: 69%; animation-delay: 5s;"></div>
+        <div class="bckgMeteorite type3" style="top: 73%"></div>
+        <div class="bckgMeteorite type2" style="top: 27%; animation-delay: 4s;"></div>
+        <div class="leftAlign">
+            <img src="assets/sprites/logo/logo.png" alt="">
+            <div class="navBtnsAlign">
+                <button id="play">Jogar</button>
+            </div>
+        </div>
+    </section>
+
+    <!--Game - Space-->
+    <section id="spaceArea">
+        <div class="infoBar" id="infoBar">
+            <div class="lifes" id="lifeView"></div>
+            <div class="boostBar">
+                <div class="boostInfo" id="lifeBoost">
+                    <img src="assets/sprites/boosts/icons/plusLife.png" alt="">
+                    <div class="pressButton">1</div>
+                </div>
+
+                <div class="boostInfo" id="shieldBoost">
+                    <img src="assets/sprites/boosts/icons/shield.png" alt="">
+                    <div class="pressButton">2</div>
+                </div>
+
+                <div class="boostInfo">
+                    <img src="assets/sprites/boosts/icons/quickDown.png" alt="">
+                    <div class="pressButton">3</div>
+                </div>
+
+                <div class="boostInfo">
+                    <img src="assets/sprites/boosts/icons/plusLife.png" alt="">
+                    <div class="pressButton">1</div>
+                </div>
+            </div>
+            <div class="energies" id="energyView"></div>
+        </div>
+        <div class="effectsBar"></div>
+        <div class="bckg stars" id="spaceBckg"></div>
         <div class="bckg" id="extraBckg"></div>
         <img class="ghost" id="ghost" src="./assets/sprites/skins/ghost/fly.gif">
         <div class="shield" id="ghostShield"></div>
-        <div class="pressButton">1</div>
 
         <div class="meteorite"></div>
         <div class="meteorite"></div>
@@ -23,15 +65,40 @@
         <div class="meteorite"></div>
         <div class="meteorite"></div>
         <div class="meteorite"></div>
+        <div class="meteorite"></div>
+        <div class="meteorite"></div>
+        <div class="meteorite"></div>
 
+        <div class="stardust"></div>
+        <div class="stardust"></div>
         <div class="stardust"></div>
         <div class="stardust"></div>
         <div class="stardust"></div>
     </section>
 
+    <section id="pauseMenu">
+        <div class="pauseBar">
+            <div class="topPause" id="topPause">
+                <h1>PAUSE</h1>
+            </div>
+            <div class="pauseContainer" id="pauseContainer">
+                <button id="unpause">Despausar e continuar</button>
+                <button id="restartGame">Reiniciar voo</button>
+                <button id="return">Voltar para nave</button>
+            </div>
+        </div>
+    </section>
+
     <script src="assets/js/sprites.js"></script>
+    <script src="assets/js/devKeys.js"></script>
+    <script src="assets/js/game.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/keys.js"></script>
+
+    <!--Space Area-->
     <script src="assets/js/spaceArea/moviment.js"></script>
     <script src="assets/js/spaceArea/meteorite.js"></script>
+    <script src="assets/js/spaceArea/hurtAndBoosts.js"></script>
 </body>
 
 </html>

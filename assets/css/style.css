@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -8,9 +10,78 @@ body {
     max-height: 100dvh;
     overflow: hidden;
     user-select: none;
+    font-family: 'Josefin Sans',
+        sans-serif;
+}
+
+button {
+    font-family: 'Josefin Sans',
+        sans-serif;
 }
 
 /* GUI */
+
+/* Menu */
+.leftAlign {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background-color: #000512;
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-shadow: 0 0 30px 30px #000512;
+}
+
+.navBtnsAlign {
+    width: 100%;
+    height: calc(100% - 320px);
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#mainMenu img {
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+}
+
+/* Crossover - Main Menu Button + Pause Button */
+#mainMenu button,
+.pauseContainer button {
+    font-size: 30px;
+    border: none;
+    border-radius: 0;
+    background-color: #191929;
+    color: white;
+    z-index: 1;
+    transition-duration: .1s;
+    padding: 10px 20px;
+    width: 90%;
+}
+
+#mainMenu button:hover,
+.pauseContainer button:hover {
+    box-shadow: 5px 5px 0 white;
+}
+
+#mainMenu button:active,
+.pauseContainer button:active {
+    background-color: #2f9bb2;
+    box-shadow: 5px 5px 0 #5fcde4;
+}
+
+/* Game */
 .pressButton {
     width: 50px;
     height: 50px;
@@ -23,12 +94,133 @@ body {
     font-weight: bold;
 }
 
+.lifes {
+    width: 200px;
+    height: 40px;
+    background-image: url(../sprites/GUI/hearts/full.png);
+}
+
+.energies {
+    width: 200px;
+    height: 40px;
+    background-image: url(../sprites/GUI/energy/zero.png);
+}
+
+.infoBar {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 5;
+    transition-duration: .2s;
+}
+
+.boostBar {
+    display: flex;
+    gap: 30px;
+}
+
+.boostInfo {
+    height: 40px;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition-duration: .2s;
+}
+
+.effectsBar {
+    width: 50px;
+    height: calc(100% - 50px);
+    position: fixed;
+    top: 50px;
+    right: 0;
+    display: flex;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 10px 0;
+    align-items: center;
+    gap: 10px;
+    z-index: 5;
+}
+
+/* Pause Menu */
+.pauseBar {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.topPause {
+    width: 100%;
+    height: 20%;
+    background-color: #000512;
+    position: absolute;
+    top: -20%;
+    left: 0;
+    transition-duration: .4s;
+    color: white;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 70px;
+}
+
+.topPause h1 {
+    font-size: 60px;
+}
+
+.pauseContainer {
+    width: 100%;
+    height: 80%;
+    background-color: #00051299;
+    position: absolute;
+    bottom: -80%;
+    left: 0;
+    transition-duration: .4s;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px 0;
+    gap: 30px;
+}
+
+/* End GUI */
+
 /*Sections management*/
-#spaceArea {
+section {
     width: 100dvw;
     height: 100dvh;
+    display: none;
+}
+
+#mainMenu {
+    background-color: #010101;
+    color: white;
+}
+
+#spaceArea {
     background-color: #010101;
 }
+
+#pauseMenu {
+    backdrop-filter: grayscale(100%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+}
+
+/* Backgrounds */
 
 .bckg {
     width: 200dvw;
@@ -42,7 +234,7 @@ body {
 }
 
 .bckg.preview {
-    top: 30%;
+    top: 50%;
 }
 
 .bckg.stars {
@@ -51,6 +243,54 @@ body {
 
 .bckg.city {
     background-image: url(../sprites/backgrounds/city.png);
+}
+
+.movingChar {
+    width: 100px;
+    height: 100px;
+    background-image: url(../sprites/skins/ghost/fly.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10%;
+    animation: floatHome 10s linear infinite;
+}
+
+.bckgMeteorite {
+    background-size: cover;
+    position: absolute;
+    left: 120%;
+    animation: mtMover linear infinite 10s;
+}
+
+.bckgMeteorite.type1 {
+    width: 40px;
+    height: 40px;
+    background-image: url(../sprites/objects/mtType1.png);
+}
+
+.bckgMeteorite.type2 {
+    width: 80px;
+    height: 80px;
+    background-image: url(../sprites/objects/mtType2.png);
+}
+
+.bckgMeteorite.type3 {
+    width: 120px;
+    height: 120px;
+    background-image: url(../sprites/objects/mtType3.png);
+}
+
+.bckgMeteorite.type4 {
+    width: 160px;
+    height: 160px;
+    background-image: url(../sprites/objects/mtType4.png);
+}
+
+.bckgMeteorite.type5 {
+    width: 200px;
+    height: 200px;
+    background-image: url(../sprites/objects/mtType5.png);
 }
 
 /* Player */
@@ -130,6 +370,7 @@ body {
 }
 
 /*Animations*/
+
 @keyframes runBackground {
     from {
         left: 0;
@@ -137,6 +378,54 @@ body {
 
     to {
         left: -100%
+    }
+}
+
+@keyframes floatHome {
+    0% {
+        top: 10%;
+        left: -130px;
+    }
+
+    10% {
+        top: 20%
+    }
+
+    20% {
+        top: 40%;
+    }
+
+    30% {
+        top: 30%;
+    }
+
+    40% {
+        top: 10%;
+    }
+
+    50% {
+        top: 5%;
+    }
+
+    60% {
+        top: 10%;
+    }
+
+    70% {
+        top: 30%;
+    }
+
+    80% {
+        top: 50%;
+    }
+
+    90% {
+        top: 40%;
+    }
+
+    100% {
+        top: 10%;
+        left: 120%
     }
 }
 

@@ -1,5 +1,6 @@
 let ghost = document.getElementById('ghost');
 let shield = document.getElementById('ghostShield')
+let ghostSize = 200
 let posi = 48;
 let maxTop = 90
 let minTop = 0
@@ -15,7 +16,7 @@ function restartGif(src) {
 }
 
 function pressingKey() {
-    if (pressing) {
+    if (pressing && !paused) {
         if (keyPressing == 'ArrowUp') {
             posi--;
             if (posi < minTop) {
@@ -38,25 +39,3 @@ setInterval(() => {
     pressingKey()
 }, 40);
 
-document.addEventListener('keydown', (e) => {
-
-    if (e.repeat) return
-
-    if (e.key === "ArrowUp") {
-        pressing = true
-        keyPressing = 'ArrowUp'
-        restartGif(upAnim);
-    }
-
-    if (e.key === "ArrowDown") {
-        pressing = true
-        keyPressing = 'ArrowDown'
-        restartGif(downAnim); // animação começa DO ZERO
-    }
-});
-
-document.addEventListener('keyup', (e) => {
-    restartGif(fly)
-    pressing = false
-    keyPressing = undefined
-});

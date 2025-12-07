@@ -1,16 +1,16 @@
 const meteoritesSize = {
-    "type1": 40,
-    "type2": 80,
-    "type3": 120,
-    "type4": 160,
-    "type5": 200
+    1: 40,
+    2: 80,
+    3: 120,
+    4: 160,
+    5: 200
 }
 
 const meteorites = document.getElementsByClassName('meteorite')
 const manipulableMeteorites = [...meteorites]
 manipulableMeteorites.forEach(meteorite => {
     let topPosi = Math.floor(Math.random() * 80)
-    let meteoriteSpeed = Math.floor((Math.random() * 3) + 4)
+    let meteoriteSpeed = Math.floor((Math.random() * 5) + 4)
     let meteoriteDelay = Math.floor(Math.random() * 2)
     let meteoriteType = Math.floor((Math.random() * 5) + 1)
 
@@ -23,7 +23,7 @@ manipulableMeteorites.forEach(meteorite => {
         meteorite.removeAttribute('style')
         meteorite.style.display = 'none'
         topPosi = Math.floor(Math.random() * 80)
-        meteoriteSpeed = Math.floor((Math.random() * 3) + 4)
+        meteoriteSpeed = Math.floor((Math.random() * 5) + 4)
         meteoriteDelay = Math.floor(Math.random() * 2)
         meteoriteType = Math.floor((Math.random() * 5) + 1)
 
@@ -37,6 +37,25 @@ manipulableMeteorites.forEach(meteorite => {
         }, 1);
     })
 
+setInterval(() => {
+    const meteorRect = meteorite.getBoundingClientRect();
+    const ghostRect = ghost.getBoundingClientRect();
+
+    const meteorTop = meteorRect.top;
+    const meteorLeft = meteorRect.left;
+
+    const ghostTop = ghostRect.top;
+    const ghostLeft = ghostRect.left;
+
+    if (
+        meteorTop < ghostTop + ghostRect.height &&
+        meteorTop + meteorRect.height > ghostTop &&
+        meteorLeft < ghostLeft + ghostRect.width &&
+        meteorLeft + meteorRect.width > ghostLeft
+    ) {
+        colisionMeteorite()
+    }
+}, 16);
 
 });
 
