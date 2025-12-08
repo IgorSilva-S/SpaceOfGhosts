@@ -22,6 +22,22 @@ function colisionMeteorite() {
     }
 }
 
+// Stardusts
+let disableStardust = false
+
+function colisionStardust() {
+    if (!disableStardust && !paused) {
+        disableStardust = true
+        stardustsNum++
+        if (!cannotPlaysound) {
+            stardustPicker.play()
+        }
+        setTimeout(() => {
+            disableStardust = false
+        }, 750);
+    }
+}
+
 // Energy Required Boosts
 
 let shieldBoost = false

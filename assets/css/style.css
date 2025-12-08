@@ -148,7 +148,7 @@ button {
     z-index: 5;
 }
 
-/* Pause Menu */
+/* Pause Menu + DevKeys Menu*/
 .pauseBar {
     width: 25%;
     height: 100%;
@@ -157,7 +157,8 @@ button {
     right: 0;
 }
 
-.topPause {
+.topPause,
+.dmTop {
     width: 100%;
     height: 20%;
     background-color: #000512;
@@ -168,16 +169,27 @@ button {
     color: white;
     box-sizing: border-box;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     padding: 0 70px;
 }
 
-.topPause h1 {
+.dmTop {
+    background-color: #503b00;
+}
+
+.topPause h1,
+.dmTop h1 {
     font-size: 60px;
 }
 
-.pauseContainer {
+.topPause img {
+    width: 50px;
+    height: 50px;
+}
+
+.pauseContainer,
+.dmContainer {
     width: 100%;
     height: 80%;
     background-color: #00051299;
@@ -192,6 +204,10 @@ button {
     box-sizing: border-box;
     padding: 20px 0;
     gap: 30px;
+}
+
+.dmContainer {
+    background-color: #503b0099;
 }
 
 /* End GUI */
@@ -214,6 +230,13 @@ section {
 
 #pauseMenu {
     backdrop-filter: grayscale(100%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+}
+
+#devKeys {
     position: absolute;
     left: 0;
     top: 0;

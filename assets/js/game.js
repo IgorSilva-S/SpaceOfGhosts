@@ -140,7 +140,7 @@ function startGame() {
         if (energy > 10) {
             energy = 10
         }
-    }, 5000);
+    }, 7500);
     checkEnergy()
     closeAllScreens()
     document.getElementById('spaceArea').style.display = 'block'
@@ -152,6 +152,7 @@ function pauseGame(parameter) {
     if (screenIdentifier == 2) {
         if (!paused) {
             document.getElementById('pauseMenu').style.display = 'block'
+            document.getElementById('stardustNum').innerHTML = stardustsNum
             setTimeout(() => {
                 document.getElementById('topPause').style.top = '0%'
                 document.getElementById('pauseContainer').style.bottom = '0%'
@@ -168,9 +169,9 @@ function pauseGame(parameter) {
             restartGif(stopImg)
             paused = true
         } else {
-            document.getElementById('topPause').removeAttribute('style')
-            document.getElementById('pauseContainer').removeAttribute('style')
-            setTimeout(() => {
+            if (parameter === 'noTimeOut') {
+                document.getElementById('topPause').removeAttribute('style')
+                document.getElementById('pauseContainer').removeAttribute('style')
                 manipulableMeteorites.forEach((meteorite) => {
                     meteorite.style.animationPlayState = 'running'
                 })
@@ -179,17 +180,32 @@ function pauseGame(parameter) {
                     stardust.style.animationPlayState = 'running'
                 })
                 document.getElementById('pauseMenu').removeAttribute('style')
-                if (parameter !== 'noEnergy') {
-                    energyInterval = setInterval(() => {
-                        energy++
-                        if (energy > 10) {
-                            energy = 10
-                        }
-                    }, 5000);
-                }
                 restartGif(fly)
                 paused = false
-            }, 400);
+            } else {
+                document.getElementById('topPause').removeAttribute('style')
+                document.getElementById('pauseContainer').removeAttribute('style')
+                setTimeout(() => {
+                    manipulableMeteorites.forEach((meteorite) => {
+                        meteorite.style.animationPlayState = 'running'
+                    })
+                    document.getElementById('spaceBckg').style.animationPlayState = 'running'
+                    manipulableStardusts.forEach((stardust) => {
+                        stardust.style.animationPlayState = 'running'
+                    })
+                    document.getElementById('pauseMenu').removeAttribute('style')
+                    if (parameter !== 'noEnergy') {
+                        energyInterval = setInterval(() => {
+                            energy++
+                            if (energy > 10) {
+                                energy = 10
+                            }
+                        }, 7500);
+                    }
+                    restartGif(fly)
+                    paused = false
+                }, 400);
+            }
         }
     }
 }
@@ -200,7 +216,7 @@ document.getElementById('unpause').addEventListener('click', pauseGame)
 document.getElementById('restartGame').addEventListener('click', () => {
     closeAllScreens()
     setTimeout(() => {
-        pauseGame('noEnergy')
+        pauseGame('noTimeOut')
         posi = 48
         ghost.removeAttribute('style')
         startGame()
@@ -208,12 +224,10 @@ document.getElementById('restartGame').addEventListener('click', () => {
 })
 
 document.getElementById('return').addEventListener('click', () => {
-    pauseGame('noEnergy')
-    setTimeout(() => {
-        clearInterval(energyInterval)
-        energyInterval = null
-        closeAllScreens()
-        document.getElementById('mainMenu').style.display = 'flex'
-        screenIdentifier = 1
-    }, 200);
+    pauseGame('noTimeOut')
+    closeAllScreens()
+    posi = 48
+    ghost.removeAttribute('style')
+    document.getElementById('mainMenu').style.display = 'flex'
+    screenIdentifier = 1
 })

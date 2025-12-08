@@ -2,6 +2,10 @@ document.addEventListener('keydown', (e) => {
 
     if (e.repeat) return
 
+    if (e.key.toLowerCase() == 'd') {
+        devKeysToggle()
+    }
+
     if (e.key == 'Enter') {
         pauseGame()
     }

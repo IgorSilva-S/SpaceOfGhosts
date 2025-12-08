@@ -37,25 +37,25 @@ manipulableMeteorites.forEach(meteorite => {
         }, 1);
     })
 
-setInterval(() => {
-    const meteorRect = meteorite.getBoundingClientRect();
-    const ghostRect = ghost.getBoundingClientRect();
+    setInterval(() => {
+        const meteorRect = meteorite.getBoundingClientRect();
+        const ghostRect = ghost.getBoundingClientRect();
 
-    const meteorTop = meteorRect.top;
-    const meteorLeft = meteorRect.left;
+        const meteorTop = meteorRect.top;
+        const meteorLeft = meteorRect.left;
 
-    const ghostTop = ghostRect.top;
-    const ghostLeft = ghostRect.left;
+        const ghostTop = ghostRect.top;
+        const ghostLeft = ghostRect.left;
 
-    if (
-        meteorTop < ghostTop + ghostRect.height &&
-        meteorTop + meteorRect.height > ghostTop &&
-        meteorLeft < ghostLeft + ghostRect.width &&
-        meteorLeft + meteorRect.width > ghostLeft
-    ) {
-        colisionMeteorite()
-    }
-}, 16);
+        if (
+            meteorTop < ghostTop + ghostRect.height &&
+            meteorTop + meteorRect.height > ghostTop &&
+            meteorLeft < ghostLeft + ghostRect.width &&
+            meteorLeft + meteorRect.width > ghostLeft
+        ) {
+            colisionMeteorite()
+        }
+    }, 16);
 
 });
 
@@ -86,5 +86,25 @@ manipulableStardusts.forEach(stardust => {
         }, 1);
     })
 
+    setInterval(() => {
+        const stardustRect = stardust.getBoundingClientRect();
+        const ghostRect = ghost.getBoundingClientRect();
+
+        const stardustTop = stardustRect.top;
+        const stardustLeft = stardustRect.left;
+
+        const ghostTop = ghostRect.top;
+        const ghostLeft = ghostRect.left;
+
+        if (
+            stardustTop < ghostTop + ghostRect.height &&
+            stardustTop + stardustRect.height > ghostTop &&
+            stardustLeft < ghostLeft + ghostRect.width &&
+            stardustLeft + stardustRect.width > ghostLeft
+        ) {
+            colisionStardust()
+            stardust.style.opacity = '0'
+        }
+    }, 16);
 
 });
