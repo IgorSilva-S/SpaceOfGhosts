@@ -1,7 +1,7 @@
 let devKeys = true
 
 let cannotHurt = false
-let cannotPlaysound = true
+let cannotPlaysound = false
 
 // DevKeys Menu
 let devKeysOpened = false

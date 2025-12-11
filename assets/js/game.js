@@ -16,6 +16,12 @@ setInterval(() => {
         document.getElementById('shieldBoost').removeAttribute('style')
     }
 
+    if (energy < 6) {
+        document.getElementById('quickMoveBoost').style.opacity = 0.4
+    } else {
+        document.getElementById('quickMoveBoost').removeAttribute('style')
+    }
+
     if (energy < 10) {
         document.getElementById('lifeBoost').style.opacity = 0.4
     } else {
@@ -120,8 +126,11 @@ const checkEnergy = () => {
         case 1:
             energyView.style.backgroundImage = `url(${energyImagesPath}/ten.png)`
             break;
-        default:
+        case 0:
             energyView.removeAttribute('style')
+            break;
+        default:
+            energyView.style.backgroundImage = `url(${energyImagesPath}/error.png)`
             break;
     }
 }
@@ -132,7 +141,8 @@ function startGame() {
     energy = 0
     instaShield = false
     shieldBoost = false
-    shieldToggle('disable')
+    shield.removeAttribute('style')
+    shieldBoost = false
     checkEnergy()
     checkLife()
     energyInterval = setInterval(() => {
@@ -140,7 +150,7 @@ function startGame() {
         if (energy > 10) {
             energy = 10
         }
-    }, 7500);
+    }, 5000);
     checkEnergy()
     closeAllScreens()
     document.getElementById('spaceArea').style.display = 'block'
@@ -200,7 +210,7 @@ function pauseGame(parameter) {
                             if (energy > 10) {
                                 energy = 10
                             }
-                        }, 7500);
+                        }, 5000);
                     }
                     restartGif(fly)
                     paused = false

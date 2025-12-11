@@ -21,6 +21,9 @@ function pressingKey() {
             posi--;
             if (posi < minTop) {
                 posi = minTop
+                document.getElementById('laneSwitcherBoost').removeAttribute('style')
+            } else {
+                document.getElementById('laneSwitcherBoost').style.opacity = '0.4'
             }
             ghost.style.top = `${posi}%`;
             shield.style.top = `${posi - 3}%`
@@ -28,6 +31,9 @@ function pressingKey() {
             posi++;
             if (posi > maxTop) {
                 posi = maxTop
+                document.getElementById('laneSwitcherBoost').removeAttribute('style')
+            } else {
+                document.getElementById('laneSwitcherBoost').style.opacity = '0.4'
             }
             ghost.style.top = `${posi}%`;
             shield.style.top = `${posi - 3}%`

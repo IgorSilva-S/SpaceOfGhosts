@@ -13,6 +13,7 @@ manipulableMeteorites.forEach(meteorite => {
     let meteoriteSpeed = Math.floor((Math.random() * 5) + 4)
     let meteoriteDelay = Math.floor(Math.random() * 2)
     let meteoriteType = Math.floor((Math.random() * 5) + 1)
+    let thatMeteorCanHurt = true
 
     meteorite.classList.add(`type${meteoriteType}`)
     meteorite.style.animationDuration = `${meteoriteSpeed}s`
@@ -34,6 +35,7 @@ manipulableMeteorites.forEach(meteorite => {
         meteorite.style.animationDelay = `${meteoriteDelay}s`
         setTimeout(() => {
             meteorite.style.display = 'block'
+            thatMeteorCanHurt = true
         }, 1);
     })
 
@@ -51,9 +53,25 @@ manipulableMeteorites.forEach(meteorite => {
             meteorTop < ghostTop + ghostRect.height &&
             meteorTop + meteorRect.height > ghostTop &&
             meteorLeft < ghostLeft + ghostRect.width &&
-            meteorLeft + meteorRect.width > ghostLeft
+            meteorLeft + meteorRect.width > ghostLeft &&
+            thatMeteorCanHurt
         ) {
-            colisionMeteorite()
+            let resp = colisionMeteorite()
+            if (resp == 'broked') {
+                meteorite.style.opacity = '0'
+                thatMeteorCanHurt = false
+                if (meteoriteType == 1) {
+                    stardustsNum = stardustsNum + 2
+                } else if (meteoriteType == 2) {
+                    stardustsNum = stardustsNum + 4
+                } else if (meteoriteType == 3) {
+                    stardustsNum = stardustsNum + 6
+                } else if (meteoriteType == 4) {
+                    stardustsNum = stardustsNum + 8
+                } else if (meteoriteType == 5) {
+                    stardustsNum = stardustsNum + 10
+                }
+            }
         }
     }, 16);
 

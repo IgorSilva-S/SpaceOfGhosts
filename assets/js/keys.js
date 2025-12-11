@@ -10,7 +10,7 @@ document.addEventListener('keydown', (e) => {
         pauseGame()
     }
 
-    if (e.key === "ArrowUp") {
+    if (e.key === "ArrowUp" || e.key.toLowerCase() == 'w') {
         pressing = true
         keyPressing = 'ArrowUp'
         if (!paused) {
@@ -18,7 +18,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 
-    if (e.key === "ArrowDown") {
+    if (e.key === "ArrowDown" || e.key.toLowerCase() == 's') {
         pressing = true
         keyPressing = 'ArrowDown'
         if (!paused) {
@@ -36,6 +36,14 @@ document.addEventListener('keydown', (e) => {
 
     if (e.key == '2') {
         shieldToggle('enable')
+    }
+
+    if (e.key == '3') {
+        startQuickMove(keyPressing)
+    }
+
+    if (e.key.toLowerCase() == 'l') {
+        laneSwitcher()
     }
 
     checkEnergy()
