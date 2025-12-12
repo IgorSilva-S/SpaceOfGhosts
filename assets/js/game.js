@@ -150,7 +150,8 @@ function startGame() {
         if (energy > 10) {
             energy = 10
         }
-    }, 5000);
+        checkEnergy()
+    }, 7500);
     checkEnergy()
     closeAllScreens()
     document.getElementById('spaceArea').style.display = 'block'
@@ -210,7 +211,8 @@ function pauseGame(parameter) {
                             if (energy > 10) {
                                 energy = 10
                             }
-                        }, 5000);
+                            checkEnergy()
+                        }, 7500);
                     }
                     restartGif(fly)
                     paused = false
@@ -234,10 +236,20 @@ document.getElementById('restartGame').addEventListener('click', () => {
 })
 
 document.getElementById('return').addEventListener('click', () => {
-    pauseGame('noTimeOut')
-    closeAllScreens()
-    posi = 48
-    ghost.removeAttribute('style')
-    document.getElementById('mainMenu').style.display = 'flex'
-    screenIdentifier = 1
+    blackout.style.display = 'block'
+    setTimeout(() => {
+        blackout.style.opacity = '0'
+        closeAllScreens()
+        setTimeout(() => {
+            pauseGame('noTimeOut')
+            closeAllScreens()
+            posi = 48
+            ghost.removeAttribute('style')
+            document.getElementById('spaceShipTop').style.display = 'block'
+            screenIdentifier = 1
+        }, 1);
+        setTimeout(() => {
+            blackout.removeAttribute('style')
+        }, 300);
+    }, 600);
 })

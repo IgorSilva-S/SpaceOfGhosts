@@ -14,7 +14,7 @@ function colisionMeteorite() {
             instaShield = false
             ghost.style.opacity = '1'
         }, 5000);
-    } else if (shieldBoost) {
+    } else if (shieldBoost && !quickMoving) {
         shieldToggle('disable')
         instaShield = true
         setTimeout(() => {

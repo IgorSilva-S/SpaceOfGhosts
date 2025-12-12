@@ -10,8 +10,16 @@ const breakMeteoriteSFX = new Audio('assets/sounds/sfx/breakMeteorite.wav')
 
 Array.from(document.getElementsByTagName('button')).forEach((b) => {
     b.addEventListener('click', () => {
-        if (!cannotPlaysound) {
-            clickSound.play()
-        }
+        clickSound.pause()
+        clickSound.currentTime = 0
+        clickSound.play()
+    })
+})
+
+Array.from(document.getElementsByClassName('door')).forEach((d) => {
+    d.addEventListener('click', () => {
+        clickSound.pause()
+        clickSound.currentTime = 0
+        clickSound.play()
     })
 })
