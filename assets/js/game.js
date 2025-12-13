@@ -139,6 +139,7 @@ function startGame() {
     screenIdentifier = 2
     life = 10
     energy = 0
+    spaceAreaMusic.play()
     instaShield = false
     shieldBoost = false
     shield.removeAttribute('style')
@@ -162,6 +163,7 @@ let paused = false
 function pauseGame(parameter) {
     if (screenIdentifier == 2) {
         if (!paused) {
+            spaceAreaMusic.pause()
             document.getElementById('pauseMenu').style.display = 'block'
             document.getElementById('stardustNum').innerHTML = stardustsNum
             setTimeout(() => {
@@ -194,6 +196,7 @@ function pauseGame(parameter) {
                 restartGif(fly)
                 paused = false
             } else {
+                spaceAreaMusic.play()
                 document.getElementById('topPause').removeAttribute('style')
                 document.getElementById('pauseContainer').removeAttribute('style')
                 setTimeout(() => {
@@ -228,6 +231,7 @@ document.getElementById('unpause').addEventListener('click', pauseGame)
 document.getElementById('restartGame').addEventListener('click', () => {
     closeAllScreens()
     setTimeout(() => {
+        spaceAreaMusic.currentTime = 0
         pauseGame('noTimeOut')
         posi = 48
         ghost.removeAttribute('style')
@@ -237,11 +241,13 @@ document.getElementById('restartGame').addEventListener('click', () => {
 
 document.getElementById('return').addEventListener('click', () => {
     blackout.style.display = 'block'
+    stopAllMusics()
     setTimeout(() => {
         blackout.style.opacity = '0'
         closeAllScreens()
         setTimeout(() => {
             pauseGame('noTimeOut')
+            spaceshipMusic.play()
             closeAllScreens()
             posi = 48
             ghost.removeAttribute('style')

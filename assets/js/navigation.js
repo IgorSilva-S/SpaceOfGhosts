@@ -15,11 +15,28 @@ function closeAllScreens() {
 }
 document.getElementById('play').addEventListener('click', () => {
     blackout.style.display = 'block'
+    stopAllMusics()
     setTimeout(() => {
         blackout.style.opacity = '0'
         closeAllScreens()
         setTimeout(() => {
             document.getElementById('spaceShipTop').style.display = 'block'
+            spaceshipMusic.play()
+        }, 1);
+        setTimeout(() => {
+            blackout.removeAttribute('style')
+        }, 300);
+    }, 600);
+})
+
+document.getElementById('backMenu').addEventListener('click', () => {
+    blackout.style.display = 'block'
+    stopAllMusics()
+    setTimeout(() => {
+        blackout.style.opacity = '0'
+        closeAllScreens()
+        setTimeout(() => {
+            document.getElementById('mainMenu').style.display = 'flex'
         }, 1);
         setTimeout(() => {
             blackout.removeAttribute('style')
@@ -57,6 +74,7 @@ document.getElementById('outterShip').addEventListener('click', () => {
 
 document.getElementById('startGame').addEventListener('click', () => {
     blackout.style.display = 'block'
+    stopAllMusics()
     setTimeout(() => {
         blackout.style.opacity = '0'
         closeAllScreens()

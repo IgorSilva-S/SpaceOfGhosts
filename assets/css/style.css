@@ -45,7 +45,7 @@ button {
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
 }
 
 #mainMenu img {
@@ -88,7 +88,7 @@ button {
     position: absolute;
     bottom: 0;
     left: 0;
-    background-color: #847e87;
+    background-color: #000512;
     border-top: 2px solid #000;
     z-index: 1;
 }
@@ -108,7 +108,7 @@ button {
 .spaceShipBCKG {
     width: 100%;
     height: calc(100% - 150px);
-    background-color: #ccc6;
+    background-color: #8faeff66;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -129,10 +129,9 @@ button {
 .doorsContainer .door {
     width: 200px;
     height: 250px;
-    background-color: #a1a1a1;
+    background-color: #c8d8ff;
     border: 2px solid #000;
     border-bottom: none;
-    border-radius: 4px 4px 0 0;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -145,11 +144,10 @@ button {
 .doorsContainer .door::before {
     width: 100%;
     height: 50px;
-    border-radius: 4px;
     position: absolute;
     content: attr(data-text);
-    top: -60px;
-    background-color: #a1a1a1;
+    top: -70px;
+    background-color: #c8d8ff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,11 +165,19 @@ button {
     content: '';
     background-image: url(../sprites/skins/ghost/idle.gif);
     opacity: 0;
-    transition-duration: .4s;
+    transition-duration: .1s;
 }
 
 .doorsContainer .door:hover::after {
     opacity: 1;
+}
+
+.doorsContainer .door:active {
+    background-color: #000;
+}
+
+.doorsContainer .door:active::after {
+    margin-bottom: -20px;
 }
 
 /* Game */
@@ -333,7 +339,7 @@ section {
 }
 
 #spaceShip {
-    background-color: #ccc;
+    background-color: #8faeff;
 }
 
 #spaceArea {
@@ -374,6 +380,10 @@ section {
 
 .bckg.stars {
     background-image: url(../sprites/backgrounds/stars.png);
+}
+
+.bckg.miniStars {
+    background-image: url(../sprites/backgrounds/miniStars.png);
 }
 
 .bckg.city {
