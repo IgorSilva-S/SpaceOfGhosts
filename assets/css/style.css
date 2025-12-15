@@ -43,7 +43,7 @@ section {
 }
 
 #gidM {
-    background-color: #a07500;
+    background-color: #3a1f00;
 }
 
 #spaceShipTop {
@@ -235,14 +235,14 @@ button:active {
     background-color: #180044;
     color: #716fff;
     margin: 0 auto;
-    border: 8px groove #0c0041;
+    border: 8px outset #0c0041;
     padding-top: 110px;
 }
 
 #gidM .idInformations {
-    background-color: #503b00;
-    border-color: #2e2200;
-    color: #e6a800;
+    background-color: #502000;
+    border-color: #2e1800;
+    color: #e66f00;
 }
 
 .GIDIntro {
@@ -377,6 +377,17 @@ button:active {
     margin-bottom: -20px;
 }
 
+.gidIdentifier {
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #000;
+    box-shadow: -5px 5px 0 0 white;
+    color: white;
+    padding: 20px 40px;
+}
+
 /* Game */
 .pressButton {
     width: 50px;
@@ -502,6 +513,16 @@ button:active {
     gap: 30px;
 }
 
+.pauseContainer .gidIdentifier {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    width: 83%;
+    box-shadow: 0 -5px 0 0 white;
+    text-align: center;
+    background-color: #000512;
+}
+
 .dmContainer {
     background-color: #503b0099;
 }
@@ -521,6 +542,12 @@ button:active {
     left: 0;
 }
 
+.bckg.vertical {
+    animation: runVertical 12s infinite linear;
+    width: 100dvw;
+    height: 200dvh;
+}
+
 .bckg.preview {
     top: 50%;
 }
@@ -533,33 +560,32 @@ button:active {
     background-image: url(../sprites/backgrounds/miniStars.png);
 }
 
+.bckg.desert {
+    background-image: url(../sprites/planets/DesertDazzle/background.png);
+}
+
 .bckg.city {
     background-image: url(../sprites/backgrounds/city.png);
 }
 
-.bckg.oldPaint {
-    animation: none;
-    width: 520px;
-    height: 240px;
+.bckg.code {
+    background-image: url(../sprites/backgrounds/GID-M.png);
 }
 
-.bckg.oldPaint.posi1 {
-    top: 2%;
-    left: 2%
+.marqueeMovement {
+    width: 100%;
+    position: absolute;
+    background-color: #000;
+    left: 0;
+    top: 150px;
+    color: #94eaff;
+    padding: 15px 0;
+    font-size: 20px;
 }
 
-.bckg.oldPaint.posi2 {
-    top: 2%;
-    left: auto;
-    right: 2%;
-}
-
-.oldPaint.v1 {
-    background-image: url(../sprites/backgrounds/oldPaint.gif);
-}
-
-.oldPaint.v2 {
-    background-image: url(../sprites/backgrounds/cityPaint.gif);
+.marqueeMovement p {
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
 }
 
 .movingChar {
@@ -639,6 +665,28 @@ button:active {
     background-image: url(../sprites/objects/mtType5.png);
 }
 
+.lane {
+    width: 3840px;
+    height: 150px;
+    position: absolute;
+    animation: runBackground infinite linear;
+}
+
+.lane.up {
+    bottom: 130px;
+    animation-duration: 7s;
+}
+
+.lane.down {
+    bottom: 0px;
+    animation-duration: 7s;
+}
+
+/* LANES BCKGS */
+.lane.DDP {
+    background-image: url(../sprites/planets/DesertDazzle/lane1.png);
+}
+
 /* Player */
 
 .ghost {
@@ -648,6 +696,12 @@ button:active {
     position: absolute;
     left: 123px;
     top: 48%;
+}
+
+#planetArea .ghost {
+    top: auto;
+    bottom: 110px;
+    transition-duration: .1s;
 }
 
 .shield {
@@ -735,6 +789,25 @@ button:active {
     to {
         left: -100%
     }
+}
+
+@keyframes runVertical {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: -100%
+    }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes floatHome {

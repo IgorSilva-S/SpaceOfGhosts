@@ -16,6 +16,8 @@ document.addEventListener('keydown', (e) => {
         if (!paused) {
             restartGif(upAnim);
         }
+    } else if ((e.key === "ArrowUp" || e.key.toLowerCase() == 'w') && screenIdentifier == 3) {
+        laneMovement('up')
     }
 
     if ((e.key === "ArrowDown" || e.key.toLowerCase() == 's') && screenIdentifier == 2) {
@@ -24,6 +26,8 @@ document.addEventListener('keydown', (e) => {
         if (!paused) {
             restartGif(downAnim);
         }
+    } else if ((e.key === "ArrowDown" || e.key.toLowerCase() == 's') && screenIdentifier == 3) {
+        laneMovement('down')
     }
 
     if (e.key == '1') {

@@ -4,6 +4,7 @@ let screenIdentifier = 0
     0: Main Menu
     1: Spaceship
     2: Game
+    3: Planet
 */
 const blackout = document.getElementById('blackout')
 
@@ -14,20 +15,37 @@ function closeAllScreens() {
     document.getElementById('spaceShip').removeAttribute('style')
     document.getElementById('ghostId').removeAttribute('style')
     document.getElementById('spaceArea').removeAttribute('style')
+    document.getElementById('planetArea').removeAttribute('style')
 }
 
-function b2bSpaceShip() {
-    blackout.style.display = 'block'
-    setTimeout(() => {
-        blackout.style.opacity = '0'
-        closeAllScreens()
+function b2bSpaceShip(posi) {
+    if (posi == 'top') {
+        blackout.style.display = 'block'
         setTimeout(() => {
-            document.getElementById('spaceShip').style.display = 'block'
-        }, 1);
+            blackout.style.opacity = '0'
+            screenIdentifier = 1
+            closeAllScreens()
+            setTimeout(() => {
+                document.getElementById('spaceShipTop').style.display = 'block'
+            }, 1);
+            setTimeout(() => {
+                blackout.removeAttribute('style')
+            }, 300);
+        }, 600);
+    } else {
+        blackout.style.display = 'block'
         setTimeout(() => {
-            blackout.removeAttribute('style')
-        }, 300);
-    }, 600);
+            blackout.style.opacity = '0'
+            screenIdentifier = 1
+            closeAllScreens()
+            setTimeout(() => {
+                document.getElementById('spaceShip').style.display = 'block'
+            }, 1);
+            setTimeout(() => {
+                blackout.removeAttribute('style')
+            }, 300);
+        }, 600);
+    }
 }
 
 document.getElementById('play').addEventListener('click', () => {
@@ -50,6 +68,7 @@ document.getElementById('play').addEventListener('click', () => {
         stopAllMusics()
         setTimeout(() => {
             blackout.style.opacity = '0'
+            screenIdentifier = 1
             closeAllScreens()
             setTimeout(() => {
                 document.getElementById('spaceShipTop').style.display = 'block'
@@ -82,22 +101,35 @@ document.getElementById('innerShip').addEventListener('click', () => {
 })
 
 document.getElementById('gid2menu').addEventListener('click', () => {
+    if (freeGID < 5) {
+        blackout.style.display = 'block'
+        stopAllMusics()
+        setTimeout(() => {
+            blackout.style.opacity = '0'
+            closeAllScreens()
+            setTimeout(() => {
+                document.getElementById('ghostId').style.display = 'flex'
+                spaceshipMusic.play()
+            }, 1);
+            setTimeout(() => {
+                blackout.removeAttribute('style')
+            }, 300);
+        }, 600);
+    }
+})
+
+document.getElementById('gid2ssp').addEventListener('click', () => {
     blackout.style.display = 'block'
-    stopAllMusics()
     setTimeout(() => {
         blackout.style.opacity = '0'
         closeAllScreens()
         setTimeout(() => {
-            document.getElementById('mainMenu').style.display = 'flex'
+            document.getElementById('spaceShipTop').style.display = 'block'
         }, 1);
         setTimeout(() => {
             blackout.removeAttribute('style')
         }, 300);
     }, 600);
-})
-
-document.getElementById('gid2ssp').addEventListener('click', () => {
-    b2bSpaceShip()
 })
 
 document.getElementById('outterShip').addEventListener('click', () => {
@@ -115,21 +147,25 @@ document.getElementById('outterShip').addEventListener('click', () => {
 })
 
 document.getElementById('startGame').addEventListener('click', () => {
-    blackout.style.display = 'block'
-    stopAllMusics()
-    setTimeout(() => {
-        blackout.style.opacity = '0'
-        closeAllScreens()
+    if (loadedGID !== null) {
+        blackout.style.display = 'block'
+        stopAllMusics()
         setTimeout(() => {
-            startGame()
-        }, 1);
-        setTimeout(() => {
-            blackout.removeAttribute('style')
-        }, 300);
-    }, 600);
+            blackout.style.opacity = '0'
+            closeAllScreens()
+            setTimeout(() => {
+                startGame()
+            }, 1);
+            setTimeout(() => {
+                blackout.removeAttribute('style')
+            }, 300);
+        }, 600);
+    } else {
+        console.log('Insert a GID')
+    }
 })
 
-document.getElementById('gidmNav').addEventListener('click', () => {
+document.getElementById('toGIDM').addEventListener('click', () => {
     blackout.style.display = 'block'
     stopAllMusics()
     setTimeout(() => {
@@ -152,6 +188,22 @@ document.getElementById('GIDoor').addEventListener('click', () => {
         closeAllScreens()
         setTimeout(() => {
             document.getElementById('ghostId').style.display = 'block'
+        }, 1);
+        setTimeout(() => {
+            blackout.removeAttribute('style')
+        }, 300);
+    }, 600);
+})
+
+/* DEV */
+document.getElementById('enterPlanet').addEventListener('click', () => {
+        blackout.style.display = 'block'
+    setTimeout(() => {
+        blackout.style.opacity = '0'
+        closeAllScreens()
+        screenIdentifier = 3
+        setTimeout(() => {
+            document.getElementById('planetArea').style.display = 'block'
         }, 1);
         setTimeout(() => {
             blackout.removeAttribute('style')

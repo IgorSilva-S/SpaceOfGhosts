@@ -2,6 +2,8 @@
 
 // GUI
 const clickSound = new Audio('assets/sounds/sfx/select.wav')
+const backSound = new Audio('assets/sounds/sfx/backButton.wav')
+const cardInsert = new Audio('assets/sounds/sfx/cardInsert.mp3')
 const doorMove = new Audio('assets/sounds/sfx/doorMovement.wav')
 
 // Game
@@ -13,9 +15,17 @@ const breakMeteoriteSFX = new Audio('assets/sounds/sfx/breakMeteorite.wav')
 
 Array.from(document.getElementsByTagName('button')).forEach((b) => {
     b.addEventListener('click', () => {
-        clickSound.pause()
-        clickSound.currentTime = 0
-        clickSound.play()
+        if (b.getAttribute('backButton') == 'yep') {
+            backSound.pause()
+            backSound.currentTime = 0
+            backSound.play()
+        } else {
+            if (b.getAttribute("playSFX") != 'no') {
+                clickSound.pause()
+                clickSound.currentTime = 0
+                clickSound.play()
+            }
+        }
     })
 })
 

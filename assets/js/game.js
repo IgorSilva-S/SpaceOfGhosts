@@ -223,6 +223,25 @@ function pauseGame(parameter) {
             }
         }
     }
+
+    if (screenIdentifier == 3) {
+        if (!paused) {
+            document.getElementById('pauseMenu').style.display = 'block'
+            document.getElementById('stardustNum').innerHTML = stardustsNum
+            setTimeout(() => {
+                document.getElementById('topPause').style.top = '0%'
+                document.getElementById('pauseContainer').style.bottom = '0%'
+            }, 1);
+            paused = true
+        } else {
+            document.getElementById('topPause').removeAttribute('style')
+            document.getElementById('pauseContainer').removeAttribute('style')
+            setTimeout(() => {
+                document.getElementById('pauseMenu').removeAttribute('style')
+                paused = false
+            }, 400);
+        }
+    }
 }
 
 // Pause Screen Buttons

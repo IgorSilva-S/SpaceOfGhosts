@@ -21,45 +21,40 @@
             <img src="assets/sprites/logo/logo.png" alt="">
             <div class="navBtnsAlign">
                 <button id="play">Jogar</button>
-                <button>Configurações</button>
-                <button id="gidmNav">Ghost ID Manager (GID-M)</button>
+                <button>Ajustes</button>
+                <button>Créditos</button>
             </div>
         </div>
     </section>
 
     <!-- Ghost ID - Manager -->
     <section id="gidM">
-        <div class="bckg miniStars"></div>
-        <button class="B2BButton" id="gid2menu">Voltar</button>
+        <div class="bckg vertical code"></div>
+        <button class="B2BButton" id="gid2menu" backButton="yep">Voltar</button>
         <div class="cardAlign">
             <div class="card-m">
-                <div class="cardPic" style="background-image: url(./assets/sprites/skins/ghost/pic.png);"></div>
-                <div class="saveName">Lorem</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="cardPic"></div>
+                <div class="saveName">Ghost ID - 1</div>
                 <div class="insertTriangle"></div>
             </div>
             <div class="card-m">
                 <div class="cardPic"></div>
-                <div class="saveName">Ipsum</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="saveName">Ghost ID - 2</div>
                 <div class="insertTriangle"></div>
             </div>
             <div class="card-m">
                 <div class="cardPic"></div>
-                <div class="saveName">Dolor</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="saveName">Ghost ID - 3</div>
                 <div class="insertTriangle"></div>
             </div>
             <div class="card-m">
                 <div class="cardPic"></div>
-                <div class="saveName">Sit</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="saveName">Ghost ID - 4</div>
                 <div class="insertTriangle"></div>
             </div>
             <div class="card-m">
                 <div class="cardPic"></div>
-                <div class="saveName">Amet</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="saveName">Ghost ID - 5</div>
                 <div class="insertTriangle"></div>
             </div>
         </div>
@@ -69,16 +64,16 @@
                 <p>Carregue, altere ou consulte suas informações de todos os GIDs</p>
             </div>
             <div class="infos">
-                <p id="saveName-M">Lorem</p>
-                <p id="lastSave-M">Último uso: 01/01/1970</p>
-                <p style="display: flex; justify-content: flex-start; align-items: center; gap: 5px">
-                    <img src="assets/sprites/GUI/stardust.gif" alt="">: <span id="saveStardusts-M">0</span>
+                <p id="saveName-M">---</p>
+                <p id="lastSave-M">---</p>
+                <p id="saveStardusts-M">
+                    ---
                 </p>
                 <p id="museumPieces-M">
-                    Peças do museu: 0
+                    ---
                 </p>
                 <p id="worldExplored-M">
-                    Mundos encontrados: 0
+                    ---
                 </p>
             </div>
             <div class="infos" style="align-items: center;">
@@ -86,8 +81,9 @@
                 <div class="ghostSkin" id="GIDSkin-M"></div>
             </div>
             <div class="infos">
-                <button id="lacGID">Carregar/Criar GID</button>
-                <button>Baixar GID</button>
+                <button id="lacGID" playSFX="no">Carregar/Criar GID</button>
+                <button>Exportar GID</button>
+                <button>Importar GID</button>
                 <button>Excluir GID</button>
             </div>
         </div>
@@ -97,15 +93,24 @@
     <section id="spaceShipTop">
         <div class="bckg stars"></div>
 
-        <div class="spaceShipPlatform"></div>
+        <div class="spaceShipPlatform">
+
+        </div>
         <div class="spaceShipBCKG"></div>
         <div class="spaceShipSoil">
 
         </div>
+        <div class="marqueeMovement">
+            <p>Hey explorador, não se esqueça de se identificar com o Ghost ID!</p>
+        </div>
         <div class="doorsContainer">
             <div class="door" id="startGame" data-text="Viajar no espaço"></div>
-            <div class="door" data-text="Retornar ao Menu" id="backMenu"></div>
+            <div class="door" data-text="Ghost ID" id="GIDoor"></div>
             <div class="door" data-text="Entrar na nave" id="innerShip"></div>
+            <div class="door" data-text="Retornar ao Menu" id="backMenu"></div>
+        </div>
+        <div class="gidIdentifier" id="outGIDTxt">
+            GID: NÃO ATRIBUÍDO
         </div>
     </section>
 
@@ -117,48 +122,48 @@
         <div class="movingChar mini classic goNBack" style="top: 15%"></div>
         <div class="spaceShipSoil"></div>
         <div class="doorsContainer">
-            <div class="door" data-text="Ghost ID" id="GIDoor"></div>
             <div class="door" data-text="Loja"></div>
             <div class="door" data-text="Closet"></div>
             <div class="door" data-text="Museu"></div>
             <div class="door" data-text="Sound Test"></div>
             <div class="door" data-text="Sair da nave" id="outterShip"></div>
+            <div class="door" data-text="DEV - Planeta" id="enterPlanet"></div>
+        </div>
+
+        <div class="gidIdentifier" id="inGIDTxt">
+            GID: NÃO ATRIBUÍDO
         </div>
     </section>
 
     <!--Ghost ID - Loader-->
     <section id="ghostId">
         <div class="bckg miniStars"></div>
-        <button class="B2BButton" id="gid2ssp">Voltar</button>
+        <button class="B2BButton" id="gid2ssp" backButton="yep">Voltar</button>
+        <button class="B2BButton" id="toGIDM" style="left: auto; right: 20px;">Ghost ID Manager</button>
         <div class="cardAlign">
             <div class="card">
-                <div class="cardPic" style="background-image: url(./assets/sprites/skins/ghost/pic.png);"></div>
-                <div class="saveName">Lorem</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="cardPic"></div>
+                <div class="saveName">Ghost ID - 1</div>
                 <div class="insertTriangle"></div>
             </div>
             <div class="card">
                 <div class="cardPic"></div>
-                <div class="saveName">Ipsum</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="saveName">Ghost ID - 2</div>
                 <div class="insertTriangle"></div>
             </div>
             <div class="card">
                 <div class="cardPic"></div>
-                <div class="saveName">Dolor</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="saveName">Ghost ID - 3</div>
                 <div class="insertTriangle"></div>
             </div>
             <div class="card">
                 <div class="cardPic"></div>
-                <div class="saveName">Sit</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="saveName">Ghost ID - 4</div>
                 <div class="insertTriangle"></div>
             </div>
             <div class="card">
                 <div class="cardPic"></div>
-                <div class="saveName">Amet</div>
-                <div class="lastUse">01/01/1970</div>
+                <div class="saveName">Ghost ID - 5</div>
                 <div class="insertTriangle"></div>
             </div>
         </div>
@@ -168,23 +173,23 @@
                 <p>Consulte e carregue suas informações do GID</p>
             </div>
             <div class="infos">
-                <p id="saveName">Lorem</p>
-                <p id="lastSave">Último uso: 01/01/1970</p>
-                <p style="display: flex; justify-content: flex-start; align-items: center; gap: 5px">
-                    <img src="assets/sprites/GUI/stardust.gif" alt="">: <span id="saveStardusts">0</span>
+                <p id="saveName">---</p>
+                <p id="lastSave">---</p>
+                <p id="saveStardusts">
+                    ---
                 </p>
                 <p id="museumPieces">
-                    Peças do museu: 0
+                    ---
                 </p>
                 <p id="worldExplored">
-                    Mundos encontrados: 0
+                    ---
                 </p>
             </div>
             <div class="infos" style="align-items: center;">
                 Skin em uso<br>
                 <div class="ghostSkin" id="GIDSkin"></div>
 
-                <button id="gidManager">Usar GID</button>
+                <button id="gidManager" playSFX="no">Carregar GID</button>
             </div>
         </div>
     </section>
@@ -216,7 +221,6 @@
             </div>
             <div class="energies" id="energyView"></div>
         </div>
-        <div class="effectsBar"></div>
         <div class="bckg stars" id="spaceBckg"></div>
         <div class="bckg" id="extraBckg"></div>
         <img class="ghost" id="ghost" src="./assets/sprites/skins/ghost/fly.gif">
@@ -240,6 +244,35 @@
         <div class="stardust"></div>
     </section>
 
+    <section id="planetArea" style="background-color: rgb(125, 192, 255);">
+        <div class="infoBar" id="pInfoBar">
+            <div class="lifes" id="pLifeView"></div>
+            <div class="boostBar">
+                <div class="boostInfo" id="pLifeBoost">
+                    <img src="assets/sprites/boosts/icons/plusLife.png" alt="">
+                    <div class="pressButton">1</div>
+                </div>
+
+                <div class="boostInfo" id="pShieldBoost">
+                    <img src="assets/sprites/boosts/icons/shield.png" alt="">
+                    <div class="pressButton">2</div>
+                </div>
+
+                <div class="boostInfo" id="pSpecialMove">
+                    <img src="assets/sprites/boosts/icons/quickMove.png" alt="">
+                    <div class="pressButton">3</div>
+                </div>
+
+            </div>
+            <div class="energies" id="pEnergyView"></div>
+        </div>
+
+        <div class="bckg desert"></div>
+        <div class="lane up DDP"></div>
+        <div class="lane down DDP"></div>
+        <img src="assets/sprites/skins/ghost/fly.gif" alt="" class="ghost" id="pGhost">
+    </section>
+
     <section id="pauseMenu">
         <div class="pauseBar">
             <div class="topPause" id="topPause">
@@ -252,6 +285,9 @@
                 <button id="unpause">Despausar e continuar</button>
                 <button id="restartGame">Reiniciar voo</button>
                 <button id="return">Voltar para nave</button>
+                <div class="gidIdentifier" id="pauseGIDTxt">
+                    GID: NÃO ATRIBUÍDO
+                </div>
             </div>
         </div>
     </section>
@@ -262,7 +298,7 @@
                 <h1>DevKeys</h1>
             </div>
             <div class="dmContainer" id="dmContainer">
-
+                <button>Usar GID - Developer</button>
             </div>
         </div>
     </section>
@@ -284,6 +320,9 @@
     <script src="assets/js/spaceArea/moviment.js"></script>
     <script src="assets/js/spaceArea/meteorite.js"></script>
     <script src="assets/js/spaceArea/hurtAndBoosts.js"></script>
+
+    <!--Planet Area-->
+    <script src="assets/js/planet/moviment.js"></script>
 </body>
 
 </html>
