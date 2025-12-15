@@ -31,19 +31,35 @@ function b2bSpaceShip() {
 }
 
 document.getElementById('play').addEventListener('click', () => {
-    blackout.style.display = 'block'
-    stopAllMusics()
-    setTimeout(() => {
-        blackout.style.opacity = '0'
-        closeAllScreens()
+    if (freeGID == 5) {
+        blackout.style.display = 'block'
+        stopAllMusics()
         setTimeout(() => {
-            document.getElementById('spaceShipTop').style.display = 'block'
-            spaceshipMusic.play()
-        }, 1);
+            blackout.style.opacity = '0'
+            closeAllScreens()
+            GIDManagerMusic.play()
+            setTimeout(() => {
+                document.getElementById('gidM').style.display = 'block'
+            }, 1);
+            setTimeout(() => {
+                blackout.removeAttribute('style')
+            }, 300);
+        }, 600);
+    } else {
+        blackout.style.display = 'block'
+        stopAllMusics()
         setTimeout(() => {
-            blackout.removeAttribute('style')
-        }, 300);
-    }, 600);
+            blackout.style.opacity = '0'
+            closeAllScreens()
+            setTimeout(() => {
+                document.getElementById('spaceShipTop').style.display = 'block'
+                spaceshipMusic.play()
+            }, 1);
+            setTimeout(() => {
+                blackout.removeAttribute('style')
+            }, 300);
+        }, 600);
+    }
 })
 
 document.getElementById('backMenu').addEventListener('click', () => {
