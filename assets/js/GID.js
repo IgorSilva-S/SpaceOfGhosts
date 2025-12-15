@@ -82,7 +82,8 @@ for (let i = 0; i < GIDCards.length; i++) {
 
 document.getElementById('gidManager').addEventListener('click', () => {
     if (isInstaGIDValid) {
-        loadedGID = instaGID
+        loadedGID = localStorage.getItem(`gid${instaGID}`)
+        loadedGID = JSON.parse(loadedGID)
     } else {
         let quickGID = {
             "saveName": "Quick",
@@ -101,7 +102,8 @@ document.getElementById('gidManager').addEventListener('click', () => {
 
 document.getElementById('lacGID').addEventListener('click', () => {
     if (isInstaGIDValid) {
-        loadedGID = instaGID
+        loadedGID = localStorage.getItem(`gid${instaGID}`)
+        loadedGID = JSON.parse(loadedGID)
     } else {
         let quickGID = {
             "saveName": "Quick",
