@@ -28,19 +28,23 @@ Array.from(document.getElementsByClassName('door')).forEach((d) => {
 })
 
 // Musics
+const GIDManagerMusic = new Audio('assets/sounds/music/ghostIdManager.mp3')
 const spaceshipMusic = new Audio('assets/sounds/music/spaceship.ogg')
 
 // Game
 const spaceAreaMusic = new Audio('assets/sounds/music/spaceArea.mp3')
 
 // LOOPS
+GIDManagerMusic.loop = true
 spaceshipMusic.loop = true
 spaceAreaMusic.loop = true
 
 function stopAllMusics() {
     setTimeout(() => {
+        GIDManagerMusic.pause()
         spaceshipMusic.pause()
         spaceAreaMusic.pause()
+        GIDManagerMusic.currentTime = 0
         spaceshipMusic.currentTime = 0
         spaceAreaMusic.currentTime = 0
     }, 300);

@@ -19,6 +19,64 @@ button {
         sans-serif;
 }
 
+/*Sections management*/
+
+section {
+    width: 100dvw;
+    height: 100dvh;
+    display: none;
+}
+
+#blackout {
+    z-index: 10000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    transition-duration: .3s;
+    animation: blackout .3s;
+}
+
+#mainMenu {
+    background-color: #010101;
+    color: white;
+}
+
+#gidM {
+    background-color: #a07500;
+}
+
+#spaceShipTop {
+    background-color: #010101;
+}
+
+#spaceShip {
+    background-color: #8faeff;
+}
+
+#ghostId {
+    background-color: #8faeff;
+}
+
+#spaceArea {
+    background-color: #010101;
+}
+
+#pauseMenu {
+    backdrop-filter: grayscale(100%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+}
+
+#devKeys {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+}
+
 /* GUI */
 
 /* Menu */
@@ -56,9 +114,8 @@ button {
     top: 10px;
 }
 
-/* Crossover - Main Menu Button + Pause Button */
-#mainMenu button,
-.pauseContainer button {
+/* Crossover - Main Menu Button + Pause Button + GID Button */
+button {
     font-size: 30px;
     border: none;
     border-radius: 0;
@@ -70,15 +127,154 @@ button {
     width: 90%;
 }
 
-#mainMenu button:hover,
-.pauseContainer button:hover {
+button:hover {
     box-shadow: 5px 5px 0 white;
 }
 
-#mainMenu button:active,
-.pauseContainer button:active {
+button:active {
     background-color: #2f9bb2;
     box-shadow: 5px 5px 0 #5fcde4;
+}
+
+.B2BButton {
+    width: auto !important;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* Ghost ID */
+#ghostId h1 {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.cardAlign {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+}
+
+.card {
+    width: 210px;
+    height: 300px;
+    background-color: #c8d8ff;
+    border: 1px solid #adc4ff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    transition-duration: .2s;
+}
+
+.card-m {
+    width: 210px;
+    height: 300px;
+    background-color: #fffbc8;
+    border: 1px solid #ffe9ad;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    transition-duration: .2s;
+}
+
+.card:hover,
+.card-m:hover {
+    margin-bottom: -30px;
+}
+
+.card:active,
+.card-m:active {
+    margin-bottom: -120px;
+}
+
+.cardPic {
+    width: 170px;
+    height: 170px;
+    background-color: #002070;
+}
+
+.card-m .cardPic {
+    background-color: #703f00;
+}
+
+.saveName {
+    font-size: 20px;
+}
+
+.insertTriangle {
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: #002070;
+    margin-bottom: -20px;
+}
+
+.card-m .insertTriangle {
+    border-top-color: #703f00;
+}
+
+.idInformations {
+    width: 60%;
+    height: 50%;
+    position: absolute;
+    top: 30px;
+    left: calc(50% - 30%);
+    box-sizing: border-box;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #180044;
+    color: #716fff;
+    margin: 0 auto;
+    border: 8px groove #0c0041;
+    padding-top: 110px;
+}
+
+#gidM .idInformations {
+    background-color: #503b00;
+    border-color: #2e2200;
+    color: #e6a800;
+}
+
+.GIDIntro {
+    position: absolute;
+    top: 30px;
+    text-align: center;
+    font-size: 20px;
+    gap: 3px
+}
+
+.idInformations .ghostSkin {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+}
+
+.idInformations .infos {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.idInformations .infos img {
+    width: 40px;
+    height: 40px;
+}
+
+#ghostId button,
+#gidM button {
+    font-size: 20px;
 }
 
 /* SpaceShip */
@@ -90,7 +286,8 @@ button {
     left: 0;
     background-color: #000512;
     border-top: 2px solid #000;
-    z-index: 1;
+
+    background-image: url(../sprites/backgrounds/textures/spaceShipSoil.png);
 }
 
 .spaceShipPlatform {
@@ -118,7 +315,7 @@ button {
     width: 100%;
     height: 300px;
     position: absolute;
-    bottom: 30%;
+    bottom: 20%;
     left: 0;
     display: flex;
     justify-content: space-evenly;
@@ -130,7 +327,7 @@ button {
     width: 200px;
     height: 250px;
     background-color: #c8d8ff;
-    border: 2px solid #000;
+    border: 2px solid #000512;
     border-bottom: none;
     display: flex;
     justify-content: center;
@@ -152,7 +349,7 @@ button {
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    border: 2px solid #000;
+    border: 2px solid #000512;
 }
 
 .doorsContainer .door:hover {
@@ -311,56 +508,6 @@ button {
 
 /* End GUI */
 
-/*Sections management*/
-
-section {
-    width: 100dvw;
-    height: 100dvh;
-    display: none;
-}
-
-#blackout {
-    z-index: 10000;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    transition-duration: .3s;
-    animation: blackout .3s;
-}
-
-#mainMenu {
-    background-color: #010101;
-    color: white;
-}
-
-#spaceShipTop {
-    background-color: #010101;
-}
-
-#spaceShip {
-    background-color: #8faeff;
-}
-
-#spaceArea {
-    background-color: #010101;
-}
-
-#pauseMenu {
-    backdrop-filter: grayscale(100%);
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 1001;
-}
-
-#devKeys {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 1001;
-}
-
 /* Backgrounds */
 
 .bckg {
@@ -390,6 +537,31 @@ section {
     background-image: url(../sprites/backgrounds/city.png);
 }
 
+.bckg.oldPaint {
+    animation: none;
+    width: 520px;
+    height: 240px;
+}
+
+.bckg.oldPaint.posi1 {
+    top: 2%;
+    left: 2%
+}
+
+.bckg.oldPaint.posi2 {
+    top: 2%;
+    left: auto;
+    right: 2%;
+}
+
+.oldPaint.v1 {
+    background-image: url(../sprites/backgrounds/oldPaint.gif);
+}
+
+.oldPaint.v2 {
+    background-image: url(../sprites/backgrounds/cityPaint.gif);
+}
+
 .movingChar {
     width: 100px;
     height: 100px;
@@ -399,6 +571,35 @@ section {
     position: absolute;
     top: 10%;
     animation: floatHome 10s linear infinite;
+}
+
+.movingChar.mini {
+    width: 50px;
+    height: 50px;
+}
+
+.movingChar.sara {
+    background-image: url(../sprites/backgrounds/flyingGhosts/sara.gif);
+}
+
+.movingChar.mecha {
+    background: url(../sprites/backgrounds/flyingGhosts/mecha.gif);
+}
+
+.movingChar.grad {
+    background: url(../sprites/backgrounds/flyingGhosts/grad.gif);
+}
+
+.movingChar.altAnim {
+    animation: floatHome2 18s linear infinite;
+}
+
+.movingChar.classic {
+    background-image: url(../sprites/backgrounds/flyingGhosts/classic.gif);
+}
+
+.movingChar.goNBack {
+    animation: goNBack linear 12s infinite;
 }
 
 .bckgMeteorite {
@@ -519,7 +720,9 @@ section {
 @keyframes blackout {
     from {
         opacity: 0;
-    } to {
+    }
+
+    to {
         opacity: 1;
     }
 }
@@ -579,6 +782,80 @@ section {
     100% {
         top: 10%;
         left: 120%
+    }
+}
+
+@keyframes floatHome2 {
+    0% {
+        top: 40%;
+        left: -130px;
+    }
+
+    10% {
+        top: 30%
+    }
+
+    20% {
+        top: 10%;
+    }
+
+    30% {
+        top: 20%;
+    }
+
+    40% {
+        top: 30%;
+    }
+
+    50% {
+        top: 2%;
+    }
+
+    60% {
+        top: 15%;
+    }
+
+    70% {
+        top: 40%;
+    }
+
+    80% {
+        top: 50%;
+    }
+
+    90% {
+        top: 30%;
+    }
+
+    100% {
+        top: 20%;
+        left: 120%
+    }
+}
+
+@keyframes goNBack {
+    0% {
+        left: 10%;
+    }
+
+    50% {
+        left: 90%;
+        transform: scaleX(1)
+    }
+
+    51% {
+        left: 90%;
+        transform: scaleX(-1)
+    }
+
+    99% {
+        left: 10%;
+        transform: scaleX(-1)
+    }
+
+    100% {
+        left: 10%;
+        transform: scaleX(1)
     }
 }
 

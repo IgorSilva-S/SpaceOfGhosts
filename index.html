@@ -22,10 +22,78 @@
             <div class="navBtnsAlign">
                 <button id="play">Jogar</button>
                 <button>Configurações</button>
+                <button id="gidmNav">Ghost ID Manager (GID-M)</button>
             </div>
         </div>
     </section>
 
+    <!-- Ghost ID - Manager -->
+    <section id="gidM">
+        <div class="bckg miniStars"></div>
+        <button class="B2BButton" id="gid2menu">Voltar</button>
+        <div class="cardAlign">
+            <div class="card-m">
+                <div class="cardPic" style="background-image: url(./assets/sprites/skins/ghost/pic.png);"></div>
+                <div class="saveName">Lorem</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+            <div class="card-m">
+                <div class="cardPic"></div>
+                <div class="saveName">Ipsum</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+            <div class="card-m">
+                <div class="cardPic"></div>
+                <div class="saveName">Dolor</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+            <div class="card-m">
+                <div class="cardPic"></div>
+                <div class="saveName">Sit</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+            <div class="card-m">
+                <div class="cardPic"></div>
+                <div class="saveName">Amet</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+        </div>
+        <div class="idInformations" id="GIDInfos">
+            <div class="GIDIntro">
+                <h2>Ghost ID Manager (GID-M)</h2>
+                <p>Carregue, altere ou consulte suas informações de todos os GIDs</p>
+            </div>
+            <div class="infos">
+                <p id="saveName-M">Lorem</p>
+                <p id="lastSave-M">Último uso: 01/01/1970</p>
+                <p style="display: flex; justify-content: flex-start; align-items: center; gap: 5px">
+                    <img src="assets/sprites/GUI/stardust.gif" alt="">: <span id="saveStardusts-M">0</span>
+                </p>
+                <p id="museumPieces-M">
+                    Peças do museu: 0
+                </p>
+                <p id="worldExplored-M">
+                    Mundos encontrados: 0
+                </p>
+            </div>
+            <div class="infos" style="align-items: center;">
+                Skin em uso<br>
+                <div class="ghostSkin" id="GIDSkin-M"></div>
+            </div>
+            <div class="infos">
+                <button>Carregar/Criar GID</button>
+                <button>Baixar GID</button>
+                <button>Excluir GID</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spaceship -->
     <section id="spaceShipTop">
         <div class="bckg stars"></div>
 
@@ -43,14 +111,81 @@
 
     <section id="spaceShip">
         <div class="bckg miniStars"></div>
+        <div class="movingChar mini sara"></div>
+        <div class="movingChar mini grad altAnim"></div>
+        <div class="movingChar mini mecha" style="animation-duration: 8s;"></div>
+        <div class="movingChar mini classic goNBack" style="top: 15%"></div>
         <div class="spaceShipSoil"></div>
         <div class="doorsContainer">
-            <div class="door" data-text="Ghost ID"></div>
+            <div class="door" data-text="Ghost ID" id="GIDoor"></div>
             <div class="door" data-text="Loja"></div>
             <div class="door" data-text="Closet"></div>
-            <div class="door" data-text="Sistema Luzídiuns"></div>
+            <div class="door" data-text="Museu"></div>
             <div class="door" data-text="Sound Test"></div>
             <div class="door" data-text="Sair da nave" id="outterShip"></div>
+        </div>
+    </section>
+
+    <!--Ghost ID - Loader-->
+    <section id="ghostId">
+        <div class="bckg miniStars"></div>
+        <button class="B2BButton" id="gid2ssp">Voltar</button>
+        <div class="cardAlign">
+            <div class="card">
+                <div class="cardPic" style="background-image: url(./assets/sprites/skins/ghost/pic.png);"></div>
+                <div class="saveName">Lorem</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+            <div class="card">
+                <div class="cardPic"></div>
+                <div class="saveName">Ipsum</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+            <div class="card">
+                <div class="cardPic"></div>
+                <div class="saveName">Dolor</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+            <div class="card">
+                <div class="cardPic"></div>
+                <div class="saveName">Sit</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+            <div class="card">
+                <div class="cardPic"></div>
+                <div class="saveName">Amet</div>
+                <div class="lastUse">01/01/1970</div>
+                <div class="insertTriangle"></div>
+            </div>
+        </div>
+        <div class="idInformations" id="GIDInfos">
+            <div class="GIDIntro">
+                <h2>Ghost ID (GID)</h2>
+                <p>Consulte e carregue suas informações do GID</p>
+            </div>
+            <div class="infos">
+                <p id="saveName">Lorem</p>
+                <p id="lastSave">Último uso: 01/01/1970</p>
+                <p style="display: flex; justify-content: flex-start; align-items: center; gap: 5px">
+                    <img src="assets/sprites/GUI/stardust.gif" alt="">: <span id="saveStardusts">0</span>
+                </p>
+                <p id="museumPieces">
+                    Peças do museu: 0
+                </p>
+                <p id="worldExplored">
+                    Mundos encontrados: 0
+                </p>
+            </div>
+            <div class="infos" style="align-items: center;">
+                Skin em uso<br>
+                <div class="ghostSkin" id="GIDSkin"></div>
+
+                <button id="gidManager">Usar GID</button>
+            </div>
         </div>
     </section>
 
@@ -138,6 +273,7 @@
 
     <script src="assets/js/sprites.js"></script>
     <script src="assets/js/system.js"></script>
+    <script src="assets/js/GID.js"></script>
     <script src="assets/js/devKeys.js"></script>
     <script src="assets/js/sounds.js"></script>
     <script src="assets/js/game.js"></script>
