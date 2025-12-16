@@ -115,6 +115,19 @@ document.getElementById('gid2menu').addEventListener('click', () => {
                 blackout.removeAttribute('style')
             }, 300);
         }, 600);
+    } else {
+        blackout.style.display = 'block'
+        stopAllMusics()
+        setTimeout(() => {
+            blackout.style.opacity = '0'
+            closeAllScreens()
+            setTimeout(() => {
+                document.getElementById('mainMenu').style.display = 'flex'
+            }, 1);
+            setTimeout(() => {
+                blackout.removeAttribute('style')
+            }, 300);
+        }, 600);
     }
 })
 
@@ -197,7 +210,7 @@ document.getElementById('GIDoor').addEventListener('click', () => {
 
 /* DEV */
 document.getElementById('enterPlanet').addEventListener('click', () => {
-        blackout.style.display = 'block'
+    blackout.style.display = 'block'
     setTimeout(() => {
         blackout.style.opacity = '0'
         closeAllScreens()
