@@ -532,7 +532,7 @@ button:active {
 /* Backgrounds */
 
 .bckg {
-    width: 200dvw;
+    width: 3840px;
     height: 100dvh;
     background-size: cover;
     background-position: center;
@@ -545,7 +545,7 @@ button:active {
 .bckg.vertical {
     animation: runVertical 12s infinite linear;
     width: 100dvw;
-    height: 200dvh;
+    height: 2160px;
 }
 
 .bckg.preview {
@@ -562,6 +562,10 @@ button:active {
 
 .bckg.desert {
     background-image: url(../sprites/planets/DesertDazzle/background.png);
+}
+
+.bckg.beach {
+    background-image: url(../sprites/planets/BorealBeach/background.png);
 }
 
 .bckg.city {
@@ -687,6 +691,20 @@ button:active {
     background-image: url(../sprites/planets/DesertDazzle/lane1.png);
 }
 
+.lane.BBP {
+    background: url(../sprites/planets/BorealBeach/laneU.png);
+}
+
+/* Lanes Corrections */
+.lane.up.BBP::after {
+    content: '';
+    background-color: #eec39a;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: -40px;
+}
+
 /* Player */
 
 .ghost {
@@ -783,31 +801,32 @@ button:active {
 
 @keyframes runBackground {
     from {
-        left: 0;
+        background-position-x: 0;
     }
 
     to {
-        left: -100%
+        background-position-x: -1920px;
     }
 }
 
 @keyframes runVertical {
     from {
-        top: 0;
+        background-position-y: 0;
     }
 
     to {
-        top: -100%
+        background-position-y: -1080px;
     }
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
 }
 
 @keyframes floatHome {
