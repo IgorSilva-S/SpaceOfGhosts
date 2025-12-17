@@ -568,8 +568,12 @@ button:active {
     background-image: url(../sprites/planets/BorealBeach/background.png);
 }
 
+.bckg.volcanic {
+    background-image: url(../sprites/planets/VolcanicValley/background.png);
+}
+
 .bckg.city {
-    background-image: url(../sprites/backgrounds/city.png);
+    background-image: url(../sprites/planets/MaterialMetropoly/background.png);
 }
 
 .bckg.code {
@@ -693,6 +697,22 @@ button:active {
 
 .lane.BBP {
     background: url(../sprites/planets/BorealBeach/laneU.png);
+}
+
+.lane.up.VVP {
+    background-image: url(../sprites/planets/VolcanicValley/laneU.png);
+}
+
+.lane.down.VVP {
+    background-image: url(../sprites/planets/VolcanicValley/laneD.png);
+}
+
+.lane.up.MMP {
+    background-image: url(../sprites/planets/MaterialMetropoly/laneU.png);
+}
+
+.lane.down.MMP {
+    background-image: url(../sprites/planets/MaterialMetropoly/laneD.png);
 }
 
 /* Lanes Corrections */

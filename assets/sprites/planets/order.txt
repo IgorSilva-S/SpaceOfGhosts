@@ -1,10 +1,10 @@
 Luzíndius - Estrela
 
-Desert Dazzle;
-Boreal Beach;
-Material Metropoly;
-Volcanic Valley;
-Crystallic Caves;
-Relic Ruins;
-Frozen Frontier;
+Volcanic Valley
+Desert Dazzle
+Material Metropoly
+Boreal Beach
+Crystallic Caves
+Relic Ruins
+Frozen Frontier
 Nebulous Nexus
