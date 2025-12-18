@@ -576,6 +576,10 @@ button:active {
     background-image: url(../sprites/planets/MaterialMetropoly/background.png);
 }
 
+.bckg.ruins {
+    background-image: url(../sprites/planets/RelicRuins/background.png);
+}
+
 .bckg.code {
     background-image: url(../sprites/backgrounds/GID-M.png);
 }
@@ -713,6 +717,10 @@ button:active {
 
 .lane.down.MMP {
     background-image: url(../sprites/planets/MaterialMetropoly/laneD.png);
+}
+
+.lane.RRP {
+    background-image: url(../sprites/planets/RelicRuins/laneU.png);
 }
 
 /* Lanes Corrections */
