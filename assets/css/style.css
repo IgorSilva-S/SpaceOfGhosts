@@ -323,7 +323,8 @@ button:active {
 
 }
 
-.doorsContainer .door {
+.doorsContainer .door,
+.doorsContainer .doorL {
     width: 200px;
     height: 250px;
     background-color: #c8d8ff;
@@ -331,14 +332,15 @@ button:active {
     border-bottom: none;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     box-sizing: border-box;
     padding: 20px;
     position: relative;
-    transition-duration: .1s;
+    transition-duration: .05s;
 }
 
-.doorsContainer .door::before {
+.doorsContainer .door::before,
+.doorsContainer .doorL::before {
     width: 100%;
     height: 50px;
     position: absolute;
@@ -356,16 +358,30 @@ button:active {
     background-color: #5fcde4;
 }
 
+.doorsContainer .doorL:hover {
+    background-color: #191929;
+}
+
 .doorsContainer .door::after {
     width: 100px;
     height: 100px;
     content: '';
-    background-image: url(../sprites/skins/ghost/idle.gif);
+    background-image: url(../sprites/GUI/enterDoor.png);
     opacity: 0;
-    transition-duration: .1s;
+    transition-duration: .05s;
 }
 
-.doorsContainer .door:hover::after {
+.doorsContainer .doorL::after {
+    width: 100px;
+    height: 100px;
+    content: '';
+    background-image: url(../sprites/GUI/lockedDoor.png);
+    opacity: 0;
+    transition-duration: .05s;
+}
+
+.doorsContainer .door:hover::after,
+.doorsContainer .doorL:hover::after {
     opacity: 1;
 }
 
@@ -374,7 +390,7 @@ button:active {
 }
 
 .doorsContainer .door:active::after {
-    margin-bottom: -20px;
+    filter: brightness(200%);
 }
 
 .gidIdentifier {
@@ -721,6 +737,14 @@ button:active {
 
 .lane.RRP {
     background-image: url(../sprites/planets/RelicRuins/laneU.png);
+}
+
+.lane.up.CCP {
+    background-image: url(../sprites/planets/CrystallicCaves/laneU.png);
+}
+
+.lane.down.CCP {
+    background-image: url(../sprites/planets/CrystallicCaves/laneD.png);
 }
 
 /* Lanes Corrections */
