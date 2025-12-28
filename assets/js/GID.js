@@ -136,7 +136,9 @@ document.getElementById('gidManager').addEventListener('click', () => {
             backSound.pause()
             backSound.currentTime = 0
             backSound.play()
+            localStorage.removeItem('loadedGID')
             document.getElementById('gidManager').innerText = 'Carregar GID'
+            document.getElementById('startGame').classList.add('GIDError')
         } else {
             clickSound.pause()
             clickSound.currentTime = 0
@@ -150,9 +152,11 @@ document.getElementById('gidManager').addEventListener('click', () => {
             cardInsert.pause()
             cardInsert.currentTime = 0
             setTimeout(() => {
+                localStorage.setItem('loadedGID', loadedGIDNum)
                 cardInsert.play()
             }, 1);
             document.getElementById('gidManager').innerText = 'Descarregar GID'
+            document.getElementById('startGame').classList.remove('GIDError')
         }
     } else {
         let d = new Date
@@ -201,6 +205,8 @@ document.getElementById('lacGID').addEventListener('click', () => {
             backSound.pause()
             backSound.currentTime = 0
             backSound.play()
+            localStorage.removeItem('loadedGID')
+            document.getElementById('startGame').classList.add('GIDError')
         } else {
             clickSound.pause()
             clickSound.currentTime = 0
@@ -214,8 +220,10 @@ document.getElementById('lacGID').addEventListener('click', () => {
             cardInsert.pause()
             cardInsert.currentTime = 0
             setTimeout(() => {
+                localStorage.setItem('loadedGID', loadedGIDNum)
                 cardInsert.play()
             }, 1);
+            document.getElementById('startGame').classList.remove('GIDError')
         }
     } else {
         let d = new Date
@@ -249,3 +257,34 @@ document.getElementById('lacGID').addEventListener('click', () => {
 
     loadGID()
 })
+
+// Auto Load GID
+function autoLoadGID() {
+    let lsGID = localStorage.getItem('loadedGID')
+    try {
+        lsGID = parseInt(lsGID)
+    } catch {
+        console.log('LSGID isnt a number')
+        return;
+    }
+    if (typeof lsGID == 'number' && !isNaN(lsGID)) {
+        loadedGID = localStorage.getItem(`gid${lsGID}`)
+        loadedGID = JSON.parse(loadedGID)
+        loadedGIDNum = lsGID
+        instaGID = lsGID
+        document.getElementById('outGIDTxt').innerText = `GID: ${loadedGID.saveName}`
+        document.getElementById('inGIDTxt').innerText = `GID: ${loadedGID.saveName}`
+        document.getElementById('pauseGIDTxt').innerText = `GID: ${loadedGID.saveName}`
+        cardInsert.pause()
+        cardInsert.currentTime = 0
+        GIDCardsAnim()
+        setTimeout(() => {
+            localStorage.setItem('loadedGID', loadedGIDNum)
+            cardInsert.play()
+        }, 1);
+        document.getElementById('gidManager').innerText = 'Descarregar GID'
+        document.getElementById('startGame').classList.remove('GIDError')
+    } else {
+        return;
+    }
+}

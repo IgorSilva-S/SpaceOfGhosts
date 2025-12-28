@@ -51,7 +51,7 @@ section {
 }
 
 #spaceShip {
-    background-color: #8faeff;
+    background-color: #000;
 }
 
 #ghostId {
@@ -371,6 +371,10 @@ button:active {
     transition-duration: .05s;
 }
 
+.doorsContainer .door.GIDError::after {
+    background-image: url(../sprites/GUI/GIDError.png);
+}
+
 .doorsContainer .doorL::after {
     width: 100px;
     height: 100px;
@@ -427,6 +431,10 @@ button:active {
     width: 200px;
     height: 40px;
     background-image: url(../sprites/GUI/energy/zero.png);
+}
+
+.energies.countdown {
+    background-image: url(../sprites/GUI/pEnergy/twenty.png);
 }
 
 .infoBar {
@@ -564,6 +572,31 @@ button:active {
     height: 2160px;
 }
 
+.bckg.static {
+    width: 100dvw;
+    height: 100dvh;
+    animation: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.bckg.planet {
+    width: 496px;
+    height: 496px;
+    animation: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    background-position: center;
+    background-image: url(../sprites/backgrounds/planet.png);
+    animation: rotate 30s linear infinite;
+}
+
 .bckg.preview {
     top: 50%;
 }
@@ -574,6 +607,10 @@ button:active {
 
 .bckg.miniStars {
     background-image: url(../sprites/backgrounds/miniStars.png);
+}
+
+.bckg.spaceShip {
+    background-image: url(../sprites/backgrounds/spaceShip.png);
 }
 
 .bckg.desert {
@@ -711,6 +748,10 @@ button:active {
 }
 
 /* LANES BCKGS */
+.lane.err {
+    background-image: url(../sprites/planets/err/lane.png);
+}
+
 .lane.DDP {
     background-image: url(../sprites/planets/DesertDazzle/lane1.png);
 }
@@ -869,6 +910,15 @@ button:active {
     to {
         background-position-y: -1080px;
     }
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 @keyframes marquee {

@@ -72,6 +72,7 @@ document.getElementById('play').addEventListener('click', () => {
             closeAllScreens()
             setTimeout(() => {
                 document.getElementById('spaceShipTop').style.display = 'block'
+                autoLoadGID()
                 spaceshipMusic.play()
             }, 1);
             setTimeout(() => {

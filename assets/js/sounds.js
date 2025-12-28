@@ -39,23 +39,44 @@ Array.from(document.getElementsByClassName('door')).forEach((d) => {
 
 // Musics
 const GIDManagerMusic = new Audio('assets/sounds/music/ghostIdManager.mp3')
-const spaceshipMusic = new Audio('assets/sounds/music/spaceship.ogg')
+const spaceshipMusic = new Audio('assets/sounds/music/spaceShip.mp3')
 
 // Game
 const spaceAreaMusic = new Audio('assets/sounds/music/spaceArea.mp3')
+
+const VVPMusic = new Audio('assets/sounds/music/VVP.mp3')
+const DDPMusic = new Audio('assets/sounds/music/DDP.mp3')
+const MMPMusic = new Audio('assets/sounds/music/MMP.mp3')
+const BBPMusic = new Audio('assets/sounds/music/BBP.mp3')
+const RRPMusic = new Audio('assets/sounds/music/RRP.mp3')
 
 // LOOPS
 GIDManagerMusic.loop = true
 spaceshipMusic.loop = true
 spaceAreaMusic.loop = true
+VVPMusic.loop = true
+DDPMusic.loop = true
+MMPMusic.loop = true
+BBPMusic.loop = true
+RRPMusic.loop = true
 
 function stopAllMusics() {
     setTimeout(() => {
         GIDManagerMusic.pause()
         spaceshipMusic.pause()
         spaceAreaMusic.pause()
+        VVPMusic.pause()
+        DDPMusic.pause()
+        MMPMusic.pause()
+        BBPMusic.pause()
+        RRPMusic.pause()
         GIDManagerMusic.currentTime = 0
         spaceshipMusic.currentTime = 0
         spaceAreaMusic.currentTime = 0
+        VVPMusic.currentTime = 0
+        DDPMusic.currentTime = 0
+        MMPMusic.currentTime = 0
+        BBPMusic.currentTime = 0
+        RRPMusic.currentTime = 0
     }, 300);
 }

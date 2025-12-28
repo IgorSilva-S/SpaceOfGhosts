@@ -122,3 +122,71 @@ function stopQuickMove() {
     quickMoveInterval = null;
     quickMoving = false;
 }
+
+function goToPlanet(specific) {
+    let plan = Math.floor(Math.random() * 5)
+    if (specific !== undefined && typeof specific === "number" && !isNaN(specific)) {
+        plan = specific
+    }
+    const bckg = document.getElementById('planBckg')
+    const laneU = document.getElementById('planLaneU')
+    const laneD = document.getElementById('planLaneD')
+    bckg.className = 'bckg'
+    laneU.className = 'lane up'
+    laneD.className = 'lane down'
+    blackout.style.display = 'block'
+    stopAllMusics()
+    setTimeout(() => {
+        blackout.style.opacity = '0'
+        closeAllScreens()
+        setTimeout(() => {
+            screenIdentifier = 3
+            switch (plan) {
+                case 0:
+                    document.getElementById('planetArea').style.backgroundColor = '#5A2A2A'
+                    bckg.classList.add('volcanic')
+                    laneU.classList.add('VVP')
+                    laneD.classList.add('VVP')
+                    VVPMusic.play()
+                    break
+                case 1:
+                    document.getElementById('planetArea').style.backgroundColor = '#3E5F7A'
+                    bckg.classList.add('desert')
+                    laneU.classList.add('DDP')
+                    laneD.classList.add('DDP')
+                    DDPMusic.play()
+                    break
+                case 2:
+                    document.getElementById('planetArea').style.backgroundColor = '#2F445E'
+                    bckg.classList.add('city')
+                    laneU.classList.add('MMP')
+                    laneD.classList.add('MMP')
+                    MMPMusic.play()
+                    break
+                case 3:
+                    document.getElementById('planetArea').style.backgroundColor = '#4F8FA8'
+                    bckg.classList.add('beach')
+                    laneU.classList.add('BBP')
+                    laneD.classList.add('BBP')
+                    BBPMusic.play()
+                    break
+                case 4:
+                    document.getElementById('planetArea').style.backgroundColor = '#2C3F5A'
+                    bckg.classList.add('ruins')
+                    laneU.classList.add('RRP')
+                    laneD.classList.add('RRP')
+                    RRPMusic.play()
+                    break
+                default:
+                    document.getElementById('planetArea').style.backgroundColor = '#000'
+                    laneU.classList.add('err')
+                    laneD.classList.add('err')
+                    spaceshipMusic.play()
+            }
+            document.getElementById('planetArea').style.display = 'block'
+        }, 1);
+        setTimeout(() => {
+            blackout.removeAttribute('style')
+        }, 300);
+    }, 600);
+}

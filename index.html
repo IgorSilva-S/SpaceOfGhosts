@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space Of Ghosts</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/sprites/boosts/icons/downPlanet.png" type="image/x-icon">
 </head>
 
 <body>
@@ -92,6 +93,7 @@
     <!-- Spaceship -->
     <section id="spaceShipTop">
         <div class="bckg stars"></div>
+        <div class="bckg planet"></div>
 
         <div class="spaceShipPlatform">
 
@@ -104,7 +106,7 @@
             <p>Hey explorador, não se esqueça de se identificar com o Ghost ID!</p>
         </div>
         <div class="doorsContainer">
-            <div class="door" id="startGame" data-text="Viajar no espaço"></div>
+            <div class="door GIDError" id="startGame" data-text="Viajar no espaço"></div>
             <div class="door" data-text="Ghost ID" id="GIDoor"></div>
             <div class="door" data-text="Entrar na nave" id="innerShip"></div>
             <div class="door" data-text="DEV - Planeta" id="enterPlanet"></div>
@@ -115,6 +117,8 @@
     </section>
 
     <section id="spaceShip">
+        <div class="bckg stars"></div>
+        <div class="bckg static spaceShip"></div>
         <div class="bckg miniStars"></div>
         <div class="movingChar mini sara"></div>
         <div class="movingChar mini grad altAnim"></div>
@@ -214,6 +218,11 @@
                     <div class="pressButton">3</div>
                 </div>
 
+                <div class="boostInfo" id="downPlanetBoost">
+                    <img src="assets/sprites/boosts/icons/downPlanet.png" alt="">
+                    <div class="pressButton">4</div>
+                </div>
+
                 <div class="boostInfo" id="laneSwitcherBoost" style="opacity: 0.4;">
                     <img src="assets/sprites/boosts/icons/laneSwitcher.png" alt="">
                     <div class="pressButton">L</div>
@@ -265,12 +274,13 @@
                 </div>
 
             </div>
-            <div class="energies" id="pEnergyView"></div>
+            <div class="energies countdown" id="pEnergyView"></div>
         </div>
 
-        <div class="bckg ruins"></div>
-        <div class="lane up CCP"></div>
-        <div class="lane down CCP"></div>
+        <div class="bckg miniStars"></div>
+        <div class="bckg" id="planBckg"></div>
+        <div class="lane up" id="planLaneU"></div>
+        <div class="lane down" id="planLaneD"></div>
         <img src="assets/sprites/skins/ghost/fly.gif" alt="" class="ghost" id="pGhost">
     </section>
 

@@ -22,10 +22,16 @@ setInterval(() => {
         document.getElementById('quickMoveBoost').removeAttribute('style')
     }
 
-    if (energy < 10) {
+    if (energy < 8) {
         document.getElementById('lifeBoost').style.opacity = 0.4
     } else {
         document.getElementById('lifeBoost').removeAttribute('style')
+    }
+
+    if (energy < 10) {
+        document.getElementById('downPlanetBoost').style.opacity = 0.4
+    } else {
+        document.getElementById('downPlanetBoost').removeAttribute('style')
     }
 
 }, 100);

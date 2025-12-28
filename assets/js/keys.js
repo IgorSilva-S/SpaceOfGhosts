@@ -31,8 +31,8 @@ document.addEventListener('keydown', (e) => {
     }
 
     if (e.key == '1') {
-        if (energy > 9) {
-            energy = energy - 10
+        if (energy > 7) {
+            energy = energy - 8
             life = life + 2
             checkLife()
         }
@@ -44,6 +44,13 @@ document.addEventListener('keydown', (e) => {
 
     if (e.key == '3' && screenIdentifier == 2) {
         startQuickMove(keyPressing)
+    }
+
+    if (e.key == '4') {
+        if (energy > 9) {
+            energy = energy - 10
+            goToPlanet()
+        }
     }
 
     if (e.key.toLowerCase() == 'l' && screenIdentifier == 2) {
