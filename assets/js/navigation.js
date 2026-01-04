@@ -55,9 +55,9 @@ document.getElementById('play').addEventListener('click', () => {
         setTimeout(() => {
             blackout.style.opacity = '0'
             closeAllScreens()
-            GIDManagerMusic.play()
+            spaceshipMusic.play()
             setTimeout(() => {
-                document.getElementById('gidM').style.display = 'block'
+                document.getElementById('ghostId').style.display = 'block'
             }, 1);
             setTimeout(() => {
                 blackout.removeAttribute('style')
@@ -102,7 +102,6 @@ document.getElementById('innerShip').addEventListener('click', () => {
 })
 
 document.getElementById('gid2menu').addEventListener('click', () => {
-    if (freeGID < 5) {
         blackout.style.display = 'block'
         stopAllMusics()
         setTimeout(() => {
@@ -110,6 +109,22 @@ document.getElementById('gid2menu').addEventListener('click', () => {
             closeAllScreens()
             setTimeout(() => {
                 document.getElementById('ghostId').style.display = 'flex'
+                spaceshipMusic.play()
+            }, 1);
+            setTimeout(() => {
+                blackout.removeAttribute('style')
+            }, 300);
+        }, 600);
+})
+
+document.getElementById('gid2ssp').addEventListener('click', () => {
+    if (freeGID < 5) {
+        blackout.style.display = 'block'
+        setTimeout(() => {
+            blackout.style.opacity = '0'
+            closeAllScreens()
+            setTimeout(() => {
+                document.getElementById('spaceShipTop').style.display = 'block'
                 spaceshipMusic.play()
             }, 1);
             setTimeout(() => {
@@ -130,20 +145,9 @@ document.getElementById('gid2menu').addEventListener('click', () => {
             }, 300);
         }, 600);
     }
-})
 
-document.getElementById('gid2ssp').addEventListener('click', () => {
-    blackout.style.display = 'block'
-    setTimeout(() => {
-        blackout.style.opacity = '0'
-        closeAllScreens()
-        setTimeout(() => {
-            document.getElementById('spaceShipTop').style.display = 'block'
-        }, 1);
-        setTimeout(() => {
-            blackout.removeAttribute('style')
-        }, 300);
-    }, 600);
+    instaGID = null
+    GIDCardsAnim()
 })
 
 document.getElementById('outterShip').addEventListener('click', () => {

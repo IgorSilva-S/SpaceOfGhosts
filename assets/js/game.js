@@ -141,6 +141,81 @@ const checkEnergy = () => {
     }
 }
 
+// P-Energy
+let pEnergy = 0
+const pEnergyView = document.getElementById('pEnergyView')
+const pEnergyImagesPath = './assets/sprites/GUI/pEnergy'
+const checkPEnergy = () => {
+    switch (pEnergy) {
+        case 20:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/twenty.png)`
+            break;
+        case 19:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/nineteen.png)`
+            break;
+        case 18:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/eighteen.png)`
+            break;
+        case 17:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/seventeen.png)`
+            break;
+        case 16:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/sixteen.png)`
+            break;
+        case 15:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/fifteen.png)`
+            break;
+        case 14:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/fourteen.png)`
+            break;
+        case 13:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/thirteen.png)`
+            break;
+        case 12:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/twelve.png)`
+            break;
+        case 11:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/eleven.png)`
+            break;
+        case 10:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/ten.png)`
+            break;
+        case 9:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/nine.png)`
+            break;
+        case 8:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/eight.png)`
+            break;
+        case 7:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/seven.png)`
+            break;
+        case 6:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/six.png)`
+            break;
+        case 5:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/five.png)`
+            break;
+        case 4:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/four.png)`
+            break;
+        case 3:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/three.png)`
+            break;
+        case 2:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/two.png)`
+            break;
+        case 1:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/one.png)`
+            break;
+        case 0:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/zero.png)`
+            break;
+        default:
+            pEnergyView.style.backgroundImage = `url(${pEnergyImagesPath}/error.png)`
+            break;
+    }
+}
+
 function startGame() {
     screenIdentifier = 2
     life = 10

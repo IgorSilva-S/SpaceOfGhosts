@@ -123,6 +123,9 @@ function stopQuickMove() {
     quickMoving = false;
 }
 
+// Planet moviment
+let actualPlanet = -1
+
 function goToPlanet(specific) {
     let plan = Math.floor(Math.random() * 5)
     if (specific !== undefined && typeof specific === "number" && !isNaN(specific)) {
@@ -137,8 +140,66 @@ function goToPlanet(specific) {
     blackout.style.display = 'block'
     stopAllMusics()
     setTimeout(() => {
+        actualPlanet = plan
         blackout.style.opacity = '0'
         closeAllScreens()
+        let objects = document.getElementsByClassName('planetObj')
+        Array.from(objects).forEach((o) => {
+            o.className = 'planetObj'
+            if (plan == 0) {
+                o.classList.add('VVP')
+            } else if (plan == 1) {
+                o.classList.add('DDP')
+            } else if (plan == 2) {
+                o.classList.add('MMP')
+            } else if (plan == 3) {
+                o.classList.add('BBP')
+            } else if (plan == 4) {
+                o.classList.add('RRP')
+            }
+
+            let speed, delay, posi
+            if (actualPlanet == 0 || actualPlanet == 1 || actualPlanet == 4) {
+                speed = Math.floor(Math.random() * 3) + 5
+            } else {
+                speed = 7
+            }
+
+            delay = Math.floor(Math.random() * 6)
+            posi = Math.floor(Math.random() * 2)
+
+            o.classList.remove('lane1')
+            o.classList.remove('lane2')
+            o.style.display = 'none'
+            setTimeout(() => {
+                o.removeAttribute('style')
+                o.style.animationDuration = `${speed}s`
+                o.style.animationDelay = `${delay}s`
+                o.classList.add(`lane${posi + 1}`)
+            }, 1);
+
+            o.addEventListener('animationiteration', () => {
+                let speed, delay, posi
+                if (actualPlanet == 0 || actualPlanet == 1 || actualPlanet == 4) {
+                    speed = Math.floor(Math.random() * 3) + 5
+                } else {
+                    speed = 7
+                }
+
+                delay = Math.floor(Math.random() * 6)
+                posi = Math.floor(Math.random() * 2)
+
+                o.classList.remove('lane1')
+                o.classList.remove('lane2')
+                o.style.display = 'none'
+                setTimeout(() => {
+                    o.removeAttribute('style')
+                    o.style.animationDuration = `${speed}s`
+                    o.style.animationDelay = `${delay}s`
+                    o.classList.add(`lane${posi + 1}`)
+                }, 1);
+            })
+        })
         setTimeout(() => {
             screenIdentifier = 3
             switch (plan) {
@@ -184,6 +245,50 @@ function goToPlanet(specific) {
                     spaceshipMusic.play()
             }
             document.getElementById('planetArea').style.display = 'block'
+            clearInterval(energyInterval)
+            energyInterval = null
+            pEnergy = 20
+            checkPEnergy()
+            energyInterval = setInterval(() => {
+                pEnergy--
+                checkPEnergy()
+                if (pEnergy == 0) {
+                    let isWorthBattle = Math.floor(Math.random() * 50) + 1
+                    if (isWorthBattle > 44 && isWorthBattle < 51) {
+                        console.log('IsWorthBattle')
+                    }
+                    clearInterval(energyInterval)
+                    blackout.style.display = 'block'
+                    stopAllMusics()
+                    setTimeout(() => {
+                        blackout.style.opacity = '0'
+                        closeAllScreens()
+                        spaceAreaMusic.play()
+                        setTimeout(() => {
+                            screenIdentifier = 2
+                            energy = 0
+                            instaShield = false
+                            shieldBoost = false
+                            shield.removeAttribute('style')
+                            shieldBoost = false
+                            checkEnergy()
+                            checkLife()
+                            energyInterval = setInterval(() => {
+                                energy++
+                                if (energy > 10) {
+                                    energy = 10
+                                }
+                                checkEnergy()
+                            }, 7500);
+                            checkEnergy()
+                            document.getElementById('spaceArea').style.display = 'block'
+                        }, 1);
+                        setTimeout(() => {
+                            blackout.removeAttribute('style')
+                        }, 300);
+                    }, 600);
+                }
+            }, 10000);
         }, 1);
         setTimeout(() => {
             blackout.removeAttribute('style')

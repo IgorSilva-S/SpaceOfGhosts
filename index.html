@@ -77,15 +77,11 @@
                     ---
                 </p>
             </div>
-            <div class="infos" style="align-items: center;">
-                Skin em uso<br>
-                <div class="ghostSkin" id="GIDSkin-M"></div>
-            </div>
             <div class="infos">
                 <button id="lacGID" playSFX="no">Carregar/Criar GID</button>
-                <button>Exportar GID</button>
-                <button>Importar GID</button>
-                <button>Excluir GID</button>
+                <button id="exportGID">Exportar GID</button>
+                <button id="importGID">Importar GID</button>
+                <button id="delGID">Excluir GID</button>
             </div>
         </div>
     </section>
@@ -93,7 +89,6 @@
     <!-- Spaceship -->
     <section id="spaceShipTop">
         <div class="bckg stars"></div>
-        <div class="bckg planet"></div>
 
         <div class="spaceShipPlatform">
 
@@ -190,10 +185,8 @@
                 </p>
             </div>
             <div class="infos" style="align-items: center;">
-                Skin em uso<br>
-                <div class="ghostSkin" id="GIDSkin"></div>
-
                 <button id="gidManager" playSFX="no">Carregar GID</button>
+                <button id="gidPhotoChanger">Alterar foto do GID</button>
             </div>
         </div>
     </section>
@@ -281,6 +274,14 @@
         <div class="bckg" id="planBckg"></div>
         <div class="lane up" id="planLaneU"></div>
         <div class="lane down" id="planLaneD"></div>
+        <div class="planetObj"></div>
+        <div class="planetObj"></div>
+        <div class="planetObj"></div>
+        <div class="planetObj"></div>
+        <div class="planetObj"></div>
+        <div class="planetObj"></div>
+        <div class="planetObj"></div>
+        <div class="ghostShadow" id="PGShadow"></div>
         <img src="assets/sprites/skins/ghost/fly.gif" alt="" class="ghost" id="pGhost">
     </section>
 
@@ -295,7 +296,7 @@
             <div class="pauseContainer" id="pauseContainer">
                 <button id="unpause">Despausar e continuar</button>
                 <button id="restartGame">Reiniciar voo</button>
-                <button id="return">Voltar para nave</button>
+                <button id="return" backButton="yep" >Voltar para nave</button>
                 <div class="gidIdentifier" id="pauseGIDTxt">
                     GID: NÃO ATRIBUÍDO
                 </div>

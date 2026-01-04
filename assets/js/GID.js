@@ -11,18 +11,36 @@ let isInstaGIDValid = false
 const GIDCards = [...document.getElementsByClassName('card')]
 const GIDCards_M = [...document.getElementsByClassName('card-m')]
 
+const cardPic = {
+    0: 'assets/sprites/GID/images/pic.png',
+    1: 'assets/sprites/GID/images/VVP.png',
+    2: 'assets/sprites/GID/images/DDP.png',
+    3: 'assets/sprites/GID/images/MMP.png',
+    4: 'assets/sprites/GID/images/BBP.png',
+    5: 'assets/sprites/GID/images/RRP.png',
+    6: 'assets/sprites/GID/images/PlanetPic.png',
+}
+
 function GIDCardsAnim() {
     GIDCards_M.forEach((c) => {
         c.removeAttribute('style')
     })
 
-    GIDCards_M[instaGID].style.marginBottom = '-120px'
+    try {
+        GIDCards_M[instaGID].style.marginBottom = '-120px'
+    } catch {
+
+    }
 
     GIDCards.forEach((c) => {
         c.removeAttribute('style')
     })
 
-    GIDCards[instaGID].style.marginBottom = '-120px'
+    try {
+        GIDCards[instaGID].style.marginBottom = '-120px'
+    } catch {
+
+    }
 
     try {
         GIDCards_M[loadedGIDNum].style.marginBottom = '-240px'
@@ -37,7 +55,10 @@ function loadGID() {
             saveArray = localStorage.getItem(`gid${i}`)
             saveArray = JSON.parse(saveArray)
             g.querySelector('.saveName').innerText = saveArray.saveName
-            g.querySelector('.cardPic').style.backgroundColor = saveArray.pic
+            g.querySelector('.cardPic').style.backgroundImage = `url(${cardPic[saveArray.pic]})`
+            if (typeof saveArray.pic !== "number") {
+                g.querySelector('.cardPic').style.backgroundImage = `url(${saveArray.pic})`
+            }
         } catch {
             g.querySelector('.saveName').innerText = `Ghost ID - ${i + 1}`
             g.querySelector('.cardPic').removeAttribute('style')
@@ -50,12 +71,15 @@ function loadGID() {
             saveArray = localStorage.getItem(`gid${i}`)
             saveArray = JSON.parse(saveArray)
             g.querySelector('.saveName').innerText = saveArray.saveName
-            g.querySelector('.cardPic').style.backgroundColor = saveArray.pic
-        } catch {
-            g.querySelector('.saveName').innerText = `Ghost ID - ${i + 1}`
-            g.querySelector('.cardPic').removeAttribute('style')
-        }
-    })
+            g.querySelector('.cardPic').style.backgroundImage = `url(${cardPic[saveArray.pic]})`
+            if (typeof saveArray.pic !== "number") {
+                g.querySelector('.cardPic').style.backgroundImage = `url(${saveArray.pic})`
+            }
+            } catch {
+                g.querySelector('.saveName').innerText = `Ghost ID - ${i + 1}`
+                g.querySelector('.cardPic').removeAttribute('style')
+            }
+        })
 }
 
 loadGID()
@@ -65,7 +89,6 @@ for (let i = 0; i < GIDCards_M.length; i++) {
         try {
             saveArray = localStorage.getItem(`gid${i}`)
             saveArray = JSON.parse(saveArray)
-            document.getElementById('GIDSkin-M').style.backgroundImage = "url('./assets/sprites/skins/ghost/idle.gif')"
             document.getElementById('saveName-M').innerHTML = saveArray.saveName
             document.getElementById('lastSave-M').innerHTML = `Último uso: ${saveArray.lastUse}`
             document.getElementById('saveStardusts-M').innerHTML = `Stardusts: ${saveArray.stardusts}`
@@ -74,7 +97,6 @@ for (let i = 0; i < GIDCards_M.length; i++) {
             instaGID = i
             isInstaGIDValid = true
         } catch {
-            document.getElementById('GIDSkin-M').style.backgroundImage = "url('./assets/sprites/skins/blank.png')"
             document.getElementById('saveName-M').innerHTML = 'NO SAVE'
             document.getElementById('lastSave-M').innerHTML = `NO SAVE`
             document.getElementById('saveStardusts-M').innerHTML = 'NO SAVE'
@@ -93,7 +115,6 @@ for (let i = 0; i < GIDCards.length; i++) {
         try {
             saveArray = localStorage.getItem(`gid${i}`)
             saveArray = JSON.parse(saveArray)
-            document.getElementById('GIDSkin').style.backgroundImage = "url('./assets/sprites/skins/ghost/idle.gif')"
             document.getElementById('saveName').innerHTML = saveArray.saveName
             document.getElementById('lastSave').innerHTML = `Último uso: ${saveArray.lastUse}`
             document.getElementById('saveStardusts').innerHTML = `Stardusts: ${saveArray.stardusts}`
@@ -103,7 +124,6 @@ for (let i = 0; i < GIDCards.length; i++) {
             instaGID = i
             isInstaGIDValid = true
         } catch {
-            document.getElementById('GIDSkin').style.backgroundImage = "url('./assets/sprites/skins/blank.png')"
             document.getElementById('saveName').innerHTML = 'NO SAVE'
             document.getElementById('lastSave').innerHTML = `NO SAVE`
             document.getElementById('saveStardusts').innerHTML = 'NO SAVE'
@@ -169,16 +189,14 @@ document.getElementById('gidManager').addEventListener('click', () => {
             alert('Sem nome, nome padrão colocado')
             name = 'Ghost'
         }
-        let r = Math.floor(Math.random() * 255)
-        let g = Math.floor(Math.random() * 255)
-        let b = Math.floor(Math.random() * 255)
+        let pic = Math.floor(Math.random() * 7)
         let quickGID = {
             "saveName": name,
             "lastUse": now,
             "stardusts": 0,
             "museum": 0,
             "worlds": 0,
-            "pic": `rgb(${r}, ${g}, ${b})`
+            "pic": pic
         }
 
         localStorage.setItem(`gid${instaGID}`, JSON.stringify(quickGID))
@@ -189,6 +207,17 @@ document.getElementById('gidManager').addEventListener('click', () => {
     }
 
     loadGID()
+})
+
+document.getElementById('gidPhotoChanger').addEventListener('click', () => {
+    if (loadedGID) {
+        let pic = Math.floor(Math.random() * 7)
+        loadedGID.pic = pic
+        localStorage.setItem(`gid${loadedGIDNum}`, JSON.stringify(loadedGID))
+        loadGID()
+    } else {
+        alert('Carregue um GID antes de alterar a foto')
+    }
 })
 
 document.getElementById('lacGID').addEventListener('click', () => {
@@ -236,16 +265,14 @@ document.getElementById('lacGID').addEventListener('click', () => {
             alert('Sem nome, nome padrão colocado')
             name = 'Ghost'
         }
-        let r = Math.floor(Math.random() * 255)
-        let g = Math.floor(Math.random() * 255)
-        let b = Math.floor(Math.random() * 255)
+        let pic = Math.floor(Math.random() * 7)
         let quickGID = {
             "saveName": name,
             "lastUse": now,
             "stardusts": 0,
             "museum": 0,
             "worlds": 0,
-            "pic": `rgb(${r}, ${g}, ${b})`
+            "pic": pic
         }
 
         localStorage.setItem(`gid${instaGID}`, JSON.stringify(quickGID))
@@ -255,6 +282,53 @@ document.getElementById('lacGID').addEventListener('click', () => {
         clickSound.play()
     }
 
+    loadGID()
+})
+
+document.getElementById('exportGID').addEventListener('click', () => {
+    if (typeof instaGID == "number" && isInstaGIDValid) {
+        let data = localStorage.getItem(`gid${instaGID}`)
+        data = JSON.parse(data)
+        let fileName = data.saveName
+        const dataString = JSON.stringify(data);
+        const blob = new Blob([dataString], { type: "text/plain" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = `${fileName}.gid`;
+        link.click();
+    } else {
+        alert('Selecione um GID válido antes')
+    }
+})
+
+document.getElementById('importGID').addEventListener('click', () => {
+    if (typeof instaGID == "number") {
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = ".gid"; // só aceita arquivos .gid 
+        fileInput.onchange = () => {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                let data = reader.result
+                localStorage.setItem(`gid${instaGID}`, data)
+                GIDCards_M[instaGID].click()
+                GIDCardsAnim()
+                loadGID()
+            };
+            reader.readAsText(file); // lê como texto, mesmo que seja .gid 
+        };
+        fileInput.click();
+        loadGID()
+    } else {
+        alert('Selecione um cartão antes')
+    }
+})
+
+document.getElementById('delGID').addEventListener('click', () => {
+    localStorage.removeItem(`gid${instaGID}`)
+    GIDCards_M[instaGID].click()
+    GIDCardsAnim()
     loadGID()
 })
 
@@ -270,8 +344,12 @@ function autoLoadGID() {
     if (typeof lsGID == 'number' && !isNaN(lsGID)) {
         loadedGID = localStorage.getItem(`gid${lsGID}`)
         loadedGID = JSON.parse(loadedGID)
+        if (loadedGID == undefined) {
+            return
+        }
         loadedGIDNum = lsGID
         instaGID = lsGID
+        isInstaGIDValid = true
         document.getElementById('outGIDTxt').innerText = `GID: ${loadedGID.saveName}`
         document.getElementById('inGIDTxt').innerText = `GID: ${loadedGID.saveName}`
         document.getElementById('pauseGIDTxt').innerText = `GID: ${loadedGID.saveName}`
