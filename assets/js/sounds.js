@@ -1,3 +1,7 @@
+// Extra
+const noWayMusic = new Audio('assets/sounds/music/noWay.mp3')
+noWayMusic.loop = true
+
 // SFX
 
 // GUI

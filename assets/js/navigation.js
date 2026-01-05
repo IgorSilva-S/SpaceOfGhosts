@@ -49,36 +49,52 @@ function b2bSpaceShip(posi) {
 }
 
 document.getElementById('play').addEventListener('click', () => {
-    if (freeGID == 5) {
+    if (OS == 'Android' || OS == 'iOS') {
         blackout.style.display = 'block'
         stopAllMusics()
         setTimeout(() => {
             blackout.style.opacity = '0'
             closeAllScreens()
-            spaceshipMusic.play()
+            noWayMusic.play()
             setTimeout(() => {
-                document.getElementById('ghostId').style.display = 'block'
+                document.getElementById('noPhone').style.display = 'flex'
             }, 1);
             setTimeout(() => {
                 blackout.removeAttribute('style')
             }, 300);
         }, 600);
     } else {
-        blackout.style.display = 'block'
-        stopAllMusics()
-        setTimeout(() => {
-            blackout.style.opacity = '0'
-            screenIdentifier = 1
-            closeAllScreens()
+        if (freeGID == 5) {
+            blackout.style.display = 'block'
+            stopAllMusics()
             setTimeout(() => {
-                document.getElementById('spaceShipTop').style.display = 'block'
-                autoLoadGID()
+                blackout.style.opacity = '0'
+                closeAllScreens()
                 spaceshipMusic.play()
-            }, 1);
+                setTimeout(() => {
+                    document.getElementById('ghostId').style.display = 'block'
+                }, 1);
+                setTimeout(() => {
+                    blackout.removeAttribute('style')
+                }, 300);
+            }, 600);
+        } else {
+            blackout.style.display = 'block'
+            stopAllMusics()
             setTimeout(() => {
-                blackout.removeAttribute('style')
-            }, 300);
-        }, 600);
+                blackout.style.opacity = '0'
+                screenIdentifier = 1
+                closeAllScreens()
+                setTimeout(() => {
+                    document.getElementById('spaceShipTop').style.display = 'block'
+                    autoLoadGID()
+                    spaceshipMusic.play()
+                }, 1);
+                setTimeout(() => {
+                    blackout.removeAttribute('style')
+                }, 300);
+            }, 600);
+        }
     }
 })
 
@@ -102,19 +118,19 @@ document.getElementById('innerShip').addEventListener('click', () => {
 })
 
 document.getElementById('gid2menu').addEventListener('click', () => {
-        blackout.style.display = 'block'
-        stopAllMusics()
+    blackout.style.display = 'block'
+    stopAllMusics()
+    setTimeout(() => {
+        blackout.style.opacity = '0'
+        closeAllScreens()
         setTimeout(() => {
-            blackout.style.opacity = '0'
-            closeAllScreens()
-            setTimeout(() => {
-                document.getElementById('ghostId').style.display = 'flex'
-                spaceshipMusic.play()
-            }, 1);
-            setTimeout(() => {
-                blackout.removeAttribute('style')
-            }, 300);
-        }, 600);
+            document.getElementById('ghostId').style.display = 'flex'
+            spaceshipMusic.play()
+        }, 1);
+        setTimeout(() => {
+            blackout.removeAttribute('style')
+        }, 300);
+    }, 600);
 })
 
 document.getElementById('gid2ssp').addEventListener('click', () => {
@@ -218,3 +234,20 @@ document.getElementById('GIDoor').addEventListener('click', () => {
         }, 300);
     }, 600);
 })
+
+// NO PHONE
+function backPhoneMenu() {
+    blackout.style.display = 'block'
+    noWayMusic.pause()
+    noWayMusic.currentTime = 0
+    setTimeout(() => {
+        blackout.style.opacity = '0'
+        document.getElementById('noPhone').removeAttribute('style')
+        setTimeout(() => {
+            document.getElementById('mainMenu').style.display = 'flex'
+        }, 1);
+        setTimeout(() => {
+            blackout.removeAttribute('style')
+        }, 300);
+    }, 600);
+}

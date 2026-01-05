@@ -22,9 +22,9 @@
             <img src="assets/sprites/logo/logo.png" alt="">
             <div class="navBtnsAlign">
                 <button id="play">Jogar</button>
-                <button>Controles</button>
+                <!-- <button>Controles</button>
                 <button>Ajustes</button>
-                <button>Créditos</button>
+                <button>Créditos</button> -->
                 <h1 style="align-self: flex-start; margin-left: 5%;">Versão 2yB (Beta de 2 anos)</h1>
             </div>
         </div>
@@ -331,6 +331,19 @@
     <section id="blackout">
 
     </section>
+    <section class="noPhone" id="noPhone">
+        <img src="assets/sprites/skins/ghost/idle.gif" alt="">
+        <span>O Space Of Ghosts ainda não está disponível nem otimizado para jogar em celular, tente jogar em um
+            computador :)</span>
+        <button backButton="yep" onclick="backPhoneMenu()">Voltar</button>
+        <div class="marqueeMovement">
+            <p>No Phone!</p>
+        </div>
+
+        <div class="marqueeMovement" style="top: auto; bottom: 0;">
+            <p>No Phone!</p>
+        </div>
+    </section>
 
     <script src="assets/js/sprites.js"></script>
     <script src="assets/js/system.js"></script>
@@ -340,6 +353,7 @@
     <script src="assets/js/game.js"></script>
     <script src="assets/js/navigation.js"></script>
     <script src="assets/js/keys.js"></script>
+    <script src="assets/js/getOS.js"></script>
 
     <!--Space Area-->
     <script src="assets/js/spaceArea/moviment.js"></script>

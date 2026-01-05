@@ -1316,3 +1316,56 @@ button:active {
         background-image: url('../sprites/boosts/shield/shield26.png');
     }
 }
+
+@media (max-width: 720px) {
+    #mainMenu {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .leftAlign {
+        width: 100dvw;
+    }
+
+    .noPhone {
+        background-color: black;
+        z-index: 9999;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        color: white;
+        font-size: 25px;
+        box-sizing: border-box;
+        padding: 0 10%;
+        gap: 50px;
+    }
+
+    .noPhone .marqueeMovement {
+        top: 0;
+        font-size: 60px;
+        box-sizing: border-box;
+        padding: 40px 0;
+        color: white
+    }
+
+    .noPhone .marqueeMovement p {
+        animation-duration: 3s;
+        animation-name: noPhoneMarquee;
+    }
+
+    @keyframes noPhoneMarquee {
+        from {
+            transform: translateX(-100%);
+        }
+
+        to {
+            transform: translateX(100%);
+        }
+    }
+}
