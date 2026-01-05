@@ -80,3 +80,27 @@ function stopAllMusics() {
         RRPMusic.currentTime = 0
     }, 300);
 }
+
+function pausePlanetMusic() {
+    VVPMusic.pause()
+    DDPMusic.pause()
+    MMPMusic.pause()
+    BBPMusic.pause()
+    RRPMusic.pause()
+}
+
+function playPlanetMusic() {
+    if (actualPlanet == 0) {
+        VVPMusic.play()
+    } else if (actualPlanet == 1) {
+        DDPMusic.play()
+    } else if (actualPlanet == 2) {
+        MMPMusic.play()
+    } else if (actualPlanet == 3) {
+        BBPMusic.play()
+    } else if (actualPlanet == 4) {
+        RRPMusic.play()
+    } else {
+        spaceshipMusic.play()
+    }
+}

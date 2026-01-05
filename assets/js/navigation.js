@@ -179,6 +179,12 @@ document.getElementById('startGame').addEventListener('click', () => {
             }, 300);
         }, 600);
     } else {
+        document.getElementById('outGIDTxt').style.backgroundColor = 'red'
+        document.getElementById('marqueeMovement').style.backgroundColor = 'red'
+        setTimeout(() => {
+            document.getElementById('outGIDTxt').removeAttribute('style')
+            document.getElementById('marqueeMovement').removeAttribute('style')
+        }, 700);
         console.log('Insert a GID')
     }
 })
@@ -206,22 +212,6 @@ document.getElementById('GIDoor').addEventListener('click', () => {
         closeAllScreens()
         setTimeout(() => {
             document.getElementById('ghostId').style.display = 'block'
-        }, 1);
-        setTimeout(() => {
-            blackout.removeAttribute('style')
-        }, 300);
-    }, 600);
-})
-
-/* DEV */
-document.getElementById('enterPlanet').addEventListener('click', () => {
-    blackout.style.display = 'block'
-    setTimeout(() => {
-        blackout.style.opacity = '0'
-        closeAllScreens()
-        screenIdentifier = 3
-        setTimeout(() => {
-            document.getElementById('planetArea').style.display = 'block'
         }, 1);
         setTimeout(() => {
             blackout.removeAttribute('style')

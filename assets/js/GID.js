@@ -75,11 +75,11 @@ function loadGID() {
             if (typeof saveArray.pic !== "number") {
                 g.querySelector('.cardPic').style.backgroundImage = `url(${saveArray.pic})`
             }
-            } catch {
-                g.querySelector('.saveName').innerText = `Ghost ID - ${i + 1}`
-                g.querySelector('.cardPic').removeAttribute('style')
-            }
-        })
+        } catch {
+            g.querySelector('.saveName').innerText = `Ghost ID - ${i + 1}`
+            g.querySelector('.cardPic').removeAttribute('style')
+        }
+    })
 }
 
 loadGID()
@@ -89,11 +89,13 @@ for (let i = 0; i < GIDCards_M.length; i++) {
         try {
             saveArray = localStorage.getItem(`gid${i}`)
             saveArray = JSON.parse(saveArray)
+            let worldArray = JSON.parse(saveArray.worlds)
+            let WAVal = Object.values(worldArray).filter(Boolean).length
             document.getElementById('saveName-M').innerHTML = saveArray.saveName
             document.getElementById('lastSave-M').innerHTML = `Último uso: ${saveArray.lastUse}`
             document.getElementById('saveStardusts-M').innerHTML = `Stardusts: ${saveArray.stardusts}`
             document.getElementById('museumPieces-M').innerHTML = `Peças do museu: ${saveArray.museum}`
-            document.getElementById('worldExplored-M').innerHTML = `Mundos explorados: ${saveArray.worlds}`
+            document.getElementById('worldExplored-M').innerHTML = `Mundos explorados: ${WAVal}`
             instaGID = i
             isInstaGIDValid = true
         } catch {
@@ -115,11 +117,13 @@ for (let i = 0; i < GIDCards.length; i++) {
         try {
             saveArray = localStorage.getItem(`gid${i}`)
             saveArray = JSON.parse(saveArray)
+            let worldArray = JSON.parse(saveArray.worlds)
+            let WAVal = Object.values(worldArray).filter(Boolean).length
             document.getElementById('saveName').innerHTML = saveArray.saveName
             document.getElementById('lastSave').innerHTML = `Último uso: ${saveArray.lastUse}`
             document.getElementById('saveStardusts').innerHTML = `Stardusts: ${saveArray.stardusts}`
             document.getElementById('museumPieces').innerHTML = `Peças do museu: ${saveArray.museum}`
-            document.getElementById('worldExplored').innerHTML = `Mundos explorados: ${saveArray.worlds}`
+            document.getElementById('worldExplored').innerHTML = `Mundos explorados: ${WAVal}`
             document.getElementById('gidManager').innerText = 'Carregar GID'
             instaGID = i
             isInstaGIDValid = true
@@ -152,6 +156,7 @@ document.getElementById('gidManager').addEventListener('click', () => {
             document.getElementById('outGIDTxt').innerText = `GID: NÃO ATRIBUÍDO`
             document.getElementById('inGIDTxt').innerText = `GID: NÃO ATRIBUÍDO`
             document.getElementById('pauseGIDTxt').innerText = `GID: NÃO ATRIBUÍDO`
+            stardustsNum = 0
             GIDCardsAnim()
             backSound.pause()
             backSound.currentTime = 0
@@ -168,6 +173,7 @@ document.getElementById('gidManager').addEventListener('click', () => {
             document.getElementById('outGIDTxt').innerText = `GID: ${loadedGID.saveName}`
             document.getElementById('inGIDTxt').innerText = `GID: ${loadedGID.saveName}`
             document.getElementById('pauseGIDTxt').innerText = `GID: ${loadedGID.saveName}`
+            stardustsNum = loadedGID.stardusts
             GIDCardsAnim()
             cardInsert.pause()
             cardInsert.currentTime = 0
@@ -190,12 +196,20 @@ document.getElementById('gidManager').addEventListener('click', () => {
             name = 'Ghost'
         }
         let pic = Math.floor(Math.random() * 7)
+        let worldArray = {
+            'VVP': false,
+            'DDP': false,
+            'MMP': false,
+            'BBP': false,
+            'RRP': false
+        }
+        worldArray = JSON.stringify(worldArray)
         let quickGID = {
             "saveName": name,
             "lastUse": now,
             "stardusts": 0,
             "museum": 0,
-            "worlds": 0,
+            "worlds": worldArray,
             "pic": pic
         }
 
@@ -230,6 +244,7 @@ document.getElementById('lacGID').addEventListener('click', () => {
             document.getElementById('outGIDTxt').innerText = `GID: NÃO ATRIBUÍDO`
             document.getElementById('inGIDTxt').innerText = `GID: NÃO ATRIBUÍDO`
             document.getElementById('pauseGIDTxt').innerText = `GID: NÃO ATRIBUÍDO`
+            stardustsNum = 0
             GIDCardsAnim()
             backSound.pause()
             backSound.currentTime = 0
@@ -245,6 +260,7 @@ document.getElementById('lacGID').addEventListener('click', () => {
             document.getElementById('outGIDTxt').innerText = `GID: ${loadedGID.saveName}`
             document.getElementById('inGIDTxt').innerText = `GID: ${loadedGID.saveName}`
             document.getElementById('pauseGIDTxt').innerText = `GID: ${loadedGID.saveName}`
+            stardustsNum = loadedGID.stardusts
             GIDCardsAnim()
             cardInsert.pause()
             cardInsert.currentTime = 0
@@ -266,12 +282,20 @@ document.getElementById('lacGID').addEventListener('click', () => {
             name = 'Ghost'
         }
         let pic = Math.floor(Math.random() * 7)
+        let worldArray = {
+            'VVP': false,
+            'DDP': false,
+            'MMP': false,
+            'BBP': false,
+            'RRP': false
+        }
+        worldArray = JSON.stringify(worldArray)
         let quickGID = {
             "saveName": name,
             "lastUse": now,
             "stardusts": 0,
             "museum": 0,
-            "worlds": 0,
+            "worlds": worldArray,
             "pic": pic
         }
 
@@ -353,6 +377,7 @@ function autoLoadGID() {
         document.getElementById('outGIDTxt').innerText = `GID: ${loadedGID.saveName}`
         document.getElementById('inGIDTxt').innerText = `GID: ${loadedGID.saveName}`
         document.getElementById('pauseGIDTxt').innerText = `GID: ${loadedGID.saveName}`
+        stardustsNum = loadedGID.stardusts
         cardInsert.pause()
         cardInsert.currentTime = 0
         GIDCardsAnim()

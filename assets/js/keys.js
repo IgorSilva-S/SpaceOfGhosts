@@ -57,6 +57,10 @@ document.addEventListener('keydown', (e) => {
         laneSwitcher()
     }
 
+    if (e.key.toLowerCase() == ' ' && screenIdentifier == 3) {
+        laneMovement('space')
+    }
+
     checkEnergy()
 });
 

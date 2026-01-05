@@ -1,0 +1,12 @@
+  blackout.style.display = 'block'
+        stopAllMusics()
+        setTimeout(() => {
+            blackout.style.opacity = '0'
+            closeAllScreens()
+            setTimeout(() => {
+                // Action between blackout
+            }, 1);
+            setTimeout(() => {
+                blackout.removeAttribute('style')
+            }, 300);
+        }, 600);

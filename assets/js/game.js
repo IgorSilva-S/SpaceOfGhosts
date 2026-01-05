@@ -40,52 +40,122 @@ setInterval(() => {
 let life = 10
 
 const lifeView = document.getElementById('lifeView')
+const pLifeView = document.getElementById('pLifeView')
 const lifeImagesPath = './assets/sprites/GUI/hearts'
+
+const setLifeBackground = (value) => {
+    lifeView.style.backgroundImage = value
+    pLifeView.style.backgroundImage = value
+}
 
 const checkLife = () => {
     switch (life) {
         case 10:
             lifeView.removeAttribute('style')
-            break;
+            pLifeView.removeAttribute('style')
+            break
         case 9:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/ninety.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/ninety.png)`)
+            break
         case 8:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/eighty.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/eighty.png)`)
+            break
         case 7:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/seventy.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/seventy.png)`)
+            break
         case 6:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/sixty.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/sixty.png)`)
+            break
         case 5:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/fifty.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/fifty.png)`)
+            break
         case 4:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/fourty.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/fourty.png)`)
+            break
         case 3:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/thirty.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/thirty.png)`)
+            break
         case 2:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/twenty.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/twenty.png)`)
+            break
         case 1:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/ten.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/ten.png)`)
+            break
         case 0:
-            lifeView.style.backgroundImage = `url(${lifeImagesPath}/zero.png)`
-            break;
+            setLifeBackground(`url(${lifeImagesPath}/zero.png)`)
+            break
         case -1:
             clearInterval(energyInterval)
             energyInterval = null
-            closeAllScreens()
-            document.getElementById('mainMenu').style.display = 'flex'
-            screenIdentifier = 1
-            break;
+            if (screenIdentifier == 2) {
+                manipulableMeteorites.forEach((meteorite) => {
+                    meteorite.style.animationPlayState = 'paused'
+                })
+                document.getElementById('spaceBckg').style.animationPlayState = 'paused'
+                manipulableStardusts.forEach((stardust) => {
+                    stardust.style.animationPlayState = 'paused'
+                })
+                restartGif(endAnim)
+            } else if (screenIdentifier == 3) {
+                Array.from(objects).forEach((o) => {
+                    o.style.animationPlayState = 'paused'
+                })
+                const laneU = document.getElementById('planLaneU')
+                const laneD = document.getElementById('planLaneD')
+                laneD.style.animationPlayState = 'paused'
+                laneU.style.animationPlayState = 'paused'
+                document.getElementById('secPlanBckg').style.animationPlayState = 'paused'
+                document.getElementById('planBckg').style.animationPlayState = 'paused'
+                restartPGif(endAnim)
+            }
+            setTimeout(() => {
+                blackout.style.display = 'block'
+                stopAllMusics()
+                setTimeout(() => {
+                    blackout.style.opacity = '0'
+                    closeAllScreens()
+                    setTimeout(() => {
+                        document.getElementById('spaceShipTop').style.display = 'block'
+                        loadedGID.stardusts = stardustsNum
+                        let d = new Date
+                        let AZ = (n) => {
+                            return ('0' + n).slice(-2)
+                        }
+                        let now = `${AZ(d.getDate())}/${AZ(d.getMonth() + 1)}/${d.getFullYear()}`
+                        loadedGID.lastUse = now
+                        localStorage.setItem(`gid${loadedGIDNum}`, JSON.stringify(loadedGID))
+                        spaceshipMusic.play()
+                    }, 1);
+                    setTimeout(() => {
+                        blackout.removeAttribute('style')
+                        if (screenIdentifier == 2) {
+                            manipulableMeteorites.forEach((meteorite) => {
+                                meteorite.style.animationPlayState = 'running'
+                            })
+                            document.getElementById('spaceBckg').style.animationPlayState = 'running'
+                            manipulableStardusts.forEach((stardust) => {
+                                stardust.style.animationPlayState = 'running'
+                            })
+                            restartGif(endAnim)
+                        } else if (screenIdentifier == 3) {
+                            Array.from(objects).forEach((o) => {
+                                o.style.animationPlayState = 'running'
+                            })
+                            const laneU = document.getElementById('planLaneU')
+                            const laneD = document.getElementById('planLaneD')
+                            laneD.style.animationPlayState = 'running'
+                            laneU.style.animationPlayState = 'running'
+                            document.getElementById('secPlanBckg').style.animationPlayState = 'running'
+                            document.getElementById('planBckg').style.animationPlayState = 'running'
+                            restartPGif(endAnim)
+                        }
+                    }, 300);
+                }, 600);
+            }, 950);
+            break
     }
 }
+
 
 // Energy
 let energy = 0
@@ -309,6 +379,18 @@ function pauseGame(parameter) {
         if (!paused) {
             document.getElementById('pauseMenu').style.display = 'block'
             document.getElementById('stardustNum').innerHTML = stardustsNum
+            pausePlanetMusic()
+            clearInterval(energyInterval)
+            restartPGif(stopImg)
+            Array.from(objects).forEach((o) => {
+                o.style.animationPlayState = 'paused'
+            })
+            const laneU = document.getElementById('planLaneU')
+            const laneD = document.getElementById('planLaneD')
+            laneD.style.animationPlayState = 'paused'
+            laneU.style.animationPlayState = 'paused'
+            document.getElementById('secPlanBckg').style.animationPlayState = 'paused'
+            document.getElementById('planBckg').style.animationPlayState = 'paused'
             setTimeout(() => {
                 document.getElementById('topPause').style.top = '0%'
                 document.getElementById('pauseContainer').style.bottom = '0%'
@@ -319,7 +401,62 @@ function pauseGame(parameter) {
             document.getElementById('pauseContainer').removeAttribute('style')
             setTimeout(() => {
                 document.getElementById('pauseMenu').removeAttribute('style')
+                energyInterval = setInterval(() => {
+                    pEnergy--
+                    checkPEnergy()
+                    if (pEnergy <= 0) {
+                        let isWorthBattle = Math.floor(Math.random() * 50) + 1
+                        if (isWorthBattle > 44 && isWorthBattle < 51) {
+                            console.log('IsWorthBattle')
+                        }
+                        clearInterval(energyInterval)
+                        blackout.style.display = 'block'
+                        stopAllMusics()
+                        setTimeout(() => {
+                            blackout.style.opacity = '0'
+                            closeAllScreens()
+                            spaceAreaMusic.play()
+                            setTimeout(() => {
+                                screenIdentifier = 2
+                                energy = 0
+                                instaShield = false
+                                shieldBoost = false
+                                shield.removeAttribute('style')
+                                shieldBoost = false
+                                checkEnergy()
+                                checkLife()
+                                energyInterval = setInterval(() => {
+                                    energy++
+                                    if (energy > 10) {
+                                        energy = 10
+                                    }
+                                    checkEnergy()
+                                }, 7500);
+                                checkEnergy()
+                                document.getElementById('spaceArea').style.display = 'block'
+                            }, 1);
+                            setTimeout(() => {
+                                blackout.removeAttribute('style')
+                            }, 300);
+                        }, 600);
+                    }
+                }, 10000);
+                restartPGif(fly)
+                Array.from(objects).forEach((o) => {
+                    o.style.animationPlayState = 'running'
+                })
+                const laneU = document.getElementById('planLaneU')
+                const laneD = document.getElementById('planLaneD')
+                laneD.style.animationPlayState = 'running'
+                laneU.style.animationPlayState = 'running'
+                document.getElementById('secPlanBckg').style.animationPlayState = 'running'
+                document.getElementById('planBckg').style.animationPlayState = 'running'
                 paused = false
+                if (parameter == 'noTimeOut') {
+                    pausePlanetMusic()
+                } else {
+                    playPlanetMusic()
+                }
             }, 400);
         }
     }
@@ -336,6 +473,7 @@ document.getElementById('restartGame').addEventListener('click', () => {
         posi = 48
         ghost.removeAttribute('style')
         startGame()
+        stardustsNum = loadedGID.stardusts
     }, 1);
 })
 
@@ -346,6 +484,7 @@ document.getElementById('return').addEventListener('click', () => {
         blackout.style.opacity = '0'
         closeAllScreens()
         setTimeout(() => {
+            stardustsNum = loadedGID.stardusts
             pauseGame('noTimeOut')
             spaceshipMusic.play()
             closeAllScreens()

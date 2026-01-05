@@ -22,8 +22,9 @@
             <img src="assets/sprites/logo/logo.png" alt="">
             <div class="navBtnsAlign">
                 <button id="play">Jogar</button>
-                <button>Ajustes</button>
-                <button>Créditos</button>
+                <!-- <button>Ajustes (Não disponível)</button>
+                <button>Créditos (Não disponível)</button> -->
+                <h1 style="align-self: flex-start; margin-left: 5%;">Versão 2yB (Beta de 2 anos)</h1>
             </div>
         </div>
     </section>
@@ -70,7 +71,7 @@
                 <p id="saveStardusts-M">
                     ---
                 </p>
-                <p id="museumPieces-M">
+                <p id="museumPieces-M" style="display: none;">
                     ---
                 </p>
                 <p id="worldExplored-M">
@@ -97,14 +98,13 @@
         <div class="spaceShipSoil">
 
         </div>
-        <div class="marqueeMovement">
+        <div class="marqueeMovement" id="marqueeMovement">
             <p>Hey explorador, não se esqueça de se identificar com o Ghost ID!</p>
         </div>
         <div class="doorsContainer">
             <div class="door GIDError" id="startGame" data-text="Viajar no espaço"></div>
             <div class="door" data-text="Ghost ID" id="GIDoor"></div>
             <div class="door" data-text="Entrar na nave" id="innerShip"></div>
-            <div class="door" data-text="DEV - Planeta" id="enterPlanet"></div>
         </div>
         <div class="gidIdentifier" id="outGIDTxt">
             GID: NÃO ATRIBUÍDO
@@ -121,10 +121,9 @@
         <div class="movingChar mini classic goNBack" style="top: 15%"></div>
         <div class="spaceShipSoil"></div>
         <div class="doorsContainer">
-            <div class="doorL" data-text="Loja"></div>
-            <div class="doorL" data-text="Closet"></div>
-            <div class="doorL" data-text="Museu"></div>
-            <div class="doorL" data-text="Sound Test"></div>
+            <div class="doorL" data-text="Loja" onclick="alert('Ainda não disponível')"></div>
+            <div class="doorL" data-text="Closet" onclick="alert('Ainda não disponível')"></div>
+            <div class="doorL" data-text="Museu" onclick="alert('Ainda não disponível')"></div>
             <div class="door" data-text="Sair da nave" id="outterShip"></div>
             <div class="door" data-text="Retornar ao Menu" id="backMenu"></div>
         </div>
@@ -177,7 +176,7 @@
                 <p id="saveStardusts">
                     ---
                 </p>
-                <p id="museumPieces">
+                <p id="museumPieces" style="display: none;">
                     ---
                 </p>
                 <p id="worldExplored">
@@ -270,7 +269,7 @@
             <div class="energies countdown" id="pEnergyView"></div>
         </div>
 
-        <div class="bckg miniStars"></div>
+        <div class="bckg miniStars" id="secPlanBckg"></div>
         <div class="bckg" id="planBckg"></div>
         <div class="lane up" id="planLaneU"></div>
         <div class="lane down" id="planLaneD"></div>
@@ -296,7 +295,7 @@
             <div class="pauseContainer" id="pauseContainer">
                 <button id="unpause">Despausar e continuar</button>
                 <button id="restartGame">Reiniciar voo</button>
-                <button id="return" backButton="yep" >Voltar para nave</button>
+                <button id="return" backButton="yep">Voltar para nave</button>
                 <div class="gidIdentifier" id="pauseGIDTxt">
                     GID: NÃO ATRIBUÍDO
                 </div>
@@ -310,7 +309,19 @@
                 <h1>DevKeys</h1>
             </div>
             <div class="dmContainer" id="dmContainer">
-                <button>Usar GID - Developer</button>
+                <button onclick="goToPlanet()">Ir para algum planeta</button>
+                <button onclick="startGame()">Forçar início de jogo</button>
+                <button onclick="loadDevGID()">Carregar GID Dev</button>
+                <span>Jogo</span>
+                <button onclick="maxEnergy()" playSFX="no">Carregar energia</button>
+                <button onclick="maxLife()" playSFX="no">Restaruar vida</button>
+                <button onclick="toggleCH()">Modificar dano</button>
+                <span>Planetas específicos</span>
+                <button onclick="goToPlanet(0)">Volcanic Valley</button>
+                <button onclick="goToPlanet(1)">Desert Dazzle</button>
+                <button onclick="goToPlanet(2)">Material Metropoly</button>
+                <button onclick="goToPlanet(3)">Boreal Beach</button>
+                <button onclick="goToPlanet(4)">Relic Ruins</button>
             </div>
         </div>
     </section>
@@ -335,6 +346,8 @@
 
     <!--Planet Area-->
     <script src="assets/js/planet/moviment.js"></script>
+    <script src="assets/js/planet/planet.js"></script>
+    <script src="assets/js/planet/objects.js"></script>
 </body>
 
 </html>
