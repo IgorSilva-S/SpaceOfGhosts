@@ -10,4 +10,7 @@ const stopImg = `${skinpath}/stop.png`;
 const hurtPAnim = `${skinpath}/hurtMove.gif`;
 const slimeAnim = `${skinpath}/slimeMove.gif`;
 const backSlimeAnim = `${skinpath}/backSlime.gif`
+const startPowerAnim = `${skinpath}/startPower.gif`
+const quickMoveAnim = `${skinpath}/quickMove.gif`
+const endPowerAnim = `${skinpath}/endPower.gif`
 const endAnim = `${skinpath}/end.gif`
