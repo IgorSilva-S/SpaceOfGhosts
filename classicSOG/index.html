@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Of Ghosts</title>
+    <link rel="stylesheet" href="assets/css/skins.css">
+    <link rel="stylesheet" href="assets/css/style.css" id="mainCSS">
+    <link rel="shortcut icon" href="assets/img/sprites/skins/normal/Flying.gif" type="image/gif">
+</head>
+
+<!--Style to Loading Page-->
+
+
+<body>
+    <!--Not for phones alert-->
+    <!--<section class="notForPhones">
+        <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts">
+        Space of Ghosts não está pronto para aparelhos mobiles ainda, espere outras atualizações!
+    </section>-->
+    <!--Loading and Fatal JS error-->
+    <section id="loadingPage">
+        <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts">
+        <div class="loadingBallCont" id="lbCont">
+            <div class="loadingGhost">
+
+            </div>
+            <div style="display: none">
+                <div class="loadingBall" id="lb1"></div>
+                <div class="loadingBall" id="lb2"></div>
+                <div class="loadingBall" id="lb3"></div>
+                <div class="loadingBall" id="lb4"></div>
+                <div class="loadingBall" id="lb5"></div>
+            </div>
+        </div>
+        <div class="errorContainer" id="errorCont" style="display: none;">
+            <p id="errorText">Houve um erro inesperado no jogo, estamos corrigindo a situação!</p>
+            <div class="goButtons">
+                <button id="errReload">Recarregar página</button>
+                <button id="errGit">Abrir uma issue no GitHub</button>
+                <button id="errReset">Apagar dados</button>
+            </div>
+
+        </div>
+    </section>
+    <!--Disclaimer-->
+    <section id="disclaimer" style="display: none">
+        <span>Aviso</span>
+        Obrigado por testar Space of Ghosts! Esse jogo está em desenvolvimento, então, bugs poderão ser encontrados.
+        Caso encontre algum bug, por favor, avise os desenvolvedores abrindo uma issue no GitHub. <br><br>
+        Observação: Space Of Ghosts está planejado para ter um futuro remake, recriando toda a experiência de jogo. Espere por novas atualizações para habilitar a nova experiência de jogo. No mesmo, esse estilo do Space Of Ghosts estará disponível para jogar, só não receberá novos itens
+        <div id="devKeysDisclaimer" style="display: none">Obs.: A configuração DevKeys está ativa nessa seção, você pode
+            desativar a qualquer momento no DevKeys Central.</div>
+        <button id="exitDisclaimer">Okay</button>
+        <div class="waveGhost"></div>
+    </section>
+
+    <!--Home-->
+    <section id="homeScreen">
+        <div class="alignHomeButtons" id="homeButtons">
+            <img src="assets/img/non-sprites/gameName/name.png" alt="Space of Ghosts" id="gameName">
+            <button id="playGame">Jogar</button>
+            <button id="goShop" class="excludePhone">Loja</button>
+            <button id="skinsGS" class="excludePhone">Skins</button>
+            <button id="editSettings">Configurações</button>
+            <button id="helpGame" style="display: none">Ajuda</button>
+            <button id="devKeysEnter" style="display: none" class="excludePhone">DevKeys Central</button>
+            <button id="mobileSoundControl" class="onlyPhone">Controle de som</button>
+            <button id="viewCredits">Créditos</button>
+
+            <div class="version" id="homeVersion">
+                gameVersion
+            </div>
+        </div>
+        <div class="alignHomeButtons gameSelectControls" id="gameButtons">
+            <div class="alignHomeTitles">
+                <div class="lBackPage" id="GMRHome">
+
+                </div>
+                <div>
+                    <h1>Selecione o modo de jogo</h1>
+                </div>
+            </div>
+            <button id="spatialMode">
+                Espacial: Infinito
+            </button>
+            <button id="spatialXtremeMode">
+                Espacial: Infinito (Extremo)
+            </button>
+            <p class="pseudoLink excludePhone" style="display: none;">Adquira novos desafios na loja</p>
+
+            <div class="playGameAlert" id="alertPlay">
+                Selecione a quantidade de jogadores
+            </div>
+            <div class="playGame" id="playPopup">
+                <div class="playersContainer">
+                    <p>Quantidade de jogadores</p>
+                    <div>
+                        <input type="radio" name="players" id="onePlayer">
+                        <label for="onePlayer">Um jogador</label>
+                    </div>
+                    <div class="excludePhone">
+                        <input type="radio" name="players" id="twoPlayers">
+                        <label for="twoPlayers">Dois jogadores</label>
+                    </div>
+                </div>
+
+                <button class="startGame" id="startGame">
+                    Iniciar partida
+                </button>
+            </div>
+        </div>
+        <div class="homeAnimation" id="homeAnimation">
+            <div id="spatialModeAnimation">
+                <div class="background" style="animation-duration: 40s;">
+
+                </div>
+                <div class="earthCloud"></div>
+                <div class="homeGhost1" id="hgh1">
+
+                </div>
+                <div class="homeGhost2 excludePhone" id="hgh2"></div>
+            </div>
+
+            <div id="spatialXtremeModeAnimation" style="display: none;">
+                <div class="biome7"></div>
+                <div class="background" style="animation-duration: 10s;">
+
+                </div>
+                <div class="earthCloud" style="animation-duration: 11s;"></div>
+                <div class="homeGhost1" id="hghX1" style="animation-duration: 6s;">
+
+                </div>
+                <div class="homeGhost2 excludePhone" id="hghX2" style="animation-duration: 5s;"></div>
+                <div class="meteor mt3" style="top: 20%; animation-duration: 3s;"></div>
+                <div class="meteor mt2" style="top: 60%; animation-duration: 4s;"></div>
+                <div class="meteor mt3" style="top: 35%; animation-duration: 2s;"></div>
+                <div class="meteor mt1" style="top: 75%; animation-duration: 5s;"></div>
+            </div>
+
+            <div class="interference" id="interferenceAnim" style="display: none">
+
+            </div>
+            <button id="fullscreenAnimation">
+                <span class="material-symbols-rounded" id="fsAnimIcon">
+                    fullscreen
+                </span>
+            </button>
+        </div>
+    </section>
+
+    <!--Solo Mode: Espatial-->
+    <section id="soloMode">
+        <div id="skinAppearance">
+            <div class="background" id="gameBckg">
+
+            </div>
+            <div class="normalGameHud">
+                <button class="onlyPhone pauseButton" id="pauseGameSolo">
+                    <span class="material-symbols-rounded">
+                        pause
+                    </span>
+                </button>
+                <div class="score">
+                    <span id="soloDistance">0
+                    </span>m
+                </div>
+                <div class="itemsAlertCont excludePhone">
+                    <div class="itemCont" id="shieldAlert">
+                        <div class="item shieldBoost"></div>
+                        <div class="slots">x <span id="shieldS"></span></div>
+                        (1)
+                    </div>
+                    <div class="itemCont" id="acceleratorAlert">
+                        <div class="item acceleratorBoost"></div>
+                        <div class="slots">x <span id="acceleratorS"></span></div>
+                        (2)
+                    </div>
+                    <div class="itemCont" id="relaxAlert">
+                        <div class="item relaxBoost"></div>
+                        <div class="slots">x <span id="relaxS"></span></div>
+                        (3)
+                    </div>
+                    <div class="itemCont" id="FhealAlert">
+                        <div class="item SlifeBoost"></div>
+                        <div class="slots">x <span id="SlifeS"></span></div>
+                        (4)
+                    </div>
+                    <div class="itemCont" id="healAlert">
+                        <div class="item lifeBoost"></div>
+                        <div class="slots">x <span id="lifeS"></span></div>
+                        (5)
+                    </div>
+                </div>
+                <div class="hearts" id="live1p">
+
+                </div>
+            </div>
+            <div class="effectsHud">
+                <img src="assets/img/sprites/Items/vanishBoost.png" alt="" id="hShieldEffect">
+                <img src="assets/img/sprites/Items/shieldBoost.png" alt="" id="shieldEffect">
+                <img src="assets/img/sprites/Items/acceleratorBoost.png" alt="" id="acEffect">
+                <img src="assets/img/sprites/Items/relaxBoost.png" alt="" id="relaxEffect">
+                <img src="assets/img/sprites/Items/SlifeBoost.png" alt="" id="sLifeEffect" class="blinkEffect">
+                <img src="assets/img/sprites/Items/lifeBoost.png" alt="" id="lifeEffect" class="blinkEffect">
+            </div>
+            <div class="player" id="ghost">
+                <!--<div class="trail" id="trail"></div>-->
+                <div class="inv" id="Inv"></div>
+            </div>
+            <div class="meteor" id="m1" style="top: 48%;">
+
+            </div>
+
+            <div class="meteor" id="m2" style="top: 81%">
+
+            </div>
+
+            <div class="meteor" id="m3" style="top: 52%">
+
+            </div>
+
+            <div class="meteor" id="m4" style="top: 76%">
+
+            </div>
+
+            <div class="meteor" id="m5" style="top: 24%">
+
+            </div>
+            <div class="meteor" id="m6" style="top: 64%">
+
+            </div>
+            <div class="meteor" id="m7" style="top: 57%">
+
+            </div>
+            <div class="boost" id="bst">
+
+            </div>
+
+            <div class="moveBlock upBlock" id="upBlock"></div>
+            <div class="moveBlock downBlock" id="downBlock"></div>
+
+            <div class="itemsAlertContDown onlyPhoneF">
+                <div class="itemCont" id="shieldButton">
+                    <div class="item shieldBoost"></div>
+                    <div class="slots">x <span id="shieldSP"></span></div>
+                </div>
+                <div class="itemCont" id="acceleratorButton">
+                    <div class="item acceleratorBoost"></div>
+                    <div class="slots">x <span id="acceleratorSP"></span></div>
+                </div>
+                <div class="itemCont" id="relaxButton">
+                    <div class="item relaxBoost"></div>
+                    <div class="slots">x <span id="relaxSP"></span></div>
+                </div>
+                <div class="itemCont" id="FhealButton">
+                    <div class="item SlifeBoost"></div>
+                    <div class="slots">x <span id="SlifeSP"></span></div>
+                </div>
+                <div class="itemCont" id="healButton">
+                    <div class="item lifeBoost"></div>
+                    <div class="slots">x <span id="lifeSP"></span></div>
+                </div>
+            </div>
+
+            <div class="soloControls" id="pauseSolo">
+                <div class="pauseText">Pause</div>
+                <div class="pauseText">+Speed: <span id="plusSpeedAlert">0%</span></div>
+                <button class="pauseHome" id="retHomeSolo">Voltar</button>
+                <button class="pauseRestart" id="soloRestart">Reiniciar</button>
+                <button class="pauseDev" id="soloDevKeys" style="display: none;">DevKeys</button>
+                <button class="pauseSettings" id="soloConfig">Config.</button>
+            </div>
+
+
+
+            <div class="pauseContainer" id="soloPauseBCKG">
+                <div class="pauseAlert" id="soloPauseGui">
+                    <div class="pauseAnim"></div>
+                    <div class="pauseTextAlt">Pause</div>
+                    <div class="speed">
+                        Velocidade a mais: <span id="plusSpeedAlertAlt">0%</span>
+                    </div>
+                    <button id="backInf">Voltar para seleção de modo</button>
+                    <button id="restartInf">Reiniciar Jogo</button>
+                    <button id="devKeysInf">Abrir DevKeys</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="soloScore" id="soloScoreContainer">
+            <h1>Pontuação</h1>
+            <div class="soloScoreAlign">
+                <div class="distance">Distância do início: <span id="distance">0</span>m</div>
+                <div class="slots">Soma de boosts guardados: <span id="slots">0</span></div>
+                <div class="finalScore">Pontuação final (distância + (boosts * 10)): <span id="finalScore"></span></div>
+                <div class="newHigh" id="soloHighAlert">Nova Melhor pontuação</div>
+                <div class="lastHigh">Melhor pontuação: <span id="highScore">0</span></div>
+                <div class="money">Stardusts: <span id="moneyAlert">0</span></div>
+            </div>
+            <div class="goButtons">
+                <button id="soloSHome">Ir para o início</button>
+                <button id="soloSGame">Começar novamente</button>
+            </div>
+        </div>
+    </section>
+
+    <!--Duo Mode: Espatial-->
+    <section id="duoRun">
+        <div class="duoControls" id="pauseDuoControls">
+            <button class="pauseHome" id="retHome">Voltar</button>
+            <button class="pauseRestart" id="duoRestart">Reiniciar</button>
+            <button class="pauseDev" id="duoDevKeys" style="display: none;">DevKeys</button>
+            <button class="pauseSettings" id="duoSettings">Config.</button>
+        </div>
+        <div class="background" id="dRunBckg"></div>
+        <div class="playerScreen" id="p1Screen">
+            <div class="player" id="player1Run">
+                <div class="inv" id="InvP1R"></div>
+            </div>
+            <div class="meteor" id="p1Rm1"></div>
+            <div class="meteor" id="p1Rm2"></div>
+            <div class="meteor" id="p1Rm3"></div>
+            <div class="meteor" id="p1Rm4"></div>
+            <div class="meteor" id="p1Rm5"></div>
+            <div class="boost" id="p1RBst"></div>
+            <div class="moveBlock upBlock" id="p1UpBlock"></div>
+            <div class="moveBlock downBlock" id="p1DownBlock"></div>
+            <div class="normalGameHud">
+                <div class="itemsAlertCont">
+                    <div class="itemCont">
+                        <div class="item shieldBoost"></div>
+                        <div class="slots">x <span id="p1RSS">0</span></div>
+                        (1)
+                    </div>
+                    <div class="itemCont">
+                        <div class="item gunBoost"></div>
+                        <div class="slots">x <span id="p1RGS">0</span></div>
+                        (2)
+                    </div>
+                    <div class="itemCont">
+                        <div class="item invBoost"></div>
+                        <div class="slots">x <span id="p1RIS">0</span></div>
+                        (3)
+                    </div>
+                    <div class="itemCont">
+                        <div class="item lifeBoost"></div>
+                        <div class="slots">x <span id="p1RLS">0</span></div>
+                        (4)
+                    </div>
+                </div>
+                <div class="hearts" id="dRunP1Live"></div>
+            </div>
+        </div>
+        <div class="playerScreen player2Screen" id="p2Screen">
+            <div class="p2KM" id="p2KM"></div>
+            <div class="player" id="player2Run">
+                <div class="inv" id="InvP2R"></div>
+            </div>
+            <div class="meteor" id="p2Rm1"></div>
+            <div class="meteor" id="p2Rm2"></div>
+            <div class="meteor" id="p2Rm3"></div>
+            <div class="meteor" id="p2Rm4"></div>
+            <div class="meteor" id="p2Rm5"></div>
+            <div class="boost" id="p2RBst"></div>
+            <div class="moveBlock upBlock" id="p2UpBlock"></div>
+            <div class="moveBlock downBlock" id="p2DownBlock"></div>
+            <div class="normalGameHud">
+                <div class="itemsAlertCont">
+                    <div class="itemCont">
+                        <div class="item shieldBoost"></div>
+                        <div class="slots">x <span id="p2RSS">0</span></div>
+                        (6)
+                    </div>
+                    <div class="itemCont">
+                        <div class="item gunBoost"></div>
+                        <div class="slots">x <span id="p2RGS">0</span></div>
+                        (7)
+                    </div>
+                    <div class="itemCont">
+                        <div class="item invBoost"></div>
+                        <div class="slots">x <span id="p2RIS">0</span></div>
+                        (8)
+                    </div>
+                    <div class="itemCont">
+                        <div class="item lifeBoost"></div>
+                        <div class="slots">x <span id="p2RLS">0</span></div>
+                        (9)
+                    </div>
+                </div>
+                <div class="hearts" id="dRunP2Live"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--Duo Mode: Espatial - Score-->
+    <section id="duoRunScore">
+        <div class="background">
+
+        </div>
+        <div class="clouds"></div>
+        <div class="duoRunScore">
+            <h1>Jogador <span id="playerNum">0</span> Vence a partida</h1>
+            <div class="soloScoreAlign">
+                <div>Soma dos boosts do jogador 1: <span id="p1BstS">0</span></div>
+                <div>Soma dos boosts do jogador 2: <span id="p2BstS">0</span></div>
+                <div>Soma de todos os boosts: <span id="BstSumDuoRun">0</span></div>
+            </div>
+            <div class="goButtons">
+                <button id="duoRSHome">Ir para o início</button>
+                <button id="duoRSGame">Começar novamente</button>
+            </div>
+        </div>
+        <!--<div class="ghostLoseAnim">
+            <div class="ghostLose"></div>
+        </div>
+        <div class="ghostWonAnim">
+            <div class="ghostWon"></div>
+        </div>-->
+        <div class="soilContainer">
+            <div class="soil">
+                <div class="blueCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="purpleCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="blueCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="purpleCrystal"></div>
+            </div>
+            <div class="soil">
+                <div class="blueCrystal"></div>
+            </div>
+        </div>
+    </section>
+
+    <!--Shop-->
+    <section id="shop">
+        <div class="background">
+
+        </div>
+        <div class="sideBar">
+            <div class="alignSideBarItems">
+                <button id="shopHome" class="returnHome"></button>
+                <h1>Loja</h1>
+            </div>
+            <div class="alignStardusts">
+                <div class="stardustIcon"></div>
+                <div class="stardustsView">
+                    Stardusts: <br>
+                    <p id="allStardusts">0</p>
+                </div>
+            </div>
+            <button class="shopNav">Todos os itens</button>
+            <div style="display: none">
+                <button class="shopNav">Skins</button>
+                <button class="shopNav">Modos de jogo</button>
+                <button class="shopNav">Mecânicas</button>
+                <button class="shopNav">Músicas/Audios</button>
+            </div>
+            <button class="shopNav bottomNav" id="skins">Alterar Skin</button>
+        </div>
+        <div class="shopTitle">
+            <h1>Todos os itens</h1>
+        </div>
+        <div class="shopItems" id="shopItems">
+            <button class="shopBlock" id="transpSkinPurchase" shopButton>
+                <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
+            </button>
+            <button class="shopBlock" id="dogSkinPurchase" shopButton>
+                <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
+            </button>
+            <button class="shopBlock" id="catSkinPurchase" shopButton>
+                <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
+            </button>
+
+            </button>
+            <button class="shopBlock" id="mechaSkinPurchase" shopButton>
+                <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
+            </button>
+            <button class="shopBlock" id="wizardSkinPurchase" shopButton>
+                <img src="assets/img/sprites/skins/wizardGhost/Flying.gif" alt="wizardGhostSkin">
+            </button>
+            <button class="shopBlock" id="saraSkinPurchase" shopButton>
+                <img src="assets/img/sprites/skins/saraGhost/Flying.gif" alt="saraGhostSkin">
+            </button>
+
+        </div>
+        <div class="itemDesc" id="itemDesc" style="display: none">
+            <div class="itemDetails">
+                <div class="itemImage">
+                    <img src="assets/img/sprites/animations/waving/waving.gif" alt="" id="prodImage">
+                </div>
+                <div class="itemInfos">
+                    <p type="itemName">itemName</p>
+                    <p type="itemType">itemType</p>
+                    <div class="alignStardusts">
+                        <div class="stardustIcon"></div>
+                        <div class="stardustsView">
+                            Stardusts: <br>
+                            <p id="itemStardust">stardustsNum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="itemDescription" type="itemDesc">itemDesc</p>
+            <div class="alignBuyButtons">
+                <button class="shopBuy getItem" id="purchaseItem">Adquirir</button>
+                <button class="shopBuy resetItem" id="refundItem">Reembolsar</button>
+            </div>
+        </div>
+    </section>
+
+    <!--Skin Changer-->
+    <section id="skinChanger">
+        <div class="background" id="scStars"></div>
+        <div class="sideBar">
+            <div class="alignSideBarItems skinChangerAlign">
+                <button class="backPage" id="returnShop"></button>
+                <h1>Skin</h1>
+            </div>
+
+            <button class="shopNav" id="defaultSkinChanger">Todos os Jogadores / Jogador 1</button>
+            <button class="shopNav" id="secondPlayerSkinChanger">Jogador 2</button>
+            <button class="shopNav bottomNav" id="goShopbySkin">Ir para Loja</button>
+        </div>
+
+        <div class="shopTitle">
+            <h1 id="skinTitle">Todos os Jogadores / Jogador 1</h1>
+        </div>
+
+        <div class="shopItems" id="allPlayersChanger">
+            <button class="ChoosedSkin" id="cs0">
+                <img src="assets/img/sprites/skins/normal/Flying.gif" alt="normalSkin">
+            </button>
+            <button class="shopBlock" id="csA">
+                <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
+            </button>
+            <button class="shopBlock" id="cs1">
+                <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
+            </button>
+            <button class="shopBlock" id="cs2">
+                <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
+            </button>
+            <button class="shopBlock" id="cs3">
+                <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
+            </button>
+            <button class="shopBlock" id="cs4">
+                <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
+            </button>
+            <button class="shopBlock" id="cs5">
+                <img src="assets/img/sprites/skins/wizardGhost/Flying.gif" alt="wizardGhostSkin">
+            </button>
+            <button class="shopBlock" id="cs6">
+                <img src="assets/img/sprites/skins/saraGhost/Flying.gif" alt="saraGhostSkin">
+            </button>
+        </div>
+        <div class="shopItems" id="secondPlayerChanger" style="display: none;">
+            <button class="ChoosedSkin" id="noneSecond">
+                <img src="assets/img/sprites/shopItems/noSkin.png" alt="noSkin">
+            </button>
+            <button class="shopBlock" id="Scs0">
+                <img src="assets/img/sprites/skins/normal/Flying.gif" alt="normalSkin">
+            </button>
+            <button class="shopBlock" id="ScsA">
+                <img src="assets/img/sprites/skins/female/Flying.gif" alt="femaleSkin">
+            </button>
+            <button class="shopBlock" id="Scs1">
+                <img src="assets/img/sprites/skins/transpGhost/Flying.gif" alt="TranspGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs2">
+                <img src="assets/img/sprites/skins/dogGhost/Flying.gif" alt="dogGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs3">
+                <img src="assets/img/sprites/skins/catGhost/Flying.gif" alt="catGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs4">
+                <img src="assets/img/sprites/skins/mechaGhost/Flying.gif" alt="mechaGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs5">
+                <img src="assets/img/sprites/skins/wizardGhost/Flying.gif" alt="wizardGhostSkin">
+            </button>
+            <button class="shopBlock" id="Scs6">
+                <img src="assets/img/sprites/skins/saraGhost/Flying.gif" alt="saraGhostSkin">
+            </button>
+        </div>
+    </section>
+
+    <!--Settings-->
+    <section id="settings">
+        <div class="earthCloud" id="ecSettings"></div>
+        <div class="settingsPanel">
+            <button id="settingsHome" class="returnHome"></button>
+            <h1>Configurações</h1>
+            <div class="alignSetting excludePhone">
+                <label for="oldControls">Controles no formato de teclas</label>
+                <input type="checkbox" name="" id="oldControls" title="Alterar config. Controles Precisos">
+            </div>
+            <div class="alignSetting">
+                <label for="soloSlots">Solo: Guardar boosts ao invés de usar</label>
+                <input type="checkbox" name="" id="soloSlots" title="Alterar config. Guardar Boosts">
+            </div>
+            <div class="alignSetting">
+                <label for="vol">Volume</label>
+                <button class="onlyPhone settingButton" id="settingsSoundControl">Controle de Som</button>
+                <div class="alignItems excludePhone">
+                    <span id="volumeNum">100%</span>
+                    <input type="range" name="" id="vol" max="100" value="100">
+                    <button class="muteButton" title="Mutar Jogo" id="muteGameSetting">
+                        <span class="material-symbols-rounded">
+                            volume_off
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <span class="excludePhone">Dica: Você pode mutar o jogo a qualquer momento pressionando a tecla M, alterar o
+                volume com a tecla
+                V e abrir o Controle de Som rápido ao clicar F1</span>
+            <div class="alignSetting">
+                <label for="simpleLightMode">Tema Claro</label>
+                <input type="checkbox" name="" id="simpleLightMode">
+            </div>
+            <div class="alignSetting">
+                <label for="invertColor">Inverter Cores</label>
+                <input type="checkbox" name="" id="invertColor">
+            </div>
+            <div class="alignSetting">
+                Reportar bugs
+                <a href="https://github.com/IgorSilva-S/SpaceOfGhosts_Releases/issues" target="_blank"
+                    title="Ir para GitHub - Reportar Bugs"><img
+                        src="assets/img/sprites/navButtons/white/externalWebsite.png" alt="Ir para GitHub"></a>
+            </div>
+            <div class="alignSetting excludePhone">
+                Sound Test
+                <a href="soundTest.html" title="Sound Test"><img
+                        src="assets/img/sprites/navButtons/white/externalWebsite.png" alt="Go To Sound Test"></a>
+            </div>
+            <div class="alignSetting">
+                Apagar dados
+                <button id="deleteSave" class="settingButton" title="Deletar Save">Apagar</button>
+            </div>
+            <div class="alignSetting excludePhone" id="collisionViewSettings" style="display: none">
+                <label for="collisionView">DevKeys: Ver colisões do jogo</label>
+                <input type="checkbox" name="" id="collisionView">
+            </div>
+            <p>Futuramente, novas configurações estarão disponíveis</p>
+        </div>
+    </section>
+
+    <!--DevKeys Central-->
+    <section id="devKeysCentral" class="devKeysCentral">
+        <div class="earthCloud"></div>
+        <div class="background"></div>
+        <div class="devKeysHeader">
+            <button id="DKCHome" class="returnHome"></button>
+            <button id="reloadGame"></button>
+            <div class="titleAlign">
+                <h1 id="devKeysTitle">DevKeys Central</h1>
+                <p>Altere as configurações de desenvolvedor</p>
+            </div>
+            <button id="disableDevKeys" class="shutDownDev">Desligar DevKeys</button>
+        </div>
+        <div class="keysEditor" id="ke">
+            <div class="title">Editor de Chaves (localStorage)
+                <span class="material-symbols-rounded" id="changeType">
+                    change_circle
+                </span>
+                <span class="material-symbols-rounded" id="refreshData">
+                    refresh
+                </span>
+                <span class="material-symbols-rounded" id="addKey">
+                    add
+                </span>
+            </div>
+            <div id="regView" class="devKeysSystemView">
+                <div class="regRow" id="keyNameRow"></div>
+                <div class="regRow" id="keyValueRow"></div>
+            </div>
+            <div id="cardView" class="devKeysSystemView" style="display: none;">
+                <div class="devCardView">
+                    <div class="card" id="dkCard" style="transform: scaleX(0);">
+                        <p class="cardTitle" id='cTitle'>Card Title</p>
+                        <p class="cardType" id="cType">Card Type</p>
+                        <p class="cardDesc" id="cDesc">Lorem ipsum dolor sit amet consectetur</p>
+                        <div class="cardBAlign">
+                            <button id="cardSeeValue">Ver valor</button>
+                            <button id="cardEdit">Editar valor</button>
+                            <button id="cardDelVar">Apagar variável</button>
+                        </div>
+                    </div>
+                    <div class="bCard" id="bCard"></div>
+                </div>
+
+                <div class="allCards" id="mcCont">
+                </div>
+            </div>
+
+            <div class="keyContextMenu" id="contextMenu">
+                <div class="keyName" id="kn">Nome da chave</div>
+                <!--<div class="CMOption" id="delKey">Deletar chave</div>
+            <div class="CMOption" id="renKey">Renomear chave</div>-->
+                <div id="contextOptions">
+
+                </div>
+            </div>
+    </section>
+    <!--Credits-->
+    <section id="credits">
+        <button class="returnHome" id="b2bCredits"></button>
+        <img src="assets/img/non-sprites/gameName/credits.png" alt="Space of Ghosts - Créditos">
+        <div class="creditsSection">
+            <span class="sectionTitle">Música</span><br><br>
+            Início: Artificial Music <br>
+            Espacial - Um jogagor: Prod. Riddiman <br>
+            Espacial - Dois jogadores: After The Fall <br>
+            Espacial Extremo - Um jogador: Tiểu Long <br>
+            Loja e Configurações: dyu / Mix oficial: Nintendo <br>
+            Créditos: After The Fall <br>
+        </div>
+        <!--<div class="creditsSection">
+            <span class="sectionTitle">Beta Testers</span><br><br>
+            Caio Plácido <br>
+            Yuri Matsumoto <br>
+            Nicolas Faria <br>
+            Roberto Endo <br>
+            Enzo Souza <br>
+        </div>-->
+        <div class="creditsSectionEnd">
+            <span class="thanks">Obrigado por jogar!</span>
+        </div>
+    </section>
+
+    <!--Volume Controls-->
+    <div class="volCenter" id="volCenter"></div>
+    <div class="muteAlert" id="volAlertCont">
+        <span class="material-symbols-rounded" id="volAlert">
+            volume_up
+        </span>
+    </div>
+    <div class="volumeModifier" id="quickVolCont">
+        <span id="quickVolNum">100%</span>
+        <input type="range" name="" id="quickVol" value="100">
+    </div>
+    <!--Audios-->
+
+    <!--Music-->
+    <audio src="assets/songs/music/homeMusic.mp3" id="homeSong" loop></audio>
+    <audio src="assets/songs/music/soloMusic.mp3" id="soloSong" loop></audio>
+    <audio src="assets/songs/music/soloExtremeMusic.mp3" id="soloXtremeSong" loop></audio>
+    <audio src="assets/songs/music/duoRunMusic.mp3" loop id="duoRunSong"></audio>
+    <audio src="assets/songs/music/gameShop&Skin.mp3" loop id="shopSong"></audio>
+    <audio src="assets/songs/music/gameSettings.mp3" loop id="settingsSong"></audio>
+    <audio src="assets/songs/music/creditsMusic.mp3" loop id="creditsSong"></audio>
+    <audio src="assets/songs/music/soloRunnerMusic.mp3" loop id="soloRunnerSong"></audio>
+    <audio src="assets/songs/music/duoRunnerMusic.mp3" loop id="duoRunnerSong"></audio>
+    <audio src="assets/songs/music/devKeysCentral.mp3" loop id="devKeysCentralSong"></audio>
+    <!--SFX-->
+    <audio src="assets/songs/SFX/Explosion.ogg" id="hSong"></audio>
+
+    <!--End Audios-->
+
+    <!--Script Area-->
+    <script src="assets/js/variables.js"></script>
+    <script src="assets/js/loadingGame.js"></script>
+    <script src="assets/js/errorScript.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/solo.js"></script>
+    <script src="assets/js/duoRun.js"></script>
+    <script src="assets/js/shop&skins.js"></script>
+    <script src="assets/js/devKeys.js"></script>
+    <script src="assets/js/betaItems.js"></script>
+    <script src="assets/js/responsivity.js"></script>
+</body>
+
+</html>
