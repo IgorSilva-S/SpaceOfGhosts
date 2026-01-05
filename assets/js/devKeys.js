@@ -1,4 +1,4 @@
-let devKeys = true
+let devKeys = false
 
 let cannotHurt = false
 let cannotPlaysound = false
