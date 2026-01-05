@@ -855,6 +855,12 @@ button:active {
     display: none;
 }
 
+#planetArea .shield {
+    top: auto;
+    bottom: 85px;
+    transition-duration: .1s;
+}
+
 .ghost.aLittleHurt {
     animation: hurt 1s linear;
 }
@@ -923,21 +929,44 @@ button:active {
     background-image: url(../sprites/planets/VolcanicValley/object.png);
 }
 
+.planetObj.VVP[noHurt="true"] {
+    opacity: 0;
+}
+
 .planetObj.DDP {
     background-image: url(../sprites/planets/DesertDazzle/object.png);
     animation: rotate 1s linear infinite, moveObj 7s linear infinite;
 }
 
+.planetObj.DDP[noHurt="true"] {
+    opacity: 0;
+}
+
+
 .planetObj.MMP {
     background-image: url(../sprites/planets/MaterialMetropoly/object.png);
 }
+
+.planetObj.MMP[noHurt="true"] {
+    opacity: 0;
+}
+
 
 .planetObj.BBP {
     background-image: url(../sprites/planets/BorealBeach/object.png);
 }
 
+.planetObj.BBP[noHurt="true"] {
+    background-image: url(../sprites/planets/BorealBeach/curedObject.png);
+}
+
+
 .planetObj.RRP {
     background-image: url(../sprites/planets/RelicRuins/object.png);
+}
+
+.planetObj.RRP[noHurt="true"] {
+    background-image: url(../sprites/planets/RelicRuins/objectCured.png);
 }
 
 .planetObj.lane1 {

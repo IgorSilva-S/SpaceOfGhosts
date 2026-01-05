@@ -102,9 +102,6 @@ function goToPlanet(specific) {
                             screenIdentifier = 2
                             energy = 0
                             instaShield = false
-                            shieldBoost = false
-                            shield.removeAttribute('style')
-                            shieldBoost = false
                             checkEnergy()
                             checkLife()
                             energyInterval = setInterval(() => {
@@ -128,4 +125,46 @@ function goToPlanet(specific) {
             blackout.removeAttribute('style')
         }, 300);
     }, 600);
+}
+
+let usingSpecialMove = false
+
+function startSpecialMove() {
+    restartPGif(startPowerAnim)
+    usingSpecialMove = true
+    instaShield = true
+    Array.from(objects).forEach((o) => {
+        o.style.animationPlayState = 'paused'
+    })
+    const laneU = document.getElementById('planLaneU')
+    const laneD = document.getElementById('planLaneD')
+    laneD.style.animationPlayState = 'paused'
+    laneU.style.animationPlayState = 'paused'
+    document.getElementById('secPlanBckg').style.animationPlayState = 'paused'
+    document.getElementById('planBckg').style.animationPlayState = 'paused'
+    setTimeout(() => {
+        restartPGif(quickMoveAnim)
+        setTimeout(() => {
+            Array.from(objects).forEach((o) => {
+                o.setAttribute('noHurt', 'true')
+            })
+        }, 1300);
+        setTimeout(() => {
+            restartPGif(endPowerAnim)
+            setTimeout(() => {
+                Array.from(objects).forEach((o) => {
+                    o.style.animationPlayState = 'running'
+                })
+                const laneU = document.getElementById('planLaneU')
+                const laneD = document.getElementById('planLaneD')
+                laneD.style.animationPlayState = 'running'
+                laneU.style.animationPlayState = 'running'
+                document.getElementById('secPlanBckg').style.animationPlayState = 'running'
+                document.getElementById('planBckg').style.animationPlayState = 'running'
+                instaShield = false
+                restartPGif(fly)
+                usingSpecialMove = false
+            }, 520);
+        }, 2300);
+    }, 520);
 }

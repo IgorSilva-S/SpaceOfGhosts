@@ -31,10 +31,25 @@ document.addEventListener('keydown', (e) => {
     }
 
     if (e.key == '1') {
-        if (energy > 7) {
-            energy = energy - 8
-            life = life + 2
-            checkLife()
+        if (screenIdentifier == 2) {
+            if (energy > 7 && life < 10) {
+                energy = energy - 8
+                life = life + 2
+                if (life > 10) {
+                    life = 10
+                }
+                checkLife()
+            }
+        } else if (screenIdentifier == 3) {
+            if (pEnergy > 7 && life < 10) {
+                pEnergy = pEnergy - 8
+                life = life + 2
+                if (life > 10) {
+                    life = 10
+                }
+                checkLife()
+                checkPEnergy()
+            }
         }
     }
 
@@ -44,6 +59,12 @@ document.addEventListener('keydown', (e) => {
 
     if (e.key == '3' && screenIdentifier == 2) {
         startQuickMove(keyPressing)
+    } else if (e.key == '3' && screenIdentifier == 3) {
+        if (pEnergy > 9) {
+            pEnergy = pEnergy - 10
+            checkPEnergy()
+            startSpecialMove()
+        }
     }
 
     if (e.key == '4') {

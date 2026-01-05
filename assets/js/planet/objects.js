@@ -34,6 +34,7 @@ Array.from(objects).forEach((o) => {
 
 
     o.addEventListener('animationiteration', () => {
+        o.removeAttribute('noHurt')
         let speed, delay, posi
         if (actualPlanet == 0 || actualPlanet == 1 || actualPlanet == 4) {
             speed = Math.floor(Math.random() * 3) + 5
@@ -76,11 +77,13 @@ Array.from(objects).forEach((o) => {
         } else if (o.classList.contains('lane2')) {
             lane = 1;
         }
-        if (objLeft >= 123 && objLeft <= 223 && lane == actualLane && !instaShield && !cannotHurt && life > 0) {
+        let noHurt = o.getAttribute('noHurt')
+        if (objLeft >= 123 && objLeft <= 223 && lane == actualLane && !instaShield && !cannotHurt && life > 0 && noHurt != 'true' && !shieldBoost) {
             instaShield = true
             life--
             checkLife()
             restartPGif(hurtPAnim)
+            hurtPlayerSFX.play()
             setTimeout(() => {
                 PGShadow.style.display = 'none'
                 restartPGif(slimeAnim)
@@ -90,19 +93,30 @@ Array.from(objects).forEach((o) => {
                         restartPGif(fly)
                         PGShadow.style.display = 'block'
                         instaShield = false
-                    }, 550);
+                    }, 560);
                 }, 6000);
-            }, 780);
+            }, 790);
         }
 
-        if (objLeft >= 123 && objLeft <= 223 && lane == actualLane && !instaShield && !cannotHurt && life <= 0) {
+        if (objLeft >= 123 && objLeft <= 223 && lane == actualLane && !instaShield && !cannotHurt && life > 0 && noHurt != 'true' && shieldBoost) {
+            shieldToggle('disable')
+            instaShield = true
+            setTimeout(() => {
+                instaShield = false
+            }, 1000);
+        }
+
+        if (objLeft >= 123 && objLeft <= 223 && lane == actualLane && !instaShield && !cannotHurt && life <= 0 && noHurt != 'true') {
             instaShield = true
             life--
             checkLife()
+            hurtPlayerSFX.play()
             setTimeout(() => {
                 instaShield = false
             }, 6000);
         }
+
+
     }, 16);
 })
 

@@ -1,5 +1,6 @@
 let actualLane = 0
 let lastLane = 0
+let pShield = document.getElementById('pGhostShield')
 const pGhost = document.getElementById('pGhost')
 const PGShadow = document.getElementById('PGShadow')
 const lanePosi = {
@@ -13,13 +14,15 @@ function restartPGif(src) {
 }
 
 function laneMovement(direction) {
-    if (direction == 'up') {
+    if (direction == 'up' && !usingSpecialMove) {
         if (actualLane != 2) {
             actualLane = 1
             pGhost.style.bottom = '300px'
+            pShield.style.bottom = `${300 - 25}px`
             PGShadow.style.bottom = '280px'
             setTimeout(() => {
                 pGhost.style.bottom = `${lanePosi[actualLane]}px`
+                pShield.style.bottom = `${lanePosi[actualLane] - 25}px`
                 PGShadow.style.bottom = `${lanePosi[actualLane] - 20}px`
             }, 100);
         } else {
@@ -32,12 +35,14 @@ function laneMovement(direction) {
     }
 
     if (direction == 'down') {
-        if (actualLane != 2) {
+        if (actualLane != 2 && !usingSpecialMove) {
             actualLane = 0
             pGhost.style.bottom = '80px'
+            pShield.style.bottom = `${80 - 25}px`
             PGShadow.style.bottom = '60px'
             setTimeout(() => {
                 pGhost.style.bottom = `${lanePosi[actualLane]}px`
+                pShield.style.bottom = `${lanePosi[actualLane] - 25}px`
                 PGShadow.style.bottom = `${lanePosi[actualLane] - 20}px`
             }, 100);
         } else {
@@ -49,13 +54,14 @@ function laneMovement(direction) {
         }
     }
 
-    if (direction == 'space' && actualLane != 2 && !instaShield) {
+    if (direction == 'space' && actualLane != 2 && !instaShield && !usingSpecialMove) {
         pEnergy = pEnergy - 2
         checkPEnergy()
         lastLane = actualLane
         actualLane = 2
         setTimeout(() => {
             pGhost.style.bottom = `${lanePosi[actualLane]}px`
+            pShield.style.bottom = `${lanePosi[actualLane] - 25}px`
             PGShadow.style.bottom = `${lanePosi[lastLane] - 20}px`
         }, 100);
         setTimeout(() => {

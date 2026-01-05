@@ -68,13 +68,22 @@ function laneSwitcher() {
 
 let shieldBoost = false
 function shieldToggle(what) {
-    if (what == 'enable' && energy > 3) {
+    if (what == 'enable' && energy > 3 && screenIdentifier == 2) {
         shield.style.display = 'block'
+        pShield.style.display = 'block'
         shieldBoost = true
         energy = energy - 4
         startShieldSFX.play()
+    } else if (what == 'enable' && pEnergy > 3 && screenIdentifier == 3) {
+        shield.style.display = 'block'
+        pShield.style.display = 'block'
+        shieldBoost = true
+        pEnergy = pEnergy - 4
+        checkPEnergy()
+        startShieldSFX.play()
     } else if (what == 'disable') {
         shield.removeAttribute('style')
+        pShield.removeAttribute('style')
         shieldBoost = false
         breakShieldSFX.play()
     }
