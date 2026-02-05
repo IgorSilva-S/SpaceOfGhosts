@@ -1,4 +1,27 @@
 document.addEventListener('keydown', (e) => {
+    if (screenIdentifier == -1 && canStart) {
+        navToMainMenu()
+    }
+
+    if (e.key.toLowerCase() == 'm') {
+        if (muted) {
+            muted = false
+            inputNotify.innerText = 'Sons: Ligados'
+            inputNotify.style.bottom = '0'
+            clearTimeout(INtimeout)
+            INtimeout = setTimeout(() => {
+                inputNotify.removeAttribute('style')
+            }, 5000);
+        } else {
+            muted = true
+            inputNotify.innerText = 'Sons: Desligados'
+            inputNotify.style.bottom = '0'
+            clearTimeout(INtimeout)
+            INtimeout = setTimeout(() => {
+                inputNotify.removeAttribute('style')
+            }, 5000);
+        }
+    }
 
     if (e.repeat) return
 

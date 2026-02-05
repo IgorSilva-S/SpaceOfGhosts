@@ -10,8 +10,14 @@
 </head>
 
 <body>
+    <!--Loading-->
+    <section id="loadingPage" style="display: flex;">
+        <img src="assets/sprites/logo/logo.png" alt="">
+        <img src="assets/sprites/GUI/loading.gif" alt="" id="loading">
+        <p id="loaded" style="display: none;">Pressione qualquer tecla (ou toque na tela) para iniciar o jogo</p>
+    </section>
     <!--Main Menu-->
-    <section id="mainMenu" style="display: block;">
+    <section id="mainMenu">
         <div class="bckg stars"></div>
         <div class="movingChar"></div>
         <div class="bckgMeteorite type4" style="top: 37%; animation-delay: 1s;"></div>
@@ -22,10 +28,20 @@
             <img src="assets/sprites/logo/logo.png" alt="">
             <div class="navBtnsAlign">
                 <button id="play">Jogar</button>
-                <!-- <button>Controles</button>
-                <button>Ajustes</button>
-                <button>Créditos</button> -->
-                <h1 style="align-self: flex-start; margin-left: 5%;">Versão 2yB (Beta de 2 anos)</h1>
+                <button id="help">Controles e ajuda</button>
+                <button id="credits">Créditos</button>
+                <h1 style="align-self: flex-start; margin-left: 5%;">Versão 0.5 beta (762.26)</h1>
+            </div>
+        </div>
+    </section>
+
+    <section id="helper">
+        <button class="B2BButton" backButton="yep" id="backHelp">Voltar</button>
+        <div class="bckg stars"></div>
+        <div class="bckg planet"></div>
+        <div class="blockHelper">
+            <div class="helpInfos" id="helpInfo">
+
             </div>
         </div>
     </section>
@@ -328,6 +344,8 @@
         </div>
     </section>
 
+    <div class="inputNotify" id="inputNotify"></div>
+
     <section id="blackout">
 
     </section>
@@ -347,6 +365,7 @@
 
     <script src="assets/js/sprites.js"></script>
     <script src="assets/js/system.js"></script>
+    <script src="assets/js/startup.js"></script>
     <script src="assets/js/GID.js"></script>
     <script src="assets/js/devKeys.js"></script>
     <script src="assets/js/sounds.js"></script>
@@ -354,6 +373,7 @@
     <script src="assets/js/navigation.js"></script>
     <script src="assets/js/keys.js"></script>
     <script src="assets/js/getOS.js"></script>
+    <script src="assets/js/help.js"></script>
 
     <!--Space Area-->
     <script src="assets/js/spaceArea/moviment.js"></script>

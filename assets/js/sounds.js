@@ -43,7 +43,7 @@ Array.from(document.getElementsByClassName('door')).forEach((d) => {
 
 // Musics
 const GIDManagerMusic = new Audio('assets/sounds/music/ghostIdManager.mp3')
-const spaceshipMusic = new Audio('assets/sounds/music/spaceShip.mp3')
+const spaceshipMusic = new Audio('assets/sounds/music/spaceship.ogg')
 
 // Game
 const spaceAreaMusic = new Audio('assets/sounds/music/spaceArea.mp3')
@@ -108,3 +108,51 @@ function playPlanetMusic() {
         spaceshipMusic.play()
     }
 }
+
+// Sound System
+let muted = false
+setInterval(() => {
+    if (muted) {
+        clickSound.volume = 0
+        backSound.volume = 0
+        doorMove.volume = 0
+        cardInsert.volume = 0
+
+        hurtPlayerSFX.volume = 0
+        stardustPickerSFX.volume = 0
+        startShieldSFX.volume = 0
+        breakShieldSFX.volume = 0
+        breakMeteoriteSFX.volume = 0
+
+        noWayMusic.volume = 0
+        GIDManagerMusic.volume = 0
+        spaceshipMusic.volume = 0
+        spaceAreaMusic.volume = 0
+        VVPMusic.volume = 0
+        DDPMusic.volume = 0
+        MMPMusic.volume = 0
+        BBPMusic.volume = 0
+        RRPMusic.volume = 0
+    } else {
+        clickSound.volume = 1
+        backSound.volume = 1
+        doorMove.volume = 1
+        cardInsert.volume = 1
+
+        hurtPlayerSFX.volume = 1
+        stardustPickerSFX.volume = 1
+        startShieldSFX.volume = 1
+        breakShieldSFX.volume = 1
+        breakMeteoriteSFX.volume = 1
+
+        noWayMusic.volume = 1
+        GIDManagerMusic.volume = 1
+        spaceshipMusic.volume = 1
+        spaceAreaMusic.volume = 1
+        VVPMusic.volume = 1
+        DDPMusic.volume = 1
+        MMPMusic.volume = 1
+        BBPMusic.volume = 1
+        RRPMusic.volume = 1
+    }
+}, 10);
