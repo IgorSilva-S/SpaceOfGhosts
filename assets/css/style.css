@@ -721,11 +721,11 @@ button:active {
 }
 
 .bckg.beach {
-    background-image: url(../sprites/planets/BorealBeach/backgroundAnimated.gif);
+    background-image: url(../sprites/planets/BorealBeach/background.png);
 }
 
 .bckg.volcanic {
-    background-image: url(../sprites/planets/VolcanicValley/background.gif);
+    background-image: url(../sprites/planets/VolcanicValley/background.png);
 }
 
 .bckg.city {
