@@ -39,9 +39,51 @@ section {
     animation: blackout .3s;
 }
 
+.inputNotify {
+    font-size: 30px;
+    position: fixed;
+    bottom: -80px;
+    right: 0;
+    background-color: #000;
+    box-shadow: -5px -5px 0 0 white;
+    color: white;
+    padding: 20px 40px;
+    transition-duration: .15s;
+    z-index: 9999;
+}
+
+#loadingPage {
+    background-color: #000;
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#loadingPage img {
+    width: 300px;
+    height: 300px;
+}
+
+#loadingPage #loading {
+    width: 100px;
+    height: 100px;
+}
+
+#loadingPage p {
+    font-size: 30px;
+}
+
 #mainMenu {
     background-color: #010101;
     color: white;
+}
+
+#helper {
+    background-color: #000;
+    justify-content: center;
+    align-items: center;
 }
 
 #gidM {
@@ -273,6 +315,58 @@ button:active {
 #ghostId button,
 #gidM button {
     font-size: 20px;
+}
+
+/*Helper*/
+
+@property --ang {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.blockHelper {
+    width: 60vw;
+    height: 80vh;
+    background-image: conic-gradient(from var(--ang),#5fcde4, #2f9bb2, #5fcde4);
+    z-index: 2;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
+    gap: 10px;
+    animation: rotateBorder 3s linear infinite;
+}
+
+@keyframes rotateBorder{
+    from {
+        --ang: 0deg;
+    } to {
+        --ang: 360deg;
+    }
+}
+
+.helpInfos {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #000512;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.helpInfos .helpImages {
+    width: 100%;
+    aspect-ratio: 16 / 9;
 }
 
 /* SpaceShip */
@@ -596,9 +690,10 @@ button:active {
     height: 496px;
     animation: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: auto;
+    left: auto;
+    bottom: -148px;
+    right: -148px;
     background-size: cover;
     background-position: center;
     background-image: url(../sprites/backgrounds/planet.png);
@@ -626,11 +721,11 @@ button:active {
 }
 
 .bckg.beach {
-    background-image: url(../sprites/planets/BorealBeach/background.png);
+    background-image: url(../sprites/planets/BorealBeach/backgroundAnimated.gif);
 }
 
 .bckg.volcanic {
-    background-image: url(../sprites/planets/VolcanicValley/background.png);
+    background-image: url(../sprites/planets/VolcanicValley/background.gif);
 }
 
 .bckg.city {
